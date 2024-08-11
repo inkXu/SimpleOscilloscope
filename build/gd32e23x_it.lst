@@ -1,0 +1,650 @@
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/gd32e23x_it.c"
+  18              		.section	.text.NMI_Handler,"ax",%progbits
+  19              		.align	1
+  20              		.global	NMI_Handler
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	NMI_Handler:
+  26              	.LFB60:
+   1:Core/Src/gd32e23x_it.c **** /*!
+   2:Core/Src/gd32e23x_it.c ****     \file    gd32e23x_it.c
+   3:Core/Src/gd32e23x_it.c ****     \brief   interrupt service routines
+   4:Core/Src/gd32e23x_it.c **** 
+   5:Core/Src/gd32e23x_it.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Core/Src/gd32e23x_it.c **** */
+   7:Core/Src/gd32e23x_it.c **** 
+   8:Core/Src/gd32e23x_it.c **** /*
+   9:Core/Src/gd32e23x_it.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Core/Src/gd32e23x_it.c **** 
+  11:Core/Src/gd32e23x_it.c ****     Redistribution and use in source and binary forms, with or without modification,
+  12:Core/Src/gd32e23x_it.c **** are permitted provided that the following conditions are met:
+  13:Core/Src/gd32e23x_it.c **** 
+  14:Core/Src/gd32e23x_it.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  15:Core/Src/gd32e23x_it.c ****        list of conditions and the following disclaimer.
+  16:Core/Src/gd32e23x_it.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Core/Src/gd32e23x_it.c ****        this list of conditions and the following disclaimer in the documentation
+  18:Core/Src/gd32e23x_it.c ****        and/or other materials provided with the distribution.
+  19:Core/Src/gd32e23x_it.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  20:Core/Src/gd32e23x_it.c ****        may be used to endorse or promote products derived from this software without
+  21:Core/Src/gd32e23x_it.c ****        specific prior written permission.
+  22:Core/Src/gd32e23x_it.c **** 
+  23:Core/Src/gd32e23x_it.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  24:Core/Src/gd32e23x_it.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  25:Core/Src/gd32e23x_it.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  26:Core/Src/gd32e23x_it.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  27:Core/Src/gd32e23x_it.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  28:Core/Src/gd32e23x_it.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  29:Core/Src/gd32e23x_it.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  30:Core/Src/gd32e23x_it.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  31:Core/Src/gd32e23x_it.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  32:Core/Src/gd32e23x_it.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 2
+
+
+  33:Core/Src/gd32e23x_it.c **** */
+  34:Core/Src/gd32e23x_it.c **** 
+  35:Core/Src/gd32e23x_it.c **** #include "gd32e23x_it.h"
+  36:Core/Src/gd32e23x_it.c **** #include "main.h"
+  37:Core/Src/gd32e23x_it.c **** #include "systick.h"
+  38:Core/Src/gd32e23x_it.c **** 
+  39:Core/Src/gd32e23x_it.c **** uint8_t rotate_flag;
+  40:Core/Src/gd32e23x_it.c **** uint8_t timer_flag;
+  41:Core/Src/gd32e23x_it.c **** uint32_t time_value;
+  42:Core/Src/gd32e23x_it.c **** static uint32_t value;
+  43:Core/Src/gd32e23x_it.c **** 
+  44:Core/Src/gd32e23x_it.c **** /*!
+  45:Core/Src/gd32e23x_it.c ****     \brief      this function handles NMI exception
+  46:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  47:Core/Src/gd32e23x_it.c ****     \param[out] none
+  48:Core/Src/gd32e23x_it.c ****     \retval     none
+  49:Core/Src/gd32e23x_it.c **** */
+  50:Core/Src/gd32e23x_it.c **** void NMI_Handler(void)
+  51:Core/Src/gd32e23x_it.c **** {
+  27              		.loc 1 51 1 view -0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.L2:
+  52:Core/Src/gd32e23x_it.c ****     /* if NMI exception occurs, go to infinite loop */
+  53:Core/Src/gd32e23x_it.c ****     while(1) {
+  34              		.loc 1 53 5 view .LVU1
+  54:Core/Src/gd32e23x_it.c ****     }
+  35              		.loc 1 54 5 view .LVU2
+  53:Core/Src/gd32e23x_it.c ****     }
+  36              		.loc 1 53 10 view .LVU3
+  37 0000 FEE7     		b	.L2
+  38              		.cfi_endproc
+  39              	.LFE60:
+  41              		.section	.text.HardFault_Handler,"ax",%progbits
+  42              		.align	1
+  43              		.global	HardFault_Handler
+  44              		.syntax unified
+  45              		.code	16
+  46              		.thumb_func
+  48              	HardFault_Handler:
+  49              	.LFB61:
+  55:Core/Src/gd32e23x_it.c **** }
+  56:Core/Src/gd32e23x_it.c **** 
+  57:Core/Src/gd32e23x_it.c **** /*!
+  58:Core/Src/gd32e23x_it.c ****     \brief      this function handles HardFault exception
+  59:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  60:Core/Src/gd32e23x_it.c ****     \param[out] none
+  61:Core/Src/gd32e23x_it.c ****     \retval     none
+  62:Core/Src/gd32e23x_it.c **** */
+  63:Core/Src/gd32e23x_it.c **** void HardFault_Handler(void)
+  64:Core/Src/gd32e23x_it.c **** {
+  50              		.loc 1 64 1 view -0
+  51              		.cfi_startproc
+  52              		@ Volatile: function does not return.
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 3
+
+
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  56              	.L4:
+  65:Core/Src/gd32e23x_it.c ****     /* if Hard Fault exception occurs, go to infinite loop */
+  66:Core/Src/gd32e23x_it.c ****     while(1) {
+  57              		.loc 1 66 5 view .LVU5
+  67:Core/Src/gd32e23x_it.c ****     }
+  58              		.loc 1 67 5 view .LVU6
+  66:Core/Src/gd32e23x_it.c ****     }
+  59              		.loc 1 66 10 view .LVU7
+  60 0000 FEE7     		b	.L4
+  61              		.cfi_endproc
+  62              	.LFE61:
+  64              		.section	.text.SVC_Handler,"ax",%progbits
+  65              		.align	1
+  66              		.global	SVC_Handler
+  67              		.syntax unified
+  68              		.code	16
+  69              		.thumb_func
+  71              	SVC_Handler:
+  72              	.LFB62:
+  68:Core/Src/gd32e23x_it.c **** }
+  69:Core/Src/gd32e23x_it.c **** 
+  70:Core/Src/gd32e23x_it.c **** /*!
+  71:Core/Src/gd32e23x_it.c ****     \brief      this function handles SVC exception
+  72:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  73:Core/Src/gd32e23x_it.c ****     \param[out] none
+  74:Core/Src/gd32e23x_it.c ****     \retval     none
+  75:Core/Src/gd32e23x_it.c **** */
+  76:Core/Src/gd32e23x_it.c **** void SVC_Handler(void)
+  77:Core/Src/gd32e23x_it.c **** {
+  73              		.loc 1 77 1 view -0
+  74              		.cfi_startproc
+  75              		@ Volatile: function does not return.
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79              	.L6:
+  78:Core/Src/gd32e23x_it.c ****     /* if SVC exception occurs, go to infinite loop */
+  79:Core/Src/gd32e23x_it.c ****     while(1) {
+  80              		.loc 1 79 5 view .LVU9
+  80:Core/Src/gd32e23x_it.c ****     }
+  81              		.loc 1 80 5 view .LVU10
+  79:Core/Src/gd32e23x_it.c ****     }
+  82              		.loc 1 79 10 view .LVU11
+  83 0000 FEE7     		b	.L6
+  84              		.cfi_endproc
+  85              	.LFE62:
+  87              		.section	.text.PendSV_Handler,"ax",%progbits
+  88              		.align	1
+  89              		.global	PendSV_Handler
+  90              		.syntax unified
+  91              		.code	16
+  92              		.thumb_func
+  94              	PendSV_Handler:
+  95              	.LFB63:
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 4
+
+
+  81:Core/Src/gd32e23x_it.c **** }
+  82:Core/Src/gd32e23x_it.c **** 
+  83:Core/Src/gd32e23x_it.c **** /*!
+  84:Core/Src/gd32e23x_it.c ****     \brief      this function handles PendSV exception
+  85:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  86:Core/Src/gd32e23x_it.c ****     \param[out] none
+  87:Core/Src/gd32e23x_it.c ****     \retval     none
+  88:Core/Src/gd32e23x_it.c **** */
+  89:Core/Src/gd32e23x_it.c **** void PendSV_Handler(void)
+  90:Core/Src/gd32e23x_it.c **** {
+  96              		.loc 1 90 1 view -0
+  97              		.cfi_startproc
+  98              		@ Volatile: function does not return.
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102              	.L8:
+  91:Core/Src/gd32e23x_it.c ****     /* if PendSV exception occurs, go to infinite loop */
+  92:Core/Src/gd32e23x_it.c ****     while(1) {
+ 103              		.loc 1 92 5 view .LVU13
+  93:Core/Src/gd32e23x_it.c ****     }
+ 104              		.loc 1 93 5 view .LVU14
+  92:Core/Src/gd32e23x_it.c ****     }
+ 105              		.loc 1 92 10 view .LVU15
+ 106 0000 FEE7     		b	.L8
+ 107              		.cfi_endproc
+ 108              	.LFE63:
+ 110              		.section	.text.SysTick_Handler,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	SysTick_Handler
+ 113              		.syntax unified
+ 114              		.code	16
+ 115              		.thumb_func
+ 117              	SysTick_Handler:
+ 118              	.LFB64:
+  94:Core/Src/gd32e23x_it.c **** }
+  95:Core/Src/gd32e23x_it.c **** 
+  96:Core/Src/gd32e23x_it.c **** /*!
+  97:Core/Src/gd32e23x_it.c ****     \brief      this function handles SysTick exception
+  98:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  99:Core/Src/gd32e23x_it.c ****     \param[out] none
+ 100:Core/Src/gd32e23x_it.c ****     \retval     none
+ 101:Core/Src/gd32e23x_it.c **** */
+ 102:Core/Src/gd32e23x_it.c **** void SysTick_Handler(void)
+ 103:Core/Src/gd32e23x_it.c **** {
+ 119              		.loc 1 103 1 view -0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123 0000 10B5     		push	{r4, lr}
+ 124              	.LCFI0:
+ 125              		.cfi_def_cfa_offset 8
+ 126              		.cfi_offset 4, -8
+ 127              		.cfi_offset 14, -4
+ 104:Core/Src/gd32e23x_it.c ****     // led_spark();
+ 105:Core/Src/gd32e23x_it.c ****     delay_decrement();
+ 128              		.loc 1 105 5 view .LVU17
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 5
+
+
+ 129 0002 FFF7FEFF 		bl	delay_decrement
+ 130              	.LVL0:
+ 106:Core/Src/gd32e23x_it.c **** }
+ 131              		.loc 1 106 1 is_stmt 0 view .LVU18
+ 132              		@ sp needed
+ 133 0006 10BD     		pop	{r4, pc}
+ 134              		.cfi_endproc
+ 135              	.LFE64:
+ 137              		.section	.text.EXTI4_15_IRQHandler,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	EXTI4_15_IRQHandler
+ 140              		.syntax unified
+ 141              		.code	16
+ 142              		.thumb_func
+ 144              	EXTI4_15_IRQHandler:
+ 145              	.LFB65:
+ 107:Core/Src/gd32e23x_it.c **** 
+ 108:Core/Src/gd32e23x_it.c **** /*
+ 109:Core/Src/gd32e23x_it.c ****  * @brief    this function handles EXTI4 exception
+ 110:Core/Src/gd32e23x_it.c ****  * @param    None
+ 111:Core/Src/gd32e23x_it.c ****  * @retval   None
+ 112:Core/Src/gd32e23x_it.c ****  */
+ 113:Core/Src/gd32e23x_it.c **** void EXTI4_15_IRQHandler(void)
+ 114:Core/Src/gd32e23x_it.c **** {
+ 146              		.loc 1 114 1 is_stmt 1 view -0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 10B5     		push	{r4, lr}
+ 151              	.LCFI1:
+ 152              		.cfi_def_cfa_offset 8
+ 153              		.cfi_offset 4, -8
+ 154              		.cfi_offset 14, -4
+ 115:Core/Src/gd32e23x_it.c ****     if (SET == exti_interrupt_flag_get(EXTI_4)) {
+ 155              		.loc 1 115 5 view .LVU20
+ 156              		.loc 1 115 16 is_stmt 0 view .LVU21
+ 157 0002 1020     		movs	r0, #16
+ 158 0004 FFF7FEFF 		bl	exti_interrupt_flag_get
+ 159              	.LVL1:
+ 160              		.loc 1 115 8 discriminator 1 view .LVU22
+ 161 0008 0128     		cmp	r0, #1
+ 162 000a 00D0     		beq	.L14
+ 163              	.L10:
+ 116:Core/Src/gd32e23x_it.c ****         delay_1ms(3); // 延时去抖动
+ 117:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
+ 118:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
+ 119:Core/Src/gd32e23x_it.c ****         } else {
+ 120:Core/Src/gd32e23x_it.c ****             rotate_flag = 2;
+ 121:Core/Src/gd32e23x_it.c ****         }
+ 122:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_4);
+ 123:Core/Src/gd32e23x_it.c ****     }
+ 124:Core/Src/gd32e23x_it.c **** }
+ 164              		.loc 1 124 1 view .LVU23
+ 165              		@ sp needed
+ 166 000c 10BD     		pop	{r4, pc}
+ 167              	.L14:
+ 116:Core/Src/gd32e23x_it.c ****         delay_1ms(3); // 延时去抖动
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 6
+
+
+ 168              		.loc 1 116 9 is_stmt 1 view .LVU24
+ 169 000e 0230     		adds	r0, r0, #2
+ 170 0010 FFF7FEFF 		bl	delay_1ms
+ 171              	.LVL2:
+ 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
+ 172              		.loc 1 117 9 view .LVU25
+ 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
+ 173              		.loc 1 117 22 is_stmt 0 view .LVU26
+ 174 0014 40F20040 		movw	r0, #1024
+ 175 0018 C4F60000 		movt	r0, 18432
+ 176 001c 0821     		movs	r1, #8
+ 177 001e FFF7FEFF 		bl	gpio_input_bit_get
+ 178              	.LVL3:
+ 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
+ 179              		.loc 1 117 12 discriminator 1 view .LVU27
+ 180 0022 48B9     		cbnz	r0, .L12
+ 118:Core/Src/gd32e23x_it.c ****         } else {
+ 181              		.loc 1 118 13 is_stmt 1 view .LVU28
+ 118:Core/Src/gd32e23x_it.c ****         } else {
+ 182              		.loc 1 118 25 is_stmt 0 view .LVU29
+ 183 0024 40F20003 		movw	r3, #:lower16:rotate_flag
+ 184 0028 C0F20003 		movt	r3, #:upper16:rotate_flag
+ 185 002c 0122     		movs	r2, #1
+ 186 002e 1A70     		strb	r2, [r3]
+ 187              	.L13:
+ 122:Core/Src/gd32e23x_it.c ****     }
+ 188              		.loc 1 122 9 is_stmt 1 view .LVU30
+ 189 0030 1020     		movs	r0, #16
+ 190 0032 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 191              	.LVL4:
+ 192              		.loc 1 124 1 is_stmt 0 view .LVU31
+ 193 0036 E9E7     		b	.L10
+ 194              	.L12:
+ 120:Core/Src/gd32e23x_it.c ****         }
+ 195              		.loc 1 120 13 is_stmt 1 view .LVU32
+ 120:Core/Src/gd32e23x_it.c ****         }
+ 196              		.loc 1 120 25 is_stmt 0 view .LVU33
+ 197 0038 40F20003 		movw	r3, #:lower16:rotate_flag
+ 198 003c C0F20003 		movt	r3, #:upper16:rotate_flag
+ 199 0040 0222     		movs	r2, #2
+ 200 0042 1A70     		strb	r2, [r3]
+ 201 0044 F4E7     		b	.L13
+ 202              		.cfi_endproc
+ 203              	.LFE65:
+ 205              		.section	.text.TIMER15_IRQHandler,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	TIMER15_IRQHandler
+ 208              		.syntax unified
+ 209              		.code	16
+ 210              		.thumb_func
+ 212              	TIMER15_IRQHandler:
+ 213              	.LFB66:
+ 125:Core/Src/gd32e23x_it.c **** 
+ 126:Core/Src/gd32e23x_it.c **** /*
+ 127:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER15 exception
+ 128:Core/Src/gd32e23x_it.c ****  * @param    None
+ 129:Core/Src/gd32e23x_it.c ****  * @retval   None
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 7
+
+
+ 130:Core/Src/gd32e23x_it.c ****  */
+ 131:Core/Src/gd32e23x_it.c **** void TIMER15_IRQHandler(void)
+ 132:Core/Src/gd32e23x_it.c **** {
+ 214              		.loc 1 132 1 is_stmt 1 view -0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218 0000 10B5     		push	{r4, lr}
+ 219              	.LCFI2:
+ 220              		.cfi_def_cfa_offset 8
+ 221              		.cfi_offset 4, -8
+ 222              		.cfi_offset 14, -4
+ 133:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER15, TIMER_INT_UP)) {
+ 223              		.loc 1 133 5 view .LVU35
+ 224              		.loc 1 133 16 is_stmt 0 view .LVU36
+ 225 0002 44F20040 		movw	r0, #17408
+ 226 0006 C4F20100 		movt	r0, 16385
+ 227 000a 0121     		movs	r1, #1
+ 228 000c FFF7FEFF 		bl	timer_interrupt_flag_get
+ 229              	.LVL5:
+ 230              		.loc 1 133 8 discriminator 1 view .LVU37
+ 231 0010 0128     		cmp	r0, #1
+ 232 0012 00D0     		beq	.L18
+ 233              	.L15:
+ 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
+ 135:Core/Src/gd32e23x_it.c ****             timer_flag = 1;
+ 136:Core/Src/gd32e23x_it.c ****         }
+ 137:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER15, TIMER_INT_UP);
+ 138:Core/Src/gd32e23x_it.c ****     }
+ 139:Core/Src/gd32e23x_it.c **** }
+ 234              		.loc 1 139 1 view .LVU38
+ 235              		@ sp needed
+ 236 0014 10BD     		pop	{r4, pc}
+ 237              	.L18:
+ 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
+ 238              		.loc 1 134 9 is_stmt 1 view .LVU39
+ 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
+ 239              		.loc 1 134 13 is_stmt 0 view .LVU40
+ 240 0016 40F20003 		movw	r3, #:lower16:timer_flag
+ 241 001a C0F20003 		movt	r3, #:upper16:timer_flag
+ 242 001e 1B78     		ldrb	r3, [r3]
+ 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
+ 243              		.loc 1 134 12 view .LVU41
+ 244 0020 2BB9     		cbnz	r3, .L17
+ 135:Core/Src/gd32e23x_it.c ****         }
+ 245              		.loc 1 135 13 is_stmt 1 view .LVU42
+ 135:Core/Src/gd32e23x_it.c ****         }
+ 246              		.loc 1 135 24 is_stmt 0 view .LVU43
+ 247 0022 40F20003 		movw	r3, #:lower16:timer_flag
+ 248 0026 C0F20003 		movt	r3, #:upper16:timer_flag
+ 249 002a 0122     		movs	r2, #1
+ 250 002c 1A70     		strb	r2, [r3]
+ 251              	.L17:
+ 137:Core/Src/gd32e23x_it.c ****     }
+ 252              		.loc 1 137 9 is_stmt 1 view .LVU44
+ 253 002e 44F20040 		movw	r0, #17408
+ 254 0032 C4F20100 		movt	r0, 16385
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 8
+
+
+ 255 0036 0121     		movs	r1, #1
+ 256 0038 FFF7FEFF 		bl	timer_interrupt_flag_clear
+ 257              	.LVL6:
+ 258              		.loc 1 139 1 is_stmt 0 view .LVU45
+ 259 003c EAE7     		b	.L15
+ 260              		.cfi_endproc
+ 261              	.LFE66:
+ 263              		.section	.text.TIMER2_IRQHandler,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	TIMER2_IRQHandler
+ 266              		.syntax unified
+ 267              		.code	16
+ 268              		.thumb_func
+ 270              	TIMER2_IRQHandler:
+ 271              	.LFB67:
+ 140:Core/Src/gd32e23x_it.c **** 
+ 141:Core/Src/gd32e23x_it.c **** /*
+ 142:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER2 exception
+ 143:Core/Src/gd32e23x_it.c ****  * @param    None
+ 144:Core/Src/gd32e23x_it.c ****  * @retval   None
+ 145:Core/Src/gd32e23x_it.c ****  */
+ 146:Core/Src/gd32e23x_it.c **** void TIMER2_IRQHandler(void)
+ 147:Core/Src/gd32e23x_it.c **** {
+ 272              		.loc 1 147 1 is_stmt 1 view -0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 0
+ 275              		@ frame_needed = 0, uses_anonymous_args = 0
+ 276 0000 10B5     		push	{r4, lr}
+ 277              	.LCFI3:
+ 278              		.cfi_def_cfa_offset 8
+ 279              		.cfi_offset 4, -8
+ 280              		.cfi_offset 14, -4
+ 148:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_CH0)) {
+ 281              		.loc 1 148 5 view .LVU47
+ 282              		.loc 1 148 16 is_stmt 0 view .LVU48
+ 283 0002 40F20040 		movw	r0, #1024
+ 284 0006 C4F20000 		movt	r0, 16384
+ 285 000a 0221     		movs	r1, #2
+ 286 000c FFF7FEFF 		bl	timer_interrupt_flag_get
+ 287              	.LVL7:
+ 288              		.loc 1 148 8 discriminator 1 view .LVU49
+ 289 0010 0128     		cmp	r0, #1
+ 290 0012 00D0     		beq	.L23
+ 291              	.L19:
+ 149:Core/Src/gd32e23x_it.c ****         uint32_t buf;
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 151:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 153:Core/Src/gd32e23x_it.c ****             return ;
+ 154:Core/Src/gd32e23x_it.c ****         }
+ 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
+ 157:Core/Src/gd32e23x_it.c ****         value = buf;
+ 158:Core/Src/gd32e23x_it.c ****     }
+ 159:Core/Src/gd32e23x_it.c **** }...
+ 292              		.loc 1 159 1 view .LVU50
+ 293              		@ sp needed
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 9
+
+
+ 294 0014 10BD     		pop	{r4, pc}
+ 295              	.L23:
+ 296              	.LBB2:
+ 149:Core/Src/gd32e23x_it.c ****         uint32_t buf;
+ 297              		.loc 1 149 9 is_stmt 1 view .LVU51
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 298              		.loc 1 150 9 view .LVU52
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 299              		.loc 1 150 13 is_stmt 0 view .LVU53
+ 300 0016 40F20003 		movw	r3, #:lower16:time_value
+ 301 001a C0F20003 		movt	r3, #:upper16:time_value
+ 302 001e 1B68     		ldr	r3, [r3]
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 303              		.loc 1 150 12 view .LVU54
+ 304 0020 2BB1     		cbz	r3, .L21
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 305              		.loc 1 150 25 is_stmt 1 discriminator 1 view .LVU55
+ 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
+ 306              		.loc 1 150 31 is_stmt 0 discriminator 1 view .LVU56
+ 307 0022 40F20003 		movw	r3, #:lower16:value
+ 308 0026 C0F20003 		movt	r3, #:upper16:value
+ 309 002a 0022     		movs	r2, #0
+ 310 002c 1A60     		str	r2, [r3]
+ 311              	.L21:
+ 151:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 312              		.loc 1 151 9 is_stmt 1 view .LVU57
+ 151:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 313              		.loc 1 151 13 is_stmt 0 view .LVU58
+ 314 002e 40F20003 		movw	r3, #:lower16:value
+ 315 0032 C0F20003 		movt	r3, #:upper16:value
+ 316 0036 1B68     		ldr	r3, [r3]
+ 151:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 317              		.loc 1 151 12 view .LVU59
+ 318 0038 EBB1     		cbz	r3, .L24
+ 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 319              		.loc 1 155 9 is_stmt 1 view .LVU60
+ 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 320              		.loc 1 155 15 is_stmt 0 view .LVU61
+ 321 003a 40F20040 		movw	r0, #1024
+ 322 003e C4F20000 		movt	r0, 16384
+ 323 0042 0021     		movs	r1, #0
+ 324 0044 FFF7FEFF 		bl	timer_channel_capture_value_register_read
+ 325              	.LVL8:
+ 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
+ 326              		.loc 1 156 9 is_stmt 1 view .LVU62
+ 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
+ 327              		.loc 1 156 36 is_stmt 0 view .LVU63
+ 328 0048 40F20002 		movw	r2, #:lower16:value
+ 329 004c C0F20002 		movt	r2, #:upper16:value
+ 330 0050 1368     		ldr	r3, [r2]
+ 331 0052 C31A     		subs	r3, r0, r3
+ 332 0054 4FF6FF7C 		movw	ip, #65535
+ 333 0058 6344     		add	r3, r3, ip
+ 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
+ 334              		.loc 1 156 45 view .LVU64
+ 335 005a 4FF6FF71 		movw	r1, #65535
+ 336 005e B3FBF1F1 		udiv	r1, r3, r1
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 10
+
+
+ 337 0062 0C04     		lsls	r4, r1, #16
+ 338 0064 611A     		subs	r1, r4, r1
+ 339 0066 5B1A     		subs	r3, r3, r1
+ 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
+ 340              		.loc 1 156 20 view .LVU65
+ 341 0068 40F20001 		movw	r1, #:lower16:time_value
+ 342 006c C0F20001 		movt	r1, #:upper16:time_value
+ 343 0070 0B60     		str	r3, [r1]
+ 157:Core/Src/gd32e23x_it.c ****         value = buf;
+ 344              		.loc 1 157 9 is_stmt 1 view .LVU66
+ 157:Core/Src/gd32e23x_it.c ****         value = buf;
+ 345              		.loc 1 157 15 is_stmt 0 view .LVU67
+ 346 0072 1060     		str	r0, [r2]
+ 347 0074 CEE7     		b	.L19
+ 348              	.LVL9:
+ 349              	.L24:
+ 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 350              		.loc 1 152 13 is_stmt 1 view .LVU68
+ 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 351              		.loc 1 152 21 is_stmt 0 view .LVU69
+ 352 0076 40F20040 		movw	r0, #1024
+ 353 007a C4F20000 		movt	r0, 16384
+ 354 007e 0021     		movs	r1, #0
+ 355 0080 FFF7FEFF 		bl	timer_channel_capture_value_register_read
+ 356              	.LVL10:
+ 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 357              		.loc 1 152 19 discriminator 1 view .LVU70
+ 358 0084 40F20003 		movw	r3, #:lower16:value
+ 359 0088 C0F20003 		movt	r3, #:upper16:value
+ 360 008c 1860     		str	r0, [r3]
+ 153:Core/Src/gd32e23x_it.c ****             return ;
+ 361              		.loc 1 153 13 is_stmt 1 view .LVU71
+ 362 008e C1E7     		b	.L19
+ 363              	.LBE2:
+ 364              		.cfi_endproc
+ 365              	.LFE67:
+ 367              		.section	.bss.value,"aw",%nobits
+ 368              		.align	2
+ 371              	value:
+ 372 0000 00000000 		.space	4
+ 373              		.global	time_value
+ 374              		.section	.bss.time_value,"aw",%nobits
+ 375              		.align	2
+ 378              	time_value:
+ 379 0000 00000000 		.space	4
+ 380              		.global	timer_flag
+ 381              		.section	.bss.timer_flag,"aw",%nobits
+ 384              	timer_flag:
+ 385 0000 00       		.space	1
+ 386              		.global	rotate_flag
+ 387              		.section	.bss.rotate_flag,"aw",%nobits
+ 390              	rotate_flag:
+ 391 0000 00       		.space	1
+ 392              		.text
+ 393              	.Letext0:
+ 394              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 395              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 11
+
+
+ 396              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 397              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
+ 398              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ 399              		.file 7 "Core/Inc/gd32e23x_it.h"
+ 400              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
+ 401              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
+ 402              		.file 10 "Core/Inc/systick.h"
+ 403              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
+ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_it.c
+D:\noval\Temp\cctu5Gui.s:19     .text.NMI_Handler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:25     .text.NMI_Handler:00000000 NMI_Handler
+D:\noval\Temp\cctu5Gui.s:42     .text.HardFault_Handler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:48     .text.HardFault_Handler:00000000 HardFault_Handler
+D:\noval\Temp\cctu5Gui.s:65     .text.SVC_Handler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:71     .text.SVC_Handler:00000000 SVC_Handler
+D:\noval\Temp\cctu5Gui.s:88     .text.PendSV_Handler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:94     .text.PendSV_Handler:00000000 PendSV_Handler
+D:\noval\Temp\cctu5Gui.s:111    .text.SysTick_Handler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:117    .text.SysTick_Handler:00000000 SysTick_Handler
+D:\noval\Temp\cctu5Gui.s:138    .text.EXTI4_15_IRQHandler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:144    .text.EXTI4_15_IRQHandler:00000000 EXTI4_15_IRQHandler
+D:\noval\Temp\cctu5Gui.s:390    .bss.rotate_flag:00000000 rotate_flag
+D:\noval\Temp\cctu5Gui.s:206    .text.TIMER15_IRQHandler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:212    .text.TIMER15_IRQHandler:00000000 TIMER15_IRQHandler
+D:\noval\Temp\cctu5Gui.s:384    .bss.timer_flag:00000000 timer_flag
+D:\noval\Temp\cctu5Gui.s:264    .text.TIMER2_IRQHandler:00000000 $t
+D:\noval\Temp\cctu5Gui.s:270    .text.TIMER2_IRQHandler:00000000 TIMER2_IRQHandler
+D:\noval\Temp\cctu5Gui.s:378    .bss.time_value:00000000 time_value
+D:\noval\Temp\cctu5Gui.s:371    .bss.value:00000000 value
+D:\noval\Temp\cctu5Gui.s:368    .bss.value:00000000 $d
+D:\noval\Temp\cctu5Gui.s:375    .bss.time_value:00000000 $d
+D:\noval\Temp\cctu5Gui.s:385    .bss.timer_flag:00000000 $d
+D:\noval\Temp\cctu5Gui.s:391    .bss.rotate_flag:00000000 $d
+
+UNDEFINED SYMBOLS
+delay_decrement
+exti_interrupt_flag_get
+delay_1ms
+gpio_input_bit_get
+exti_interrupt_flag_clear
+timer_interrupt_flag_get
+timer_interrupt_flag_clear
+timer_channel_capture_value_register_read

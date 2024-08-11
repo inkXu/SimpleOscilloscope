@@ -1,0 +1,3219 @@
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_fmc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_fmc.c"
+  18              		.section	.text.fmc_unlock,"ax",%progbits
+  19              		.align	1
+  20              		.global	fmc_unlock
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	fmc_unlock:
+  26              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \file    gd32e23x_fmc.c
+   3:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief   FMC driver
+   4:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+   5:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        may be used to endorse or promote products derived from this software without 
+  21:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** #include "gd32e23x_fmc.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /* FMC register bit offset */
+  38:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** #define OB_HIGH_WP_OFFSET                 ((uint32_t)8U)
+  39:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** #define FMC_OBSTAT_USER_OFFSET            ((uint32_t)8U)
+  40:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** #define FMC_OBSTAT_DATA_OFFSET            ((uint32_t)16U)
+  41:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  42:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+  43:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      unlock the main FMC operation
+  44:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 it is better to used in pairs with fmc_lock
+  45:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+  46:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+  47:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+  48:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+  49:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_unlock(void)
+  50:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+  27              		.loc 1 50 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  51:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if((RESET != (FMC_CTL & FMC_CTL_LK))){
+  32              		.loc 1 51 5 view .LVU1
+  33              		.loc 1 51 19 is_stmt 0 view .LVU2
+  34 0000 42F21003 		movw	r3, #8208
+  35 0004 C4F20203 		movt	r3, 16386
+  36 0008 1B68     		ldr	r3, [r3]
+  37              		.loc 1 51 7 view .LVU3
+  38 000a 1B06     		lsls	r3, r3, #24
+  39 000c 0DD5     		bpl	.L1
+  52:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* write the FMC key */
+  53:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_KEY = UNLOCK_KEY0;
+  40              		.loc 1 53 9 is_stmt 1 view .LVU4
+  41              		.loc 1 53 17 is_stmt 0 view .LVU5
+  42 000e 42F20403 		movw	r3, #8196
+  43 0012 C4F20203 		movt	r3, 16386
+  44 0016 40F22312 		movw	r2, #291
+  45 001a C4F26752 		movt	r2, 17767
+  46 001e 1A60     		str	r2, [r3]
+  54:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_KEY = UNLOCK_KEY1;
+  47              		.loc 1 54 9 is_stmt 1 view .LVU6
+  48              		.loc 1 54 17 is_stmt 0 view .LVU7
+  49 0020 48F6AB12 		movw	r2, #35243
+  50 0024 CCF6EF52 		movt	r2, 52719
+  51 0028 1A60     		str	r2, [r3]
+  52              	.L1:
+  55:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+  56:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+  53              		.loc 1 56 1 view .LVU8
+  54              		@ sp needed
+  55 002a 7047     		bx	lr
+  56              		.cfi_endproc
+  57              	.LFE60:
+  59              		.section	.text.fmc_lock,"ax",%progbits
+  60              		.align	1
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 3
+
+
+  61              		.global	fmc_lock
+  62              		.syntax unified
+  63              		.code	16
+  64              		.thumb_func
+  66              	fmc_lock:
+  67              	.LFB61:
+  57:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  58:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+  59:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      lock the main FMC operation
+  60:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 it is better to used in pairs with fmc_unlock after an operation
+  61:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+  62:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+  63:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+  64:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+  65:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_lock(void)
+  66:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+  68              		.loc 1 66 1 is_stmt 1 view -0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  67:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* set the LK bit*/
+  68:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_CTL |= FMC_CTL_LK;
+  73              		.loc 1 68 5 view .LVU10
+  74 0000 42F21003 		movw	r3, #8208
+  75 0004 C4F20203 		movt	r3, 16386
+  76 0008 1A68     		ldr	r2, [r3]
+  77              		.loc 1 68 13 is_stmt 0 view .LVU11
+  78 000a 8021     		movs	r1, #128
+  79 000c 0A43     		orrs	r2, r1
+  80 000e 1A60     		str	r2, [r3]
+  69:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+  81              		.loc 1 69 1 view .LVU12
+  82              		@ sp needed
+  83 0010 7047     		bx	lr
+  84              		.cfi_endproc
+  85              	.LFE61:
+  87              		.section	.text.fmc_wscnt_set,"ax",%progbits
+  88              		.align	1
+  89              		.global	fmc_wscnt_set
+  90              		.syntax unified
+  91              		.code	16
+  92              		.thumb_func
+  94              	fmc_wscnt_set:
+  95              	.LVL0:
+  96              	.LFB62:
+  70:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  71:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+  72:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      set the wait state counter value
+  73:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  wscnt: wait state counter value
+  74:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        WS_WSCNT_0: 0 wait state added
+  75:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        WS_WSCNT_1: 1 wait state added
+  76:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        WS_WSCNT_2: 2 wait state added
+  77:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+  78:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+  79:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+  80:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_wscnt_set(uint8_t wscnt)
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 4
+
+
+  81:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+  97              		.loc 1 81 1 is_stmt 1 view -0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+  82:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t reg;
+ 102              		.loc 1 82 5 view .LVU14
+  83:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+  84:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     reg = FMC_WS;
+ 103              		.loc 1 84 5 view .LVU15
+ 104              		.loc 1 84 9 is_stmt 0 view .LVU16
+ 105 0000 42F20003 		movw	r3, #8192
+ 106 0004 C4F20203 		movt	r3, 16386
+ 107 0008 1A68     		ldr	r2, [r3]
+ 108              	.LVL1:
+  85:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* set the wait state counter value */
+  86:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     reg &= ~FMC_WS_WSCNT;
+ 109              		.loc 1 86 5 is_stmt 1 view .LVU17
+ 110              		.loc 1 86 9 is_stmt 0 view .LVU18
+ 111 000a 0721     		movs	r1, #7
+ 112 000c 8A43     		bics	r2, r1
+ 113              	.LVL2:
+  87:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_WS = (reg | wscnt);
+ 114              		.loc 1 87 5 is_stmt 1 view .LVU19
+ 115              		.loc 1 87 19 is_stmt 0 view .LVU20
+ 116 000e 1043     		orrs	r0, r2
+ 117              	.LVL3:
+ 118              		.loc 1 87 12 view .LVU21
+ 119 0010 1860     		str	r0, [r3]
+  88:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 120              		.loc 1 88 1 view .LVU22
+ 121              		@ sp needed
+ 122 0012 7047     		bx	lr
+ 123              		.cfi_endproc
+ 124              	.LFE62:
+ 126              		.section	.text.fmc_prefetch_enable,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	fmc_prefetch_enable
+ 129              		.syntax unified
+ 130              		.code	16
+ 131              		.thumb_func
+ 133              	fmc_prefetch_enable:
+ 134              	.LFB63:
+  89:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+  90:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+  91:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      pre-fetch enable
+  92:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+  93:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+  94:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+  95:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+  96:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_prefetch_enable(void)
+  97:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 135              		.loc 1 97 1 is_stmt 1 view -0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 5
+
+
+ 139              		@ link register save eliminated.
+  98:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_WS |= FMC_WS_PFEN;
+ 140              		.loc 1 98 5 view .LVU24
+ 141 0000 42F20003 		movw	r3, #8192
+ 142 0004 C4F20203 		movt	r3, 16386
+ 143 0008 1A68     		ldr	r2, [r3]
+ 144              		.loc 1 98 12 is_stmt 0 view .LVU25
+ 145 000a 1021     		movs	r1, #16
+ 146 000c 0A43     		orrs	r2, r1
+ 147 000e 1A60     		str	r2, [r3]
+  99:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 148              		.loc 1 99 1 view .LVU26
+ 149              		@ sp needed
+ 150 0010 7047     		bx	lr
+ 151              		.cfi_endproc
+ 152              	.LFE63:
+ 154              		.section	.text.fmc_prefetch_disable,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	fmc_prefetch_disable
+ 157              		.syntax unified
+ 158              		.code	16
+ 159              		.thumb_func
+ 161              	fmc_prefetch_disable:
+ 162              	.LFB64:
+ 100:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 101:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 102:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      pre-fetch disable
+ 103:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 104:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 105:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 106:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 107:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_prefetch_disable(void)
+ 108:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 163              		.loc 1 108 1 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
+ 109:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_WS &= ~FMC_WS_PFEN;
+ 168              		.loc 1 109 5 view .LVU28
+ 169 0000 42F20003 		movw	r3, #8192
+ 170 0004 C4F20203 		movt	r3, 16386
+ 171 0008 1A68     		ldr	r2, [r3]
+ 172              		.loc 1 109 12 is_stmt 0 view .LVU29
+ 173 000a 1021     		movs	r1, #16
+ 174 000c 8A43     		bics	r2, r1
+ 175 000e 1A60     		str	r2, [r3]
+ 110:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 176              		.loc 1 110 1 view .LVU30
+ 177              		@ sp needed
+ 178 0010 7047     		bx	lr
+ 179              		.cfi_endproc
+ 180              	.LFE64:
+ 182              		.section	.text.ob_unlock,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	ob_unlock
+ 185              		.syntax unified
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 6
+
+
+ 186              		.code	16
+ 187              		.thumb_func
+ 189              	ob_unlock:
+ 190              	.LFB69:
+ 111:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 112:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 113:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      erase page
+ 114:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  page_address: target page start address
+ 115:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 116:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 117:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 118:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 119:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 120:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 121:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 122:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 123:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 124:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 125:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_page_erase(uint32_t page_address)
+ 126:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 127:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 128:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 129:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ 130:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start page erase */
+ 131:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_PER;
+ 132:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_ADDR = page_address;
+ 133:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 134:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 135:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 136:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 137:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 138:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* reset the PER bit */
+ 139:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL &= ~FMC_CTL_PER;
+ 140:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 141:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 142:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state  */
+ 143:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 144:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 145:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 146:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 147:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      erase whole chip
+ 148:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 149:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 150:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 151:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 152:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 153:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 154:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 155:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 156:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 157:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 158:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 159:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_mass_erase(void)
+ 160:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 161:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 162:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 163:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 7
+
+
+ 164:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start chip erase */
+ 165:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_MER; 
+ 166:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 167:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 168:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 169:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 170:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 171:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* reset the MER bit */
+ 172:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL &= ~FMC_CTL_MER;
+ 173:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 174:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 175:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the fmc state  */
+ 176:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 177:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 178:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 179:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 180:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      program a double word at the corresponding address in main flash, this 
+ 181:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 function also applies to OTP(address 0x1FFF_7000~0x1FFF_73FF) programming
+ 182:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  address: address to program
+ 183:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  data: double word to program
+ 184:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 185:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 186:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 187:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 188:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 189:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 190:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 191:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 192:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 193:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 194:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_doubleword_program(uint32_t address, uint64_t data)
+ 195:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 196:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t data0, data1;
+ 197:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 198:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 199:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 200:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     data0 = (uint32_t)(data & 0xFFFFFFFFU);
+ 201:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     data1 = (uint32_t)((data>>32U) & 0xFFFFFFFFU);
+ 202:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 203:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* configure program width */
+ 204:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_WS |= FMC_WS_PGW;
+ 205:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ 206:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 207:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_PG; 
+ 208:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address) = data0;
+ 209:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address+4U) = data1;
+ 210:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 211:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 212:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 213:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* reset the PG bit */
+ 214:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL &= ~FMC_CTL_PG; 
+ 215:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 216:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_WS &= ~(FMC_WS_PGW);
+ 217:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 218:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 219:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 220:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 8
+
+
+ 221:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 222:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 223:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      program a word at the corresponding address in main flash, this function 
+ 224:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 also applies to OTP(address 0x1FFF_7000~0x1FFF_73FF) programming
+ 225:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  address: address to program
+ 226:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  data: word to program
+ 227:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 228:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 229:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 230:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 231:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 232:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 233:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 234:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 235:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 236:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 237:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_word_program(uint32_t address, uint32_t data)
+ 238:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 239:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 240:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 241:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ 242:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 243:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_PG; 
+ 244:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 245:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address) = data;
+ 246:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 247:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 248:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 249:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* reset the PG bit */
+ 250:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL &= ~FMC_CTL_PG; 
+ 251:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     } 
+ 252:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 253:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 254:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 255:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 256:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 257:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 258:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      unlock the option byte operation
+ 259:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 it is better to used in pairs with ob_lock
+ 260:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 261:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 262:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 263:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 264:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void ob_unlock(void)
+ 265:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 191              		.loc 1 265 1 is_stmt 1 view -0
+ 192              		.cfi_startproc
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195              		@ link register save eliminated.
+ 266:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(RESET == (FMC_CTL & FMC_CTL_OBWEN)){
+ 196              		.loc 1 266 5 view .LVU32
+ 197              		.loc 1 266 18 is_stmt 0 view .LVU33
+ 198 0000 42F21003 		movw	r3, #8208
+ 199 0004 C4F20203 		movt	r3, 16386
+ 200 0008 1B68     		ldr	r3, [r3]
+ 201              		.loc 1 266 7 view .LVU34
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 9
+
+
+ 202 000a 9B05     		lsls	r3, r3, #22
+ 203 000c 0DD4     		bmi	.L10
+ 267:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* write the FMC key */
+ 268:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_OBKEY = UNLOCK_KEY0;
+ 204              		.loc 1 268 9 is_stmt 1 view .LVU35
+ 205              		.loc 1 268 19 is_stmt 0 view .LVU36
+ 206 000e 42F20803 		movw	r3, #8200
+ 207 0012 C4F20203 		movt	r3, 16386
+ 208 0016 40F22312 		movw	r2, #291
+ 209 001a C4F26752 		movt	r2, 17767
+ 210 001e 1A60     		str	r2, [r3]
+ 269:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_OBKEY = UNLOCK_KEY1;
+ 211              		.loc 1 269 9 is_stmt 1 view .LVU37
+ 212              		.loc 1 269 19 is_stmt 0 view .LVU38
+ 213 0020 48F6AB12 		movw	r2, #35243
+ 214 0024 CCF6EF52 		movt	r2, 52719
+ 215 0028 1A60     		str	r2, [r3]
+ 216              	.L10:
+ 270:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 271:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* wait until OBWEN bit is set by hardware */
+ 272:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     while(RESET == (FMC_CTL & FMC_CTL_OBWEN)){
+ 273:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 217              		.loc 1 273 5 is_stmt 1 view .LVU39
+ 272:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 218              		.loc 1 272 17 discriminator 1 view .LVU40
+ 272:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 219              		.loc 1 272 21 is_stmt 0 discriminator 1 view .LVU41
+ 220 002a 42F21003 		movw	r3, #8208
+ 221 002e C4F20203 		movt	r3, 16386
+ 222 0032 1B68     		ldr	r3, [r3]
+ 272:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 223              		.loc 1 272 17 discriminator 1 view .LVU42
+ 224 0034 9B05     		lsls	r3, r3, #22
+ 225 0036 F8D5     		bpl	.L10
+ 274:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 226              		.loc 1 274 1 view .LVU43
+ 227              		@ sp needed
+ 228 0038 7047     		bx	lr
+ 229              		.cfi_endproc
+ 230              	.LFE69:
+ 232              		.section	.text.ob_lock,"ax",%progbits
+ 233              		.align	1
+ 234              		.global	ob_lock
+ 235              		.syntax unified
+ 236              		.code	16
+ 237              		.thumb_func
+ 239              	ob_lock:
+ 240              	.LFB70:
+ 275:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 276:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 277:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      lock the option byte operation
+ 278:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 it is better to used in pairs with ob_unlock after an operation
+ 279:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 280:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 281:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 282:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 283:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void ob_lock(void)
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 10
+
+
+ 284:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 241              		.loc 1 284 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              		@ link register save eliminated.
+ 285:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* reset the OBWE bit */
+ 286:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_CTL &= ~FMC_CTL_OBWEN;
+ 246              		.loc 1 286 5 view .LVU45
+ 247 0000 42F21003 		movw	r3, #8208
+ 248 0004 C4F20203 		movt	r3, 16386
+ 249 0008 1A68     		ldr	r2, [r3]
+ 250              		.loc 1 286 13 is_stmt 0 view .LVU46
+ 251 000a 0249     		ldr	r1, .L14
+ 252 000c 0A40     		ands	r2, r1
+ 253 000e 1A60     		str	r2, [r3]
+ 287:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 254              		.loc 1 287 1 view .LVU47
+ 255              		@ sp needed
+ 256 0010 7047     		bx	lr
+ 257              	.L15:
+ 258 0012 C046     		.align	2
+ 259              	.L14:
+ 260 0014 FFFDFFFF 		.word	-513
+ 261              		.cfi_endproc
+ 262              	.LFE70:
+ 264              		.section	.text.ob_reset,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	ob_reset
+ 267              		.syntax unified
+ 268              		.code	16
+ 269              		.thumb_func
+ 271              	ob_reset:
+ 272              	.LFB71:
+ 288:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 289:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 290:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      reload the option byte and generate a system reset
+ 291:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 292:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 293:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 294:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 295:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void ob_reset(void)
+ 296:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 273              		.loc 1 296 1 is_stmt 1 view -0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
+ 297:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* set the OBRLD bit */
+ 298:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_CTL |= FMC_CTL_OBRLD;
+ 278              		.loc 1 298 5 view .LVU49
+ 279 0000 42F21003 		movw	r3, #8208
+ 280 0004 C4F20203 		movt	r3, 16386
+ 281 0008 1A68     		ldr	r2, [r3]
+ 282              		.loc 1 298 13 is_stmt 0 view .LVU50
+ 283 000a 42F20001 		movw	r1, #8192
+ 284 000e 0A43     		orrs	r2, r1
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 11
+
+
+ 285 0010 1A60     		str	r2, [r3]
+ 299:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 286              		.loc 1 299 1 view .LVU51
+ 287              		@ sp needed
+ 288 0012 7047     		bx	lr
+ 289              		.cfi_endproc
+ 290              	.LFE71:
+ 292              		.section	.text.option_byte_value_get,"ax",%progbits
+ 293              		.align	1
+ 294              		.global	option_byte_value_get
+ 295              		.syntax unified
+ 296              		.code	16
+ 297              		.thumb_func
+ 299              	option_byte_value_get:
+ 300              	.LVL4:
+ 301              	.LFB72:
+ 300:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 301:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 302:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get option byte value
+ 303:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  addr: address of option byte
+ 304:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_SPC_USER_ADDRESS: address of option byte security protection and user
+ 305:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_DATA_ADDRESS: address of option byte data
+ 306:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_WP_ADDRESS: address of option byte write protection
+ 307:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] option byte value
+ 308:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 309:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** uint32_t option_byte_value_get(uint32_t addr)
+ 310:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 302              		.loc 1 310 1 is_stmt 1 view -0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306              		@ link register save eliminated.
+ 311:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return *(volatile uint32_t *)(addr);
+ 307              		.loc 1 311 5 view .LVU53
+ 308              		.loc 1 311 12 is_stmt 0 view .LVU54
+ 309 0000 0068     		ldr	r0, [r0]
+ 310              	.LVL5:
+ 312:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 311              		.loc 1 312 1 view .LVU55
+ 312              		@ sp needed
+ 313 0002 7047     		bx	lr
+ 314              		.cfi_endproc
+ 315              	.LFE72:
+ 317              		.section	.text.ob_user_get,"ax",%progbits
+ 318              		.align	1
+ 319              		.global	ob_user_get
+ 320              		.syntax unified
+ 321              		.code	16
+ 322              		.thumb_func
+ 324              	ob_user_get:
+ 325              	.LFB78:
+ 313:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 314:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 315:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      erase the option byte
+ 316:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 programmer must ensure FMC & option byte are both unlocked before calling this func
+ 317:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 318:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 12
+
+
+ 319:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 320:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 321:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 322:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 323:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 324:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 325:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 326:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 327:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 328:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum ob_erase(void)
+ 329:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 330:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint16_t fmc_spc;
+ 331:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val;
+ 332:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t fmc_plevel = ob_obstat_plevel_get();
+ 333:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 334:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 335:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* get the original option byte security protection code */
+ 336:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(OB_OBSTAT_PLEVEL_NO == fmc_plevel){
+ 337:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_NSPC;
+ 338:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else if(OB_OBSTAT_PLEVEL_LOW == fmc_plevel){
+ 339:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_LSPC;
+ 340:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else{
+ 341:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_HSPC;
+ 342:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 343:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 344:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val = HIGH_16BITS_MASK | (uint32_t)fmc_spc;
+ 345:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 346:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){
+ 347:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 348:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_OBER;
+ 349:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 350:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 351:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 352:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 353:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 354:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(FMC_READY == fmc_state){
+ 355:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBER bit */
+ 356:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL &= ~FMC_CTL_OBER;
+ 357:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 358:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* set the OBPG bit */
+ 359:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL |= FMC_CTL_OBPG;
+ 360:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 361:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* restore the last get option byte security protection code */
+ 362:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_SPC_USER = val;
+ 363:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 364:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* wait for the FMC ready */
+ 365:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 366:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****  
+ 367:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 368:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 369:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBPG;
+ 370:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 371:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 372:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 373:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 374:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBER;
+ 375:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 13
+
+
+ 376:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }  
+ 377:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 378:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 379:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 380:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 381:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 382:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 383:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      enable option byte write protection (OB_WP)
+ 384:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  ob_wp: write protection configuration data. Notice that set the
+ 385:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 bit to 1 if you want to protect the corresponding pages.
+ 386:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 387:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 388:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 389:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 390:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 391:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 392:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 393:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 394:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 395:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 396:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum ob_write_protection_enable(uint32_t ob_wp)
+ 397:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 398:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t ob_wrp_val = 0U;
+ 399:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 400:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 401:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 402:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wp = ~ob_wp;
+ 403:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (uint32_t)ob_wp&0x00FFU;
+ 404:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (((uint32_t)ob_wp&0xFF00U)>>8U) << 16U;
+ 405:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 406:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){
+ 407:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit*/
+ 408:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_OBPG;
+ 409:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 410:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 411:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_WP = ob_wrp_val;
+ 412:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 413:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* wait for the FMC ready */
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 415:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 416:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 417:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (uint32_t)(ob_wp>>16)&0x00FFU;
+ 418:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (((uint32_t)(ob_wp>>16)&0xFF00U)>>8U) << 16U;
+ 419:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 420:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             REG32((OB) + 0x0CU) = ob_wrp_val;
+ 421:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 422:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* wait for the FMC ready */
+ 423:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 424:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 425:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 426:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(FMC_TOERR != fmc_state){
+ 427:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 428:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL &= ~FMC_CTL_OBPG;
+ 429:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 430:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     } 
+ 431:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 432:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 14
+
+
+ 433:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 434:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 435:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 436:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      configure security protection
+ 437:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  ob_spc: specify security protection code
+ 438:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_NSPC: no security protection
+ 439:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_LSPC: low security protection
+ 440:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_HSPC: high security protection
+ 441:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 442:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 443:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 444:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 445:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 446:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 447:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 448:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 449:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 450:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 451:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum ob_security_protection_config(uint16_t ob_spc)
+ 452:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 453:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val;
+ 454:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 455:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 456:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val = option_byte_value_get(OB_SPC_USER_ADDRESS);
+ 457:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* the OB_SPC byte cannot be reprogrammed if protection level is high */
+ 458:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(OB_OBSTAT_PLEVEL_HIGH == ob_obstat_plevel_get()){
+ 459:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 460:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 461:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 462:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val &= ~LOW_16BITS_MASK;
+ 463:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (uint32_t)ob_spc;
+ 464:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 465:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){
+ 466:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 467:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_OBER;
+ 468:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 469:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 470:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 471:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 472:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 473:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(FMC_READY == fmc_state){
+ 474:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 475:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBER bit */
+ 476:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL &= ~FMC_CTL_OBER;
+ 477:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 478:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* enable the option bytes programming */
+ 479:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL |= FMC_CTL_OBPG;
+ 480:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 481:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_SPC_USER = val;
+ 482:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 483:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* wait for the FMC ready */
+ 484:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT); 
+ 485:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 486:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 487:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 488:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBPG;
+ 489:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 15
+
+
+ 490:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 491:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 492:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 493:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBER;
+ 494:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 495:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 496:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 497:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 498:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 499:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 500:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 501:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 502:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      program the FMC user option byte
+ 503:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 this function can only clear the corresponding bits to be 0 rather than 1.
+ 504:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 the function ob_erase is used to set all the bits to be 1.
+ 505:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  ob_user: user option byte
+ 506:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 one or more parameters (bitwise AND) can be selected which are shown as below:
+ 507:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_FWDGT_HW: hardware free watchdog timer
+ 508:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_DEEPSLEEP_RST: no reset when entering deepsleep mode
+ 509:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_STDBY_RST: no reset when entering standby mode
+ 510:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_BOOT1_SET_1: BOOT1 bit is 1
+ 511:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_VDDA_DISABLE: disable VDDA monitor
+ 512:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_SRAM_PARITY_ENABLE: enable sram parity check
+ 513:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 514:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 515:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 516:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 517:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 518:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 519:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 520:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 521:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 522:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 523:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum ob_user_write(uint8_t ob_user)
+ 524:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 525:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val_spc_user;
+ 526:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* check whether FMC is ready or not */
+ 527:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 528:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 529:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val_spc_user = option_byte_value_get(OB_SPC_USER_ADDRESS);
+ 530:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 531:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val_spc_user &= ~HIGH_16BITS_MASK;
+ 532:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 533:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val_spc_user |= ((uint32_t)ob_user<<16U);
+ 534:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 535:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){
+ 536:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 537:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_OBER;
+ 538:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 539:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 540:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 541:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 542:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 543:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(FMC_READY == fmc_state){
+ 544:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 545:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBER bit */
+ 546:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL &= ~FMC_CTL_OBER;
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 16
+
+
+ 547:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 548:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* enable the option bytes programming */
+ 549:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL |= FMC_CTL_OBPG;
+ 550:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 551:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_SPC_USER = val_spc_user;
+ 552:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 553:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* wait for the FMC ready */
+ 554:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT); 
+ 555:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 556:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 557:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 558:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBPG;
+ 559:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 560:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 561:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if(FMC_TOERR != fmc_state){
+ 562:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 563:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 FMC_CTL &= ~FMC_CTL_OBER;
+ 564:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 565:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 566:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 567:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 568:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 569:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 570:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 571:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 572:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      program the FMC data option byte
+ 573:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  data: the data to be programmed, OB_DATA[0:15]
+ 574:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 575:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state: state of FMC
+ 576:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_READY: the operation has been completed
+ 577:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_BUSY: the operation is in progress
+ 578:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGERR: program error
+ 579:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_PGAERR: program alignment error
+ 580:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_WPERR: erase/program protection error
+ 581:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_TOERR: timeout error
+ 582:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_OB_HSPC: option byte security protection code high
+ 583:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 584:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum ob_data_program(uint16_t data)
+ 585:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 586:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 587:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val = 0U;
+ 588:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 589:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (uint32_t)data&0x00FFU;
+ 590:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (((uint32_t)data&0xFF00U)>>8U) << 16U;
+ 591:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 592:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){
+ 593:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit */
+ 594:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_OBPG; 
+ 595:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         OB_DATA = val;
+ 596:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 597:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 598:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 599:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 600:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(FMC_TOERR != fmc_state){
+ 601:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 602:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             FMC_CTL &= ~FMC_CTL_OBPG;
+ 603:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 17
+
+
+ 604:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 605:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 606:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 607:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 608:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 609:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 610:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get OB_USER in register FMC_OBSTAT
+ 611:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 612:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 613:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     ob_user
+ 614:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 615:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** uint8_t ob_user_get(void)
+ 616:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 326              		.loc 1 616 1 is_stmt 1 view -0
+ 327              		.cfi_startproc
+ 328              		@ args = 0, pretend = 0, frame = 0
+ 329              		@ frame_needed = 0, uses_anonymous_args = 0
+ 330              		@ link register save eliminated.
+ 617:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return (uint8_t)(FMC_OBSTAT >> FMC_OBSTAT_USER_OFFSET);
+ 331              		.loc 1 617 5 view .LVU57
+ 332              		.loc 1 617 22 is_stmt 0 view .LVU58
+ 333 0000 42F21C03 		movw	r3, #8220
+ 334 0004 C4F20203 		movt	r3, 16386
+ 335 0008 1868     		ldr	r0, [r3]
+ 336              		.loc 1 617 33 view .LVU59
+ 337 000a 000A     		lsrs	r0, r0, #8
+ 338              		.loc 1 617 12 discriminator 1 view .LVU60
+ 339 000c C0B2     		uxtb	r0, r0
+ 618:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 340              		.loc 1 618 1 view .LVU61
+ 341              		@ sp needed
+ 342 000e 7047     		bx	lr
+ 343              		.cfi_endproc
+ 344              	.LFE78:
+ 346              		.section	.text.ob_data_get,"ax",%progbits
+ 347              		.align	1
+ 348              		.global	ob_data_get
+ 349              		.syntax unified
+ 350              		.code	16
+ 351              		.thumb_func
+ 353              	ob_data_get:
+ 354              	.LFB79:
+ 619:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 620:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 621:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get OB_DATA in register FMC_OBSTAT
+ 622:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 623:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 624:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     ob_data
+ 625:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 626:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** uint16_t ob_data_get(void)
+ 627:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 355              		.loc 1 627 1 is_stmt 1 view -0
+ 356              		.cfi_startproc
+ 357              		@ args = 0, pretend = 0, frame = 0
+ 358              		@ frame_needed = 0, uses_anonymous_args = 0
+ 359              		@ link register save eliminated.
+ 628:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return (uint16_t)(FMC_OBSTAT >> FMC_OBSTAT_DATA_OFFSET);
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 18
+
+
+ 360              		.loc 1 628 5 view .LVU63
+ 361              		.loc 1 628 23 is_stmt 0 view .LVU64
+ 362 0000 42F21C03 		movw	r3, #8220
+ 363 0004 C4F20203 		movt	r3, 16386
+ 364 0008 1868     		ldr	r0, [r3]
+ 365              		.loc 1 628 12 discriminator 1 view .LVU65
+ 366 000a 000C     		lsrs	r0, r0, #16
+ 629:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 367              		.loc 1 629 1 view .LVU66
+ 368              		@ sp needed
+ 369 000c 7047     		bx	lr
+ 370              		.cfi_endproc
+ 371              	.LFE79:
+ 373              		.section	.text.ob_write_protection_get,"ax",%progbits
+ 374              		.align	1
+ 375              		.global	ob_write_protection_get
+ 376              		.syntax unified
+ 377              		.code	16
+ 378              		.thumb_func
+ 380              	ob_write_protection_get:
+ 381              	.LFB80:
+ 630:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 631:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 632:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get the FMC option byte write protection (OB_WP) in register FMC_WP
+ 633:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 634:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 635:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     OB_WP
+ 636:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 637:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** uint32_t ob_write_protection_get(void)
+ 638:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 382              		.loc 1 638 1 is_stmt 1 view -0
+ 383              		.cfi_startproc
+ 384              		@ args = 0, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386              		@ link register save eliminated.
+ 639:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return (uint32_t)(FMC_WP);
+ 387              		.loc 1 639 5 view .LVU68
+ 388              		.loc 1 639 12 is_stmt 0 view .LVU69
+ 389 0000 42F22003 		movw	r3, #8224
+ 390 0004 C4F20203 		movt	r3, 16386
+ 391 0008 1868     		ldr	r0, [r3]
+ 640:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 392              		.loc 1 640 1 view .LVU70
+ 393              		@ sp needed
+ 394 000a 7047     		bx	lr
+ 395              		.cfi_endproc
+ 396              	.LFE80:
+ 398              		.section	.text.ob_obstat_plevel_get,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	ob_obstat_plevel_get
+ 401              		.syntax unified
+ 402              		.code	16
+ 403              		.thumb_func
+ 405              	ob_obstat_plevel_get:
+ 406              	.LFB81:
+ 641:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 642:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 19
+
+
+ 643:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get the value of FMC option byte security protection level (PLEVEL) in FMC_OBSTAT r
+ 644:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 645:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 646:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     the value of PLEVEL
+ 647:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_OBSTAT_PLEVEL_NO: no security protection
+ 648:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_OBSTAT_PLEVEL_LOW: low security protection
+ 649:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        OB_OBSTAT_PLEVEL_HIGH: high security protection
+ 650:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 651:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** uint32_t ob_obstat_plevel_get(void)
+ 652:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 407              		.loc 1 652 1 is_stmt 1 view -0
+ 408              		.cfi_startproc
+ 409              		@ args = 0, pretend = 0, frame = 0
+ 410              		@ frame_needed = 0, uses_anonymous_args = 0
+ 411              		@ link register save eliminated.
+ 653:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return (FMC_OBSTAT & (FMC_OBSTAT_PLEVEL_BIT0 | FMC_OBSTAT_PLEVEL_BIT1));
+ 412              		.loc 1 653 5 view .LVU72
+ 413              		.loc 1 653 24 is_stmt 0 view .LVU73
+ 414 0000 42F21C03 		movw	r3, #8220
+ 415 0004 C4F20203 		movt	r3, 16386
+ 416 0008 1B68     		ldr	r3, [r3]
+ 417 000a 0620     		movs	r0, #6
+ 418 000c 1840     		ands	r0, r3
+ 654:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 419              		.loc 1 654 1 view .LVU74
+ 420              		@ sp needed
+ 421 000e 7047     		bx	lr
+ 422              		.cfi_endproc
+ 423              	.LFE81:
+ 425              		.section	.text.fmc_interrupt_enable,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	fmc_interrupt_enable
+ 428              		.syntax unified
+ 429              		.code	16
+ 430              		.thumb_func
+ 432              	fmc_interrupt_enable:
+ 433              	.LVL6:
+ 434              	.LFB82:
+ 655:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 656:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /* FMC interrupts and flags management functions */
+ 657:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 658:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      enable FMC interrupt
+ 659:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  interrupt: the FMC interrupt source
+ 660:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INTEN_END: FMC end of operation interrupt
+ 661:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INTEN_ERR: FMC error interrupt
+ 662:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 663:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 664:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 665:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_interrupt_enable(uint32_t interrupt)
+ 666:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 435              		.loc 1 666 1 is_stmt 1 view -0
+ 436              		.cfi_startproc
+ 437              		@ args = 0, pretend = 0, frame = 0
+ 438              		@ frame_needed = 0, uses_anonymous_args = 0
+ 439              		@ link register save eliminated.
+ 667:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_CTL |= interrupt;
+ 440              		.loc 1 667 5 view .LVU76
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 20
+
+
+ 441 0000 42F21003 		movw	r3, #8208
+ 442 0004 C4F20203 		movt	r3, 16386
+ 443 0008 1A68     		ldr	r2, [r3]
+ 444              		.loc 1 667 13 is_stmt 0 view .LVU77
+ 445 000a 0243     		orrs	r2, r0
+ 446 000c 1A60     		str	r2, [r3]
+ 668:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 447              		.loc 1 668 1 view .LVU78
+ 448              		@ sp needed
+ 449 000e 7047     		bx	lr
+ 450              		.cfi_endproc
+ 451              	.LFE82:
+ 453              		.section	.text.fmc_interrupt_disable,"ax",%progbits
+ 454              		.align	1
+ 455              		.global	fmc_interrupt_disable
+ 456              		.syntax unified
+ 457              		.code	16
+ 458              		.thumb_func
+ 460              	fmc_interrupt_disable:
+ 461              	.LVL7:
+ 462              	.LFB83:
+ 669:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 670:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 671:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      disable FMC interrupt
+ 672:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  interrupt: the FMC interrupt source
+ 673:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INTEN_END: FMC end of operation interrupt
+ 674:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INTEN_ERR: FMC error interrupt
+ 675:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 676:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 677:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 678:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_interrupt_disable(uint32_t interrupt)
+ 679:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 463              		.loc 1 679 1 is_stmt 1 view -0
+ 464              		.cfi_startproc
+ 465              		@ args = 0, pretend = 0, frame = 0
+ 466              		@ frame_needed = 0, uses_anonymous_args = 0
+ 467              		@ link register save eliminated.
+ 680:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_CTL &= ~(uint32_t)interrupt;
+ 468              		.loc 1 680 5 view .LVU80
+ 469 0000 42F21003 		movw	r3, #8208
+ 470 0004 C4F20203 		movt	r3, 16386
+ 471 0008 1A68     		ldr	r2, [r3]
+ 472              		.loc 1 680 13 is_stmt 0 view .LVU81
+ 473 000a 8243     		bics	r2, r0
+ 474 000c 1A60     		str	r2, [r3]
+ 681:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 475              		.loc 1 681 1 view .LVU82
+ 476              		@ sp needed
+ 477 000e 7047     		bx	lr
+ 478              		.cfi_endproc
+ 479              	.LFE83:
+ 481              		.section	.text.fmc_flag_get,"ax",%progbits
+ 482              		.align	1
+ 483              		.global	fmc_flag_get
+ 484              		.syntax unified
+ 485              		.code	16
+ 486              		.thumb_func
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 21
+
+
+ 488              	fmc_flag_get:
+ 489              	.LVL8:
+ 490              	.LFB84:
+ 682:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 683:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 684:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get flag set or reset
+ 685:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  flag: check FMC flag
+ 686:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 only one parameter can be selected which is shown as below:
+ 687:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_BUSY: FMC busy flag
+ 688:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_PGERR: FMC programming error flag
+ 689:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_PGAERR: FMC program alignment error flag
+ 690:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_WPERR: FMC write protection error flag
+ 691:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_END: FMC end of programming flag
+ 692:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 693:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     FlagStatus: SET or RESET
+ 694:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 695:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** FlagStatus fmc_flag_get(uint32_t flag)
+ 696:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 491              		.loc 1 696 1 is_stmt 1 view -0
+ 492              		.cfi_startproc
+ 493              		@ args = 0, pretend = 0, frame = 0
+ 494              		@ frame_needed = 0, uses_anonymous_args = 0
+ 495              		@ link register save eliminated.
+ 697:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FlagStatus status = RESET;
+ 496              		.loc 1 697 5 view .LVU84
+ 698:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 699:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_STAT & flag){
+ 497              		.loc 1 699 5 view .LVU85
+ 498              		.loc 1 699 8 is_stmt 0 view .LVU86
+ 499 0000 42F20C03 		movw	r3, #8204
+ 500 0004 C4F20203 		movt	r3, 16386
+ 501 0008 1B68     		ldr	r3, [r3]
+ 502              		.loc 1 699 7 view .LVU87
+ 503 000a 1842     		tst	r0, r3
+ 504 000c 01D1     		bne	.L26
+ 697:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FlagStatus status = RESET;
+ 505              		.loc 1 697 16 view .LVU88
+ 506 000e 0020     		movs	r0, #0
+ 507              	.LVL9:
+ 508              	.L25:
+ 700:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         status = SET;
+ 701:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 702:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the state of corresponding FMC flag */
+ 703:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return status; 
+ 509              		.loc 1 703 5 is_stmt 1 view .LVU89
+ 704:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 510              		.loc 1 704 1 is_stmt 0 view .LVU90
+ 511              		@ sp needed
+ 512 0010 7047     		bx	lr
+ 513              	.LVL10:
+ 514              	.L26:
+ 700:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         status = SET;
+ 515              		.loc 1 700 16 view .LVU91
+ 516 0012 0120     		movs	r0, #1
+ 517              	.LVL11:
+ 700:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         status = SET;
+ 518              		.loc 1 700 16 view .LVU92
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 22
+
+
+ 519 0014 FCE7     		b	.L25
+ 520              		.cfi_endproc
+ 521              	.LFE84:
+ 523              		.section	.text.fmc_flag_clear,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	fmc_flag_clear
+ 526              		.syntax unified
+ 527              		.code	16
+ 528              		.thumb_func
+ 530              	fmc_flag_clear:
+ 531              	.LVL12:
+ 532              	.LFB85:
+ 705:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 706:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 707:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      clear the FMC pending flag by writing 1
+ 708:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  flag: clear FMC flag
+ 709:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 one or more parameters can be selected which is shown as below:
+ 710:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_PGERR: FMC programming error flag
+ 711:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_PGAERR: FMC program alignment error flag
+ 712:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_WPERR: FMC write protection error flag
+ 713:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_FLAG_END: FMC end of programming flag
+ 714:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 715:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 716:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 717:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_flag_clear(uint32_t flag)
+ 718:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 533              		.loc 1 718 1 is_stmt 1 view -0
+ 534              		.cfi_startproc
+ 535              		@ args = 0, pretend = 0, frame = 0
+ 536              		@ frame_needed = 0, uses_anonymous_args = 0
+ 537              		@ link register save eliminated.
+ 719:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* clear the flags */
+ 720:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_STAT = flag;
+ 538              		.loc 1 720 5 view .LVU94
+ 539              		.loc 1 720 14 is_stmt 0 view .LVU95
+ 540 0000 42F20C03 		movw	r3, #8204
+ 541 0004 C4F20203 		movt	r3, 16386
+ 542 0008 1860     		str	r0, [r3]
+ 721:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 543              		.loc 1 721 1 view .LVU96
+ 544              		@ sp needed
+ 545 000a 7047     		bx	lr
+ 546              		.cfi_endproc
+ 547              	.LFE85:
+ 549              		.section	.text.fmc_interrupt_flag_get,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	fmc_interrupt_flag_get
+ 552              		.syntax unified
+ 553              		.code	16
+ 554              		.thumb_func
+ 556              	fmc_interrupt_flag_get:
+ 557              	.LVL13:
+ 558              	.LFB86:
+ 722:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 723:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 724:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get intrrupt flag set or reset
+ 725:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  flag: check FMC flag
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 23
+
+
+ 726:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 only one parameter can be selected which is shown as below:
+ 727:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_PGERR: FMC programming error flag
+ 728:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_PGAERR: FMC program alignment error flag
+ 729:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_WPERR: FMC write protection error flag
+ 730:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_END: FMC end of programming flag
+ 731:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 732:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     FlagStatus: SET or RESET
+ 733:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 734:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** FlagStatus fmc_interrupt_flag_get(uint32_t int_flag)
+ 735:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 559              		.loc 1 735 1 is_stmt 1 view -0
+ 560              		.cfi_startproc
+ 561              		@ args = 0, pretend = 0, frame = 0
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563              		@ link register save eliminated.
+ 736:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t intenable = 0U, flagstatus = 0U;
+ 564              		.loc 1 736 5 view .LVU98
+ 737:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 738:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_INT_FLAG_END == int_flag){
+ 565              		.loc 1 738 5 view .LVU99
+ 566              		.loc 1 738 7 is_stmt 0 view .LVU100
+ 567 0000 2028     		cmp	r0, #32
+ 568 0002 0FD0     		beq	.L35
+ 739:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the interrupt enable bit status */
+ 740:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         intenable = FMC_CTL & FMC_INTEN_END;
+ 741:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the corresponding flag bit status */
+ 742:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         flagstatus = FMC_STAT & int_flag;
+ 743:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(intenable && flagstatus){
+ 744:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return SET;
+ 745:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 746:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return RESET;
+ 747:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 748:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else{
+ 749:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the interrupt enable bit status */
+ 750:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         intenable = FMC_CTL & FMC_INTEN_ERR;
+ 569              		.loc 1 750 9 is_stmt 1 view .LVU101
+ 570              		.loc 1 750 21 is_stmt 0 view .LVU102
+ 571 0004 42F21003 		movw	r3, #8208
+ 572 0008 C4F20203 		movt	r3, 16386
+ 573 000c 1B68     		ldr	r3, [r3]
+ 574              	.LVL14:
+ 751:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the corresponding flag bit status */
+ 752:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         flagstatus = FMC_STAT & int_flag;
+ 575              		.loc 1 752 9 is_stmt 1 view .LVU103
+ 576              		.loc 1 752 22 is_stmt 0 view .LVU104
+ 577 000e 42F20C02 		movw	r2, #8204
+ 578 0012 C4F20202 		movt	r2, 16386
+ 579 0016 1268     		ldr	r2, [r2]
+ 580              		.loc 1 752 20 view .LVU105
+ 581 0018 1040     		ands	r0, r2
+ 582              	.LVL15:
+ 753:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(intenable && flagstatus){
+ 583              		.loc 1 753 9 is_stmt 1 view .LVU106
+ 584              		.loc 1 753 11 is_stmt 0 view .LVU107
+ 585 001a 5B05     		lsls	r3, r3, #21
+ 586 001c 14D5     		bpl	.L33
+ 587              	.LVL16:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 24
+
+
+ 588              		.loc 1 753 22 discriminator 1 view .LVU108
+ 589 001e A0B1     		cbz	r0, .L30
+ 754:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return SET;
+ 590              		.loc 1 754 20 view .LVU109
+ 591 0020 0120     		movs	r0, #1
+ 592              	.LVL17:
+ 593              		.loc 1 754 20 view .LVU110
+ 594 0022 12E0     		b	.L30
+ 595              	.LVL18:
+ 596              	.L35:
+ 740:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the corresponding flag bit status */
+ 597              		.loc 1 740 9 is_stmt 1 view .LVU111
+ 740:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get the corresponding flag bit status */
+ 598              		.loc 1 740 21 is_stmt 0 view .LVU112
+ 599 0024 42F21003 		movw	r3, #8208
+ 600 0028 C4F20203 		movt	r3, 16386
+ 601 002c 1B68     		ldr	r3, [r3]
+ 602              	.LVL19:
+ 742:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(intenable && flagstatus){
+ 603              		.loc 1 742 9 is_stmt 1 view .LVU113
+ 742:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(intenable && flagstatus){
+ 604              		.loc 1 742 22 is_stmt 0 view .LVU114
+ 605 002e 42F20C02 		movw	r2, #8204
+ 606 0032 C4F20202 		movt	r2, 16386
+ 607 0036 1268     		ldr	r2, [r2]
+ 742:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(intenable && flagstatus){
+ 608              		.loc 1 742 20 view .LVU115
+ 609 0038 1040     		ands	r0, r2
+ 610              	.LVL20:
+ 743:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return SET;
+ 611              		.loc 1 743 9 is_stmt 1 view .LVU116
+ 743:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return SET;
+ 612              		.loc 1 743 11 is_stmt 0 view .LVU117
+ 613 003a DB04     		lsls	r3, r3, #19
+ 614 003c 02D5     		bpl	.L31
+ 615              	.LVL21:
+ 743:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return SET;
+ 616              		.loc 1 743 22 discriminator 1 view .LVU118
+ 617 003e 20B1     		cbz	r0, .L30
+ 744:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 618              		.loc 1 744 20 view .LVU119
+ 619 0040 0120     		movs	r0, #1
+ 620              	.LVL22:
+ 744:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 621              		.loc 1 744 20 view .LVU120
+ 622 0042 02E0     		b	.L30
+ 623              	.LVL23:
+ 624              	.L31:
+ 746:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 625              		.loc 1 746 20 view .LVU121
+ 626 0044 0020     		movs	r0, #0
+ 627              	.LVL24:
+ 746:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 628              		.loc 1 746 20 view .LVU122
+ 629 0046 00E0     		b	.L30
+ 630              	.LVL25:
+ 631              	.L33:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 25
+
+
+ 755:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 756:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             return RESET;
+ 632              		.loc 1 756 20 view .LVU123
+ 633 0048 0020     		movs	r0, #0
+ 634              	.LVL26:
+ 635              	.L30:
+ 757:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 758:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 759:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 636              		.loc 1 759 1 view .LVU124
+ 637              		@ sp needed
+ 638 004a 7047     		bx	lr
+ 639              		.cfi_endproc
+ 640              	.LFE86:
+ 642              		.section	.text.fmc_interrupt_flag_clear,"ax",%progbits
+ 643              		.align	1
+ 644              		.global	fmc_interrupt_flag_clear
+ 645              		.syntax unified
+ 646              		.code	16
+ 647              		.thumb_func
+ 649              	fmc_interrupt_flag_clear:
+ 650              	.LVL27:
+ 651              	.LFB87:
+ 760:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 761:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 762:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      clear the FMC interrupt pending flag by writing 1
+ 763:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  flag: clear FMC flag
+ 764:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 one or more parameters can be selected which is shown as below:
+ 765:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_PGERR: FMC programming error flag
+ 766:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_PGAERR: FMC program alignment error flag
+ 767:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_WPERR: FMC write protection error flag
+ 768:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       \arg        FMC_INT_FLAG_END: FMC end of programming flag
+ 769:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 770:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     none
+ 771:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 772:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** void fmc_interrupt_flag_clear(uint32_t int_flag)
+ 773:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 652              		.loc 1 773 1 is_stmt 1 view -0
+ 653              		.cfi_startproc
+ 654              		@ args = 0, pretend = 0, frame = 0
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ 656              		@ link register save eliminated.
+ 774:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* clear the flags */
+ 775:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     FMC_STAT = int_flag;
+ 657              		.loc 1 775 5 view .LVU126
+ 658              		.loc 1 775 14 is_stmt 0 view .LVU127
+ 659 0000 42F20C03 		movw	r3, #8204
+ 660 0004 C4F20203 		movt	r3, 16386
+ 661 0008 1860     		str	r0, [r3]
+ 776:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 662              		.loc 1 776 1 view .LVU128
+ 663              		@ sp needed
+ 664 000a 7047     		bx	lr
+ 665              		.cfi_endproc
+ 666              	.LFE87:
+ 668              		.section	.text.fmc_state_get,"ax",%progbits
+ 669              		.align	1
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 26
+
+
+ 670              		.global	fmc_state_get
+ 671              		.syntax unified
+ 672              		.code	16
+ 673              		.thumb_func
+ 675              	fmc_state_get:
+ 676              	.LFB88:
+ 777:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 778:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 779:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      get the FMC state
+ 780:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  none
+ 781:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 782:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state
+ 783:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 784:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_state_get(void)
+ 785:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 677              		.loc 1 785 1 is_stmt 1 view -0
+ 678              		.cfi_startproc
+ 679              		@ args = 0, pretend = 0, frame = 0
+ 680              		@ frame_needed = 0, uses_anonymous_args = 0
+ 681              		@ link register save eliminated.
+ 786:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = FMC_READY;
+ 682              		.loc 1 786 5 view .LVU130
+ 683              	.LVL28:
+ 787:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 788:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if((uint32_t)0x00U != (FMC_STAT & FMC_STAT_BUSY)){
+ 684              		.loc 1 788 5 view .LVU131
+ 685              		.loc 1 788 28 is_stmt 0 view .LVU132
+ 686 0000 42F20C03 		movw	r3, #8204
+ 687 0004 C4F20203 		movt	r3, 16386
+ 688 0008 1B68     		ldr	r3, [r3]
+ 689              		.loc 1 788 7 view .LVU133
+ 690 000a DB07     		lsls	r3, r3, #31
+ 691 000c 0FD4     		bmi	.L39
+ 789:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_BUSY;
+ 790:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else{
+ 791:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if((uint32_t)0x00U != (FMC_STAT & FMC_STAT_WPERR)){
+ 692              		.loc 1 791 9 is_stmt 1 view .LVU134
+ 693              		.loc 1 791 32 is_stmt 0 view .LVU135
+ 694 000e 42F20C03 		movw	r3, #8204
+ 695 0012 C4F20203 		movt	r3, 16386
+ 696 0016 1B68     		ldr	r3, [r3]
+ 697              		.loc 1 791 11 view .LVU136
+ 698 0018 DB06     		lsls	r3, r3, #27
+ 699 001a 0AD4     		bmi	.L40
+ 792:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             fmc_state = FMC_WPERR;
+ 793:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 794:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             if((uint32_t)0x00U != (FMC_STAT & FMC_STAT_PGERR)){
+ 700              		.loc 1 794 13 is_stmt 1 view .LVU137
+ 701              		.loc 1 794 36 is_stmt 0 view .LVU138
+ 702 001c 42F20C03 		movw	r3, #8204
+ 703 0020 C4F20203 		movt	r3, 16386
+ 704 0024 1B68     		ldr	r3, [r3]
+ 705              		.loc 1 794 15 view .LVU139
+ 706 0026 5B07     		lsls	r3, r3, #29
+ 707 0028 05D4     		bmi	.L41
+ 786:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 708              		.loc 1 786 20 view .LVU140
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 27
+
+
+ 709 002a 0020     		movs	r0, #0
+ 710 002c 00E0     		b	.L38
+ 711              	.L39:
+ 789:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_BUSY;
+ 712              		.loc 1 789 19 view .LVU141
+ 713 002e 0120     		movs	r0, #1
+ 714              	.L38:
+ 715              	.LVL29:
+ 795:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 fmc_state = FMC_PGERR; 
+ 796:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 797:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 798:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 799:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 800:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 716              		.loc 1 800 5 is_stmt 1 view .LVU142
+ 801:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 717              		.loc 1 801 1 is_stmt 0 view .LVU143
+ 718              		@ sp needed
+ 719 0030 7047     		bx	lr
+ 720              	.LVL30:
+ 721              	.L40:
+ 792:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }else{
+ 722              		.loc 1 792 23 view .LVU144
+ 723 0032 0420     		movs	r0, #4
+ 724 0034 FCE7     		b	.L38
+ 725              	.L41:
+ 795:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 fmc_state = FMC_PGERR; 
+ 726              		.loc 1 795 27 view .LVU145
+ 727 0036 0220     		movs	r0, #2
+ 728 0038 FAE7     		b	.L38
+ 729              		.cfi_endproc
+ 730              	.LFE88:
+ 732              		.section	.text.fmc_ready_wait,"ax",%progbits
+ 733              		.align	1
+ 734              		.global	fmc_ready_wait
+ 735              		.syntax unified
+ 736              		.code	16
+ 737              		.thumb_func
+ 739              	fmc_ready_wait:
+ 740              	.LVL31:
+ 741              	.LFB89:
+ 802:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 803:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** /*!
+ 804:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \brief      check whether FMC is ready or not
+ 805:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[in]  timeout: timeout count
+ 806:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \param[out] none
+ 807:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     \retval     fmc_state
+ 808:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** */
+ 809:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** fmc_state_enum fmc_ready_wait(uint32_t timeout)
+ 810:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** {
+ 742              		.loc 1 810 1 is_stmt 1 view -0
+ 743              		.cfi_startproc
+ 744              		@ args = 0, pretend = 0, frame = 0
+ 745              		@ frame_needed = 0, uses_anonymous_args = 0
+ 746              		.loc 1 810 1 is_stmt 0 view .LVU147
+ 747 0000 10B5     		push	{r4, lr}
+ 748              	.LCFI0:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 28
+
+
+ 749              		.cfi_def_cfa_offset 8
+ 750              		.cfi_offset 4, -8
+ 751              		.cfi_offset 14, -4
+ 752 0002 0400     		movs	r4, r0
+ 811:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = FMC_BUSY;
+ 753              		.loc 1 811 5 is_stmt 1 view .LVU148
+ 754              	.LVL32:
+ 755              	.L44:
+ 812:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 813:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* wait for FMC ready */
+ 814:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     do{
+ 756              		.loc 1 814 5 view .LVU149
+ 815:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* get FMC state */
+ 816:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = fmc_state_get();
+ 757              		.loc 1 816 9 view .LVU150
+ 758              		.loc 1 816 21 is_stmt 0 view .LVU151
+ 759 0004 FFF7FEFF 		bl	fmc_state_get
+ 760              	.LVL33:
+ 817:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         timeout--;
+ 761              		.loc 1 817 9 is_stmt 1 view .LVU152
+ 762              		.loc 1 817 16 is_stmt 0 view .LVU153
+ 763 0008 013C     		subs	r4, r4, #1
+ 764              	.LVL34:
+ 818:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }while((FMC_BUSY == fmc_state) && (0U != timeout));
+ 765              		.loc 1 818 36 is_stmt 1 discriminator 2 view .LVU154
+ 766 000a 0128     		cmp	r0, #1
+ 767 000c 01D1     		bne	.L43
+ 768              		.loc 1 818 36 is_stmt 0 discriminator 1 view .LVU155
+ 769 000e 002C     		cmp	r4, #0
+ 770 0010 F8D1     		bne	.L44
+ 771              	.L43:
+ 819:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 820:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_BUSY == fmc_state){
+ 772              		.loc 1 820 5 is_stmt 1 view .LVU156
+ 773              		.loc 1 820 7 is_stmt 0 view .LVU157
+ 774 0012 0128     		cmp	r0, #1
+ 775 0014 00D0     		beq	.L47
+ 776              	.LVL35:
+ 777              	.L45:
+ 821:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_TOERR;
+ 822:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 823:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* return the FMC state */
+ 824:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     return fmc_state;
+ 778              		.loc 1 824 5 is_stmt 1 view .LVU158
+ 825:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 779              		.loc 1 825 1 is_stmt 0 view .LVU159
+ 780              		@ sp needed
+ 781              	.LVL36:
+ 782              		.loc 1 825 1 view .LVU160
+ 783 0016 10BD     		pop	{r4, pc}
+ 784              	.LVL37:
+ 785              	.L47:
+ 821:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_TOERR;
+ 786              		.loc 1 821 19 view .LVU161
+ 787 0018 0430     		adds	r0, r0, #4
+ 788              	.LVL38:
+ 821:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_TOERR;
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 29
+
+
+ 789              		.loc 1 821 19 view .LVU162
+ 790 001a FCE7     		b	.L45
+ 791              		.cfi_endproc
+ 792              	.LFE89:
+ 794              		.section	.text.fmc_page_erase,"ax",%progbits
+ 795              		.align	1
+ 796              		.global	fmc_page_erase
+ 797              		.syntax unified
+ 798              		.code	16
+ 799              		.thumb_func
+ 801              	fmc_page_erase:
+ 802              	.LVL39:
+ 803              	.LFB65:
+ 126:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 804              		.loc 1 126 1 is_stmt 1 view -0
+ 805              		.cfi_startproc
+ 806              		@ args = 0, pretend = 0, frame = 0
+ 807              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 808              		.loc 1 126 1 is_stmt 0 view .LVU164
+ 809 0000 70B5     		push	{r4, r5, r6, lr}
+ 810              	.LCFI1:
+ 811              		.cfi_def_cfa_offset 16
+ 812              		.cfi_offset 4, -16
+ 813              		.cfi_offset 5, -12
+ 814              		.cfi_offset 6, -8
+ 815              		.cfi_offset 14, -4
+ 816 0002 0400     		movs	r4, r0
+ 127:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 817              		.loc 1 127 5 is_stmt 1 view .LVU165
+ 127:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 818              		.loc 1 127 32 is_stmt 0 view .LVU166
+ 819 0004 F020     		movs	r0, #240
+ 820              	.LVL40:
+ 127:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 821              		.loc 1 127 32 view .LVU167
+ 822 0006 0003     		lsls	r0, r0, #12
+ 823 0008 FFF7FEFF 		bl	fmc_ready_wait
+ 824              	.LVL41:
+ 129:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start page erase */
+ 825              		.loc 1 129 5 is_stmt 1 view .LVU168
+ 129:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start page erase */
+ 826              		.loc 1 129 7 is_stmt 0 view .LVU169
+ 827 000c 00B1     		cbz	r0, .L50
+ 828              	.LVL42:
+ 829              	.L49:
+ 143:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 830              		.loc 1 143 5 is_stmt 1 view .LVU170
+ 144:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 831              		.loc 1 144 1 is_stmt 0 view .LVU171
+ 832              		@ sp needed
+ 833              	.LVL43:
+ 144:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 834              		.loc 1 144 1 view .LVU172
+ 835 000e 70BD     		pop	{r4, r5, r6, pc}
+ 836              	.LVL44:
+ 837              	.L50:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 30
+
+
+ 131:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_ADDR = page_address;
+ 838              		.loc 1 131 9 is_stmt 1 view .LVU173
+ 839 0010 42F21005 		movw	r5, #8208
+ 840 0014 C4F20205 		movt	r5, 16386
+ 841 0018 2B68     		ldr	r3, [r5]
+ 131:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_ADDR = page_address;
+ 842              		.loc 1 131 17 is_stmt 0 view .LVU174
+ 843 001a 0226     		movs	r6, #2
+ 844 001c 3343     		orrs	r3, r6
+ 845 001e 2B60     		str	r3, [r5]
+ 132:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 846              		.loc 1 132 9 is_stmt 1 view .LVU175
+ 132:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 847              		.loc 1 132 18 is_stmt 0 view .LVU176
+ 848 0020 42F21403 		movw	r3, #8212
+ 849 0024 C4F20203 		movt	r3, 16386
+ 850 0028 1C60     		str	r4, [r3]
+ 133:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 851              		.loc 1 133 9 is_stmt 1 view .LVU177
+ 852 002a 2B68     		ldr	r3, [r5]
+ 133:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 853              		.loc 1 133 17 is_stmt 0 view .LVU178
+ 854 002c 4022     		movs	r2, #64
+ 855 002e 1343     		orrs	r3, r2
+ 856 0030 2B60     		str	r3, [r5]
+ 136:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 857              		.loc 1 136 9 is_stmt 1 view .LVU179
+ 136:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 858              		.loc 1 136 21 is_stmt 0 view .LVU180
+ 859 0032 F030     		adds	r0, r0, #240
+ 860              	.LVL45:
+ 136:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 861              		.loc 1 136 21 view .LVU181
+ 862 0034 0003     		lsls	r0, r0, #12
+ 863              	.LVL46:
+ 136:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 864              		.loc 1 136 21 view .LVU182
+ 865 0036 FFF7FEFF 		bl	fmc_ready_wait
+ 866              	.LVL47:
+ 139:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 867              		.loc 1 139 9 is_stmt 1 view .LVU183
+ 868 003a 2B68     		ldr	r3, [r5]
+ 139:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 869              		.loc 1 139 17 is_stmt 0 view .LVU184
+ 870 003c B343     		bics	r3, r6
+ 871 003e 2B60     		str	r3, [r5]
+ 872 0040 E5E7     		b	.L49
+ 873              		.cfi_endproc
+ 874              	.LFE65:
+ 876              		.section	.text.fmc_mass_erase,"ax",%progbits
+ 877              		.align	1
+ 878              		.global	fmc_mass_erase
+ 879              		.syntax unified
+ 880              		.code	16
+ 881              		.thumb_func
+ 883              	fmc_mass_erase:
+ 884              	.LFB66:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 31
+
+
+ 160:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 885              		.loc 1 160 1 is_stmt 1 view -0
+ 886              		.cfi_startproc
+ 887              		@ args = 0, pretend = 0, frame = 0
+ 888              		@ frame_needed = 0, uses_anonymous_args = 0
+ 889 0000 70B5     		push	{r4, r5, r6, lr}
+ 890              	.LCFI2:
+ 891              		.cfi_def_cfa_offset 16
+ 892              		.cfi_offset 4, -16
+ 893              		.cfi_offset 5, -12
+ 894              		.cfi_offset 6, -8
+ 895              		.cfi_offset 14, -4
+ 161:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 896              		.loc 1 161 5 view .LVU186
+ 161:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 897              		.loc 1 161 32 is_stmt 0 view .LVU187
+ 898 0002 F020     		movs	r0, #240
+ 899 0004 0003     		lsls	r0, r0, #12
+ 900 0006 FFF7FEFF 		bl	fmc_ready_wait
+ 901              	.LVL48:
+ 163:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start chip erase */
+ 902              		.loc 1 163 5 is_stmt 1 view .LVU188
+ 163:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start chip erase */
+ 903              		.loc 1 163 7 is_stmt 0 view .LVU189
+ 904 000a 00B1     		cbz	r0, .L53
+ 905              	.LVL49:
+ 906              	.L52:
+ 176:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 907              		.loc 1 176 5 is_stmt 1 view .LVU190
+ 177:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 908              		.loc 1 177 1 is_stmt 0 view .LVU191
+ 909              		@ sp needed
+ 910 000c 70BD     		pop	{r4, r5, r6, pc}
+ 911              	.L53:
+ 165:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 912              		.loc 1 165 9 is_stmt 1 view .LVU192
+ 913 000e 42F21004 		movw	r4, #8208
+ 914 0012 C4F20204 		movt	r4, 16386
+ 915 0016 2368     		ldr	r3, [r4]
+ 165:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 916              		.loc 1 165 17 is_stmt 0 view .LVU193
+ 917 0018 0425     		movs	r5, #4
+ 918 001a 2B43     		orrs	r3, r5
+ 919 001c 2360     		str	r3, [r4]
+ 166:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 920              		.loc 1 166 9 is_stmt 1 view .LVU194
+ 921 001e 2368     		ldr	r3, [r4]
+ 166:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 922              		.loc 1 166 17 is_stmt 0 view .LVU195
+ 923 0020 4022     		movs	r2, #64
+ 924 0022 1343     		orrs	r3, r2
+ 925 0024 2360     		str	r3, [r4]
+ 169:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 926              		.loc 1 169 9 is_stmt 1 view .LVU196
+ 169:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 927              		.loc 1 169 21 is_stmt 0 view .LVU197
+ 928 0026 F030     		adds	r0, r0, #240
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 32
+
+
+ 929              	.LVL50:
+ 169:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 930              		.loc 1 169 21 view .LVU198
+ 931 0028 0003     		lsls	r0, r0, #12
+ 932              	.LVL51:
+ 169:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 933              		.loc 1 169 21 view .LVU199
+ 934 002a FFF7FEFF 		bl	fmc_ready_wait
+ 935              	.LVL52:
+ 172:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 936              		.loc 1 172 9 is_stmt 1 view .LVU200
+ 937 002e 2368     		ldr	r3, [r4]
+ 172:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 938              		.loc 1 172 17 is_stmt 0 view .LVU201
+ 939 0030 AB43     		bics	r3, r5
+ 940 0032 2360     		str	r3, [r4]
+ 941 0034 EAE7     		b	.L52
+ 942              		.cfi_endproc
+ 943              	.LFE66:
+ 945              		.section	.text.fmc_doubleword_program,"ax",%progbits
+ 946              		.align	1
+ 947              		.global	fmc_doubleword_program
+ 948              		.syntax unified
+ 949              		.code	16
+ 950              		.thumb_func
+ 952              	fmc_doubleword_program:
+ 953              	.LVL53:
+ 954              	.LFB67:
+ 195:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t data0, data1;
+ 955              		.loc 1 195 1 is_stmt 1 view -0
+ 956              		.cfi_startproc
+ 957              		@ args = 0, pretend = 0, frame = 0
+ 958              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t data0, data1;
+ 959              		.loc 1 195 1 is_stmt 0 view .LVU203
+ 960 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 961              	.LCFI3:
+ 962              		.cfi_def_cfa_offset 20
+ 963              		.cfi_offset 4, -20
+ 964              		.cfi_offset 5, -16
+ 965              		.cfi_offset 6, -12
+ 966              		.cfi_offset 7, -8
+ 967              		.cfi_offset 14, -4
+ 968 0002 C646     		mov	lr, r8
+ 969 0004 00B5     		push	{lr}
+ 970              	.LCFI4:
+ 971              		.cfi_def_cfa_offset 24
+ 972              		.cfi_offset 8, -24
+ 973 0006 0600     		movs	r6, r0
+ 974 0008 1500     		movs	r5, r2
+ 975 000a 1C00     		movs	r4, r3
+ 196:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 976              		.loc 1 196 5 is_stmt 1 view .LVU204
+ 198:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 977              		.loc 1 198 5 view .LVU205
+ 198:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 978              		.loc 1 198 32 is_stmt 0 view .LVU206
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 33
+
+
+ 979 000c F020     		movs	r0, #240
+ 980              	.LVL54:
+ 198:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 981              		.loc 1 198 32 view .LVU207
+ 982 000e 0003     		lsls	r0, r0, #12
+ 983 0010 FFF7FEFF 		bl	fmc_ready_wait
+ 984              	.LVL55:
+ 200:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     data1 = (uint32_t)((data>>32U) & 0xFFFFFFFFU);
+ 985              		.loc 1 200 5 is_stmt 1 view .LVU208
+ 201:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 986              		.loc 1 201 5 view .LVU209
+ 204:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ 987              		.loc 1 204 5 view .LVU210
+ 988 0014 42F20001 		movw	r1, #8192
+ 989 0018 C4F20201 		movt	r1, 16386
+ 990 001c 0B68     		ldr	r3, [r1]
+ 204:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     if(FMC_READY == fmc_state){ 
+ 991              		.loc 1 204 12 is_stmt 0 view .LVU211
+ 992 001e 48F20002 		movw	r2, #32768
+ 993 0022 1343     		orrs	r3, r2
+ 994 0024 0B60     		str	r3, [r1]
+ 205:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 995              		.loc 1 205 5 is_stmt 1 view .LVU212
+ 205:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 996              		.loc 1 205 7 is_stmt 0 view .LVU213
+ 997 0026 50B1     		cbz	r0, .L56
+ 998              	.LVL56:
+ 999              	.L55:
+ 216:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 1000              		.loc 1 216 5 is_stmt 1 view .LVU214
+ 1001 0028 42F20003 		movw	r3, #8192
+ 1002 002c C4F20203 		movt	r3, 16386
+ 1003 0030 1A68     		ldr	r2, [r3]
+ 216:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 1004              		.loc 1 216 12 is_stmt 0 view .LVU215
+ 1005 0032 0D49     		ldr	r1, .L57
+ 1006 0034 0A40     		ands	r2, r1
+ 1007 0036 1A60     		str	r2, [r3]
+ 219:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1008              		.loc 1 219 5 is_stmt 1 view .LVU216
+ 220:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1009              		.loc 1 220 1 is_stmt 0 view .LVU217
+ 1010              		@ sp needed
+ 1011              	.LVL57:
+ 1012              	.LVL58:
+ 1013              	.LVL59:
+ 220:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1014              		.loc 1 220 1 view .LVU218
+ 1015 0038 80BC     		pop	{r7}
+ 1016 003a B846     		mov	r8, r7
+ 1017 003c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1018              	.LVL60:
+ 1019              	.L56:
+ 207:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address) = data0;
+ 1020              		.loc 1 207 9 is_stmt 1 view .LVU219
+ 1021 003e 42F21007 		movw	r7, #8208
+ 1022 0042 C4F20207 		movt	r7, 16386
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 34
+
+
+ 1023 0046 3B68     		ldr	r3, [r7]
+ 207:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address) = data0;
+ 1024              		.loc 1 207 17 is_stmt 0 view .LVU220
+ 1025 0048 40F20108 		movw	r8, #1
+ 1026 004c 4246     		mov	r2, r8
+ 1027 004e 1343     		orrs	r3, r2
+ 1028 0050 3B60     		str	r3, [r7]
+ 208:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address+4U) = data1;
+ 1029              		.loc 1 208 9 is_stmt 1 view .LVU221
+ 208:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         REG32(address+4U) = data1;
+ 1030              		.loc 1 208 24 is_stmt 0 view .LVU222
+ 1031 0052 3560     		str	r5, [r6]
+ 209:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 1032              		.loc 1 209 9 is_stmt 1 view .LVU223
+ 209:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 1033              		.loc 1 209 27 is_stmt 0 view .LVU224
+ 1034 0054 7460     		str	r4, [r6, #4]
+ 211:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1035              		.loc 1 211 9 is_stmt 1 view .LVU225
+ 211:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1036              		.loc 1 211 21 is_stmt 0 view .LVU226
+ 1037 0056 F030     		adds	r0, r0, #240
+ 1038              	.LVL61:
+ 211:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1039              		.loc 1 211 21 view .LVU227
+ 1040 0058 0003     		lsls	r0, r0, #12
+ 1041              	.LVL62:
+ 211:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1042              		.loc 1 211 21 view .LVU228
+ 1043 005a FFF7FEFF 		bl	fmc_ready_wait
+ 1044              	.LVL63:
+ 214:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 1045              		.loc 1 214 9 is_stmt 1 view .LVU229
+ 1046 005e 3B68     		ldr	r3, [r7]
+ 214:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 1047              		.loc 1 214 17 is_stmt 0 view .LVU230
+ 1048 0060 4246     		mov	r2, r8
+ 1049 0062 9343     		bics	r3, r2
+ 1050 0064 3B60     		str	r3, [r7]
+ 1051 0066 DFE7     		b	.L55
+ 1052              	.L58:
+ 1053              		.align	2
+ 1054              	.L57:
+ 1055 0068 FF7FFFFF 		.word	-32769
+ 1056              		.cfi_endproc
+ 1057              	.LFE67:
+ 1059              		.section	.text.fmc_word_program,"ax",%progbits
+ 1060              		.align	1
+ 1061              		.global	fmc_word_program
+ 1062              		.syntax unified
+ 1063              		.code	16
+ 1064              		.thumb_func
+ 1066              	fmc_word_program:
+ 1067              	.LVL64:
+ 1068              	.LFB68:
+ 238:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1069              		.loc 1 238 1 is_stmt 1 view -0
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 35
+
+
+ 1070              		.cfi_startproc
+ 1071              		@ args = 0, pretend = 0, frame = 0
+ 1072              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1073              		.loc 1 238 1 is_stmt 0 view .LVU232
+ 1074 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1075              	.LCFI5:
+ 1076              		.cfi_def_cfa_offset 24
+ 1077              		.cfi_offset 3, -24
+ 1078              		.cfi_offset 4, -20
+ 1079              		.cfi_offset 5, -16
+ 1080              		.cfi_offset 6, -12
+ 1081              		.cfi_offset 7, -8
+ 1082              		.cfi_offset 14, -4
+ 1083 0002 0500     		movs	r5, r0
+ 1084 0004 0C00     		movs	r4, r1
+ 239:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1085              		.loc 1 239 5 is_stmt 1 view .LVU233
+ 239:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1086              		.loc 1 239 32 is_stmt 0 view .LVU234
+ 1087 0006 F020     		movs	r0, #240
+ 1088              	.LVL65:
+ 239:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1089              		.loc 1 239 32 view .LVU235
+ 1090 0008 0003     		lsls	r0, r0, #12
+ 1091 000a FFF7FEFF 		bl	fmc_ready_wait
+ 1092              	.LVL66:
+ 241:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 1093              		.loc 1 241 5 is_stmt 1 view .LVU236
+ 241:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the PG bit to start program */
+ 1094              		.loc 1 241 7 is_stmt 0 view .LVU237
+ 1095 000e 00B1     		cbz	r0, .L61
+ 1096              	.LVL67:
+ 1097              	.L60:
+ 254:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1098              		.loc 1 254 5 is_stmt 1 view .LVU238
+ 255:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1099              		.loc 1 255 1 is_stmt 0 view .LVU239
+ 1100              		@ sp needed
+ 1101              	.LVL68:
+ 1102              	.LVL69:
+ 255:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1103              		.loc 1 255 1 view .LVU240
+ 1104 0010 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1105              	.LVL70:
+ 1106              	.L61:
+ 243:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 1107              		.loc 1 243 9 is_stmt 1 view .LVU241
+ 1108 0012 42F21006 		movw	r6, #8208
+ 1109 0016 C4F20206 		movt	r6, 16386
+ 1110 001a 3368     		ldr	r3, [r6]
+ 243:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****   
+ 1111              		.loc 1 243 17 is_stmt 0 view .LVU242
+ 1112 001c 0127     		movs	r7, #1
+ 1113 001e 3B43     		orrs	r3, r7
+ 1114 0020 3360     		str	r3, [r6]
+ 245:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 36
+
+
+ 1115              		.loc 1 245 9 is_stmt 1 view .LVU243
+ 245:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* wait for the FMC ready */
+ 1116              		.loc 1 245 24 is_stmt 0 view .LVU244
+ 1117 0022 2C60     		str	r4, [r5]
+ 247:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1118              		.loc 1 247 9 is_stmt 1 view .LVU245
+ 247:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1119              		.loc 1 247 21 is_stmt 0 view .LVU246
+ 1120 0024 F030     		adds	r0, r0, #240
+ 1121              	.LVL71:
+ 247:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1122              		.loc 1 247 21 view .LVU247
+ 1123 0026 0003     		lsls	r0, r0, #12
+ 1124              	.LVL72:
+ 247:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1125              		.loc 1 247 21 view .LVU248
+ 1126 0028 FFF7FEFF 		bl	fmc_ready_wait
+ 1127              	.LVL73:
+ 250:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     } 
+ 1128              		.loc 1 250 9 is_stmt 1 view .LVU249
+ 1129 002c 3368     		ldr	r3, [r6]
+ 250:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     } 
+ 1130              		.loc 1 250 17 is_stmt 0 view .LVU250
+ 1131 002e BB43     		bics	r3, r7
+ 1132 0030 3360     		str	r3, [r6]
+ 1133 0032 EDE7     		b	.L60
+ 1134              		.cfi_endproc
+ 1135              	.LFE68:
+ 1137              		.section	.text.ob_erase,"ax",%progbits
+ 1138              		.align	1
+ 1139              		.global	ob_erase
+ 1140              		.syntax unified
+ 1141              		.code	16
+ 1142              		.thumb_func
+ 1144              	ob_erase:
+ 1145              	.LFB73:
+ 329:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint16_t fmc_spc;
+ 1146              		.loc 1 329 1 is_stmt 1 view -0
+ 1147              		.cfi_startproc
+ 1148              		@ args = 0, pretend = 0, frame = 0
+ 1149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1150 0000 10B5     		push	{r4, lr}
+ 1151              	.LCFI6:
+ 1152              		.cfi_def_cfa_offset 8
+ 1153              		.cfi_offset 4, -8
+ 1154              		.cfi_offset 14, -4
+ 330:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val;
+ 1155              		.loc 1 330 5 view .LVU252
+ 331:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t fmc_plevel = ob_obstat_plevel_get();
+ 1156              		.loc 1 331 5 view .LVU253
+ 332:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1157              		.loc 1 332 5 view .LVU254
+ 332:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1158              		.loc 1 332 27 is_stmt 0 view .LVU255
+ 1159 0002 FFF7FEFF 		bl	ob_obstat_plevel_get
+ 1160              	.LVL74:
+ 1161 0006 0400     		movs	r4, r0
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 37
+
+
+ 1162              	.LVL75:
+ 333:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1163              		.loc 1 333 5 is_stmt 1 view .LVU256
+ 333:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1164              		.loc 1 333 32 is_stmt 0 view .LVU257
+ 1165 0008 F020     		movs	r0, #240
+ 1166              	.LVL76:
+ 333:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1167              		.loc 1 333 32 view .LVU258
+ 1168 000a 0003     		lsls	r0, r0, #12
+ 1169 000c FFF7FEFF 		bl	fmc_ready_wait
+ 1170              	.LVL77:
+ 336:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_NSPC;
+ 1171              		.loc 1 336 5 is_stmt 1 view .LVU259
+ 336:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_NSPC;
+ 1172              		.loc 1 336 7 is_stmt 0 view .LVU260
+ 1173 0010 44B1     		cbz	r4, .L66
+ 338:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_LSPC;
+ 1174              		.loc 1 338 11 is_stmt 1 view .LVU261
+ 338:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_spc = FMC_LSPC;
+ 1175              		.loc 1 338 13 is_stmt 0 view .LVU262
+ 1176 0012 022C     		cmp	r4, #2
+ 1177 0014 03D0     		beq	.L68
+ 342:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 1178              		.loc 1 342 19 view .LVU263
+ 1179 0016 0620     		movs	r0, #6
+ 1180              	.LVL78:
+ 341:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 1181              		.loc 1 341 17 view .LVU264
+ 1182 0018 43F2CC34 		movw	r4, #13260
+ 1183              	.LVL79:
+ 341:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 1184              		.loc 1 341 17 view .LVU265
+ 1185 001c 04E0     		b	.L63
+ 1186              	.LVL80:
+ 1187              	.L68:
+ 339:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else{
+ 1188              		.loc 1 339 17 view .LVU266
+ 1189 001e 44F2BB44 		movw	r4, #17595
+ 1190              	.LVL81:
+ 339:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else{
+ 1191              		.loc 1 339 17 view .LVU267
+ 1192 0022 01E0     		b	.L63
+ 1193              	.LVL82:
+ 1194              	.L66:
+ 337:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }else if(OB_OBSTAT_PLEVEL_LOW == fmc_plevel){
+ 1195              		.loc 1 337 17 view .LVU268
+ 1196 0024 45F6A524 		movw	r4, #23205
+ 1197              	.LVL83:
+ 1198              	.L63:
+ 344:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1199              		.loc 1 344 5 is_stmt 1 view .LVU269
+ 344:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1200              		.loc 1 344 9 is_stmt 0 view .LVU270
+ 1201 0028 1F4A     		ldr	r2, .L71
+ 1202 002a 1443     		orrs	r4, r2
+ 1203              	.LVL84:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 38
+
+
+ 346:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1204              		.loc 1 346 5 is_stmt 1 view .LVU271
+ 346:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1205              		.loc 1 346 7 is_stmt 0 view .LVU272
+ 1206 002c 00B1     		cbz	r0, .L69
+ 1207              	.LVL85:
+ 1208              	.L64:
+ 379:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1209              		.loc 1 379 5 is_stmt 1 view .LVU273
+ 380:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1210              		.loc 1 380 1 is_stmt 0 view .LVU274
+ 1211              		@ sp needed
+ 1212              	.LVL86:
+ 380:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1213              		.loc 1 380 1 view .LVU275
+ 1214 002e 10BD     		pop	{r4, pc}
+ 1215              	.LVL87:
+ 1216              	.L69:
+ 348:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1217              		.loc 1 348 9 is_stmt 1 view .LVU276
+ 1218 0030 42F21003 		movw	r3, #8208
+ 1219 0034 C4F20203 		movt	r3, 16386
+ 1220 0038 1A68     		ldr	r2, [r3]
+ 348:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1221              		.loc 1 348 17 is_stmt 0 view .LVU277
+ 1222 003a 2021     		movs	r1, #32
+ 1223 003c 0A43     		orrs	r2, r1
+ 1224 003e 1A60     		str	r2, [r3]
+ 349:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1225              		.loc 1 349 9 is_stmt 1 view .LVU278
+ 1226 0040 1A68     		ldr	r2, [r3]
+ 349:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1227              		.loc 1 349 17 is_stmt 0 view .LVU279
+ 1228 0042 2031     		adds	r1, r1, #32
+ 1229 0044 0A43     		orrs	r2, r1
+ 1230 0046 1A60     		str	r2, [r3]
+ 352:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1231              		.loc 1 352 9 is_stmt 1 view .LVU280
+ 352:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1232              		.loc 1 352 21 is_stmt 0 view .LVU281
+ 1233 0048 F030     		adds	r0, r0, #240
+ 1234              	.LVL88:
+ 352:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1235              		.loc 1 352 21 view .LVU282
+ 1236 004a 0003     		lsls	r0, r0, #12
+ 1237 004c FFF7FEFF 		bl	fmc_ready_wait
+ 1238              	.LVL89:
+ 354:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBER bit */
+ 1239              		.loc 1 354 9 is_stmt 1 view .LVU283
+ 354:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBER bit */
+ 1240              		.loc 1 354 11 is_stmt 0 view .LVU284
+ 1241 0050 50B1     		cbz	r0, .L70
+ 372:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1242              		.loc 1 372 13 is_stmt 1 view .LVU285
+ 372:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1243              		.loc 1 372 15 is_stmt 0 view .LVU286
+ 1244 0052 0528     		cmp	r0, #5
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 39
+
+
+ 1245 0054 EBD0     		beq	.L64
+ 374:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1246              		.loc 1 374 17 is_stmt 1 view .LVU287
+ 1247 0056 42F21003 		movw	r3, #8208
+ 1248 005a C4F20203 		movt	r3, 16386
+ 1249 005e 1A68     		ldr	r2, [r3]
+ 374:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1250              		.loc 1 374 25 is_stmt 0 view .LVU288
+ 1251 0060 2021     		movs	r1, #32
+ 1252 0062 8A43     		bics	r2, r1
+ 1253 0064 1A60     		str	r2, [r3]
+ 1254 0066 E2E7     		b	.L64
+ 1255              	.L70:
+ 356:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1256              		.loc 1 356 13 is_stmt 1 view .LVU289
+ 1257 0068 42F21003 		movw	r3, #8208
+ 1258 006c C4F20203 		movt	r3, 16386
+ 1259 0070 1A68     		ldr	r2, [r3]
+ 356:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1260              		.loc 1 356 21 is_stmt 0 view .LVU290
+ 1261 0072 2021     		movs	r1, #32
+ 1262 0074 8A43     		bics	r2, r1
+ 1263 0076 1A60     		str	r2, [r3]
+ 359:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 1264              		.loc 1 359 13 is_stmt 1 view .LVU291
+ 1265 0078 1A68     		ldr	r2, [r3]
+ 359:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 1266              		.loc 1 359 21 is_stmt 0 view .LVU292
+ 1267 007a 1039     		subs	r1, r1, #16
+ 1268 007c 0A43     		orrs	r2, r1
+ 1269 007e 1A60     		str	r2, [r3]
+ 362:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1270              		.loc 1 362 13 is_stmt 1 view .LVU293
+ 362:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1271              		.loc 1 362 25 is_stmt 0 view .LVU294
+ 1272 0080 4FF60003 		movw	r3, #63488
+ 1273 0084 C1F6FF73 		movt	r3, 8191
+ 1274 0088 1C60     		str	r4, [r3]
+ 365:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****  
+ 1275              		.loc 1 365 13 is_stmt 1 view .LVU295
+ 365:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****  
+ 1276              		.loc 1 365 25 is_stmt 0 view .LVU296
+ 1277 008a F030     		adds	r0, r0, #240
+ 1278              	.LVL90:
+ 365:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****  
+ 1279              		.loc 1 365 25 view .LVU297
+ 1280 008c 0003     		lsls	r0, r0, #12
+ 1281              	.LVL91:
+ 365:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****  
+ 1282              		.loc 1 365 25 view .LVU298
+ 1283 008e FFF7FEFF 		bl	fmc_ready_wait
+ 1284              	.LVL92:
+ 367:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1285              		.loc 1 367 13 is_stmt 1 view .LVU299
+ 367:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1286              		.loc 1 367 15 is_stmt 0 view .LVU300
+ 1287 0092 0528     		cmp	r0, #5
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 40
+
+
+ 1288 0094 CBD0     		beq	.L64
+ 369:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1289              		.loc 1 369 17 is_stmt 1 view .LVU301
+ 1290 0096 42F21003 		movw	r3, #8208
+ 1291 009a C4F20203 		movt	r3, 16386
+ 1292 009e 1A68     		ldr	r2, [r3]
+ 369:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1293              		.loc 1 369 25 is_stmt 0 view .LVU302
+ 1294 00a0 1021     		movs	r1, #16
+ 1295 00a2 8A43     		bics	r2, r1
+ 1296 00a4 1A60     		str	r2, [r3]
+ 1297 00a6 C2E7     		b	.L64
+ 1298              	.L72:
+ 1299              		.align	2
+ 1300              	.L71:
+ 1301 00a8 0000FFFF 		.word	-65536
+ 1302              		.cfi_endproc
+ 1303              	.LFE73:
+ 1305              		.section	.text.ob_write_protection_enable,"ax",%progbits
+ 1306              		.align	1
+ 1307              		.global	ob_write_protection_enable
+ 1308              		.syntax unified
+ 1309              		.code	16
+ 1310              		.thumb_func
+ 1312              	ob_write_protection_enable:
+ 1313              	.LVL93:
+ 1314              	.LFB74:
+ 397:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t ob_wrp_val = 0U;
+ 1315              		.loc 1 397 1 is_stmt 1 view -0
+ 1316              		.cfi_startproc
+ 1317              		@ args = 0, pretend = 0, frame = 0
+ 1318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t ob_wrp_val = 0U;
+ 1319              		.loc 1 397 1 is_stmt 0 view .LVU304
+ 1320 0000 70B5     		push	{r4, r5, r6, lr}
+ 1321              	.LCFI7:
+ 1322              		.cfi_def_cfa_offset 16
+ 1323              		.cfi_offset 4, -16
+ 1324              		.cfi_offset 5, -12
+ 1325              		.cfi_offset 6, -8
+ 1326              		.cfi_offset 14, -4
+ 1327 0002 0600     		movs	r6, r0
+ 398:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1328              		.loc 1 398 5 is_stmt 1 view .LVU305
+ 1329              	.LVL94:
+ 400:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1330              		.loc 1 400 5 view .LVU306
+ 400:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1331              		.loc 1 400 32 is_stmt 0 view .LVU307
+ 1332 0004 F020     		movs	r0, #240
+ 1333              	.LVL95:
+ 400:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1334              		.loc 1 400 32 view .LVU308
+ 1335 0006 0003     		lsls	r0, r0, #12
+ 1336 0008 FFF7FEFF 		bl	fmc_ready_wait
+ 1337              	.LVL96:
+ 402:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (uint32_t)ob_wp&0x00FFU;
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 41
+
+
+ 1338              		.loc 1 402 5 is_stmt 1 view .LVU309
+ 402:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (uint32_t)ob_wp&0x00FFU;
+ 1339              		.loc 1 402 11 is_stmt 0 view .LVU310
+ 1340 000c F443     		mvns	r4, r6
+ 1341              	.LVL97:
+ 403:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (((uint32_t)ob_wp&0xFF00U)>>8U) << 16U;
+ 1342              		.loc 1 403 5 is_stmt 1 view .LVU311
+ 403:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     ob_wrp_val |= (((uint32_t)ob_wp&0xFF00U)>>8U) << 16U;
+ 1343              		.loc 1 403 34 is_stmt 0 view .LVU312
+ 1344 000e FF25     		movs	r5, #255
+ 1345 0010 B543     		bics	r5, r6
+ 1346              	.LVL98:
+ 404:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1347              		.loc 1 404 5 is_stmt 1 view .LVU313
+ 404:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1348              		.loc 1 404 45 is_stmt 0 view .LVU314
+ 1349 0012 230A     		lsrs	r3, r4, #8
+ 404:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1350              		.loc 1 404 51 view .LVU315
+ 1351 0014 1B04     		lsls	r3, r3, #16
+ 1352 0016 FF22     		movs	r2, #255
+ 1353 0018 1204     		lsls	r2, r2, #16
+ 1354 001a 1340     		ands	r3, r2
+ 404:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1355              		.loc 1 404 16 view .LVU316
+ 1356 001c 1D43     		orrs	r5, r3
+ 1357              	.LVL99:
+ 406:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit*/
+ 1358              		.loc 1 406 5 is_stmt 1 view .LVU317
+ 406:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit*/
+ 1359              		.loc 1 406 7 is_stmt 0 view .LVU318
+ 1360 001e E0B9     		cbnz	r0, .L74
+ 408:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1361              		.loc 1 408 9 is_stmt 1 view .LVU319
+ 1362 0020 42F21003 		movw	r3, #8208
+ 1363 0024 C4F20203 		movt	r3, 16386
+ 1364 0028 1A68     		ldr	r2, [r3]
+ 408:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1365              		.loc 1 408 17 is_stmt 0 view .LVU320
+ 1366 002a 1021     		movs	r1, #16
+ 1367 002c 0A43     		orrs	r2, r1
+ 1368 002e 1A60     		str	r2, [r3]
+ 410:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_WP = ob_wrp_val;
+ 1369              		.loc 1 410 9 is_stmt 1 view .LVU321
+ 410:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             OB_WP = ob_wrp_val;
+ 1370              		.loc 1 410 11 is_stmt 0 view .LVU322
+ 1371 0030 6B1C     		adds	r3, r5, #1
+ 1372 0032 13D1     		bne	.L79
+ 1373              	.LVL100:
+ 1374              	.L75:
+ 417:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (((uint32_t)(ob_wp>>16)&0xFF00U)>>8U) << 16U;
+ 1375              		.loc 1 417 9 is_stmt 1 view .LVU323
+ 417:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (((uint32_t)(ob_wp>>16)&0xFF00U)>>8U) << 16U;
+ 1376              		.loc 1 417 39 is_stmt 0 view .LVU324
+ 1377 0034 220C     		lsrs	r2, r4, #16
+ 417:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (((uint32_t)(ob_wp>>16)&0xFF00U)>>8U) << 16U;
+ 1378              		.loc 1 417 44 view .LVU325
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 42
+
+
+ 1379 0036 FF23     		movs	r3, #255
+ 1380 0038 1340     		ands	r3, r2
+ 417:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         ob_wrp_val |= (((uint32_t)(ob_wp>>16)&0xFF00U)>>8U) << 16U;
+ 1381              		.loc 1 417 20 view .LVU326
+ 1382 003a 2B43     		orrs	r3, r5
+ 1383              	.LVL101:
+ 418:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 1384              		.loc 1 418 9 is_stmt 1 view .LVU327
+ 418:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 1385              		.loc 1 418 55 is_stmt 0 view .LVU328
+ 1386 003c 240E     		lsrs	r4, r4, #24
+ 1387              	.LVL102:
+ 418:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 1388              		.loc 1 418 61 view .LVU329
+ 1389 003e 2404     		lsls	r4, r4, #16
+ 418:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         if(0xFFFFFFFFU != ob_wrp_val){
+ 1390              		.loc 1 418 20 view .LVU330
+ 1391 0040 1C43     		orrs	r4, r3
+ 1392              	.LVL103:
+ 419:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             REG32((OB) + 0x0CU) = ob_wrp_val;
+ 1393              		.loc 1 419 9 is_stmt 1 view .LVU331
+ 419:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             REG32((OB) + 0x0CU) = ob_wrp_val;
+ 1394              		.loc 1 419 11 is_stmt 0 view .LVU332
+ 1395 0042 631C     		adds	r3, r4, #1
+ 1396 0044 14D1     		bne	.L80
+ 1397              	.LVL104:
+ 1398              	.L76:
+ 426:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 1399              		.loc 1 426 9 is_stmt 1 view .LVU333
+ 426:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 1400              		.loc 1 426 11 is_stmt 0 view .LVU334
+ 1401 0046 0528     		cmp	r0, #5
+ 1402 0048 07D0     		beq	.L74
+ 428:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1403              		.loc 1 428 13 is_stmt 1 view .LVU335
+ 1404 004a 42F21003 		movw	r3, #8208
+ 1405 004e C4F20203 		movt	r3, 16386
+ 1406 0052 1A68     		ldr	r2, [r3]
+ 428:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1407              		.loc 1 428 21 is_stmt 0 view .LVU336
+ 1408 0054 1021     		movs	r1, #16
+ 1409 0056 8A43     		bics	r2, r1
+ 1410 0058 1A60     		str	r2, [r3]
+ 1411              	.LVL105:
+ 1412              	.L74:
+ 432:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1413              		.loc 1 432 5 is_stmt 1 view .LVU337
+ 433:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1414              		.loc 1 433 1 is_stmt 0 view .LVU338
+ 1415              		@ sp needed
+ 1416              	.LVL106:
+ 433:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1417              		.loc 1 433 1 view .LVU339
+ 1418 005a 70BD     		pop	{r4, r5, r6, pc}
+ 1419              	.LVL107:
+ 1420              	.L79:
+ 411:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 43
+
+
+ 1421              		.loc 1 411 13 is_stmt 1 view .LVU340
+ 411:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1422              		.loc 1 411 19 is_stmt 0 view .LVU341
+ 1423 005c 4FF60803 		movw	r3, #63496
+ 1424 0060 C1F6FF73 		movt	r3, 8191
+ 1425 0064 1D60     		str	r5, [r3]
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1426              		.loc 1 414 13 is_stmt 1 view .LVU342
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1427              		.loc 1 414 25 is_stmt 0 view .LVU343
+ 1428 0066 F030     		adds	r0, r0, #240
+ 1429              	.LVL108:
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1430              		.loc 1 414 25 view .LVU344
+ 1431 0068 0003     		lsls	r0, r0, #12
+ 1432              	.LVL109:
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1433              		.loc 1 414 25 view .LVU345
+ 1434 006a FFF7FEFF 		bl	fmc_ready_wait
+ 1435              	.LVL110:
+ 414:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1436              		.loc 1 414 25 view .LVU346
+ 1437 006e E1E7     		b	.L75
+ 1438              	.LVL111:
+ 1439              	.L80:
+ 420:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1440              		.loc 1 420 13 is_stmt 1 view .LVU347
+ 420:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1441              		.loc 1 420 33 is_stmt 0 view .LVU348
+ 1442 0070 4FF60C03 		movw	r3, #63500
+ 1443 0074 C1F6FF73 		movt	r3, 8191
+ 1444 0078 1C60     		str	r4, [r3]
+ 423:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1445              		.loc 1 423 13 is_stmt 1 view .LVU349
+ 423:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1446              		.loc 1 423 25 is_stmt 0 view .LVU350
+ 1447 007a F020     		movs	r0, #240
+ 1448              	.LVL112:
+ 423:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1449              		.loc 1 423 25 view .LVU351
+ 1450 007c 0003     		lsls	r0, r0, #12
+ 1451 007e FFF7FEFF 		bl	fmc_ready_wait
+ 1452              	.LVL113:
+ 423:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1453              		.loc 1 423 25 view .LVU352
+ 1454 0082 E0E7     		b	.L76
+ 1455              		.cfi_endproc
+ 1456              	.LFE74:
+ 1458              		.section	.text.ob_security_protection_config,"ax",%progbits
+ 1459              		.align	1
+ 1460              		.global	ob_security_protection_config
+ 1461              		.syntax unified
+ 1462              		.code	16
+ 1463              		.thumb_func
+ 1465              	ob_security_protection_config:
+ 1466              	.LVL114:
+ 1467              	.LFB75:
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 44
+
+
+ 452:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val;
+ 1468              		.loc 1 452 1 is_stmt 1 view -0
+ 1469              		.cfi_startproc
+ 1470              		@ args = 0, pretend = 0, frame = 0
+ 1471              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val;
+ 1472              		.loc 1 452 1 is_stmt 0 view .LVU354
+ 1473 0000 70B5     		push	{r4, r5, r6, lr}
+ 1474              	.LCFI8:
+ 1475              		.cfi_def_cfa_offset 16
+ 1476              		.cfi_offset 4, -16
+ 1477              		.cfi_offset 5, -12
+ 1478              		.cfi_offset 6, -8
+ 1479              		.cfi_offset 14, -4
+ 1480 0002 0600     		movs	r6, r0
+ 453:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1481              		.loc 1 453 5 is_stmt 1 view .LVU355
+ 454:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1482              		.loc 1 454 5 view .LVU356
+ 454:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1483              		.loc 1 454 32 is_stmt 0 view .LVU357
+ 1484 0004 F020     		movs	r0, #240
+ 1485              	.LVL115:
+ 454:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1486              		.loc 1 454 32 view .LVU358
+ 1487 0006 0003     		lsls	r0, r0, #12
+ 1488 0008 FFF7FEFF 		bl	fmc_ready_wait
+ 1489              	.LVL116:
+ 1490 000c 0500     		movs	r5, r0
+ 1491              	.LVL117:
+ 456:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* the OB_SPC byte cannot be reprogrammed if protection level is high */
+ 1492              		.loc 1 456 5 is_stmt 1 view .LVU359
+ 456:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* the OB_SPC byte cannot be reprogrammed if protection level is high */
+ 1493              		.loc 1 456 11 is_stmt 0 view .LVU360
+ 1494 000e 4FF60000 		movw	r0, #63488
+ 1495              	.LVL118:
+ 456:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* the OB_SPC byte cannot be reprogrammed if protection level is high */
+ 1496              		.loc 1 456 11 view .LVU361
+ 1497 0012 C1F6FF70 		movt	r0, 8191
+ 1498 0016 FFF7FEFF 		bl	option_byte_value_get
+ 1499              	.LVL119:
+ 1500 001a 0400     		movs	r4, r0
+ 1501              	.LVL120:
+ 458:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 1502              		.loc 1 458 5 is_stmt 1 view .LVU362
+ 458:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 1503              		.loc 1 458 33 is_stmt 0 view .LVU363
+ 1504 001c FFF7FEFF 		bl	ob_obstat_plevel_get
+ 1505              	.LVL121:
+ 458:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         fmc_state = FMC_OB_HSPC;
+ 1506              		.loc 1 458 7 discriminator 1 view .LVU364
+ 1507 0020 0628     		cmp	r0, #6
+ 1508 0022 05D0     		beq	.L86
+ 1509              	.LVL122:
+ 1510              	.L82:
+ 462:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (uint32_t)ob_spc;
+ 1511              		.loc 1 462 5 is_stmt 1 view .LVU365
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 45
+
+
+ 462:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (uint32_t)ob_spc;
+ 1512              		.loc 1 462 9 is_stmt 0 view .LVU366
+ 1513 0024 240C     		lsrs	r4, r4, #16
+ 1514              	.LVL123:
+ 462:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (uint32_t)ob_spc;
+ 1515              		.loc 1 462 9 view .LVU367
+ 1516 0026 2404     		lsls	r4, r4, #16
+ 1517              	.LVL124:
+ 463:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1518              		.loc 1 463 5 is_stmt 1 view .LVU368
+ 463:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1519              		.loc 1 463 9 is_stmt 0 view .LVU369
+ 1520 0028 3443     		orrs	r4, r6
+ 1521              	.LVL125:
+ 465:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1522              		.loc 1 465 5 is_stmt 1 view .LVU370
+ 465:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1523              		.loc 1 465 7 is_stmt 0 view .LVU371
+ 1524 002a 1DB1     		cbz	r5, .L87
+ 1525              	.LVL126:
+ 1526              	.L83:
+ 498:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1527              		.loc 1 498 5 is_stmt 1 view .LVU372
+ 499:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1528              		.loc 1 499 1 is_stmt 0 view .LVU373
+ 1529 002c 2800     		movs	r0, r5
+ 1530              		@ sp needed
+ 1531              	.LVL127:
+ 1532              	.LVL128:
+ 1533              	.LVL129:
+ 499:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1534              		.loc 1 499 1 view .LVU374
+ 1535 002e 70BD     		pop	{r4, r5, r6, pc}
+ 1536              	.LVL130:
+ 1537              	.L86:
+ 459:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 1538              		.loc 1 459 19 view .LVU375
+ 1539 0030 0625     		movs	r5, #6
+ 1540              	.LVL131:
+ 459:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     }
+ 1541              		.loc 1 459 19 view .LVU376
+ 1542 0032 F7E7     		b	.L82
+ 1543              	.LVL132:
+ 1544              	.L87:
+ 467:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1545              		.loc 1 467 9 is_stmt 1 view .LVU377
+ 1546 0034 42F21003 		movw	r3, #8208
+ 1547 0038 C4F20203 		movt	r3, 16386
+ 1548 003c 1A68     		ldr	r2, [r3]
+ 467:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1549              		.loc 1 467 17 is_stmt 0 view .LVU378
+ 1550 003e 2021     		movs	r1, #32
+ 1551 0040 0A43     		orrs	r2, r1
+ 1552 0042 1A60     		str	r2, [r3]
+ 468:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1553              		.loc 1 468 9 is_stmt 1 view .LVU379
+ 1554 0044 1A68     		ldr	r2, [r3]
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 46
+
+
+ 468:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1555              		.loc 1 468 17 is_stmt 0 view .LVU380
+ 1556 0046 2031     		adds	r1, r1, #32
+ 1557 0048 0A43     		orrs	r2, r1
+ 1558 004a 1A60     		str	r2, [r3]
+ 471:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1559              		.loc 1 471 9 is_stmt 1 view .LVU381
+ 471:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1560              		.loc 1 471 21 is_stmt 0 view .LVU382
+ 1561 004c F020     		movs	r0, #240
+ 1562 004e 0003     		lsls	r0, r0, #12
+ 1563 0050 FFF7FEFF 		bl	fmc_ready_wait
+ 1564              	.LVL133:
+ 1565 0054 0500     		movs	r5, r0
+ 1566              	.LVL134:
+ 473:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 1567              		.loc 1 473 9 is_stmt 1 view .LVU383
+ 473:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 1568              		.loc 1 473 11 is_stmt 0 view .LVU384
+ 1569 0056 50B1     		cbz	r0, .L88
+ 491:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1570              		.loc 1 491 13 is_stmt 1 view .LVU385
+ 491:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1571              		.loc 1 491 15 is_stmt 0 view .LVU386
+ 1572 0058 0528     		cmp	r0, #5
+ 1573 005a E7D0     		beq	.L83
+ 493:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1574              		.loc 1 493 17 is_stmt 1 view .LVU387
+ 1575 005c 42F21003 		movw	r3, #8208
+ 1576 0060 C4F20203 		movt	r3, 16386
+ 1577 0064 1A68     		ldr	r2, [r3]
+ 493:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1578              		.loc 1 493 25 is_stmt 0 view .LVU388
+ 1579 0066 2021     		movs	r1, #32
+ 1580 0068 8A43     		bics	r2, r1
+ 1581 006a 1A60     		str	r2, [r3]
+ 1582 006c DEE7     		b	.L83
+ 1583              	.L88:
+ 476:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 1584              		.loc 1 476 13 is_stmt 1 view .LVU389
+ 1585 006e 42F21003 		movw	r3, #8208
+ 1586 0072 C4F20203 		movt	r3, 16386
+ 1587 0076 1A68     		ldr	r2, [r3]
+ 476:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 1588              		.loc 1 476 21 is_stmt 0 view .LVU390
+ 1589 0078 2021     		movs	r1, #32
+ 1590 007a 8A43     		bics	r2, r1
+ 1591 007c 1A60     		str	r2, [r3]
+ 479:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1592              		.loc 1 479 13 is_stmt 1 view .LVU391
+ 1593 007e 1A68     		ldr	r2, [r3]
+ 479:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1594              		.loc 1 479 21 is_stmt 0 view .LVU392
+ 1595 0080 1039     		subs	r1, r1, #16
+ 1596 0082 0A43     		orrs	r2, r1
+ 1597 0084 1A60     		str	r2, [r3]
+ 481:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 47
+
+
+ 1598              		.loc 1 481 13 is_stmt 1 view .LVU393
+ 481:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1599              		.loc 1 481 25 is_stmt 0 view .LVU394
+ 1600 0086 4FF60003 		movw	r3, #63488
+ 1601 008a C1F6FF73 		movt	r3, 8191
+ 1602 008e 1C60     		str	r4, [r3]
+ 484:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1603              		.loc 1 484 13 is_stmt 1 view .LVU395
+ 484:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1604              		.loc 1 484 25 is_stmt 0 view .LVU396
+ 1605 0090 F020     		movs	r0, #240
+ 1606              	.LVL135:
+ 484:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1607              		.loc 1 484 25 view .LVU397
+ 1608 0092 0003     		lsls	r0, r0, #12
+ 1609 0094 FFF7FEFF 		bl	fmc_ready_wait
+ 1610              	.LVL136:
+ 1611 0098 0500     		movs	r5, r0
+ 1612              	.LVL137:
+ 486:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1613              		.loc 1 486 13 is_stmt 1 view .LVU398
+ 486:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1614              		.loc 1 486 15 is_stmt 0 view .LVU399
+ 1615 009a 0528     		cmp	r0, #5
+ 1616 009c C6D0     		beq	.L83
+ 488:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1617              		.loc 1 488 17 is_stmt 1 view .LVU400
+ 1618 009e 42F21003 		movw	r3, #8208
+ 1619 00a2 C4F20203 		movt	r3, 16386
+ 1620 00a6 1A68     		ldr	r2, [r3]
+ 488:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1621              		.loc 1 488 25 is_stmt 0 view .LVU401
+ 1622 00a8 1021     		movs	r1, #16
+ 1623 00aa 8A43     		bics	r2, r1
+ 1624 00ac 1A60     		str	r2, [r3]
+ 1625 00ae BDE7     		b	.L83
+ 1626              		.cfi_endproc
+ 1627              	.LFE75:
+ 1629              		.section	.text.ob_user_write,"ax",%progbits
+ 1630              		.align	1
+ 1631              		.global	ob_user_write
+ 1632              		.syntax unified
+ 1633              		.code	16
+ 1634              		.thumb_func
+ 1636              	ob_user_write:
+ 1637              	.LVL138:
+ 1638              	.LFB76:
+ 524:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val_spc_user;
+ 1639              		.loc 1 524 1 is_stmt 1 view -0
+ 1640              		.cfi_startproc
+ 1641              		@ args = 0, pretend = 0, frame = 0
+ 1642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val_spc_user;
+ 1643              		.loc 1 524 1 is_stmt 0 view .LVU403
+ 1644 0000 70B5     		push	{r4, r5, r6, lr}
+ 1645              	.LCFI9:
+ 1646              		.cfi_def_cfa_offset 16
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 48
+
+
+ 1647              		.cfi_offset 4, -16
+ 1648              		.cfi_offset 5, -12
+ 1649              		.cfi_offset 6, -8
+ 1650              		.cfi_offset 14, -4
+ 1651 0002 0500     		movs	r5, r0
+ 525:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     /* check whether FMC is ready or not */
+ 1652              		.loc 1 525 5 is_stmt 1 view .LVU404
+ 527:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1653              		.loc 1 527 5 view .LVU405
+ 527:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1654              		.loc 1 527 32 is_stmt 0 view .LVU406
+ 1655 0004 F020     		movs	r0, #240
+ 1656              	.LVL139:
+ 527:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1657              		.loc 1 527 32 view .LVU407
+ 1658 0006 0003     		lsls	r0, r0, #12
+ 1659 0008 FFF7FEFF 		bl	fmc_ready_wait
+ 1660              	.LVL140:
+ 1661 000c 0400     		movs	r4, r0
+ 1662              	.LVL141:
+ 529:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1663              		.loc 1 529 5 is_stmt 1 view .LVU408
+ 529:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1664              		.loc 1 529 20 is_stmt 0 view .LVU409
+ 1665 000e 4FF60000 		movw	r0, #63488
+ 1666              	.LVL142:
+ 529:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1667              		.loc 1 529 20 view .LVU410
+ 1668 0012 C1F6FF70 		movt	r0, 8191
+ 1669 0016 FFF7FEFF 		bl	option_byte_value_get
+ 1670              	.LVL143:
+ 531:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1671              		.loc 1 531 5 is_stmt 1 view .LVU411
+ 531:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1672              		.loc 1 531 18 is_stmt 0 view .LVU412
+ 1673 001a 4FF6FF73 		movw	r3, #65535
+ 1674 001e 0340     		ands	r3, r0
+ 1675              	.LVL144:
+ 533:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1676              		.loc 1 533 5 is_stmt 1 view .LVU413
+ 533:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1677              		.loc 1 533 39 is_stmt 0 view .LVU414
+ 1678 0020 2D04     		lsls	r5, r5, #16
+ 1679              	.LVL145:
+ 533:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1680              		.loc 1 533 18 view .LVU415
+ 1681 0022 1D43     		orrs	r5, r3
+ 1682              	.LVL146:
+ 535:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1683              		.loc 1 535 5 is_stmt 1 view .LVU416
+ 535:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* start erase the option byte */
+ 1684              		.loc 1 535 7 is_stmt 0 view .LVU417
+ 1685 0024 0CB1     		cbz	r4, .L92
+ 1686              	.LVL147:
+ 1687              	.L90:
+ 568:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1688              		.loc 1 568 5 is_stmt 1 view .LVU418
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 49
+
+
+ 569:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1689              		.loc 1 569 1 is_stmt 0 view .LVU419
+ 1690 0026 2000     		movs	r0, r4
+ 1691              		@ sp needed
+ 1692              	.LVL148:
+ 1693              	.LVL149:
+ 569:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1694              		.loc 1 569 1 view .LVU420
+ 1695 0028 70BD     		pop	{r4, r5, r6, pc}
+ 1696              	.LVL150:
+ 1697              	.L92:
+ 537:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1698              		.loc 1 537 9 is_stmt 1 view .LVU421
+ 1699 002a 42F21003 		movw	r3, #8208
+ 1700 002e C4F20203 		movt	r3, 16386
+ 1701 0032 1A68     		ldr	r2, [r3]
+ 537:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         FMC_CTL |= FMC_CTL_START;
+ 1702              		.loc 1 537 17 is_stmt 0 view .LVU422
+ 1703 0034 2021     		movs	r1, #32
+ 1704 0036 0A43     		orrs	r2, r1
+ 1705 0038 1A60     		str	r2, [r3]
+ 538:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1706              		.loc 1 538 9 is_stmt 1 view .LVU423
+ 1707 003a 1A68     		ldr	r2, [r3]
+ 538:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1708              		.loc 1 538 17 is_stmt 0 view .LVU424
+ 1709 003c 2031     		adds	r1, r1, #32
+ 1710 003e 0A43     		orrs	r2, r1
+ 1711 0040 1A60     		str	r2, [r3]
+ 541:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1712              		.loc 1 541 9 is_stmt 1 view .LVU425
+ 541:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1713              		.loc 1 541 21 is_stmt 0 view .LVU426
+ 1714 0042 F020     		movs	r0, #240
+ 1715 0044 0003     		lsls	r0, r0, #12
+ 1716 0046 FFF7FEFF 		bl	fmc_ready_wait
+ 1717              	.LVL151:
+ 1718 004a 0400     		movs	r4, r0
+ 1719              	.LVL152:
+ 543:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 1720              		.loc 1 543 9 is_stmt 1 view .LVU427
+ 543:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         
+ 1721              		.loc 1 543 11 is_stmt 0 view .LVU428
+ 1722 004c 50B1     		cbz	r0, .L93
+ 561:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1723              		.loc 1 561 13 is_stmt 1 view .LVU429
+ 561:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBER bit */
+ 1724              		.loc 1 561 15 is_stmt 0 view .LVU430
+ 1725 004e 0528     		cmp	r0, #5
+ 1726 0050 E9D0     		beq	.L90
+ 563:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1727              		.loc 1 563 17 is_stmt 1 view .LVU431
+ 1728 0052 42F21003 		movw	r3, #8208
+ 1729 0056 C4F20203 		movt	r3, 16386
+ 1730 005a 1A68     		ldr	r2, [r3]
+ 563:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1731              		.loc 1 563 25 is_stmt 0 view .LVU432
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 50
+
+
+ 1732 005c 2021     		movs	r1, #32
+ 1733 005e 8A43     		bics	r2, r1
+ 1734 0060 1A60     		str	r2, [r3]
+ 1735 0062 E0E7     		b	.L90
+ 1736              	.L93:
+ 546:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 1737              		.loc 1 546 13 is_stmt 1 view .LVU433
+ 1738 0064 42F21003 		movw	r3, #8208
+ 1739 0068 C4F20203 		movt	r3, 16386
+ 1740 006c 1A68     		ldr	r2, [r3]
+ 546:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****       
+ 1741              		.loc 1 546 21 is_stmt 0 view .LVU434
+ 1742 006e 2021     		movs	r1, #32
+ 1743 0070 8A43     		bics	r2, r1
+ 1744 0072 1A60     		str	r2, [r3]
+ 549:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1745              		.loc 1 549 13 is_stmt 1 view .LVU435
+ 1746 0074 1A68     		ldr	r2, [r3]
+ 549:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****        
+ 1747              		.loc 1 549 21 is_stmt 0 view .LVU436
+ 1748 0076 1039     		subs	r1, r1, #16
+ 1749 0078 0A43     		orrs	r2, r1
+ 1750 007a 1A60     		str	r2, [r3]
+ 551:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 1751              		.loc 1 551 13 is_stmt 1 view .LVU437
+ 551:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             
+ 1752              		.loc 1 551 25 is_stmt 0 view .LVU438
+ 1753 007c 4FF60003 		movw	r3, #63488
+ 1754 0080 C1F6FF73 		movt	r3, 8191
+ 1755 0084 1D60     		str	r5, [r3]
+ 554:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1756              		.loc 1 554 13 is_stmt 1 view .LVU439
+ 554:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1757              		.loc 1 554 25 is_stmt 0 view .LVU440
+ 1758 0086 F020     		movs	r0, #240
+ 1759              	.LVL153:
+ 554:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1760              		.loc 1 554 25 view .LVU441
+ 1761 0088 0003     		lsls	r0, r0, #12
+ 1762 008a FFF7FEFF 		bl	fmc_ready_wait
+ 1763              	.LVL154:
+ 1764 008e 0400     		movs	r4, r0
+ 1765              	.LVL155:
+ 556:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1766              		.loc 1 556 13 is_stmt 1 view .LVU442
+ 556:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****                 /* reset the OBPG bit */
+ 1767              		.loc 1 556 15 is_stmt 0 view .LVU443
+ 1768 0090 0528     		cmp	r0, #5
+ 1769 0092 C8D0     		beq	.L90
+ 558:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1770              		.loc 1 558 17 is_stmt 1 view .LVU444
+ 1771 0094 42F21003 		movw	r3, #8208
+ 1772 0098 C4F20203 		movt	r3, 16386
+ 1773 009c 1A68     		ldr	r2, [r3]
+ 558:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             }
+ 1774              		.loc 1 558 25 is_stmt 0 view .LVU445
+ 1775 009e 1021     		movs	r1, #16
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 51
+
+
+ 1776 00a0 8A43     		bics	r2, r1
+ 1777 00a2 1A60     		str	r2, [r3]
+ 1778 00a4 BFE7     		b	.L90
+ 1779              		.cfi_endproc
+ 1780              	.LFE76:
+ 1782              		.section	.text.ob_data_program,"ax",%progbits
+ 1783              		.align	1
+ 1784              		.global	ob_data_program
+ 1785              		.syntax unified
+ 1786              		.code	16
+ 1787              		.thumb_func
+ 1789              	ob_data_program:
+ 1790              	.LVL156:
+ 1791              	.LFB77:
+ 585:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1792              		.loc 1 585 1 is_stmt 1 view -0
+ 1793              		.cfi_startproc
+ 1794              		@ args = 0, pretend = 0, frame = 0
+ 1795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 585:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     fmc_state_enum fmc_state = fmc_ready_wait(FMC_TIMEOUT_COUNT);
+ 1796              		.loc 1 585 1 is_stmt 0 view .LVU447
+ 1797 0000 10B5     		push	{r4, lr}
+ 1798              	.LCFI10:
+ 1799              		.cfi_def_cfa_offset 8
+ 1800              		.cfi_offset 4, -8
+ 1801              		.cfi_offset 14, -4
+ 1802 0002 0400     		movs	r4, r0
+ 586:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val = 0U;
+ 1803              		.loc 1 586 5 is_stmt 1 view .LVU448
+ 586:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val = 0U;
+ 1804              		.loc 1 586 32 is_stmt 0 view .LVU449
+ 1805 0004 F020     		movs	r0, #240
+ 1806              	.LVL157:
+ 586:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     uint32_t val = 0U;
+ 1807              		.loc 1 586 32 view .LVU450
+ 1808 0006 0003     		lsls	r0, r0, #12
+ 1809 0008 FFF7FEFF 		bl	fmc_ready_wait
+ 1810              	.LVL158:
+ 587:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1811              		.loc 1 587 5 is_stmt 1 view .LVU451
+ 589:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (((uint32_t)data&0xFF00U)>>8U) << 16U;
+ 1812              		.loc 1 589 5 view .LVU452
+ 589:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     val |= (((uint32_t)data&0xFF00U)>>8U) << 16U;
+ 1813              		.loc 1 589 26 is_stmt 0 view .LVU453
+ 1814 000c FF23     		movs	r3, #255
+ 1815 000e 2340     		ands	r3, r4
+ 1816              	.LVL159:
+ 590:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1817              		.loc 1 590 5 is_stmt 1 view .LVU454
+ 590:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1818              		.loc 1 590 37 is_stmt 0 view .LVU455
+ 1819 0010 240A     		lsrs	r4, r4, #8
+ 1820              	.LVL160:
+ 590:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1821              		.loc 1 590 43 view .LVU456
+ 1822 0012 2404     		lsls	r4, r4, #16
+ 590:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 52
+
+
+ 1823              		.loc 1 590 9 view .LVU457
+ 1824 0014 2343     		orrs	r3, r4
+ 1825              	.LVL161:
+ 592:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit */
+ 1826              		.loc 1 592 5 is_stmt 1 view .LVU458
+ 592:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         /* set the OBPG bit */
+ 1827              		.loc 1 592 7 is_stmt 0 view .LVU459
+ 1828 0016 00B1     		cbz	r0, .L96
+ 1829              	.LVL162:
+ 1830              	.L95:
+ 606:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** }
+ 1831              		.loc 1 606 5 is_stmt 1 view .LVU460
+ 607:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1832              		.loc 1 607 1 is_stmt 0 view .LVU461
+ 1833              		@ sp needed
+ 1834              	.LVL163:
+ 607:Drivers/GD32E23x/Source/gd32e23x_fmc.c **** 
+ 1835              		.loc 1 607 1 view .LVU462
+ 1836 0018 10BD     		pop	{r4, pc}
+ 1837              	.LVL164:
+ 1838              	.L96:
+ 594:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         OB_DATA = val;
+ 1839              		.loc 1 594 9 is_stmt 1 view .LVU463
+ 1840 001a 42F21002 		movw	r2, #8208
+ 1841 001e C4F20202 		movt	r2, 16386
+ 1842 0022 1168     		ldr	r1, [r2]
+ 594:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         OB_DATA = val;
+ 1843              		.loc 1 594 17 is_stmt 0 view .LVU464
+ 1844 0024 1030     		adds	r0, r0, #16
+ 1845              	.LVL165:
+ 594:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         OB_DATA = val;
+ 1846              		.loc 1 594 17 view .LVU465
+ 1847 0026 0143     		orrs	r1, r0
+ 1848 0028 1160     		str	r1, [r2]
+ 595:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1849              		.loc 1 595 9 is_stmt 1 view .LVU466
+ 595:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1850              		.loc 1 595 17 is_stmt 0 view .LVU467
+ 1851 002a 4FF60402 		movw	r2, #63492
+ 1852 002e C1F6FF72 		movt	r2, 8191
+ 1853 0032 1360     		str	r3, [r2]
+ 598:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1854              		.loc 1 598 9 is_stmt 1 view .LVU468
+ 598:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1855              		.loc 1 598 21 is_stmt 0 view .LVU469
+ 1856 0034 E030     		adds	r0, r0, #224
+ 1857              	.LVL166:
+ 598:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1858              		.loc 1 598 21 view .LVU470
+ 1859 0036 0003     		lsls	r0, r0, #12
+ 1860              	.LVL167:
+ 598:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****     
+ 1861              		.loc 1 598 21 view .LVU471
+ 1862 0038 FFF7FEFF 		bl	fmc_ready_wait
+ 1863              	.LVL168:
+ 600:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 1864              		.loc 1 600 9 is_stmt 1 view .LVU472
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 53
+
+
+ 600:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****             /* reset the OBPG bit */
+ 1865              		.loc 1 600 11 is_stmt 0 view .LVU473
+ 1866 003c 0528     		cmp	r0, #5
+ 1867 003e EBD0     		beq	.L95
+ 602:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1868              		.loc 1 602 13 is_stmt 1 view .LVU474
+ 1869 0040 42F21003 		movw	r3, #8208
+ 1870 0044 C4F20203 		movt	r3, 16386
+ 1871 0048 1A68     		ldr	r2, [r3]
+ 602:Drivers/GD32E23x/Source/gd32e23x_fmc.c ****         }
+ 1872              		.loc 1 602 21 is_stmt 0 view .LVU475
+ 1873 004a 1021     		movs	r1, #16
+ 1874 004c 8A43     		bics	r2, r1
+ 1875 004e 1A60     		str	r2, [r3]
+ 1876 0050 E2E7     		b	.L95
+ 1877              		.cfi_endproc
+ 1878              	.LFE77:
+ 1880              		.text
+ 1881              	.Letext0:
+ 1882              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 1883              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 1884              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 1885              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_fmc.h"
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 54
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_fmc.c
+D:\noval\Temp\ccZJTdyL.s:19     .text.fmc_unlock:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:25     .text.fmc_unlock:00000000 fmc_unlock
+D:\noval\Temp\ccZJTdyL.s:60     .text.fmc_lock:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:66     .text.fmc_lock:00000000 fmc_lock
+D:\noval\Temp\ccZJTdyL.s:88     .text.fmc_wscnt_set:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:94     .text.fmc_wscnt_set:00000000 fmc_wscnt_set
+D:\noval\Temp\ccZJTdyL.s:127    .text.fmc_prefetch_enable:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:133    .text.fmc_prefetch_enable:00000000 fmc_prefetch_enable
+D:\noval\Temp\ccZJTdyL.s:155    .text.fmc_prefetch_disable:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:161    .text.fmc_prefetch_disable:00000000 fmc_prefetch_disable
+D:\noval\Temp\ccZJTdyL.s:183    .text.ob_unlock:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:189    .text.ob_unlock:00000000 ob_unlock
+D:\noval\Temp\ccZJTdyL.s:233    .text.ob_lock:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:239    .text.ob_lock:00000000 ob_lock
+D:\noval\Temp\ccZJTdyL.s:260    .text.ob_lock:00000014 $d
+D:\noval\Temp\ccZJTdyL.s:265    .text.ob_reset:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:271    .text.ob_reset:00000000 ob_reset
+D:\noval\Temp\ccZJTdyL.s:293    .text.option_byte_value_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:299    .text.option_byte_value_get:00000000 option_byte_value_get
+D:\noval\Temp\ccZJTdyL.s:318    .text.ob_user_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:324    .text.ob_user_get:00000000 ob_user_get
+D:\noval\Temp\ccZJTdyL.s:347    .text.ob_data_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:353    .text.ob_data_get:00000000 ob_data_get
+D:\noval\Temp\ccZJTdyL.s:374    .text.ob_write_protection_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:380    .text.ob_write_protection_get:00000000 ob_write_protection_get
+D:\noval\Temp\ccZJTdyL.s:399    .text.ob_obstat_plevel_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:405    .text.ob_obstat_plevel_get:00000000 ob_obstat_plevel_get
+D:\noval\Temp\ccZJTdyL.s:426    .text.fmc_interrupt_enable:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:432    .text.fmc_interrupt_enable:00000000 fmc_interrupt_enable
+D:\noval\Temp\ccZJTdyL.s:454    .text.fmc_interrupt_disable:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:460    .text.fmc_interrupt_disable:00000000 fmc_interrupt_disable
+D:\noval\Temp\ccZJTdyL.s:482    .text.fmc_flag_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:488    .text.fmc_flag_get:00000000 fmc_flag_get
+D:\noval\Temp\ccZJTdyL.s:524    .text.fmc_flag_clear:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:530    .text.fmc_flag_clear:00000000 fmc_flag_clear
+D:\noval\Temp\ccZJTdyL.s:550    .text.fmc_interrupt_flag_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:556    .text.fmc_interrupt_flag_get:00000000 fmc_interrupt_flag_get
+D:\noval\Temp\ccZJTdyL.s:643    .text.fmc_interrupt_flag_clear:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:649    .text.fmc_interrupt_flag_clear:00000000 fmc_interrupt_flag_clear
+D:\noval\Temp\ccZJTdyL.s:669    .text.fmc_state_get:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:675    .text.fmc_state_get:00000000 fmc_state_get
+D:\noval\Temp\ccZJTdyL.s:733    .text.fmc_ready_wait:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:739    .text.fmc_ready_wait:00000000 fmc_ready_wait
+D:\noval\Temp\ccZJTdyL.s:795    .text.fmc_page_erase:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:801    .text.fmc_page_erase:00000000 fmc_page_erase
+D:\noval\Temp\ccZJTdyL.s:877    .text.fmc_mass_erase:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:883    .text.fmc_mass_erase:00000000 fmc_mass_erase
+D:\noval\Temp\ccZJTdyL.s:946    .text.fmc_doubleword_program:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:952    .text.fmc_doubleword_program:00000000 fmc_doubleword_program
+D:\noval\Temp\ccZJTdyL.s:1055   .text.fmc_doubleword_program:00000068 $d
+D:\noval\Temp\ccZJTdyL.s:1060   .text.fmc_word_program:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1066   .text.fmc_word_program:00000000 fmc_word_program
+D:\noval\Temp\ccZJTdyL.s:1138   .text.ob_erase:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1144   .text.ob_erase:00000000 ob_erase
+D:\noval\Temp\ccZJTdyL.s:1301   .text.ob_erase:000000a8 $d
+ARM GAS  D:\noval\Temp\ccZJTdyL.s 			page 55
+
+
+D:\noval\Temp\ccZJTdyL.s:1306   .text.ob_write_protection_enable:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1312   .text.ob_write_protection_enable:00000000 ob_write_protection_enable
+D:\noval\Temp\ccZJTdyL.s:1459   .text.ob_security_protection_config:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1465   .text.ob_security_protection_config:00000000 ob_security_protection_config
+D:\noval\Temp\ccZJTdyL.s:1630   .text.ob_user_write:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1636   .text.ob_user_write:00000000 ob_user_write
+D:\noval\Temp\ccZJTdyL.s:1783   .text.ob_data_program:00000000 $t
+D:\noval\Temp\ccZJTdyL.s:1789   .text.ob_data_program:00000000 ob_data_program
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,656 @@
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_cmp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_cmp.c"
+  18              		.section	.text.cmp_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	cmp_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	cmp_deinit:
+  26              	.LVL0:
+  27              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \file    gd32f23x_cmp.c
+   3:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief   CMP driver
+   4:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+   5:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     Redistribution and use in source and binary forms, with or without modification,
+  12:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  15:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****        this list of conditions and the following disclaimer in the documentation
+  18:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  20:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****        may be used to endorse or promote products derived from this software without
+  21:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  24:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  25:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  26:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  27:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  28:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  29:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  30:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  31:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 2
+
+
+  32:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** OF SUCH DAMAGE.
+  33:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** #include "gd32e23x_cmp.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+  38:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      CMP deinit
+  39:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+  40:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+  41:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+  42:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+  43:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+  44:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_deinit(cmp_enum cmp_periph)
+  45:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+  28              		.loc 1 45 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  46:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+  33              		.loc 1 46 5 view .LVU1
+  34              		.loc 1 46 7 is_stmt 0 view .LVU2
+  35 0000 30B9     		cbnz	r0, .L1
+  47:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS &= ((uint32_t)0xFFFF0000U);
+  36              		.loc 1 47 9 is_stmt 1 view .LVU3
+  37 0002 1C22     		movs	r2, #28
+  38 0004 C4F20102 		movt	r2, 16385
+  39 0008 1368     		ldr	r3, [r2]
+  40              		.loc 1 47 16 is_stmt 0 view .LVU4
+  41 000a 1B0C     		lsrs	r3, r3, #16
+  42 000c 1B04     		lsls	r3, r3, #16
+  43 000e 1360     		str	r3, [r2]
+  48:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+  49:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+  44              		.loc 1 49 5 is_stmt 1 view .LVU5
+  45              	.L1:
+  50:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+  46              		.loc 1 50 1 is_stmt 0 view .LVU6
+  47              		@ sp needed
+  48 0010 7047     		bx	lr
+  49              		.cfi_endproc
+  50              	.LFE60:
+  52              		.section	.text.cmp_mode_init,"ax",%progbits
+  53              		.align	1
+  54              		.global	cmp_mode_init
+  55              		.syntax unified
+  56              		.code	16
+  57              		.thumb_func
+  59              	cmp_mode_init:
+  60              	.LVL1:
+  61              	.LFB61:
+  51:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  52:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+  53:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      CMP mode init
+  54:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+  55:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+  56:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  operating_mode
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 3
+
+
+  57:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_MODE_HIGHSPEED: high speed mode
+  58:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_MODE_MIDDLESPEED: medium speed mode
+  59:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_MODE_LOWSPEED: low speed mode
+  60:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_MODE_VERYLOWSPEED: very-low speed mode
+  61:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  inverting_input
+  62:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_1_4VREFINT: VREFINT *1/4 input
+  63:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_1_2VREFINT: VREFINT *1/2 input
+  64:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_3_4VREFINT: VREFINT *3/4 input
+  65:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_VREFINT: VREFINT input
+  66:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_PA4: PA4 input
+  67:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_PA5: PA5 input
+  68:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_INVERTING_INPUT_PA0_PA2: PA0 for CMP0 or PA2 for CMP1 as inverting input
+  69:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  output_hysteresis
+  70:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_HYSTERESIS_NO: output no hysteresis
+  71:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_HYSTERESIS_LOW: output low hysteresis
+  72:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_HYSTERESIS_MIDDLE: output middle hysteresis
+  73:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_HYSTERESIS_HIGH: output high hysteresis
+  74:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+  75:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+  76:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+  77:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_mode_init(cmp_enum cmp_periph, uint32_t operating_mode, uint32_t inverting_input, uint32_t
+  78:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+  62              		.loc 1 78 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		.loc 1 78 1 is_stmt 0 view .LVU8
+  67 0000 30B5     		push	{r4, r5, lr}
+  68              	.LCFI0:
+  69              		.cfi_def_cfa_offset 12
+  70              		.cfi_offset 4, -12
+  71              		.cfi_offset 5, -8
+  72              		.cfi_offset 14, -4
+  79:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     uint32_t temp = 0U;
+  73              		.loc 1 79 5 is_stmt 1 view .LVU9
+  74              	.LVL2:
+  80:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  81:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+  75              		.loc 1 81 5 view .LVU10
+  76              		.loc 1 81 7 is_stmt 0 view .LVU11
+  77 0002 48B9     		cbnz	r0, .L3
+  82:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         /* initialize comparator 0 mode */
+  83:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp = CMP_CS;
+  78              		.loc 1 83 9 is_stmt 1 view .LVU12
+  79              		.loc 1 83 14 is_stmt 0 view .LVU13
+  80 0004 1C30     		adds	r0, r0, #28
+  81              	.LVL3:
+  82              		.loc 1 83 14 view .LVU14
+  83 0006 C4F20100 		movt	r0, 16385
+  84              	.LVL4:
+  85              		.loc 1 83 14 view .LVU15
+  86 000a 0468     		ldr	r4, [r0]
+  87              	.LVL5:
+  84:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp &= ~(uint32_t)(CMP_CS_CMP0M | CMP_CS_CMP0MSEL | CMP_CS_CMP0HST);
+  88              		.loc 1 84 9 is_stmt 1 view .LVU16
+  89              		.loc 1 84 14 is_stmt 0 view .LVU17
+  90 000c 034D     		ldr	r5, .L5
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 4
+
+
+  91 000e 2C40     		ands	r4, r5
+  92              	.LVL6:
+  85:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp |= (uint32_t)(operating_mode | inverting_input | output_hysteresis);
+  93              		.loc 1 85 9 is_stmt 1 view .LVU18
+  94              		.loc 1 85 43 is_stmt 0 view .LVU19
+  95 0010 1143     		orrs	r1, r2
+  96              	.LVL7:
+  97              		.loc 1 85 61 view .LVU20
+  98 0012 1943     		orrs	r1, r3
+  99              		.loc 1 85 14 view .LVU21
+ 100 0014 2143     		orrs	r1, r4
+ 101              	.LVL8:
+  86:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS = temp;
+ 102              		.loc 1 86 9 is_stmt 1 view .LVU22
+ 103              		.loc 1 86 16 is_stmt 0 view .LVU23
+ 104 0016 0160     		str	r1, [r0]
+  87:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+  88:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 105              		.loc 1 88 5 is_stmt 1 view .LVU24
+ 106              	.LVL9:
+ 107              	.L3:
+  89:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 108              		.loc 1 89 1 is_stmt 0 view .LVU25
+ 109              		@ sp needed
+ 110 0018 30BD     		pop	{r4, r5, pc}
+ 111              	.L6:
+ 112 001a C046     		.align	2
+ 113              	.L5:
+ 114 001c 83CFFFFF 		.word	-12413
+ 115              		.cfi_endproc
+ 116              	.LFE61:
+ 118              		.section	.text.cmp_output_init,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	cmp_output_init
+ 121              		.syntax unified
+ 122              		.code	16
+ 123              		.thumb_func
+ 125              	cmp_output_init:
+ 126              	.LVL10:
+ 127              	.LFB62:
+  90:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+  91:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+  92:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      CMP output init
+  93:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+  94:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+  95:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  output_selection
+  96:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_NONE: CMP output none
+  97:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_TIMER0_BKIN: CMP output TIMER0 break input
+  98:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_TIMER0_IC0: CMP output TIMER0_CH0 input capture
+  99:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_TIMER0_OCPRECLR: CMP output TIMER0 OCPRE_CLR input
+ 100:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_TIMER2_IC0: CMP output TIMER2_CH0 input capture
+ 101:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_TIMER2_OCPRECLR: CMP output TIMER2 OCPRE_CLR input
+ 102:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  output_polarity
+ 103:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_POLARITY_INVERTED: output is inverted
+ 104:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_POLARITY_NONINVERTED: output is not inverted
+ 105:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 106:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 5
+
+
+ 107:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 108:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_output_init(cmp_enum cmp_periph, uint32_t output_selection, uint32_t output_polarity)
+ 109:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 128              		.loc 1 109 1 is_stmt 1 view -0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		@ link register save eliminated.
+ 133              		.loc 1 109 1 is_stmt 0 view .LVU27
+ 134 0000 0B00     		movs	r3, r1
+ 110:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     uint32_t temp = 0U;
+ 135              		.loc 1 110 5 is_stmt 1 view .LVU28
+ 136              	.LVL11:
+ 111:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 112:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+ 137              		.loc 1 112 5 view .LVU29
+ 138              		.loc 1 112 7 is_stmt 0 view .LVU30
+ 139 0002 80B9     		cbnz	r0, .L7
+ 113:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         /* initialize comparator 0 output */
+ 114:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp = CMP_CS;
+ 140              		.loc 1 114 9 is_stmt 1 view .LVU31
+ 141              		.loc 1 114 14 is_stmt 0 view .LVU32
+ 142 0004 1C21     		movs	r1, #28
+ 143              	.LVL12:
+ 144              		.loc 1 114 14 view .LVU33
+ 145 0006 C4F20101 		movt	r1, 16385
+ 146 000a 0968     		ldr	r1, [r1]
+ 147              	.LVL13:
+ 115:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp &= ~(uint32_t)CMP_CS_CMP0OSEL;
+ 148              		.loc 1 115 9 is_stmt 1 view .LVU34
+ 149              		.loc 1 115 14 is_stmt 0 view .LVU35
+ 150 000c 0748     		ldr	r0, .L12
+ 151              	.LVL14:
+ 152              		.loc 1 115 14 view .LVU36
+ 153 000e 0140     		ands	r1, r0
+ 154              	.LVL15:
+ 116:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         temp |= (uint32_t)output_selection;
+ 155              		.loc 1 116 9 is_stmt 1 view .LVU37
+ 156              		.loc 1 116 14 is_stmt 0 view .LVU38
+ 157 0010 1943     		orrs	r1, r3
+ 158              	.LVL16:
+ 117:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         /* output polarity */
+ 118:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         if(CMP_OUTPUT_POLARITY_INVERTED == output_polarity){
+ 159              		.loc 1 118 9 is_stmt 1 view .LVU39
+ 160              		.loc 1 118 11 is_stmt 0 view .LVU40
+ 161 0012 40F60003 		movw	r3, #2048
+ 162              	.LVL17:
+ 163              		.loc 1 118 11 view .LVU41
+ 164 0016 9A42     		cmp	r2, r3
+ 165 0018 06D0     		beq	.L11
+ 119:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****             temp |= (uint32_t)CMP_CS_CMP0PL;
+ 120:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         }else{
+ 121:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****             temp &= ~(uint32_t)CMP_CS_CMP0PL;
+ 166              		.loc 1 121 13 is_stmt 1 view .LVU42
+ 167              		.loc 1 121 18 is_stmt 0 view .LVU43
+ 168 001a 054B     		ldr	r3, .L12+4
+ 169 001c 1940     		ands	r1, r3
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 6
+
+
+ 170              	.LVL18:
+ 171              	.L10:
+ 122:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         }
+ 123:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS = temp;
+ 172              		.loc 1 123 9 is_stmt 1 view .LVU44
+ 173              		.loc 1 123 16 is_stmt 0 view .LVU45
+ 174 001e 1C23     		movs	r3, #28
+ 175 0020 C4F20103 		movt	r3, 16385
+ 176 0024 1960     		str	r1, [r3]
+ 124:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+ 125:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 177              		.loc 1 125 5 is_stmt 1 view .LVU46
+ 178              	.LVL19:
+ 179              	.L7:
+ 126:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 180              		.loc 1 126 1 is_stmt 0 view .LVU47
+ 181              		@ sp needed
+ 182 0026 7047     		bx	lr
+ 183              	.LVL20:
+ 184              	.L11:
+ 119:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         }else{
+ 185              		.loc 1 119 13 is_stmt 1 view .LVU48
+ 119:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         }else{
+ 186              		.loc 1 119 18 is_stmt 0 view .LVU49
+ 187 0028 1943     		orrs	r1, r3
+ 188              	.LVL21:
+ 119:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         }else{
+ 189              		.loc 1 119 18 view .LVU50
+ 190 002a F8E7     		b	.L10
+ 191              	.L13:
+ 192              		.align	2
+ 193              	.L12:
+ 194 002c FFF8FFFF 		.word	-1793
+ 195 0030 FFF7FFFF 		.word	-2049
+ 196              		.cfi_endproc
+ 197              	.LFE62:
+ 199              		.section	.text.cmp_enable,"ax",%progbits
+ 200              		.align	1
+ 201              		.global	cmp_enable
+ 202              		.syntax unified
+ 203              		.code	16
+ 204              		.thumb_func
+ 206              	cmp_enable:
+ 207              	.LVL22:
+ 208              	.LFB63:
+ 127:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 128:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 129:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      enable CMP
+ 130:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+ 131:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+ 132:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 133:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ 134:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 135:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_enable(cmp_enum cmp_periph)
+ 136:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 209              		.loc 1 136 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 7
+
+
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 137:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+ 214              		.loc 1 137 5 view .LVU52
+ 215              		.loc 1 137 7 is_stmt 0 view .LVU53
+ 216 0000 30B9     		cbnz	r0, .L14
+ 138:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS |= (uint32_t)CMP_CS_CMP0EN;
+ 217              		.loc 1 138 9 is_stmt 1 view .LVU54
+ 218 0002 1C23     		movs	r3, #28
+ 219 0004 C4F20103 		movt	r3, 16385
+ 220 0008 1A68     		ldr	r2, [r3]
+ 221              		.loc 1 138 16 is_stmt 0 view .LVU55
+ 222 000a 0121     		movs	r1, #1
+ 223 000c 0A43     		orrs	r2, r1
+ 224 000e 1A60     		str	r2, [r3]
+ 139:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+ 140:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 225              		.loc 1 140 5 is_stmt 1 view .LVU56
+ 226              	.L14:
+ 141:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 227              		.loc 1 141 1 is_stmt 0 view .LVU57
+ 228              		@ sp needed
+ 229 0010 7047     		bx	lr
+ 230              		.cfi_endproc
+ 231              	.LFE63:
+ 233              		.section	.text.cmp_disable,"ax",%progbits
+ 234              		.align	1
+ 235              		.global	cmp_disable
+ 236              		.syntax unified
+ 237              		.code	16
+ 238              		.thumb_func
+ 240              	cmp_disable:
+ 241              	.LVL23:
+ 242              	.LFB64:
+ 142:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 143:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 144:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      disable CMP
+ 145:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+ 146:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+ 147:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 148:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ 149:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 150:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_disable(cmp_enum cmp_periph)
+ 151:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 243              		.loc 1 151 1 is_stmt 1 view -0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247              		@ link register save eliminated.
+ 152:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+ 248              		.loc 1 152 5 view .LVU59
+ 249              		.loc 1 152 7 is_stmt 0 view .LVU60
+ 250 0000 30B9     		cbnz	r0, .L16
+ 153:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS &= ~(uint32_t)CMP_CS_CMP0EN;
+ 251              		.loc 1 153 9 is_stmt 1 view .LVU61
+ 252 0002 1C23     		movs	r3, #28
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 8
+
+
+ 253 0004 C4F20103 		movt	r3, 16385
+ 254 0008 1A68     		ldr	r2, [r3]
+ 255              		.loc 1 153 16 is_stmt 0 view .LVU62
+ 256 000a 0121     		movs	r1, #1
+ 257 000c 8A43     		bics	r2, r1
+ 258 000e 1A60     		str	r2, [r3]
+ 154:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+ 155:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 259              		.loc 1 155 5 is_stmt 1 view .LVU63
+ 260              	.L16:
+ 156:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 261              		.loc 1 156 1 is_stmt 0 view .LVU64
+ 262              		@ sp needed
+ 263 0010 7047     		bx	lr
+ 264              		.cfi_endproc
+ 265              	.LFE64:
+ 267              		.section	.text.cmp_switch_enable,"ax",%progbits
+ 268              		.align	1
+ 269              		.global	cmp_switch_enable
+ 270              		.syntax unified
+ 271              		.code	16
+ 272              		.thumb_func
+ 274              	cmp_switch_enable:
+ 275              	.LFB65:
+ 157:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 158:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 159:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      enable CMP switch
+ 160:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  none
+ 161:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 162:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ 163:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 164:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_switch_enable(void)
+ 165:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 276              		.loc 1 165 1 is_stmt 1 view -0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 0
+ 279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 280              		@ link register save eliminated.
+ 166:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     CMP_CS |= (uint32_t)CMP_CS_CMP0SW;
+ 281              		.loc 1 166 5 view .LVU66
+ 282 0000 1C23     		movs	r3, #28
+ 283 0002 C4F20103 		movt	r3, 16385
+ 284 0006 1A68     		ldr	r2, [r3]
+ 285              		.loc 1 166 12 is_stmt 0 view .LVU67
+ 286 0008 0221     		movs	r1, #2
+ 287 000a 0A43     		orrs	r2, r1
+ 288 000c 1A60     		str	r2, [r3]
+ 167:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 289              		.loc 1 167 1 view .LVU68
+ 290              		@ sp needed
+ 291 000e 7047     		bx	lr
+ 292              		.cfi_endproc
+ 293              	.LFE65:
+ 295              		.section	.text.cmp_switch_disable,"ax",%progbits
+ 296              		.align	1
+ 297              		.global	cmp_switch_disable
+ 298              		.syntax unified
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 9
+
+
+ 299              		.code	16
+ 300              		.thumb_func
+ 302              	cmp_switch_disable:
+ 303              	.LFB66:
+ 168:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 169:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 170:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      disable CMP switch
+ 171:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  none
+ 172:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 173:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ 174:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 175:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_switch_disable(void)
+ 176:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 304              		.loc 1 176 1 is_stmt 1 view -0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308              		@ link register save eliminated.
+ 177:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     CMP_CS &= ~(uint32_t)CMP_CS_CMP0SW;
+ 309              		.loc 1 177 5 view .LVU70
+ 310 0000 1C23     		movs	r3, #28
+ 311 0002 C4F20103 		movt	r3, 16385
+ 312 0006 1A68     		ldr	r2, [r3]
+ 313              		.loc 1 177 12 is_stmt 0 view .LVU71
+ 314 0008 0221     		movs	r1, #2
+ 315 000a 8A43     		bics	r2, r1
+ 316 000c 1A60     		str	r2, [r3]
+ 178:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 317              		.loc 1 178 1 view .LVU72
+ 318              		@ sp needed
+ 319 000e 7047     		bx	lr
+ 320              		.cfi_endproc
+ 321              	.LFE66:
+ 323              		.section	.text.cmp_lock_enable,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	cmp_lock_enable
+ 326              		.syntax unified
+ 327              		.code	16
+ 328              		.thumb_func
+ 330              	cmp_lock_enable:
+ 331              	.LVL24:
+ 332              	.LFB67:
+ 179:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 180:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 181:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      lock the CMP
+ 182:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+ 183:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+ 184:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 185:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
+ 186:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 187:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** void cmp_lock_enable(cmp_enum cmp_periph)
+ 188:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 333              		.loc 1 188 1 is_stmt 1 view -0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 10
+
+
+ 189:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
+ 338              		.loc 1 189 5 view .LVU74
+ 339              		.loc 1 189 7 is_stmt 0 view .LVU75
+ 340 0000 38B9     		cbnz	r0, .L20
+ 190:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         /* lock CMP0 */
+ 191:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS |= (uint32_t)CMP_CS_CMP0LK;
+ 341              		.loc 1 191 9 is_stmt 1 view .LVU76
+ 342 0002 1C23     		movs	r3, #28
+ 343 0004 C4F20103 		movt	r3, 16385
+ 344 0008 1A68     		ldr	r2, [r3]
+ 345              		.loc 1 191 16 is_stmt 0 view .LVU77
+ 346 000a 48F20001 		movw	r1, #32768
+ 347 000e 0A43     		orrs	r2, r1
+ 348 0010 1A60     		str	r2, [r3]
+ 192:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+ 193:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 349              		.loc 1 193 5 is_stmt 1 view .LVU78
+ 350              	.L20:
+ 194:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 351              		.loc 1 194 1 is_stmt 0 view .LVU79
+ 352              		@ sp needed
+ 353 0012 7047     		bx	lr
+ 354              		.cfi_endproc
+ 355              	.LFE67:
+ 357              		.section	.text.cmp_output_level_get,"ax",%progbits
+ 358              		.align	1
+ 359              		.global	cmp_output_level_get
+ 360              		.syntax unified
+ 361              		.code	16
+ 362              		.thumb_func
+ 364              	cmp_output_level_get:
+ 365              	.LVL25:
+ 366              	.LFB68:
+ 195:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** 
+ 196:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** /*!
+ 197:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \brief      get output level
+ 198:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
+ 199:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
+ 200:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
+ 201:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     the output level
+ 202:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
+ 203:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** uint32_t cmp_output_level_get(cmp_enum cmp_periph)
+ 204:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
+ 367              		.loc 1 204 1 is_stmt 1 view -0
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		@ link register save eliminated.
+ 205:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     /* get output level of CMP0 */
+ 206:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if((uint32_t)RESET != (CMP_CS & CMP_CS_CMP0O)) {
+ 372              		.loc 1 206 5 view .LVU81
+ 373              		.loc 1 206 28 is_stmt 0 view .LVU82
+ 374 0000 1C23     		movs	r3, #28
+ 375 0002 C4F20103 		movt	r3, 16385
+ 376 0006 1B68     		ldr	r3, [r3]
+ 377              		.loc 1 206 35 view .LVU83
+ 378 0008 44F20002 		movw	r2, #16384
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 11
+
+
+ 379 000c 1000     		movs	r0, r2
+ 380              	.LVL26:
+ 381              		.loc 1 206 35 view .LVU84
+ 382 000e 1840     		ands	r0, r3
+ 383              		.loc 1 206 7 view .LVU85
+ 384 0010 1A42     		tst	r2, r3
+ 385 0012 00D0     		beq	.L22
+ 207:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         return CMP_OUTPUTLEVEL_HIGH;
+ 386              		.loc 1 207 16 view .LVU86
+ 387 0014 0120     		movs	r0, #1
+ 388              	.L22:
+ 208:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }else{
+ 209:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         return CMP_OUTPUTLEVEL_LOW;
+ 210:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     }
+ 211:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** }
+ 389              		.loc 1 211 1 view .LVU87
+ 390              		@ sp needed
+ 391 0016 7047     		bx	lr
+ 392              		.cfi_endproc
+ 393              	.LFE68:
+ 395              		.text
+ 396              	.Letext0:
+ 397              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 398              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 399              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 400              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_cmp.h"
+ARM GAS  D:\noval\Temp\cc00njIc.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_cmp.c
+D:\noval\Temp\cc00njIc.s:19     .text.cmp_deinit:00000000 $t
+D:\noval\Temp\cc00njIc.s:25     .text.cmp_deinit:00000000 cmp_deinit
+D:\noval\Temp\cc00njIc.s:53     .text.cmp_mode_init:00000000 $t
+D:\noval\Temp\cc00njIc.s:59     .text.cmp_mode_init:00000000 cmp_mode_init
+D:\noval\Temp\cc00njIc.s:114    .text.cmp_mode_init:0000001c $d
+D:\noval\Temp\cc00njIc.s:119    .text.cmp_output_init:00000000 $t
+D:\noval\Temp\cc00njIc.s:125    .text.cmp_output_init:00000000 cmp_output_init
+D:\noval\Temp\cc00njIc.s:194    .text.cmp_output_init:0000002c $d
+D:\noval\Temp\cc00njIc.s:200    .text.cmp_enable:00000000 $t
+D:\noval\Temp\cc00njIc.s:206    .text.cmp_enable:00000000 cmp_enable
+D:\noval\Temp\cc00njIc.s:234    .text.cmp_disable:00000000 $t
+D:\noval\Temp\cc00njIc.s:240    .text.cmp_disable:00000000 cmp_disable
+D:\noval\Temp\cc00njIc.s:268    .text.cmp_switch_enable:00000000 $t
+D:\noval\Temp\cc00njIc.s:274    .text.cmp_switch_enable:00000000 cmp_switch_enable
+D:\noval\Temp\cc00njIc.s:296    .text.cmp_switch_disable:00000000 $t
+D:\noval\Temp\cc00njIc.s:302    .text.cmp_switch_disable:00000000 cmp_switch_disable
+D:\noval\Temp\cc00njIc.s:324    .text.cmp_lock_enable:00000000 $t
+D:\noval\Temp\cc00njIc.s:330    .text.cmp_lock_enable:00000000 cmp_lock_enable
+D:\noval\Temp\cc00njIc.s:358    .text.cmp_output_level_get:00000000 $t
+D:\noval\Temp\cc00njIc.s:364    .text.cmp_output_level_get:00000000 cmp_output_level_get
+
+NO UNDEFINED SYMBOLS

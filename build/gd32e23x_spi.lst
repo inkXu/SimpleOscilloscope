@@ -1,0 +1,3328 @@
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_spi.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_spi.c"
+  18              		.section	.text.spi_i2s_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	spi_i2s_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	spi_i2s_deinit:
+  26              	.LVL0:
+  27              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \file    gd32e23x_spi.c
+   3:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief   SPI driver
+   4:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+   5:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     Redistribution and use in source and binary forms, with or without modification,
+  12:Drivers/GD32E23x/Source/gd32e23x_spi.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  15:Drivers/GD32E23x/Source/gd32e23x_spi.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Drivers/GD32E23x/Source/gd32e23x_spi.c ****        this list of conditions and the following disclaimer in the documentation
+  18:Drivers/GD32E23x/Source/gd32e23x_spi.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  20:Drivers/GD32E23x/Source/gd32e23x_spi.c ****        may be used to endorse or promote products derived from this software without
+  21:Drivers/GD32E23x/Source/gd32e23x_spi.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  24:Drivers/GD32E23x/Source/gd32e23x_spi.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  25:Drivers/GD32E23x/Source/gd32e23x_spi.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  26:Drivers/GD32E23x/Source/gd32e23x_spi.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  27:Drivers/GD32E23x/Source/gd32e23x_spi.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  28:Drivers/GD32E23x/Source/gd32e23x_spi.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  29:Drivers/GD32E23x/Source/gd32e23x_spi.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  30:Drivers/GD32E23x/Source/gd32e23x_spi.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  31:Drivers/GD32E23x/Source/gd32e23x_spi.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 2
+
+
+  32:Drivers/GD32E23x/Source/gd32e23x_spi.c **** OF SUCH DAMAGE.
+  33:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #include "gd32e23x_spi.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /* SPI/I2S parameter initialization mask */
+  38:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_INIT_MASK                        ((uint32_t)0x00003040U)  /*!< SPI0 parameter initializ
+  39:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_FIFO_INIT_MASK1                  ((uint32_t)0x00003840U)  /*!< SPI1 parameter initializ
+  40:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_FIFO_INIT_MASK2                  ((uint32_t)0x0000F0FFU)  /*!< SPI1 parameter initializ
+  41:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define I2S_INIT_MASK                        ((uint32_t)0x0000F047U)  /*!< I2S parameter initializa
+  42:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  43:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_FRAMESIZE_MASK                   ((uint32_t)0x00000800U)  /*!< SPI0 frame size mask */
+  44:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_BYTEN_MASK                       ((uint32_t)0x00001000U)  /*!< SPI1 access to FIFO mask
+  45:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_TXLVL_EMPTY_MASK                 ((uint32_t)0x00001800U)  /*!< SPI1 TXFIFO empty mask *
+  46:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_RXLVL_EMPTY_MASK                 ((uint32_t)0x00000600U)  /*!< SPI1 RXFIFO empty mask *
+  47:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  48:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /* I2S clock source selection, multiplication and division mask */
+  49:Drivers/GD32E23x/Source/gd32e23x_spi.c **** #define SPI_I2SPSC_RESET                     ((uint32_t)0x00000002U)  /*!< I2S clock prescaler regi
+  50:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  51:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+  52:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      reset SPI and I2S
+  53:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+  54:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+  55:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+  56:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+  57:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_i2s_deinit(uint32_t spi_periph)
+  58:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+  28              		.loc 1 58 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 58 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  59:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     switch(spi_periph) {
+  38              		.loc 1 59 5 is_stmt 1 view .LVU2
+  39 0002 43F60003 		movw	r3, #14336
+  40 0006 C4F20003 		movt	r3, 16384
+  41 000a 9842     		cmp	r0, r3
+  42 000c 0ED0     		beq	.L2
+  43 000e 43F20003 		movw	r3, #12288
+  44 0012 C4F20103 		movt	r3, 16385
+  45 0016 9842     		cmp	r0, r3
+  46 0018 07D1     		bne	.L1
+  60:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI0:
+  61:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* reset SPI0 and I2S0 */
+  62:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_enable(RCU_SPI0RST);
+  47              		.loc 1 62 9 view .LVU3
+  48 001a 40F20C30 		movw	r0, #780
+  49              	.LVL1:
+  50              		.loc 1 62 9 is_stmt 0 view .LVU4
+  51 001e FFF7FEFF 		bl	rcu_periph_reset_enable
+  52              	.LVL2:
+  63:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_disable(RCU_SPI0RST);
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 3
+
+
+  53              		.loc 1 63 9 is_stmt 1 view .LVU5
+  54 0022 40F20C30 		movw	r0, #780
+  55 0026 FFF7FEFF 		bl	rcu_periph_reset_disable
+  56              	.LVL3:
+  64:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+  57              		.loc 1 64 9 view .LVU6
+  58              	.L1:
+  65:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI1:
+  66:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* reset SPI1 */
+  67:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_enable(RCU_SPI1RST);
+  68:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_disable(RCU_SPI1RST);
+  69:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+  70:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     default :
+  71:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+  72:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+  73:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+  59              		.loc 1 73 1 is_stmt 0 view .LVU7
+  60              		@ sp needed
+  61 002a 10BD     		pop	{r4, pc}
+  62              	.LVL4:
+  63              	.L2:
+  67:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_disable(RCU_SPI1RST);
+  64              		.loc 1 67 9 is_stmt 1 view .LVU8
+  65 002c 40F20E40 		movw	r0, #1038
+  66              	.LVL5:
+  67:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         rcu_periph_reset_disable(RCU_SPI1RST);
+  67              		.loc 1 67 9 is_stmt 0 view .LVU9
+  68 0030 FFF7FEFF 		bl	rcu_periph_reset_enable
+  69              	.LVL6:
+  68:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+  70              		.loc 1 68 9 is_stmt 1 view .LVU10
+  71 0034 40F20E40 		movw	r0, #1038
+  72 0038 FFF7FEFF 		bl	rcu_periph_reset_disable
+  73              	.LVL7:
+  69:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     default :
+  74              		.loc 1 69 9 view .LVU11
+  75              		.loc 1 73 1 is_stmt 0 view .LVU12
+  76 003c F5E7     		b	.L1
+  77              		.cfi_endproc
+  78              	.LFE60:
+  80              		.section	.text.spi_struct_para_init,"ax",%progbits
+  81              		.align	1
+  82              		.global	spi_struct_para_init
+  83              		.syntax unified
+  84              		.code	16
+  85              		.thumb_func
+  87              	spi_struct_para_init:
+  88              	.LVL8:
+  89              	.LFB61:
+  74:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  75:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+  76:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      initialize the parameters of SPI structure with the default values
+  77:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  none
+  78:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] spi_parameter_struct: the initialized structure spi_parameter_struct pointer
+  79:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+  80:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+  81:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_struct_para_init(spi_parameter_struct *spi_struct)
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 4
+
+
+  82:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+  90              		.loc 1 82 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  83:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure the SPI structure with the default values */
+  84:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->device_mode          = SPI_SLAVE;
+  95              		.loc 1 84 5 view .LVU14
+  96              		.loc 1 84 38 is_stmt 0 view .LVU15
+  97 0000 0023     		movs	r3, #0
+  98 0002 0360     		str	r3, [r0]
+  85:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->trans_mode           = SPI_TRANSMODE_FULLDUPLEX;
+  99              		.loc 1 85 5 is_stmt 1 view .LVU16
+ 100              		.loc 1 85 38 is_stmt 0 view .LVU17
+ 101 0004 4360     		str	r3, [r0, #4]
+  86:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->frame_size           = SPI_FRAMESIZE_8BIT;
+ 102              		.loc 1 86 5 is_stmt 1 view .LVU18
+ 103              		.loc 1 86 38 is_stmt 0 view .LVU19
+ 104 0006 40F20072 		movw	r2, #1792
+ 105 000a 8260     		str	r2, [r0, #8]
+  87:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->nss                  = SPI_NSS_HARD;
+ 106              		.loc 1 87 5 is_stmt 1 view .LVU20
+ 107              		.loc 1 87 38 is_stmt 0 view .LVU21
+ 108 000c C360     		str	r3, [r0, #12]
+  88:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->endian               = SPI_ENDIAN_MSB;
+ 109              		.loc 1 88 5 is_stmt 1 view .LVU22
+ 110              		.loc 1 88 38 is_stmt 0 view .LVU23
+ 111 000e 0361     		str	r3, [r0, #16]
+  89:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->clock_polarity_phase = SPI_CK_PL_LOW_PH_1EDGE;
+ 112              		.loc 1 89 5 is_stmt 1 view .LVU24
+ 113              		.loc 1 89 38 is_stmt 0 view .LVU25
+ 114 0010 4361     		str	r3, [r0, #20]
+  90:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     spi_struct->prescale             = SPI_PSC_2;
+ 115              		.loc 1 90 5 is_stmt 1 view .LVU26
+ 116              		.loc 1 90 38 is_stmt 0 view .LVU27
+ 117 0012 8361     		str	r3, [r0, #24]
+  91:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 118              		.loc 1 91 1 view .LVU28
+ 119              		@ sp needed
+ 120 0014 7047     		bx	lr
+ 121              		.cfi_endproc
+ 122              	.LFE61:
+ 124              		.section	.text.spi_init,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	spi_init
+ 127              		.syntax unified
+ 128              		.code	16
+ 129              		.thumb_func
+ 131              	spi_init:
+ 132              	.LVL9:
+ 133              	.LFB62:
+  92:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+  93:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+  94:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      initialize SPI parameters
+  95:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+  96:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_struct: SPI parameter initialization stuct members of the structure
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 5
+
+
+  97:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                             and the member values are shown as below:
+  98:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   device_mode: SPI_MASTER, SPI_SLAVE
+  99:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   trans_mode: SPI_TRANSMODE_FULLDUPLEX, SPI_TRANSMODE_RECEIVEONLY,
+ 100:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_TRANSMODE_BDRECEIVE, SPI_TRANSMODE_BDTRANSMIT
+ 101:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   frame_size: SPI_FRAMESIZE_4BIT, SPI_FRAMESIZE_5BIT
+ 102:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_6BIT, SPI_FRAMESIZE_7BIT
+ 103:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_8BIT, SPI_FRAMESIZE_9BIT
+ 104:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_10BIT, SPI_FRAMESIZE_11BIT
+ 105:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_12BIT, SPI_FRAMESIZE_13BIT
+ 106:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_14BIT, SPI_FRAMESIZE_15BIT
+ 107:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                               SPI_FRAMESIZE_16BIT
+ 108:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   nss: SPI_NSS_SOFT, SPI_NSS_HARD
+ 109:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   endian: SPI_ENDIAN_MSB, SPI_ENDIAN_LSB
+ 110:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   clock_polarity_phase: SPI_CK_PL_LOW_PH_1EDGE, SPI_CK_PL_HIGH_PH_1EDGE
+ 111:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                                         SPI_CK_PL_LOW_PH_2EDGE, SPI_CK_PL_HIGH_PH_2EDGE
+ 112:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                   prescale: SPI_PSC_n (n=2,4,8,16,32,64,128,256)
+ 113:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 114:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 115:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 116:Drivers/GD32E23x/Source/gd32e23x_spi.c **** ErrStatus spi_init(uint32_t spi_periph, spi_parameter_struct *spi_struct)
+ 117:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 134              		.loc 1 117 1 is_stmt 1 view -0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138              		.loc 1 117 1 is_stmt 0 view .LVU30
+ 139 0000 30B5     		push	{r4, r5, lr}
+ 140              	.LCFI1:
+ 141              		.cfi_def_cfa_offset 12
+ 142              		.cfi_offset 4, -12
+ 143              		.cfi_offset 5, -8
+ 144              		.cfi_offset 14, -4
+ 118:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg1 = 0, reg2 = 0U, reg3 = 0U;
+ 145              		.loc 1 118 5 is_stmt 1 view .LVU31
+ 146              	.LVL10:
+ 119:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 120:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg1 = SPI_CTL0(spi_periph);
+ 147              		.loc 1 120 5 view .LVU32
+ 148              		.loc 1 120 10 is_stmt 0 view .LVU33
+ 149 0002 0468     		ldr	r4, [r0]
+ 150              	.LVL11:
+ 121:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg1 &= SPI_INIT_MASK;
+ 151              		.loc 1 121 5 is_stmt 1 view .LVU34
+ 152              		.loc 1 121 10 is_stmt 0 view .LVU35
+ 153 0004 43F24003 		movw	r3, #12352
+ 154 0008 1C40     		ands	r4, r3
+ 155              	.LVL12:
+ 122:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 123:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg2 = SPI_CTL0(spi_periph);
+ 156              		.loc 1 123 5 is_stmt 1 view .LVU36
+ 157              		.loc 1 123 10 is_stmt 0 view .LVU37
+ 158 000a 0268     		ldr	r2, [r0]
+ 159              	.LVL13:
+ 124:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg2 &= SPI_FIFO_INIT_MASK1;
+ 160              		.loc 1 124 5 is_stmt 1 view .LVU38
+ 161              		.loc 1 124 10 is_stmt 0 view .LVU39
+ 162 000c 43F64003 		movw	r3, #14400
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 6
+
+
+ 163 0010 1A40     		ands	r2, r3
+ 164              	.LVL14:
+ 125:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 126:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg3 = SPI_CTL1(spi_periph);
+ 165              		.loc 1 126 5 is_stmt 1 view .LVU40
+ 166              		.loc 1 126 10 is_stmt 0 view .LVU41
+ 167 0012 4568     		ldr	r5, [r0, #4]
+ 168              	.LVL15:
+ 127:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg3 &= SPI_FIFO_INIT_MASK2;
+ 169              		.loc 1 127 5 is_stmt 1 view .LVU42
+ 170              		.loc 1 127 10 is_stmt 0 view .LVU43
+ 171 0014 4FF2FF03 		movw	r3, #61695
+ 172 0018 2B40     		ands	r3, r5
+ 173              	.LVL16:
+ 128:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 129:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI0 == spi_periph) {
+ 174              		.loc 1 129 5 is_stmt 1 view .LVU44
+ 175              		.loc 1 129 7 is_stmt 0 view .LVU45
+ 176 001a 43F20005 		movw	r5, #12288
+ 177 001e C4F20105 		movt	r5, 16385
+ 178 0022 A842     		cmp	r0, r5
+ 179 0024 15D0     		beq	.L11
+ 130:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI as master or slave */
+ 131:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->device_mode;
+ 132:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI transfer mode */
+ 133:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->trans_mode;
+ 134:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI NSS use hardware or software */
+ 135:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->nss;
+ 136:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI LSB or MSB */
+ 137:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->endian;
+ 138:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI polarity and phase */
+ 139:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->clock_polarity_phase;
+ 140:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI prescaler to adjust transmit speed */
+ 141:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 |= spi_struct->prescale;
+ 142:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI frame size */
+ 143:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* check SPI0 frame size is 8bits/16bits or not*/
+ 144:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if((SPI_FRAMESIZE_8BIT != spi_struct->frame_size) && (SPI_FRAMESIZE_16BIT != spi_struct->fr
+ 145:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 146:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 147:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             reg1 |= (spi_struct->frame_size & SPI_FRAMESIZE_MASK);
+ 148:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 149:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 150:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* write to SPI_CTL0 register */
+ 151:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL0(spi_periph) = (uint32_t)reg1;
+ 152:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 153:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 154:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI as master or slave */
+ 155:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->device_mode;
+ 180              		.loc 1 155 9 is_stmt 1 view .LVU46
+ 181              		.loc 1 155 27 is_stmt 0 view .LVU47
+ 182 0026 0C68     		ldr	r4, [r1]
+ 183              	.LVL17:
+ 184              		.loc 1 155 14 view .LVU48
+ 185 0028 1443     		orrs	r4, r2
+ 186              	.LVL18:
+ 156:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI transfer mode */
+ 157:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->trans_mode;
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 7
+
+
+ 187              		.loc 1 157 9 is_stmt 1 view .LVU49
+ 188              		.loc 1 157 27 is_stmt 0 view .LVU50
+ 189 002a 4A68     		ldr	r2, [r1, #4]
+ 190              		.loc 1 157 14 view .LVU51
+ 191 002c 2243     		orrs	r2, r4
+ 192              	.LVL19:
+ 158:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI NSS use hardware or software */
+ 159:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->nss;
+ 193              		.loc 1 159 9 is_stmt 1 view .LVU52
+ 194              		.loc 1 159 27 is_stmt 0 view .LVU53
+ 195 002e CC68     		ldr	r4, [r1, #12]
+ 196              		.loc 1 159 14 view .LVU54
+ 197 0030 1443     		orrs	r4, r2
+ 198              	.LVL20:
+ 160:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI LSB or MSB */
+ 161:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->endian;
+ 199              		.loc 1 161 9 is_stmt 1 view .LVU55
+ 200              		.loc 1 161 27 is_stmt 0 view .LVU56
+ 201 0032 0A69     		ldr	r2, [r1, #16]
+ 202              		.loc 1 161 14 view .LVU57
+ 203 0034 2243     		orrs	r2, r4
+ 204              	.LVL21:
+ 162:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI polarity and phase */
+ 163:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->clock_polarity_phase;
+ 205              		.loc 1 163 9 is_stmt 1 view .LVU58
+ 206              		.loc 1 163 27 is_stmt 0 view .LVU59
+ 207 0036 4C69     		ldr	r4, [r1, #20]
+ 208              		.loc 1 163 14 view .LVU60
+ 209 0038 1443     		orrs	r4, r2
+ 210              	.LVL22:
+ 164:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI prescaler to adjust transmit speed */
+ 165:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 |= spi_struct->prescale;
+ 211              		.loc 1 165 9 is_stmt 1 view .LVU61
+ 212              		.loc 1 165 27 is_stmt 0 view .LVU62
+ 213 003a 8A69     		ldr	r2, [r1, #24]
+ 214              		.loc 1 165 14 view .LVU63
+ 215 003c 2243     		orrs	r2, r4
+ 216              	.LVL23:
+ 166:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* write to SPI_CTL0 register */
+ 167:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL0(spi_periph) = (uint32_t)reg2;
+ 217              		.loc 1 167 9 is_stmt 1 view .LVU64
+ 218              		.loc 1 167 30 is_stmt 0 view .LVU65
+ 219 003e 0260     		str	r2, [r0]
+ 168:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 169:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI data size */
+ 170:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg3 |= spi_struct->frame_size;
+ 220              		.loc 1 170 9 is_stmt 1 view .LVU66
+ 221              		.loc 1 170 27 is_stmt 0 view .LVU67
+ 222 0040 8A68     		ldr	r2, [r1, #8]
+ 223              	.LVL24:
+ 224              		.loc 1 170 14 view .LVU68
+ 225 0042 1343     		orrs	r3, r2
+ 226              	.LVL25:
+ 171:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* write to SPI_CTL0 register */
+ 172:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) = (uint32_t)reg3;
+ 227              		.loc 1 172 9 is_stmt 1 view .LVU69
+ 228              		.loc 1 172 30 is_stmt 0 view .LVU70
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 8
+
+
+ 229 0044 4360     		str	r3, [r0, #4]
+ 230              	.LVL26:
+ 231              	.L9:
+ 173:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 174:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 175:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* select SPI mode */
+ 176:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) &= (uint32_t)(~SPI_I2SCTL_I2SSEL);
+ 232              		.loc 1 176 5 is_stmt 1 view .LVU71
+ 233 0046 C369     		ldr	r3, [r0, #28]
+ 234              		.loc 1 176 28 is_stmt 0 view .LVU72
+ 235 0048 104A     		ldr	r2, .L12
+ 236 004a 1340     		ands	r3, r2
+ 237 004c C361     		str	r3, [r0, #28]
+ 177:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 178:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     return SUCCESS;
+ 238              		.loc 1 178 5 is_stmt 1 view .LVU73
+ 239              		.loc 1 178 12 is_stmt 0 view .LVU74
+ 240 004e 0120     		movs	r0, #1
+ 241              	.LVL27:
+ 242              	.L8:
+ 179:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 243              		.loc 1 179 1 view .LVU75
+ 244              		@ sp needed
+ 245 0050 30BD     		pop	{r4, r5, pc}
+ 246              	.LVL28:
+ 247              	.L11:
+ 131:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI transfer mode */
+ 248              		.loc 1 131 9 is_stmt 1 view .LVU76
+ 131:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI transfer mode */
+ 249              		.loc 1 131 27 is_stmt 0 view .LVU77
+ 250 0052 0B68     		ldr	r3, [r1]
+ 251              	.LVL29:
+ 131:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI transfer mode */
+ 252              		.loc 1 131 14 view .LVU78
+ 253 0054 2343     		orrs	r3, r4
+ 254              	.LVL30:
+ 133:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI NSS use hardware or software */
+ 255              		.loc 1 133 9 is_stmt 1 view .LVU79
+ 133:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI NSS use hardware or software */
+ 256              		.loc 1 133 27 is_stmt 0 view .LVU80
+ 257 0056 4A68     		ldr	r2, [r1, #4]
+ 258              	.LVL31:
+ 133:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI NSS use hardware or software */
+ 259              		.loc 1 133 14 view .LVU81
+ 260 0058 1A43     		orrs	r2, r3
+ 261              	.LVL32:
+ 135:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI LSB or MSB */
+ 262              		.loc 1 135 9 is_stmt 1 view .LVU82
+ 135:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI LSB or MSB */
+ 263              		.loc 1 135 27 is_stmt 0 view .LVU83
+ 264 005a CB68     		ldr	r3, [r1, #12]
+ 135:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI LSB or MSB */
+ 265              		.loc 1 135 14 view .LVU84
+ 266 005c 1343     		orrs	r3, r2
+ 267              	.LVL33:
+ 137:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI polarity and phase */
+ 268              		.loc 1 137 9 is_stmt 1 view .LVU85
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 9
+
+
+ 137:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI polarity and phase */
+ 269              		.loc 1 137 27 is_stmt 0 view .LVU86
+ 270 005e 0A69     		ldr	r2, [r1, #16]
+ 137:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI polarity and phase */
+ 271              		.loc 1 137 14 view .LVU87
+ 272 0060 1A43     		orrs	r2, r3
+ 273              	.LVL34:
+ 139:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI prescaler to adjust transmit speed */
+ 274              		.loc 1 139 9 is_stmt 1 view .LVU88
+ 139:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI prescaler to adjust transmit speed */
+ 275              		.loc 1 139 27 is_stmt 0 view .LVU89
+ 276 0062 4B69     		ldr	r3, [r1, #20]
+ 139:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI prescaler to adjust transmit speed */
+ 277              		.loc 1 139 14 view .LVU90
+ 278 0064 1343     		orrs	r3, r2
+ 279              	.LVL35:
+ 141:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI frame size */
+ 280              		.loc 1 141 9 is_stmt 1 view .LVU91
+ 141:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI frame size */
+ 281              		.loc 1 141 27 is_stmt 0 view .LVU92
+ 282 0066 8A69     		ldr	r2, [r1, #24]
+ 141:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* select SPI frame size */
+ 283              		.loc 1 141 14 view .LVU93
+ 284 0068 1A43     		orrs	r2, r3
+ 285              	.LVL36:
+ 144:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 286              		.loc 1 144 9 is_stmt 1 view .LVU94
+ 144:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 287              		.loc 1 144 45 is_stmt 0 view .LVU95
+ 288 006a 8968     		ldr	r1, [r1, #8]
+ 289              	.LVL37:
+ 144:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 290              		.loc 1 144 11 view .LVU96
+ 291 006c 40F20073 		movw	r3, #1792
+ 292 0070 9942     		cmp	r1, r3
+ 293 0072 03D0     		beq	.L7
+ 144:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 294              		.loc 1 144 59 discriminator 1 view .LVU97
+ 295 0074 40F60073 		movw	r3, #3840
+ 296 0078 9942     		cmp	r1, r3
+ 297 007a 05D1     		bne	.L10
+ 298              	.L7:
+ 147:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 299              		.loc 1 147 13 is_stmt 1 view .LVU98
+ 147:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 300              		.loc 1 147 45 is_stmt 0 view .LVU99
+ 301 007c 40F60003 		movw	r3, #2048
+ 302 0080 0B40     		ands	r3, r1
+ 147:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 303              		.loc 1 147 18 view .LVU100
+ 304 0082 1343     		orrs	r3, r2
+ 305              	.LVL38:
+ 151:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 306              		.loc 1 151 9 is_stmt 1 view .LVU101
+ 151:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 307              		.loc 1 151 30 is_stmt 0 view .LVU102
+ 308 0084 0360     		str	r3, [r0]
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 10
+
+
+ 309 0086 DEE7     		b	.L9
+ 310              	.LVL39:
+ 311              	.L10:
+ 145:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 312              		.loc 1 145 20 view .LVU103
+ 313 0088 0020     		movs	r0, #0
+ 314              	.LVL40:
+ 145:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 315              		.loc 1 145 20 view .LVU104
+ 316 008a E1E7     		b	.L8
+ 317              	.L13:
+ 318              		.align	2
+ 319              	.L12:
+ 320 008c FFF7FFFF 		.word	-2049
+ 321              		.cfi_endproc
+ 322              	.LFE62:
+ 324              		.section	.text.spi_enable,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	spi_enable
+ 327              		.syntax unified
+ 328              		.code	16
+ 329              		.thumb_func
+ 331              	spi_enable:
+ 332              	.LVL41:
+ 333              	.LFB63:
+ 180:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 181:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 182:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI
+ 183:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 184:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 185:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 186:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 187:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_enable(uint32_t spi_periph)
+ 188:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 334              		.loc 1 188 1 is_stmt 1 view -0
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 189:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)SPI_CTL0_SPIEN;
+ 339              		.loc 1 189 5 view .LVU106
+ 340 0000 0368     		ldr	r3, [r0]
+ 341              		.loc 1 189 26 is_stmt 0 view .LVU107
+ 342 0002 4022     		movs	r2, #64
+ 343 0004 1343     		orrs	r3, r2
+ 344 0006 0360     		str	r3, [r0]
+ 190:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 345              		.loc 1 190 1 view .LVU108
+ 346              		@ sp needed
+ 347 0008 7047     		bx	lr
+ 348              		.cfi_endproc
+ 349              	.LFE63:
+ 351              		.section	.text.spi_disable,"ax",%progbits
+ 352              		.align	1
+ 353              		.global	spi_disable
+ 354              		.syntax unified
+ 355              		.code	16
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 11
+
+
+ 356              		.thumb_func
+ 358              	spi_disable:
+ 359              	.LVL42:
+ 360              	.LFB64:
+ 191:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 192:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 193:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI
+ 194:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 195:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 196:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 197:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 198:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_disable(uint32_t spi_periph)
+ 199:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 361              		.loc 1 199 1 is_stmt 1 view -0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 0
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 365              		@ link register save eliminated.
+ 200:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) &= (uint32_t)(~SPI_CTL0_SPIEN);
+ 366              		.loc 1 200 5 view .LVU110
+ 367 0000 0368     		ldr	r3, [r0]
+ 368              		.loc 1 200 26 is_stmt 0 view .LVU111
+ 369 0002 4022     		movs	r2, #64
+ 370 0004 9343     		bics	r3, r2
+ 371 0006 0360     		str	r3, [r0]
+ 201:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 372              		.loc 1 201 1 view .LVU112
+ 373              		@ sp needed
+ 374 0008 7047     		bx	lr
+ 375              		.cfi_endproc
+ 376              	.LFE64:
+ 378              		.section	.text.i2s_init,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	i2s_init
+ 381              		.syntax unified
+ 382              		.code	16
+ 383              		.thumb_func
+ 385              	i2s_init:
+ 386              	.LVL43:
+ 387              	.LFB65:
+ 202:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 203:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 204:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      initialize I2S parameters
+ 205:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0)
+ 206:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  mode: I2S operation mode
+ 207:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 208:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MODE_SLAVETX: I2S slave transmit mode
+ 209:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MODE_SLAVERX: I2S slave receive mode
+ 210:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MODE_MASTERTX: I2S master transmit mode
+ 211:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MODE_MASTERRX: I2S master receive mode
+ 212:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  standard: I2S standard
+ 213:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 214:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_STD_PHILLIPS: I2S phillips standard
+ 215:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_STD_MSB: I2S MSB standard
+ 216:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_STD_LSB: I2S LSB standard
+ 217:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_STD_PCMSHORT: I2S PCM short standard
+ 218:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_STD_PCMLONG: I2S PCM long standard
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 12
+
+
+ 219:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  ckpl: I2S idle state clock polarity
+ 220:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 221:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_CKPL_LOW: I2S clock polarity low level
+ 222:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_CKPL_HIGH: I2S clock polarity high level
+ 223:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 224:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 225:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 226:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void i2s_init(uint32_t spi_periph, uint32_t mode, uint32_t standard, uint32_t ckpl)
+ 227:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 388              		.loc 1 227 1 is_stmt 1 view -0
+ 389              		.cfi_startproc
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392              		.loc 1 227 1 is_stmt 0 view .LVU114
+ 393 0000 30B5     		push	{r4, r5, lr}
+ 394              	.LCFI2:
+ 395              		.cfi_def_cfa_offset 12
+ 396              		.cfi_offset 4, -12
+ 397              		.cfi_offset 5, -8
+ 398              		.cfi_offset 14, -4
+ 228:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg = 0U;
+ 399              		.loc 1 228 5 is_stmt 1 view .LVU115
+ 400              	.LVL44:
+ 229:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg = SPI_I2SCTL(spi_periph);
+ 401              		.loc 1 229 5 view .LVU116
+ 402              		.loc 1 229 9 is_stmt 0 view .LVU117
+ 403 0002 C569     		ldr	r5, [r0, #28]
+ 404              	.LVL45:
+ 230:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg &= I2S_INIT_MASK;
+ 405              		.loc 1 230 5 is_stmt 1 view .LVU118
+ 406              		.loc 1 230 9 is_stmt 0 view .LVU119
+ 407 0004 4FF24704 		movw	r4, #61511
+ 408 0008 2C40     		ands	r4, r5
+ 409              	.LVL46:
+ 231:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 232:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* enable I2S mode */
+ 233:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg |= (uint32_t)SPI_I2SCTL_I2SSEL;
+ 410              		.loc 1 233 5 is_stmt 1 view .LVU120
+ 411              		.loc 1 233 9 is_stmt 0 view .LVU121
+ 412 000a 40F60005 		movw	r5, #2048
+ 413 000e 2C43     		orrs	r4, r5
+ 414              	.LVL47:
+ 234:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* select I2S mode */
+ 235:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg |= (uint32_t)mode;
+ 415              		.loc 1 235 5 is_stmt 1 view .LVU122
+ 416              		.loc 1 235 9 is_stmt 0 view .LVU123
+ 417 0010 0C43     		orrs	r4, r1
+ 418              	.LVL48:
+ 236:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* select I2S standard */
+ 237:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg |= (uint32_t)standard;
+ 419              		.loc 1 237 5 is_stmt 1 view .LVU124
+ 420              		.loc 1 237 9 is_stmt 0 view .LVU125
+ 421 0012 1443     		orrs	r4, r2
+ 422              	.LVL49:
+ 238:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* select I2S polarity */
+ 239:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     reg |= (uint32_t)ckpl;
+ 423              		.loc 1 239 5 is_stmt 1 view .LVU126
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 13
+
+
+ 424              		.loc 1 239 9 is_stmt 0 view .LVU127
+ 425 0014 1C43     		orrs	r4, r3
+ 426              	.LVL50:
+ 240:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 241:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* write to SPI_I2SCTL register */
+ 242:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) = (uint32_t)reg;
+ 427              		.loc 1 242 5 is_stmt 1 view .LVU128
+ 428              		.loc 1 242 28 is_stmt 0 view .LVU129
+ 429 0016 C461     		str	r4, [r0, #28]
+ 243:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 430              		.loc 1 243 1 view .LVU130
+ 431              		@ sp needed
+ 432              	.LVL51:
+ 433              		.loc 1 243 1 view .LVU131
+ 434 0018 30BD     		pop	{r4, r5, pc}
+ 435              		.cfi_endproc
+ 436              	.LFE65:
+ 438              		.section	.text.i2s_psc_config,"ax",%progbits
+ 439              		.align	1
+ 440              		.global	i2s_psc_config
+ 441              		.syntax unified
+ 442              		.code	16
+ 443              		.thumb_func
+ 445              	i2s_psc_config:
+ 446              	.LVL52:
+ 447              	.LFB66:
+ 244:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 245:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 246:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure I2S prescaler
+ 247:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0)
+ 248:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  audiosample: I2S audio sample rate
+ 249:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 250:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_8K: audio sample rate is 8KHz
+ 251:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_11K: audio sample rate is 11KHz
+ 252:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_16K: audio sample rate is 16KHz
+ 253:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_22K: audio sample rate is 22KHz
+ 254:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_32K: audio sample rate is 32KHz
+ 255:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_44K: audio sample rate is 44KHz
+ 256:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_48K: audio sample rate is 48KHz
+ 257:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_96K: audio sample rate is 96KHz
+ 258:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_AUDIOSAMPLE_192K: audio sample rate is 192KHz
+ 259:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  frameformat: I2S data length and channel length
+ 260:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 261:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FRAMEFORMAT_DT16B_CH16B: I2S data length is 16 bit and channel length is 16 b
+ 262:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FRAMEFORMAT_DT16B_CH32B: I2S data length is 16 bit and channel length is 32 b
+ 263:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FRAMEFORMAT_DT24B_CH32B: I2S data length is 24 bit and channel length is 32 b
+ 264:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FRAMEFORMAT_DT32B_CH32B: I2S data length is 32 bit and channel length is 32 b
+ 265:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  mckout: I2S master clock output
+ 266:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 267:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MCKOUT_ENABLE: enable I2S master clock output
+ 268:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_MCKOUT_DISABLE: disable 2S master clock output
+ 269:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 270:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 271:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 272:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void i2s_psc_config(uint32_t spi_periph, uint32_t audiosample, uint32_t frameformat, uint32_t mckou
+ 273:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 448              		.loc 1 273 1 is_stmt 1 view -0
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 14
+
+
+ 449              		.cfi_startproc
+ 450              		@ args = 0, pretend = 0, frame = 0
+ 451              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452              		.loc 1 273 1 is_stmt 0 view .LVU133
+ 453 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 454              	.LCFI3:
+ 455              		.cfi_def_cfa_offset 24
+ 456              		.cfi_offset 3, -24
+ 457              		.cfi_offset 4, -20
+ 458              		.cfi_offset 5, -16
+ 459              		.cfi_offset 6, -12
+ 460              		.cfi_offset 7, -8
+ 461              		.cfi_offset 14, -4
+ 462 0002 0500     		movs	r5, r0
+ 463 0004 0C00     		movs	r4, r1
+ 464 0006 1600     		movs	r6, r2
+ 465 0008 1F00     		movs	r7, r3
+ 274:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t i2sdiv = 2U, i2sof = 0U;
+ 466              		.loc 1 274 5 is_stmt 1 view .LVU134
+ 467              	.LVL53:
+ 275:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t clks = 0U;
+ 468              		.loc 1 275 5 view .LVU135
+ 276:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t i2sclock = 0U;
+ 469              		.loc 1 276 5 view .LVU136
+ 277:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 278:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* deinitialize SPI_I2SPSC register */
+ 279:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SPSC(spi_periph) = SPI_I2SPSC_RESET;
+ 470              		.loc 1 279 5 view .LVU137
+ 471              		.loc 1 279 28 is_stmt 0 view .LVU138
+ 472 000a 0223     		movs	r3, #2
+ 473              	.LVL54:
+ 474              		.loc 1 279 28 view .LVU139
+ 475 000c 0362     		str	r3, [r0, #32]
+ 280:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 281:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* get system clock */
+ 282:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     i2sclock = rcu_clock_freq_get(CK_SYS);
+ 476              		.loc 1 282 5 is_stmt 1 view .LVU140
+ 477              		.loc 1 282 16 is_stmt 0 view .LVU141
+ 478 000e 0020     		movs	r0, #0
+ 479              	.LVL55:
+ 480              		.loc 1 282 16 view .LVU142
+ 481 0010 FFF7FEFF 		bl	rcu_clock_freq_get
+ 482              	.LVL56:
+ 283:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 284:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure the prescaler depending on the mclk output state, the frame format and audio sampl
+ 285:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(I2S_MCKOUT_ENABLE == mckout) {
+ 483              		.loc 1 285 5 is_stmt 1 view .LVU143
+ 484              		.loc 1 285 7 is_stmt 0 view .LVU144
+ 485 0014 40F20023 		movw	r3, #512
+ 486 0018 9F42     		cmp	r7, r3
+ 487 001a 07D0     		beq	.L23
+ 286:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         clks = (uint32_t)(((i2sclock / 256U) * 10U) / audiosample);
+ 287:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 288:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if(I2S_FRAMEFORMAT_DT16B_CH16B == frameformat) {
+ 488              		.loc 1 288 9 is_stmt 1 view .LVU145
+ 489              		.loc 1 288 11 is_stmt 0 view .LVU146
+ 490 001c 2EBB     		cbnz	r6, .L20
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 15
+
+
+ 289:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             clks = (uint32_t)(((i2sclock / 32U) * 10U) / audiosample);
+ 491              		.loc 1 289 13 is_stmt 1 view .LVU147
+ 492              		.loc 1 289 42 is_stmt 0 view .LVU148
+ 493 001e 4009     		lsrs	r0, r0, #5
+ 494              	.LVL57:
+ 495              		.loc 1 289 49 view .LVU149
+ 496 0020 8300     		lsls	r3, r0, #2
+ 497 0022 1B18     		adds	r3, r3, r0
+ 498 0024 5B00     		lsls	r3, r3, #1
+ 499              		.loc 1 289 18 view .LVU150
+ 500 0026 B3FBF4F4 		udiv	r4, r3, r4
+ 501              	.LVL58:
+ 502              		.loc 1 289 18 view .LVU151
+ 503 002a 05E0     		b	.L19
+ 504              	.LVL59:
+ 505              	.L23:
+ 286:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         clks = (uint32_t)(((i2sclock / 256U) * 10U) / audiosample);
+ 506              		.loc 1 286 9 is_stmt 1 view .LVU152
+ 286:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         clks = (uint32_t)(((i2sclock / 256U) * 10U) / audiosample);
+ 507              		.loc 1 286 38 is_stmt 0 view .LVU153
+ 508 002c 000A     		lsrs	r0, r0, #8
+ 509              	.LVL60:
+ 286:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         clks = (uint32_t)(((i2sclock / 256U) * 10U) / audiosample);
+ 510              		.loc 1 286 46 view .LVU154
+ 511 002e 8300     		lsls	r3, r0, #2
+ 512 0030 1B18     		adds	r3, r3, r0
+ 513 0032 5B00     		lsls	r3, r3, #1
+ 286:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         clks = (uint32_t)(((i2sclock / 256U) * 10U) / audiosample);
+ 514              		.loc 1 286 14 view .LVU155
+ 515 0034 B3FBF4F4 		udiv	r4, r3, r4
+ 516              	.LVL61:
+ 517              	.L19:
+ 290:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             clks = (uint32_t)(((i2sclock / 64U) * 10U) / audiosample);
+ 292:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 293:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 294:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 295:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* remove the floating point */
+ 296:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     clks = (clks + 5U) / 10U;
+ 518              		.loc 1 296 5 is_stmt 1 view .LVU156
+ 519              		.loc 1 296 18 is_stmt 0 view .LVU157
+ 520 0038 0534     		adds	r4, r4, #5
+ 521              	.LVL62:
+ 522              		.loc 1 296 10 view .LVU158
+ 523 003a 0A23     		movs	r3, #10
+ 524 003c B4FBF3F4 		udiv	r4, r4, r3
+ 525              	.LVL63:
+ 297:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     i2sof = (clks & 0x00000001U);
+ 526              		.loc 1 297 5 is_stmt 1 view .LVU159
+ 527              		.loc 1 297 11 is_stmt 0 view .LVU160
+ 528 0040 093B     		subs	r3, r3, #9
+ 529 0042 2340     		ands	r3, r4
+ 530              	.LVL64:
+ 298:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     i2sdiv = ((clks - i2sof) / 2U);
+ 531              		.loc 1 298 5 is_stmt 1 view .LVU161
+ 532              		.loc 1 298 21 is_stmt 0 view .LVU162
+ 533 0044 E11A     		subs	r1, r4, r3
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 16
+
+
+ 534              		.loc 1 298 12 view .LVU163
+ 535 0046 4908     		lsrs	r1, r1, #1
+ 536              	.LVL65:
+ 299:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     i2sof  = (i2sof << 8U);
+ 537              		.loc 1 299 5 is_stmt 1 view .LVU164
+ 538              		.loc 1 299 12 is_stmt 0 view .LVU165
+ 539 0048 1B02     		lsls	r3, r3, #8
+ 540              	.LVL66:
+ 300:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 301:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* set the default values */
+ 302:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if((i2sdiv < 2U) || (i2sdiv > 255U)) {
+ 541              		.loc 1 302 5 is_stmt 1 view .LVU166
+ 542              		.loc 1 302 22 is_stmt 0 view .LVU167
+ 543 004a 8A1E     		subs	r2, r1, #2
+ 544              		.loc 1 302 7 view .LVU168
+ 545 004c FD2A     		cmp	r2, #253
+ 546 004e 01D9     		bls	.L21
+ 303:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         i2sdiv = 2U;
+ 304:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         i2sof = 0U;
+ 547              		.loc 1 304 15 view .LVU169
+ 548 0050 0023     		movs	r3, #0
+ 549              	.LVL67:
+ 303:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         i2sdiv = 2U;
+ 550              		.loc 1 303 16 view .LVU170
+ 551 0052 0221     		movs	r1, #2
+ 552              	.LVL68:
+ 553              	.L21:
+ 305:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 306:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 307:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure SPI_I2SPSC */
+ 308:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SPSC(spi_periph) = (uint32_t)(i2sdiv | i2sof | mckout);
+ 554              		.loc 1 308 5 is_stmt 1 view .LVU171
+ 555              		.loc 1 308 48 is_stmt 0 view .LVU172
+ 556 0054 1943     		orrs	r1, r3
+ 557              	.LVL69:
+ 558              		.loc 1 308 56 view .LVU173
+ 559 0056 3943     		orrs	r1, r7
+ 560              		.loc 1 308 28 view .LVU174
+ 561 0058 2962     		str	r1, [r5, #32]
+ 309:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 310:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* clear SPI_I2SCTL_DTLEN and SPI_I2SCTL_CHLEN bits */
+ 311:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) &= (uint32_t)(~(SPI_I2SCTL_DTLEN | SPI_I2SCTL_CHLEN));
+ 562              		.loc 1 311 5 is_stmt 1 view .LVU175
+ 563 005a EB69     		ldr	r3, [r5, #28]
+ 564              	.LVL70:
+ 565              		.loc 1 311 28 is_stmt 0 view .LVU176
+ 566 005c 0722     		movs	r2, #7
+ 567 005e 9343     		bics	r3, r2
+ 568 0060 EB61     		str	r3, [r5, #28]
+ 312:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 313:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure data frame format */
+ 314:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) |= (uint32_t)frameformat;
+ 569              		.loc 1 314 5 is_stmt 1 view .LVU177
+ 570 0062 EB69     		ldr	r3, [r5, #28]
+ 571              		.loc 1 314 28 is_stmt 0 view .LVU178
+ 572 0064 3343     		orrs	r3, r6
+ 573 0066 EB61     		str	r3, [r5, #28]
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 17
+
+
+ 315:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 574              		.loc 1 315 1 view .LVU179
+ 575              		@ sp needed
+ 576              	.LVL71:
+ 577              	.LVL72:
+ 578              	.LVL73:
+ 579              	.LVL74:
+ 580              		.loc 1 315 1 view .LVU180
+ 581 0068 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 582              	.LVL75:
+ 583              	.L20:
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 584              		.loc 1 291 13 is_stmt 1 view .LVU181
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 585              		.loc 1 291 42 is_stmt 0 view .LVU182
+ 586 006a 8009     		lsrs	r0, r0, #6
+ 587              	.LVL76:
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 588              		.loc 1 291 49 view .LVU183
+ 589 006c 8300     		lsls	r3, r0, #2
+ 590 006e 1B18     		adds	r3, r3, r0
+ 591 0070 5B00     		lsls	r3, r3, #1
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 592              		.loc 1 291 18 view .LVU184
+ 593 0072 B3FBF4F4 		udiv	r4, r3, r4
+ 594              	.LVL77:
+ 291:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 595              		.loc 1 291 18 view .LVU185
+ 596 0076 DFE7     		b	.L19
+ 597              		.cfi_endproc
+ 598              	.LFE66:
+ 600              		.section	.text.i2s_enable,"ax",%progbits
+ 601              		.align	1
+ 602              		.global	i2s_enable
+ 603              		.syntax unified
+ 604              		.code	16
+ 605              		.thumb_func
+ 607              	i2s_enable:
+ 608              	.LVL78:
+ 609              	.LFB67:
+ 316:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 317:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 318:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 319:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable I2S
+ 320:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0)
+ 321:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 322:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 323:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 324:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void i2s_enable(uint32_t spi_periph)
+ 325:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 610              		.loc 1 325 1 is_stmt 1 view -0
+ 611              		.cfi_startproc
+ 612              		@ args = 0, pretend = 0, frame = 0
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614              		@ link register save eliminated.
+ 326:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) |= (uint32_t)SPI_I2SCTL_I2SEN;
+ 615              		.loc 1 326 5 view .LVU187
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 18
+
+
+ 616 0000 C369     		ldr	r3, [r0, #28]
+ 617              		.loc 1 326 28 is_stmt 0 view .LVU188
+ 618 0002 40F20042 		movw	r2, #1024
+ 619 0006 1343     		orrs	r3, r2
+ 620 0008 C361     		str	r3, [r0, #28]
+ 327:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 621              		.loc 1 327 1 view .LVU189
+ 622              		@ sp needed
+ 623 000a 7047     		bx	lr
+ 624              		.cfi_endproc
+ 625              	.LFE67:
+ 627              		.section	.text.i2s_disable,"ax",%progbits
+ 628              		.align	1
+ 629              		.global	i2s_disable
+ 630              		.syntax unified
+ 631              		.code	16
+ 632              		.thumb_func
+ 634              	i2s_disable:
+ 635              	.LVL79:
+ 636              	.LFB68:
+ 328:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 329:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 330:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable I2S
+ 331:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0)
+ 332:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 333:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 334:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 335:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void i2s_disable(uint32_t spi_periph)
+ 336:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 637              		.loc 1 336 1 is_stmt 1 view -0
+ 638              		.cfi_startproc
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 641              		@ link register save eliminated.
+ 337:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_I2SCTL(spi_periph) &= (uint32_t)(~SPI_I2SCTL_I2SEN);
+ 642              		.loc 1 337 5 view .LVU191
+ 643 0000 C369     		ldr	r3, [r0, #28]
+ 644              		.loc 1 337 28 is_stmt 0 view .LVU192
+ 645 0002 024A     		ldr	r2, .L26
+ 646 0004 1340     		ands	r3, r2
+ 647 0006 C361     		str	r3, [r0, #28]
+ 338:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 648              		.loc 1 338 1 view .LVU193
+ 649              		@ sp needed
+ 650 0008 7047     		bx	lr
+ 651              	.L27:
+ 652 000a C046     		.align	2
+ 653              	.L26:
+ 654 000c FFFBFFFF 		.word	-1025
+ 655              		.cfi_endproc
+ 656              	.LFE68:
+ 658              		.section	.text.spi_nss_output_enable,"ax",%progbits
+ 659              		.align	1
+ 660              		.global	spi_nss_output_enable
+ 661              		.syntax unified
+ 662              		.code	16
+ 663              		.thumb_func
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 19
+
+
+ 665              	spi_nss_output_enable:
+ 666              	.LVL80:
+ 667              	.LFB69:
+ 339:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 340:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 341:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI NSS output
+ 342:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 343:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 344:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 345:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 346:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nss_output_enable(uint32_t spi_periph)
+ 347:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 668              		.loc 1 347 1 is_stmt 1 view -0
+ 669              		.cfi_startproc
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 672              		@ link register save eliminated.
+ 348:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)SPI_CTL1_NSSDRV;
+ 673              		.loc 1 348 5 view .LVU195
+ 674 0000 4368     		ldr	r3, [r0, #4]
+ 675              		.loc 1 348 26 is_stmt 0 view .LVU196
+ 676 0002 0422     		movs	r2, #4
+ 677 0004 1343     		orrs	r3, r2
+ 678 0006 4360     		str	r3, [r0, #4]
+ 349:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 679              		.loc 1 349 1 view .LVU197
+ 680              		@ sp needed
+ 681 0008 7047     		bx	lr
+ 682              		.cfi_endproc
+ 683              	.LFE69:
+ 685              		.section	.text.spi_nss_output_disable,"ax",%progbits
+ 686              		.align	1
+ 687              		.global	spi_nss_output_disable
+ 688              		.syntax unified
+ 689              		.code	16
+ 690              		.thumb_func
+ 692              	spi_nss_output_disable:
+ 693              	.LVL81:
+ 694              	.LFB70:
+ 350:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 351:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 352:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI NSS output
+ 353:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 354:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 355:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 356:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 357:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nss_output_disable(uint32_t spi_periph)
+ 358:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 695              		.loc 1 358 1 is_stmt 1 view -0
+ 696              		.cfi_startproc
+ 697              		@ args = 0, pretend = 0, frame = 0
+ 698              		@ frame_needed = 0, uses_anonymous_args = 0
+ 699              		@ link register save eliminated.
+ 359:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_NSSDRV);
+ 700              		.loc 1 359 5 view .LVU199
+ 701 0000 4368     		ldr	r3, [r0, #4]
+ 702              		.loc 1 359 26 is_stmt 0 view .LVU200
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 20
+
+
+ 703 0002 0422     		movs	r2, #4
+ 704 0004 9343     		bics	r3, r2
+ 705 0006 4360     		str	r3, [r0, #4]
+ 360:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 706              		.loc 1 360 1 view .LVU201
+ 707              		@ sp needed
+ 708 0008 7047     		bx	lr
+ 709              		.cfi_endproc
+ 710              	.LFE70:
+ 712              		.section	.text.spi_nss_internal_high,"ax",%progbits
+ 713              		.align	1
+ 714              		.global	spi_nss_internal_high
+ 715              		.syntax unified
+ 716              		.code	16
+ 717              		.thumb_func
+ 719              	spi_nss_internal_high:
+ 720              	.LVL82:
+ 721              	.LFB71:
+ 361:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 362:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 363:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      SPI NSS pin high level in software mode
+ 364:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 365:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 366:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 367:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 368:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nss_internal_high(uint32_t spi_periph)
+ 369:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 722              		.loc 1 369 1 is_stmt 1 view -0
+ 723              		.cfi_startproc
+ 724              		@ args = 0, pretend = 0, frame = 0
+ 725              		@ frame_needed = 0, uses_anonymous_args = 0
+ 726              		@ link register save eliminated.
+ 370:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)SPI_CTL0_SWNSS;
+ 727              		.loc 1 370 5 view .LVU203
+ 728 0000 0368     		ldr	r3, [r0]
+ 729              		.loc 1 370 26 is_stmt 0 view .LVU204
+ 730 0002 40F20012 		movw	r2, #256
+ 731 0006 1343     		orrs	r3, r2
+ 732 0008 0360     		str	r3, [r0]
+ 371:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 733              		.loc 1 371 1 view .LVU205
+ 734              		@ sp needed
+ 735 000a 7047     		bx	lr
+ 736              		.cfi_endproc
+ 737              	.LFE71:
+ 739              		.section	.text.spi_nss_internal_low,"ax",%progbits
+ 740              		.align	1
+ 741              		.global	spi_nss_internal_low
+ 742              		.syntax unified
+ 743              		.code	16
+ 744              		.thumb_func
+ 746              	spi_nss_internal_low:
+ 747              	.LVL83:
+ 748              	.LFB72:
+ 372:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 373:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 374:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      SPI NSS pin low level in software mode
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 21
+
+
+ 375:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 376:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 377:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 378:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 379:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nss_internal_low(uint32_t spi_periph)
+ 380:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 749              		.loc 1 380 1 is_stmt 1 view -0
+ 750              		.cfi_startproc
+ 751              		@ args = 0, pretend = 0, frame = 0
+ 752              		@ frame_needed = 0, uses_anonymous_args = 0
+ 753              		@ link register save eliminated.
+ 381:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) &= (uint32_t)(~SPI_CTL0_SWNSS);
+ 754              		.loc 1 381 5 view .LVU207
+ 755 0000 0368     		ldr	r3, [r0]
+ 756              		.loc 1 381 26 is_stmt 0 view .LVU208
+ 757 0002 024A     		ldr	r2, .L32
+ 758 0004 1340     		ands	r3, r2
+ 759 0006 0360     		str	r3, [r0]
+ 382:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 760              		.loc 1 382 1 view .LVU209
+ 761              		@ sp needed
+ 762 0008 7047     		bx	lr
+ 763              	.L33:
+ 764 000a C046     		.align	2
+ 765              	.L32:
+ 766 000c FFFEFFFF 		.word	-257
+ 767              		.cfi_endproc
+ 768              	.LFE72:
+ 770              		.section	.text.spi_dma_enable,"ax",%progbits
+ 771              		.align	1
+ 772              		.global	spi_dma_enable
+ 773              		.syntax unified
+ 774              		.code	16
+ 775              		.thumb_func
+ 777              	spi_dma_enable:
+ 778              	.LVL84:
+ 779              	.LFB73:
+ 383:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 384:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 385:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI DMA send or receive
+ 386:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 387:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  dma: SPI DMA mode
+ 388:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 389:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_DMA_TRANSMIT: SPI transmit data using DMA
+ 390:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_DMA_RECEIVE: SPI receive data using DMA
+ 391:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 392:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 393:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 394:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_dma_enable(uint32_t spi_periph, uint8_t dma)
+ 395:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 780              		.loc 1 395 1 is_stmt 1 view -0
+ 781              		.cfi_startproc
+ 782              		@ args = 0, pretend = 0, frame = 0
+ 783              		@ frame_needed = 0, uses_anonymous_args = 0
+ 784              		@ link register save eliminated.
+ 396:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI_DMA_TRANSMIT == dma) {
+ 785              		.loc 1 396 5 view .LVU211
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 22
+
+
+ 786              		.loc 1 396 7 is_stmt 0 view .LVU212
+ 787 0000 21B9     		cbnz	r1, .L35
+ 397:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) |= (uint32_t)SPI_CTL1_DMATEN;
+ 788              		.loc 1 397 9 is_stmt 1 view .LVU213
+ 789 0002 4368     		ldr	r3, [r0, #4]
+ 790              		.loc 1 397 30 is_stmt 0 view .LVU214
+ 791 0004 0222     		movs	r2, #2
+ 792 0006 1343     		orrs	r3, r2
+ 793 0008 4360     		str	r3, [r0, #4]
+ 794              	.L34:
+ 398:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 399:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) |= (uint32_t)SPI_CTL1_DMAREN;
+ 400:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 401:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 795              		.loc 1 401 1 view .LVU215
+ 796              		@ sp needed
+ 797 000a 7047     		bx	lr
+ 798              	.L35:
+ 399:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 799              		.loc 1 399 9 is_stmt 1 view .LVU216
+ 800 000c 4368     		ldr	r3, [r0, #4]
+ 399:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 801              		.loc 1 399 30 is_stmt 0 view .LVU217
+ 802 000e 0122     		movs	r2, #1
+ 803 0010 1343     		orrs	r3, r2
+ 804 0012 4360     		str	r3, [r0, #4]
+ 805              		.loc 1 401 1 view .LVU218
+ 806 0014 F9E7     		b	.L34
+ 807              		.cfi_endproc
+ 808              	.LFE73:
+ 810              		.section	.text.spi_dma_disable,"ax",%progbits
+ 811              		.align	1
+ 812              		.global	spi_dma_disable
+ 813              		.syntax unified
+ 814              		.code	16
+ 815              		.thumb_func
+ 817              	spi_dma_disable:
+ 818              	.LVL85:
+ 819              	.LFB74:
+ 402:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 403:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 404:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI DMA send or receive
+ 405:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 406:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  dma: SPI DMA mode
+ 407:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 408:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_DMA_TRANSMIT: SPI transmit data using DMA
+ 409:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_DMA_RECEIVE: SPI receive data using DMA
+ 410:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 411:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 412:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 413:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_dma_disable(uint32_t spi_periph, uint8_t dma)
+ 414:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 820              		.loc 1 414 1 is_stmt 1 view -0
+ 821              		.cfi_startproc
+ 822              		@ args = 0, pretend = 0, frame = 0
+ 823              		@ frame_needed = 0, uses_anonymous_args = 0
+ 824              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 23
+
+
+ 415:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI_DMA_TRANSMIT == dma) {
+ 825              		.loc 1 415 5 view .LVU220
+ 826              		.loc 1 415 7 is_stmt 0 view .LVU221
+ 827 0000 21B9     		cbnz	r1, .L38
+ 416:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_DMATEN);
+ 828              		.loc 1 416 9 is_stmt 1 view .LVU222
+ 829 0002 4368     		ldr	r3, [r0, #4]
+ 830              		.loc 1 416 30 is_stmt 0 view .LVU223
+ 831 0004 0222     		movs	r2, #2
+ 832 0006 9343     		bics	r3, r2
+ 833 0008 4360     		str	r3, [r0, #4]
+ 834              	.L37:
+ 417:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 418:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_DMAREN);
+ 419:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 420:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 835              		.loc 1 420 1 view .LVU224
+ 836              		@ sp needed
+ 837 000a 7047     		bx	lr
+ 838              	.L38:
+ 418:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 839              		.loc 1 418 9 is_stmt 1 view .LVU225
+ 840 000c 4368     		ldr	r3, [r0, #4]
+ 418:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 841              		.loc 1 418 30 is_stmt 0 view .LVU226
+ 842 000e 0122     		movs	r2, #1
+ 843 0010 9343     		bics	r3, r2
+ 844 0012 4360     		str	r3, [r0, #4]
+ 845              		.loc 1 420 1 view .LVU227
+ 846 0014 F9E7     		b	.L37
+ 847              		.cfi_endproc
+ 848              	.LFE74:
+ 850              		.section	.text.spi_transmit_odd_config,"ax",%progbits
+ 851              		.align	1
+ 852              		.global	spi_transmit_odd_config
+ 853              		.syntax unified
+ 854              		.code	16
+ 855              		.thumb_func
+ 857              	spi_transmit_odd_config:
+ 858              	.LVL86:
+ 859              	.LFB75:
+ 421:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 422:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 423:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure SPI total number of data to be transmitted by DMA is odd or not
+ 424:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 425:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  odd: odd bytes in TX DMA channel
+ 426:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 427:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXDMA_EVEN: number of byte in TX DMA channel is even
+ 428:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXDMA_ODD: number of byte in TX DMA channel is odd
+ 429:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 430:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 431:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 432:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_transmit_odd_config(uint32_t spi_periph, uint16_t odd)
+ 433:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 860              		.loc 1 433 1 is_stmt 1 view -0
+ 861              		.cfi_startproc
+ 862              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 24
+
+
+ 863              		@ frame_needed = 0, uses_anonymous_args = 0
+ 864              		@ link register save eliminated.
+ 434:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* clear SPI_CTL1_TXDMA_ODD bit */
+ 435:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_TXDMA_ODD);
+ 865              		.loc 1 435 5 view .LVU229
+ 866 0000 4368     		ldr	r3, [r0, #4]
+ 867              		.loc 1 435 26 is_stmt 0 view .LVU230
+ 868 0002 034A     		ldr	r2, .L41
+ 869 0004 1340     		ands	r3, r2
+ 870 0006 4360     		str	r3, [r0, #4]
+ 436:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure SPI_CTL1_TXDMA_ODD bit */
+ 437:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)odd;
+ 871              		.loc 1 437 5 is_stmt 1 view .LVU231
+ 872 0008 4368     		ldr	r3, [r0, #4]
+ 873              		.loc 1 437 26 is_stmt 0 view .LVU232
+ 874 000a 0B43     		orrs	r3, r1
+ 875 000c 4360     		str	r3, [r0, #4]
+ 438:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 876              		.loc 1 438 1 view .LVU233
+ 877              		@ sp needed
+ 878 000e 7047     		bx	lr
+ 879              	.L42:
+ 880              		.align	2
+ 881              	.L41:
+ 882 0010 FFBFFFFF 		.word	-16385
+ 883              		.cfi_endproc
+ 884              	.LFE75:
+ 886              		.section	.text.spi_receive_odd_config,"ax",%progbits
+ 887              		.align	1
+ 888              		.global	spi_receive_odd_config
+ 889              		.syntax unified
+ 890              		.code	16
+ 891              		.thumb_func
+ 893              	spi_receive_odd_config:
+ 894              	.LVL87:
+ 895              	.LFB76:
+ 439:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 440:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 441:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure SPI total number of data to be received by DMA is odd or not
+ 442:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 443:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  odd: odd bytes in RX DMA channel
+ 444:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 445:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXDMA_EVEN: number of bytes in RX DMA channel is even
+ 446:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXDMA_ODD: number of bytes in RX DMA channel is odd
+ 447:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 448:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 449:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 450:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_receive_odd_config(uint32_t spi_periph, uint16_t odd)
+ 451:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 896              		.loc 1 451 1 is_stmt 1 view -0
+ 897              		.cfi_startproc
+ 898              		@ args = 0, pretend = 0, frame = 0
+ 899              		@ frame_needed = 0, uses_anonymous_args = 0
+ 900              		@ link register save eliminated.
+ 452:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* clear SPI_CTL1_RXDMA_ODD bit */
+ 453:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_RXDMA_ODD);
+ 901              		.loc 1 453 5 view .LVU235
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 25
+
+
+ 902 0000 4368     		ldr	r3, [r0, #4]
+ 903              		.loc 1 453 26 is_stmt 0 view .LVU236
+ 904 0002 034A     		ldr	r2, .L44
+ 905 0004 1340     		ands	r3, r2
+ 906 0006 4360     		str	r3, [r0, #4]
+ 454:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* configure SPI_CTL1_RXDMA_ODD bit */
+ 455:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)odd;
+ 907              		.loc 1 455 5 is_stmt 1 view .LVU237
+ 908 0008 4368     		ldr	r3, [r0, #4]
+ 909              		.loc 1 455 26 is_stmt 0 view .LVU238
+ 910 000a 0B43     		orrs	r3, r1
+ 911 000c 4360     		str	r3, [r0, #4]
+ 456:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 912              		.loc 1 456 1 view .LVU239
+ 913              		@ sp needed
+ 914 000e 7047     		bx	lr
+ 915              	.L45:
+ 916              		.align	2
+ 917              	.L44:
+ 918 0010 FFDFFFFF 		.word	-8193
+ 919              		.cfi_endproc
+ 920              	.LFE76:
+ 922              		.section	.text.spi_i2s_data_frame_format_config,"ax",%progbits
+ 923              		.align	1
+ 924              		.global	spi_i2s_data_frame_format_config
+ 925              		.syntax unified
+ 926              		.code	16
+ 927              		.thumb_func
+ 929              	spi_i2s_data_frame_format_config:
+ 930              	.LVL88:
+ 931              	.LFB77:
+ 457:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 458:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 459:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure SPI data frame format
+ 460:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 461:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  frame_format: SPI frame size
+ 462:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 463:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg         SPI_FRAMESIZE_xBIT(x=4,5..16, for SPI1, x=8,16, for SPI0):SPI frame size is x bi
+ 464:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 465:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 466:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 467:Drivers/GD32E23x/Source/gd32e23x_spi.c **** ErrStatus spi_i2s_data_frame_format_config(uint32_t spi_periph, uint16_t frame_format)
+ 468:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 932              		.loc 1 468 1 is_stmt 1 view -0
+ 933              		.cfi_startproc
+ 934              		@ args = 0, pretend = 0, frame = 0
+ 935              		@ frame_needed = 0, uses_anonymous_args = 0
+ 936              		@ link register save eliminated.
+ 469:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg;
+ 937              		.loc 1 469 5 view .LVU241
+ 470:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI0 == spi_periph) {
+ 938              		.loc 1 470 5 view .LVU242
+ 939              		.loc 1 470 7 is_stmt 0 view .LVU243
+ 940 0000 43F20003 		movw	r3, #12288
+ 941 0004 C4F20103 		movt	r3, 16385
+ 942 0008 9842     		cmp	r0, r3
+ 943 000a 06D0     		beq	.L51
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 26
+
+
+ 471:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* check SPI0 frame size is 8bits/16bits or not*/
+ 472:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if((SPI_FRAMESIZE_8BIT != frame_format) && (SPI_FRAMESIZE_16BIT != frame_format)) {
+ 473:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 474:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 475:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* clear SPI_CTL0_FF16 bit */
+ 476:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             SPI_CTL0(spi_periph) &= (uint32_t)(~SPI_CTL0_FF16);
+ 477:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* configure SPI_CTL0_FF16 bit */
+ 478:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             SPI_CTL0(spi_periph) |= ((uint32_t)frame_format & SPI_FRAMESIZE_MASK);
+ 479:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 480:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 481:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg = SPI_CTL1(spi_periph);
+ 944              		.loc 1 481 9 is_stmt 1 view .LVU244
+ 945              		.loc 1 481 13 is_stmt 0 view .LVU245
+ 946 000c 4368     		ldr	r3, [r0, #4]
+ 947              	.LVL89:
+ 482:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* clear SPI_CTL1_DZ bits */
+ 483:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg &= (uint32_t)(~SPI_CTL1_DZ);
+ 948              		.loc 1 483 9 is_stmt 1 view .LVU246
+ 949              		.loc 1 483 13 is_stmt 0 view .LVU247
+ 950 000e 0E4A     		ldr	r2, .L52
+ 951 0010 1340     		ands	r3, r2
+ 952              	.LVL90:
+ 484:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg |= (uint32_t)frame_format;
+ 953              		.loc 1 484 9 is_stmt 1 view .LVU248
+ 954              		.loc 1 484 13 is_stmt 0 view .LVU249
+ 955 0012 1943     		orrs	r1, r3
+ 956              	.LVL91:
+ 485:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* configure SPI_CTL1_DZ bits */
+ 486:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL1(spi_periph) = reg;
+ 957              		.loc 1 486 9 is_stmt 1 view .LVU250
+ 958              		.loc 1 486 30 is_stmt 0 view .LVU251
+ 959 0014 4160     		str	r1, [r0, #4]
+ 487:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 488:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     return SUCCESS;
+ 960              		.loc 1 488 12 view .LVU252
+ 961 0016 0120     		movs	r0, #1
+ 962              	.LVL92:
+ 963              	.L49:
+ 489:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 964              		.loc 1 489 1 view .LVU253
+ 965              		@ sp needed
+ 966 0018 7047     		bx	lr
+ 967              	.LVL93:
+ 968              	.L51:
+ 472:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 969              		.loc 1 472 9 is_stmt 1 view .LVU254
+ 472:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 970              		.loc 1 472 11 is_stmt 0 view .LVU255
+ 971 001a 40F20073 		movw	r3, #1792
+ 972 001e 9942     		cmp	r1, r3
+ 973 0020 03D0     		beq	.L48
+ 472:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ERROR;
+ 974              		.loc 1 472 49 discriminator 1 view .LVU256
+ 975 0022 40F60073 		movw	r3, #3840
+ 976 0026 9942     		cmp	r1, r3
+ 977 0028 0BD1     		bne	.L50
+ 978              	.L48:
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 27
+
+
+ 476:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* configure SPI_CTL0_FF16 bit */
+ 979              		.loc 1 476 13 is_stmt 1 view .LVU257
+ 980 002a 0368     		ldr	r3, [r0]
+ 476:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* configure SPI_CTL0_FF16 bit */
+ 981              		.loc 1 476 34 is_stmt 0 view .LVU258
+ 982 002c 074A     		ldr	r2, .L52+4
+ 983 002e 1340     		ands	r3, r2
+ 984 0030 0360     		str	r3, [r0]
+ 478:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 985              		.loc 1 478 13 is_stmt 1 view .LVU259
+ 986 0032 0368     		ldr	r3, [r0]
+ 478:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 987              		.loc 1 478 61 is_stmt 0 view .LVU260
+ 988 0034 40F60002 		movw	r2, #2048
+ 989 0038 0A40     		ands	r2, r1
+ 478:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 990              		.loc 1 478 34 view .LVU261
+ 991 003a 1343     		orrs	r3, r2
+ 992 003c 0360     		str	r3, [r0]
+ 488:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 993              		.loc 1 488 12 view .LVU262
+ 994 003e 0120     		movs	r0, #1
+ 995              	.LVL94:
+ 488:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 996              		.loc 1 488 12 view .LVU263
+ 997 0040 EAE7     		b	.L49
+ 998              	.LVL95:
+ 999              	.L50:
+ 473:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 1000              		.loc 1 473 20 view .LVU264
+ 1001 0042 0020     		movs	r0, #0
+ 1002              	.LVL96:
+ 473:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 1003              		.loc 1 473 20 view .LVU265
+ 1004 0044 E8E7     		b	.L49
+ 1005              	.L53:
+ 1006 0046 C046     		.align	2
+ 1007              	.L52:
+ 1008 0048 FFF0FFFF 		.word	-3841
+ 1009 004c FFF7FFFF 		.word	-2049
+ 1010              		.cfi_endproc
+ 1011              	.LFE77:
+ 1013              		.section	.text.spi_fifo_access_size_config,"ax",%progbits
+ 1014              		.align	1
+ 1015              		.global	spi_fifo_access_size_config
+ 1016              		.syntax unified
+ 1017              		.code	16
+ 1018              		.thumb_func
+ 1020              	spi_fifo_access_size_config:
+ 1021              	.LVL97:
+ 1022              	.LFB78:
+ 490:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 491:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 492:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure SPI access size to FIFO(8-bit or 16-bit)
+ 493:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 494:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  fifo_access_size: byte access enable
+ 495:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 28
+
+
+ 496:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_HALFWORD_ACCESS: half-word access to FIFO
+ 497:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_BYTE_ACCESS: byte access to FIFO
+ 498:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 499:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 500:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 501:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_fifo_access_size_config(uint32_t spi_periph, uint16_t fifo_access_size)
+ 502:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1023              		.loc 1 502 1 is_stmt 1 view -0
+ 1024              		.cfi_startproc
+ 1025              		@ args = 0, pretend = 0, frame = 0
+ 1026              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1027              		@ link register save eliminated.
+ 503:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* clear SPI_CTL1_BYTEN bit */
+ 504:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_BYTEN);
+ 1028              		.loc 1 504 5 view .LVU267
+ 1029 0000 4368     		ldr	r3, [r0, #4]
+ 1030              		.loc 1 504 26 is_stmt 0 view .LVU268
+ 1031 0002 034A     		ldr	r2, .L55
+ 1032 0004 1340     		ands	r3, r2
+ 1033 0006 4360     		str	r3, [r0, #4]
+ 505:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* confige SPI_CTL1_BYTEN bit */
+ 506:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)fifo_access_size;
+ 1034              		.loc 1 506 5 is_stmt 1 view .LVU269
+ 1035 0008 4368     		ldr	r3, [r0, #4]
+ 1036              		.loc 1 506 26 is_stmt 0 view .LVU270
+ 1037 000a 0B43     		orrs	r3, r1
+ 1038 000c 4360     		str	r3, [r0, #4]
+ 507:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1039              		.loc 1 507 1 view .LVU271
+ 1040              		@ sp needed
+ 1041 000e 7047     		bx	lr
+ 1042              	.L56:
+ 1043              		.align	2
+ 1044              	.L55:
+ 1045 0010 FFEFFFFF 		.word	-4097
+ 1046              		.cfi_endproc
+ 1047              	.LFE78:
+ 1049              		.section	.text.spi_bidirectional_transfer_config,"ax",%progbits
+ 1050              		.align	1
+ 1051              		.global	spi_bidirectional_transfer_config
+ 1052              		.syntax unified
+ 1053              		.code	16
+ 1054              		.thumb_func
+ 1056              	spi_bidirectional_transfer_config:
+ 1057              	.LVL98:
+ 1058              	.LFB79:
+ 508:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 509:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 510:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      configure SPI bidirectional transfer direction
+ 511:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 512:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  transfer_direction: SPI transfer direction
+ 513:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 514:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_BIDIRECTIONAL_TRANSMIT: SPI work in transmit-only mode
+ 515:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_BIDIRECTIONAL_RECEIVE: SPI work in receive-only mode
+ 516:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 517:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 518:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 29
+
+
+ 519:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_bidirectional_transfer_config(uint32_t spi_periph, uint32_t transfer_direction)
+ 520:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1059              		.loc 1 520 1 is_stmt 1 view -0
+ 1060              		.cfi_startproc
+ 1061              		@ args = 0, pretend = 0, frame = 0
+ 1062              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1063              		@ link register save eliminated.
+ 521:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI_BIDIRECTIONAL_TRANSMIT == transfer_direction) {
+ 1064              		.loc 1 521 5 view .LVU273
+ 1065              		.loc 1 521 7 is_stmt 0 view .LVU274
+ 1066 0000 44F20003 		movw	r3, #16384
+ 1067 0004 9942     		cmp	r1, r3
+ 1068 0006 04D0     		beq	.L60
+ 522:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* set the transmit-only mode */
+ 523:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL0(spi_periph) |= (uint32_t)SPI_BIDIRECTIONAL_TRANSMIT;
+ 524:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 525:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* set the receive-only mode */
+ 526:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_CTL0(spi_periph) &= SPI_BIDIRECTIONAL_RECEIVE;
+ 1069              		.loc 1 526 9 is_stmt 1 view .LVU275
+ 1070 0008 0368     		ldr	r3, [r0]
+ 1071              		.loc 1 526 30 is_stmt 0 view .LVU276
+ 1072 000a 054A     		ldr	r2, .L61
+ 1073 000c 1340     		ands	r3, r2
+ 1074 000e 0360     		str	r3, [r0]
+ 1075              	.L57:
+ 527:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 528:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1076              		.loc 1 528 1 view .LVU277
+ 1077              		@ sp needed
+ 1078 0010 7047     		bx	lr
+ 1079              	.L60:
+ 523:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1080              		.loc 1 523 9 is_stmt 1 view .LVU278
+ 1081 0012 0368     		ldr	r3, [r0]
+ 523:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1082              		.loc 1 523 30 is_stmt 0 view .LVU279
+ 1083 0014 44F20002 		movw	r2, #16384
+ 1084 0018 1343     		orrs	r3, r2
+ 1085 001a 0360     		str	r3, [r0]
+ 1086 001c F8E7     		b	.L57
+ 1087              	.L62:
+ 1088 001e C046     		.align	2
+ 1089              	.L61:
+ 1090 0020 FFBFFFFF 		.word	-16385
+ 1091              		.cfi_endproc
+ 1092              	.LFE79:
+ 1094              		.section	.text.spi_i2s_data_transmit,"ax",%progbits
+ 1095              		.align	1
+ 1096              		.global	spi_i2s_data_transmit
+ 1097              		.syntax unified
+ 1098              		.code	16
+ 1099              		.thumb_func
+ 1101              	spi_i2s_data_transmit:
+ 1102              	.LVL99:
+ 1103              	.LFB80:
+ 529:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 530:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 30
+
+
+ 531:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      SPI transmit data
+ 532:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 533:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  data: 16-bit data
+ 534:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 535:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 536:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 537:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_i2s_data_transmit(uint32_t spi_periph, uint16_t data)
+ 538:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1104              		.loc 1 538 1 is_stmt 1 view -0
+ 1105              		.cfi_startproc
+ 1106              		@ args = 0, pretend = 0, frame = 0
+ 1107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1108              		@ link register save eliminated.
+ 539:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg, byten;
+ 1109              		.loc 1 539 5 view .LVU281
+ 540:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI0 == spi_periph) {
+ 1110              		.loc 1 540 5 view .LVU282
+ 1111              		.loc 1 540 7 is_stmt 0 view .LVU283
+ 1112 0000 43F20003 		movw	r3, #12288
+ 1113 0004 C4F20103 		movt	r3, 16385
+ 1114 0008 9842     		cmp	r0, r3
+ 1115 000a 04D0     		beq	.L67
+ 541:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         SPI_DATA(spi_periph) = (uint32_t)data;
+ 542:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 543:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* get the access size to FIFO */
+ 544:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         byten = SPI_CTL1(spi_periph) & SPI_BYTEN_MASK;
+ 1116              		.loc 1 544 9 is_stmt 1 view .LVU284
+ 1117              		.loc 1 544 17 is_stmt 0 view .LVU285
+ 1118 000c 4368     		ldr	r3, [r0, #4]
+ 1119              	.LVL100:
+ 545:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if(RESET != byten) {
+ 1120              		.loc 1 545 9 is_stmt 1 view .LVU286
+ 1121              		.loc 1 545 11 is_stmt 0 view .LVU287
+ 1122 000e DB04     		lsls	r3, r3, #19
+ 1123 0010 03D5     		bpl	.L66
+ 1124              	.LVL101:
+ 546:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             reg = spi_periph + 0x0CU;
+ 1125              		.loc 1 546 13 is_stmt 1 view .LVU288
+ 547:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             *(uint8_t *)(reg) = (uint8_t)data;
+ 1126              		.loc 1 547 13 view .LVU289
+ 1127              		.loc 1 547 31 is_stmt 0 view .LVU290
+ 1128 0012 0173     		strb	r1, [r0, #12]
+ 1129 0014 00E0     		b	.L63
+ 1130              	.LVL102:
+ 1131              	.L67:
+ 541:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1132              		.loc 1 541 9 is_stmt 1 view .LVU291
+ 541:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1133              		.loc 1 541 30 is_stmt 0 view .LVU292
+ 1134 0016 C160     		str	r1, [r0, #12]
+ 1135              	.L63:
+ 548:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 549:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             SPI_DATA(spi_periph) = (uint16_t)data;
+ 550:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 551:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 552:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1136              		.loc 1 552 1 view .LVU293
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 31
+
+
+ 1137              		@ sp needed
+ 1138 0018 7047     		bx	lr
+ 1139              	.LVL103:
+ 1140              	.L66:
+ 549:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 1141              		.loc 1 549 13 is_stmt 1 view .LVU294
+ 549:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 1142              		.loc 1 549 34 is_stmt 0 view .LVU295
+ 1143 001a C160     		str	r1, [r0, #12]
+ 1144              		.loc 1 552 1 view .LVU296
+ 1145 001c FCE7     		b	.L63
+ 1146              		.cfi_endproc
+ 1147              	.LFE80:
+ 1149              		.section	.text.spi_i2s_data_receive,"ax",%progbits
+ 1150              		.align	1
+ 1151              		.global	spi_i2s_data_receive
+ 1152              		.syntax unified
+ 1153              		.code	16
+ 1154              		.thumb_func
+ 1156              	spi_i2s_data_receive:
+ 1157              	.LVL104:
+ 1158              	.LFB81:
+ 553:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 554:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 555:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      SPI receive data
+ 556:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 557:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 558:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     16-bit data
+ 559:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 560:Drivers/GD32E23x/Source/gd32e23x_spi.c **** uint16_t spi_i2s_data_receive(uint32_t spi_periph)
+ 561:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1159              		.loc 1 561 1 is_stmt 1 view -0
+ 1160              		.cfi_startproc
+ 1161              		@ args = 0, pretend = 0, frame = 0
+ 1162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1163              		@ link register save eliminated.
+ 562:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg, byten;
+ 1164              		.loc 1 562 5 view .LVU298
+ 563:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI0 == spi_periph) {
+ 1165              		.loc 1 563 5 view .LVU299
+ 1166              		.loc 1 563 7 is_stmt 0 view .LVU300
+ 1167 0000 43F20003 		movw	r3, #12288
+ 1168 0004 C4F20103 		movt	r3, 16385
+ 1169 0008 9842     		cmp	r0, r3
+ 1170 000a 04D0     		beq	.L72
+ 564:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return ((uint16_t)SPI_DATA(spi_periph));
+ 565:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 566:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         /* get the access size to FIFO */
+ 567:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         byten = SPI_CTL1(spi_periph) & SPI_BYTEN_MASK;
+ 1171              		.loc 1 567 9 is_stmt 1 view .LVU301
+ 1172              		.loc 1 567 17 is_stmt 0 view .LVU302
+ 1173 000c 4368     		ldr	r3, [r0, #4]
+ 1174              	.LVL105:
+ 568:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if(RESET != byten) {
+ 1175              		.loc 1 568 9 is_stmt 1 view .LVU303
+ 1176              		.loc 1 568 11 is_stmt 0 view .LVU304
+ 1177 000e DB04     		lsls	r3, r3, #19
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 32
+
+
+ 1178 0010 04D5     		bpl	.L71
+ 1179              	.LVL106:
+ 569:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             reg = spi_periph + 0x0CU;
+ 1180              		.loc 1 569 13 is_stmt 1 view .LVU305
+ 570:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return (uint16_t)(*(uint8_t *)(reg));
+ 1181              		.loc 1 570 13 view .LVU306
+ 1182              		.loc 1 570 31 is_stmt 0 view .LVU307
+ 1183 0012 007B     		ldrb	r0, [r0, #12]
+ 1184              	.LVL107:
+ 1185              	.L70:
+ 571:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         } else {
+ 572:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             return ((uint16_t)SPI_DATA(spi_periph));
+ 573:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 574:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 575:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1186              		.loc 1 575 1 view .LVU308
+ 1187              		@ sp needed
+ 1188 0014 7047     		bx	lr
+ 1189              	.LVL108:
+ 1190              	.L72:
+ 564:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1191              		.loc 1 564 9 is_stmt 1 view .LVU309
+ 564:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1192              		.loc 1 564 27 is_stmt 0 view .LVU310
+ 1193 0016 C068     		ldr	r0, [r0, #12]
+ 1194              	.LVL109:
+ 564:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1195              		.loc 1 564 17 view .LVU311
+ 1196 0018 80B2     		uxth	r0, r0
+ 1197 001a FBE7     		b	.L70
+ 1198              	.LVL110:
+ 1199              	.L71:
+ 572:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 1200              		.loc 1 572 13 is_stmt 1 view .LVU312
+ 572:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 1201              		.loc 1 572 31 is_stmt 0 view .LVU313
+ 1202 001c C068     		ldr	r0, [r0, #12]
+ 1203              	.LVL111:
+ 572:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 1204              		.loc 1 572 21 view .LVU314
+ 1205 001e 80B2     		uxth	r0, r0
+ 1206 0020 F8E7     		b	.L70
+ 1207              		.cfi_endproc
+ 1208              	.LFE81:
+ 1210              		.section	.text.spi_i2s_format_error_clear,"ax",%progbits
+ 1211              		.align	1
+ 1212              		.global	spi_i2s_format_error_clear
+ 1213              		.syntax unified
+ 1214              		.code	16
+ 1215              		.thumb_func
+ 1217              	spi_i2s_format_error_clear:
+ 1218              	.LVL112:
+ 1219              	.LFB82:
+ 576:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 577:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 578:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      clear SPI/I2S format error flag status
+ 579:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 33
+
+
+ 580:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  flag: SPI/I2S frame format error flag 
+ 581:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_FERR: only for SPI work in TI mode
+ 582:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_FERR: for I2S
+ 583:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 584:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 585:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 586:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_i2s_format_error_clear(uint32_t spi_periph, uint32_t flag)
+ 587:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1220              		.loc 1 587 1 is_stmt 1 view -0
+ 1221              		.cfi_startproc
+ 1222              		@ args = 0, pretend = 0, frame = 0
+ 1223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1224              		@ link register save eliminated.
+ 588:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_STAT(spi_periph) = (uint32_t)(~flag);
+ 1225              		.loc 1 588 5 view .LVU316
+ 1226              		.loc 1 588 39 is_stmt 0 view .LVU317
+ 1227 0000 C943     		mvns	r1, r1
+ 1228              	.LVL113:
+ 1229              		.loc 1 588 26 view .LVU318
+ 1230 0002 8160     		str	r1, [r0, #8]
+ 589:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1231              		.loc 1 589 1 view .LVU319
+ 1232              		@ sp needed
+ 1233 0004 7047     		bx	lr
+ 1234              		.cfi_endproc
+ 1235              	.LFE82:
+ 1237              		.section	.text.spi_crc_polynomial_set,"ax",%progbits
+ 1238              		.align	1
+ 1239              		.global	spi_crc_polynomial_set
+ 1240              		.syntax unified
+ 1241              		.code	16
+ 1242              		.thumb_func
+ 1244              	spi_crc_polynomial_set:
+ 1245              	.LVL114:
+ 1246              	.LFB83:
+ 590:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 591:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 592:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      set SPI CRC polynomial
+ 593:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 594:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  crc_poly: CRC polynomial value
+ 595:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 596:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 597:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 598:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_polynomial_set(uint32_t spi_periph, uint16_t crc_poly)
+ 599:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1247              		.loc 1 599 1 is_stmt 1 view -0
+ 1248              		.cfi_startproc
+ 1249              		@ args = 0, pretend = 0, frame = 0
+ 1250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1251              		@ link register save eliminated.
+ 600:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* enable SPI CRC */
+ 601:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)SPI_CTL0_CRCEN;
+ 1252              		.loc 1 601 5 view .LVU321
+ 1253 0000 0368     		ldr	r3, [r0]
+ 1254              		.loc 1 601 26 is_stmt 0 view .LVU322
+ 1255 0002 42F20002 		movw	r2, #8192
+ 1256 0006 1343     		orrs	r3, r2
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 34
+
+
+ 1257 0008 0360     		str	r3, [r0]
+ 602:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* set SPI CRC polynomial */
+ 603:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CRCPOLY(spi_periph) = (uint32_t)crc_poly;
+ 1258              		.loc 1 603 5 is_stmt 1 view .LVU323
+ 1259              		.loc 1 603 29 is_stmt 0 view .LVU324
+ 1260 000a 0161     		str	r1, [r0, #16]
+ 604:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1261              		.loc 1 604 1 view .LVU325
+ 1262              		@ sp needed
+ 1263 000c 7047     		bx	lr
+ 1264              		.cfi_endproc
+ 1265              	.LFE83:
+ 1267              		.section	.text.spi_crc_polynomial_get,"ax",%progbits
+ 1268              		.align	1
+ 1269              		.global	spi_crc_polynomial_get
+ 1270              		.syntax unified
+ 1271              		.code	16
+ 1272              		.thumb_func
+ 1274              	spi_crc_polynomial_get:
+ 1275              	.LVL115:
+ 1276              	.LFB84:
+ 605:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 606:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 607:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      get SPI CRC polynomial
+ 608:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 609:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 610:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     16-bit CRC polynomial
+ 611:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 612:Drivers/GD32E23x/Source/gd32e23x_spi.c **** uint16_t spi_crc_polynomial_get(uint32_t spi_periph)
+ 613:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1277              		.loc 1 613 1 is_stmt 1 view -0
+ 1278              		.cfi_startproc
+ 1279              		@ args = 0, pretend = 0, frame = 0
+ 1280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1281              		@ link register save eliminated.
+ 614:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     return ((uint16_t)SPI_CRCPOLY(spi_periph));
+ 1282              		.loc 1 614 5 view .LVU327
+ 1283              		.loc 1 614 23 is_stmt 0 view .LVU328
+ 1284 0000 0069     		ldr	r0, [r0, #16]
+ 1285              	.LVL116:
+ 1286              		.loc 1 614 13 discriminator 1 view .LVU329
+ 1287 0002 80B2     		uxth	r0, r0
+ 615:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1288              		.loc 1 615 1 view .LVU330
+ 1289              		@ sp needed
+ 1290 0004 7047     		bx	lr
+ 1291              		.cfi_endproc
+ 1292              	.LFE84:
+ 1294              		.section	.text.spi_crc_length_set,"ax",%progbits
+ 1295              		.align	1
+ 1296              		.global	spi_crc_length_set
+ 1297              		.syntax unified
+ 1298              		.code	16
+ 1299              		.thumb_func
+ 1301              	spi_crc_length_set:
+ 1302              	.LVL117:
+ 1303              	.LFB85:
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 35
+
+
+ 616:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 617:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 618:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      set CRC length
+ 619:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 620:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  crc_length: CRC length
+ 621:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 622:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_CRC_8BIT: CRC length is 8 bits
+ 623:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_CRC_16BIT: CRC length is 16 bits
+ 624:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 625:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 626:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 627:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_length_set(uint32_t spi_periph, uint16_t crc_length)
+ 628:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1304              		.loc 1 628 1 is_stmt 1 view -0
+ 1305              		.cfi_startproc
+ 1306              		@ args = 0, pretend = 0, frame = 0
+ 1307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1308              		@ link register save eliminated.
+ 629:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* clear SPI_CTL0_CRCL bit */
+ 630:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) &= (uint32_t)(~SPI_CTL0_CRCL);
+ 1309              		.loc 1 630 5 view .LVU332
+ 1310 0000 0368     		ldr	r3, [r0]
+ 1311              		.loc 1 630 26 is_stmt 0 view .LVU333
+ 1312 0002 034A     		ldr	r2, .L77
+ 1313 0004 1340     		ands	r3, r2
+ 1314 0006 0360     		str	r3, [r0]
+ 631:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* confige SPI_CTL0_CRCL bit */
+ 632:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)crc_length;
+ 1315              		.loc 1 632 5 is_stmt 1 view .LVU334
+ 1316 0008 0368     		ldr	r3, [r0]
+ 1317              		.loc 1 632 26 is_stmt 0 view .LVU335
+ 1318 000a 0B43     		orrs	r3, r1
+ 1319 000c 0360     		str	r3, [r0]
+ 633:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1320              		.loc 1 633 1 view .LVU336
+ 1321              		@ sp needed
+ 1322 000e 7047     		bx	lr
+ 1323              	.L78:
+ 1324              		.align	2
+ 1325              	.L77:
+ 1326 0010 FFF7FFFF 		.word	-2049
+ 1327              		.cfi_endproc
+ 1328              	.LFE85:
+ 1330              		.section	.text.spi_crc_on,"ax",%progbits
+ 1331              		.align	1
+ 1332              		.global	spi_crc_on
+ 1333              		.syntax unified
+ 1334              		.code	16
+ 1335              		.thumb_func
+ 1337              	spi_crc_on:
+ 1338              	.LVL118:
+ 1339              	.LFB86:
+ 634:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 635:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 636:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      turn on CRC function
+ 637:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 638:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 36
+
+
+ 639:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 640:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 641:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_on(uint32_t spi_periph)
+ 642:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1340              		.loc 1 642 1 is_stmt 1 view -0
+ 1341              		.cfi_startproc
+ 1342              		@ args = 0, pretend = 0, frame = 0
+ 1343              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1344              		@ link register save eliminated.
+ 643:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)SPI_CTL0_CRCEN;
+ 1345              		.loc 1 643 5 view .LVU338
+ 1346 0000 0368     		ldr	r3, [r0]
+ 1347              		.loc 1 643 26 is_stmt 0 view .LVU339
+ 1348 0002 42F20002 		movw	r2, #8192
+ 1349 0006 1343     		orrs	r3, r2
+ 1350 0008 0360     		str	r3, [r0]
+ 644:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1351              		.loc 1 644 1 view .LVU340
+ 1352              		@ sp needed
+ 1353 000a 7047     		bx	lr
+ 1354              		.cfi_endproc
+ 1355              	.LFE86:
+ 1357              		.section	.text.spi_crc_off,"ax",%progbits
+ 1358              		.align	1
+ 1359              		.global	spi_crc_off
+ 1360              		.syntax unified
+ 1361              		.code	16
+ 1362              		.thumb_func
+ 1364              	spi_crc_off:
+ 1365              	.LVL119:
+ 1366              	.LFB87:
+ 645:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 646:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 647:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      turn off CRC function
+ 648:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 649:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 650:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 651:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 652:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_off(uint32_t spi_periph)
+ 653:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1367              		.loc 1 653 1 is_stmt 1 view -0
+ 1368              		.cfi_startproc
+ 1369              		@ args = 0, pretend = 0, frame = 0
+ 1370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1371              		@ link register save eliminated.
+ 654:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) &= (uint32_t)(~SPI_CTL0_CRCEN);
+ 1372              		.loc 1 654 5 view .LVU342
+ 1373 0000 0368     		ldr	r3, [r0]
+ 1374              		.loc 1 654 26 is_stmt 0 view .LVU343
+ 1375 0002 024A     		ldr	r2, .L81
+ 1376 0004 1340     		ands	r3, r2
+ 1377 0006 0360     		str	r3, [r0]
+ 655:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1378              		.loc 1 655 1 view .LVU344
+ 1379              		@ sp needed
+ 1380 0008 7047     		bx	lr
+ 1381              	.L82:
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 37
+
+
+ 1382 000a C046     		.align	2
+ 1383              	.L81:
+ 1384 000c FFDFFFFF 		.word	-8193
+ 1385              		.cfi_endproc
+ 1386              	.LFE87:
+ 1388              		.section	.text.spi_crc_next,"ax",%progbits
+ 1389              		.align	1
+ 1390              		.global	spi_crc_next
+ 1391              		.syntax unified
+ 1392              		.code	16
+ 1393              		.thumb_func
+ 1395              	spi_crc_next:
+ 1396              	.LVL120:
+ 1397              	.LFB88:
+ 656:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 657:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 658:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      SPI next data is CRC value
+ 659:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 660:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 661:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 662:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 663:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_next(uint32_t spi_periph)
+ 664:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1398              		.loc 1 664 1 is_stmt 1 view -0
+ 1399              		.cfi_startproc
+ 1400              		@ args = 0, pretend = 0, frame = 0
+ 1401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1402              		@ link register save eliminated.
+ 665:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL0(spi_periph) |= (uint32_t)SPI_CTL0_CRCNT;
+ 1403              		.loc 1 665 5 view .LVU346
+ 1404 0000 0368     		ldr	r3, [r0]
+ 1405              		.loc 1 665 26 is_stmt 0 view .LVU347
+ 1406 0002 41F20002 		movw	r2, #4096
+ 1407 0006 1343     		orrs	r3, r2
+ 1408 0008 0360     		str	r3, [r0]
+ 666:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1409              		.loc 1 666 1 view .LVU348
+ 1410              		@ sp needed
+ 1411 000a 7047     		bx	lr
+ 1412              		.cfi_endproc
+ 1413              	.LFE88:
+ 1415              		.section	.text.spi_crc_get,"ax",%progbits
+ 1416              		.align	1
+ 1417              		.global	spi_crc_get
+ 1418              		.syntax unified
+ 1419              		.code	16
+ 1420              		.thumb_func
+ 1422              	spi_crc_get:
+ 1423              	.LVL121:
+ 1424              	.LFB89:
+ 667:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 668:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 669:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      get SPI CRC send value or receive value
+ 670:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 671:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  crc: SPI crc value
+ 672:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 673:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_CRC_TX: get transmit crc value
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 38
+
+
+ 674:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_CRC_RX: get receive crc value
+ 675:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 676:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     16-bit CRC value
+ 677:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 678:Drivers/GD32E23x/Source/gd32e23x_spi.c **** uint16_t spi_crc_get(uint32_t spi_periph, uint8_t crc)
+ 679:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1425              		.loc 1 679 1 is_stmt 1 view -0
+ 1426              		.cfi_startproc
+ 1427              		@ args = 0, pretend = 0, frame = 0
+ 1428              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1429              		@ link register save eliminated.
+ 680:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(SPI_CRC_TX == crc) {
+ 1430              		.loc 1 680 5 view .LVU350
+ 1431              		.loc 1 680 7 is_stmt 0 view .LVU351
+ 1432 0000 11B9     		cbnz	r1, .L85
+ 681:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return ((uint16_t)(SPI_TCRC(spi_periph)));
+ 1433              		.loc 1 681 9 is_stmt 1 view .LVU352
+ 1434              		.loc 1 681 28 is_stmt 0 view .LVU353
+ 1435 0002 8069     		ldr	r0, [r0, #24]
+ 1436              	.LVL122:
+ 1437              		.loc 1 681 17 view .LVU354
+ 1438 0004 80B2     		uxth	r0, r0
+ 1439              	.L86:
+ 682:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 683:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return ((uint16_t)(SPI_RCRC(spi_periph)));
+ 684:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 685:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1440              		.loc 1 685 1 view .LVU355
+ 1441              		@ sp needed
+ 1442 0006 7047     		bx	lr
+ 1443              	.LVL123:
+ 1444              	.L85:
+ 683:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1445              		.loc 1 683 9 is_stmt 1 view .LVU356
+ 683:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1446              		.loc 1 683 28 is_stmt 0 view .LVU357
+ 1447 0008 4069     		ldr	r0, [r0, #20]
+ 1448              	.LVL124:
+ 683:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1449              		.loc 1 683 17 view .LVU358
+ 1450 000a 80B2     		uxth	r0, r0
+ 1451 000c FBE7     		b	.L86
+ 1452              		.cfi_endproc
+ 1453              	.LFE89:
+ 1455              		.section	.text.spi_crc_error_clear,"ax",%progbits
+ 1456              		.align	1
+ 1457              		.global	spi_crc_error_clear
+ 1458              		.syntax unified
+ 1459              		.code	16
+ 1460              		.thumb_func
+ 1462              	spi_crc_error_clear:
+ 1463              	.LVL125:
+ 1464              	.LFB90:
+ 686:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 687:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 688:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      clear SPI CRC error flag status
+ 689:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 39
+
+
+ 690:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 691:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 692:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 693:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_crc_error_clear(uint32_t spi_periph)
+ 694:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1465              		.loc 1 694 1 is_stmt 1 view -0
+ 1466              		.cfi_startproc
+ 1467              		@ args = 0, pretend = 0, frame = 0
+ 1468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1469              		@ link register save eliminated.
+ 695:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_STAT(spi_periph) = (uint32_t)(~SPI_FLAG_CRCERR);
+ 1470              		.loc 1 695 5 view .LVU360
+ 1471              		.loc 1 695 26 is_stmt 0 view .LVU361
+ 1472 0000 1123     		movs	r3, #17
+ 1473 0002 5B42     		rsbs	r3, r3, #0
+ 1474 0004 8360     		str	r3, [r0, #8]
+ 696:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1475              		.loc 1 696 1 view .LVU362
+ 1476              		@ sp needed
+ 1477 0006 7047     		bx	lr
+ 1478              		.cfi_endproc
+ 1479              	.LFE90:
+ 1481              		.section	.text.spi_ti_mode_enable,"ax",%progbits
+ 1482              		.align	1
+ 1483              		.global	spi_ti_mode_enable
+ 1484              		.syntax unified
+ 1485              		.code	16
+ 1486              		.thumb_func
+ 1488              	spi_ti_mode_enable:
+ 1489              	.LVL126:
+ 1490              	.LFB91:
+ 697:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 698:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 699:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI TI mode
+ 700:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 701:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 702:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 703:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 704:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_ti_mode_enable(uint32_t spi_periph)
+ 705:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1491              		.loc 1 705 1 is_stmt 1 view -0
+ 1492              		.cfi_startproc
+ 1493              		@ args = 0, pretend = 0, frame = 0
+ 1494              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1495              		@ link register save eliminated.
+ 706:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)SPI_CTL1_TMOD;
+ 1496              		.loc 1 706 5 view .LVU364
+ 1497 0000 4368     		ldr	r3, [r0, #4]
+ 1498              		.loc 1 706 26 is_stmt 0 view .LVU365
+ 1499 0002 1022     		movs	r2, #16
+ 1500 0004 1343     		orrs	r3, r2
+ 1501 0006 4360     		str	r3, [r0, #4]
+ 707:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1502              		.loc 1 707 1 view .LVU366
+ 1503              		@ sp needed
+ 1504 0008 7047     		bx	lr
+ 1505              		.cfi_endproc
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 40
+
+
+ 1506              	.LFE91:
+ 1508              		.section	.text.spi_ti_mode_disable,"ax",%progbits
+ 1509              		.align	1
+ 1510              		.global	spi_ti_mode_disable
+ 1511              		.syntax unified
+ 1512              		.code	16
+ 1513              		.thumb_func
+ 1515              	spi_ti_mode_disable:
+ 1516              	.LVL127:
+ 1517              	.LFB92:
+ 708:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 709:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 710:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI TI mode
+ 711:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 712:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 713:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 714:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 715:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_ti_mode_disable(uint32_t spi_periph)
+ 716:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1518              		.loc 1 716 1 is_stmt 1 view -0
+ 1519              		.cfi_startproc
+ 1520              		@ args = 0, pretend = 0, frame = 0
+ 1521              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1522              		@ link register save eliminated.
+ 717:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_TMOD);
+ 1523              		.loc 1 717 5 view .LVU368
+ 1524 0000 4368     		ldr	r3, [r0, #4]
+ 1525              		.loc 1 717 26 is_stmt 0 view .LVU369
+ 1526 0002 1022     		movs	r2, #16
+ 1527 0004 9343     		bics	r3, r2
+ 1528 0006 4360     		str	r3, [r0, #4]
+ 718:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1529              		.loc 1 718 1 view .LVU370
+ 1530              		@ sp needed
+ 1531 0008 7047     		bx	lr
+ 1532              		.cfi_endproc
+ 1533              	.LFE92:
+ 1535              		.section	.text.spi_nssp_mode_enable,"ax",%progbits
+ 1536              		.align	1
+ 1537              		.global	spi_nssp_mode_enable
+ 1538              		.syntax unified
+ 1539              		.code	16
+ 1540              		.thumb_func
+ 1542              	spi_nssp_mode_enable:
+ 1543              	.LVL128:
+ 1544              	.LFB93:
+ 719:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 720:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 721:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI NSS pulse mode
+ 722:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 723:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 724:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 725:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 726:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nssp_mode_enable(uint32_t spi_periph)
+ 727:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1545              		.loc 1 727 1 is_stmt 1 view -0
+ 1546              		.cfi_startproc
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 41
+
+
+ 1547              		@ args = 0, pretend = 0, frame = 0
+ 1548              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1549              		@ link register save eliminated.
+ 728:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)SPI_CTL1_NSSP;
+ 1550              		.loc 1 728 5 view .LVU372
+ 1551 0000 4368     		ldr	r3, [r0, #4]
+ 1552              		.loc 1 728 26 is_stmt 0 view .LVU373
+ 1553 0002 0822     		movs	r2, #8
+ 1554 0004 1343     		orrs	r3, r2
+ 1555 0006 4360     		str	r3, [r0, #4]
+ 729:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1556              		.loc 1 729 1 view .LVU374
+ 1557              		@ sp needed
+ 1558 0008 7047     		bx	lr
+ 1559              		.cfi_endproc
+ 1560              	.LFE93:
+ 1562              		.section	.text.spi_nssp_mode_disable,"ax",%progbits
+ 1563              		.align	1
+ 1564              		.global	spi_nssp_mode_disable
+ 1565              		.syntax unified
+ 1566              		.code	16
+ 1567              		.thumb_func
+ 1569              	spi_nssp_mode_disable:
+ 1570              	.LVL129:
+ 1571              	.LFB94:
+ 730:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 731:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 732:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI NSS pulse mode
+ 733:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 734:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 735:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 736:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 737:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_nssp_mode_disable(uint32_t spi_periph)
+ 738:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1572              		.loc 1 738 1 is_stmt 1 view -0
+ 1573              		.cfi_startproc
+ 1574              		@ args = 0, pretend = 0, frame = 0
+ 1575              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1576              		@ link register save eliminated.
+ 739:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= (uint32_t)(~SPI_CTL1_NSSP);
+ 1577              		.loc 1 739 5 view .LVU376
+ 1578 0000 4368     		ldr	r3, [r0, #4]
+ 1579              		.loc 1 739 26 is_stmt 0 view .LVU377
+ 1580 0002 0822     		movs	r2, #8
+ 1581 0004 9343     		bics	r3, r2
+ 1582 0006 4360     		str	r3, [r0, #4]
+ 740:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1583              		.loc 1 740 1 view .LVU378
+ 1584              		@ sp needed
+ 1585 0008 7047     		bx	lr
+ 1586              		.cfi_endproc
+ 1587              	.LFE94:
+ 1589              		.section	.text.spi_quad_enable,"ax",%progbits
+ 1590              		.align	1
+ 1591              		.global	spi_quad_enable
+ 1592              		.syntax unified
+ 1593              		.code	16
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 42
+
+
+ 1594              		.thumb_func
+ 1596              	spi_quad_enable:
+ 1597              	.LVL130:
+ 1598              	.LFB95:
+ 741:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 742:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 743:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable quad wire SPI
+ 744:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 745:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 746:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 747:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 748:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_enable(uint32_t spi_periph)
+ 749:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1599              		.loc 1 749 1 is_stmt 1 view -0
+ 1600              		.cfi_startproc
+ 1601              		@ args = 0, pretend = 0, frame = 0
+ 1602              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1603              		@ link register save eliminated.
+ 750:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) |= (uint32_t)SPI_QCTL_QMOD;
+ 1604              		.loc 1 750 5 view .LVU380
+ 1605 0000 8030     		adds	r0, r0, #128
+ 1606              	.LVL131:
+ 1607              		.loc 1 750 5 is_stmt 0 view .LVU381
+ 1608 0002 0368     		ldr	r3, [r0]
+ 1609              		.loc 1 750 26 view .LVU382
+ 1610 0004 0122     		movs	r2, #1
+ 1611 0006 1343     		orrs	r3, r2
+ 1612 0008 0360     		str	r3, [r0]
+ 751:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1613              		.loc 1 751 1 view .LVU383
+ 1614              		@ sp needed
+ 1615 000a 7047     		bx	lr
+ 1616              		.cfi_endproc
+ 1617              	.LFE95:
+ 1619              		.section	.text.spi_quad_disable,"ax",%progbits
+ 1620              		.align	1
+ 1621              		.global	spi_quad_disable
+ 1622              		.syntax unified
+ 1623              		.code	16
+ 1624              		.thumb_func
+ 1626              	spi_quad_disable:
+ 1627              	.LVL132:
+ 1628              	.LFB96:
+ 752:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 753:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 754:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable quad wire SPI
+ 755:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 756:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 757:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 758:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 759:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_disable(uint32_t spi_periph)
+ 760:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1629              		.loc 1 760 1 is_stmt 1 view -0
+ 1630              		.cfi_startproc
+ 1631              		@ args = 0, pretend = 0, frame = 0
+ 1632              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1633              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 43
+
+
+ 761:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) &= (uint32_t)(~SPI_QCTL_QMOD);
+ 1634              		.loc 1 761 5 view .LVU385
+ 1635 0000 8030     		adds	r0, r0, #128
+ 1636              	.LVL133:
+ 1637              		.loc 1 761 5 is_stmt 0 view .LVU386
+ 1638 0002 0368     		ldr	r3, [r0]
+ 1639              		.loc 1 761 26 view .LVU387
+ 1640 0004 0122     		movs	r2, #1
+ 1641 0006 9343     		bics	r3, r2
+ 1642 0008 0360     		str	r3, [r0]
+ 762:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1643              		.loc 1 762 1 view .LVU388
+ 1644              		@ sp needed
+ 1645 000a 7047     		bx	lr
+ 1646              		.cfi_endproc
+ 1647              	.LFE96:
+ 1649              		.section	.text.spi_quad_write_enable,"ax",%progbits
+ 1650              		.align	1
+ 1651              		.global	spi_quad_write_enable
+ 1652              		.syntax unified
+ 1653              		.code	16
+ 1654              		.thumb_func
+ 1656              	spi_quad_write_enable:
+ 1657              	.LVL134:
+ 1658              	.LFB97:
+ 763:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 764:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 765:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable quad wire SPI write
+ 766:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 767:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 768:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 769:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 770:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_write_enable(uint32_t spi_periph)
+ 771:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1659              		.loc 1 771 1 is_stmt 1 view -0
+ 1660              		.cfi_startproc
+ 1661              		@ args = 0, pretend = 0, frame = 0
+ 1662              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1663              		@ link register save eliminated.
+ 772:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) &= (uint32_t)(~SPI_QCTL_QRD);
+ 1664              		.loc 1 772 5 view .LVU390
+ 1665 0000 8030     		adds	r0, r0, #128
+ 1666              	.LVL135:
+ 1667              		.loc 1 772 5 is_stmt 0 view .LVU391
+ 1668 0002 0368     		ldr	r3, [r0]
+ 1669              		.loc 1 772 26 view .LVU392
+ 1670 0004 0222     		movs	r2, #2
+ 1671 0006 9343     		bics	r3, r2
+ 1672 0008 0360     		str	r3, [r0]
+ 773:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1673              		.loc 1 773 1 view .LVU393
+ 1674              		@ sp needed
+ 1675 000a 7047     		bx	lr
+ 1676              		.cfi_endproc
+ 1677              	.LFE97:
+ 1679              		.section	.text.spi_quad_read_enable,"ax",%progbits
+ 1680              		.align	1
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 44
+
+
+ 1681              		.global	spi_quad_read_enable
+ 1682              		.syntax unified
+ 1683              		.code	16
+ 1684              		.thumb_func
+ 1686              	spi_quad_read_enable:
+ 1687              	.LVL136:
+ 1688              	.LFB98:
+ 774:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 775:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 776:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable quad wire SPI read
+ 777:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 778:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 779:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 780:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 781:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_read_enable(uint32_t spi_periph)
+ 782:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1689              		.loc 1 782 1 is_stmt 1 view -0
+ 1690              		.cfi_startproc
+ 1691              		@ args = 0, pretend = 0, frame = 0
+ 1692              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1693              		@ link register save eliminated.
+ 783:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) |= (uint32_t)SPI_QCTL_QRD;
+ 1694              		.loc 1 783 5 view .LVU395
+ 1695 0000 8030     		adds	r0, r0, #128
+ 1696              	.LVL137:
+ 1697              		.loc 1 783 5 is_stmt 0 view .LVU396
+ 1698 0002 0368     		ldr	r3, [r0]
+ 1699              		.loc 1 783 26 view .LVU397
+ 1700 0004 0222     		movs	r2, #2
+ 1701 0006 1343     		orrs	r3, r2
+ 1702 0008 0360     		str	r3, [r0]
+ 784:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1703              		.loc 1 784 1 view .LVU398
+ 1704              		@ sp needed
+ 1705 000a 7047     		bx	lr
+ 1706              		.cfi_endproc
+ 1707              	.LFE98:
+ 1709              		.section	.text.spi_quad_io23_output_enable,"ax",%progbits
+ 1710              		.align	1
+ 1711              		.global	spi_quad_io23_output_enable
+ 1712              		.syntax unified
+ 1713              		.code	16
+ 1714              		.thumb_func
+ 1716              	spi_quad_io23_output_enable:
+ 1717              	.LVL138:
+ 1718              	.LFB99:
+ 785:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 786:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 787:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI_IO2 and SPI_IO3 pin output
+ 788:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=1)
+ 789:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 790:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 791:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 792:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_io23_output_enable(uint32_t spi_periph)
+ 793:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1719              		.loc 1 793 1 is_stmt 1 view -0
+ 1720              		.cfi_startproc
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 45
+
+
+ 1721              		@ args = 0, pretend = 0, frame = 0
+ 1722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1723              		@ link register save eliminated.
+ 794:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) |= (uint32_t)SPI_QCTL_IO23_DRV;
+ 1724              		.loc 1 794 5 view .LVU400
+ 1725 0000 8030     		adds	r0, r0, #128
+ 1726              	.LVL139:
+ 1727              		.loc 1 794 5 is_stmt 0 view .LVU401
+ 1728 0002 0368     		ldr	r3, [r0]
+ 1729              		.loc 1 794 26 view .LVU402
+ 1730 0004 0422     		movs	r2, #4
+ 1731 0006 1343     		orrs	r3, r2
+ 1732 0008 0360     		str	r3, [r0]
+ 795:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1733              		.loc 1 795 1 view .LVU403
+ 1734              		@ sp needed
+ 1735 000a 7047     		bx	lr
+ 1736              		.cfi_endproc
+ 1737              	.LFE99:
+ 1739              		.section	.text.spi_quad_io23_output_disable,"ax",%progbits
+ 1740              		.align	1
+ 1741              		.global	spi_quad_io23_output_disable
+ 1742              		.syntax unified
+ 1743              		.code	16
+ 1744              		.thumb_func
+ 1746              	spi_quad_io23_output_disable:
+ 1747              	.LVL140:
+ 1748              	.LFB100:
+ 796:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 797:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 798:Drivers/GD32E23x/Source/gd32e23x_spi.c ****    \brief      disable SPI_IO2 and SPI_IO3 pin output
+ 799:Drivers/GD32E23x/Source/gd32e23x_spi.c ****    \param[in]  spi_periph: SPIx(x=1)
+ 800:Drivers/GD32E23x/Source/gd32e23x_spi.c ****    \param[out] none
+ 801:Drivers/GD32E23x/Source/gd32e23x_spi.c ****    \retval     none
+ 802:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 803:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_quad_io23_output_disable(uint32_t spi_periph)
+ 804:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1749              		.loc 1 804 1 is_stmt 1 view -0
+ 1750              		.cfi_startproc
+ 1751              		@ args = 0, pretend = 0, frame = 0
+ 1752              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1753              		@ link register save eliminated.
+ 805:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_QCTL(spi_periph) &= (uint32_t)(~SPI_QCTL_IO23_DRV);
+ 1754              		.loc 1 805 5 view .LVU405
+ 1755 0000 8030     		adds	r0, r0, #128
+ 1756              	.LVL141:
+ 1757              		.loc 1 805 5 is_stmt 0 view .LVU406
+ 1758 0002 0368     		ldr	r3, [r0]
+ 1759              		.loc 1 805 26 view .LVU407
+ 1760 0004 0422     		movs	r2, #4
+ 1761 0006 9343     		bics	r3, r2
+ 1762 0008 0360     		str	r3, [r0]
+ 806:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1763              		.loc 1 806 1 view .LVU408
+ 1764              		@ sp needed
+ 1765 000a 7047     		bx	lr
+ 1766              		.cfi_endproc
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 46
+
+
+ 1767              	.LFE100:
+ 1769              		.section	.text.spi_i2s_flag_get,"ax",%progbits
+ 1770              		.align	1
+ 1771              		.global	spi_i2s_flag_get
+ 1772              		.syntax unified
+ 1773              		.code	16
+ 1774              		.thumb_func
+ 1776              	spi_i2s_flag_get:
+ 1777              	.LVL142:
+ 1778              	.LFB101:
+ 807:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 808:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 809:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      get SPI and I2S flag status
+ 810:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 811:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  flag: SPI/I2S flag status
+ 812:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which are shown as below:
+ 813:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_TBE: transmit buffer empty flag
+ 814:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_RBNE: receive buffer not empty flag
+ 815:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_TRANS: transmit on-going flag
+ 816:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_RXORERR: receive overrun error flag
+ 817:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_CONFERR: mode config error flag
+ 818:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_CRCERR: CRC error flag
+ 819:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_FLAG_FERR: SPI format error interrupt flag
+ 820:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_TBE: transmit buffer empty flag
+ 821:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_RBNE: receive buffer not empty flag
+ 822:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_TRANS: transmit on-going flag
+ 823:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_RXORERR: overrun error flag
+ 824:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_TXURERR: underrun error flag
+ 825:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_CH: channel side flag
+ 826:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_FLAG_FERR: I2S format error interrupt flag
+ 827:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only for SPI1:
+ 828:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXLVL_EMPTY: SPI TXFIFO is empty
+ 829:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXLVL_QUARTER_FULL: SPI TXFIFO is a quarter of full
+ 830:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXLVL_HAlF_FULL: SPI TXFIFO is a half of full
+ 831:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_TXLVL_FULL: SPI TXFIFO is full
+ 832:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXLVL_EMPTY: SPI RXFIFO is empty
+ 833:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXLVL_QUARTER_FULL: SPI RXFIFO is a quarter of full
+ 834:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXLVL_HAlF_FULL: SPI RXFIFO is a half of full
+ 835:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_RXLVL_FULL: SPI RXFIFO is full
+ 836:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 837:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     FlagStatus: SET or RESET
+ 838:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 839:Drivers/GD32E23x/Source/gd32e23x_spi.c **** FlagStatus spi_i2s_flag_get(uint32_t spi_periph, uint32_t flag)
+ 840:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1779              		.loc 1 840 1 is_stmt 1 view -0
+ 1780              		.cfi_startproc
+ 1781              		@ args = 0, pretend = 0, frame = 0
+ 1782              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1783              		@ link register save eliminated.
+ 841:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if(RESET != (SPI_STAT(spi_periph) & flag)) {
+ 1784              		.loc 1 841 5 view .LVU410
+ 1785              		.loc 1 841 18 is_stmt 0 view .LVU411
+ 1786 0000 8368     		ldr	r3, [r0, #8]
+ 1787              		.loc 1 841 7 view .LVU412
+ 1788 0002 1942     		tst	r1, r3
+ 1789 0004 0DD1     		bne	.L100
+ 842:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return SET;
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 47
+
+
+ 843:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 844:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         if(SPI1 == spi_periph) {
+ 1790              		.loc 1 844 9 is_stmt 1 view .LVU413
+ 1791              		.loc 1 844 11 is_stmt 0 view .LVU414
+ 1792 0006 43F60003 		movw	r3, #14336
+ 1793 000a C4F20003 		movt	r3, 16384
+ 1794 000e 9842     		cmp	r0, r3
+ 1795 0010 09D1     		bne	.L101
+ 845:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* check TXFIFO is empty or not */
+ 846:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             if(SPI_TXLVL_EMPTY == flag) {
+ 1796              		.loc 1 846 13 is_stmt 1 view .LVU415
+ 1797              		.loc 1 846 15 is_stmt 0 view .LVU416
+ 1798 0012 51B9     		cbnz	r1, .L102
+ 847:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 if(RESET != (SPI_STAT(spi_periph) & SPI_TXLVL_EMPTY_MASK)) {
+ 1799              		.loc 1 847 17 is_stmt 1 view .LVU417
+ 1800              		.loc 1 847 30 is_stmt 0 view .LVU418
+ 1801 0014 8368     		ldr	r3, [r0, #8]
+ 1802              		.loc 1 847 51 view .LVU419
+ 1803 0016 41F60002 		movw	r2, #6144
+ 1804              		.loc 1 847 19 view .LVU420
+ 1805 001a 1A42     		tst	r2, r3
+ 1806 001c 07D0     		beq	.L103
+ 848:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                     return RESET;
+ 1807              		.loc 1 848 28 view .LVU421
+ 1808 001e 0020     		movs	r0, #0
+ 1809              	.LVL143:
+ 1810              		.loc 1 848 28 view .LVU422
+ 1811 0020 00E0     		b	.L99
+ 1812              	.LVL144:
+ 1813              	.L100:
+ 842:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 1814              		.loc 1 842 16 view .LVU423
+ 1815 0022 0120     		movs	r0, #1
+ 1816              	.LVL145:
+ 1817              	.L99:
+ 849:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 } else {
+ 850:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                     return SET;
+ 851:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 }
+ 852:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             }
+ 853:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             /* check RXFIFO is empty or not */
+ 854:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             if(SPI_RXLVL_EMPTY == flag) {
+ 855:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 if(RESET != (SPI_STAT(spi_periph) & SPI_RXLVL_EMPTY_MASK)) {
+ 856:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                     return RESET;
+ 857:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 } else {
+ 858:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                     return SET;
+ 859:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 }
+ 860:Drivers/GD32E23x/Source/gd32e23x_spi.c ****             }
+ 861:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         }
+ 862:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return RESET;
+ 863:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 864:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1818              		.loc 1 864 1 view .LVU424
+ 1819              		@ sp needed
+ 1820 0024 7047     		bx	lr
+ 1821              	.LVL146:
+ 1822              	.L101:
+ 862:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 48
+
+
+ 1823              		.loc 1 862 16 view .LVU425
+ 1824 0026 0020     		movs	r0, #0
+ 1825              	.LVL147:
+ 862:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1826              		.loc 1 862 16 view .LVU426
+ 1827 0028 FCE7     		b	.L99
+ 1828              	.LVL148:
+ 1829              	.L102:
+ 862:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1830              		.loc 1 862 16 view .LVU427
+ 1831 002a 0020     		movs	r0, #0
+ 1832              	.LVL149:
+ 862:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 1833              		.loc 1 862 16 view .LVU428
+ 1834 002c FAE7     		b	.L99
+ 1835              	.LVL150:
+ 1836              	.L103:
+ 850:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 }
+ 1837              		.loc 1 850 28 view .LVU429
+ 1838 002e 0120     		movs	r0, #1
+ 1839              	.LVL151:
+ 850:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 }
+ 1840              		.loc 1 850 28 view .LVU430
+ 1841 0030 F8E7     		b	.L99
+ 1842              		.cfi_endproc
+ 1843              	.LFE101:
+ 1845              		.section	.text.spi_i2s_interrupt_enable,"ax",%progbits
+ 1846              		.align	1
+ 1847              		.global	spi_i2s_interrupt_enable
+ 1848              		.syntax unified
+ 1849              		.code	16
+ 1850              		.thumb_func
+ 1852              	spi_i2s_interrupt_enable:
+ 1853              	.LVL152:
+ 1854              	.LFB102:
+ 865:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 866:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 867:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      enable SPI and I2S interrupt
+ 868:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 869:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  interrupt: SPI/I2S interrupt
+ 870:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 871:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_TBE: transmit buffer empty interrupt
+ 872:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_RBNE: receive buffer not empty interrupt
+ 873:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_ERR: CRC error, configuration error, reception overrun error,
+ 874:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                                    transmission underrun error and format error interrupt
+ 875:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 876:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 877:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 878:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_i2s_interrupt_enable(uint32_t spi_periph, uint8_t interrupt)
+ 879:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1855              		.loc 1 879 1 is_stmt 1 view -0
+ 1856              		.cfi_startproc
+ 1857              		@ args = 0, pretend = 0, frame = 0
+ 1858              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1859              		@ link register save eliminated.
+ 880:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) |= (uint32_t)interrupt;
+ 1860              		.loc 1 880 5 view .LVU432
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 49
+
+
+ 1861 0000 4368     		ldr	r3, [r0, #4]
+ 1862              		.loc 1 880 26 is_stmt 0 view .LVU433
+ 1863 0002 0B43     		orrs	r3, r1
+ 1864 0004 4360     		str	r3, [r0, #4]
+ 881:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1865              		.loc 1 881 1 view .LVU434
+ 1866              		@ sp needed
+ 1867 0006 7047     		bx	lr
+ 1868              		.cfi_endproc
+ 1869              	.LFE102:
+ 1871              		.section	.text.spi_i2s_interrupt_disable,"ax",%progbits
+ 1872              		.align	1
+ 1873              		.global	spi_i2s_interrupt_disable
+ 1874              		.syntax unified
+ 1875              		.code	16
+ 1876              		.thumb_func
+ 1878              	spi_i2s_interrupt_disable:
+ 1879              	.LVL153:
+ 1880              	.LFB103:
+ 882:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 883:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 884:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      disable SPI and I2S interrupt
+ 885:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 886:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  interrupt: SPI/I2S interrupt
+ 887:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 888:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_TBE: transmit buffer empty interrupt
+ 889:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_RBNE: receive buffer not empty interrupt
+ 890:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_ERR: CRC error, configuration error, reception overrun error,
+ 891:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                                    transmission underrun error and format error interrupt
+ 892:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 893:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     none
+ 894:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 895:Drivers/GD32E23x/Source/gd32e23x_spi.c **** void spi_i2s_interrupt_disable(uint32_t spi_periph, uint8_t interrupt)
+ 896:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1881              		.loc 1 896 1 is_stmt 1 view -0
+ 1882              		.cfi_startproc
+ 1883              		@ args = 0, pretend = 0, frame = 0
+ 1884              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1885              		@ link register save eliminated.
+ 897:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     SPI_CTL1(spi_periph) &= ~(uint32_t)interrupt;
+ 1886              		.loc 1 897 5 view .LVU436
+ 1887 0000 4368     		ldr	r3, [r0, #4]
+ 1888              		.loc 1 897 26 is_stmt 0 view .LVU437
+ 1889 0002 8B43     		bics	r3, r1
+ 1890 0004 4360     		str	r3, [r0, #4]
+ 898:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 1891              		.loc 1 898 1 view .LVU438
+ 1892              		@ sp needed
+ 1893 0006 7047     		bx	lr
+ 1894              		.cfi_endproc
+ 1895              	.LFE103:
+ 1897              		.section	.text.spi_i2s_interrupt_flag_get,"ax",%progbits
+ 1898              		.align	1
+ 1899              		.global	spi_i2s_interrupt_flag_get
+ 1900              		.syntax unified
+ 1901              		.code	16
+ 1902              		.thumb_func
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 50
+
+
+ 1904              	spi_i2s_interrupt_flag_get:
+ 1905              	.LVL154:
+ 1906              	.LFB104:
+ 899:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 900:Drivers/GD32E23x/Source/gd32e23x_spi.c **** /*!
+ 901:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \brief      get SPI and I2S interrupt flag status
+ 902:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  spi_periph: SPIx(x=0,1)
+ 903:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[in]  interrupt: SPI/I2S interrupt flag status
+ 904:Drivers/GD32E23x/Source/gd32e23x_spi.c ****                 only one parameter can be selected which is shown as below:
+ 905:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_FLAG_TBE: transmit buffer empty interrupt flag
+ 906:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_FLAG_RBNE: receive buffer not empty interrupt flag
+ 907:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_FLAG_RXORERR: overrun interrupt flag
+ 908:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_INT_FLAG_CONFERR: config error interrupt flag
+ 909:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_INT_FLAG_CRCERR: CRC error interrupt flag
+ 910:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        I2S_INT_FLAG_TXURERR: underrun error interrupt flag
+ 911:Drivers/GD32E23x/Source/gd32e23x_spi.c ****       \arg        SPI_I2S_INT_FLAG_FERR: format error interrupt flag
+ 912:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \param[out] none
+ 913:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     \retval     FlagStatus: SET or RESET
+ 914:Drivers/GD32E23x/Source/gd32e23x_spi.c **** */
+ 915:Drivers/GD32E23x/Source/gd32e23x_spi.c **** FlagStatus spi_i2s_interrupt_flag_get(uint32_t spi_periph, uint8_t interrupt)
+ 916:Drivers/GD32E23x/Source/gd32e23x_spi.c **** {
+ 1907              		.loc 1 916 1 is_stmt 1 view -0
+ 1908              		.cfi_startproc
+ 1909              		@ args = 0, pretend = 0, frame = 0
+ 1910              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1911              		@ link register save eliminated.
+ 917:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg1 = SPI_STAT(spi_periph);
+ 1912              		.loc 1 917 5 view .LVU440
+ 1913              		.loc 1 917 14 is_stmt 0 view .LVU441
+ 1914 0000 8368     		ldr	r3, [r0, #8]
+ 1915              	.LVL155:
+ 918:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     uint32_t reg2 = SPI_CTL1(spi_periph);
+ 1916              		.loc 1 918 5 is_stmt 1 view .LVU442
+ 1917              		.loc 1 918 14 is_stmt 0 view .LVU443
+ 1918 0002 4268     		ldr	r2, [r0, #4]
+ 1919              	.LVL156:
+ 919:Drivers/GD32E23x/Source/gd32e23x_spi.c **** 
+ 920:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     switch(interrupt) {
+ 1920              		.loc 1 920 5 is_stmt 1 view .LVU444
+ 1921 0004 0629     		cmp	r1, #6
+ 1922 0006 07D8     		bhi	.L107
+ 1923 0008 8900     		lsls	r1, r1, #2
+ 1924              	.LVL157:
+ 1925              		.loc 1 920 5 is_stmt 0 view .LVU445
+ 1926 000a 1648     		ldr	r0, .L119
+ 1927              	.LVL158:
+ 1928              		.loc 1 920 5 view .LVU446
+ 1929 000c 4158     		ldr	r1, [r0, r1]
+ 1930 000e 8F46     		mov	pc, r1
+ 1931              		.section	.rodata.spi_i2s_interrupt_flag_get,"a",%progbits
+ 1932              		.align	2
+ 1933              	.L109:
+ 1934 0000 10000000 		.word	.L115
+ 1935 0004 20000000 		.word	.L114
+ 1936 0008 2A000000 		.word	.L113
+ 1937 000c 34000000 		.word	.L112
+ 1938 0010 3C000000 		.word	.L111
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 51
+
+
+ 1939 0014 46000000 		.word	.L110
+ 1940 0018 50000000 		.word	.L108
+ 1941              		.section	.text.spi_i2s_interrupt_flag_get
+ 1942              	.L115:
+ 921:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S transmit buffer empty interrupt */
+ 922:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_I2S_INT_FLAG_TBE:
+ 923:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_TBE;
+ 1943              		.loc 1 923 9 is_stmt 1 view .LVU447
+ 1944              		.loc 1 923 14 is_stmt 0 view .LVU448
+ 1945 0010 0221     		movs	r1, #2
+ 1946 0012 0B40     		ands	r3, r1
+ 1947              	.LVL159:
+ 924:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_TBEIE;
+ 1948              		.loc 1 924 9 is_stmt 1 view .LVU449
+ 1949              		.loc 1 924 14 is_stmt 0 view .LVU450
+ 1950 0014 7E31     		adds	r1, r1, #126
+ 1951 0016 0A40     		ands	r2, r1
+ 1952              	.LVL160:
+ 925:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1953              		.loc 1 925 9 is_stmt 1 view .LVU451
+ 1954              	.L107:
+ 926:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S receive buffer not empty interrupt */
+ 927:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_I2S_INT_FLAG_RBNE:
+ 928:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_RBNE;
+ 929:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_RBNEIE;
+ 930:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 931:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S overrun interrupt */
+ 932:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_I2S_INT_FLAG_RXORERR:
+ 933:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_RXORERR;
+ 934:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 935:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 936:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI config error interrupt */
+ 937:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_INT_FLAG_CONFERR:
+ 938:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_CONFERR;
+ 939:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 940:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 941:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI CRC error interrupt */
+ 942:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_INT_FLAG_CRCERR:
+ 943:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_CRCERR;
+ 944:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 945:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 946:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* I2S underrun error interrupt */
+ 947:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case I2S_INT_FLAG_TXURERR:
+ 948:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_TXURERR;
+ 949:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 950:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 951:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S format error interrupt */
+ 952:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     case SPI_I2S_INT_FLAG_FERR:
+ 953:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg1 = reg1 & SPI_STAT_FERR;
+ 954:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 955:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 956:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     default :
+ 957:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 958:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 959:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /*get SPI/I2S interrupt flag status */
+ 960:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     if((0U != reg1) && (0U != reg2)) {
+ 1955              		.loc 1 960 5 view .LVU452
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 52
+
+
+ 1956              		.loc 1 960 7 is_stmt 0 view .LVU453
+ 1957 0018 03B3     		cbz	r3, .L117
+ 1958              		.loc 1 960 21 discriminator 1 view .LVU454
+ 1959 001a 0ABB     		cbnz	r2, .L118
+ 961:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return SET;
+ 962:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 963:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         return RESET;
+ 1960              		.loc 1 963 16 view .LVU455
+ 1961 001c 0020     		movs	r0, #0
+ 1962 001e 1EE0     		b	.L116
+ 1963              	.L114:
+ 928:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_RBNEIE;
+ 1964              		.loc 1 928 9 is_stmt 1 view .LVU456
+ 928:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_RBNEIE;
+ 1965              		.loc 1 928 14 is_stmt 0 view .LVU457
+ 1966 0020 0121     		movs	r1, #1
+ 1967 0022 0B40     		ands	r3, r1
+ 1968              	.LVL161:
+ 929:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1969              		.loc 1 929 9 is_stmt 1 view .LVU458
+ 929:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1970              		.loc 1 929 14 is_stmt 0 view .LVU459
+ 1971 0024 3F31     		adds	r1, r1, #63
+ 1972 0026 0A40     		ands	r2, r1
+ 1973              	.LVL162:
+ 930:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S overrun interrupt */
+ 1974              		.loc 1 930 9 is_stmt 1 view .LVU460
+ 1975 0028 F6E7     		b	.L107
+ 1976              	.L113:
+ 933:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 1977              		.loc 1 933 9 view .LVU461
+ 933:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 1978              		.loc 1 933 14 is_stmt 0 view .LVU462
+ 1979 002a 4021     		movs	r1, #64
+ 1980 002c 0B40     		ands	r3, r1
+ 1981              	.LVL163:
+ 934:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1982              		.loc 1 934 9 is_stmt 1 view .LVU463
+ 934:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1983              		.loc 1 934 14 is_stmt 0 view .LVU464
+ 1984 002e 2039     		subs	r1, r1, #32
+ 1985 0030 0A40     		ands	r2, r1
+ 1986              	.LVL164:
+ 935:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI config error interrupt */
+ 1987              		.loc 1 935 9 is_stmt 1 view .LVU465
+ 1988 0032 F1E7     		b	.L107
+ 1989              	.L112:
+ 938:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 1990              		.loc 1 938 9 view .LVU466
+ 938:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 1991              		.loc 1 938 14 is_stmt 0 view .LVU467
+ 1992 0034 2021     		movs	r1, #32
+ 1993 0036 0B40     		ands	r3, r1
+ 1994              	.LVL165:
+ 939:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 1995              		.loc 1 939 9 is_stmt 1 view .LVU468
+ 939:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 53
+
+
+ 1996              		.loc 1 939 14 is_stmt 0 view .LVU469
+ 1997 0038 0A40     		ands	r2, r1
+ 1998              	.LVL166:
+ 940:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI CRC error interrupt */
+ 1999              		.loc 1 940 9 is_stmt 1 view .LVU470
+ 2000 003a EDE7     		b	.L107
+ 2001              	.L111:
+ 943:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2002              		.loc 1 943 9 view .LVU471
+ 943:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2003              		.loc 1 943 14 is_stmt 0 view .LVU472
+ 2004 003c 1021     		movs	r1, #16
+ 2005 003e 0B40     		ands	r3, r1
+ 2006              	.LVL167:
+ 944:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2007              		.loc 1 944 9 is_stmt 1 view .LVU473
+ 944:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2008              		.loc 1 944 14 is_stmt 0 view .LVU474
+ 2009 0040 1031     		adds	r1, r1, #16
+ 2010 0042 0A40     		ands	r2, r1
+ 2011              	.LVL168:
+ 945:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* I2S underrun error interrupt */
+ 2012              		.loc 1 945 9 is_stmt 1 view .LVU475
+ 2013 0044 E8E7     		b	.L107
+ 2014              	.L110:
+ 948:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2015              		.loc 1 948 9 view .LVU476
+ 948:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2016              		.loc 1 948 14 is_stmt 0 view .LVU477
+ 2017 0046 0821     		movs	r1, #8
+ 2018 0048 0B40     		ands	r3, r1
+ 2019              	.LVL169:
+ 949:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2020              		.loc 1 949 9 is_stmt 1 view .LVU478
+ 949:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2021              		.loc 1 949 14 is_stmt 0 view .LVU479
+ 2022 004a 1831     		adds	r1, r1, #24
+ 2023 004c 0A40     		ands	r2, r1
+ 2024              	.LVL170:
+ 950:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     /* SPI/I2S format error interrupt */
+ 2025              		.loc 1 950 9 is_stmt 1 view .LVU480
+ 2026 004e E3E7     		b	.L107
+ 2027              	.L108:
+ 953:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2028              		.loc 1 953 9 view .LVU481
+ 953:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         reg2 = reg2 & SPI_CTL1_ERRIE;
+ 2029              		.loc 1 953 14 is_stmt 0 view .LVU482
+ 2030 0050 40F20011 		movw	r1, #256
+ 2031 0054 0B40     		ands	r3, r1
+ 2032              	.LVL171:
+ 954:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2033              		.loc 1 954 9 is_stmt 1 view .LVU483
+ 954:Drivers/GD32E23x/Source/gd32e23x_spi.c ****         break;
+ 2034              		.loc 1 954 14 is_stmt 0 view .LVU484
+ 2035 0056 E039     		subs	r1, r1, #224
+ 2036 0058 0A40     		ands	r2, r1
+ 2037              	.LVL172:
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 54
+
+
+ 955:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     default :
+ 2038              		.loc 1 955 9 is_stmt 1 view .LVU485
+ 2039 005a DDE7     		b	.L107
+ 2040              	.L117:
+ 2041              		.loc 1 963 16 is_stmt 0 view .LVU486
+ 2042 005c 0020     		movs	r0, #0
+ 2043              	.L116:
+ 964:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     }
+ 965:Drivers/GD32E23x/Source/gd32e23x_spi.c **** }
+ 2044              		.loc 1 965 1 view .LVU487
+ 2045              		@ sp needed
+ 2046 005e 7047     		bx	lr
+ 2047              	.L118:
+ 961:Drivers/GD32E23x/Source/gd32e23x_spi.c ****     } else {
+ 2048              		.loc 1 961 16 view .LVU488
+ 2049 0060 0120     		movs	r0, #1
+ 2050 0062 FCE7     		b	.L116
+ 2051              	.L120:
+ 2052              		.align	2
+ 2053              	.L119:
+ 2054 0064 00000000 		.word	.L109
+ 2055              		.cfi_endproc
+ 2056              	.LFE104:
+ 2058              		.text
+ 2059              	.Letext0:
+ 2060              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 2061              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 2062              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 2063              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ 2064              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_spi.h"
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 55
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_spi.c
+D:\noval\Temp\ccOiI0Cr.s:19     .text.spi_i2s_deinit:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:25     .text.spi_i2s_deinit:00000000 spi_i2s_deinit
+D:\noval\Temp\ccOiI0Cr.s:81     .text.spi_struct_para_init:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:87     .text.spi_struct_para_init:00000000 spi_struct_para_init
+D:\noval\Temp\ccOiI0Cr.s:125    .text.spi_init:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:131    .text.spi_init:00000000 spi_init
+D:\noval\Temp\ccOiI0Cr.s:320    .text.spi_init:0000008c $d
+D:\noval\Temp\ccOiI0Cr.s:325    .text.spi_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:331    .text.spi_enable:00000000 spi_enable
+D:\noval\Temp\ccOiI0Cr.s:352    .text.spi_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:358    .text.spi_disable:00000000 spi_disable
+D:\noval\Temp\ccOiI0Cr.s:379    .text.i2s_init:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:385    .text.i2s_init:00000000 i2s_init
+D:\noval\Temp\ccOiI0Cr.s:439    .text.i2s_psc_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:445    .text.i2s_psc_config:00000000 i2s_psc_config
+D:\noval\Temp\ccOiI0Cr.s:601    .text.i2s_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:607    .text.i2s_enable:00000000 i2s_enable
+D:\noval\Temp\ccOiI0Cr.s:628    .text.i2s_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:634    .text.i2s_disable:00000000 i2s_disable
+D:\noval\Temp\ccOiI0Cr.s:654    .text.i2s_disable:0000000c $d
+D:\noval\Temp\ccOiI0Cr.s:659    .text.spi_nss_output_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:665    .text.spi_nss_output_enable:00000000 spi_nss_output_enable
+D:\noval\Temp\ccOiI0Cr.s:686    .text.spi_nss_output_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:692    .text.spi_nss_output_disable:00000000 spi_nss_output_disable
+D:\noval\Temp\ccOiI0Cr.s:713    .text.spi_nss_internal_high:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:719    .text.spi_nss_internal_high:00000000 spi_nss_internal_high
+D:\noval\Temp\ccOiI0Cr.s:740    .text.spi_nss_internal_low:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:746    .text.spi_nss_internal_low:00000000 spi_nss_internal_low
+D:\noval\Temp\ccOiI0Cr.s:766    .text.spi_nss_internal_low:0000000c $d
+D:\noval\Temp\ccOiI0Cr.s:771    .text.spi_dma_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:777    .text.spi_dma_enable:00000000 spi_dma_enable
+D:\noval\Temp\ccOiI0Cr.s:811    .text.spi_dma_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:817    .text.spi_dma_disable:00000000 spi_dma_disable
+D:\noval\Temp\ccOiI0Cr.s:851    .text.spi_transmit_odd_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:857    .text.spi_transmit_odd_config:00000000 spi_transmit_odd_config
+D:\noval\Temp\ccOiI0Cr.s:882    .text.spi_transmit_odd_config:00000010 $d
+D:\noval\Temp\ccOiI0Cr.s:887    .text.spi_receive_odd_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:893    .text.spi_receive_odd_config:00000000 spi_receive_odd_config
+D:\noval\Temp\ccOiI0Cr.s:918    .text.spi_receive_odd_config:00000010 $d
+D:\noval\Temp\ccOiI0Cr.s:923    .text.spi_i2s_data_frame_format_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:929    .text.spi_i2s_data_frame_format_config:00000000 spi_i2s_data_frame_format_config
+D:\noval\Temp\ccOiI0Cr.s:1008   .text.spi_i2s_data_frame_format_config:00000048 $d
+D:\noval\Temp\ccOiI0Cr.s:1014   .text.spi_fifo_access_size_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1020   .text.spi_fifo_access_size_config:00000000 spi_fifo_access_size_config
+D:\noval\Temp\ccOiI0Cr.s:1045   .text.spi_fifo_access_size_config:00000010 $d
+D:\noval\Temp\ccOiI0Cr.s:1050   .text.spi_bidirectional_transfer_config:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1056   .text.spi_bidirectional_transfer_config:00000000 spi_bidirectional_transfer_config
+D:\noval\Temp\ccOiI0Cr.s:1090   .text.spi_bidirectional_transfer_config:00000020 $d
+D:\noval\Temp\ccOiI0Cr.s:1095   .text.spi_i2s_data_transmit:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1101   .text.spi_i2s_data_transmit:00000000 spi_i2s_data_transmit
+D:\noval\Temp\ccOiI0Cr.s:1150   .text.spi_i2s_data_receive:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1156   .text.spi_i2s_data_receive:00000000 spi_i2s_data_receive
+D:\noval\Temp\ccOiI0Cr.s:1211   .text.spi_i2s_format_error_clear:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1217   .text.spi_i2s_format_error_clear:00000000 spi_i2s_format_error_clear
+D:\noval\Temp\ccOiI0Cr.s:1238   .text.spi_crc_polynomial_set:00000000 $t
+ARM GAS  D:\noval\Temp\ccOiI0Cr.s 			page 56
+
+
+D:\noval\Temp\ccOiI0Cr.s:1244   .text.spi_crc_polynomial_set:00000000 spi_crc_polynomial_set
+D:\noval\Temp\ccOiI0Cr.s:1268   .text.spi_crc_polynomial_get:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1274   .text.spi_crc_polynomial_get:00000000 spi_crc_polynomial_get
+D:\noval\Temp\ccOiI0Cr.s:1295   .text.spi_crc_length_set:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1301   .text.spi_crc_length_set:00000000 spi_crc_length_set
+D:\noval\Temp\ccOiI0Cr.s:1326   .text.spi_crc_length_set:00000010 $d
+D:\noval\Temp\ccOiI0Cr.s:1331   .text.spi_crc_on:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1337   .text.spi_crc_on:00000000 spi_crc_on
+D:\noval\Temp\ccOiI0Cr.s:1358   .text.spi_crc_off:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1364   .text.spi_crc_off:00000000 spi_crc_off
+D:\noval\Temp\ccOiI0Cr.s:1384   .text.spi_crc_off:0000000c $d
+D:\noval\Temp\ccOiI0Cr.s:1389   .text.spi_crc_next:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1395   .text.spi_crc_next:00000000 spi_crc_next
+D:\noval\Temp\ccOiI0Cr.s:1416   .text.spi_crc_get:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1422   .text.spi_crc_get:00000000 spi_crc_get
+D:\noval\Temp\ccOiI0Cr.s:1456   .text.spi_crc_error_clear:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1462   .text.spi_crc_error_clear:00000000 spi_crc_error_clear
+D:\noval\Temp\ccOiI0Cr.s:1482   .text.spi_ti_mode_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1488   .text.spi_ti_mode_enable:00000000 spi_ti_mode_enable
+D:\noval\Temp\ccOiI0Cr.s:1509   .text.spi_ti_mode_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1515   .text.spi_ti_mode_disable:00000000 spi_ti_mode_disable
+D:\noval\Temp\ccOiI0Cr.s:1536   .text.spi_nssp_mode_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1542   .text.spi_nssp_mode_enable:00000000 spi_nssp_mode_enable
+D:\noval\Temp\ccOiI0Cr.s:1563   .text.spi_nssp_mode_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1569   .text.spi_nssp_mode_disable:00000000 spi_nssp_mode_disable
+D:\noval\Temp\ccOiI0Cr.s:1590   .text.spi_quad_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1596   .text.spi_quad_enable:00000000 spi_quad_enable
+D:\noval\Temp\ccOiI0Cr.s:1620   .text.spi_quad_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1626   .text.spi_quad_disable:00000000 spi_quad_disable
+D:\noval\Temp\ccOiI0Cr.s:1650   .text.spi_quad_write_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1656   .text.spi_quad_write_enable:00000000 spi_quad_write_enable
+D:\noval\Temp\ccOiI0Cr.s:1680   .text.spi_quad_read_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1686   .text.spi_quad_read_enable:00000000 spi_quad_read_enable
+D:\noval\Temp\ccOiI0Cr.s:1710   .text.spi_quad_io23_output_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1716   .text.spi_quad_io23_output_enable:00000000 spi_quad_io23_output_enable
+D:\noval\Temp\ccOiI0Cr.s:1740   .text.spi_quad_io23_output_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1746   .text.spi_quad_io23_output_disable:00000000 spi_quad_io23_output_disable
+D:\noval\Temp\ccOiI0Cr.s:1770   .text.spi_i2s_flag_get:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1776   .text.spi_i2s_flag_get:00000000 spi_i2s_flag_get
+D:\noval\Temp\ccOiI0Cr.s:1846   .text.spi_i2s_interrupt_enable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1852   .text.spi_i2s_interrupt_enable:00000000 spi_i2s_interrupt_enable
+D:\noval\Temp\ccOiI0Cr.s:1872   .text.spi_i2s_interrupt_disable:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1878   .text.spi_i2s_interrupt_disable:00000000 spi_i2s_interrupt_disable
+D:\noval\Temp\ccOiI0Cr.s:1898   .text.spi_i2s_interrupt_flag_get:00000000 $t
+D:\noval\Temp\ccOiI0Cr.s:1904   .text.spi_i2s_interrupt_flag_get:00000000 spi_i2s_interrupt_flag_get
+D:\noval\Temp\ccOiI0Cr.s:1932   .rodata.spi_i2s_interrupt_flag_get:00000000 $d
+D:\noval\Temp\ccOiI0Cr.s:2054   .text.spi_i2s_interrupt_flag_get:00000064 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable
+rcu_clock_freq_get

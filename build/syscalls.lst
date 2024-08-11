@@ -1,0 +1,940 @@
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"syscalls.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c"
+  18              		.section	.text._sbrk,"ax",%progbits
+  19              		.align	1
+  20              		.global	_sbrk
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	_sbrk:
+  26              	.LVL0:
+  27              	.LFB3:
+   1:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** /* Support files for GNU libc.  Files in the system namespace go here.
+   2:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****    Files in the C namespace (ie those that do not start with an
+   3:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****    underscore) go in .c.  */
+   4:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+   5:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <_ansi.h>
+   6:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/types.h>
+   7:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/stat.h>
+   8:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/fcntl.h>
+   9:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <stdio.h>
+  10:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <string.h>
+  11:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <time.h>
+  12:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/time.h>
+  13:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/times.h>
+  14:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <errno.h>
+  15:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <reent.h>
+  16:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <unistd.h>
+  17:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #include <sys/wait.h>
+  18:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  19:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** #undef errno
+  20:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** extern int errno;
+  21:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  22:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** extern int __io_putchar(int ch) __attribute__((weak));
+  23:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** extern int __io_getchar(void) __attribute__((weak));
+  24:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  25:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** caddr_t _sbrk(int incr)
+  26:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+  28              		.loc 1 26 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 2
+
+
+  33              		.loc 1 26 1 is_stmt 0 view .LVU1
+  34 0000 0300     		movs	r3, r0
+  27:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   extern char _end[];
+  35              		.loc 1 27 3 is_stmt 1 view .LVU2
+  28:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   extern char _heap_end[];
+  36              		.loc 1 28 3 view .LVU3
+  29:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   static char *curbrk = _end;
+  37              		.loc 1 29 3 view .LVU4
+  30:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  31:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   if ((curbrk + incr < _end) || (curbrk + incr > _heap_end))
+  38              		.loc 1 31 3 view .LVU5
+  39              		.loc 1 31 15 is_stmt 0 view .LVU6
+  40 0002 40F20002 		movw	r2, #:lower16:curbrk.0
+  41 0006 C0F20002 		movt	r2, #:upper16:curbrk.0
+  42 000a 1068     		ldr	r0, [r2]
+  43              	.LVL1:
+  44              		.loc 1 31 15 view .LVU7
+  45 000c C318     		adds	r3, r0, r3
+  46              	.LVL2:
+  47              		.loc 1 31 6 view .LVU8
+  48 000e 40F20002 		movw	r2, #:lower16:_end
+  49 0012 C0F20002 		movt	r2, #:upper16:_end
+  50 0016 9342     		cmp	r3, r2
+  51 0018 0BD3     		bcc	.L3
+  52              		.loc 1 31 30 discriminator 1 view .LVU9
+  53 001a 40F20002 		movw	r2, #:lower16:_heap_end
+  54 001e C0F20002 		movt	r2, #:upper16:_heap_end
+  55 0022 9342     		cmp	r3, r2
+  56 0024 08D8     		bhi	.L4
+  32:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****     return NULL - 1;
+  33:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  34:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   curbrk += incr;
+  57              		.loc 1 34 3 is_stmt 1 view .LVU10
+  58              		.loc 1 34 10 is_stmt 0 view .LVU11
+  59 0026 40F20002 		movw	r2, #:lower16:curbrk.0
+  60 002a C0F20002 		movt	r2, #:upper16:curbrk.0
+  61 002e 1360     		str	r3, [r2]
+  35:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   return curbrk - incr;
+  62              		.loc 1 35 3 is_stmt 1 view .LVU12
+  63              	.L1:
+  36:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+  64              		.loc 1 36 1 is_stmt 0 view .LVU13
+  65              		@ sp needed
+  66 0030 7047     		bx	lr
+  67              	.L3:
+  32:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****     return NULL - 1;
+  68              		.loc 1 32 17 view .LVU14
+  69 0032 0120     		movs	r0, #1
+  70 0034 4042     		rsbs	r0, r0, #0
+  71 0036 FBE7     		b	.L1
+  72              	.L4:
+  73 0038 0120     		movs	r0, #1
+  74 003a 4042     		rsbs	r0, r0, #0
+  75 003c F8E7     		b	.L1
+  76              		.cfi_endproc
+  77              	.LFE3:
+  79              		.section	.text._gettimeofday,"ax",%progbits
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 3
+
+
+  80              		.align	1
+  81              		.global	_gettimeofday
+  82              		.syntax unified
+  83              		.code	16
+  84              		.thumb_func
+  86              	_gettimeofday:
+  87              	.LVL3:
+  88              	.LFB4:
+  37:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  38:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** /*
+  39:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****  * _gettimeofday primitive (Stub function)
+  40:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****  * */
+  41:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _gettimeofday (struct timeval * tp, struct timezone * tzp)
+  42:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+  89              		.loc 1 42 1 is_stmt 1 view -0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  43:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   /* Return fixed data for the timezone.  */
+  44:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   if (tzp)
+  94              		.loc 1 44 3 view .LVU16
+  95              		.loc 1 44 6 is_stmt 0 view .LVU17
+  96 0000 11B1     		cbz	r1, .L6
+  45:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****     {
+  46:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****       tzp->tz_minuteswest = 0;
+  97              		.loc 1 46 7 is_stmt 1 view .LVU18
+  98              		.loc 1 46 27 is_stmt 0 view .LVU19
+  99 0002 0023     		movs	r3, #0
+ 100 0004 0B60     		str	r3, [r1]
+  47:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****       tzp->tz_dsttime = 0;
+ 101              		.loc 1 47 7 is_stmt 1 view .LVU20
+ 102              		.loc 1 47 23 is_stmt 0 view .LVU21
+ 103 0006 4B60     		str	r3, [r1, #4]
+ 104              	.L6:
+  48:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****     }
+  49:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  50:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****   return 0;
+ 105              		.loc 1 50 3 is_stmt 1 view .LVU22
+  51:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 106              		.loc 1 51 1 is_stmt 0 view .LVU23
+ 107 0008 0020     		movs	r0, #0
+ 108              	.LVL4:
+ 109              		.loc 1 51 1 view .LVU24
+ 110              		@ sp needed
+ 111 000a 7047     		bx	lr
+ 112              		.cfi_endproc
+ 113              	.LFE4:
+ 115              		.section	.text.initialise_monitor_handles,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	initialise_monitor_handles
+ 118              		.syntax unified
+ 119              		.code	16
+ 120              		.thumb_func
+ 122              	initialise_monitor_handles:
+ 123              	.LFB5:
+  52:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** void initialise_monitor_handles()
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 4
+
+
+  53:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 124              		.loc 1 53 1 is_stmt 1 view -0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              		@ link register save eliminated.
+  54:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 129              		.loc 1 54 1 view .LVU26
+ 130              		@ sp needed
+ 131 0000 7047     		bx	lr
+ 132              		.cfi_endproc
+ 133              	.LFE5:
+ 135              		.section	.text._getpid,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	_getpid
+ 138              		.syntax unified
+ 139              		.code	16
+ 140              		.thumb_func
+ 142              	_getpid:
+ 143              	.LFB6:
+  55:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  56:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _getpid(void)
+  57:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 144              		.loc 1 57 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+  58:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return 1;
+ 149              		.loc 1 58 2 view .LVU28
+  59:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 150              		.loc 1 59 1 is_stmt 0 view .LVU29
+ 151 0000 0120     		movs	r0, #1
+ 152              		@ sp needed
+ 153 0002 7047     		bx	lr
+ 154              		.cfi_endproc
+ 155              	.LFE6:
+ 157              		.section	.text._kill,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	_kill
+ 160              		.syntax unified
+ 161              		.code	16
+ 162              		.thumb_func
+ 164              	_kill:
+ 165              	.LVL5:
+ 166              	.LFB7:
+  60:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  61:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _kill(int pid, int sig)
+  62:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 167              		.loc 1 62 1 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+  63:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = EINVAL;
+ 172              		.loc 1 63 2 view .LVU31
+ 173              		.loc 1 63 8 is_stmt 0 view .LVU32
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 5
+
+
+ 174 0000 40F20003 		movw	r3, #:lower16:errno
+ 175 0004 C0F20003 		movt	r3, #:upper16:errno
+ 176 0008 1622     		movs	r2, #22
+ 177 000a 1A60     		str	r2, [r3]
+  64:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 178              		.loc 1 64 2 is_stmt 1 view .LVU33
+ 179              		.loc 1 64 9 is_stmt 0 discriminator 1 view .LVU34
+ 180 000c 0120     		movs	r0, #1
+ 181              	.LVL6:
+  65:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 182              		.loc 1 65 1 view .LVU35
+ 183 000e 4042     		rsbs	r0, r0, #0
+ 184              		@ sp needed
+ 185 0010 7047     		bx	lr
+ 186              		.cfi_endproc
+ 187              	.LFE7:
+ 189              		.section	.text._exit,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	_exit
+ 192              		.syntax unified
+ 193              		.code	16
+ 194              		.thumb_func
+ 196              	_exit:
+ 197              	.LVL7:
+ 198              	.LFB8:
+  66:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  67:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** void _exit (int status)
+  68:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 199              		.loc 1 68 1 is_stmt 1 view -0
+ 200              		.cfi_startproc
+ 201              		@ Volatile: function does not return.
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		.loc 1 68 1 is_stmt 0 view .LVU37
+ 205 0000 10B5     		push	{r4, lr}
+ 206              	.LCFI0:
+ 207              		.cfi_def_cfa_offset 8
+ 208              		.cfi_offset 4, -8
+ 209              		.cfi_offset 14, -4
+  69:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	_kill(status, -1);
+ 210              		.loc 1 69 2 is_stmt 1 view .LVU38
+ 211 0002 0121     		movs	r1, #1
+ 212 0004 4942     		rsbs	r1, r1, #0
+ 213 0006 FFF7FEFF 		bl	_kill
+ 214              	.LVL8:
+ 215              	.L11:
+  70:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	while (1) {}
+ 216              		.loc 1 70 2 view .LVU39
+ 217              		.loc 1 70 13 view .LVU40
+ 218              		.loc 1 70 8 view .LVU41
+ 219 000a FEE7     		b	.L11
+ 220              		.cfi_endproc
+ 221              	.LFE8:
+ 223              		.section	.text._write,"ax",%progbits
+ 224              		.align	1
+ 225              		.global	_write
+ 226              		.syntax unified
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 6
+
+
+ 227              		.code	16
+ 228              		.thumb_func
+ 230              	_write:
+ 231              	.LVL9:
+ 232              	.LFB9:
+  71:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+  72:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  73:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _write(int file, char *ptr, int len)
+  74:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 233              		.loc 1 74 1 view -0
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		.loc 1 74 1 is_stmt 0 view .LVU43
+ 238 0000 70B5     		push	{r4, r5, r6, lr}
+ 239              	.LCFI1:
+ 240              		.cfi_def_cfa_offset 16
+ 241              		.cfi_offset 4, -16
+ 242              		.cfi_offset 5, -12
+ 243              		.cfi_offset 6, -8
+ 244              		.cfi_offset 14, -4
+ 245 0002 1600     		movs	r6, r2
+  75:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	int DataIdx;
+ 246              		.loc 1 75 2 is_stmt 1 view .LVU44
+  76:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  77:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 247              		.loc 1 77 3 view .LVU45
+ 248              	.LVL10:
+ 249              		.loc 1 77 16 is_stmt 0 view .LVU46
+ 250 0004 0024     		movs	r4, #0
+ 251              		.loc 1 77 3 view .LVU47
+ 252 0006 05E0     		b	.L13
+ 253              	.LVL11:
+ 254              	.L14:
+  78:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		{
+  79:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		   __io_putchar( *ptr++ );
+ 255              		.loc 1 79 6 is_stmt 1 view .LVU48
+ 256              		.loc 1 79 24 is_stmt 0 view .LVU49
+ 257 0008 4D1C     		adds	r5, r1, #1
+ 258              	.LVL12:
+ 259              		.loc 1 79 20 view .LVU50
+ 260 000a 0878     		ldrb	r0, [r1]
+ 261              		.loc 1 79 6 view .LVU51
+ 262 000c FFF7FEFF 		bl	__io_putchar
+ 263              	.LVL13:
+  77:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		{
+ 264              		.loc 1 77 43 is_stmt 1 discriminator 3 view .LVU52
+ 265 0010 0134     		adds	r4, r4, #1
+ 266              	.LVL14:
+ 267              		.loc 1 79 24 is_stmt 0 view .LVU53
+ 268 0012 2900     		movs	r1, r5
+ 269              	.LVL15:
+ 270              	.L13:
+  77:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		{
+ 271              		.loc 1 77 29 is_stmt 1 discriminator 1 view .LVU54
+ 272 0014 B442     		cmp	r4, r6
+ 273 0016 F7DB     		blt	.L14
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 7
+
+
+  80:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		}
+  81:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return len;
+ 274              		.loc 1 81 2 view .LVU55
+  82:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 275              		.loc 1 82 1 is_stmt 0 view .LVU56
+ 276 0018 3000     		movs	r0, r6
+ 277              		@ sp needed
+ 278              	.LVL16:
+ 279              	.LVL17:
+ 280              		.loc 1 82 1 view .LVU57
+ 281 001a 70BD     		pop	{r4, r5, r6, pc}
+ 282              		.cfi_endproc
+ 283              	.LFE9:
+ 285              		.section	.text._close,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	_close
+ 288              		.syntax unified
+ 289              		.code	16
+ 290              		.thumb_func
+ 292              	_close:
+ 293              	.LVL18:
+ 294              	.LFB10:
+  83:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  84:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _close(int file)
+  85:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 295              		.loc 1 85 1 is_stmt 1 view -0
+ 296              		.cfi_startproc
+ 297              		@ args = 0, pretend = 0, frame = 0
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 299              		@ link register save eliminated.
+  86:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 300              		.loc 1 86 2 view .LVU59
+ 301              		.loc 1 86 9 is_stmt 0 discriminator 1 view .LVU60
+ 302 0000 0120     		movs	r0, #1
+ 303              	.LVL19:
+  87:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 304              		.loc 1 87 1 view .LVU61
+ 305 0002 4042     		rsbs	r0, r0, #0
+ 306              		@ sp needed
+ 307 0004 7047     		bx	lr
+ 308              		.cfi_endproc
+ 309              	.LFE10:
+ 311              		.section	.text._fstat,"ax",%progbits
+ 312              		.align	1
+ 313              		.global	_fstat
+ 314              		.syntax unified
+ 315              		.code	16
+ 316              		.thumb_func
+ 318              	_fstat:
+ 319              	.LVL20:
+ 320              	.LFB11:
+  88:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  89:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _fstat(int file, struct stat *st)
+  90:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 321              		.loc 1 90 1 is_stmt 1 view -0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 8
+
+
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              		@ link register save eliminated.
+  91:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	st->st_mode = S_IFCHR;
+ 326              		.loc 1 91 2 view .LVU63
+ 327              		.loc 1 91 14 is_stmt 0 view .LVU64
+ 328 0000 42F20003 		movw	r3, #8192
+ 329 0004 4B60     		str	r3, [r1, #4]
+  92:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return 0;
+ 330              		.loc 1 92 2 is_stmt 1 view .LVU65
+  93:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 331              		.loc 1 93 1 is_stmt 0 view .LVU66
+ 332 0006 0020     		movs	r0, #0
+ 333              	.LVL21:
+ 334              		.loc 1 93 1 view .LVU67
+ 335              		@ sp needed
+ 336 0008 7047     		bx	lr
+ 337              		.cfi_endproc
+ 338              	.LFE11:
+ 340              		.section	.text._isatty,"ax",%progbits
+ 341              		.align	1
+ 342              		.global	_isatty
+ 343              		.syntax unified
+ 344              		.code	16
+ 345              		.thumb_func
+ 347              	_isatty:
+ 348              	.LVL22:
+ 349              	.LFB12:
+  94:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+  95:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _isatty(int file)
+  96:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 350              		.loc 1 96 1 is_stmt 1 view -0
+ 351              		.cfi_startproc
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354              		@ link register save eliminated.
+  97:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return 1;
+ 355              		.loc 1 97 2 view .LVU69
+  98:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 356              		.loc 1 98 1 is_stmt 0 view .LVU70
+ 357 0000 0120     		movs	r0, #1
+ 358              	.LVL23:
+ 359              		.loc 1 98 1 view .LVU71
+ 360              		@ sp needed
+ 361 0002 7047     		bx	lr
+ 362              		.cfi_endproc
+ 363              	.LFE12:
+ 365              		.section	.text._lseek,"ax",%progbits
+ 366              		.align	1
+ 367              		.global	_lseek
+ 368              		.syntax unified
+ 369              		.code	16
+ 370              		.thumb_func
+ 372              	_lseek:
+ 373              	.LVL24:
+ 374              	.LFB13:
+  99:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 100:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _lseek(int file, int ptr, int dir)
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 9
+
+
+ 101:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 375              		.loc 1 101 1 is_stmt 1 view -0
+ 376              		.cfi_startproc
+ 377              		@ args = 0, pretend = 0, frame = 0
+ 378              		@ frame_needed = 0, uses_anonymous_args = 0
+ 379              		@ link register save eliminated.
+ 102:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return 0;
+ 380              		.loc 1 102 2 view .LVU73
+ 103:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 381              		.loc 1 103 1 is_stmt 0 view .LVU74
+ 382 0000 0020     		movs	r0, #0
+ 383              	.LVL25:
+ 384              		.loc 1 103 1 view .LVU75
+ 385              		@ sp needed
+ 386 0002 7047     		bx	lr
+ 387              		.cfi_endproc
+ 388              	.LFE13:
+ 390              		.section	.text._read,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	_read
+ 393              		.syntax unified
+ 394              		.code	16
+ 395              		.thumb_func
+ 397              	_read:
+ 398              	.LVL26:
+ 399              	.LFB14:
+ 104:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 105:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _read(int file, char *ptr, int len)
+ 106:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 400              		.loc 1 106 1 is_stmt 1 view -0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              		.loc 1 106 1 is_stmt 0 view .LVU77
+ 405 0000 70B5     		push	{r4, r5, r6, lr}
+ 406              	.LCFI2:
+ 407              		.cfi_def_cfa_offset 16
+ 408              		.cfi_offset 4, -16
+ 409              		.cfi_offset 5, -12
+ 410              		.cfi_offset 6, -8
+ 411              		.cfi_offset 14, -4
+ 412 0002 0C00     		movs	r4, r1
+ 413 0004 1600     		movs	r6, r2
+ 107:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	int DataIdx;
+ 414              		.loc 1 107 2 is_stmt 1 view .LVU78
+ 108:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 109:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 415              		.loc 1 109 2 view .LVU79
+ 416              	.LVL27:
+ 417              		.loc 1 109 15 is_stmt 0 view .LVU80
+ 418 0006 0025     		movs	r5, #0
+ 419              		.loc 1 109 2 view .LVU81
+ 420 0008 04E0     		b	.L20
+ 421              	.LVL28:
+ 422              	.L21:
+ 110:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	{
+ 111:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	  *ptr++ = __io_getchar();
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 10
+
+
+ 423              		.loc 1 111 4 is_stmt 1 view .LVU82
+ 424              		.loc 1 111 13 is_stmt 0 view .LVU83
+ 425 000a FFF7FEFF 		bl	__io_getchar
+ 426              	.LVL29:
+ 427              		.loc 1 111 11 discriminator 1 view .LVU84
+ 428 000e 2070     		strb	r0, [r4]
+ 109:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	{
+ 429              		.loc 1 109 42 is_stmt 1 discriminator 3 view .LVU85
+ 430 0010 0135     		adds	r5, r5, #1
+ 431              	.LVL30:
+ 432              		.loc 1 111 8 is_stmt 0 discriminator 1 view .LVU86
+ 433 0012 0134     		adds	r4, r4, #1
+ 434              	.LVL31:
+ 435              	.L20:
+ 109:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	{
+ 436              		.loc 1 109 28 is_stmt 1 discriminator 1 view .LVU87
+ 437 0014 B542     		cmp	r5, r6
+ 438 0016 F8DB     		blt	.L21
+ 112:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	}
+ 113:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 114:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c ****    return len;
+ 439              		.loc 1 114 4 view .LVU88
+ 115:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 440              		.loc 1 115 1 is_stmt 0 view .LVU89
+ 441 0018 3000     		movs	r0, r6
+ 442              		@ sp needed
+ 443              	.LVL32:
+ 444              	.LVL33:
+ 445              	.LVL34:
+ 446              		.loc 1 115 1 view .LVU90
+ 447 001a 70BD     		pop	{r4, r5, r6, pc}
+ 448              		.cfi_endproc
+ 449              	.LFE14:
+ 451              		.section	.text._open,"ax",%progbits
+ 452              		.align	1
+ 453              		.global	_open
+ 454              		.syntax unified
+ 455              		.code	16
+ 456              		.thumb_func
+ 458              	_open:
+ 459              	.LVL35:
+ 460              	.LFB15:
+ 116:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 117:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _open(char *path, int flags, ...)
+ 118:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 461              		.loc 1 118 1 is_stmt 1 view -0
+ 462              		.cfi_startproc
+ 463              		@ args = 4, pretend = 12, frame = 0
+ 464              		@ frame_needed = 0, uses_anonymous_args = 1
+ 465              		@ link register save eliminated.
+ 466              		.loc 1 118 1 is_stmt 0 view .LVU92
+ 467 0000 0EB4     		push	{r1, r2, r3}
+ 468              	.LCFI3:
+ 469              		.cfi_def_cfa_offset 12
+ 119:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	/* Pretend like we always fail */
+ 120:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 470              		.loc 1 120 2 is_stmt 1 view .LVU93
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 11
+
+
+ 471              		.loc 1 120 9 is_stmt 0 discriminator 1 view .LVU94
+ 472 0002 0120     		movs	r0, #1
+ 473              	.LVL36:
+ 121:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 474              		.loc 1 121 1 view .LVU95
+ 475 0004 4042     		rsbs	r0, r0, #0
+ 476              		@ sp needed
+ 477 0006 03B0     		add	sp, sp, #12
+ 478 0008 7047     		bx	lr
+ 479              		.cfi_endproc
+ 480              	.LFE15:
+ 482              		.section	.text._wait,"ax",%progbits
+ 483              		.align	1
+ 484              		.global	_wait
+ 485              		.syntax unified
+ 486              		.code	16
+ 487              		.thumb_func
+ 489              	_wait:
+ 490              	.LVL37:
+ 491              	.LFB16:
+ 122:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 123:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _wait(int *status)
+ 124:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 492              		.loc 1 124 1 is_stmt 1 view -0
+ 493              		.cfi_startproc
+ 494              		@ args = 0, pretend = 0, frame = 0
+ 495              		@ frame_needed = 0, uses_anonymous_args = 0
+ 496              		@ link register save eliminated.
+ 125:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = ECHILD;
+ 497              		.loc 1 125 2 view .LVU97
+ 498              		.loc 1 125 8 is_stmt 0 view .LVU98
+ 499 0000 40F20003 		movw	r3, #:lower16:errno
+ 500 0004 C0F20003 		movt	r3, #:upper16:errno
+ 501 0008 0A22     		movs	r2, #10
+ 502 000a 1A60     		str	r2, [r3]
+ 126:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 503              		.loc 1 126 2 is_stmt 1 view .LVU99
+ 504              		.loc 1 126 9 is_stmt 0 discriminator 1 view .LVU100
+ 505 000c 0120     		movs	r0, #1
+ 506              	.LVL38:
+ 127:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 507              		.loc 1 127 1 view .LVU101
+ 508 000e 4042     		rsbs	r0, r0, #0
+ 509              		@ sp needed
+ 510 0010 7047     		bx	lr
+ 511              		.cfi_endproc
+ 512              	.LFE16:
+ 514              		.section	.text._unlink,"ax",%progbits
+ 515              		.align	1
+ 516              		.global	_unlink
+ 517              		.syntax unified
+ 518              		.code	16
+ 519              		.thumb_func
+ 521              	_unlink:
+ 522              	.LVL39:
+ 523              	.LFB17:
+ 128:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 12
+
+
+ 129:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _unlink(char *name)
+ 130:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 524              		.loc 1 130 1 is_stmt 1 view -0
+ 525              		.cfi_startproc
+ 526              		@ args = 0, pretend = 0, frame = 0
+ 527              		@ frame_needed = 0, uses_anonymous_args = 0
+ 528              		@ link register save eliminated.
+ 131:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = ENOENT;
+ 529              		.loc 1 131 2 view .LVU103
+ 530              		.loc 1 131 8 is_stmt 0 view .LVU104
+ 531 0000 40F20003 		movw	r3, #:lower16:errno
+ 532 0004 C0F20003 		movt	r3, #:upper16:errno
+ 533 0008 0222     		movs	r2, #2
+ 534 000a 1A60     		str	r2, [r3]
+ 132:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 535              		.loc 1 132 2 is_stmt 1 view .LVU105
+ 536              		.loc 1 132 9 is_stmt 0 discriminator 1 view .LVU106
+ 537 000c 0120     		movs	r0, #1
+ 538              	.LVL40:
+ 133:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 539              		.loc 1 133 1 view .LVU107
+ 540 000e 4042     		rsbs	r0, r0, #0
+ 541              		@ sp needed
+ 542 0010 7047     		bx	lr
+ 543              		.cfi_endproc
+ 544              	.LFE17:
+ 546              		.section	.text._times,"ax",%progbits
+ 547              		.align	1
+ 548              		.global	_times
+ 549              		.syntax unified
+ 550              		.code	16
+ 551              		.thumb_func
+ 553              	_times:
+ 554              	.LVL41:
+ 555              	.LFB18:
+ 134:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 135:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _times(struct tms *buf)
+ 136:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 556              		.loc 1 136 1 is_stmt 1 view -0
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560              		@ link register save eliminated.
+ 137:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 561              		.loc 1 137 2 view .LVU109
+ 562              		.loc 1 137 9 is_stmt 0 discriminator 1 view .LVU110
+ 563 0000 0120     		movs	r0, #1
+ 564              	.LVL42:
+ 138:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 565              		.loc 1 138 1 view .LVU111
+ 566 0002 4042     		rsbs	r0, r0, #0
+ 567              		@ sp needed
+ 568 0004 7047     		bx	lr
+ 569              		.cfi_endproc
+ 570              	.LFE18:
+ 572              		.section	.text._stat,"ax",%progbits
+ 573              		.align	1
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 13
+
+
+ 574              		.global	_stat
+ 575              		.syntax unified
+ 576              		.code	16
+ 577              		.thumb_func
+ 579              	_stat:
+ 580              	.LVL43:
+ 581              	.LFB19:
+ 139:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 140:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _stat(char *file, struct stat *st)
+ 141:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 582              		.loc 1 141 1 is_stmt 1 view -0
+ 583              		.cfi_startproc
+ 584              		@ args = 0, pretend = 0, frame = 0
+ 585              		@ frame_needed = 0, uses_anonymous_args = 0
+ 586              		@ link register save eliminated.
+ 142:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	st->st_mode = S_IFCHR;
+ 587              		.loc 1 142 2 view .LVU113
+ 588              		.loc 1 142 14 is_stmt 0 view .LVU114
+ 589 0000 42F20003 		movw	r3, #8192
+ 590 0004 4B60     		str	r3, [r1, #4]
+ 143:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return 0;
+ 591              		.loc 1 143 2 is_stmt 1 view .LVU115
+ 144:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 592              		.loc 1 144 1 is_stmt 0 view .LVU116
+ 593 0006 0020     		movs	r0, #0
+ 594              	.LVL44:
+ 595              		.loc 1 144 1 view .LVU117
+ 596              		@ sp needed
+ 597 0008 7047     		bx	lr
+ 598              		.cfi_endproc
+ 599              	.LFE19:
+ 601              		.section	.text._link,"ax",%progbits
+ 602              		.align	1
+ 603              		.global	_link
+ 604              		.syntax unified
+ 605              		.code	16
+ 606              		.thumb_func
+ 608              	_link:
+ 609              	.LVL45:
+ 610              	.LFB20:
+ 145:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 146:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _link(char *old, char *new)
+ 147:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 611              		.loc 1 147 1 is_stmt 1 view -0
+ 612              		.cfi_startproc
+ 613              		@ args = 0, pretend = 0, frame = 0
+ 614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 615              		@ link register save eliminated.
+ 148:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = EMLINK;
+ 616              		.loc 1 148 2 view .LVU119
+ 617              		.loc 1 148 8 is_stmt 0 view .LVU120
+ 618 0000 40F20003 		movw	r3, #:lower16:errno
+ 619 0004 C0F20003 		movt	r3, #:upper16:errno
+ 620 0008 1F22     		movs	r2, #31
+ 621 000a 1A60     		str	r2, [r3]
+ 149:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 622              		.loc 1 149 2 is_stmt 1 view .LVU121
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 14
+
+
+ 623              		.loc 1 149 9 is_stmt 0 discriminator 1 view .LVU122
+ 624 000c 0120     		movs	r0, #1
+ 625              	.LVL46:
+ 150:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 626              		.loc 1 150 1 view .LVU123
+ 627 000e 4042     		rsbs	r0, r0, #0
+ 628              		@ sp needed
+ 629 0010 7047     		bx	lr
+ 630              		.cfi_endproc
+ 631              	.LFE20:
+ 633              		.section	.text._fork,"ax",%progbits
+ 634              		.align	1
+ 635              		.global	_fork
+ 636              		.syntax unified
+ 637              		.code	16
+ 638              		.thumb_func
+ 640              	_fork:
+ 641              	.LFB21:
+ 151:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 152:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _fork(void)
+ 153:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 642              		.loc 1 153 1 is_stmt 1 view -0
+ 643              		.cfi_startproc
+ 644              		@ args = 0, pretend = 0, frame = 0
+ 645              		@ frame_needed = 0, uses_anonymous_args = 0
+ 646              		@ link register save eliminated.
+ 154:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = EAGAIN;
+ 647              		.loc 1 154 2 view .LVU125
+ 648              		.loc 1 154 8 is_stmt 0 view .LVU126
+ 649 0000 40F20003 		movw	r3, #:lower16:errno
+ 650 0004 C0F20003 		movt	r3, #:upper16:errno
+ 651 0008 0B22     		movs	r2, #11
+ 652 000a 1A60     		str	r2, [r3]
+ 155:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 653              		.loc 1 155 2 is_stmt 1 view .LVU127
+ 654              		.loc 1 155 9 is_stmt 0 discriminator 1 view .LVU128
+ 655 000c 0120     		movs	r0, #1
+ 156:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 656              		.loc 1 156 1 view .LVU129
+ 657 000e 4042     		rsbs	r0, r0, #0
+ 658              		@ sp needed
+ 659 0010 7047     		bx	lr
+ 660              		.cfi_endproc
+ 661              	.LFE21:
+ 663              		.section	.text._execve,"ax",%progbits
+ 664              		.align	1
+ 665              		.global	_execve
+ 666              		.syntax unified
+ 667              		.code	16
+ 668              		.thumb_func
+ 670              	_execve:
+ 671              	.LVL47:
+ 672              	.LFB22:
+ 157:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
+ 158:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _execve(char *name, char **argv, char **env)
+ 159:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
+ 673              		.loc 1 159 1 is_stmt 1 view -0
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 15
+
+
+ 674              		.cfi_startproc
+ 675              		@ args = 0, pretend = 0, frame = 0
+ 676              		@ frame_needed = 0, uses_anonymous_args = 0
+ 677              		@ link register save eliminated.
+ 160:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = ENOMEM;
+ 678              		.loc 1 160 2 view .LVU131
+ 679              		.loc 1 160 8 is_stmt 0 view .LVU132
+ 680 0000 40F20003 		movw	r3, #:lower16:errno
+ 681 0004 C0F20003 		movt	r3, #:upper16:errno
+ 682 0008 0C22     		movs	r2, #12
+ 683              	.LVL48:
+ 684              		.loc 1 160 8 view .LVU133
+ 685 000a 1A60     		str	r2, [r3]
+ 161:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
+ 686              		.loc 1 161 2 is_stmt 1 view .LVU134
+ 687              		.loc 1 161 9 is_stmt 0 discriminator 1 view .LVU135
+ 688 000c 0120     		movs	r0, #1
+ 689              	.LVL49:
+ 162:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** }
+ 690              		.loc 1 162 1 view .LVU136
+ 691 000e 4042     		rsbs	r0, r0, #0
+ 692              		@ sp needed
+ 693 0010 7047     		bx	lr
+ 694              		.cfi_endproc
+ 695              	.LFE22:
+ 697              		.section	.data.curbrk.0,"aw"
+ 698              		.align	2
+ 701              	curbrk.0:
+ 702 0000 00000000 		.word	_end
+ 703              		.weak	__io_getchar
+ 704              		.weak	__io_putchar
+ 705              		.text
+ 706              	.Letext0:
+ 707              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 708              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 709              		.file 4 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 710              		.file 5 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 711              		.file 6 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 712              		.file 7 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 713              		.file 8 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 714              		.file 9 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 715              		.file 10 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/includ
+ 716              		.file 11 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/includ
+ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 syscalls.c
+D:\noval\Temp\ccIMxcwi.s:19     .text._sbrk:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:25     .text._sbrk:00000000 _sbrk
+D:\noval\Temp\ccIMxcwi.s:701    .data.curbrk.0:00000000 curbrk.0
+D:\noval\Temp\ccIMxcwi.s:80     .text._gettimeofday:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:86     .text._gettimeofday:00000000 _gettimeofday
+D:\noval\Temp\ccIMxcwi.s:116    .text.initialise_monitor_handles:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:122    .text.initialise_monitor_handles:00000000 initialise_monitor_handles
+D:\noval\Temp\ccIMxcwi.s:136    .text._getpid:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:142    .text._getpid:00000000 _getpid
+D:\noval\Temp\ccIMxcwi.s:158    .text._kill:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:164    .text._kill:00000000 _kill
+D:\noval\Temp\ccIMxcwi.s:190    .text._exit:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:196    .text._exit:00000000 _exit
+D:\noval\Temp\ccIMxcwi.s:224    .text._write:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:230    .text._write:00000000 _write
+D:\noval\Temp\ccIMxcwi.s:286    .text._close:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:292    .text._close:00000000 _close
+D:\noval\Temp\ccIMxcwi.s:312    .text._fstat:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:318    .text._fstat:00000000 _fstat
+D:\noval\Temp\ccIMxcwi.s:341    .text._isatty:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:347    .text._isatty:00000000 _isatty
+D:\noval\Temp\ccIMxcwi.s:366    .text._lseek:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:372    .text._lseek:00000000 _lseek
+D:\noval\Temp\ccIMxcwi.s:391    .text._read:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:397    .text._read:00000000 _read
+D:\noval\Temp\ccIMxcwi.s:452    .text._open:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:458    .text._open:00000000 _open
+D:\noval\Temp\ccIMxcwi.s:483    .text._wait:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:489    .text._wait:00000000 _wait
+D:\noval\Temp\ccIMxcwi.s:515    .text._unlink:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:521    .text._unlink:00000000 _unlink
+D:\noval\Temp\ccIMxcwi.s:547    .text._times:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:553    .text._times:00000000 _times
+D:\noval\Temp\ccIMxcwi.s:573    .text._stat:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:579    .text._stat:00000000 _stat
+D:\noval\Temp\ccIMxcwi.s:602    .text._link:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:608    .text._link:00000000 _link
+D:\noval\Temp\ccIMxcwi.s:634    .text._fork:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:640    .text._fork:00000000 _fork
+D:\noval\Temp\ccIMxcwi.s:664    .text._execve:00000000 $t
+D:\noval\Temp\ccIMxcwi.s:670    .text._execve:00000000 _execve
+D:\noval\Temp\ccIMxcwi.s:698    .data.curbrk.0:00000000 $d
+
+UNDEFINED SYMBOLS
+_end
+_heap_end
+errno
+__io_putchar
+__io_getchar

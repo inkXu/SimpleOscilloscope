@@ -1,0 +1,689 @@
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_syscfg.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_syscfg.c"
+  18              		.section	.text.syscfg_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	syscfg_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	syscfg_deinit:
+  26              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \file    gd32e23x_syscfg.c
+   3:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief   SYSCFG driver
+   4:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+   5:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****        may be used to endorse or promote products derived from this software without 
+  21:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** #include "gd32e23x_syscfg.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+  38:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      reset the SYSCFG registers
+  39:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  none
+  40:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+  41:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+  42:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+  43:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_deinit(void)
+  44:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+  27              		.loc 1 44 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  45:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     rcu_periph_reset_enable(RCU_CFGCMPRST);
+  36              		.loc 1 45 5 view .LVU1
+  37 0002 40F20030 		movw	r0, #768
+  38 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  39              	.LVL0:
+  46:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     rcu_periph_reset_disable(RCU_CFGCMPRST);
+  40              		.loc 1 46 5 view .LVU2
+  41 000a 40F20030 		movw	r0, #768
+  42 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  43              	.LVL1:
+  47:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+  44              		.loc 1 47 1 is_stmt 0 view .LVU3
+  45              		@ sp needed
+  46 0012 10BD     		pop	{r4, pc}
+  47              		.cfi_endproc
+  48              	.LFE60:
+  50              		.section	.text.syscfg_dma_remap_enable,"ax",%progbits
+  51              		.align	1
+  52              		.global	syscfg_dma_remap_enable
+  53              		.syntax unified
+  54              		.code	16
+  55              		.thumb_func
+  57              	syscfg_dma_remap_enable:
+  58              	.LVL2:
+  59              	.LFB61:
+  48:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  49:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+  50:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      enable the DMA channels remapping
+  51:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  syscfg_dma_remap: specify the DMA channels to remap
+  52:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_TIMER16: remap TIMER16 channel0 and UP DMA requests to channel1(
+  53:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_TIMER15: remap TIMER15 channel2 and UP DMA requests to channel3(
+  54:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_USART0RX: remap USART0 Rx DMA request to channel4(default channe
+  55:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_USART0TX: remap USART0 Tx DMA request to channel3(default channe
+  56:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_ADC: remap ADC DMA requests from channel0 to channel1
+  57:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_PA11_REMAP_PA12: remap PA11 PA12
+  58:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 3
+
+
+  59:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+  60:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+  61:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_dma_remap_enable(uint32_t syscfg_dma_remap)
+  62:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+  60              		.loc 1 62 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  63:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG0 |= syscfg_dma_remap;
+  65              		.loc 1 63 5 view .LVU5
+  66 0000 0023     		movs	r3, #0
+  67 0002 C4F20103 		movt	r3, 16385
+  68 0006 1A68     		ldr	r2, [r3]
+  69              		.loc 1 63 17 is_stmt 0 view .LVU6
+  70 0008 0243     		orrs	r2, r0
+  71 000a 1A60     		str	r2, [r3]
+  64:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+  72              		.loc 1 64 1 view .LVU7
+  73              		@ sp needed
+  74 000c 7047     		bx	lr
+  75              		.cfi_endproc
+  76              	.LFE61:
+  78              		.section	.text.syscfg_dma_remap_disable,"ax",%progbits
+  79              		.align	1
+  80              		.global	syscfg_dma_remap_disable
+  81              		.syntax unified
+  82              		.code	16
+  83              		.thumb_func
+  85              	syscfg_dma_remap_disable:
+  86              	.LVL3:
+  87              	.LFB62:
+  65:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  66:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+  67:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      disable the DMA channels remapping
+  68:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  syscfg_dma_remap: specify the DMA channels to remap
+  69:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_TIMER16: remap TIMER16 channel0 and UP DMA requests to channel1(
+  70:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_TIMER15: remap TIMER15 channel2 and UP DMA requests to channel3(
+  71:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_USART0RX: remap USART0 Rx DMA request to channel4(default channe
+  72:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_USART0TX: remap USART0 Tx DMA request to channel3(default channe
+  73:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_ADC: remap ADC DMA requests from channel0 to channel1
+  74:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_PA11_REMAP_PA12: remap PA11 PA12
+  75:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+  76:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+  77:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+  78:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_dma_remap_disable(uint32_t syscfg_dma_remap)
+  79:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+  88              		.loc 1 79 1 is_stmt 1 view -0
+  89              		.cfi_startproc
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  80:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG0 &= ~syscfg_dma_remap;
+  93              		.loc 1 80 5 view .LVU9
+  94 0000 0023     		movs	r3, #0
+  95 0002 C4F20103 		movt	r3, 16385
+  96 0006 1A68     		ldr	r2, [r3]
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 4
+
+
+  97              		.loc 1 80 17 is_stmt 0 view .LVU10
+  98 0008 8243     		bics	r2, r0
+  99 000a 1A60     		str	r2, [r3]
+  81:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 100              		.loc 1 81 1 view .LVU11
+ 101              		@ sp needed
+ 102 000c 7047     		bx	lr
+ 103              		.cfi_endproc
+ 104              	.LFE62:
+ 106              		.section	.text.syscfg_high_current_enable,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	syscfg_high_current_enable
+ 109              		.syntax unified
+ 110              		.code	16
+ 111              		.thumb_func
+ 113              	syscfg_high_current_enable:
+ 114              	.LFB63:
+  82:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  83:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+  84:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      enable PB9 high current capability
+  85:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  none
+  86:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+  87:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+  88:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+  89:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_high_current_enable(void)
+  90:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 115              		.loc 1 90 1 is_stmt 1 view -0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+  91:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG0 |= SYSCFG_HIGH_CURRENT_ENABLE;
+ 120              		.loc 1 91 5 view .LVU13
+ 121 0000 0023     		movs	r3, #0
+ 122 0002 C4F20103 		movt	r3, 16385
+ 123 0006 1968     		ldr	r1, [r3]
+ 124              		.loc 1 91 17 is_stmt 0 view .LVU14
+ 125 0008 8022     		movs	r2, #128
+ 126 000a 1203     		lsls	r2, r2, #12
+ 127 000c 0A43     		orrs	r2, r1
+ 128 000e 1A60     		str	r2, [r3]
+  92:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 129              		.loc 1 92 1 view .LVU15
+ 130              		@ sp needed
+ 131 0010 7047     		bx	lr
+ 132              		.cfi_endproc
+ 133              	.LFE63:
+ 135              		.section	.text.syscfg_high_current_disable,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	syscfg_high_current_disable
+ 138              		.syntax unified
+ 139              		.code	16
+ 140              		.thumb_func
+ 142              	syscfg_high_current_disable:
+ 143              	.LFB64:
+  93:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+  94:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 5
+
+
+  95:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      disable PB9 high current capability
+  96:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  none
+  97:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+  98:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+  99:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+ 100:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_high_current_disable(void)
+ 101:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 144              		.loc 1 101 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 102:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG0 &= SYSCFG_HIGH_CURRENT_DISABLE;
+ 149              		.loc 1 102 5 view .LVU17
+ 150 0000 0023     		movs	r3, #0
+ 151 0002 C4F20103 		movt	r3, 16385
+ 152 0006 1A68     		ldr	r2, [r3]
+ 153              		.loc 1 102 17 is_stmt 0 view .LVU18
+ 154 0008 0149     		ldr	r1, .L6
+ 155 000a 0A40     		ands	r2, r1
+ 156 000c 1A60     		str	r2, [r3]
+ 103:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 157              		.loc 1 103 1 view .LVU19
+ 158              		@ sp needed
+ 159 000e 7047     		bx	lr
+ 160              	.L7:
+ 161              		.align	2
+ 162              	.L6:
+ 163 0010 FFFFF7FF 		.word	-524289
+ 164              		.cfi_endproc
+ 165              	.LFE64:
+ 167              		.section	.text.syscfg_exti_line_config,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	syscfg_exti_line_config
+ 170              		.syntax unified
+ 171              		.code	16
+ 172              		.thumb_func
+ 174              	syscfg_exti_line_config:
+ 175              	.LVL4:
+ 176              	.LFB65:
+ 104:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+ 105:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ 106:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      configure the GPIO pin as EXTI Line
+ 107:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  exti_port: specify the GPIO port used in EXTI
+ 108:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        EXTI_SOURCE_GPIOx(x = A,B,C,F): EXTI GPIO port
+ 109:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  exti_pin: specify the EXTI line
+ 110:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        EXTI_SOURCE_PINx(GPIOA x = 0..15,GPIOB x = 0..15,GPIOC x = 13..15,GPIOF x = 0.1.6
+ 111:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ 112:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+ 113:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+ 114:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_exti_line_config(uint8_t exti_port, uint8_t exti_pin)
+ 115:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 177              		.loc 1 115 1 is_stmt 1 view -0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 6
+
+
+ 116:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     uint32_t clear_exti_mask = ~((uint32_t)EXTI_SS_MASK << (EXTI_SS_MSTEP(exti_pin)));
+ 182              		.loc 1 116 5 view .LVU21
+ 183              		.loc 1 116 61 is_stmt 0 view .LVU22
+ 184 0000 0323     		movs	r3, #3
+ 185 0002 0B40     		ands	r3, r1
+ 186 0004 9B00     		lsls	r3, r3, #2
+ 187              		.loc 1 116 57 view .LVU23
+ 188 0006 0F22     		movs	r2, #15
+ 189 0008 9A40     		lsls	r2, r2, r3
+ 190              		.loc 1 116 14 view .LVU24
+ 191 000a D243     		mvns	r2, r2
+ 192              	.LVL5:
+ 117:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     uint32_t config_exti_mask = ((uint32_t)exti_port) << (EXTI_SS_MSTEP(exti_pin));
+ 193              		.loc 1 117 5 is_stmt 1 view .LVU25
+ 194              		.loc 1 117 14 is_stmt 0 view .LVU26
+ 195 000c 9840     		lsls	r0, r0, r3
+ 196              	.LVL6:
+ 118:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+ 119:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     switch(exti_pin / EXTI_SS_JSTEP){
+ 197              		.loc 1 119 5 is_stmt 1 view .LVU27
+ 198              		.loc 1 119 21 is_stmt 0 view .LVU28
+ 199 000e 8908     		lsrs	r1, r1, #2
+ 200              	.LVL7:
+ 201              		.loc 1 119 5 view .LVU29
+ 202 0010 0229     		cmp	r1, #2
+ 203 0012 23D0     		beq	.L9
+ 204 0014 0CD8     		bhi	.L10
+ 205 0016 B9B1     		cbz	r1, .L11
+ 206 0018 0129     		cmp	r1, #1
+ 207 001a 1ED1     		bne	.L8
+ 120:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS0:
+ 121:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* clear EXTI source line(0..3) */
+ 122:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS0 &= clear_exti_mask;
+ 123:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(0..3) */
+ 124:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS0 |= config_exti_mask;
+ 125:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 126:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS1:
+ 127:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* clear EXTI soure line(4..7) */
+ 128:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS1 &= clear_exti_mask;
+ 208              		.loc 1 128 9 is_stmt 1 view .LVU30
+ 209 001c 0C23     		movs	r3, #12
+ 210 001e C4F20103 		movt	r3, 16385
+ 211 0022 1968     		ldr	r1, [r3]
+ 212              		.loc 1 128 24 is_stmt 0 view .LVU31
+ 213 0024 0A40     		ands	r2, r1
+ 214              	.LVL8:
+ 215              		.loc 1 128 24 view .LVU32
+ 216 0026 1A60     		str	r2, [r3]
+ 129:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(4..7) */
+ 130:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS1 |= config_exti_mask;
+ 217              		.loc 1 130 9 is_stmt 1 view .LVU33
+ 218 0028 1A68     		ldr	r2, [r3]
+ 219              		.loc 1 130 24 is_stmt 0 view .LVU34
+ 220 002a 0243     		orrs	r2, r0
+ 221 002c 1A60     		str	r2, [r3]
+ 131:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 222              		.loc 1 131 9 is_stmt 1 view .LVU35
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 7
+
+
+ 223 002e 14E0     		b	.L8
+ 224              	.LVL9:
+ 225              	.L10:
+ 119:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS0:
+ 226              		.loc 1 119 5 is_stmt 0 view .LVU36
+ 227 0030 0329     		cmp	r1, #3
+ 228 0032 12D1     		bne	.L8
+ 132:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS2:
+ 133:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* clear EXTI soure line(8..11) */
+ 134:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS2 &= clear_exti_mask;
+ 135:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(8..11) */
+ 136:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS2 |= config_exti_mask;
+ 137:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 138:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS3:
+ 139:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* clear EXTI soure line(12..15) */
+ 140:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS3 &= clear_exti_mask;
+ 229              		.loc 1 140 9 is_stmt 1 view .LVU37
+ 230 0034 1423     		movs	r3, #20
+ 231 0036 C4F20103 		movt	r3, 16385
+ 232 003a 1968     		ldr	r1, [r3]
+ 233              		.loc 1 140 24 is_stmt 0 view .LVU38
+ 234 003c 0A40     		ands	r2, r1
+ 235              	.LVL10:
+ 236              		.loc 1 140 24 view .LVU39
+ 237 003e 1A60     		str	r2, [r3]
+ 141:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(12..15) */
+ 142:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         SYSCFG_EXTISS3 |= config_exti_mask;
+ 238              		.loc 1 142 9 is_stmt 1 view .LVU40
+ 239 0040 1A68     		ldr	r2, [r3]
+ 240              		.loc 1 142 24 is_stmt 0 view .LVU41
+ 241 0042 0243     		orrs	r2, r0
+ 242 0044 1A60     		str	r2, [r3]
+ 143:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 243              		.loc 1 143 9 is_stmt 1 view .LVU42
+ 144:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     default:
+ 145:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 146:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     }
+ 147:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 244              		.loc 1 147 1 is_stmt 0 view .LVU43
+ 245 0046 08E0     		b	.L8
+ 246              	.LVL11:
+ 247              	.L11:
+ 122:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(0..3) */
+ 248              		.loc 1 122 9 is_stmt 1 view .LVU44
+ 249 0048 0823     		movs	r3, #8
+ 250 004a C4F20103 		movt	r3, 16385
+ 251 004e 1968     		ldr	r1, [r3]
+ 122:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(0..3) */
+ 252              		.loc 1 122 24 is_stmt 0 view .LVU45
+ 253 0050 0A40     		ands	r2, r1
+ 254              	.LVL12:
+ 122:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(0..3) */
+ 255              		.loc 1 122 24 view .LVU46
+ 256 0052 1A60     		str	r2, [r3]
+ 124:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 257              		.loc 1 124 9 is_stmt 1 view .LVU47
+ 258 0054 1A68     		ldr	r2, [r3]
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 8
+
+
+ 124:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 259              		.loc 1 124 24 is_stmt 0 view .LVU48
+ 260 0056 0243     		orrs	r2, r0
+ 261 0058 1A60     		str	r2, [r3]
+ 125:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS1:
+ 262              		.loc 1 125 9 is_stmt 1 view .LVU49
+ 263              	.L8:
+ 264              		.loc 1 147 1 is_stmt 0 view .LVU50
+ 265              		@ sp needed
+ 266 005a 7047     		bx	lr
+ 267              	.LVL13:
+ 268              	.L9:
+ 134:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(8..11) */
+ 269              		.loc 1 134 9 is_stmt 1 view .LVU51
+ 270 005c 1023     		movs	r3, #16
+ 271 005e C4F20103 		movt	r3, 16385
+ 272 0062 1968     		ldr	r1, [r3]
+ 134:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(8..11) */
+ 273              		.loc 1 134 24 is_stmt 0 view .LVU52
+ 274 0064 0A40     		ands	r2, r1
+ 275              	.LVL14:
+ 134:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         /* configure EXTI soure line(8..11) */
+ 276              		.loc 1 134 24 view .LVU53
+ 277 0066 1A60     		str	r2, [r3]
+ 136:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 278              		.loc 1 136 9 is_stmt 1 view .LVU54
+ 279 0068 1A68     		ldr	r2, [r3]
+ 136:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
+ 280              		.loc 1 136 24 is_stmt 0 view .LVU55
+ 281 006a 0243     		orrs	r2, r0
+ 282 006c 1A60     		str	r2, [r3]
+ 137:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     case EXTISS3:
+ 283              		.loc 1 137 9 is_stmt 1 view .LVU56
+ 284 006e F4E7     		b	.L8
+ 285              		.cfi_endproc
+ 286              	.LFE65:
+ 288              		.section	.text.syscfg_lock_config,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	syscfg_lock_config
+ 291              		.syntax unified
+ 292              		.code	16
+ 293              		.thumb_func
+ 295              	syscfg_lock_config:
+ 296              	.LVL15:
+ 297              	.LFB66:
+ 148:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+ 149:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ 150:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      connect TIMER0/14/15/16 break input to the selected parameter
+ 151:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  syscfg_lock: Specify the parameter to be connected
+ 152:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_LOCK_LOCKUP: Cortex-M23 lockup output connected to the break input
+ 153:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_LOCK_SRAM_PARITY_ERROR: SRAM_PARITY check error connected to the break inp
+ 154:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_LOCK_LVD: LVD interrupt connected to the break input
+ 155:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ 156:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+ 157:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+ 158:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_lock_config(uint32_t syscfg_lock)
+ 159:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 9
+
+
+ 298              		.loc 1 159 1 view -0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 160:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG2 |= syscfg_lock;
+ 303              		.loc 1 160 5 view .LVU58
+ 304 0000 1823     		movs	r3, #24
+ 305 0002 C4F20103 		movt	r3, 16385
+ 306 0006 1A68     		ldr	r2, [r3]
+ 307              		.loc 1 160 17 is_stmt 0 view .LVU59
+ 308 0008 0243     		orrs	r2, r0
+ 309 000a 1A60     		str	r2, [r3]
+ 161:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 310              		.loc 1 161 1 view .LVU60
+ 311              		@ sp needed
+ 312 000c 7047     		bx	lr
+ 313              		.cfi_endproc
+ 314              	.LFE66:
+ 316              		.section	.text.irq_latency_set,"ax",%progbits
+ 317              		.align	1
+ 318              		.global	irq_latency_set
+ 319              		.syntax unified
+ 320              		.code	16
+ 321              		.thumb_func
+ 323              	irq_latency_set:
+ 324              	.LVL16:
+ 325              	.LFB67:
+ 162:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+ 163:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ 164:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      set the wait state counter value
+ 165:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  irq_latency: IRQ_LATENCY value (0x00 - 0xFF)
+ 166:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ 167:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+ 168:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+ 169:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void irq_latency_set(uint8_t irq_latency)
+ 170:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 326              		.loc 1 170 1 is_stmt 1 view -0
+ 327              		.cfi_startproc
+ 328              		@ args = 0, pretend = 0, frame = 0
+ 329              		@ frame_needed = 0, uses_anonymous_args = 0
+ 330              		@ link register save eliminated.
+ 171:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     uint32_t reg;
+ 331              		.loc 1 171 5 view .LVU62
+ 172:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     
+ 173:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     reg = SYSCFG_CPU_IRQ_LAT &(~(uint32_t)SYSCFG_CPU_IRQ_LAT_IRQ_LATENCY);
+ 332              		.loc 1 173 5 view .LVU63
+ 333              		.loc 1 173 11 is_stmt 0 view .LVU64
+ 334 0000 40F20013 		movw	r3, #256
+ 335 0004 C4F20103 		movt	r3, 16385
+ 336 0008 1A68     		ldr	r2, [r3]
+ 337              		.loc 1 173 9 view .LVU65
+ 338 000a FF21     		movs	r1, #255
+ 339 000c 8A43     		bics	r2, r1
+ 340              	.LVL17:
+ 174:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     reg |= (uint32_t)(IRQ_LATENCY(irq_latency));
+ 341              		.loc 1 174 5 is_stmt 1 view .LVU66
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 10
+
+
+ 342              		.loc 1 174 9 is_stmt 0 view .LVU67
+ 343 000e 1043     		orrs	r0, r2
+ 344              	.LVL18:
+ 175:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     
+ 176:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CPU_IRQ_LAT = (uint32_t)reg;
+ 345              		.loc 1 176 5 is_stmt 1 view .LVU68
+ 346              		.loc 1 176 24 is_stmt 0 view .LVU69
+ 347 0010 1860     		str	r0, [r3]
+ 177:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 348              		.loc 1 177 1 view .LVU70
+ 349              		@ sp needed
+ 350 0012 7047     		bx	lr
+ 351              		.cfi_endproc
+ 352              	.LFE67:
+ 354              		.section	.text.syscfg_flag_get,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	syscfg_flag_get
+ 357              		.syntax unified
+ 358              		.code	16
+ 359              		.thumb_func
+ 361              	syscfg_flag_get:
+ 362              	.LVL19:
+ 363              	.LFB68:
+ 178:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ 179:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      check if the specified flag in SYSCFG_CFG2 is set or not.
+ 180:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  syscfg_flag: specify the flag in SYSCFG_CFG2 to check.
+ 181:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_SRAM_PCEF: SRAM parity check error flag.
+ 182:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ 183:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     the syscfg_flag state returned (SET or RESET).
+ 184:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****   */
+ 185:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** FlagStatus syscfg_flag_get(uint32_t syscfg_flag)
+ 186:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 364              		.loc 1 186 1 is_stmt 1 view -0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              		@ link register save eliminated.
+ 187:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     if((SYSCFG_CFG2 & syscfg_flag) != (uint32_t)RESET){
+ 369              		.loc 1 187 5 view .LVU72
+ 370              		.loc 1 187 9 is_stmt 0 view .LVU73
+ 371 0000 1823     		movs	r3, #24
+ 372 0002 C4F20103 		movt	r3, 16385
+ 373 0006 1B68     		ldr	r3, [r3]
+ 374              		.loc 1 187 7 view .LVU74
+ 375 0008 1842     		tst	r0, r3
+ 376 000a 01D0     		beq	.L19
+ 188:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         return SET;
+ 377              		.loc 1 188 16 view .LVU75
+ 378 000c 0120     		movs	r0, #1
+ 379              	.LVL20:
+ 380              	.L18:
+ 189:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     }else{
+ 190:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         return RESET;
+ 191:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     }
+ 192:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 381              		.loc 1 192 1 view .LVU76
+ 382              		@ sp needed
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 11
+
+
+ 383 000e 7047     		bx	lr
+ 384              	.LVL21:
+ 385              	.L19:
+ 190:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     }
+ 386              		.loc 1 190 16 view .LVU77
+ 387 0010 0020     		movs	r0, #0
+ 388              	.LVL22:
+ 190:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     }
+ 389              		.loc 1 190 16 view .LVU78
+ 390 0012 FCE7     		b	.L18
+ 391              		.cfi_endproc
+ 392              	.LFE68:
+ 394              		.section	.text.syscfg_flag_clear,"ax",%progbits
+ 395              		.align	1
+ 396              		.global	syscfg_flag_clear
+ 397              		.syntax unified
+ 398              		.code	16
+ 399              		.thumb_func
+ 401              	syscfg_flag_clear:
+ 402              	.LVL23:
+ 403              	.LFB69:
+ 193:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
+ 194:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
+ 195:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      clear the flag in SYSCFG_CFG2 by writing 1.
+ 196:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[in]  syscfg_flag: Specify the flag in SYSCFG_CFG2 to clear.
+ 197:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_SRAM_PCEF: SRAM parity check error flag.
+ 198:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
+ 199:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
+ 200:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
+ 201:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_flag_clear(uint32_t syscfg_flag)
+ 202:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
+ 404              		.loc 1 202 1 is_stmt 1 view -0
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408              		@ link register save eliminated.
+ 203:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     SYSCFG_CFG2 |= (uint32_t) syscfg_flag;
+ 409              		.loc 1 203 5 view .LVU80
+ 410 0000 1823     		movs	r3, #24
+ 411 0002 C4F20103 		movt	r3, 16385
+ 412 0006 1A68     		ldr	r2, [r3]
+ 413              		.loc 1 203 17 is_stmt 0 view .LVU81
+ 414 0008 0243     		orrs	r2, r0
+ 415 000a 1A60     		str	r2, [r3]
+ 204:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
+ 416              		.loc 1 204 1 view .LVU82
+ 417              		@ sp needed
+ 418 000c 7047     		bx	lr
+ 419              		.cfi_endproc
+ 420              	.LFE69:
+ 422              		.text
+ 423              	.Letext0:
+ 424              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 425              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 426              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 427              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ARM GAS  D:\noval\Temp\ccw9EEpU.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_syscfg.c
+D:\noval\Temp\ccw9EEpU.s:19     .text.syscfg_deinit:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:25     .text.syscfg_deinit:00000000 syscfg_deinit
+D:\noval\Temp\ccw9EEpU.s:51     .text.syscfg_dma_remap_enable:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:57     .text.syscfg_dma_remap_enable:00000000 syscfg_dma_remap_enable
+D:\noval\Temp\ccw9EEpU.s:79     .text.syscfg_dma_remap_disable:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:85     .text.syscfg_dma_remap_disable:00000000 syscfg_dma_remap_disable
+D:\noval\Temp\ccw9EEpU.s:107    .text.syscfg_high_current_enable:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:113    .text.syscfg_high_current_enable:00000000 syscfg_high_current_enable
+D:\noval\Temp\ccw9EEpU.s:136    .text.syscfg_high_current_disable:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:142    .text.syscfg_high_current_disable:00000000 syscfg_high_current_disable
+D:\noval\Temp\ccw9EEpU.s:163    .text.syscfg_high_current_disable:00000010 $d
+D:\noval\Temp\ccw9EEpU.s:168    .text.syscfg_exti_line_config:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:174    .text.syscfg_exti_line_config:00000000 syscfg_exti_line_config
+D:\noval\Temp\ccw9EEpU.s:289    .text.syscfg_lock_config:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:295    .text.syscfg_lock_config:00000000 syscfg_lock_config
+D:\noval\Temp\ccw9EEpU.s:317    .text.irq_latency_set:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:323    .text.irq_latency_set:00000000 irq_latency_set
+D:\noval\Temp\ccw9EEpU.s:355    .text.syscfg_flag_get:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:361    .text.syscfg_flag_get:00000000 syscfg_flag_get
+D:\noval\Temp\ccw9EEpU.s:395    .text.syscfg_flag_clear:00000000 $t
+D:\noval\Temp\ccw9EEpU.s:401    .text.syscfg_flag_clear:00000000 syscfg_flag_clear
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

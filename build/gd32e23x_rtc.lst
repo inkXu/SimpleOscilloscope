@@ -1,0 +1,3513 @@
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_rtc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_rtc.c"
+  18              		.section	.text.rtc_init_mode_enter,"ax",%progbits
+  19              		.align	1
+  20              		.global	rtc_init_mode_enter
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	rtc_init_mode_enter:
+  26              	.LFB62:
+   1:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \file    gd32e23x_rtc.c
+   3:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief   RTC driver
+   4:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+   5:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****        may be used to endorse or promote products derived from this software without 
+  21:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** #include "gd32e23x_rtc.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+  38:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      reset most of the RTC registers
+  39:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+  40:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+  41:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+  42:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+  43:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_deinit(void)
+  44:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+  45:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+  46:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  47:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* RTC_TAMP register is not under write protection */
+  48:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP = RTC_REGISTER_RESET;
+  49:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  50:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+  51:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+  52:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+  53:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  54:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* reset RTC_CTL register, this can be done without the init mode */
+  55:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= RTC_REGISTER_RESET;
+  56:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  57:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enter init mode */
+  58:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     error_status = rtc_init_mode_enter();
+  59:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  60:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(ERROR != error_status){
+  61:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* before reset RTC_TIME and RTC_DATE, BPSHAD bit in RTC_CTL should be reset as the conditi
+  62:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****            in order to read calendar from shadow register, not the real registers being reset */
+  63:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TIME = RTC_REGISTER_RESET;
+  64:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = RTC_DATE_RESET;
+  65:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  66:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = RTC_PSC_RESET;
+  67:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  68:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* reset RTC_STAT register, also exit init mode.
+  69:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****            at the same time, RTC_STAT_SOPF bit is reset, as the condition to reset RTC_SHIFTCTL reg
+  70:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_STAT = RTC_STAT_RESET;
+  71:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       
+  72:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* to write RTC_ALRM0SS register, ALRM0EN bit in RTC_CTL register should be reset as the co
+  73:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_ALRM0TD = RTC_REGISTER_RESET;
+  74:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_ALRM0SS = RTC_REGISTER_RESET;
+  75:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  76:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* reset RTC_SHIFTCTL and RTC_HRFC register, this can be done without the init mode */
+  77:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = RTC_REGISTER_RESET;
+  78:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_HRFC = RTC_REGISTER_RESET;
+  79:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  80:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = rtc_register_sync_wait();  
+  81:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+  82:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  83:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+  84:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+  85:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  86:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+  87:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+  88:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  89:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 3
+
+
+  90:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      initialize RTC registers
+  91:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  rtc_initpara_struct: pointer to a rtc_parameter_struct structure which contains 
+  92:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for initialization of the rtc peripheral
+  93:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+  94:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_year: 0x0 - 0x99(BCD format)
+  95:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_month: RTC_JAN, RTC_FEB, RTC_MAR, RTC_APR, RTC_MAY, RTC_JUN,
+  96:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                              RTC_JUL, RTC_AUG, RTC_SEP, RTC_OCT, RTC_NOV, RTC_DEC
+  97:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_date: 0x1 - 0x31(BCD format)
+  98:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_day_of_week: RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY
+  99:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                    RTC_FRIDAY, RTC_SATURDAY, RTC_SUNDAY
+ 100:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the rtc_d
+ 101:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_minute: 0x0 - 0x59(BCD format)
+ 102:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_second: 0x0 - 0x59(BCD format)
+ 103:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_factor_asyn: 0x0 - 0x7F
+ 104:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_factor_syn: 0x0 - 0x7FFF
+ 105:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
+ 106:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_display_format: RTC_24HOUR, RTC_12HOUR
+ 107:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 108:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 109:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 110:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_init(rtc_parameter_struct* rtc_initpara_struct)
+ 111:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 112:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 113:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg_time = 0x00U, reg_date = 0x00U;
+ 114:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 115:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_date = (DATE_YR(rtc_initpara_struct->rtc_year) | \
+ 116:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DOW(rtc_initpara_struct->rtc_day_of_week) | \
+ 117:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_MON(rtc_initpara_struct->rtc_month) | \
+ 118:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DAY(rtc_initpara_struct->rtc_date)); 
+ 119:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_time = (rtc_initpara_struct->rtc_am_pm| \
+ 121:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
+ 122:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_MN(rtc_initpara_struct->rtc_minute) | \
+ 123:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_SC(rtc_initpara_struct->rtc_second)); 
+ 124:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****               
+ 125:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* 1st: disable the write protection */
+ 126:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 127:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 128:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 129:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* 2nd: enter init mode */
+ 130:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     error_status = rtc_init_mode_enter();
+ 131:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 132:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(ERROR != error_status){
+ 133:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = (uint32_t)(PSC_FACTOR_A(rtc_initpara_struct->rtc_factor_asyn)| \
+ 134:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   PSC_FACTOR_S(rtc_initpara_struct->rtc_factor_syn));
+ 135:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 136:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TIME = (uint32_t)reg_time;
+ 137:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = (uint32_t)reg_date;
+ 138:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 139:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL &= (uint32_t)(~RTC_CTL_CS);
+ 140:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |=  rtc_initpara_struct->rtc_display_format;
+ 141:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 142:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* 3rd: exit init mode */
+ 143:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         rtc_init_mode_exit();
+ 144:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 145:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* 4th: wait the RSYNF flag to set */
+ 146:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = rtc_register_sync_wait();
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 4
+
+
+ 147:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 148:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 149:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* 5th: enable the write protection */
+ 150:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 151:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 152:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 153:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 154:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 155:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 156:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enter RTC init mode
+ 157:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 158:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 159:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 160:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 161:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_init_mode_enter(void)
+ 162:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+  27              		.loc 1 162 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 163:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t time_index = RTC_INITM_TIMEOUT;
+  32              		.loc 1 163 5 view .LVU1
+  33              	.LVL0:
+ 164:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+  34              		.loc 1 164 5 view .LVU2
+ 165:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+  35              		.loc 1 165 5 view .LVU3
+ 166:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 167:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* check whether it has been in init mode */
+ 168:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET == (RTC_STAT & RTC_STAT_INITF)){
+  36              		.loc 1 168 5 view .LVU4
+  37              		.loc 1 168 28 is_stmt 0 view .LVU5
+  38 0000 42F60C03 		movw	r3, #10252
+  39 0004 C4F20003 		movt	r3, 16384
+  40 0008 1B68     		ldr	r3, [r3]
+  41              		.loc 1 168 7 view .LVU6
+  42 000a 5B06     		lsls	r3, r3, #25
+  43 000c 17D4     		bmi	.L5
+ 169:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_STAT |= RTC_STAT_INITM;
+  44              		.loc 1 169 9 is_stmt 1 view .LVU7
+  45 000e 42F60C03 		movw	r3, #10252
+  46 0012 C4F20003 		movt	r3, 16384
+  47 0016 1A68     		ldr	r2, [r3]
+  48              		.loc 1 169 18 is_stmt 0 view .LVU8
+  49 0018 8021     		movs	r1, #128
+  50 001a 0A43     		orrs	r2, r1
+  51 001c 1A60     		str	r2, [r3]
+ 163:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+  52              		.loc 1 163 14 view .LVU9
+  53 001e 44F20002 		movw	r2, #16384
+  54              	.LVL1:
+  55              	.L4:
+ 170:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 171:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* wait until the INITF flag to be set */
+ 172:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         do{
+  56              		.loc 1 172 9 is_stmt 1 view .LVU10
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 5
+
+
+ 173:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****            flag_status = RTC_STAT & RTC_STAT_INITF;
+  57              		.loc 1 173 12 view .LVU11
+  58              		.loc 1 173 26 is_stmt 0 view .LVU12
+  59 0022 42F60C03 		movw	r3, #10252
+  60 0026 C4F20003 		movt	r3, 16384
+  61 002a 1968     		ldr	r1, [r3]
+  62              		.loc 1 173 24 view .LVU13
+  63 002c 4023     		movs	r3, #64
+  64 002e 0B40     		ands	r3, r1
+  65              	.LVL2:
+ 174:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }while((--time_index > 0x00U) && ((uint32_t)RESET == flag_status));
+  66              		.loc 1 174 39 is_stmt 1 discriminator 2 view .LVU14
+  67 0030 013A     		subs	r2, r2, #1
+  68              	.LVL3:
+  69              		.loc 1 174 39 is_stmt 0 discriminator 2 view .LVU15
+  70 0032 0AB1     		cbz	r2, .L3
+  71              		.loc 1 174 39 discriminator 1 view .LVU16
+  72 0034 002B     		cmp	r3, #0
+  73 0036 F4D0     		beq	.L4
+  74              	.L3:
+ 175:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 176:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         if((uint32_t)RESET != flag_status){
+  75              		.loc 1 176 9 is_stmt 1 view .LVU17
+  76              		.loc 1 176 11 is_stmt 0 view .LVU18
+  77 0038 1BB9     		cbnz	r3, .L6
+ 165:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+  78              		.loc 1 165 15 view .LVU19
+  79 003a 0020     		movs	r0, #0
+  80 003c 00E0     		b	.L2
+  81              	.LVL4:
+  82              	.L5:
+ 177:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             error_status = SUCCESS;
+ 178:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ 179:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }else{
+ 180:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
+  83              		.loc 1 180 22 view .LVU20
+  84 003e 0120     		movs	r0, #1
+  85              	.LVL5:
+  86              	.L2:
+ 181:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 182:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+  87              		.loc 1 182 5 is_stmt 1 view .LVU21
+ 183:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+  88              		.loc 1 183 1 is_stmt 0 view .LVU22
+  89              		@ sp needed
+  90 0040 7047     		bx	lr
+  91              	.LVL6:
+  92              	.L6:
+ 177:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             error_status = SUCCESS;
+  93              		.loc 1 177 26 view .LVU23
+  94 0042 0120     		movs	r0, #1
+  95 0044 FCE7     		b	.L2
+  96              		.cfi_endproc
+  97              	.LFE62:
+  99              		.section	.text.rtc_init_mode_exit,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	rtc_init_mode_exit
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 6
+
+
+ 102              		.syntax unified
+ 103              		.code	16
+ 104              		.thumb_func
+ 106              	rtc_init_mode_exit:
+ 107              	.LFB63:
+ 184:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 185:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 186:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      exit RTC init mode
+ 187:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 188:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 189:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 190:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 191:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_init_mode_exit(void)
+ 192:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 108              		.loc 1 192 1 is_stmt 1 view -0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              		@ link register save eliminated.
+ 193:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_STAT &= (uint32_t)(~RTC_STAT_INITM);
+ 113              		.loc 1 193 5 view .LVU25
+ 114 0000 42F60C03 		movw	r3, #10252
+ 115 0004 C4F20003 		movt	r3, 16384
+ 116 0008 1A68     		ldr	r2, [r3]
+ 117              		.loc 1 193 14 is_stmt 0 view .LVU26
+ 118 000a 8021     		movs	r1, #128
+ 119 000c 8A43     		bics	r2, r1
+ 120 000e 1A60     		str	r2, [r3]
+ 194:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 121              		.loc 1 194 1 view .LVU27
+ 122              		@ sp needed
+ 123 0010 7047     		bx	lr
+ 124              		.cfi_endproc
+ 125              	.LFE63:
+ 127              		.section	.text.rtc_register_sync_wait,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	rtc_register_sync_wait
+ 130              		.syntax unified
+ 131              		.code	16
+ 132              		.thumb_func
+ 134              	rtc_register_sync_wait:
+ 135              	.LFB64:
+ 195:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 196:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 197:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      wait until RTC_TIME and RTC_DATE registers are synchronized with APB clock, and the
+ 198:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 registers are updated
+ 199:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 200:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 201:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 202:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 203:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_register_sync_wait(void)
+ 204:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 136              		.loc 1 204 1 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 8
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 7
+
+
+ 141 0000 82B0     		sub	sp, sp, #8
+ 142              	.LCFI0:
+ 143              		.cfi_def_cfa_offset 8
+ 205:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     volatile uint32_t time_index = RTC_RSYNF_TIMEOUT;
+ 144              		.loc 1 205 5 view .LVU29
+ 145              		.loc 1 205 23 is_stmt 0 view .LVU30
+ 146 0002 48F20003 		movw	r3, #32768
+ 147 0006 0193     		str	r3, [sp, #4]
+ 206:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 148              		.loc 1 206 5 is_stmt 1 view .LVU31
+ 149              	.LVL7:
+ 207:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 150              		.loc 1 207 5 view .LVU32
+ 208:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 209:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET == (RTC_CTL & RTC_CTL_BPSHAD)){
+ 151              		.loc 1 209 5 view .LVU33
+ 152              		.loc 1 209 28 is_stmt 0 view .LVU34
+ 153 0008 42F60803 		movw	r3, #10248
+ 154 000c C4F20003 		movt	r3, 16384
+ 155 0010 1B68     		ldr	r3, [r3]
+ 156              		.loc 1 209 7 view .LVU35
+ 157 0012 9B06     		lsls	r3, r3, #26
+ 158 0014 28D4     		bmi	.L13
+ 210:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* disable the write protection */
+ 211:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_WPK = RTC_UNLOCK_KEY1;
+ 159              		.loc 1 211 9 is_stmt 1 view .LVU36
+ 160              		.loc 1 211 17 is_stmt 0 view .LVU37
+ 161 0016 42F62403 		movw	r3, #10276
+ 162 001a C4F20003 		movt	r3, 16384
+ 163 001e CA22     		movs	r2, #202
+ 164 0020 1A60     		str	r2, [r3]
+ 212:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_WPK = RTC_UNLOCK_KEY2;
+ 165              		.loc 1 212 9 is_stmt 1 view .LVU38
+ 166              		.loc 1 212 17 is_stmt 0 view .LVU39
+ 167 0022 773A     		subs	r2, r2, #119
+ 168 0024 1A60     		str	r2, [r3]
+ 213:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 214:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* firstly clear RSYNF flag */
+ 215:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_STAT &= (uint32_t)(~RTC_STAT_RSYNF);
+ 169              		.loc 1 215 9 is_stmt 1 view .LVU40
+ 170 0026 42F60C03 		movw	r3, #10252
+ 171 002a C4F20003 		movt	r3, 16384
+ 172 002e 1A68     		ldr	r2, [r3]
+ 173              		.loc 1 215 18 is_stmt 0 view .LVU41
+ 174 0030 2021     		movs	r1, #32
+ 175 0032 8A43     		bics	r2, r1
+ 176 0034 1A60     		str	r2, [r3]
+ 177              	.LVL8:
+ 178              	.L11:
+ 216:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 217:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* wait until RSYNF flag to be set */
+ 218:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         do{
+ 179              		.loc 1 218 9 is_stmt 1 view .LVU42
+ 219:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             flag_status = RTC_STAT & RTC_STAT_RSYNF;
+ 180              		.loc 1 219 13 view .LVU43
+ 181              		.loc 1 219 27 is_stmt 0 view .LVU44
+ 182 0036 42F60C03 		movw	r3, #10252
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 8
+
+
+ 183 003a C4F20003 		movt	r3, 16384
+ 184 003e 1B68     		ldr	r3, [r3]
+ 185              		.loc 1 219 25 view .LVU45
+ 186 0040 2022     		movs	r2, #32
+ 187 0042 1A40     		ands	r2, r3
+ 188              	.LVL9:
+ 220:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }while((--time_index > 0x00U) && ((uint32_t)RESET == flag_status));
+ 189              		.loc 1 220 39 is_stmt 1 discriminator 2 view .LVU46
+ 190              		.loc 1 220 17 is_stmt 0 discriminator 2 view .LVU47
+ 191 0044 019B     		ldr	r3, [sp, #4]
+ 192 0046 013B     		subs	r3, r3, #1
+ 193              		.loc 1 220 39 discriminator 2 view .LVU48
+ 194 0048 0193     		str	r3, [sp, #4]
+ 195 004a 0BB1     		cbz	r3, .L10
+ 196              		.loc 1 220 39 discriminator 1 view .LVU49
+ 197 004c 002A     		cmp	r2, #0
+ 198 004e F2D0     		beq	.L11
+ 199              	.L10:
+ 221:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 222:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         if((uint32_t)RESET != flag_status){
+ 200              		.loc 1 222 9 is_stmt 1 view .LVU50
+ 201              		.loc 1 222 11 is_stmt 0 view .LVU51
+ 202 0050 42B9     		cbnz	r2, .L14
+ 207:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 203              		.loc 1 207 15 view .LVU52
+ 204 0052 0020     		movs	r0, #0
+ 205              	.L12:
+ 206              	.LVL10:
+ 223:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             error_status = SUCCESS;
+ 224:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ 225:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 226:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* enable the write protection */
+ 227:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_WPK = RTC_LOCK_KEY;
+ 207              		.loc 1 227 9 is_stmt 1 view .LVU53
+ 208              		.loc 1 227 17 is_stmt 0 view .LVU54
+ 209 0054 42F62403 		movw	r3, #10276
+ 210 0058 C4F20003 		movt	r3, 16384
+ 211 005c FF22     		movs	r2, #255
+ 212              	.LVL11:
+ 213              		.loc 1 227 17 view .LVU55
+ 214 005e 1A60     		str	r2, [r3]
+ 215              	.LVL12:
+ 216              	.L9:
+ 228:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }else{ 
+ 229:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
+ 230:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 231:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 232:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 217              		.loc 1 232 5 is_stmt 1 view .LVU56
+ 233:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 218              		.loc 1 233 1 is_stmt 0 view .LVU57
+ 219 0060 02B0     		add	sp, sp, #8
+ 220              		@ sp needed
+ 221 0062 7047     		bx	lr
+ 222              	.LVL13:
+ 223              	.L14:
+ 223:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             error_status = SUCCESS;
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 9
+
+
+ 224              		.loc 1 223 26 view .LVU58
+ 225 0064 0120     		movs	r0, #1
+ 226 0066 F5E7     		b	.L12
+ 227              	.LVL14:
+ 228              	.L13:
+ 229:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 229              		.loc 1 229 22 view .LVU59
+ 230 0068 0120     		movs	r0, #1
+ 231 006a F9E7     		b	.L9
+ 232              		.cfi_endproc
+ 233              	.LFE64:
+ 235              		.section	.text.rtc_deinit,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	rtc_deinit
+ 238              		.syntax unified
+ 239              		.code	16
+ 240              		.thumb_func
+ 242              	rtc_deinit:
+ 243              	.LFB60:
+  44:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 244              		.loc 1 44 1 is_stmt 1 view -0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248 0000 10B5     		push	{r4, lr}
+ 249              	.LCFI1:
+ 250              		.cfi_def_cfa_offset 8
+ 251              		.cfi_offset 4, -8
+ 252              		.cfi_offset 14, -4
+  45:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 253              		.loc 1 45 5 view .LVU61
+ 254              	.LVL15:
+  48:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 255              		.loc 1 48 5 view .LVU62
+  48:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 256              		.loc 1 48 14 is_stmt 0 view .LVU63
+ 257 0002 42F64003 		movw	r3, #10304
+ 258 0006 C4F20003 		movt	r3, 16384
+ 259 000a 0022     		movs	r2, #0
+ 260 000c 1A60     		str	r2, [r3]
+  51:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 261              		.loc 1 51 5 is_stmt 1 view .LVU64
+  51:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 262              		.loc 1 51 13 is_stmt 0 view .LVU65
+ 263 000e 42F62403 		movw	r3, #10276
+ 264 0012 C4F20003 		movt	r3, 16384
+ 265 0016 CA21     		movs	r1, #202
+ 266 0018 1960     		str	r1, [r3]
+  52:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 267              		.loc 1 52 5 is_stmt 1 view .LVU66
+  52:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 268              		.loc 1 52 13 is_stmt 0 view .LVU67
+ 269 001a 7739     		subs	r1, r1, #119
+ 270 001c 1960     		str	r1, [r3]
+  55:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 271              		.loc 1 55 5 is_stmt 1 view .LVU68
+ 272 001e 42F60803 		movw	r3, #10248
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 10
+
+
+ 273 0022 C4F20003 		movt	r3, 16384
+ 274 0026 1968     		ldr	r1, [r3]
+  55:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 275              		.loc 1 55 13 is_stmt 0 view .LVU69
+ 276 0028 1A60     		str	r2, [r3]
+  58:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 277              		.loc 1 58 5 is_stmt 1 view .LVU70
+  58:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 278              		.loc 1 58 20 is_stmt 0 view .LVU71
+ 279 002a FFF7FEFF 		bl	rtc_init_mode_enter
+ 280              	.LVL16:
+  60:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* before reset RTC_TIME and RTC_DATE, BPSHAD bit in RTC_CTL should be reset as the conditi
+ 281              		.loc 1 60 5 is_stmt 1 view .LVU72
+  60:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* before reset RTC_TIME and RTC_DATE, BPSHAD bit in RTC_CTL should be reset as the conditi
+ 282              		.loc 1 60 7 is_stmt 0 view .LVU73
+ 283 002e 30B9     		cbnz	r0, .L17
+ 284              	.LVL17:
+ 285              	.L16:
+  84:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 286              		.loc 1 84 5 is_stmt 1 view .LVU74
+  84:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 287              		.loc 1 84 13 is_stmt 0 view .LVU75
+ 288 0030 42F62403 		movw	r3, #10276
+ 289 0034 C4F20003 		movt	r3, 16384
+ 290 0038 FF22     		movs	r2, #255
+ 291 003a 1A60     		str	r2, [r3]
+  86:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 292              		.loc 1 86 5 is_stmt 1 view .LVU76
+  87:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 293              		.loc 1 87 1 is_stmt 0 view .LVU77
+ 294              		@ sp needed
+ 295 003c 10BD     		pop	{r4, pc}
+ 296              	.L17:
+  63:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = RTC_DATE_RESET;
+ 297              		.loc 1 63 9 is_stmt 1 view .LVU78
+  63:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = RTC_DATE_RESET;
+ 298              		.loc 1 63 18 is_stmt 0 view .LVU79
+ 299 003e 42F60002 		movw	r2, #10240
+ 300 0042 C4F20002 		movt	r2, 16384
+ 301 0046 0023     		movs	r3, #0
+ 302 0048 1360     		str	r3, [r2]
+  64:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 303              		.loc 1 64 9 is_stmt 1 view .LVU80
+  64:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 304              		.loc 1 64 18 is_stmt 0 view .LVU81
+ 305 004a 42F60402 		movw	r2, #10244
+ 306 004e C4F20002 		movt	r2, 16384
+ 307 0052 42F20111 		movw	r1, #8449
+ 308 0056 1160     		str	r1, [r2]
+  66:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 309              		.loc 1 66 9 is_stmt 1 view .LVU82
+  66:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 310              		.loc 1 66 17 is_stmt 0 view .LVU83
+ 311 0058 42F61002 		movw	r2, #10256
+ 312 005c C4F20002 		movt	r2, 16384
+ 313 0060 FF21     		movs	r1, #255
+ 314 0062 C0F27F01 		movt	r1, 127
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 11
+
+
+ 315 0066 1160     		str	r1, [r2]
+  70:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       
+ 316              		.loc 1 70 9 is_stmt 1 view .LVU84
+  70:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       
+ 317              		.loc 1 70 18 is_stmt 0 view .LVU85
+ 318 0068 42F60C02 		movw	r2, #10252
+ 319 006c C4F20002 		movt	r2, 16384
+ 320 0070 0721     		movs	r1, #7
+ 321 0072 1160     		str	r1, [r2]
+  73:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_ALRM0SS = RTC_REGISTER_RESET;
+ 322              		.loc 1 73 9 is_stmt 1 view .LVU86
+  73:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_ALRM0SS = RTC_REGISTER_RESET;
+ 323              		.loc 1 73 21 is_stmt 0 view .LVU87
+ 324 0074 42F61C02 		movw	r2, #10268
+ 325 0078 C4F20002 		movt	r2, 16384
+ 326 007c 1360     		str	r3, [r2]
+  74:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 327              		.loc 1 74 9 is_stmt 1 view .LVU88
+  74:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 328              		.loc 1 74 21 is_stmt 0 view .LVU89
+ 329 007e 42F64402 		movw	r2, #10308
+ 330 0082 C4F20002 		movt	r2, 16384
+ 331 0086 1360     		str	r3, [r2]
+  77:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_HRFC = RTC_REGISTER_RESET;
+ 332              		.loc 1 77 9 is_stmt 1 view .LVU90
+  77:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_HRFC = RTC_REGISTER_RESET;
+ 333              		.loc 1 77 22 is_stmt 0 view .LVU91
+ 334 0088 42F62C02 		movw	r2, #10284
+ 335 008c C4F20002 		movt	r2, 16384
+ 336 0090 1360     		str	r3, [r2]
+  78:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 337              		.loc 1 78 9 is_stmt 1 view .LVU92
+  78:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 338              		.loc 1 78 18 is_stmt 0 view .LVU93
+ 339 0092 42F63C02 		movw	r2, #10300
+ 340 0096 C4F20002 		movt	r2, 16384
+ 341 009a 1360     		str	r3, [r2]
+  80:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 342              		.loc 1 80 9 is_stmt 1 view .LVU94
+  80:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 343              		.loc 1 80 24 is_stmt 0 view .LVU95
+ 344 009c FFF7FEFF 		bl	rtc_register_sync_wait
+ 345              	.LVL18:
+  80:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 346              		.loc 1 80 24 view .LVU96
+ 347 00a0 C6E7     		b	.L16
+ 348              		.cfi_endproc
+ 349              	.LFE60:
+ 351              		.section	.text.rtc_init,"ax",%progbits
+ 352              		.align	1
+ 353              		.global	rtc_init
+ 354              		.syntax unified
+ 355              		.code	16
+ 356              		.thumb_func
+ 358              	rtc_init:
+ 359              	.LVL19:
+ 360              	.LFB61:
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 12
+
+
+ 111:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 361              		.loc 1 111 1 is_stmt 1 view -0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 0
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 365              		.loc 1 111 1 is_stmt 0 view .LVU98
+ 366 0000 70B5     		push	{r4, r5, r6, lr}
+ 367              	.LCFI2:
+ 368              		.cfi_def_cfa_offset 16
+ 369              		.cfi_offset 4, -16
+ 370              		.cfi_offset 5, -12
+ 371              		.cfi_offset 6, -8
+ 372              		.cfi_offset 14, -4
+ 373 0002 0400     		movs	r4, r0
+ 112:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg_time = 0x00U, reg_date = 0x00U;
+ 374              		.loc 1 112 5 is_stmt 1 view .LVU99
+ 375              	.LVL20:
+ 113:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 376              		.loc 1 113 5 view .LVU100
+ 115:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DOW(rtc_initpara_struct->rtc_day_of_week) | \
+ 377              		.loc 1 115 5 view .LVU101
+ 115:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DOW(rtc_initpara_struct->rtc_day_of_week) | \
+ 378              		.loc 1 115 17 is_stmt 0 view .LVU102
+ 379 0004 0378     		ldrb	r3, [r0]
+ 380 0006 1B04     		lsls	r3, r3, #16
+ 116:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_MON(rtc_initpara_struct->rtc_month) | \
+ 381              		.loc 1 116 17 view .LVU103
+ 382 0008 C178     		ldrb	r1, [r0, #3]
+ 383 000a 4903     		lsls	r1, r1, #13
+ 384 000c 4FF6FF72 		movw	r2, #65535
+ 385 0010 0A40     		ands	r2, r1
+ 115:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DOW(rtc_initpara_struct->rtc_day_of_week) | \
+ 386              		.loc 1 115 56 view .LVU104
+ 387 0012 1343     		orrs	r3, r2
+ 117:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DAY(rtc_initpara_struct->rtc_date)); 
+ 388              		.loc 1 117 17 view .LVU105
+ 389 0014 4178     		ldrb	r1, [r0, #1]
+ 390 0016 0902     		lsls	r1, r1, #8
+ 391 0018 41F60072 		movw	r2, #7936
+ 392 001c 0A40     		ands	r2, r1
+ 116:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_MON(rtc_initpara_struct->rtc_month) | \
+ 393              		.loc 1 116 64 view .LVU106
+ 394 001e 1343     		orrs	r3, r2
+ 118:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 395              		.loc 1 118 17 view .LVU107
+ 396 0020 8178     		ldrb	r1, [r0, #2]
+ 397 0022 3F22     		movs	r2, #63
+ 398 0024 0A40     		ands	r2, r1
+ 115:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 DATE_DOW(rtc_initpara_struct->rtc_day_of_week) | \
+ 399              		.loc 1 115 14 view .LVU108
+ 400 0026 1343     		orrs	r3, r2
+ 401 0028 1D00     		movs	r5, r3
+ 402              	.LVL21:
+ 120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
+ 403              		.loc 1 120 5 is_stmt 1 view .LVU109
+ 120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 13
+
+
+ 404              		.loc 1 120 36 is_stmt 0 view .LVU110
+ 405 002a C368     		ldr	r3, [r0, #12]
+ 406              	.LVL22:
+ 121:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_MN(rtc_initpara_struct->rtc_minute) | \
+ 407              		.loc 1 121 17 view .LVU111
+ 408 002c 0279     		ldrb	r2, [r0, #4]
+ 409 002e 1204     		lsls	r2, r2, #16
+ 410 0030 FC21     		movs	r1, #252
+ 411 0032 8903     		lsls	r1, r1, #14
+ 412 0034 0A40     		ands	r2, r1
+ 120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
+ 413              		.loc 1 120 47 view .LVU112
+ 414 0036 1343     		orrs	r3, r2
+ 122:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_SC(rtc_initpara_struct->rtc_second)); 
+ 415              		.loc 1 122 17 view .LVU113
+ 416 0038 4179     		ldrb	r1, [r0, #5]
+ 417 003a 0902     		lsls	r1, r1, #8
+ 418 003c 47F60072 		movw	r2, #32512
+ 419 0040 0A40     		ands	r2, r1
+ 121:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_MN(rtc_initpara_struct->rtc_minute) | \
+ 420              		.loc 1 121 56 view .LVU114
+ 421 0042 1343     		orrs	r3, r2
+ 123:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****               
+ 422              		.loc 1 123 17 view .LVU115
+ 423 0044 8179     		ldrb	r1, [r0, #6]
+ 424 0046 7F22     		movs	r2, #127
+ 425 0048 0A40     		ands	r2, r1
+ 120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
+ 426              		.loc 1 120 14 view .LVU116
+ 427 004a 1343     		orrs	r3, r2
+ 428 004c 1E00     		movs	r6, r3
+ 429              	.LVL23:
+ 126:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 430              		.loc 1 126 5 is_stmt 1 view .LVU117
+ 126:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 431              		.loc 1 126 13 is_stmt 0 view .LVU118
+ 432 004e 42F62403 		movw	r3, #10276
+ 433              	.LVL24:
+ 126:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 434              		.loc 1 126 13 view .LVU119
+ 435 0052 C4F20003 		movt	r3, 16384
+ 436 0056 CA22     		movs	r2, #202
+ 437 0058 1A60     		str	r2, [r3]
+ 127:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 438              		.loc 1 127 5 is_stmt 1 view .LVU120
+ 127:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 439              		.loc 1 127 13 is_stmt 0 view .LVU121
+ 440 005a 773A     		subs	r2, r2, #119
+ 441 005c 1A60     		str	r2, [r3]
+ 130:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 442              		.loc 1 130 5 is_stmt 1 view .LVU122
+ 130:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 443              		.loc 1 130 20 is_stmt 0 view .LVU123
+ 444 005e FFF7FEFF 		bl	rtc_init_mode_enter
+ 445              	.LVL25:
+ 132:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = (uint32_t)(PSC_FACTOR_A(rtc_initpara_struct->rtc_factor_asyn)| \
+ 446              		.loc 1 132 5 is_stmt 1 view .LVU124
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 14
+
+
+ 132:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = (uint32_t)(PSC_FACTOR_A(rtc_initpara_struct->rtc_factor_asyn)| \
+ 447              		.loc 1 132 7 is_stmt 0 view .LVU125
+ 448 0062 30B9     		cbnz	r0, .L20
+ 449              	.LVL26:
+ 450              	.L19:
+ 150:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 451              		.loc 1 150 5 is_stmt 1 view .LVU126
+ 150:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 452              		.loc 1 150 13 is_stmt 0 view .LVU127
+ 453 0064 42F62403 		movw	r3, #10276
+ 454 0068 C4F20003 		movt	r3, 16384
+ 455 006c FF22     		movs	r2, #255
+ 456 006e 1A60     		str	r2, [r3]
+ 152:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 457              		.loc 1 152 5 is_stmt 1 view .LVU128
+ 153:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 458              		.loc 1 153 1 is_stmt 0 view .LVU129
+ 459              		@ sp needed
+ 460              	.LVL27:
+ 461              	.LVL28:
+ 462              	.LVL29:
+ 153:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 463              		.loc 1 153 1 view .LVU130
+ 464 0070 70BD     		pop	{r4, r5, r6, pc}
+ 465              	.LVL30:
+ 466              	.L20:
+ 133:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   PSC_FACTOR_S(rtc_initpara_struct->rtc_factor_syn));
+ 467              		.loc 1 133 9 is_stmt 1 view .LVU131
+ 133:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   PSC_FACTOR_S(rtc_initpara_struct->rtc_factor_syn));
+ 468              		.loc 1 133 30 is_stmt 0 view .LVU132
+ 469 0072 2389     		ldrh	r3, [r4, #8]
+ 470 0074 1B04     		lsls	r3, r3, #16
+ 471 0076 FE22     		movs	r2, #254
+ 472 0078 D203     		lsls	r2, r2, #15
+ 473 007a 1340     		ands	r3, r2
+ 134:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 474              		.loc 1 134 35 view .LVU133
+ 475 007c 6189     		ldrh	r1, [r4, #10]
+ 476 007e 47F6FF72 		movw	r2, #32767
+ 477 0082 0A40     		ands	r2, r1
+ 133:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   PSC_FACTOR_S(rtc_initpara_struct->rtc_factor_syn));
+ 478              		.loc 1 133 19 view .LVU134
+ 479 0084 1343     		orrs	r3, r2
+ 133:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   PSC_FACTOR_S(rtc_initpara_struct->rtc_factor_syn));
+ 480              		.loc 1 133 17 view .LVU135
+ 481 0086 42F61002 		movw	r2, #10256
+ 482 008a C4F20002 		movt	r2, 16384
+ 483 008e 1360     		str	r3, [r2]
+ 136:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = (uint32_t)reg_date;
+ 484              		.loc 1 136 9 is_stmt 1 view .LVU136
+ 136:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_DATE = (uint32_t)reg_date;
+ 485              		.loc 1 136 18 is_stmt 0 view .LVU137
+ 486 0090 42F60003 		movw	r3, #10240
+ 487 0094 C4F20003 		movt	r3, 16384
+ 488 0098 1E60     		str	r6, [r3]
+ 137:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 489              		.loc 1 137 9 is_stmt 1 view .LVU138
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 15
+
+
+ 137:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 490              		.loc 1 137 18 is_stmt 0 view .LVU139
+ 491 009a 42F60403 		movw	r3, #10244
+ 492 009e C4F20003 		movt	r3, 16384
+ 493 00a2 1D60     		str	r5, [r3]
+ 139:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |=  rtc_initpara_struct->rtc_display_format;
+ 494              		.loc 1 139 9 is_stmt 1 view .LVU140
+ 495 00a4 42F60803 		movw	r3, #10248
+ 496 00a8 C4F20003 		movt	r3, 16384
+ 497 00ac 1A68     		ldr	r2, [r3]
+ 139:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |=  rtc_initpara_struct->rtc_display_format;
+ 498              		.loc 1 139 17 is_stmt 0 view .LVU141
+ 499 00ae 4021     		movs	r1, #64
+ 500 00b0 8A43     		bics	r2, r1
+ 501 00b2 1A60     		str	r2, [r3]
+ 140:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 502              		.loc 1 140 9 is_stmt 1 view .LVU142
+ 503 00b4 1A68     		ldr	r2, [r3]
+ 140:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 504              		.loc 1 140 40 is_stmt 0 view .LVU143
+ 505 00b6 2169     		ldr	r1, [r4, #16]
+ 140:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 506              		.loc 1 140 17 view .LVU144
+ 507 00b8 0A43     		orrs	r2, r1
+ 508 00ba 1A60     		str	r2, [r3]
+ 143:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
+ 509              		.loc 1 143 9 is_stmt 1 view .LVU145
+ 510 00bc FFF7FEFF 		bl	rtc_init_mode_exit
+ 511              	.LVL31:
+ 146:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 512              		.loc 1 146 9 view .LVU146
+ 146:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 513              		.loc 1 146 24 is_stmt 0 view .LVU147
+ 514 00c0 FFF7FEFF 		bl	rtc_register_sync_wait
+ 515              	.LVL32:
+ 146:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 516              		.loc 1 146 24 view .LVU148
+ 517 00c4 CEE7     		b	.L19
+ 518              		.cfi_endproc
+ 519              	.LFE61:
+ 521              		.section	.text.rtc_current_time_get,"ax",%progbits
+ 522              		.align	1
+ 523              		.global	rtc_current_time_get
+ 524              		.syntax unified
+ 525              		.code	16
+ 526              		.thumb_func
+ 528              	rtc_current_time_get:
+ 529              	.LVL33:
+ 530              	.LFB65:
+ 234:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 235:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 236:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get current time and date
+ 237:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 238:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] rtc_initpara_struct: pointer to a rtc_parameter_struct structure which contains 
+ 239:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for initialization of the rtc peripheral
+ 240:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+ 241:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_year: 0x0 - 0x99(BCD format)
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 16
+
+
+ 242:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_month: RTC_JAN, RTC_FEB, RTC_MAR, RTC_APR, RTC_MAY, RTC_JUN,
+ 243:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                              RTC_JUL, RTC_AUG, RTC_SEP, RTC_OCT, RTC_NOV, RTC_DEC
+ 244:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_date: 0x1 - 0x31(BCD format)
+ 245:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_day_of_week: RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY
+ 246:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                    RTC_FRIDAY, RTC_SATURDAY, RTC_SUNDAY
+ 247:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the rtc_d
+ 248:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_minute: 0x0 - 0x59(BCD format)
+ 249:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_second: 0x0 - 0x59(BCD format)
+ 250:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_factor_asyn: 0x0 - 0x7F
+ 251:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_factor_syn: 0x0 - 0x7FFF
+ 252:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
+ 253:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_display_format: RTC_24HOUR, RTC_12HOUR
+ 254:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 255:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 256:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_current_time_get(rtc_parameter_struct* rtc_initpara_struct)
+ 257:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 531              		.loc 1 257 1 is_stmt 1 view -0
+ 532              		.cfi_startproc
+ 533              		@ args = 0, pretend = 0, frame = 0
+ 534              		@ frame_needed = 0, uses_anonymous_args = 0
+ 535              		.loc 1 257 1 is_stmt 0 view .LVU150
+ 536 0000 70B5     		push	{r4, r5, r6, lr}
+ 537              	.LCFI3:
+ 538              		.cfi_def_cfa_offset 16
+ 539              		.cfi_offset 4, -16
+ 540              		.cfi_offset 5, -12
+ 541              		.cfi_offset 6, -8
+ 542              		.cfi_offset 14, -4
+ 258:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t temp_tr = 0x00U, temp_dr = 0x00U, temp_pscr = 0x00U, temp_ctlr = 0x00U;
+ 543              		.loc 1 258 5 is_stmt 1 view .LVU151
+ 544              	.LVL34:
+ 259:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 260:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_tr = (uint32_t)RTC_TIME;   
+ 545              		.loc 1 260 5 view .LVU152
+ 546              		.loc 1 260 13 is_stmt 0 view .LVU153
+ 547 0002 42F60003 		movw	r3, #10240
+ 548 0006 C4F20003 		movt	r3, 16384
+ 549 000a 1B68     		ldr	r3, [r3]
+ 550              	.LVL35:
+ 261:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_dr = (uint32_t)RTC_DATE;
+ 551              		.loc 1 261 5 is_stmt 1 view .LVU154
+ 552              		.loc 1 261 13 is_stmt 0 view .LVU155
+ 553 000c 42F60402 		movw	r2, #10244
+ 554 0010 C4F20002 		movt	r2, 16384
+ 555 0014 1268     		ldr	r2, [r2]
+ 556              	.LVL36:
+ 262:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_pscr = (uint32_t)RTC_PSC;
+ 557              		.loc 1 262 5 is_stmt 1 view .LVU156
+ 558              		.loc 1 262 15 is_stmt 0 view .LVU157
+ 559 0016 42F61001 		movw	r1, #10256
+ 560 001a C4F20001 		movt	r1, 16384
+ 561 001e 0D68     		ldr	r5, [r1]
+ 562              	.LVL37:
+ 263:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_ctlr = (uint32_t)RTC_CTL;
+ 563              		.loc 1 263 5 is_stmt 1 view .LVU158
+ 564              		.loc 1 263 15 is_stmt 0 view .LVU159
+ 565 0020 42F60801 		movw	r1, #10248
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 17
+
+
+ 566 0024 C4F20001 		movt	r1, 16384
+ 567 0028 0C68     		ldr	r4, [r1]
+ 568              	.LVL38:
+ 264:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****   
+ 265:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* get current time and construct rtc_parameter_struct structure */
+ 266:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_year = (uint8_t)GET_DATE_YR(temp_dr);
+ 569              		.loc 1 266 5 is_stmt 1 view .LVU160
+ 570              		.loc 1 266 46 is_stmt 0 view .LVU161
+ 571 002a 110C     		lsrs	r1, r2, #16
+ 572              		.loc 1 266 35 view .LVU162
+ 573 002c 0170     		strb	r1, [r0]
+ 267:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_month = (uint8_t)GET_DATE_MON(temp_dr);
+ 574              		.loc 1 267 5 is_stmt 1 view .LVU163
+ 575              		.loc 1 267 47 is_stmt 0 view .LVU164
+ 576 002e 160A     		lsrs	r6, r2, #8
+ 577              		.loc 1 267 38 view .LVU165
+ 578 0030 1F21     		movs	r1, #31
+ 579 0032 3140     		ands	r1, r6
+ 580              		.loc 1 267 36 view .LVU166
+ 581 0034 4170     		strb	r1, [r0, #1]
+ 268:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_date = (uint8_t)GET_DATE_DAY(temp_dr);
+ 582              		.loc 1 268 5 is_stmt 1 view .LVU167
+ 583              		.loc 1 268 37 is_stmt 0 view .LVU168
+ 584 0036 3F21     		movs	r1, #63
+ 585 0038 0E00     		movs	r6, r1
+ 586 003a 1640     		ands	r6, r2
+ 587              		.loc 1 268 35 view .LVU169
+ 588 003c 8670     		strb	r6, [r0, #2]
+ 269:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_day_of_week = (uint8_t)GET_DATE_DOW(temp_dr);  
+ 589              		.loc 1 269 5 is_stmt 1 view .LVU170
+ 590              		.loc 1 269 53 is_stmt 0 view .LVU171
+ 591 003e 520B     		lsrs	r2, r2, #13
+ 592              	.LVL39:
+ 593              		.loc 1 269 44 view .LVU172
+ 594 0040 0726     		movs	r6, #7
+ 595 0042 3240     		ands	r2, r6
+ 596              		.loc 1 269 42 view .LVU173
+ 597 0044 C270     		strb	r2, [r0, #3]
+ 270:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_hour = (uint8_t)GET_TIME_HR(temp_tr);
+ 598              		.loc 1 270 5 is_stmt 1 view .LVU174
+ 599              		.loc 1 270 46 is_stmt 0 view .LVU175
+ 600 0046 1A0C     		lsrs	r2, r3, #16
+ 601              		.loc 1 270 37 view .LVU176
+ 602 0048 1140     		ands	r1, r2
+ 603              		.loc 1 270 35 view .LVU177
+ 604 004a 0171     		strb	r1, [r0, #4]
+ 271:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_minute = (uint8_t)GET_TIME_MN(temp_tr);
+ 605              		.loc 1 271 5 is_stmt 1 view .LVU178
+ 606              		.loc 1 271 48 is_stmt 0 view .LVU179
+ 607 004c 190A     		lsrs	r1, r3, #8
+ 608              		.loc 1 271 39 view .LVU180
+ 609 004e 7F22     		movs	r2, #127
+ 610 0050 1140     		ands	r1, r2
+ 611              		.loc 1 271 37 view .LVU181
+ 612 0052 4171     		strb	r1, [r0, #5]
+ 272:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_second = (uint8_t)GET_TIME_SC(temp_tr);
+ 613              		.loc 1 272 5 is_stmt 1 view .LVU182
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 18
+
+
+ 614              		.loc 1 272 39 is_stmt 0 view .LVU183
+ 615 0054 1A40     		ands	r2, r3
+ 616              		.loc 1 272 37 view .LVU184
+ 617 0056 8271     		strb	r2, [r0, #6]
+ 273:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_factor_asyn = (uint16_t)GET_PSC_FACTOR_A(temp_pscr);
+ 618              		.loc 1 273 5 is_stmt 1 view .LVU185
+ 619              		.loc 1 273 54 is_stmt 0 view .LVU186
+ 620 0058 290C     		lsrs	r1, r5, #16
+ 621              		.loc 1 273 44 view .LVU187
+ 622 005a 7F22     		movs	r2, #127
+ 623 005c 0A40     		ands	r2, r1
+ 624              		.loc 1 273 42 view .LVU188
+ 625 005e 0281     		strh	r2, [r0, #8]
+ 274:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_factor_syn = (uint16_t)GET_PSC_FACTOR_S(temp_pscr);
+ 626              		.loc 1 274 5 is_stmt 1 view .LVU189
+ 627              		.loc 1 274 43 is_stmt 0 view .LVU190
+ 628 0060 47F6FF72 		movw	r2, #32767
+ 629 0064 2A40     		ands	r2, r5
+ 630              		.loc 1 274 41 view .LVU191
+ 631 0066 4281     		strh	r2, [r0, #10]
+ 275:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_am_pm = (uint32_t)(temp_tr & RTC_TIME_PM); 
+ 632              		.loc 1 275 5 is_stmt 1 view .LVU192
+ 633              		.loc 1 275 38 is_stmt 0 view .LVU193
+ 634 0068 8022     		movs	r2, #128
+ 635 006a D203     		lsls	r2, r2, #15
+ 636 006c 1340     		ands	r3, r2
+ 637              	.LVL40:
+ 638              		.loc 1 275 36 view .LVU194
+ 639 006e C360     		str	r3, [r0, #12]
+ 276:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_display_format = (uint32_t)(temp_ctlr & RTC_CTL_CS);
+ 640              		.loc 1 276 5 is_stmt 1 view .LVU195
+ 641              		.loc 1 276 47 is_stmt 0 view .LVU196
+ 642 0070 4023     		movs	r3, #64
+ 643 0072 2340     		ands	r3, r4
+ 644              		.loc 1 276 45 view .LVU197
+ 645 0074 0361     		str	r3, [r0, #16]
+ 277:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 646              		.loc 1 277 1 view .LVU198
+ 647              		@ sp needed
+ 648              	.LVL41:
+ 649              	.LVL42:
+ 650              		.loc 1 277 1 view .LVU199
+ 651 0076 70BD     		pop	{r4, r5, r6, pc}
+ 652              		.cfi_endproc
+ 653              	.LFE65:
+ 655              		.section	.text.rtc_subsecond_get,"ax",%progbits
+ 656              		.align	1
+ 657              		.global	rtc_subsecond_get
+ 658              		.syntax unified
+ 659              		.code	16
+ 660              		.thumb_func
+ 662              	rtc_subsecond_get:
+ 663              	.LFB66:
+ 278:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 279:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 280:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get current subsecond value
+ 281:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 19
+
+
+ 282:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 283:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     current subsecond value
+ 284:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 285:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** uint32_t rtc_subsecond_get(void)
+ 286:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 664              		.loc 1 286 1 is_stmt 1 view -0
+ 665              		.cfi_startproc
+ 666              		@ args = 0, pretend = 0, frame = 0
+ 667              		@ frame_needed = 0, uses_anonymous_args = 0
+ 668              		@ link register save eliminated.
+ 287:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg = 0x00U;
+ 669              		.loc 1 287 5 view .LVU201
+ 670              	.LVL43:
+ 288:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* if BPSHAD bit is reset, reading RTC_SS will lock RTC_TIME and RTC_DATE automatically */
+ 289:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg = (uint32_t)RTC_SS;
+ 671              		.loc 1 289 5 view .LVU202
+ 672              		.loc 1 289 9 is_stmt 0 view .LVU203
+ 673 0000 42F62803 		movw	r3, #10280
+ 674 0004 C4F20003 		movt	r3, 16384
+ 675 0008 1868     		ldr	r0, [r3]
+ 676              	.LVL44:
+ 290:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* read RTC_DATE to unlock the 3 shadow registers */
+ 291:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     (void) (RTC_DATE);
+ 677              		.loc 1 291 5 is_stmt 1 view .LVU204
+ 678 000a 42F60403 		movw	r3, #10244
+ 679 000e C4F20003 		movt	r3, 16384
+ 680 0012 1B68     		ldr	r3, [r3]
+ 292:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 293:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return reg;
+ 681              		.loc 1 293 5 view .LVU205
+ 294:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 682              		.loc 1 294 1 is_stmt 0 view .LVU206
+ 683              		@ sp needed
+ 684 0014 7047     		bx	lr
+ 685              		.cfi_endproc
+ 686              	.LFE66:
+ 688              		.section	.text.rtc_alarm_config,"ax",%progbits
+ 689              		.align	1
+ 690              		.global	rtc_alarm_config
+ 691              		.syntax unified
+ 692              		.code	16
+ 693              		.thumb_func
+ 695              	rtc_alarm_config:
+ 696              	.LVL45:
+ 697              	.LFB67:
+ 295:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 296:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 297:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      configure RTC alarm
+ 298:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  rtc_alarm_time: pointer to a rtc_alarm_struct structure which contains 
+ 299:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for RTC alarm configuration
+ 300:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+ 301:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_mask: RTC_ALARM_NONE_MASK, RTC_ALARM_DATE_MASK, RTC_ALARM_HOUR_MASK
+ 302:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   RTC_ALARM_MINUTE_MASK, RTC_ALARM_SECOND_MASK, RTC_ALARM_ALL_MASK
+ 303:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_weekday_or_date: RTC_ALARM_DATE_SELECTED, RTC_ALARM_WEEKDAY_SELECTED
+ 304:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_day: 1) 0x1 - 0x31(BCD format) if RTC_ALARM_DATE_SELECTED is set
+ 305:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                  2) RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY, RTC_FRIDAY,
+ 306:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                     RTC_SATURDAY, RTC_SUNDAY if RTC_ALARM_WEEKDAY_SELECTED is set
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 20
+
+
+ 307:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the
+ 308:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_minute: 0x0 - 0x59(BCD format)
+ 309:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_second: 0x0 - 0x59(BCD format)
+ 310:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
+ 311:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 312:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 313:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 314:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_alarm_config(rtc_alarm_struct* rtc_alarm_time)
+ 315:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 698              		.loc 1 315 1 is_stmt 1 view -0
+ 699              		.cfi_startproc
+ 700              		@ args = 0, pretend = 0, frame = 0
+ 701              		@ frame_needed = 0, uses_anonymous_args = 0
+ 702              		@ link register save eliminated.
+ 316:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg_alrm0td = 0x00U;
+ 703              		.loc 1 316 5 view .LVU208
+ 317:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 318:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_alrm0td = (rtc_alarm_time->rtc_alarm_mask | \
+ 704              		.loc 1 318 5 view .LVU209
+ 705              		.loc 1 318 34 is_stmt 0 view .LVU210
+ 706 0000 0368     		ldr	r3, [r0]
+ 319:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_weekday_or_date | \
+ 707              		.loc 1 319 32 view .LVU211
+ 708 0002 4268     		ldr	r2, [r0, #4]
+ 318:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_weekday_or_date | \
+ 709              		.loc 1 318 51 view .LVU212
+ 710 0004 1343     		orrs	r3, r2
+ 320:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_am_pm | \
+ 711              		.loc 1 320 32 view .LVU213
+ 712 0006 C268     		ldr	r2, [r0, #12]
+ 319:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_weekday_or_date | \
+ 713              		.loc 1 319 54 view .LVU214
+ 714 0008 1343     		orrs	r3, r2
+ 321:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_DAY(rtc_alarm_time->rtc_alarm_day) | \
+ 715              		.loc 1 321 18 view .LVU215
+ 716 000a 027A     		ldrb	r2, [r0, #8]
+ 717 000c 1206     		lsls	r2, r2, #24
+ 718 000e FC21     		movs	r1, #252
+ 719 0010 8905     		lsls	r1, r1, #22
+ 720 0012 0A40     		ands	r2, r1
+ 320:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_am_pm | \
+ 721              		.loc 1 320 44 view .LVU216
+ 722 0014 1343     		orrs	r3, r2
+ 322:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_HR(rtc_alarm_time->rtc_alarm_hour) | \
+ 723              		.loc 1 322 18 view .LVU217
+ 724 0016 427A     		ldrb	r2, [r0, #9]
+ 725 0018 1204     		lsls	r2, r2, #16
+ 726 001a FC21     		movs	r1, #252
+ 727 001c 8903     		lsls	r1, r1, #14
+ 728 001e 0A40     		ands	r2, r1
+ 321:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_DAY(rtc_alarm_time->rtc_alarm_day) | \
+ 729              		.loc 1 321 61 view .LVU218
+ 730 0020 1343     		orrs	r3, r2
+ 323:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_MN(rtc_alarm_time->rtc_alarm_minute) | \
+ 731              		.loc 1 323 18 view .LVU219
+ 732 0022 817A     		ldrb	r1, [r0, #10]
+ 733 0024 0902     		lsls	r1, r1, #8
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 21
+
+
+ 734 0026 47F60072 		movw	r2, #32512
+ 735 002a 0A40     		ands	r2, r1
+ 322:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_HR(rtc_alarm_time->rtc_alarm_hour) | \
+ 736              		.loc 1 322 61 view .LVU220
+ 737 002c 1343     		orrs	r3, r2
+ 324:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  ALRM0TD_SC(rtc_alarm_time->rtc_alarm_second));
+ 738              		.loc 1 324 18 view .LVU221
+ 739 002e C17A     		ldrb	r1, [r0, #11]
+ 740 0030 7F22     		movs	r2, #127
+ 741 0032 0A40     		ands	r2, r1
+ 318:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                  rtc_alarm_time->rtc_weekday_or_date | \
+ 742              		.loc 1 318 17 view .LVU222
+ 743 0034 1343     		orrs	r3, r2
+ 744              	.LVL46:
+ 325:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 326:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 327:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 745              		.loc 1 327 5 is_stmt 1 view .LVU223
+ 746              		.loc 1 327 13 is_stmt 0 view .LVU224
+ 747 0036 42F62402 		movw	r2, #10276
+ 748 003a C4F20002 		movt	r2, 16384
+ 749 003e CA21     		movs	r1, #202
+ 750 0040 1160     		str	r1, [r2]
+ 328:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 751              		.loc 1 328 5 is_stmt 1 view .LVU225
+ 752              		.loc 1 328 13 is_stmt 0 view .LVU226
+ 753 0042 7739     		subs	r1, r1, #119
+ 754 0044 1160     		str	r1, [r2]
+ 329:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 330:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_ALRM0TD = (uint32_t)reg_alrm0td;
+ 755              		.loc 1 330 5 is_stmt 1 view .LVU227
+ 756              		.loc 1 330 17 is_stmt 0 view .LVU228
+ 757 0046 42F61C01 		movw	r1, #10268
+ 758 004a C4F20001 		movt	r1, 16384
+ 759 004e 0B60     		str	r3, [r1]
+ 331:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 332:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 333:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 760              		.loc 1 333 5 is_stmt 1 view .LVU229
+ 761              		.loc 1 333 13 is_stmt 0 view .LVU230
+ 762 0050 FF23     		movs	r3, #255
+ 763              	.LVL47:
+ 764              		.loc 1 333 13 view .LVU231
+ 765 0052 1360     		str	r3, [r2]
+ 766              	.LVL48:
+ 334:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 767              		.loc 1 334 1 view .LVU232
+ 768              		@ sp needed
+ 769 0054 7047     		bx	lr
+ 770              		.cfi_endproc
+ 771              	.LFE67:
+ 773              		.section	.text.rtc_alarm_subsecond_config,"ax",%progbits
+ 774              		.align	1
+ 775              		.global	rtc_alarm_subsecond_config
+ 776              		.syntax unified
+ 777              		.code	16
+ 778              		.thumb_func
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 22
+
+
+ 780              	rtc_alarm_subsecond_config:
+ 781              	.LVL49:
+ 782              	.LFB68:
+ 335:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 336:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 337:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      configure subsecond of RTC alarm
+ 338:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  mask_subsecond: alarm subsecond mask
+ 339:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 340:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_0_14: mask alarm subsecond configuration
+ 341:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_1_14: mask RTC_ALRM0SS_SSC[14:1], and RTC_ALRM0SS_SSC[0] is to be com
+ 342:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_2_14: mask RTC_ALRM0SS_SSC[14:2], and RTC_ALRM0SS_SSC[1:0] is to be c
+ 343:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_3_14: mask RTC_ALRM0SS_SSC[14:3], and RTC_ALRM0SS_SSC[2:0] is to be c
+ 344:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_4_14: mask RTC_ALRM0SS_SSC[14:4], and RTC_ALRM0SS_SSC[3:0] is to be c
+ 345:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_5_14: mask RTC_ALRM0SS_SSC[14:5], and RTC_ALRM0SS_SSC[4:0] is to be c
+ 346:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_6_14: mask RTC_ALRM0SS_SSC[14:6], and RTC_ALRM0SS_SSC[5:0] is to be c
+ 347:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_7_14: mask RTC_ALRM0SS_SSC[14:7], and RTC_ALRM0SS_SSC[6:0] is to be c
+ 348:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_8_14: mask RTC_ALRM0SS_SSC[14:8], and RTC_ALRM0SS_SSC[7:0] is to be c
+ 349:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_9_14: mask RTC_ALRM0SS_SSC[14:9], and RTC_ALRM0SS_SSC[8:0] is to be c
+ 350:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_10_14: mask RTC_ALRM0SS_SSC[14:10], and RTC_ALRM0SS_SSC[9:0] is to be
+ 351:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_11_14: mask RTC_ALRM0SS_SSC[14:11], and RTC_ALRM0SS_SSC[10:0] is to b
+ 352:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_12_14: mask RTC_ALRM0SS_SSC[14:12], and RTC_ALRM0SS_SSC[11:0] is to b
+ 353:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_13_14: mask RTC_ALRM0SS_SSC[14:13], and RTC_ALRM0SS_SSC[12:0] is to b
+ 354:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_14: mask RTC_ALRM0SS_SSC[14], and RTC_ALRM0SS_SSC[13:0] is to be comp
+ 355:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_MASKSSC_NONE: mask none, and RTC_ALRM0SS_SSC[14:0] is to be compared
+ 356:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  subsecond: alarm subsecond value(0x000 - 0x7FFF)
+ 357:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 358:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 359:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 360:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_alarm_subsecond_config(uint32_t mask_subsecond, uint32_t subsecond)
+ 361:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 783              		.loc 1 361 1 is_stmt 1 view -0
+ 784              		.cfi_startproc
+ 785              		@ args = 0, pretend = 0, frame = 0
+ 786              		@ frame_needed = 0, uses_anonymous_args = 0
+ 787              		@ link register save eliminated.
+ 362:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 363:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 788              		.loc 1 363 5 view .LVU234
+ 789              		.loc 1 363 13 is_stmt 0 view .LVU235
+ 790 0000 42F62403 		movw	r3, #10276
+ 791 0004 C4F20003 		movt	r3, 16384
+ 792 0008 CA22     		movs	r2, #202
+ 793 000a 1A60     		str	r2, [r3]
+ 364:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;  
+ 794              		.loc 1 364 5 is_stmt 1 view .LVU236
+ 795              		.loc 1 364 13 is_stmt 0 view .LVU237
+ 796 000c 773A     		subs	r2, r2, #119
+ 797 000e 1A60     		str	r2, [r3]
+ 365:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 366:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_ALRM0SS = mask_subsecond | subsecond;  
+ 798              		.loc 1 366 5 is_stmt 1 view .LVU238
+ 799              		.loc 1 366 34 is_stmt 0 view .LVU239
+ 800 0010 0843     		orrs	r0, r1
+ 801              	.LVL50:
+ 802              		.loc 1 366 17 view .LVU240
+ 803 0012 42F64402 		movw	r2, #10308
+ 804 0016 C4F20002 		movt	r2, 16384
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 23
+
+
+ 805 001a 1060     		str	r0, [r2]
+ 367:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 368:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 369:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 806              		.loc 1 369 5 is_stmt 1 view .LVU241
+ 807              		.loc 1 369 13 is_stmt 0 view .LVU242
+ 808 001c FF22     		movs	r2, #255
+ 809 001e 1A60     		str	r2, [r3]
+ 370:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 810              		.loc 1 370 1 view .LVU243
+ 811              		@ sp needed
+ 812 0020 7047     		bx	lr
+ 813              		.cfi_endproc
+ 814              	.LFE68:
+ 816              		.section	.text.rtc_alarm_enable,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	rtc_alarm_enable
+ 819              		.syntax unified
+ 820              		.code	16
+ 821              		.thumb_func
+ 823              	rtc_alarm_enable:
+ 824              	.LFB69:
+ 371:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 372:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 373:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable RTC alarm
+ 374:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 375:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 376:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 377:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 378:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_alarm_enable(void)
+ 379:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 825              		.loc 1 379 1 is_stmt 1 view -0
+ 826              		.cfi_startproc
+ 827              		@ args = 0, pretend = 0, frame = 0
+ 828              		@ frame_needed = 0, uses_anonymous_args = 0
+ 829              		@ link register save eliminated.
+ 380:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 381:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 830              		.loc 1 381 5 view .LVU245
+ 831              		.loc 1 381 13 is_stmt 0 view .LVU246
+ 832 0000 42F62403 		movw	r3, #10276
+ 833 0004 C4F20003 		movt	r3, 16384
+ 834 0008 CA22     		movs	r2, #202
+ 835 000a 1A60     		str	r2, [r3]
+ 382:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 836              		.loc 1 382 5 is_stmt 1 view .LVU247
+ 837              		.loc 1 382 13 is_stmt 0 view .LVU248
+ 838 000c 773A     		subs	r2, r2, #119
+ 839 000e 1A60     		str	r2, [r3]
+ 383:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 384:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL |= RTC_CTL_ALRM0EN;
+ 840              		.loc 1 384 5 is_stmt 1 view .LVU249
+ 841 0010 42F60802 		movw	r2, #10248
+ 842 0014 C4F20002 		movt	r2, 16384
+ 843 0018 1168     		ldr	r1, [r2]
+ 844              		.loc 1 384 13 is_stmt 0 view .LVU250
+ 845 001a 40F20010 		movw	r0, #256
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 24
+
+
+ 846 001e 0143     		orrs	r1, r0
+ 847 0020 1160     		str	r1, [r2]
+ 385:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 386:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 387:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 848              		.loc 1 387 5 is_stmt 1 view .LVU251
+ 849              		.loc 1 387 13 is_stmt 0 view .LVU252
+ 850 0022 FF22     		movs	r2, #255
+ 851 0024 1A60     		str	r2, [r3]
+ 388:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 852              		.loc 1 388 1 view .LVU253
+ 853              		@ sp needed
+ 854 0026 7047     		bx	lr
+ 855              		.cfi_endproc
+ 856              	.LFE69:
+ 858              		.section	.text.rtc_alarm_disable,"ax",%progbits
+ 859              		.align	1
+ 860              		.global	rtc_alarm_disable
+ 861              		.syntax unified
+ 862              		.code	16
+ 863              		.thumb_func
+ 865              	rtc_alarm_disable:
+ 866              	.LFB70:
+ 389:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 390:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 391:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disable RTC alarm
+ 392:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 393:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 394:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 395:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 396:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_alarm_disable(void)
+ 397:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 867              		.loc 1 397 1 is_stmt 1 view -0
+ 868              		.cfi_startproc
+ 869              		@ args = 0, pretend = 0, frame = 8
+ 870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 871              		@ link register save eliminated.
+ 872 0000 82B0     		sub	sp, sp, #8
+ 873              	.LCFI4:
+ 874              		.cfi_def_cfa_offset 8
+ 398:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     volatile uint32_t time_index = RTC_ALRM0WF_TIMEOUT;
+ 875              		.loc 1 398 5 view .LVU255
+ 876              		.loc 1 398 23 is_stmt 0 view .LVU256
+ 877 0002 48F20003 		movw	r3, #32768
+ 878 0006 0193     		str	r3, [sp, #4]
+ 399:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 879              		.loc 1 399 5 is_stmt 1 view .LVU257
+ 880              	.LVL51:
+ 400:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 881              		.loc 1 400 5 view .LVU258
+ 401:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 402:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 403:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 882              		.loc 1 403 5 view .LVU259
+ 883              		.loc 1 403 13 is_stmt 0 view .LVU260
+ 884 0008 42F62403 		movw	r3, #10276
+ 885 000c C4F20003 		movt	r3, 16384
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 25
+
+
+ 886 0010 CA22     		movs	r2, #202
+ 887 0012 1A60     		str	r2, [r3]
+ 404:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 888              		.loc 1 404 5 is_stmt 1 view .LVU261
+ 889              		.loc 1 404 13 is_stmt 0 view .LVU262
+ 890 0014 773A     		subs	r2, r2, #119
+ 891 0016 1A60     		str	r2, [r3]
+ 405:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 406:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* clear the state of alarm */
+ 407:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint32_t)(~RTC_CTL_ALRM0EN);  
+ 892              		.loc 1 407 5 is_stmt 1 view .LVU263
+ 893 0018 42F60803 		movw	r3, #10248
+ 894 001c C4F20003 		movt	r3, 16384
+ 895 0020 1A68     		ldr	r2, [r3]
+ 896              		.loc 1 407 13 is_stmt 0 view .LVU264
+ 897 0022 0E49     		ldr	r1, .L31
+ 898 0024 0A40     		ands	r2, r1
+ 899 0026 1A60     		str	r2, [r3]
+ 900              	.LVL52:
+ 901              	.L28:
+ 408:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 409:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* wait until ALRM0WF flag to be set after the alarm is disabled */
+ 410:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     do{
+ 902              		.loc 1 410 5 is_stmt 1 view .LVU265
+ 411:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_status = RTC_STAT & RTC_STAT_ALRM0WF;
+ 903              		.loc 1 411 9 view .LVU266
+ 904              		.loc 1 411 23 is_stmt 0 view .LVU267
+ 905 0028 42F60C03 		movw	r3, #10252
+ 906 002c C4F20003 		movt	r3, 16384
+ 907 0030 1B68     		ldr	r3, [r3]
+ 908              		.loc 1 411 21 view .LVU268
+ 909 0032 0122     		movs	r2, #1
+ 910 0034 1A40     		ands	r2, r3
+ 911              	.LVL53:
+ 412:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }while((--time_index > 0x00U) && ((uint32_t)RESET == flag_status));
+ 912              		.loc 1 412 35 is_stmt 1 discriminator 2 view .LVU269
+ 913              		.loc 1 412 13 is_stmt 0 discriminator 2 view .LVU270
+ 914 0036 019B     		ldr	r3, [sp, #4]
+ 915 0038 013B     		subs	r3, r3, #1
+ 916              		.loc 1 412 35 discriminator 2 view .LVU271
+ 917 003a 0193     		str	r3, [sp, #4]
+ 918 003c 0BB1     		cbz	r3, .L27
+ 919              		.loc 1 412 35 discriminator 1 view .LVU272
+ 920 003e 002A     		cmp	r2, #0
+ 921 0040 F2D0     		beq	.L28
+ 922              	.L27:
+ 413:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 414:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET != flag_status){     
+ 923              		.loc 1 414 5 is_stmt 1 view .LVU273
+ 924              		.loc 1 414 7 is_stmt 0 view .LVU274
+ 925 0042 42B9     		cbnz	r2, .L30
+ 399:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 926              		.loc 1 399 15 view .LVU275
+ 927 0044 0020     		movs	r0, #0
+ 928              	.L29:
+ 929              	.LVL54:
+ 415:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 26
+
+
+ 416:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 417:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 418:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 419:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 930              		.loc 1 419 5 is_stmt 1 view .LVU276
+ 931              		.loc 1 419 13 is_stmt 0 view .LVU277
+ 932 0046 42F62403 		movw	r3, #10276
+ 933 004a C4F20003 		movt	r3, 16384
+ 934 004e FF22     		movs	r2, #255
+ 935              	.LVL55:
+ 936              		.loc 1 419 13 view .LVU278
+ 937 0050 1A60     		str	r2, [r3]
+ 420:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 421:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 938              		.loc 1 421 5 is_stmt 1 view .LVU279
+ 422:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 939              		.loc 1 422 1 is_stmt 0 view .LVU280
+ 940 0052 02B0     		add	sp, sp, #8
+ 941              		@ sp needed
+ 942 0054 7047     		bx	lr
+ 943              	.LVL56:
+ 944              	.L30:
+ 415:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
+ 945              		.loc 1 415 22 view .LVU281
+ 946 0056 0120     		movs	r0, #1
+ 947 0058 F5E7     		b	.L29
+ 948              	.L32:
+ 949 005a C046     		.align	2
+ 950              	.L31:
+ 951 005c FFFEFFFF 		.word	-257
+ 952              		.cfi_endproc
+ 953              	.LFE70:
+ 955              		.section	.text.rtc_alarm_get,"ax",%progbits
+ 956              		.align	1
+ 957              		.global	rtc_alarm_get
+ 958              		.syntax unified
+ 959              		.code	16
+ 960              		.thumb_func
+ 962              	rtc_alarm_get:
+ 963              	.LVL57:
+ 964              	.LFB71:
+ 423:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 424:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 425:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get RTC alarm
+ 426:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 427:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] rtc_alarm_time: pointer to a rtc_alarm_struct structure which contains 
+ 428:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for RTC alarm configuration
+ 429:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+ 430:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_mask: RTC_ALARM_NONE_MASK, RTC_ALARM_DATE_MASK, RTC_ALARM_HOUR_MASK
+ 431:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                   RTC_ALARM_MINUTE_MASK, RTC_ALARM_SECOND_MASK, RTC_ALARM_ALL_MASK
+ 432:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_weekday_or_date: RTC_ALARM_DATE_SELECTED, RTC_ALARM_WEEKDAY_SELECTED
+ 433:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_day: 1) 0x1 - 0x31(BCD format) if RTC_ALARM_DATE_SELECTED is set
+ 434:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                  2) RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY, RTC_FRIDAY,
+ 435:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                     RTC_SATURDAY, RTC_SUNDAY if RTC_ALARM_WEEKDAY_SELECTED is set
+ 436:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the
+ 437:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_minute: 0x0 - 0x59(BCD format)
+ 438:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_second: 0x0 - 0x59(BCD format)
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 27
+
+
+ 439:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
+ 440:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 441:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 442:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_alarm_get(rtc_alarm_struct* rtc_alarm_time)
+ 443:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 965              		.loc 1 443 1 is_stmt 1 view -0
+ 966              		.cfi_startproc
+ 967              		@ args = 0, pretend = 0, frame = 0
+ 968              		@ frame_needed = 0, uses_anonymous_args = 0
+ 969              		@ link register save eliminated.
+ 444:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg_alrm0td = 0x00U;
+ 970              		.loc 1 444 5 view .LVU283
+ 445:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 446:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* get the value of RTC_ALRM0TD register */
+ 447:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_alrm0td = RTC_ALRM0TD;
+ 971              		.loc 1 447 5 view .LVU284
+ 972              		.loc 1 447 17 is_stmt 0 view .LVU285
+ 973 0000 42F61C03 		movw	r3, #10268
+ 974 0004 C4F20003 		movt	r3, 16384
+ 975 0008 1B68     		ldr	r3, [r3]
+ 976              	.LVL58:
+ 448:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 449:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* get alarm parameters and construct the rtc_alarm_struct structure */
+ 450:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_mask = reg_alrm0td & RTC_ALARM_ALL_MASK; 
+ 977              		.loc 1 450 5 is_stmt 1 view .LVU286
+ 978              		.loc 1 450 50 is_stmt 0 view .LVU287
+ 979 000a 48F28002 		movw	r2, #32896
+ 980 000e C8F28002 		movt	r2, 32896
+ 981 0012 1A40     		ands	r2, r3
+ 982              		.loc 1 450 36 view .LVU288
+ 983 0014 0260     		str	r2, [r0]
+ 451:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_am_pm = (uint32_t)(reg_alrm0td & RTC_ALRM0TD_PM);
+ 984              		.loc 1 451 5 is_stmt 1 view .LVU289
+ 985              		.loc 1 451 33 is_stmt 0 view .LVU290
+ 986 0016 8022     		movs	r2, #128
+ 987 0018 D203     		lsls	r2, r2, #15
+ 988 001a 1A40     		ands	r2, r3
+ 989              		.loc 1 451 31 view .LVU291
+ 990 001c C260     		str	r2, [r0, #12]
+ 452:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_weekday_or_date = (uint32_t)(reg_alrm0td & RTC_ALRM0TD_DOWS);
+ 991              		.loc 1 452 5 is_stmt 1 view .LVU292
+ 992              		.loc 1 452 43 is_stmt 0 view .LVU293
+ 993 001e 8022     		movs	r2, #128
+ 994 0020 D205     		lsls	r2, r2, #23
+ 995 0022 1A40     		ands	r2, r3
+ 996              		.loc 1 452 41 view .LVU294
+ 997 0024 4260     		str	r2, [r0, #4]
+ 453:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_day = (uint8_t)GET_ALRM0TD_DAY(reg_alrm0td);
+ 998              		.loc 1 453 5 is_stmt 1 view .LVU295
+ 999              		.loc 1 453 46 is_stmt 0 view .LVU296
+ 1000 0026 190E     		lsrs	r1, r3, #24
+ 1001              		.loc 1 453 37 view .LVU297
+ 1002 0028 3F22     		movs	r2, #63
+ 1003 002a 1140     		ands	r1, r2
+ 1004              		.loc 1 453 35 view .LVU298
+ 1005 002c 0172     		strb	r1, [r0, #8]
+ 454:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_hour = (uint8_t)GET_ALRM0TD_HR(reg_alrm0td);
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 28
+
+
+ 1006              		.loc 1 454 5 is_stmt 1 view .LVU299
+ 1007              		.loc 1 454 47 is_stmt 0 view .LVU300
+ 1008 002e 190C     		lsrs	r1, r3, #16
+ 1009              		.loc 1 454 38 view .LVU301
+ 1010 0030 0A40     		ands	r2, r1
+ 1011              		.loc 1 454 36 view .LVU302
+ 1012 0032 4272     		strb	r2, [r0, #9]
+ 455:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_minute = (uint8_t)GET_ALRM0TD_MN(reg_alrm0td);
+ 1013              		.loc 1 455 5 is_stmt 1 view .LVU303
+ 1014              		.loc 1 455 49 is_stmt 0 view .LVU304
+ 1015 0034 190A     		lsrs	r1, r3, #8
+ 1016              		.loc 1 455 40 view .LVU305
+ 1017 0036 7F22     		movs	r2, #127
+ 1018 0038 1140     		ands	r1, r2
+ 1019              		.loc 1 455 38 view .LVU306
+ 1020 003a 8172     		strb	r1, [r0, #10]
+ 456:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_second = (uint8_t)GET_ALRM0TD_SC(reg_alrm0td);  
+ 1021              		.loc 1 456 5 is_stmt 1 view .LVU307
+ 1022              		.loc 1 456 40 is_stmt 0 view .LVU308
+ 1023 003c 1A40     		ands	r2, r3
+ 1024              		.loc 1 456 38 view .LVU309
+ 1025 003e C272     		strb	r2, [r0, #11]
+ 457:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1026              		.loc 1 457 1 view .LVU310
+ 1027              		@ sp needed
+ 1028 0040 7047     		bx	lr
+ 1029              		.cfi_endproc
+ 1030              	.LFE71:
+ 1032              		.section	.text.rtc_alarm_subsecond_get,"ax",%progbits
+ 1033              		.align	1
+ 1034              		.global	rtc_alarm_subsecond_get
+ 1035              		.syntax unified
+ 1036              		.code	16
+ 1037              		.thumb_func
+ 1039              	rtc_alarm_subsecond_get:
+ 1040              	.LFB72:
+ 458:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 459:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 460:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get RTC alarm subsecond
+ 461:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 462:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 463:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     RTC alarm subsecond value
+ 464:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 465:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** uint32_t rtc_alarm_subsecond_get(void)
+ 466:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1041              		.loc 1 466 1 is_stmt 1 view -0
+ 1042              		.cfi_startproc
+ 1043              		@ args = 0, pretend = 0, frame = 0
+ 1044              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1045              		@ link register save eliminated.
+ 467:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return ((uint32_t)(RTC_ALRM0SS & RTC_ALRM0SS_SSC));
+ 1046              		.loc 1 467 5 view .LVU312
+ 1047              		.loc 1 467 13 is_stmt 0 view .LVU313
+ 1048 0000 42F64403 		movw	r3, #10308
+ 1049 0004 C4F20003 		movt	r3, 16384
+ 1050 0008 1B68     		ldr	r3, [r3]
+ 1051 000a 47F6FF70 		movw	r0, #32767
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 29
+
+
+ 1052 000e 1840     		ands	r0, r3
+ 468:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1053              		.loc 1 468 1 view .LVU314
+ 1054              		@ sp needed
+ 1055 0010 7047     		bx	lr
+ 1056              		.cfi_endproc
+ 1057              	.LFE72:
+ 1059              		.section	.text.rtc_timestamp_enable,"ax",%progbits
+ 1060              		.align	1
+ 1061              		.global	rtc_timestamp_enable
+ 1062              		.syntax unified
+ 1063              		.code	16
+ 1064              		.thumb_func
+ 1066              	rtc_timestamp_enable:
+ 1067              	.LVL59:
+ 1068              	.LFB73:
+ 469:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 470:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 471:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable RTC time-stamp
+ 472:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  edge: specify which edge to detect of time-stamp
+ 473:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 474:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_TIMESTAMP_RISING_EDGE: rising edge is valid event edge for timestamp event
+ 475:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_TIMESTAMP_FALLING_EDGE: falling edge is valid event edge for timestamp event
+ 476:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 477:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 478:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 479:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_timestamp_enable(uint32_t edge)
+ 480:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1069              		.loc 1 480 1 is_stmt 1 view -0
+ 1070              		.cfi_startproc
+ 1071              		@ args = 0, pretend = 0, frame = 0
+ 1072              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1073              		@ link register save eliminated.
+ 481:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t reg_ctl = 0x00U;
+ 1074              		.loc 1 481 5 view .LVU316
+ 482:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 483:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* clear the bits to be configured in RTC_CTL */
+ 484:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_ctl = (uint32_t)(RTC_CTL & (uint32_t)(~(RTC_CTL_TSEG | RTC_CTL_TSEN)));
+ 1075              		.loc 1 484 5 view .LVU317
+ 1076              		.loc 1 484 26 is_stmt 0 view .LVU318
+ 1077 0000 42F60801 		movw	r1, #10248
+ 1078 0004 C4F20001 		movt	r1, 16384
+ 1079 0008 0B68     		ldr	r3, [r1]
+ 1080              		.loc 1 484 13 view .LVU319
+ 1081 000a 094A     		ldr	r2, .L36
+ 1082 000c 1340     		ands	r3, r2
+ 1083              	.LVL60:
+ 485:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 486:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* new configuration */
+ 487:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     reg_ctl |= (uint32_t)(edge | RTC_CTL_TSEN);
+ 1084              		.loc 1 487 5 is_stmt 1 view .LVU320
+ 1085              		.loc 1 487 13 is_stmt 0 view .LVU321
+ 1086 000e 0343     		orrs	r3, r0
+ 1087              	.LVL61:
+ 1088              		.loc 1 487 13 view .LVU322
+ 1089 0010 40F60002 		movw	r2, #2048
+ 1090 0014 1343     		orrs	r3, r2
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 30
+
+
+ 1091              	.LVL62:
+ 488:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****    
+ 489:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 490:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1092              		.loc 1 490 5 is_stmt 1 view .LVU323
+ 1093              		.loc 1 490 13 is_stmt 0 view .LVU324
+ 1094 0016 42F62402 		movw	r2, #10276
+ 1095 001a C4F20002 		movt	r2, 16384
+ 1096 001e CA20     		movs	r0, #202
+ 1097              	.LVL63:
+ 1098              		.loc 1 490 13 view .LVU325
+ 1099 0020 1060     		str	r0, [r2]
+ 491:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1100              		.loc 1 491 5 is_stmt 1 view .LVU326
+ 1101              		.loc 1 491 13 is_stmt 0 view .LVU327
+ 1102 0022 7738     		subs	r0, r0, #119
+ 1103 0024 1060     		str	r0, [r2]
+ 492:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 493:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL = (uint32_t)reg_ctl;
+ 1104              		.loc 1 493 5 is_stmt 1 view .LVU328
+ 1105              		.loc 1 493 13 is_stmt 0 view .LVU329
+ 1106 0026 0B60     		str	r3, [r1]
+ 494:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 495:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 496:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1107              		.loc 1 496 5 is_stmt 1 view .LVU330
+ 1108              		.loc 1 496 13 is_stmt 0 view .LVU331
+ 1109 0028 FF23     		movs	r3, #255
+ 1110              	.LVL64:
+ 1111              		.loc 1 496 13 view .LVU332
+ 1112 002a 1360     		str	r3, [r2]
+ 1113              	.LVL65:
+ 497:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1114              		.loc 1 497 1 view .LVU333
+ 1115              		@ sp needed
+ 1116 002c 7047     		bx	lr
+ 1117              	.L37:
+ 1118 002e C046     		.align	2
+ 1119              	.L36:
+ 1120 0030 F7F7FFFF 		.word	-2057
+ 1121              		.cfi_endproc
+ 1122              	.LFE73:
+ 1124              		.section	.text.rtc_timestamp_disable,"ax",%progbits
+ 1125              		.align	1
+ 1126              		.global	rtc_timestamp_disable
+ 1127              		.syntax unified
+ 1128              		.code	16
+ 1129              		.thumb_func
+ 1131              	rtc_timestamp_disable:
+ 1132              	.LFB74:
+ 498:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 499:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 500:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disable RTC time-stamp
+ 501:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 502:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 503:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 504:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 31
+
+
+ 505:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_timestamp_disable(void)
+ 506:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1133              		.loc 1 506 1 is_stmt 1 view -0
+ 1134              		.cfi_startproc
+ 1135              		@ args = 0, pretend = 0, frame = 0
+ 1136              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1137              		@ link register save eliminated.
+ 507:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 508:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1138              		.loc 1 508 5 view .LVU335
+ 1139              		.loc 1 508 13 is_stmt 0 view .LVU336
+ 1140 0000 42F62403 		movw	r3, #10276
+ 1141 0004 C4F20003 		movt	r3, 16384
+ 1142 0008 CA22     		movs	r2, #202
+ 1143 000a 1A60     		str	r2, [r3]
+ 509:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1144              		.loc 1 509 5 is_stmt 1 view .LVU337
+ 1145              		.loc 1 509 13 is_stmt 0 view .LVU338
+ 1146 000c 773A     		subs	r2, r2, #119
+ 1147 000e 1A60     		str	r2, [r3]
+ 510:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 511:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* clear the TSEN bit */
+ 512:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint32_t)(~ RTC_CTL_TSEN);
+ 1148              		.loc 1 512 5 is_stmt 1 view .LVU339
+ 1149 0010 42F60802 		movw	r2, #10248
+ 1150 0014 C4F20002 		movt	r2, 16384
+ 1151 0018 1168     		ldr	r1, [r2]
+ 1152              		.loc 1 512 13 is_stmt 0 view .LVU340
+ 1153 001a 0348     		ldr	r0, .L39
+ 1154 001c 0140     		ands	r1, r0
+ 1155 001e 1160     		str	r1, [r2]
+ 513:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 514:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 515:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1156              		.loc 1 515 5 is_stmt 1 view .LVU341
+ 1157              		.loc 1 515 13 is_stmt 0 view .LVU342
+ 1158 0020 FF22     		movs	r2, #255
+ 1159 0022 1A60     		str	r2, [r3]
+ 516:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1160              		.loc 1 516 1 view .LVU343
+ 1161              		@ sp needed
+ 1162 0024 7047     		bx	lr
+ 1163              	.L40:
+ 1164 0026 C046     		.align	2
+ 1165              	.L39:
+ 1166 0028 FFF7FFFF 		.word	-2049
+ 1167              		.cfi_endproc
+ 1168              	.LFE74:
+ 1170              		.section	.text.rtc_timestamp_get,"ax",%progbits
+ 1171              		.align	1
+ 1172              		.global	rtc_timestamp_get
+ 1173              		.syntax unified
+ 1174              		.code	16
+ 1175              		.thumb_func
+ 1177              	rtc_timestamp_get:
+ 1178              	.LVL66:
+ 1179              	.LFB75:
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 32
+
+
+ 517:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 518:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 519:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get RTC timestamp time and date
+ 520:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 521:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] rtc_timestamp: pointer to a rtc_timestamp_struct structure which contains 
+ 522:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for RTC time-stamp configuration
+ 523:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+ 524:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_month: RTC_JAN, RTC_FEB, RTC_MAR, RTC_APR, RTC_MAY, RTC_JUN,
+ 525:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                        RTC_JUL, RTC_AUG, RTC_SEP, RTC_OCT, RTC_NOV, RTC_DEC
+ 526:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_date: 0x1 - 0x31(BCD format)
+ 527:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_day: RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY, RTC_FRIDAY
+ 528:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                      RTC_SATURDAY, RTC_SUNDAY if RTC_ALARM_WEEKDAY_SELECTED is set
+ 529:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on
+ 530:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_minute: 0x0 - 0x59(BCD format)
+ 531:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_timestamp_second: 0x0 - 0x59(BCD format)
+ 532:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
+ 533:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 534:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 535:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_timestamp_get(rtc_timestamp_struct* rtc_timestamp)
+ 536:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1180              		.loc 1 536 1 is_stmt 1 view -0
+ 1181              		.cfi_startproc
+ 1182              		@ args = 0, pretend = 0, frame = 0
+ 1183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1184              		.loc 1 536 1 is_stmt 0 view .LVU345
+ 1185 0000 10B5     		push	{r4, lr}
+ 1186              	.LCFI5:
+ 1187              		.cfi_def_cfa_offset 8
+ 1188              		.cfi_offset 4, -8
+ 1189              		.cfi_offset 14, -4
+ 537:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t temp_tts = 0x00U, temp_dts = 0x00U;
+ 1190              		.loc 1 537 5 is_stmt 1 view .LVU346
+ 1191              	.LVL67:
+ 538:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 539:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* get the value of time_stamp registers */
+ 540:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_tts = (uint32_t)RTC_TTS;
+ 1192              		.loc 1 540 5 view .LVU347
+ 1193              		.loc 1 540 14 is_stmt 0 view .LVU348
+ 1194 0002 42F63003 		movw	r3, #10288
+ 1195 0006 C4F20003 		movt	r3, 16384
+ 1196 000a 1A68     		ldr	r2, [r3]
+ 1197              	.LVL68:
+ 541:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp_dts = (uint32_t)RTC_DTS;
+ 1198              		.loc 1 541 5 is_stmt 1 view .LVU349
+ 1199              		.loc 1 541 14 is_stmt 0 view .LVU350
+ 1200 000c 42F63403 		movw	r3, #10292
+ 1201 0010 C4F20003 		movt	r3, 16384
+ 1202 0014 1B68     		ldr	r3, [r3]
+ 1203              	.LVL69:
+ 542:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****   
+ 543:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* get timestamp time and construct the rtc_timestamp_struct structure */
+ 544:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_am_pm = (uint32_t)(temp_tts & RTC_TTS_PM);
+ 1204              		.loc 1 544 5 is_stmt 1 view .LVU351
+ 1205              		.loc 1 544 32 is_stmt 0 view .LVU352
+ 1206 0016 8021     		movs	r1, #128
+ 1207 0018 C903     		lsls	r1, r1, #15
+ 1208 001a 1140     		ands	r1, r2
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 33
+
+
+ 1209              		.loc 1 544 30 view .LVU353
+ 1210 001c 8160     		str	r1, [r0, #8]
+ 545:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_month = (uint8_t)GET_DTS_MON(temp_dts);
+ 1211              		.loc 1 545 5 is_stmt 1 view .LVU354
+ 1212              		.loc 1 545 51 is_stmt 0 view .LVU355
+ 1213 001e 1C0A     		lsrs	r4, r3, #8
+ 1214              		.loc 1 545 42 view .LVU356
+ 1215 0020 1F21     		movs	r1, #31
+ 1216 0022 2140     		ands	r1, r4
+ 1217              		.loc 1 545 40 view .LVU357
+ 1218 0024 0170     		strb	r1, [r0]
+ 546:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_date = (uint8_t)GET_DTS_DAY(temp_dts);
+ 1219              		.loc 1 546 5 is_stmt 1 view .LVU358
+ 1220              		.loc 1 546 41 is_stmt 0 view .LVU359
+ 1221 0026 3F21     		movs	r1, #63
+ 1222 0028 0C00     		movs	r4, r1
+ 1223 002a 1C40     		ands	r4, r3
+ 1224              		.loc 1 546 39 view .LVU360
+ 1225 002c 4470     		strb	r4, [r0, #1]
+ 547:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_day = (uint8_t)GET_DTS_DOW(temp_dts);
+ 1226              		.loc 1 547 5 is_stmt 1 view .LVU361
+ 1227              		.loc 1 547 49 is_stmt 0 view .LVU362
+ 1228 002e 5B0B     		lsrs	r3, r3, #13
+ 1229              	.LVL70:
+ 1230              		.loc 1 547 40 view .LVU363
+ 1231 0030 0724     		movs	r4, #7
+ 1232 0032 2340     		ands	r3, r4
+ 1233              		.loc 1 547 38 view .LVU364
+ 1234 0034 8370     		strb	r3, [r0, #2]
+ 548:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_hour = (uint8_t)GET_TTS_HR(temp_tts);
+ 1235              		.loc 1 548 5 is_stmt 1 view .LVU365
+ 1236              		.loc 1 548 50 is_stmt 0 view .LVU366
+ 1237 0036 130C     		lsrs	r3, r2, #16
+ 1238              		.loc 1 548 41 view .LVU367
+ 1239 0038 1940     		ands	r1, r3
+ 1240              		.loc 1 548 39 view .LVU368
+ 1241 003a C170     		strb	r1, [r0, #3]
+ 549:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_minute = (uint8_t)GET_TTS_MN(temp_tts);
+ 1242              		.loc 1 549 5 is_stmt 1 view .LVU369
+ 1243              		.loc 1 549 52 is_stmt 0 view .LVU370
+ 1244 003c 110A     		lsrs	r1, r2, #8
+ 1245              		.loc 1 549 43 view .LVU371
+ 1246 003e 7F23     		movs	r3, #127
+ 1247 0040 1940     		ands	r1, r3
+ 1248              		.loc 1 549 41 view .LVU372
+ 1249 0042 0171     		strb	r1, [r0, #4]
+ 550:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_timestamp->rtc_timestamp_second = (uint8_t)GET_TTS_SC(temp_tts);
+ 1250              		.loc 1 550 5 is_stmt 1 view .LVU373
+ 1251              		.loc 1 550 43 is_stmt 0 view .LVU374
+ 1252 0044 1340     		ands	r3, r2
+ 1253              		.loc 1 550 41 view .LVU375
+ 1254 0046 4371     		strb	r3, [r0, #5]
+ 551:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1255              		.loc 1 551 1 view .LVU376
+ 1256              		@ sp needed
+ 1257 0048 10BD     		pop	{r4, pc}
+ 1258              		.cfi_endproc
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 34
+
+
+ 1259              	.LFE75:
+ 1261              		.section	.text.rtc_timestamp_subsecond_get,"ax",%progbits
+ 1262              		.align	1
+ 1263              		.global	rtc_timestamp_subsecond_get
+ 1264              		.syntax unified
+ 1265              		.code	16
+ 1266              		.thumb_func
+ 1268              	rtc_timestamp_subsecond_get:
+ 1269              	.LFB76:
+ 552:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 553:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 554:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get RTC time-stamp subsecond
+ 555:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 556:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 557:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     RTC time-stamp subsecond value
+ 558:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 559:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** uint32_t rtc_timestamp_subsecond_get(void)
+ 560:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1270              		.loc 1 560 1 is_stmt 1 view -0
+ 1271              		.cfi_startproc
+ 1272              		@ args = 0, pretend = 0, frame = 0
+ 1273              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1274              		@ link register save eliminated.
+ 561:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return ((uint32_t)RTC_SSTS);
+ 1275              		.loc 1 561 5 view .LVU378
+ 1276              		.loc 1 561 13 is_stmt 0 view .LVU379
+ 1277 0000 42F63803 		movw	r3, #10296
+ 1278 0004 C4F20003 		movt	r3, 16384
+ 1279 0008 1868     		ldr	r0, [r3]
+ 562:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1280              		.loc 1 562 1 view .LVU380
+ 1281              		@ sp needed
+ 1282 000a 7047     		bx	lr
+ 1283              		.cfi_endproc
+ 1284              	.LFE76:
+ 1286              		.section	.text.rtc_tamper_enable,"ax",%progbits
+ 1287              		.align	1
+ 1288              		.global	rtc_tamper_enable
+ 1289              		.syntax unified
+ 1290              		.code	16
+ 1291              		.thumb_func
+ 1293              	rtc_tamper_enable:
+ 1294              	.LVL71:
+ 1295              	.LFB77:
+ 563:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 564:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 565:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 566:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable RTC tamper
+ 567:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  rtc_tamper: pointer to a rtc_tamper_struct structure which contains 
+ 568:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for RTC tamper configuration
+ 569:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
+ 570:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_source: RTC_TAMPER0, RTC_TAMPER1
+ 571:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_trigger: RTC_TAMPER_TRIGGER_EDGE_RISING, RTC_TAMPER_TRIGGER_EDGE_FALLI
+ 572:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                       RTC_TAMPER_TRIGGER_LEVEL_LOW, RTC_TAMPER_TRIGGER_LEVEL_HIGH
+ 573:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_filter: RTC_FLT_EDGE, RTC_FLT_2S, RTC_FLT_4S, RTC_FLT_8S
+ 574:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_sample_frequency: RTC_FREQ_DIV32768, RTC_FREQ_DIV16384, RTC_FREQ_DIV81
+ 575:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                                RTC_FREQ_DIV4096, RTC_FREQ_DIV2048, RTC_FREQ_DIV1024
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 35
+
+
+ 576:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                                RTC_FREQ_DIV512, RTC_FREQ_DIV256
+ 577:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_precharge_enable: DISABLE, ENABLE
+ 578:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_precharge_time: RTC_PRCH_1C, RTC_PRCH_2C, RTC_PRCH_4C, RTC_PRCH_8C
+ 579:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_with_timestamp: DISABLE, ENABLE
+ 580:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 581:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 582:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 583:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_tamper_enable(rtc_tamper_struct* rtc_tamper)
+ 584:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1296              		.loc 1 584 1 is_stmt 1 view -0
+ 1297              		.cfi_startproc
+ 1298              		@ args = 0, pretend = 0, frame = 0
+ 1299              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1300              		@ link register save eliminated.
+ 585:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable tamper */
+ 586:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= (uint32_t)~(rtc_tamper->rtc_tamper_source); 
+ 1301              		.loc 1 586 5 view .LVU382
+ 1302 0000 42F64003 		movw	r3, #10304
+ 1303 0004 C4F20003 		movt	r3, 16384
+ 1304 0008 1A68     		ldr	r2, [r3]
+ 1305              		.loc 1 586 39 is_stmt 0 view .LVU383
+ 1306 000a 0168     		ldr	r1, [r0]
+ 1307              		.loc 1 586 14 view .LVU384
+ 1308 000c 8A43     		bics	r2, r1
+ 1309 000e 1A60     		str	r2, [r3]
+ 587:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 588:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* tamper filter must be used when the tamper source is voltage level detection */
+ 589:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= (uint32_t)~RTC_TAMP_FLT;
+ 1310              		.loc 1 589 5 is_stmt 1 view .LVU385
+ 1311 0010 1A68     		ldr	r2, [r3]
+ 1312              		.loc 1 589 14 is_stmt 0 view .LVU386
+ 1313 0012 2E49     		ldr	r1, .L49
+ 1314 0014 0A40     		ands	r2, r1
+ 1315 0016 1A60     		str	r2, [r3]
+ 590:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 591:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* the tamper source is voltage level detection */
+ 592:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(rtc_tamper->rtc_tamper_filter != RTC_FLT_EDGE ){ 
+ 1316              		.loc 1 592 5 is_stmt 1 view .LVU387
+ 1317              		.loc 1 592 18 is_stmt 0 view .LVU388
+ 1318 0018 8368     		ldr	r3, [r0, #8]
+ 1319              		.loc 1 592 7 view .LVU389
+ 1320 001a FBB1     		cbz	r3, .L44
+ 593:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP &= (uint32_t)~(RTC_TAMP_DISPU | RTC_TAMP_PRCH | RTC_TAMP_FREQ | RTC_TAMP_FLT);
+ 1321              		.loc 1 593 9 is_stmt 1 view .LVU390
+ 1322 001c 42F64003 		movw	r3, #10304
+ 1323 0020 C4F20003 		movt	r3, 16384
+ 1324 0024 1A68     		ldr	r2, [r3]
+ 1325              		.loc 1 593 18 is_stmt 0 view .LVU391
+ 1326 0026 2A49     		ldr	r1, .L49+4
+ 1327 0028 0A40     		ands	r2, r1
+ 1328 002a 1A60     		str	r2, [r3]
+ 594:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 595:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* check if the tamper pin need precharge, if need, then configure the precharge time */
+ 596:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         if(DISABLE == rtc_tamper->rtc_tamper_precharge_enable){
+ 1329              		.loc 1 596 9 is_stmt 1 view .LVU392
+ 1330              		.loc 1 596 33 is_stmt 0 view .LVU393
+ 1331 002c 037C     		ldrb	r3, [r0, #16]
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 36
+
+
+ 1332              		.loc 1 596 11 view .LVU394
+ 1333 002e 002B     		cmp	r3, #0
+ 1334 0030 42D1     		bne	.L45
+ 597:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             RTC_TAMP |=  (uint32_t)RTC_TAMP_DISPU;    
+ 1335              		.loc 1 597 13 is_stmt 1 view .LVU395
+ 1336 0032 42F64003 		movw	r3, #10304
+ 1337 0036 C4F20003 		movt	r3, 16384
+ 1338 003a 1A68     		ldr	r2, [r3]
+ 1339              		.loc 1 597 22 is_stmt 0 view .LVU396
+ 1340 003c 48F20001 		movw	r1, #32768
+ 1341 0040 0A43     		orrs	r2, r1
+ 1342 0042 1A60     		str	r2, [r3]
+ 1343              	.L46:
+ 598:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }else{
+ 599:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             RTC_TAMP |= (uint32_t)(rtc_tamper->rtc_tamper_precharge_time);
+ 600:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ 601:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 602:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)(rtc_tamper->rtc_tamper_sample_frequency);
+ 1344              		.loc 1 602 9 is_stmt 1 view .LVU397
+ 1345 0044 42F64003 		movw	r3, #10304
+ 1346 0048 C4F20003 		movt	r3, 16384
+ 1347 004c 1A68     		ldr	r2, [r3]
+ 1348              		.loc 1 602 42 is_stmt 0 view .LVU398
+ 1349 004e C168     		ldr	r1, [r0, #12]
+ 1350              		.loc 1 602 18 view .LVU399
+ 1351 0050 0A43     		orrs	r2, r1
+ 1352 0052 1A60     		str	r2, [r3]
+ 603:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)(rtc_tamper->rtc_tamper_filter);
+ 1353              		.loc 1 603 9 is_stmt 1 view .LVU400
+ 1354 0054 1A68     		ldr	r2, [r3]
+ 1355              		.loc 1 603 42 is_stmt 0 view .LVU401
+ 1356 0056 8168     		ldr	r1, [r0, #8]
+ 1357              		.loc 1 603 18 view .LVU402
+ 1358 0058 0A43     		orrs	r2, r1
+ 1359 005a 1A60     		str	r2, [r3]
+ 1360              	.L44:
+ 604:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 605:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= (uint32_t)~RTC_TAMP_TPTS;  
+ 1361              		.loc 1 605 5 is_stmt 1 view .LVU403
+ 1362 005c 42F64003 		movw	r3, #10304
+ 1363 0060 C4F20003 		movt	r3, 16384
+ 1364 0064 1A68     		ldr	r2, [r3]
+ 1365              		.loc 1 605 14 is_stmt 0 view .LVU404
+ 1366 0066 8021     		movs	r1, #128
+ 1367 0068 8A43     		bics	r2, r1
+ 1368 006a 1A60     		str	r2, [r3]
+ 606:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 607:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(DISABLE != rtc_tamper->rtc_tamper_with_timestamp){           
+ 1369              		.loc 1 607 5 is_stmt 1 view .LVU405
+ 1370              		.loc 1 607 29 is_stmt 0 view .LVU406
+ 1371 006c 037E     		ldrb	r3, [r0, #24]
+ 1372              		.loc 1 607 7 view .LVU407
+ 1373 006e 33B1     		cbz	r3, .L47
+ 608:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* the tamper event also cause a time-stamp event */
+ 609:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)RTC_TAMP_TPTS;
+ 1374              		.loc 1 609 9 is_stmt 1 view .LVU408
+ 1375 0070 42F64003 		movw	r3, #10304
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 37
+
+
+ 1376 0074 C4F20003 		movt	r3, 16384
+ 1377 0078 1A68     		ldr	r2, [r3]
+ 1378              		.loc 1 609 18 is_stmt 0 view .LVU409
+ 1379 007a 0A43     		orrs	r2, r1
+ 1380 007c 1A60     		str	r2, [r3]
+ 1381              	.L47:
+ 610:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     } 
+ 611:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* configure the tamper trigger */
+ 612:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= ((uint32_t)~((rtc_tamper->rtc_tamper_source) << RTC_TAMPER_TRIGGER_POS));    
+ 1382              		.loc 1 612 5 is_stmt 1 view .LVU410
+ 1383 007e 42F64003 		movw	r3, #10304
+ 1384 0082 C4F20003 		movt	r3, 16384
+ 1385 0086 1A68     		ldr	r2, [r3]
+ 1386              		.loc 1 612 41 is_stmt 0 view .LVU411
+ 1387 0088 0168     		ldr	r1, [r0]
+ 1388              		.loc 1 612 62 view .LVU412
+ 1389 008a 4900     		lsls	r1, r1, #1
+ 1390              		.loc 1 612 14 view .LVU413
+ 1391 008c 8A43     		bics	r2, r1
+ 1392 008e 1A60     		str	r2, [r3]
+ 613:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(RTC_TAMPER_TRIGGER_EDGE_RISING != rtc_tamper->rtc_tamper_trigger){
+ 1393              		.loc 1 613 5 is_stmt 1 view .LVU414
+ 1394              		.loc 1 613 52 is_stmt 0 view .LVU415
+ 1395 0090 4368     		ldr	r3, [r0, #4]
+ 1396              		.loc 1 613 7 view .LVU416
+ 1397 0092 43B1     		cbz	r3, .L48
+ 614:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)((rtc_tamper->rtc_tamper_source)<< RTC_TAMPER_TRIGGER_POS);  
+ 1398              		.loc 1 614 9 is_stmt 1 view .LVU417
+ 1399 0094 42F64003 		movw	r3, #10304
+ 1400 0098 C4F20003 		movt	r3, 16384
+ 1401 009c 1A68     		ldr	r2, [r3]
+ 1402              		.loc 1 614 43 is_stmt 0 view .LVU418
+ 1403 009e 0168     		ldr	r1, [r0]
+ 1404              		.loc 1 614 21 view .LVU419
+ 1405 00a0 4900     		lsls	r1, r1, #1
+ 1406              		.loc 1 614 18 view .LVU420
+ 1407 00a2 0A43     		orrs	r2, r1
+ 1408 00a4 1A60     		str	r2, [r3]
+ 1409              	.L48:
+ 615:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }    
+ 616:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable tamper */
+ 617:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP |=  (uint32_t)(rtc_tamper->rtc_tamper_source); 
+ 1410              		.loc 1 617 5 is_stmt 1 view .LVU421
+ 1411 00a6 42F64003 		movw	r3, #10304
+ 1412 00aa C4F20003 		movt	r3, 16384
+ 1413 00ae 1A68     		ldr	r2, [r3]
+ 1414              		.loc 1 617 39 is_stmt 0 view .LVU422
+ 1415 00b0 0168     		ldr	r1, [r0]
+ 1416              		.loc 1 617 14 view .LVU423
+ 1417 00b2 0A43     		orrs	r2, r1
+ 1418 00b4 1A60     		str	r2, [r3]
+ 618:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1419              		.loc 1 618 1 view .LVU424
+ 1420              		@ sp needed
+ 1421 00b6 7047     		bx	lr
+ 1422              	.L45:
+ 599:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 38
+
+
+ 1423              		.loc 1 599 13 is_stmt 1 view .LVU425
+ 1424 00b8 42F64003 		movw	r3, #10304
+ 1425 00bc C4F20003 		movt	r3, 16384
+ 1426 00c0 1A68     		ldr	r2, [r3]
+ 599:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ 1427              		.loc 1 599 46 is_stmt 0 view .LVU426
+ 1428 00c2 4169     		ldr	r1, [r0, #20]
+ 599:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
+ 1429              		.loc 1 599 22 view .LVU427
+ 1430 00c4 0A43     		orrs	r2, r1
+ 1431 00c6 1A60     		str	r2, [r3]
+ 1432 00c8 BCE7     		b	.L46
+ 1433              	.L50:
+ 1434 00ca C046     		.align	2
+ 1435              	.L49:
+ 1436 00cc FFE7FFFF 		.word	-6145
+ 1437 00d0 FF00FFFF 		.word	-65281
+ 1438              		.cfi_endproc
+ 1439              	.LFE77:
+ 1441              		.section	.text.rtc_tamper_disable,"ax",%progbits
+ 1442              		.align	1
+ 1443              		.global	rtc_tamper_disable
+ 1444              		.syntax unified
+ 1445              		.code	16
+ 1446              		.thumb_func
+ 1448              	rtc_tamper_disable:
+ 1449              	.LVL72:
+ 1450              	.LFB78:
+ 619:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 620:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 621:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disable RTC tamper
+ 622:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  source: specify which tamper source to be disabled
+ 623:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 624:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_TAMPER0
+ 625:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_TAMPER1
+ 626:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 627:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 628:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 629:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_tamper_disable(uint32_t source)
+ 630:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1451              		.loc 1 630 1 is_stmt 1 view -0
+ 1452              		.cfi_startproc
+ 1453              		@ args = 0, pretend = 0, frame = 0
+ 1454              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1455              		@ link register save eliminated.
+ 631:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable tamper */
+ 632:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= (uint32_t)~source; 
+ 1456              		.loc 1 632 5 view .LVU429
+ 1457 0000 42F64003 		movw	r3, #10304
+ 1458 0004 C4F20003 		movt	r3, 16384
+ 1459 0008 1A68     		ldr	r2, [r3]
+ 1460              		.loc 1 632 14 is_stmt 0 view .LVU430
+ 1461 000a 8243     		bics	r2, r0
+ 1462 000c 1A60     		str	r2, [r3]
+ 633:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 634:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1463              		.loc 1 634 1 view .LVU431
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 39
+
+
+ 1464              		@ sp needed
+ 1465 000e 7047     		bx	lr
+ 1466              		.cfi_endproc
+ 1467              	.LFE78:
+ 1469              		.section	.text.rtc_interrupt_enable,"ax",%progbits
+ 1470              		.align	1
+ 1471              		.global	rtc_interrupt_enable
+ 1472              		.syntax unified
+ 1473              		.code	16
+ 1474              		.thumb_func
+ 1476              	rtc_interrupt_enable:
+ 1477              	.LVL73:
+ 1478              	.LFB79:
+ 635:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 636:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 637:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable specified RTC interrupt
+ 638:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  interrupt: specify which interrupt source to be enabled
+ 639:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 640:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_TIMESTAMP: timestamp interrupt
+ 641:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_ALARM: alarm interrupt
+ 642:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_TAMP: tamp interrupt
+ 643:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 644:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 645:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 646:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_interrupt_enable(uint32_t interrupt)
+ 647:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {  
+ 1479              		.loc 1 647 1 is_stmt 1 view -0
+ 1480              		.cfi_startproc
+ 1481              		@ args = 0, pretend = 0, frame = 0
+ 1482              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1483              		.loc 1 647 1 is_stmt 0 view .LVU433
+ 1484 0000 30B5     		push	{r4, r5, lr}
+ 1485              	.LCFI6:
+ 1486              		.cfi_def_cfa_offset 12
+ 1487              		.cfi_offset 4, -12
+ 1488              		.cfi_offset 5, -8
+ 1489              		.cfi_offset 14, -4
+ 648:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 649:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1490              		.loc 1 649 5 is_stmt 1 view .LVU434
+ 1491              		.loc 1 649 13 is_stmt 0 view .LVU435
+ 1492 0002 42F62403 		movw	r3, #10276
+ 1493 0006 C4F20003 		movt	r3, 16384
+ 1494 000a CA22     		movs	r2, #202
+ 1495 000c 1A60     		str	r2, [r3]
+ 650:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1496              		.loc 1 650 5 is_stmt 1 view .LVU436
+ 1497              		.loc 1 650 13 is_stmt 0 view .LVU437
+ 1498 000e 773A     		subs	r2, r2, #119
+ 1499 0010 1A60     		str	r2, [r3]
+ 651:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****  
+ 652:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the interrupts in RTC_CTL register */
+ 653:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL |= (uint32_t)(interrupt & (uint32_t)~RTC_TAMP_TPIE);
+ 1500              		.loc 1 653 5 is_stmt 1 view .LVU438
+ 1501 0012 42F60801 		movw	r1, #10248
+ 1502 0016 C4F20001 		movt	r1, 16384
+ 1503 001a 0C68     		ldr	r4, [r1]
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 40
+
+
+ 1504              		.loc 1 653 16 is_stmt 0 view .LVU439
+ 1505 001c 4F3A     		subs	r2, r2, #79
+ 1506 001e 0500     		movs	r5, r0
+ 1507 0020 9543     		bics	r5, r2
+ 1508              		.loc 1 653 13 view .LVU440
+ 1509 0022 2C43     		orrs	r4, r5
+ 1510 0024 0C60     		str	r4, [r1]
+ 654:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the interrupts in RTC_TAMP register */
+ 655:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP |= (uint32_t)(interrupt & RTC_TAMP_TPIE);
+ 1511              		.loc 1 655 5 is_stmt 1 view .LVU441
+ 1512 0026 42F64001 		movw	r1, #10304
+ 1513 002a C4F20001 		movt	r1, 16384
+ 1514 002e 0C68     		ldr	r4, [r1]
+ 1515              		.loc 1 655 17 is_stmt 0 view .LVU442
+ 1516 0030 0240     		ands	r2, r0
+ 1517              		.loc 1 655 14 view .LVU443
+ 1518 0032 2243     		orrs	r2, r4
+ 1519 0034 0A60     		str	r2, [r1]
+ 656:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 657:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 658:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY; 
+ 1520              		.loc 1 658 5 is_stmt 1 view .LVU444
+ 1521              		.loc 1 658 13 is_stmt 0 view .LVU445
+ 1522 0036 FF22     		movs	r2, #255
+ 1523 0038 1A60     		str	r2, [r3]
+ 659:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1524              		.loc 1 659 1 view .LVU446
+ 1525              		@ sp needed
+ 1526 003a 30BD     		pop	{r4, r5, pc}
+ 1527              		.cfi_endproc
+ 1528              	.LFE79:
+ 1530              		.section	.text.rtc_interrupt_disable,"ax",%progbits
+ 1531              		.align	1
+ 1532              		.global	rtc_interrupt_disable
+ 1533              		.syntax unified
+ 1534              		.code	16
+ 1535              		.thumb_func
+ 1537              	rtc_interrupt_disable:
+ 1538              	.LVL74:
+ 1539              	.LFB80:
+ 660:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 661:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 662:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disble specified RTC interrupt
+ 663:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  interrupt: specify which interrupt source to be disabled
+ 664:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 665:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_TIMESTAMP: timestamp interrupt
+ 666:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_ALARM: alarm interrupt
+ 667:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_INT_TAMP: tamp interrupt
+ 668:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 669:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 670:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 671:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_interrupt_disable(uint32_t interrupt)
+ 672:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {  
+ 1540              		.loc 1 672 1 is_stmt 1 view -0
+ 1541              		.cfi_startproc
+ 1542              		@ args = 0, pretend = 0, frame = 0
+ 1543              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 41
+
+
+ 1544              		.loc 1 672 1 is_stmt 0 view .LVU448
+ 1545 0000 30B5     		push	{r4, r5, lr}
+ 1546              	.LCFI7:
+ 1547              		.cfi_def_cfa_offset 12
+ 1548              		.cfi_offset 4, -12
+ 1549              		.cfi_offset 5, -8
+ 1550              		.cfi_offset 14, -4
+ 673:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 674:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1551              		.loc 1 674 5 is_stmt 1 view .LVU449
+ 1552              		.loc 1 674 13 is_stmt 0 view .LVU450
+ 1553 0002 42F62403 		movw	r3, #10276
+ 1554 0006 C4F20003 		movt	r3, 16384
+ 1555 000a CA22     		movs	r2, #202
+ 1556 000c 1A60     		str	r2, [r3]
+ 675:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1557              		.loc 1 675 5 is_stmt 1 view .LVU451
+ 1558              		.loc 1 675 13 is_stmt 0 view .LVU452
+ 1559 000e 773A     		subs	r2, r2, #119
+ 1560 0010 1A60     		str	r2, [r3]
+ 676:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****  
+ 677:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the interrupts in RTC_CTL register */
+ 678:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint32_t)~(interrupt & (uint32_t)~RTC_TAMP_TPIE);
+ 1561              		.loc 1 678 5 is_stmt 1 view .LVU453
+ 1562 0012 42F60801 		movw	r1, #10248
+ 1563 0016 C4F20001 		movt	r1, 16384
+ 1564 001a 0C68     		ldr	r4, [r1]
+ 1565              		.loc 1 678 38 is_stmt 0 view .LVU454
+ 1566 001c 4F3A     		subs	r2, r2, #79
+ 1567 001e 0500     		movs	r5, r0
+ 1568 0020 9543     		bics	r5, r2
+ 1569              		.loc 1 678 13 view .LVU455
+ 1570 0022 AC43     		bics	r4, r5
+ 1571 0024 0C60     		str	r4, [r1]
+ 679:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the interrupts in RTC_TAMP register */
+ 680:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_TAMP &= (uint32_t)~(interrupt & RTC_TAMP_TPIE);
+ 1572              		.loc 1 680 5 is_stmt 1 view .LVU456
+ 1573 0026 42F64001 		movw	r1, #10304
+ 1574 002a C4F20001 		movt	r1, 16384
+ 1575 002e 0C68     		ldr	r4, [r1]
+ 1576              		.loc 1 680 39 is_stmt 0 view .LVU457
+ 1577 0030 0240     		ands	r2, r0
+ 1578              		.loc 1 680 14 view .LVU458
+ 1579 0032 9443     		bics	r4, r2
+ 1580 0034 0C60     		str	r4, [r1]
+ 681:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 682:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 683:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1581              		.loc 1 683 5 is_stmt 1 view .LVU459
+ 1582              		.loc 1 683 13 is_stmt 0 view .LVU460
+ 1583 0036 FF22     		movs	r2, #255
+ 1584 0038 1A60     		str	r2, [r3]
+ 684:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1585              		.loc 1 684 1 view .LVU461
+ 1586              		@ sp needed
+ 1587 003a 30BD     		pop	{r4, r5, pc}
+ 1588              		.cfi_endproc
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 42
+
+
+ 1589              	.LFE80:
+ 1591              		.section	.text.rtc_flag_get,"ax",%progbits
+ 1592              		.align	1
+ 1593              		.global	rtc_flag_get
+ 1594              		.syntax unified
+ 1595              		.code	16
+ 1596              		.thumb_func
+ 1598              	rtc_flag_get:
+ 1599              	.LVL75:
+ 1600              	.LFB81:
+ 685:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 686:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 687:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      check specified flag
+ 688:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  flag: specify which flag to check
+ 689:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 690:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_RECALIBRATION: recalibration pending flag
+ 691:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TAMP1: tamper 1 event flag
+ 692:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TAMP0: tamper 0 event flag
+ 693:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TIMESTAMP_OVERFLOW: time-stamp overflow event flag
+ 694:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TIMESTAMP: time-stamp event flag
+ 695:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_ALARM0: alarm event flag
+ 696:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_INIT: init mode event flag
+ 697:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_RSYN: time and date registers synchronized event flag
+ 698:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_YCM: year parameter configured event flag
+ 699:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_SHIFT: shift operation pending flag
+ 700:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_ALARM0_WRITTEN: alarm writen available flag
+ 701:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 702:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     FlagStatus: SET or RESET
+ 703:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 704:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** FlagStatus rtc_flag_get(uint32_t flag)
+ 705:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1601              		.loc 1 705 1 is_stmt 1 view -0
+ 1602              		.cfi_startproc
+ 1603              		@ args = 0, pretend = 0, frame = 0
+ 1604              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1605              		@ link register save eliminated.
+ 706:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     FlagStatus flag_state = RESET;
+ 1606              		.loc 1 706 5 view .LVU463
+ 707:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 708:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET != (RTC_STAT & flag)){   
+ 1607              		.loc 1 708 5 view .LVU464
+ 1608              		.loc 1 708 28 is_stmt 0 view .LVU465
+ 1609 0000 42F60C03 		movw	r3, #10252
+ 1610 0004 C4F20003 		movt	r3, 16384
+ 1611 0008 1B68     		ldr	r3, [r3]
+ 1612              		.loc 1 708 7 view .LVU466
+ 1613 000a 1842     		tst	r0, r3
+ 1614 000c 01D1     		bne	.L56
+ 706:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     FlagStatus flag_state = RESET;
+ 1615              		.loc 1 706 16 view .LVU467
+ 1616 000e 0020     		movs	r0, #0
+ 1617              	.LVL76:
+ 1618              	.L55:
+ 709:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_state = SET;
+ 710:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 711:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return flag_state;
+ 1619              		.loc 1 711 5 is_stmt 1 view .LVU468
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 43
+
+
+ 712:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1620              		.loc 1 712 1 is_stmt 0 view .LVU469
+ 1621              		@ sp needed
+ 1622 0010 7047     		bx	lr
+ 1623              	.LVL77:
+ 1624              	.L56:
+ 709:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_state = SET;
+ 1625              		.loc 1 709 20 view .LVU470
+ 1626 0012 0120     		movs	r0, #1
+ 1627              	.LVL78:
+ 709:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_state = SET;
+ 1628              		.loc 1 709 20 view .LVU471
+ 1629 0014 FCE7     		b	.L55
+ 1630              		.cfi_endproc
+ 1631              	.LFE81:
+ 1633              		.section	.text.rtc_flag_clear,"ax",%progbits
+ 1634              		.align	1
+ 1635              		.global	rtc_flag_clear
+ 1636              		.syntax unified
+ 1637              		.code	16
+ 1638              		.thumb_func
+ 1640              	rtc_flag_clear:
+ 1641              	.LVL79:
+ 1642              	.LFB82:
+ 713:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 714:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 715:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      clear specified flag
+ 716:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  flag: specify which flag to clear
+ 717:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 718:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TAMP1: tamper 1 event flag
+ 719:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TAMP0: tamper 0 event flag
+ 720:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TIMESTAMP_OVERFLOW: time-stamp overflow event flag
+ 721:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_TIMESTAMP: time-stamp event flag
+ 722:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_ALARM0: alarm event flag
+ 723:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_FLAG_RSYN: time and date registers synchronized event flag
+ 724:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 725:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 726:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 727:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_flag_clear(uint32_t flag)
+ 728:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1643              		.loc 1 728 1 is_stmt 1 view -0
+ 1644              		.cfi_startproc
+ 1645              		@ args = 0, pretend = 0, frame = 0
+ 1646              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1647              		@ link register save eliminated.
+ 729:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_STAT &= (uint32_t)(~flag);  
+ 1648              		.loc 1 729 5 view .LVU473
+ 1649 0000 42F60C03 		movw	r3, #10252
+ 1650 0004 C4F20003 		movt	r3, 16384
+ 1651 0008 1A68     		ldr	r2, [r3]
+ 1652              		.loc 1 729 14 is_stmt 0 view .LVU474
+ 1653 000a 8243     		bics	r2, r0
+ 1654 000c 1A60     		str	r2, [r3]
+ 730:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1655              		.loc 1 730 1 view .LVU475
+ 1656              		@ sp needed
+ 1657 000e 7047     		bx	lr
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 44
+
+
+ 1658              		.cfi_endproc
+ 1659              	.LFE82:
+ 1661              		.section	.text.rtc_alter_output_config,"ax",%progbits
+ 1662              		.align	1
+ 1663              		.global	rtc_alter_output_config
+ 1664              		.syntax unified
+ 1665              		.code	16
+ 1666              		.thumb_func
+ 1668              	rtc_alter_output_config:
+ 1669              	.LVL80:
+ 1670              	.LFB83:
+ 731:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 732:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 733:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      configure rtc alternate output source
+ 734:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  source: specify signal to output
+ 735:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 736:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_512HZ: when the LXTAL freqency is 32768Hz and the RTC_PSC 
+ 737:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                          is the default value, output 512Hz signal
+ 738:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_1HZ: when the LXTAL freqency is 32768Hz and the RTC_PSC 
+ 739:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                        is the default value, output 512Hz signal
+ 740:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_ALARM_HIGH: when the  alarm flag is set, the output pin is high
+ 741:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_ALARM_LOW: when the  Alarm flag is set, the output pin is low
+ 742:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  mode: specify the output pin (PC13) mode when output alarm signal
+ 743:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 744:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_ALARM_OUTPUT_OD: open drain mode
+ 745:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_ALARM_OUTPUT_PP: push pull mode
+ 746:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 747:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 748:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 749:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_alter_output_config(uint32_t source, uint32_t mode)
+ 750:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1671              		.loc 1 750 1 is_stmt 1 view -0
+ 1672              		.cfi_startproc
+ 1673              		@ args = 0, pretend = 0, frame = 0
+ 1674              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1675              		.loc 1 750 1 is_stmt 0 view .LVU477
+ 1676 0000 10B5     		push	{r4, lr}
+ 1677              	.LCFI8:
+ 1678              		.cfi_def_cfa_offset 8
+ 1679              		.cfi_offset 4, -8
+ 1680              		.cfi_offset 14, -4
+ 751:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 752:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1681              		.loc 1 752 5 is_stmt 1 view .LVU478
+ 1682              		.loc 1 752 13 is_stmt 0 view .LVU479
+ 1683 0002 42F62403 		movw	r3, #10276
+ 1684 0006 C4F20003 		movt	r3, 16384
+ 1685 000a CA22     		movs	r2, #202
+ 1686 000c 1A60     		str	r2, [r3]
+ 753:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1687              		.loc 1 753 5 is_stmt 1 view .LVU480
+ 1688              		.loc 1 753 13 is_stmt 0 view .LVU481
+ 1689 000e 773A     		subs	r2, r2, #119
+ 1690 0010 1A60     		str	r2, [r3]
+ 754:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 755:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint32_t)~(RTC_CTL_COEN | RTC_CTL_OS | RTC_CTL_OPOL | RTC_CTL_COS);
+ 1691              		.loc 1 755 5 is_stmt 1 view .LVU482
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 45
+
+
+ 1692 0012 42F60803 		movw	r3, #10248
+ 1693 0016 C4F20003 		movt	r3, 16384
+ 1694 001a 1A68     		ldr	r2, [r3]
+ 1695              		.loc 1 755 13 is_stmt 0 view .LVU483
+ 1696 001c 0C4C     		ldr	r4, .L61
+ 1697 001e 2240     		ands	r2, r4
+ 1698 0020 1A60     		str	r2, [r3]
+ 756:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 757:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL |= (uint32_t)(source);
+ 1699              		.loc 1 757 5 is_stmt 1 view .LVU484
+ 1700 0022 1A68     		ldr	r2, [r3]
+ 1701              		.loc 1 757 13 is_stmt 0 view .LVU485
+ 1702 0024 0243     		orrs	r2, r0
+ 1703 0026 1A60     		str	r2, [r3]
+ 758:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 759:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* alarm output */
+ 760:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET != (source & RTC_OS_ENABLE)){
+ 1704              		.loc 1 760 5 is_stmt 1 view .LVU486
+ 1705              		.loc 1 760 7 is_stmt 0 view .LVU487
+ 1706 0028 8002     		lsls	r0, r0, #10
+ 1707 002a 0AD5     		bpl	.L59
+ 1708              	.LVL81:
+ 761:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP &= (uint32_t)~(RTC_TAMP_PC13VAL);
+ 1709              		.loc 1 761 9 is_stmt 1 view .LVU488
+ 1710 002c 42F64003 		movw	r3, #10304
+ 1711 0030 C4F20003 		movt	r3, 16384
+ 1712 0034 1A68     		ldr	r2, [r3]
+ 1713              		.loc 1 761 18 is_stmt 0 view .LVU489
+ 1714 0036 0748     		ldr	r0, .L61+4
+ 1715 0038 0240     		ands	r2, r0
+ 1716 003a 1A60     		str	r2, [r3]
+ 762:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)(mode);  
+ 1717              		.loc 1 762 9 is_stmt 1 view .LVU490
+ 1718 003c 1A68     		ldr	r2, [r3]
+ 1719              		.loc 1 762 18 is_stmt 0 view .LVU491
+ 1720 003e 0A43     		orrs	r2, r1
+ 1721 0040 1A60     		str	r2, [r3]
+ 1722              	.L59:
+ 763:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 764:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 765:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 766:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1723              		.loc 1 766 5 is_stmt 1 view .LVU492
+ 1724              		.loc 1 766 13 is_stmt 0 view .LVU493
+ 1725 0042 42F62403 		movw	r3, #10276
+ 1726 0046 C4F20003 		movt	r3, 16384
+ 1727 004a FF22     		movs	r2, #255
+ 1728 004c 1A60     		str	r2, [r3]
+ 767:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1729              		.loc 1 767 1 view .LVU494
+ 1730              		@ sp needed
+ 1731 004e 10BD     		pop	{r4, pc}
+ 1732              	.L62:
+ 1733              		.align	2
+ 1734              	.L61:
+ 1735 0050 FFFF07FF 		.word	-16252929
+ 1736 0054 FFFFFBFF 		.word	-262145
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 46
+
+
+ 1737              		.cfi_endproc
+ 1738              	.LFE83:
+ 1740              		.section	.text.rtc_calibration_config,"ax",%progbits
+ 1741              		.align	1
+ 1742              		.global	rtc_calibration_config
+ 1743              		.syntax unified
+ 1744              		.code	16
+ 1745              		.thumb_func
+ 1747              	rtc_calibration_config:
+ 1748              	.LVL82:
+ 1749              	.LFB84:
+ 768:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 769:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 770:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      configure RTC calibration register
+ 771:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  window: select calibration window
+ 772:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 773:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_WINDOW_32S: 2exp20 RTCCLK cycles, 32s if RTCCLK = 32768 Hz
+ 774:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_WINDOW_16S: 2exp19 RTCCLK cycles, 16s if RTCCLK = 32768 Hz
+ 775:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_WINDOW_8S: 2exp18 RTCCLK cycles, 8s if RTCCLK = 32768 Hz
+ 776:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  plus: add RTC clock or not
+ 777:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 778:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_PLUS_SET: add one RTC clock every 2048 rtc clock
+ 779:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CALIBRATION_PLUS_RESET: no effect
+ 780:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  minus: the RTC clock to minus during the calibration window(0x0 - 0x1FF)
+ 781:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 782:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 783:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 784:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_calibration_config(uint32_t window, uint32_t plus, uint32_t minus)
+ 785:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1750              		.loc 1 785 1 is_stmt 1 view -0
+ 1751              		.cfi_startproc
+ 1752              		@ args = 0, pretend = 0, frame = 0
+ 1753              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1754              		.loc 1 785 1 is_stmt 0 view .LVU496
+ 1755 0000 30B5     		push	{r4, r5, lr}
+ 1756              	.LCFI9:
+ 1757              		.cfi_def_cfa_offset 12
+ 1758              		.cfi_offset 4, -12
+ 1759              		.cfi_offset 5, -8
+ 1760              		.cfi_offset 14, -4
+ 786:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t time_index = RTC_HRFC_TIMEOUT;
+ 1761              		.loc 1 786 5 is_stmt 1 view .LVU497
+ 1762              	.LVL83:
+ 787:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 1763              		.loc 1 787 5 view .LVU498
+ 788:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 1764              		.loc 1 788 5 view .LVU499
+ 789:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 790:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 791:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1765              		.loc 1 791 5 view .LVU500
+ 1766              		.loc 1 791 13 is_stmt 0 view .LVU501
+ 1767 0002 42F62403 		movw	r3, #10276
+ 1768 0006 C4F20003 		movt	r3, 16384
+ 1769 000a CA24     		movs	r4, #202
+ 1770 000c 1C60     		str	r4, [r3]
+ 792:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;    
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 47
+
+
+ 1771              		.loc 1 792 5 is_stmt 1 view .LVU502
+ 1772              		.loc 1 792 13 is_stmt 0 view .LVU503
+ 1773 000e 773C     		subs	r4, r4, #119
+ 1774 0010 1C60     		str	r4, [r3]
+ 786:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 1775              		.loc 1 786 14 view .LVU504
+ 1776 0012 41F20004 		movw	r4, #4096
+ 1777              	.LVL84:
+ 1778              	.L65:
+ 793:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 794:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* check if a calibration operation is ongoing */        
+ 795:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     do{
+ 1779              		.loc 1 795 5 is_stmt 1 view .LVU505
+ 796:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_status = RTC_STAT & RTC_STAT_SCPF;
+ 1780              		.loc 1 796 9 view .LVU506
+ 1781              		.loc 1 796 23 is_stmt 0 view .LVU507
+ 1782 0016 42F60C03 		movw	r3, #10252
+ 1783 001a C4F20003 		movt	r3, 16384
+ 1784 001e 1B68     		ldr	r3, [r3]
+ 1785              		.loc 1 796 21 view .LVU508
+ 1786 0020 8025     		movs	r5, #128
+ 1787 0022 6D02     		lsls	r5, r5, #9
+ 1788 0024 2B40     		ands	r3, r5
+ 1789              	.LVL85:
+ 797:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }while((--time_index > 0x00U) && ((uint32_t)RESET != flag_status));
+ 1790              		.loc 1 797 35 is_stmt 1 discriminator 2 view .LVU509
+ 1791 0026 013C     		subs	r4, r4, #1
+ 1792              	.LVL86:
+ 1793              		.loc 1 797 35 is_stmt 0 discriminator 2 view .LVU510
+ 1794 0028 0CB1     		cbz	r4, .L64
+ 1795              		.loc 1 797 35 discriminator 1 view .LVU511
+ 1796 002a 002B     		cmp	r3, #0
+ 1797 002c F3D1     		bne	.L65
+ 1798              	.L64:
+ 798:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 799:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if((uint32_t)RESET == flag_status){
+ 1799              		.loc 1 799 5 is_stmt 1 view .LVU512
+ 1800              		.loc 1 799 7 is_stmt 0 view .LVU513
+ 1801 002e 8BB9     		cbnz	r3, .L67
+ 800:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_HRFC = (uint32_t)(window | plus | HRFC_CMSK(minus));
+ 1802              		.loc 1 800 9 is_stmt 1 view .LVU514
+ 1803              		.loc 1 800 38 is_stmt 0 view .LVU515
+ 1804 0030 0843     		orrs	r0, r1
+ 1805              	.LVL87:
+ 1806              		.loc 1 800 47 view .LVU516
+ 1807 0032 40F2FF13 		movw	r3, #511
+ 1808              	.LVL88:
+ 1809              		.loc 1 800 47 view .LVU517
+ 1810 0036 1340     		ands	r3, r2
+ 1811              		.loc 1 800 20 view .LVU518
+ 1812 0038 1843     		orrs	r0, r3
+ 1813              		.loc 1 800 18 view .LVU519
+ 1814 003a 42F63C03 		movw	r3, #10300
+ 1815 003e C4F20003 		movt	r3, 16384
+ 1816 0042 1860     		str	r0, [r3]
+ 801:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
+ 1817              		.loc 1 801 9 is_stmt 1 view .LVU520
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 48
+
+
+ 1818              	.LVL89:
+ 1819              		.loc 1 801 22 is_stmt 0 view .LVU521
+ 1820 0044 0120     		movs	r0, #1
+ 1821              	.LVL90:
+ 1822              	.L66:
+ 802:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 803:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 804:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 805:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1823              		.loc 1 805 5 is_stmt 1 view .LVU522
+ 1824              		.loc 1 805 13 is_stmt 0 view .LVU523
+ 1825 0046 42F62403 		movw	r3, #10276
+ 1826 004a C4F20003 		movt	r3, 16384
+ 1827 004e FF22     		movs	r2, #255
+ 1828              	.LVL91:
+ 1829              		.loc 1 805 13 view .LVU524
+ 1830 0050 1A60     		str	r2, [r3]
+ 806:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 807:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 1831              		.loc 1 807 5 is_stmt 1 view .LVU525
+ 808:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1832              		.loc 1 808 1 is_stmt 0 view .LVU526
+ 1833              		@ sp needed
+ 1834              	.LVL92:
+ 1835              		.loc 1 808 1 view .LVU527
+ 1836 0052 30BD     		pop	{r4, r5, pc}
+ 1837              	.LVL93:
+ 1838              	.L67:
+ 787:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 1839              		.loc 1 787 15 view .LVU528
+ 1840 0054 0020     		movs	r0, #0
+ 1841              	.LVL94:
+ 787:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 1842              		.loc 1 787 15 view .LVU529
+ 1843 0056 F6E7     		b	.L66
+ 1844              		.cfi_endproc
+ 1845              	.LFE84:
+ 1847              		.section	.text.rtc_hour_adjust,"ax",%progbits
+ 1848              		.align	1
+ 1849              		.global	rtc_hour_adjust
+ 1850              		.syntax unified
+ 1851              		.code	16
+ 1852              		.thumb_func
+ 1854              	rtc_hour_adjust:
+ 1855              	.LVL95:
+ 1856              	.LFB85:
+ 809:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 810:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 811:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      adjust the daylight saving time by adding or substracting one hour from the current
+ 812:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  operation: hour ajustment operation
+ 813:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 814:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CTL_A1H: add one hour
+ 815:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_CTL_S1H: substract one hour
+ 816:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 817:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 818:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 819:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_hour_adjust(uint32_t operation)
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 49
+
+
+ 820:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1857              		.loc 1 820 1 is_stmt 1 view -0
+ 1858              		.cfi_startproc
+ 1859              		@ args = 0, pretend = 0, frame = 0
+ 1860              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1861              		@ link register save eliminated.
+ 821:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 822:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1862              		.loc 1 822 5 view .LVU531
+ 1863              		.loc 1 822 13 is_stmt 0 view .LVU532
+ 1864 0000 42F62403 		movw	r3, #10276
+ 1865 0004 C4F20003 		movt	r3, 16384
+ 1866 0008 CA22     		movs	r2, #202
+ 1867 000a 1A60     		str	r2, [r3]
+ 823:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1868              		.loc 1 823 5 is_stmt 1 view .LVU533
+ 1869              		.loc 1 823 13 is_stmt 0 view .LVU534
+ 1870 000c 773A     		subs	r2, r2, #119
+ 1871 000e 1A60     		str	r2, [r3]
+ 824:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 825:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL |= (uint32_t)(operation);
+ 1872              		.loc 1 825 5 is_stmt 1 view .LVU535
+ 1873 0010 42F60802 		movw	r2, #10248
+ 1874 0014 C4F20002 		movt	r2, 16384
+ 1875 0018 1168     		ldr	r1, [r2]
+ 1876              		.loc 1 825 13 is_stmt 0 view .LVU536
+ 1877 001a 0143     		orrs	r1, r0
+ 1878 001c 1160     		str	r1, [r2]
+ 826:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 827:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 828:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1879              		.loc 1 828 5 is_stmt 1 view .LVU537
+ 1880              		.loc 1 828 13 is_stmt 0 view .LVU538
+ 1881 001e FF22     		movs	r2, #255
+ 1882 0020 1A60     		str	r2, [r3]
+ 829:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1883              		.loc 1 829 1 view .LVU539
+ 1884              		@ sp needed
+ 1885 0022 7047     		bx	lr
+ 1886              		.cfi_endproc
+ 1887              	.LFE85:
+ 1889              		.section	.text.rtc_second_adjust,"ax",%progbits
+ 1890              		.align	1
+ 1891              		.global	rtc_second_adjust
+ 1892              		.syntax unified
+ 1893              		.code	16
+ 1894              		.thumb_func
+ 1896              	rtc_second_adjust:
+ 1897              	.LVL96:
+ 1898              	.LFB86:
+ 830:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 831:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 832:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      adjust RTC second or subsecond value of current time
+ 833:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  add: add 1s to current time or not
+ 834:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
+ 835:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_SHIFT_ADD1S_RESET: no effect
+ 836:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_SHIFT_ADD1S_SET: add 1s to current time
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 50
+
+
+ 837:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  minus: number of subsecond to minus from current time(0x0 - 0x7FFF)
+ 838:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 839:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 840:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 841:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_second_adjust(uint32_t add, uint32_t minus)
+ 842:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 1899              		.loc 1 842 1 is_stmt 1 view -0
+ 1900              		.cfi_startproc
+ 1901              		@ args = 0, pretend = 0, frame = 0
+ 1902              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1903              		.loc 1 842 1 is_stmt 0 view .LVU541
+ 1904 0000 10B5     		push	{r4, lr}
+ 1905              	.LCFI10:
+ 1906              		.cfi_def_cfa_offset 8
+ 1907              		.cfi_offset 4, -8
+ 1908              		.cfi_offset 14, -4
+ 843:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t time_index = RTC_SHIFTCTL_TIMEOUT;
+ 1909              		.loc 1 843 5 is_stmt 1 view .LVU542
+ 1910              	.LVL97:
+ 844:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 1911              		.loc 1 844 5 view .LVU543
+ 845:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 1912              		.loc 1 845 5 view .LVU544
+ 846:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t temp=0U;
+ 1913              		.loc 1 846 5 view .LVU545
+ 847:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 848:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 849:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 1914              		.loc 1 849 5 view .LVU546
+ 1915              		.loc 1 849 13 is_stmt 0 view .LVU547
+ 1916 0002 42F62403 		movw	r3, #10276
+ 1917 0006 C4F20003 		movt	r3, 16384
+ 1918 000a CA22     		movs	r2, #202
+ 1919 000c 1A60     		str	r2, [r3]
+ 850:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 1920              		.loc 1 850 5 is_stmt 1 view .LVU548
+ 1921              		.loc 1 850 13 is_stmt 0 view .LVU549
+ 1922 000e 773A     		subs	r2, r2, #119
+ 1923 0010 1A60     		str	r2, [r3]
+ 843:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 1924              		.loc 1 843 14 view .LVU550
+ 1925 0012 41F20002 		movw	r2, #4096
+ 1926              	.LVL98:
+ 1927              	.L71:
+ 851:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 852:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* check if a shift operation is ongoing */    
+ 853:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     do{
+ 1928              		.loc 1 853 5 is_stmt 1 view .LVU551
+ 854:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         flag_status = RTC_STAT & RTC_STAT_SOPF;
+ 1929              		.loc 1 854 9 view .LVU552
+ 1930              		.loc 1 854 23 is_stmt 0 view .LVU553
+ 1931 0016 42F60C03 		movw	r3, #10252
+ 1932 001a C4F20003 		movt	r3, 16384
+ 1933 001e 1C68     		ldr	r4, [r3]
+ 1934              		.loc 1 854 21 view .LVU554
+ 1935 0020 0823     		movs	r3, #8
+ 1936 0022 2340     		ands	r3, r4
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 51
+
+
+ 1937              	.LVL99:
+ 855:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }while((--time_index > 0x00U) && ((uint32_t)RESET != flag_status));
+ 1938              		.loc 1 855 35 is_stmt 1 discriminator 2 view .LVU555
+ 1939 0024 013A     		subs	r2, r2, #1
+ 1940              	.LVL100:
+ 1941              		.loc 1 855 35 is_stmt 0 discriminator 2 view .LVU556
+ 1942 0026 0AB1     		cbz	r2, .L70
+ 1943              		.loc 1 855 35 discriminator 1 view .LVU557
+ 1944 0028 002B     		cmp	r3, #0
+ 1945 002a F4D1     		bne	.L71
+ 1946              	.L70:
+ 856:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****   
+ 857:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     temp = RTC_CTL & RTC_CTL_REFEN;
+ 1947              		.loc 1 857 5 is_stmt 1 view .LVU558
+ 1948              		.loc 1 857 12 is_stmt 0 view .LVU559
+ 1949 002c 42F60802 		movw	r2, #10248
+ 1950              	.LVL101:
+ 1951              		.loc 1 857 12 view .LVU560
+ 1952 0030 C4F20002 		movt	r2, 16384
+ 1953 0034 1468     		ldr	r4, [r2]
+ 1954              		.loc 1 857 10 view .LVU561
+ 1955 0036 1022     		movs	r2, #16
+ 1956 0038 2240     		ands	r2, r4
+ 1957              	.LVL102:
+ 858:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* check if the function of reference clock detection is disabled */
+ 859:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(((uint32_t)RESET == flag_status) && (RESET == temp)){  
+ 1958              		.loc 1 859 5 is_stmt 1 view .LVU562
+ 1959              		.loc 1 859 41 is_stmt 0 view .LVU563
+ 1960 003a 1343     		orrs	r3, r2
+ 1961              	.LVL103:
+ 1962              		.loc 1 859 7 view .LVU564
+ 1963 003c 3BB1     		cbz	r3, .L74
+ 844:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     uint32_t flag_status = RESET;
+ 1964              		.loc 1 844 15 view .LVU565
+ 1965 003e 0020     		movs	r0, #0
+ 1966              	.LVL104:
+ 1967              	.L72:
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 861:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = rtc_register_sync_wait();        
+ 862:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 863:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 864:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 865:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 1968              		.loc 1 865 5 is_stmt 1 view .LVU566
+ 1969              		.loc 1 865 13 is_stmt 0 view .LVU567
+ 1970 0040 42F62403 		movw	r3, #10276
+ 1971 0044 C4F20003 		movt	r3, 16384
+ 1972 0048 FF22     		movs	r2, #255
+ 1973 004a 1A60     		str	r2, [r3]
+ 866:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 867:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 1974              		.loc 1 867 5 is_stmt 1 view .LVU568
+ 868:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 1975              		.loc 1 868 1 is_stmt 0 view .LVU569
+ 1976              		@ sp needed
+ 1977              	.LVL105:
+ 1978              		.loc 1 868 1 view .LVU570
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 52
+
+
+ 1979 004c 10BD     		pop	{r4, pc}
+ 1980              	.LVL106:
+ 1981              	.L74:
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 1982              		.loc 1 860 9 is_stmt 1 view .LVU571
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 1983              		.loc 1 860 41 is_stmt 0 view .LVU572
+ 1984 004e 47F6FF73 		movw	r3, #32767
+ 1985 0052 0B40     		ands	r3, r1
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 1986              		.loc 1 860 24 view .LVU573
+ 1987 0054 0343     		orrs	r3, r0
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 1988              		.loc 1 860 22 view .LVU574
+ 1989 0056 42F62C02 		movw	r2, #10284
+ 1990              	.LVL107:
+ 860:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_SHIFTCTL = (uint32_t)(add | SHIFTCTL_SFS(minus));
+ 1991              		.loc 1 860 22 view .LVU575
+ 1992 005a C4F20002 		movt	r2, 16384
+ 1993 005e 1360     		str	r3, [r2]
+ 861:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 1994              		.loc 1 861 9 is_stmt 1 view .LVU576
+ 861:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 1995              		.loc 1 861 24 is_stmt 0 view .LVU577
+ 1996 0060 FFF7FEFF 		bl	rtc_register_sync_wait
+ 1997              	.LVL108:
+ 861:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 1998              		.loc 1 861 24 view .LVU578
+ 1999 0064 ECE7     		b	.L72
+ 2000              		.cfi_endproc
+ 2001              	.LFE86:
+ 2003              		.section	.text.rtc_bypass_shadow_enable,"ax",%progbits
+ 2004              		.align	1
+ 2005              		.global	rtc_bypass_shadow_enable
+ 2006              		.syntax unified
+ 2007              		.code	16
+ 2008              		.thumb_func
+ 2010              	rtc_bypass_shadow_enable:
+ 2011              	.LFB87:
+ 869:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 870:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 871:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable RTC bypass shadow registers function
+ 872:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 873:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 874:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 875:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 876:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_bypass_shadow_enable(void)
+ 877:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** { 
+ 2012              		.loc 1 877 1 is_stmt 1 view -0
+ 2013              		.cfi_startproc
+ 2014              		@ args = 0, pretend = 0, frame = 0
+ 2015              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2016              		@ link register save eliminated.
+ 878:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 879:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 2017              		.loc 1 879 5 view .LVU580
+ 2018              		.loc 1 879 13 is_stmt 0 view .LVU581
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 53
+
+
+ 2019 0000 42F62403 		movw	r3, #10276
+ 2020 0004 C4F20003 		movt	r3, 16384
+ 2021 0008 CA22     		movs	r2, #202
+ 2022 000a 1A60     		str	r2, [r3]
+ 880:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 2023              		.loc 1 880 5 is_stmt 1 view .LVU582
+ 2024              		.loc 1 880 13 is_stmt 0 view .LVU583
+ 2025 000c 773A     		subs	r2, r2, #119
+ 2026 000e 1A60     		str	r2, [r3]
+ 881:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 882:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL |= (uint8_t)RTC_CTL_BPSHAD;
+ 2027              		.loc 1 882 5 is_stmt 1 view .LVU584
+ 2028 0010 42F60802 		movw	r2, #10248
+ 2029 0014 C4F20002 		movt	r2, 16384
+ 2030 0018 1168     		ldr	r1, [r2]
+ 2031              		.loc 1 882 13 is_stmt 0 view .LVU585
+ 2032 001a 2020     		movs	r0, #32
+ 2033 001c 0143     		orrs	r1, r0
+ 2034 001e 1160     		str	r1, [r2]
+ 883:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 884:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 885:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 2035              		.loc 1 885 5 is_stmt 1 view .LVU586
+ 2036              		.loc 1 885 13 is_stmt 0 view .LVU587
+ 2037 0020 FF22     		movs	r2, #255
+ 2038 0022 1A60     		str	r2, [r3]
+ 886:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 2039              		.loc 1 886 1 view .LVU588
+ 2040              		@ sp needed
+ 2041 0024 7047     		bx	lr
+ 2042              		.cfi_endproc
+ 2043              	.LFE87:
+ 2045              		.section	.text.rtc_bypass_shadow_disable,"ax",%progbits
+ 2046              		.align	1
+ 2047              		.global	rtc_bypass_shadow_disable
+ 2048              		.syntax unified
+ 2049              		.code	16
+ 2050              		.thumb_func
+ 2052              	rtc_bypass_shadow_disable:
+ 2053              	.LFB88:
+ 887:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 888:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 889:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disable RTC bypass shadow registers function
+ 890:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 891:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 892:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
+ 893:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 894:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_bypass_shadow_disable(void)
+ 895:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** { 
+ 2054              		.loc 1 895 1 is_stmt 1 view -0
+ 2055              		.cfi_startproc
+ 2056              		@ args = 0, pretend = 0, frame = 0
+ 2057              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2058              		@ link register save eliminated.
+ 896:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 897:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 2059              		.loc 1 897 5 view .LVU590
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 54
+
+
+ 2060              		.loc 1 897 13 is_stmt 0 view .LVU591
+ 2061 0000 42F62403 		movw	r3, #10276
+ 2062 0004 C4F20003 		movt	r3, 16384
+ 2063 0008 CA22     		movs	r2, #202
+ 2064 000a 1A60     		str	r2, [r3]
+ 898:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 2065              		.loc 1 898 5 is_stmt 1 view .LVU592
+ 2066              		.loc 1 898 13 is_stmt 0 view .LVU593
+ 2067 000c 773A     		subs	r2, r2, #119
+ 2068 000e 1A60     		str	r2, [r3]
+ 899:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 900:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint8_t)~RTC_CTL_BPSHAD;
+ 2069              		.loc 1 900 5 is_stmt 1 view .LVU594
+ 2070 0010 42F60802 		movw	r2, #10248
+ 2071 0014 C4F20002 		movt	r2, 16384
+ 2072 0018 1068     		ldr	r0, [r2]
+ 2073              		.loc 1 900 13 is_stmt 0 view .LVU595
+ 2074 001a DF21     		movs	r1, #223
+ 2075 001c 0140     		ands	r1, r0
+ 2076 001e 1160     		str	r1, [r2]
+ 901:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 902:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 903:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 2077              		.loc 1 903 5 is_stmt 1 view .LVU596
+ 2078              		.loc 1 903 13 is_stmt 0 view .LVU597
+ 2079 0020 FF22     		movs	r2, #255
+ 2080 0022 1A60     		str	r2, [r3]
+ 904:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 2081              		.loc 1 904 1 view .LVU598
+ 2082              		@ sp needed
+ 2083 0024 7047     		bx	lr
+ 2084              		.cfi_endproc
+ 2085              	.LFE88:
+ 2087              		.section	.text.rtc_refclock_detection_enable,"ax",%progbits
+ 2088              		.align	1
+ 2089              		.global	rtc_refclock_detection_enable
+ 2090              		.syntax unified
+ 2091              		.code	16
+ 2092              		.thumb_func
+ 2094              	rtc_refclock_detection_enable:
+ 2095              	.LFB89:
+ 905:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 906:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 907:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      enable RTC reference clock detection function
+ 908:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 909:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 910:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 911:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 912:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_refclock_detection_enable(void)
+ 913:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 2096              		.loc 1 913 1 is_stmt 1 view -0
+ 2097              		.cfi_startproc
+ 2098              		@ args = 0, pretend = 0, frame = 0
+ 2099              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2100 0000 10B5     		push	{r4, lr}
+ 2101              	.LCFI11:
+ 2102              		.cfi_def_cfa_offset 8
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 55
+
+
+ 2103              		.cfi_offset 4, -8
+ 2104              		.cfi_offset 14, -4
+ 914:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 2105              		.loc 1 914 5 view .LVU600
+ 2106              	.LVL109:
+ 915:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 916:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 917:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 2107              		.loc 1 917 5 view .LVU601
+ 2108              		.loc 1 917 13 is_stmt 0 view .LVU602
+ 2109 0002 42F62403 		movw	r3, #10276
+ 2110 0006 C4F20003 		movt	r3, 16384
+ 2111 000a CA22     		movs	r2, #202
+ 2112 000c 1A60     		str	r2, [r3]
+ 918:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 2113              		.loc 1 918 5 is_stmt 1 view .LVU603
+ 2114              		.loc 1 918 13 is_stmt 0 view .LVU604
+ 2115 000e 773A     		subs	r2, r2, #119
+ 2116 0010 1A60     		str	r2, [r3]
+ 919:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 920:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enter init mode */
+ 921:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     error_status = rtc_init_mode_enter();
+ 2117              		.loc 1 921 5 is_stmt 1 view .LVU605
+ 2118              		.loc 1 921 20 is_stmt 0 view .LVU606
+ 2119 0012 FFF7FEFF 		bl	rtc_init_mode_enter
+ 2120              	.LVL110:
+ 2121 0016 0400     		movs	r4, r0
+ 2122              	.LVL111:
+ 922:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 923:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(ERROR != error_status){
+ 2123              		.loc 1 923 5 is_stmt 1 view .LVU607
+ 2124              		.loc 1 923 7 is_stmt 0 view .LVU608
+ 2125 0018 38B9     		cbnz	r0, .L79
+ 2126              	.LVL112:
+ 2127              	.L78:
+ 924:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |= (uint32_t)RTC_CTL_REFEN;
+ 925:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* exit init mode */
+ 926:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         rtc_init_mode_exit();
+ 927:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 928:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 929:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 930:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 2128              		.loc 1 930 5 is_stmt 1 view .LVU609
+ 2129              		.loc 1 930 13 is_stmt 0 view .LVU610
+ 2130 001a 42F62403 		movw	r3, #10276
+ 2131 001e C4F20003 		movt	r3, 16384
+ 2132 0022 FF22     		movs	r2, #255
+ 2133 0024 1A60     		str	r2, [r3]
+ 931:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 932:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 2134              		.loc 1 932 5 is_stmt 1 view .LVU611
+ 933:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 2135              		.loc 1 933 1 is_stmt 0 view .LVU612
+ 2136 0026 2000     		movs	r0, r4
+ 2137              		@ sp needed
+ 2138 0028 10BD     		pop	{r4, pc}
+ 2139              	.LVL113:
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 56
+
+
+ 2140              	.L79:
+ 924:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |= (uint32_t)RTC_CTL_REFEN;
+ 2141              		.loc 1 924 9 is_stmt 1 view .LVU613
+ 2142 002a 42F60803 		movw	r3, #10248
+ 2143 002e C4F20003 		movt	r3, 16384
+ 2144 0032 1A68     		ldr	r2, [r3]
+ 924:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL |= (uint32_t)RTC_CTL_REFEN;
+ 2145              		.loc 1 924 17 is_stmt 0 view .LVU614
+ 2146 0034 1021     		movs	r1, #16
+ 2147 0036 0A43     		orrs	r2, r1
+ 2148 0038 1A60     		str	r2, [r3]
+ 926:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 2149              		.loc 1 926 9 is_stmt 1 view .LVU615
+ 2150 003a FFF7FEFF 		bl	rtc_init_mode_exit
+ 2151              	.LVL114:
+ 926:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 2152              		.loc 1 926 9 is_stmt 0 view .LVU616
+ 2153 003e ECE7     		b	.L78
+ 2154              		.cfi_endproc
+ 2155              	.LFE89:
+ 2157              		.section	.text.rtc_refclock_detection_disable,"ax",%progbits
+ 2158              		.align	1
+ 2159              		.global	rtc_refclock_detection_disable
+ 2160              		.syntax unified
+ 2161              		.code	16
+ 2162              		.thumb_func
+ 2164              	rtc_refclock_detection_disable:
+ 2165              	.LFB90:
+ 934:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 935:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
+ 936:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      disable RTC reference clock detection function
+ 937:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
+ 938:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
+ 939:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 940:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
+ 941:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ErrStatus rtc_refclock_detection_disable(void)
+ 942:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
+ 2166              		.loc 1 942 1 is_stmt 1 view -0
+ 2167              		.cfi_startproc
+ 2168              		@ args = 0, pretend = 0, frame = 0
+ 2169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2170 0000 10B5     		push	{r4, lr}
+ 2171              	.LCFI12:
+ 2172              		.cfi_def_cfa_offset 8
+ 2173              		.cfi_offset 4, -8
+ 2174              		.cfi_offset 14, -4
+ 943:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
+ 2175              		.loc 1 943 5 view .LVU618
+ 2176              	.LVL115:
+ 944:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     
+ 945:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
+ 946:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
+ 2177              		.loc 1 946 5 view .LVU619
+ 2178              		.loc 1 946 13 is_stmt 0 view .LVU620
+ 2179 0002 42F62403 		movw	r3, #10276
+ 2180 0006 C4F20003 		movt	r3, 16384
+ 2181 000a CA22     		movs	r2, #202
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 57
+
+
+ 2182 000c 1A60     		str	r2, [r3]
+ 947:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;
+ 2183              		.loc 1 947 5 is_stmt 1 view .LVU621
+ 2184              		.loc 1 947 13 is_stmt 0 view .LVU622
+ 2185 000e 773A     		subs	r2, r2, #119
+ 2186 0010 1A60     		str	r2, [r3]
+ 948:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 949:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enter init mode */
+ 950:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     error_status = rtc_init_mode_enter();
+ 2187              		.loc 1 950 5 is_stmt 1 view .LVU623
+ 2188              		.loc 1 950 20 is_stmt 0 view .LVU624
+ 2189 0012 FFF7FEFF 		bl	rtc_init_mode_enter
+ 2190              	.LVL116:
+ 2191 0016 0400     		movs	r4, r0
+ 2192              	.LVL117:
+ 951:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 952:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     if(ERROR != error_status){ 
+ 2193              		.loc 1 952 5 is_stmt 1 view .LVU625
+ 2194              		.loc 1 952 7 is_stmt 0 view .LVU626
+ 2195 0018 38B9     		cbnz	r0, .L82
+ 2196              	.LVL118:
+ 2197              	.L81:
+ 953:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL &= (uint32_t)~RTC_CTL_REFEN;
+ 954:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* exit init mode */
+ 955:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         rtc_init_mode_exit();
+ 956:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 957:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 958:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* enable the write protection */
+ 959:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_LOCK_KEY;
+ 2198              		.loc 1 959 5 is_stmt 1 view .LVU627
+ 2199              		.loc 1 959 13 is_stmt 0 view .LVU628
+ 2200 001a 42F62403 		movw	r3, #10276
+ 2201 001e C4F20003 		movt	r3, 16384
+ 2202 0022 FF22     		movs	r2, #255
+ 2203 0024 1A60     		str	r2, [r3]
+ 960:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
+ 961:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return error_status;
+ 2204              		.loc 1 961 5 is_stmt 1 view .LVU629
+ 962:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
+ 2205              		.loc 1 962 1 is_stmt 0 view .LVU630
+ 2206 0026 2000     		movs	r0, r4
+ 2207              		@ sp needed
+ 2208 0028 10BD     		pop	{r4, pc}
+ 2209              	.LVL119:
+ 2210              	.L82:
+ 953:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL &= (uint32_t)~RTC_CTL_REFEN;
+ 2211              		.loc 1 953 9 is_stmt 1 view .LVU631
+ 2212 002a 42F60803 		movw	r3, #10248
+ 2213 002e C4F20003 		movt	r3, 16384
+ 2214 0032 1A68     		ldr	r2, [r3]
+ 953:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_CTL &= (uint32_t)~RTC_CTL_REFEN;
+ 2215              		.loc 1 953 17 is_stmt 0 view .LVU632
+ 2216 0034 1021     		movs	r1, #16
+ 2217 0036 8A43     		bics	r2, r1
+ 2218 0038 1A60     		str	r2, [r3]
+ 955:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 2219              		.loc 1 955 9 is_stmt 1 view .LVU633
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 58
+
+
+ 2220 003a FFF7FEFF 		bl	rtc_init_mode_exit
+ 2221              	.LVL120:
+ 955:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
+ 2222              		.loc 1 955 9 is_stmt 0 view .LVU634
+ 2223 003e ECE7     		b	.L81
+ 2224              		.cfi_endproc
+ 2225              	.LFE90:
+ 2227              		.text
+ 2228              	.Letext0:
+ 2229              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 2230              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 2231              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 2232              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rtc.h"
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 59
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_rtc.c
+D:\noval\Temp\ccnjBaGd.s:19     .text.rtc_init_mode_enter:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:25     .text.rtc_init_mode_enter:00000000 rtc_init_mode_enter
+D:\noval\Temp\ccnjBaGd.s:100    .text.rtc_init_mode_exit:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:106    .text.rtc_init_mode_exit:00000000 rtc_init_mode_exit
+D:\noval\Temp\ccnjBaGd.s:128    .text.rtc_register_sync_wait:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:134    .text.rtc_register_sync_wait:00000000 rtc_register_sync_wait
+D:\noval\Temp\ccnjBaGd.s:236    .text.rtc_deinit:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:242    .text.rtc_deinit:00000000 rtc_deinit
+D:\noval\Temp\ccnjBaGd.s:352    .text.rtc_init:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:358    .text.rtc_init:00000000 rtc_init
+D:\noval\Temp\ccnjBaGd.s:522    .text.rtc_current_time_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:528    .text.rtc_current_time_get:00000000 rtc_current_time_get
+D:\noval\Temp\ccnjBaGd.s:656    .text.rtc_subsecond_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:662    .text.rtc_subsecond_get:00000000 rtc_subsecond_get
+D:\noval\Temp\ccnjBaGd.s:689    .text.rtc_alarm_config:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:695    .text.rtc_alarm_config:00000000 rtc_alarm_config
+D:\noval\Temp\ccnjBaGd.s:774    .text.rtc_alarm_subsecond_config:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:780    .text.rtc_alarm_subsecond_config:00000000 rtc_alarm_subsecond_config
+D:\noval\Temp\ccnjBaGd.s:817    .text.rtc_alarm_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:823    .text.rtc_alarm_enable:00000000 rtc_alarm_enable
+D:\noval\Temp\ccnjBaGd.s:859    .text.rtc_alarm_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:865    .text.rtc_alarm_disable:00000000 rtc_alarm_disable
+D:\noval\Temp\ccnjBaGd.s:951    .text.rtc_alarm_disable:0000005c $d
+D:\noval\Temp\ccnjBaGd.s:956    .text.rtc_alarm_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:962    .text.rtc_alarm_get:00000000 rtc_alarm_get
+D:\noval\Temp\ccnjBaGd.s:1033   .text.rtc_alarm_subsecond_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1039   .text.rtc_alarm_subsecond_get:00000000 rtc_alarm_subsecond_get
+D:\noval\Temp\ccnjBaGd.s:1060   .text.rtc_timestamp_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1066   .text.rtc_timestamp_enable:00000000 rtc_timestamp_enable
+D:\noval\Temp\ccnjBaGd.s:1120   .text.rtc_timestamp_enable:00000030 $d
+D:\noval\Temp\ccnjBaGd.s:1125   .text.rtc_timestamp_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1131   .text.rtc_timestamp_disable:00000000 rtc_timestamp_disable
+D:\noval\Temp\ccnjBaGd.s:1166   .text.rtc_timestamp_disable:00000028 $d
+D:\noval\Temp\ccnjBaGd.s:1171   .text.rtc_timestamp_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1177   .text.rtc_timestamp_get:00000000 rtc_timestamp_get
+D:\noval\Temp\ccnjBaGd.s:1262   .text.rtc_timestamp_subsecond_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1268   .text.rtc_timestamp_subsecond_get:00000000 rtc_timestamp_subsecond_get
+D:\noval\Temp\ccnjBaGd.s:1287   .text.rtc_tamper_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1293   .text.rtc_tamper_enable:00000000 rtc_tamper_enable
+D:\noval\Temp\ccnjBaGd.s:1436   .text.rtc_tamper_enable:000000cc $d
+D:\noval\Temp\ccnjBaGd.s:1442   .text.rtc_tamper_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1448   .text.rtc_tamper_disable:00000000 rtc_tamper_disable
+D:\noval\Temp\ccnjBaGd.s:1470   .text.rtc_interrupt_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1476   .text.rtc_interrupt_enable:00000000 rtc_interrupt_enable
+D:\noval\Temp\ccnjBaGd.s:1531   .text.rtc_interrupt_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1537   .text.rtc_interrupt_disable:00000000 rtc_interrupt_disable
+D:\noval\Temp\ccnjBaGd.s:1592   .text.rtc_flag_get:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1598   .text.rtc_flag_get:00000000 rtc_flag_get
+D:\noval\Temp\ccnjBaGd.s:1634   .text.rtc_flag_clear:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1640   .text.rtc_flag_clear:00000000 rtc_flag_clear
+D:\noval\Temp\ccnjBaGd.s:1662   .text.rtc_alter_output_config:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1668   .text.rtc_alter_output_config:00000000 rtc_alter_output_config
+D:\noval\Temp\ccnjBaGd.s:1735   .text.rtc_alter_output_config:00000050 $d
+D:\noval\Temp\ccnjBaGd.s:1741   .text.rtc_calibration_config:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1747   .text.rtc_calibration_config:00000000 rtc_calibration_config
+ARM GAS  D:\noval\Temp\ccnjBaGd.s 			page 60
+
+
+D:\noval\Temp\ccnjBaGd.s:1848   .text.rtc_hour_adjust:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1854   .text.rtc_hour_adjust:00000000 rtc_hour_adjust
+D:\noval\Temp\ccnjBaGd.s:1890   .text.rtc_second_adjust:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:1896   .text.rtc_second_adjust:00000000 rtc_second_adjust
+D:\noval\Temp\ccnjBaGd.s:2004   .text.rtc_bypass_shadow_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:2010   .text.rtc_bypass_shadow_enable:00000000 rtc_bypass_shadow_enable
+D:\noval\Temp\ccnjBaGd.s:2046   .text.rtc_bypass_shadow_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:2052   .text.rtc_bypass_shadow_disable:00000000 rtc_bypass_shadow_disable
+D:\noval\Temp\ccnjBaGd.s:2088   .text.rtc_refclock_detection_enable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:2094   .text.rtc_refclock_detection_enable:00000000 rtc_refclock_detection_enable
+D:\noval\Temp\ccnjBaGd.s:2158   .text.rtc_refclock_detection_disable:00000000 $t
+D:\noval\Temp\ccnjBaGd.s:2164   .text.rtc_refclock_detection_disable:00000000 rtc_refclock_detection_disable
+
+NO UNDEFINED SYMBOLS

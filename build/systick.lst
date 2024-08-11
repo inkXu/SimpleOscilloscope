@@ -1,0 +1,2322 @@
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"systick.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/systick.c"
+  18              		.section	.text.SysTick_Config,"ax",%progbits
+  19              		.align	1
+  20              		.syntax unified
+  21              		.code	16
+  22              		.thumb_func
+  24              	SysTick_Config:
+  25              	.LVL0:
+  26              	.LFB59:
+  27              		.file 2 "Drivers/CMSIS/core_cm23.h"
+   1:Drivers/CMSIS/core_cm23.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/core_cm23.h ****  * @file     core_cm23.h
+   3:Drivers/CMSIS/core_cm23.h ****  * @brief    CMSIS Cortex-M23 Core Peripheral Access Layer Header File
+   4:Drivers/CMSIS/core_cm23.h ****  * @version  V5.0.4
+   5:Drivers/CMSIS/core_cm23.h ****  * @date     10. January 2018
+   6:Drivers/CMSIS/core_cm23.h ****  ******************************************************************************/
+   7:Drivers/CMSIS/core_cm23.h **** /*
+   8:Drivers/CMSIS/core_cm23.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+   9:Drivers/CMSIS/core_cm23.h ****  *
+  10:Drivers/CMSIS/core_cm23.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Drivers/CMSIS/core_cm23.h ****  *
+  12:Drivers/CMSIS/core_cm23.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Drivers/CMSIS/core_cm23.h ****  * not use this file except in compliance with the License.
+  14:Drivers/CMSIS/core_cm23.h ****  * You may obtain a copy of the License at
+  15:Drivers/CMSIS/core_cm23.h ****  *
+  16:Drivers/CMSIS/core_cm23.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Drivers/CMSIS/core_cm23.h ****  *
+  18:Drivers/CMSIS/core_cm23.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Drivers/CMSIS/core_cm23.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Drivers/CMSIS/core_cm23.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Drivers/CMSIS/core_cm23.h ****  * See the License for the specific language governing permissions and
+  22:Drivers/CMSIS/core_cm23.h ****  * limitations under the License.
+  23:Drivers/CMSIS/core_cm23.h ****  */
+  24:Drivers/CMSIS/core_cm23.h **** 
+  25:Drivers/CMSIS/core_cm23.h **** #if   defined ( __ICCARM__ )
+  26:Drivers/CMSIS/core_cm23.h ****   #pragma system_include         /* treat file as system include file for MISRA check */
+  27:Drivers/CMSIS/core_cm23.h **** #elif defined (__clang__)
+  28:Drivers/CMSIS/core_cm23.h ****   #pragma clang system_header   /* treat file as system include file */
+  29:Drivers/CMSIS/core_cm23.h **** #endif
+  30:Drivers/CMSIS/core_cm23.h **** 
+  31:Drivers/CMSIS/core_cm23.h **** #ifndef __CORE_CM23_H_GENERIC
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 2
+
+
+  32:Drivers/CMSIS/core_cm23.h **** #define __CORE_CM23_H_GENERIC
+  33:Drivers/CMSIS/core_cm23.h **** 
+  34:Drivers/CMSIS/core_cm23.h **** #include <stdint.h>
+  35:Drivers/CMSIS/core_cm23.h **** 
+  36:Drivers/CMSIS/core_cm23.h **** #ifdef __cplusplus
+  37:Drivers/CMSIS/core_cm23.h ****  extern "C" {
+  38:Drivers/CMSIS/core_cm23.h **** #endif
+  39:Drivers/CMSIS/core_cm23.h **** 
+  40:Drivers/CMSIS/core_cm23.h **** /**
+  41:Drivers/CMSIS/core_cm23.h ****   \page CMSIS_MISRA_Exceptions  MISRA-C:2004 Compliance Exceptions
+  42:Drivers/CMSIS/core_cm23.h ****   CMSIS violates the following MISRA-C:2004 rules:
+  43:Drivers/CMSIS/core_cm23.h **** 
+  44:Drivers/CMSIS/core_cm23.h ****    \li Required Rule 8.5, object/function definition in header file.<br>
+  45:Drivers/CMSIS/core_cm23.h ****      Function definitions in header files are used to allow 'inlining'.
+  46:Drivers/CMSIS/core_cm23.h **** 
+  47:Drivers/CMSIS/core_cm23.h ****    \li Required Rule 18.4, declaration of union type or object of union type: '{...}'.<br>
+  48:Drivers/CMSIS/core_cm23.h ****      Unions are used for effective representation of core registers.
+  49:Drivers/CMSIS/core_cm23.h **** 
+  50:Drivers/CMSIS/core_cm23.h ****    \li Advisory Rule 19.7, Function-like macro defined.<br>
+  51:Drivers/CMSIS/core_cm23.h ****      Function-like macros are used to allow more efficient code.
+  52:Drivers/CMSIS/core_cm23.h ****  */
+  53:Drivers/CMSIS/core_cm23.h **** 
+  54:Drivers/CMSIS/core_cm23.h **** 
+  55:Drivers/CMSIS/core_cm23.h **** /*******************************************************************************
+  56:Drivers/CMSIS/core_cm23.h ****  *                 CMSIS definitions
+  57:Drivers/CMSIS/core_cm23.h ****  ******************************************************************************/
+  58:Drivers/CMSIS/core_cm23.h **** /**
+  59:Drivers/CMSIS/core_cm23.h ****   \ingroup Cortex_M23
+  60:Drivers/CMSIS/core_cm23.h ****   @{
+  61:Drivers/CMSIS/core_cm23.h ****  */
+  62:Drivers/CMSIS/core_cm23.h **** 
+  63:Drivers/CMSIS/core_cm23.h **** #include "cmsis_version.h"
+  64:Drivers/CMSIS/core_cm23.h **** 
+  65:Drivers/CMSIS/core_cm23.h **** /*  CMSIS definitions */
+  66:Drivers/CMSIS/core_cm23.h **** #define __CM23_CMSIS_VERSION_MAIN  (__CM_CMSIS_VERSION_MAIN)                   /*!< \deprecated [31
+  67:Drivers/CMSIS/core_cm23.h **** #define __CM23_CMSIS_VERSION_SUB   (__CM_CMSIS_VERSION_SUB)                    /*!< \deprecated [15
+  68:Drivers/CMSIS/core_cm23.h **** #define __CM23_CMSIS_VERSION       ((__CM23_CMSIS_VERSION_MAIN << 16U) | \
+  69:Drivers/CMSIS/core_cm23.h ****                                      __CM23_CMSIS_VERSION_SUB           )      /*!< \deprecated CMS
+  70:Drivers/CMSIS/core_cm23.h **** 
+  71:Drivers/CMSIS/core_cm23.h **** #define __CORTEX_M                     (23U)                                   /*!< Cortex-M Core *
+  72:Drivers/CMSIS/core_cm23.h **** 
+  73:Drivers/CMSIS/core_cm23.h **** /** __FPU_USED indicates whether an FPU is used or not.
+  74:Drivers/CMSIS/core_cm23.h ****     This core does not support an FPU at all
+  75:Drivers/CMSIS/core_cm23.h **** */
+  76:Drivers/CMSIS/core_cm23.h **** #define __FPU_USED       0U
+  77:Drivers/CMSIS/core_cm23.h **** 
+  78:Drivers/CMSIS/core_cm23.h **** #if defined ( __CC_ARM )
+  79:Drivers/CMSIS/core_cm23.h ****   #if defined __TARGET_FPU_VFP
+  80:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+  81:Drivers/CMSIS/core_cm23.h ****   #endif
+  82:Drivers/CMSIS/core_cm23.h **** 
+  83:Drivers/CMSIS/core_cm23.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+  84:Drivers/CMSIS/core_cm23.h ****   #if defined __ARM_PCS_VFP
+  85:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+  86:Drivers/CMSIS/core_cm23.h ****   #endif
+  87:Drivers/CMSIS/core_cm23.h **** 
+  88:Drivers/CMSIS/core_cm23.h **** #elif defined ( __GNUC__ )
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 3
+
+
+  89:Drivers/CMSIS/core_cm23.h ****   #if defined (__VFP_FP__) && !defined(__SOFTFP__)
+  90:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+  91:Drivers/CMSIS/core_cm23.h ****   #endif
+  92:Drivers/CMSIS/core_cm23.h **** 
+  93:Drivers/CMSIS/core_cm23.h **** #elif defined ( __ICCARM__ )
+  94:Drivers/CMSIS/core_cm23.h ****   #if defined __ARMVFP__
+  95:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+  96:Drivers/CMSIS/core_cm23.h ****   #endif
+  97:Drivers/CMSIS/core_cm23.h **** 
+  98:Drivers/CMSIS/core_cm23.h **** #elif defined ( __TI_ARM__ )
+  99:Drivers/CMSIS/core_cm23.h ****   #if defined __TI_VFP_SUPPORT__
+ 100:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+ 101:Drivers/CMSIS/core_cm23.h ****   #endif
+ 102:Drivers/CMSIS/core_cm23.h **** 
+ 103:Drivers/CMSIS/core_cm23.h **** #elif defined ( __TASKING__ )
+ 104:Drivers/CMSIS/core_cm23.h ****   #if defined __FPU_VFP__
+ 105:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+ 106:Drivers/CMSIS/core_cm23.h ****   #endif
+ 107:Drivers/CMSIS/core_cm23.h **** 
+ 108:Drivers/CMSIS/core_cm23.h **** #elif defined ( __CSMC__ )
+ 109:Drivers/CMSIS/core_cm23.h ****   #if ( __CSMC__ & 0x400U)
+ 110:Drivers/CMSIS/core_cm23.h ****     #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+ 111:Drivers/CMSIS/core_cm23.h ****   #endif
+ 112:Drivers/CMSIS/core_cm23.h **** 
+ 113:Drivers/CMSIS/core_cm23.h **** #endif
+ 114:Drivers/CMSIS/core_cm23.h **** 
+ 115:Drivers/CMSIS/core_cm23.h **** #include "cmsis_compiler.h"               /* CMSIS compiler specific defines */
+ 116:Drivers/CMSIS/core_cm23.h **** 
+ 117:Drivers/CMSIS/core_cm23.h **** 
+ 118:Drivers/CMSIS/core_cm23.h **** #ifdef __cplusplus
+ 119:Drivers/CMSIS/core_cm23.h **** }
+ 120:Drivers/CMSIS/core_cm23.h **** #endif
+ 121:Drivers/CMSIS/core_cm23.h **** 
+ 122:Drivers/CMSIS/core_cm23.h **** #endif /* __CORE_CM23_H_GENERIC */
+ 123:Drivers/CMSIS/core_cm23.h **** 
+ 124:Drivers/CMSIS/core_cm23.h **** #ifndef __CMSIS_GENERIC
+ 125:Drivers/CMSIS/core_cm23.h **** 
+ 126:Drivers/CMSIS/core_cm23.h **** #ifndef __CORE_CM23_H_DEPENDANT
+ 127:Drivers/CMSIS/core_cm23.h **** #define __CORE_CM23_H_DEPENDANT
+ 128:Drivers/CMSIS/core_cm23.h **** 
+ 129:Drivers/CMSIS/core_cm23.h **** #ifdef __cplusplus
+ 130:Drivers/CMSIS/core_cm23.h ****  extern "C" {
+ 131:Drivers/CMSIS/core_cm23.h **** #endif
+ 132:Drivers/CMSIS/core_cm23.h **** 
+ 133:Drivers/CMSIS/core_cm23.h **** /* check device defines and use defaults */
+ 134:Drivers/CMSIS/core_cm23.h **** #if defined __CHECK_DEVICE_DEFINES
+ 135:Drivers/CMSIS/core_cm23.h ****   #ifndef __CM23_REV
+ 136:Drivers/CMSIS/core_cm23.h ****     #define __CM23_REV                0x0000U
+ 137:Drivers/CMSIS/core_cm23.h ****     #warning "__CM23_REV not defined in device header file; using default!"
+ 138:Drivers/CMSIS/core_cm23.h ****   #endif
+ 139:Drivers/CMSIS/core_cm23.h **** 
+ 140:Drivers/CMSIS/core_cm23.h ****   #ifndef __FPU_PRESENT
+ 141:Drivers/CMSIS/core_cm23.h ****     #define __FPU_PRESENT             0U
+ 142:Drivers/CMSIS/core_cm23.h ****     #warning "__FPU_PRESENT not defined in device header file; using default!"
+ 143:Drivers/CMSIS/core_cm23.h ****   #endif
+ 144:Drivers/CMSIS/core_cm23.h **** 
+ 145:Drivers/CMSIS/core_cm23.h ****   #ifndef __MPU_PRESENT
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 4
+
+
+ 146:Drivers/CMSIS/core_cm23.h ****     #define __MPU_PRESENT             0U
+ 147:Drivers/CMSIS/core_cm23.h ****     #warning "__MPU_PRESENT not defined in device header file; using default!"
+ 148:Drivers/CMSIS/core_cm23.h ****   #endif
+ 149:Drivers/CMSIS/core_cm23.h **** 
+ 150:Drivers/CMSIS/core_cm23.h ****   #ifndef __SAUREGION_PRESENT
+ 151:Drivers/CMSIS/core_cm23.h ****     #define __SAUREGION_PRESENT       0U
+ 152:Drivers/CMSIS/core_cm23.h ****     #warning "__SAUREGION_PRESENT not defined in device header file; using default!"
+ 153:Drivers/CMSIS/core_cm23.h ****   #endif
+ 154:Drivers/CMSIS/core_cm23.h **** 
+ 155:Drivers/CMSIS/core_cm23.h ****   #ifndef __VTOR_PRESENT
+ 156:Drivers/CMSIS/core_cm23.h ****     #define __VTOR_PRESENT            0U
+ 157:Drivers/CMSIS/core_cm23.h ****     #warning "__VTOR_PRESENT not defined in device header file; using default!"
+ 158:Drivers/CMSIS/core_cm23.h ****   #endif
+ 159:Drivers/CMSIS/core_cm23.h **** 
+ 160:Drivers/CMSIS/core_cm23.h ****   #ifndef __NVIC_PRIO_BITS
+ 161:Drivers/CMSIS/core_cm23.h ****     #define __NVIC_PRIO_BITS          2U
+ 162:Drivers/CMSIS/core_cm23.h ****     #warning "__NVIC_PRIO_BITS not defined in device header file; using default!"
+ 163:Drivers/CMSIS/core_cm23.h ****   #endif
+ 164:Drivers/CMSIS/core_cm23.h **** 
+ 165:Drivers/CMSIS/core_cm23.h ****   #ifndef __Vendor_SysTickConfig
+ 166:Drivers/CMSIS/core_cm23.h ****     #define __Vendor_SysTickConfig    0U
+ 167:Drivers/CMSIS/core_cm23.h ****     #warning "__Vendor_SysTickConfig not defined in device header file; using default!"
+ 168:Drivers/CMSIS/core_cm23.h ****   #endif
+ 169:Drivers/CMSIS/core_cm23.h **** 
+ 170:Drivers/CMSIS/core_cm23.h ****   #ifndef __ETM_PRESENT
+ 171:Drivers/CMSIS/core_cm23.h ****     #define __ETM_PRESENT             0U
+ 172:Drivers/CMSIS/core_cm23.h ****     #warning "__ETM_PRESENT not defined in device header file; using default!"
+ 173:Drivers/CMSIS/core_cm23.h ****   #endif
+ 174:Drivers/CMSIS/core_cm23.h **** 
+ 175:Drivers/CMSIS/core_cm23.h ****   #ifndef __MTB_PRESENT
+ 176:Drivers/CMSIS/core_cm23.h ****     #define __MTB_PRESENT             0U
+ 177:Drivers/CMSIS/core_cm23.h ****     #warning "__MTB_PRESENT not defined in device header file; using default!"
+ 178:Drivers/CMSIS/core_cm23.h ****   #endif
+ 179:Drivers/CMSIS/core_cm23.h **** 
+ 180:Drivers/CMSIS/core_cm23.h **** #endif
+ 181:Drivers/CMSIS/core_cm23.h **** 
+ 182:Drivers/CMSIS/core_cm23.h **** /* IO definitions (access restrictions to peripheral registers) */
+ 183:Drivers/CMSIS/core_cm23.h **** /**
+ 184:Drivers/CMSIS/core_cm23.h ****     \defgroup CMSIS_glob_defs CMSIS Global Defines
+ 185:Drivers/CMSIS/core_cm23.h **** 
+ 186:Drivers/CMSIS/core_cm23.h ****     <strong>IO Type Qualifiers</strong> are used
+ 187:Drivers/CMSIS/core_cm23.h ****     \li to specify the access to peripheral variables.
+ 188:Drivers/CMSIS/core_cm23.h ****     \li for automatic generation of peripheral register debug information.
+ 189:Drivers/CMSIS/core_cm23.h **** */
+ 190:Drivers/CMSIS/core_cm23.h **** #ifdef __cplusplus
+ 191:Drivers/CMSIS/core_cm23.h ****   #define   __I     volatile             /*!< Defines 'read only' permissions */
+ 192:Drivers/CMSIS/core_cm23.h **** #else
+ 193:Drivers/CMSIS/core_cm23.h ****   #define   __I     volatile const       /*!< Defines 'read only' permissions */
+ 194:Drivers/CMSIS/core_cm23.h **** #endif
+ 195:Drivers/CMSIS/core_cm23.h **** #define     __O     volatile             /*!< Defines 'write only' permissions */
+ 196:Drivers/CMSIS/core_cm23.h **** #define     __IO    volatile             /*!< Defines 'read / write' permissions */
+ 197:Drivers/CMSIS/core_cm23.h **** 
+ 198:Drivers/CMSIS/core_cm23.h **** /* following defines should be used for structure members */
+ 199:Drivers/CMSIS/core_cm23.h **** #define     __IM     volatile const      /*! Defines 'read only' structure member permissions */
+ 200:Drivers/CMSIS/core_cm23.h **** #define     __OM     volatile            /*! Defines 'write only' structure member permissions */
+ 201:Drivers/CMSIS/core_cm23.h **** #define     __IOM    volatile            /*! Defines 'read / write' structure member permissions */
+ 202:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 5
+
+
+ 203:Drivers/CMSIS/core_cm23.h **** /*@} end of group Cortex_M23 */
+ 204:Drivers/CMSIS/core_cm23.h **** 
+ 205:Drivers/CMSIS/core_cm23.h **** 
+ 206:Drivers/CMSIS/core_cm23.h **** 
+ 207:Drivers/CMSIS/core_cm23.h **** /*******************************************************************************
+ 208:Drivers/CMSIS/core_cm23.h ****  *                 Register Abstraction
+ 209:Drivers/CMSIS/core_cm23.h ****   Core Register contain:
+ 210:Drivers/CMSIS/core_cm23.h ****   - Core Register
+ 211:Drivers/CMSIS/core_cm23.h ****   - Core NVIC Register
+ 212:Drivers/CMSIS/core_cm23.h ****   - Core SCB Register
+ 213:Drivers/CMSIS/core_cm23.h ****   - Core SysTick Register
+ 214:Drivers/CMSIS/core_cm23.h ****   - Core Debug Register
+ 215:Drivers/CMSIS/core_cm23.h ****   - Core MPU Register
+ 216:Drivers/CMSIS/core_cm23.h ****   - Core SAU Register
+ 217:Drivers/CMSIS/core_cm23.h ****  ******************************************************************************/
+ 218:Drivers/CMSIS/core_cm23.h **** /**
+ 219:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_core_register Defines and Type Definitions
+ 220:Drivers/CMSIS/core_cm23.h ****   \brief Type definitions and defines for Cortex-M processor based devices.
+ 221:Drivers/CMSIS/core_cm23.h **** */
+ 222:Drivers/CMSIS/core_cm23.h **** 
+ 223:Drivers/CMSIS/core_cm23.h **** /**
+ 224:Drivers/CMSIS/core_cm23.h ****   \ingroup    CMSIS_core_register
+ 225:Drivers/CMSIS/core_cm23.h ****   \defgroup   CMSIS_CORE  Status and Control Registers
+ 226:Drivers/CMSIS/core_cm23.h ****   \brief      Core Register type definitions.
+ 227:Drivers/CMSIS/core_cm23.h ****   @{
+ 228:Drivers/CMSIS/core_cm23.h ****  */
+ 229:Drivers/CMSIS/core_cm23.h **** 
+ 230:Drivers/CMSIS/core_cm23.h **** /**
+ 231:Drivers/CMSIS/core_cm23.h ****   \brief  Union type to access the Application Program Status Register (APSR).
+ 232:Drivers/CMSIS/core_cm23.h ****  */
+ 233:Drivers/CMSIS/core_cm23.h **** typedef union
+ 234:Drivers/CMSIS/core_cm23.h **** {
+ 235:Drivers/CMSIS/core_cm23.h ****   struct
+ 236:Drivers/CMSIS/core_cm23.h ****   {
+ 237:Drivers/CMSIS/core_cm23.h ****     uint32_t _reserved0:28;              /*!< bit:  0..27  Reserved */
+ 238:Drivers/CMSIS/core_cm23.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
+ 239:Drivers/CMSIS/core_cm23.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
+ 240:Drivers/CMSIS/core_cm23.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
+ 241:Drivers/CMSIS/core_cm23.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+ 242:Drivers/CMSIS/core_cm23.h ****   } b;                                   /*!< Structure used for bit  access */
+ 243:Drivers/CMSIS/core_cm23.h ****   uint32_t w;                            /*!< Type      used for word access */
+ 244:Drivers/CMSIS/core_cm23.h **** } APSR_Type;
+ 245:Drivers/CMSIS/core_cm23.h **** 
+ 246:Drivers/CMSIS/core_cm23.h **** /* APSR Register Definitions */
+ 247:Drivers/CMSIS/core_cm23.h **** #define APSR_N_Pos                         31U                                            /*!< APSR
+ 248:Drivers/CMSIS/core_cm23.h **** #define APSR_N_Msk                         (1UL << APSR_N_Pos)                            /*!< APSR
+ 249:Drivers/CMSIS/core_cm23.h **** 
+ 250:Drivers/CMSIS/core_cm23.h **** #define APSR_Z_Pos                         30U                                            /*!< APSR
+ 251:Drivers/CMSIS/core_cm23.h **** #define APSR_Z_Msk                         (1UL << APSR_Z_Pos)                            /*!< APSR
+ 252:Drivers/CMSIS/core_cm23.h **** 
+ 253:Drivers/CMSIS/core_cm23.h **** #define APSR_C_Pos                         29U                                            /*!< APSR
+ 254:Drivers/CMSIS/core_cm23.h **** #define APSR_C_Msk                         (1UL << APSR_C_Pos)                            /*!< APSR
+ 255:Drivers/CMSIS/core_cm23.h **** 
+ 256:Drivers/CMSIS/core_cm23.h **** #define APSR_V_Pos                         28U                                            /*!< APSR
+ 257:Drivers/CMSIS/core_cm23.h **** #define APSR_V_Msk                         (1UL << APSR_V_Pos)                            /*!< APSR
+ 258:Drivers/CMSIS/core_cm23.h **** 
+ 259:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 6
+
+
+ 260:Drivers/CMSIS/core_cm23.h **** /**
+ 261:Drivers/CMSIS/core_cm23.h ****   \brief  Union type to access the Interrupt Program Status Register (IPSR).
+ 262:Drivers/CMSIS/core_cm23.h ****  */
+ 263:Drivers/CMSIS/core_cm23.h **** typedef union
+ 264:Drivers/CMSIS/core_cm23.h **** {
+ 265:Drivers/CMSIS/core_cm23.h ****   struct
+ 266:Drivers/CMSIS/core_cm23.h ****   {
+ 267:Drivers/CMSIS/core_cm23.h ****     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
+ 268:Drivers/CMSIS/core_cm23.h ****     uint32_t _reserved0:23;              /*!< bit:  9..31  Reserved */
+ 269:Drivers/CMSIS/core_cm23.h ****   } b;                                   /*!< Structure used for bit  access */
+ 270:Drivers/CMSIS/core_cm23.h ****   uint32_t w;                            /*!< Type      used for word access */
+ 271:Drivers/CMSIS/core_cm23.h **** } IPSR_Type;
+ 272:Drivers/CMSIS/core_cm23.h **** 
+ 273:Drivers/CMSIS/core_cm23.h **** /* IPSR Register Definitions */
+ 274:Drivers/CMSIS/core_cm23.h **** #define IPSR_ISR_Pos                        0U                                            /*!< IPSR
+ 275:Drivers/CMSIS/core_cm23.h **** #define IPSR_ISR_Msk                       (0x1FFUL /*<< IPSR_ISR_Pos*/)                  /*!< IPSR
+ 276:Drivers/CMSIS/core_cm23.h **** 
+ 277:Drivers/CMSIS/core_cm23.h **** 
+ 278:Drivers/CMSIS/core_cm23.h **** /**
+ 279:Drivers/CMSIS/core_cm23.h ****   \brief  Union type to access the Special-Purpose Program Status Registers (xPSR).
+ 280:Drivers/CMSIS/core_cm23.h ****  */
+ 281:Drivers/CMSIS/core_cm23.h **** typedef union
+ 282:Drivers/CMSIS/core_cm23.h **** {
+ 283:Drivers/CMSIS/core_cm23.h ****   struct
+ 284:Drivers/CMSIS/core_cm23.h ****   {
+ 285:Drivers/CMSIS/core_cm23.h ****     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
+ 286:Drivers/CMSIS/core_cm23.h ****     uint32_t _reserved0:15;              /*!< bit:  9..23  Reserved */
+ 287:Drivers/CMSIS/core_cm23.h ****     uint32_t T:1;                        /*!< bit:     24  Thumb bit        (read 0) */
+ 288:Drivers/CMSIS/core_cm23.h ****     uint32_t _reserved1:3;               /*!< bit: 25..27  Reserved */
+ 289:Drivers/CMSIS/core_cm23.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
+ 290:Drivers/CMSIS/core_cm23.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
+ 291:Drivers/CMSIS/core_cm23.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
+ 292:Drivers/CMSIS/core_cm23.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+ 293:Drivers/CMSIS/core_cm23.h ****   } b;                                   /*!< Structure used for bit  access */
+ 294:Drivers/CMSIS/core_cm23.h ****   uint32_t w;                            /*!< Type      used for word access */
+ 295:Drivers/CMSIS/core_cm23.h **** } xPSR_Type;
+ 296:Drivers/CMSIS/core_cm23.h **** 
+ 297:Drivers/CMSIS/core_cm23.h **** /* xPSR Register Definitions */
+ 298:Drivers/CMSIS/core_cm23.h **** #define xPSR_N_Pos                         31U                                            /*!< xPSR
+ 299:Drivers/CMSIS/core_cm23.h **** #define xPSR_N_Msk                         (1UL << xPSR_N_Pos)                            /*!< xPSR
+ 300:Drivers/CMSIS/core_cm23.h **** 
+ 301:Drivers/CMSIS/core_cm23.h **** #define xPSR_Z_Pos                         30U                                            /*!< xPSR
+ 302:Drivers/CMSIS/core_cm23.h **** #define xPSR_Z_Msk                         (1UL << xPSR_Z_Pos)                            /*!< xPSR
+ 303:Drivers/CMSIS/core_cm23.h **** 
+ 304:Drivers/CMSIS/core_cm23.h **** #define xPSR_C_Pos                         29U                                            /*!< xPSR
+ 305:Drivers/CMSIS/core_cm23.h **** #define xPSR_C_Msk                         (1UL << xPSR_C_Pos)                            /*!< xPSR
+ 306:Drivers/CMSIS/core_cm23.h **** 
+ 307:Drivers/CMSIS/core_cm23.h **** #define xPSR_V_Pos                         28U                                            /*!< xPSR
+ 308:Drivers/CMSIS/core_cm23.h **** #define xPSR_V_Msk                         (1UL << xPSR_V_Pos)                            /*!< xPSR
+ 309:Drivers/CMSIS/core_cm23.h **** 
+ 310:Drivers/CMSIS/core_cm23.h **** #define xPSR_T_Pos                         24U                                            /*!< xPSR
+ 311:Drivers/CMSIS/core_cm23.h **** #define xPSR_T_Msk                         (1UL << xPSR_T_Pos)                            /*!< xPSR
+ 312:Drivers/CMSIS/core_cm23.h **** 
+ 313:Drivers/CMSIS/core_cm23.h **** #define xPSR_ISR_Pos                        0U                                            /*!< xPSR
+ 314:Drivers/CMSIS/core_cm23.h **** #define xPSR_ISR_Msk                       (0x1FFUL /*<< xPSR_ISR_Pos*/)                  /*!< xPSR
+ 315:Drivers/CMSIS/core_cm23.h **** 
+ 316:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 7
+
+
+ 317:Drivers/CMSIS/core_cm23.h **** /**
+ 318:Drivers/CMSIS/core_cm23.h ****   \brief  Union type to access the Control Registers (CONTROL).
+ 319:Drivers/CMSIS/core_cm23.h ****  */
+ 320:Drivers/CMSIS/core_cm23.h **** typedef union
+ 321:Drivers/CMSIS/core_cm23.h **** {
+ 322:Drivers/CMSIS/core_cm23.h ****   struct
+ 323:Drivers/CMSIS/core_cm23.h ****   {
+ 324:Drivers/CMSIS/core_cm23.h ****     uint32_t nPRIV:1;                    /*!< bit:      0  Execution privilege in Thread mode */
+ 325:Drivers/CMSIS/core_cm23.h ****     uint32_t SPSEL:1;                    /*!< bit:      1  Stack-pointer select */
+ 326:Drivers/CMSIS/core_cm23.h ****     uint32_t _reserved1:30;              /*!< bit:  2..31  Reserved */
+ 327:Drivers/CMSIS/core_cm23.h ****   } b;                                   /*!< Structure used for bit  access */
+ 328:Drivers/CMSIS/core_cm23.h ****   uint32_t w;                            /*!< Type      used for word access */
+ 329:Drivers/CMSIS/core_cm23.h **** } CONTROL_Type;
+ 330:Drivers/CMSIS/core_cm23.h **** 
+ 331:Drivers/CMSIS/core_cm23.h **** /* CONTROL Register Definitions */
+ 332:Drivers/CMSIS/core_cm23.h **** #define CONTROL_SPSEL_Pos                   1U                                            /*!< CONT
+ 333:Drivers/CMSIS/core_cm23.h **** #define CONTROL_SPSEL_Msk                  (1UL << CONTROL_SPSEL_Pos)                     /*!< CONT
+ 334:Drivers/CMSIS/core_cm23.h **** 
+ 335:Drivers/CMSIS/core_cm23.h **** #define CONTROL_nPRIV_Pos                   0U                                            /*!< CONT
+ 336:Drivers/CMSIS/core_cm23.h **** #define CONTROL_nPRIV_Msk                  (1UL /*<< CONTROL_nPRIV_Pos*/)                 /*!< CONT
+ 337:Drivers/CMSIS/core_cm23.h **** 
+ 338:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_CORE */
+ 339:Drivers/CMSIS/core_cm23.h **** 
+ 340:Drivers/CMSIS/core_cm23.h **** 
+ 341:Drivers/CMSIS/core_cm23.h **** /**
+ 342:Drivers/CMSIS/core_cm23.h ****   \ingroup    CMSIS_core_register
+ 343:Drivers/CMSIS/core_cm23.h ****   \defgroup   CMSIS_NVIC  Nested Vectored Interrupt Controller (NVIC)
+ 344:Drivers/CMSIS/core_cm23.h ****   \brief      Type definitions for the NVIC Registers
+ 345:Drivers/CMSIS/core_cm23.h ****   @{
+ 346:Drivers/CMSIS/core_cm23.h ****  */
+ 347:Drivers/CMSIS/core_cm23.h **** 
+ 348:Drivers/CMSIS/core_cm23.h **** /**
+ 349:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Nested Vectored Interrupt Controller (NVIC).
+ 350:Drivers/CMSIS/core_cm23.h ****  */
+ 351:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 352:Drivers/CMSIS/core_cm23.h **** {
+ 353:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ISER[16U];              /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+ 354:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED0[16U];
+ 355:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ICER[16U];              /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register 
+ 356:Drivers/CMSIS/core_cm23.h ****         uint32_t RSERVED1[16U];
+ 357:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ISPR[16U];              /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register *
+ 358:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED2[16U];
+ 359:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ICPR[16U];              /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register
+ 360:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED3[16U];
+ 361:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t IABR[16U];              /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register */
+ 362:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED4[16U];
+ 363:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ITNS[16U];              /*!< Offset: 0x280 (R/W)  Interrupt Non-Secure State Regis
+ 364:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED5[16U];
+ 365:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t IPR[124U];              /*!< Offset: 0x300 (R/W)  Interrupt Priority Register */
+ 366:Drivers/CMSIS/core_cm23.h **** }  NVIC_Type;
+ 367:Drivers/CMSIS/core_cm23.h **** 
+ 368:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_NVIC */
+ 369:Drivers/CMSIS/core_cm23.h **** 
+ 370:Drivers/CMSIS/core_cm23.h **** 
+ 371:Drivers/CMSIS/core_cm23.h **** /**
+ 372:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 373:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_SCB     System Control Block (SCB)
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 8
+
+
+ 374:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the System Control Block Registers
+ 375:Drivers/CMSIS/core_cm23.h ****   @{
+ 376:Drivers/CMSIS/core_cm23.h ****  */
+ 377:Drivers/CMSIS/core_cm23.h **** 
+ 378:Drivers/CMSIS/core_cm23.h **** /**
+ 379:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the System Control Block (SCB).
+ 380:Drivers/CMSIS/core_cm23.h ****  */
+ 381:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 382:Drivers/CMSIS/core_cm23.h **** {
+ 383:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t CPUID;                  /*!< Offset: 0x000 (R/ )  CPUID Base Register */
+ 384:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ICSR;                   /*!< Offset: 0x004 (R/W)  Interrupt Control and State Regi
+ 385:Drivers/CMSIS/core_cm23.h **** #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
+ 386:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t VTOR;                   /*!< Offset: 0x008 (R/W)  Vector Table Offset Register */
+ 387:Drivers/CMSIS/core_cm23.h **** #else
+ 388:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED0;
+ 389:Drivers/CMSIS/core_cm23.h **** #endif
+ 390:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t AIRCR;                  /*!< Offset: 0x00C (R/W)  Application Interrupt and Reset 
+ 391:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t SCR;                    /*!< Offset: 0x010 (R/W)  System Control Register */
+ 392:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CCR;                    /*!< Offset: 0x014 (R/W)  Configuration Control Register *
+ 393:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED1;
+ 394:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t SHPR[2U];               /*!< Offset: 0x01C (R/W)  System Handlers Priority Registe
+ 395:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t SHCSR;                  /*!< Offset: 0x024 (R/W)  System Handler Control and State
+ 396:Drivers/CMSIS/core_cm23.h **** } SCB_Type;
+ 397:Drivers/CMSIS/core_cm23.h **** 
+ 398:Drivers/CMSIS/core_cm23.h **** /* SCB CPUID Register Definitions */
+ 399:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_IMPLEMENTER_Pos          24U                                            /*!< SCB 
+ 400:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_IMPLEMENTER_Msk          (0xFFUL << SCB_CPUID_IMPLEMENTER_Pos)          /*!< SCB 
+ 401:Drivers/CMSIS/core_cm23.h **** 
+ 402:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_VARIANT_Pos              20U                                            /*!< SCB 
+ 403:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_VARIANT_Msk              (0xFUL << SCB_CPUID_VARIANT_Pos)               /*!< SCB 
+ 404:Drivers/CMSIS/core_cm23.h **** 
+ 405:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_ARCHITECTURE_Pos         16U                                            /*!< SCB 
+ 406:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_ARCHITECTURE_Msk         (0xFUL << SCB_CPUID_ARCHITECTURE_Pos)          /*!< SCB 
+ 407:Drivers/CMSIS/core_cm23.h **** 
+ 408:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_PARTNO_Pos                4U                                            /*!< SCB 
+ 409:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_PARTNO_Msk               (0xFFFUL << SCB_CPUID_PARTNO_Pos)              /*!< SCB 
+ 410:Drivers/CMSIS/core_cm23.h **** 
+ 411:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_REVISION_Pos              0U                                            /*!< SCB 
+ 412:Drivers/CMSIS/core_cm23.h **** #define SCB_CPUID_REVISION_Msk             (0xFUL /*<< SCB_CPUID_REVISION_Pos*/)          /*!< SCB 
+ 413:Drivers/CMSIS/core_cm23.h **** 
+ 414:Drivers/CMSIS/core_cm23.h **** /* SCB Interrupt Control State Register Definitions */
+ 415:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDNMISET_Pos            31U                                            /*!< SCB 
+ 416:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDNMISET_Msk            (1UL << SCB_ICSR_PENDNMISET_Pos)               /*!< SCB 
+ 417:Drivers/CMSIS/core_cm23.h **** 
+ 418:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDNMICLR_Pos            30U                                            /*!< SCB 
+ 419:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDNMICLR_Msk            (1UL << SCB_ICSR_PENDNMICLR_Pos)               /*!< SCB 
+ 420:Drivers/CMSIS/core_cm23.h **** 
+ 421:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSVSET_Pos             28U                                            /*!< SCB 
+ 422:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSVSET_Msk             (1UL << SCB_ICSR_PENDSVSET_Pos)                /*!< SCB 
+ 423:Drivers/CMSIS/core_cm23.h **** 
+ 424:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSVCLR_Pos             27U                                            /*!< SCB 
+ 425:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSVCLR_Msk             (1UL << SCB_ICSR_PENDSVCLR_Pos)                /*!< SCB 
+ 426:Drivers/CMSIS/core_cm23.h **** 
+ 427:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSTSET_Pos             26U                                            /*!< SCB 
+ 428:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSTSET_Msk             (1UL << SCB_ICSR_PENDSTSET_Pos)                /*!< SCB 
+ 429:Drivers/CMSIS/core_cm23.h **** 
+ 430:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSTCLR_Pos             25U                                            /*!< SCB 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 9
+
+
+ 431:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_PENDSTCLR_Msk             (1UL << SCB_ICSR_PENDSTCLR_Pos)                /*!< SCB 
+ 432:Drivers/CMSIS/core_cm23.h **** 
+ 433:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_STTNS_Pos                 24U                                            /*!< SCB 
+ 434:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_STTNS_Msk                 (1UL << SCB_ICSR_STTNS_Pos)                    /*!< SCB 
+ 435:Drivers/CMSIS/core_cm23.h **** 
+ 436:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_ISRPREEMPT_Pos            23U                                            /*!< SCB 
+ 437:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_ISRPREEMPT_Msk            (1UL << SCB_ICSR_ISRPREEMPT_Pos)               /*!< SCB 
+ 438:Drivers/CMSIS/core_cm23.h **** 
+ 439:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_ISRPENDING_Pos            22U                                            /*!< SCB 
+ 440:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_ISRPENDING_Msk            (1UL << SCB_ICSR_ISRPENDING_Pos)               /*!< SCB 
+ 441:Drivers/CMSIS/core_cm23.h **** 
+ 442:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_VECTPENDING_Pos           12U                                            /*!< SCB 
+ 443:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_VECTPENDING_Msk           (0x1FFUL << SCB_ICSR_VECTPENDING_Pos)          /*!< SCB 
+ 444:Drivers/CMSIS/core_cm23.h **** 
+ 445:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_RETTOBASE_Pos             11U                                            /*!< SCB 
+ 446:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_RETTOBASE_Msk             (1UL << SCB_ICSR_RETTOBASE_Pos)                /*!< SCB 
+ 447:Drivers/CMSIS/core_cm23.h **** 
+ 448:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_VECTACTIVE_Pos             0U                                            /*!< SCB 
+ 449:Drivers/CMSIS/core_cm23.h **** #define SCB_ICSR_VECTACTIVE_Msk            (0x1FFUL /*<< SCB_ICSR_VECTACTIVE_Pos*/)       /*!< SCB 
+ 450:Drivers/CMSIS/core_cm23.h **** 
+ 451:Drivers/CMSIS/core_cm23.h **** #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
+ 452:Drivers/CMSIS/core_cm23.h **** /* SCB Vector Table Offset Register Definitions */
+ 453:Drivers/CMSIS/core_cm23.h **** #define SCB_VTOR_TBLOFF_Pos                 7U                                            /*!< SCB 
+ 454:Drivers/CMSIS/core_cm23.h **** #define SCB_VTOR_TBLOFF_Msk                (0x1FFFFFFUL << SCB_VTOR_TBLOFF_Pos)           /*!< SCB 
+ 455:Drivers/CMSIS/core_cm23.h **** #endif
+ 456:Drivers/CMSIS/core_cm23.h **** 
+ 457:Drivers/CMSIS/core_cm23.h **** /* SCB Application Interrupt and Reset Control Register Definitions */
+ 458:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTKEY_Pos              16U                                            /*!< SCB 
+ 459:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTKEY_Msk              (0xFFFFUL << SCB_AIRCR_VECTKEY_Pos)            /*!< SCB 
+ 460:Drivers/CMSIS/core_cm23.h **** 
+ 461:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTKEYSTAT_Pos          16U                                            /*!< SCB 
+ 462:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTKEYSTAT_Msk          (0xFFFFUL << SCB_AIRCR_VECTKEYSTAT_Pos)        /*!< SCB 
+ 463:Drivers/CMSIS/core_cm23.h **** 
+ 464:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_ENDIANESS_Pos            15U                                            /*!< SCB 
+ 465:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_ENDIANESS_Msk            (1UL << SCB_AIRCR_ENDIANESS_Pos)               /*!< SCB 
+ 466:Drivers/CMSIS/core_cm23.h **** 
+ 467:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_PRIS_Pos                 14U                                            /*!< SCB 
+ 468:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_PRIS_Msk                 (1UL << SCB_AIRCR_PRIS_Pos)                    /*!< SCB 
+ 469:Drivers/CMSIS/core_cm23.h **** 
+ 470:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_BFHFNMINS_Pos            13U                                            /*!< SCB 
+ 471:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_BFHFNMINS_Msk            (1UL << SCB_AIRCR_BFHFNMINS_Pos)               /*!< SCB 
+ 472:Drivers/CMSIS/core_cm23.h **** 
+ 473:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_SYSRESETREQS_Pos          3U                                            /*!< SCB 
+ 474:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_SYSRESETREQS_Msk         (1UL << SCB_AIRCR_SYSRESETREQS_Pos)            /*!< SCB 
+ 475:Drivers/CMSIS/core_cm23.h **** 
+ 476:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_SYSRESETREQ_Pos           2U                                            /*!< SCB 
+ 477:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_SYSRESETREQ_Msk          (1UL << SCB_AIRCR_SYSRESETREQ_Pos)             /*!< SCB 
+ 478:Drivers/CMSIS/core_cm23.h **** 
+ 479:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTCLRACTIVE_Pos         1U                                            /*!< SCB 
+ 480:Drivers/CMSIS/core_cm23.h **** #define SCB_AIRCR_VECTCLRACTIVE_Msk        (1UL << SCB_AIRCR_VECTCLRACTIVE_Pos)           /*!< SCB 
+ 481:Drivers/CMSIS/core_cm23.h **** 
+ 482:Drivers/CMSIS/core_cm23.h **** /* SCB System Control Register Definitions */
+ 483:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SEVONPEND_Pos               4U                                            /*!< SCB 
+ 484:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SEVONPEND_Msk              (1UL << SCB_SCR_SEVONPEND_Pos)                 /*!< SCB 
+ 485:Drivers/CMSIS/core_cm23.h **** 
+ 486:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPDEEPS_Pos              3U                                            /*!< SCB 
+ 487:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPDEEPS_Msk             (1UL << SCB_SCR_SLEEPDEEPS_Pos)                /*!< SCB 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 10
+
+
+ 488:Drivers/CMSIS/core_cm23.h **** 
+ 489:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPDEEP_Pos               2U                                            /*!< SCB 
+ 490:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPDEEP_Msk              (1UL << SCB_SCR_SLEEPDEEP_Pos)                 /*!< SCB 
+ 491:Drivers/CMSIS/core_cm23.h **** 
+ 492:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPONEXIT_Pos             1U                                            /*!< SCB 
+ 493:Drivers/CMSIS/core_cm23.h **** #define SCB_SCR_SLEEPONEXIT_Msk            (1UL << SCB_SCR_SLEEPONEXIT_Pos)               /*!< SCB 
+ 494:Drivers/CMSIS/core_cm23.h **** 
+ 495:Drivers/CMSIS/core_cm23.h **** /* SCB Configuration Control Register Definitions */
+ 496:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_BP_Pos                     18U                                            /*!< SCB 
+ 497:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_BP_Msk                     (1UL << SCB_CCR_BP_Pos)                        /*!< SCB 
+ 498:Drivers/CMSIS/core_cm23.h **** 
+ 499:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_IC_Pos                     17U                                            /*!< SCB 
+ 500:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_IC_Msk                     (1UL << SCB_CCR_IC_Pos)                        /*!< SCB 
+ 501:Drivers/CMSIS/core_cm23.h **** 
+ 502:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_DC_Pos                     16U                                            /*!< SCB 
+ 503:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_DC_Msk                     (1UL << SCB_CCR_DC_Pos)                        /*!< SCB 
+ 504:Drivers/CMSIS/core_cm23.h **** 
+ 505:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_STKOFHFNMIGN_Pos           10U                                            /*!< SCB 
+ 506:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_STKOFHFNMIGN_Msk           (1UL << SCB_CCR_STKOFHFNMIGN_Pos)              /*!< SCB 
+ 507:Drivers/CMSIS/core_cm23.h **** 
+ 508:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_BFHFNMIGN_Pos               8U                                            /*!< SCB 
+ 509:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_BFHFNMIGN_Msk              (1UL << SCB_CCR_BFHFNMIGN_Pos)                 /*!< SCB 
+ 510:Drivers/CMSIS/core_cm23.h **** 
+ 511:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_DIV_0_TRP_Pos               4U                                            /*!< SCB 
+ 512:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_DIV_0_TRP_Msk              (1UL << SCB_CCR_DIV_0_TRP_Pos)                 /*!< SCB 
+ 513:Drivers/CMSIS/core_cm23.h **** 
+ 514:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_UNALIGN_TRP_Pos             3U                                            /*!< SCB 
+ 515:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_UNALIGN_TRP_Msk            (1UL << SCB_CCR_UNALIGN_TRP_Pos)               /*!< SCB 
+ 516:Drivers/CMSIS/core_cm23.h **** 
+ 517:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_USERSETMPEND_Pos            1U                                            /*!< SCB 
+ 518:Drivers/CMSIS/core_cm23.h **** #define SCB_CCR_USERSETMPEND_Msk           (1UL << SCB_CCR_USERSETMPEND_Pos)              /*!< SCB 
+ 519:Drivers/CMSIS/core_cm23.h **** 
+ 520:Drivers/CMSIS/core_cm23.h **** /* SCB System Handler Control and State Register Definitions */
+ 521:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_HARDFAULTPENDED_Pos      21U                                            /*!< SCB 
+ 522:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_HARDFAULTPENDED_Msk      (1UL << SCB_SHCSR_HARDFAULTPENDED_Pos)         /*!< SCB 
+ 523:Drivers/CMSIS/core_cm23.h **** 
+ 524:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SVCALLPENDED_Pos         15U                                            /*!< SCB 
+ 525:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SVCALLPENDED_Msk         (1UL << SCB_SHCSR_SVCALLPENDED_Pos)            /*!< SCB 
+ 526:Drivers/CMSIS/core_cm23.h **** 
+ 527:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SYSTICKACT_Pos           11U                                            /*!< SCB 
+ 528:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SYSTICKACT_Msk           (1UL << SCB_SHCSR_SYSTICKACT_Pos)              /*!< SCB 
+ 529:Drivers/CMSIS/core_cm23.h **** 
+ 530:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_PENDSVACT_Pos            10U                                            /*!< SCB 
+ 531:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_PENDSVACT_Msk            (1UL << SCB_SHCSR_PENDSVACT_Pos)               /*!< SCB 
+ 532:Drivers/CMSIS/core_cm23.h **** 
+ 533:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SVCALLACT_Pos             7U                                            /*!< SCB 
+ 534:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_SVCALLACT_Msk            (1UL << SCB_SHCSR_SVCALLACT_Pos)               /*!< SCB 
+ 535:Drivers/CMSIS/core_cm23.h **** 
+ 536:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_NMIACT_Pos                5U                                            /*!< SCB 
+ 537:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_NMIACT_Msk               (1UL << SCB_SHCSR_NMIACT_Pos)                  /*!< SCB 
+ 538:Drivers/CMSIS/core_cm23.h **** 
+ 539:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_HARDFAULTACT_Pos          2U                                            /*!< SCB 
+ 540:Drivers/CMSIS/core_cm23.h **** #define SCB_SHCSR_HARDFAULTACT_Msk         (1UL << SCB_SHCSR_HARDFAULTACT_Pos)            /*!< SCB 
+ 541:Drivers/CMSIS/core_cm23.h **** 
+ 542:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_SCB */
+ 543:Drivers/CMSIS/core_cm23.h **** 
+ 544:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 11
+
+
+ 545:Drivers/CMSIS/core_cm23.h **** /**
+ 546:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 547:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_SysTick     System Tick Timer (SysTick)
+ 548:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the System Timer Registers.
+ 549:Drivers/CMSIS/core_cm23.h ****   @{
+ 550:Drivers/CMSIS/core_cm23.h ****  */
+ 551:Drivers/CMSIS/core_cm23.h **** 
+ 552:Drivers/CMSIS/core_cm23.h **** /**
+ 553:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the System Timer (SysTick).
+ 554:Drivers/CMSIS/core_cm23.h ****  */
+ 555:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 556:Drivers/CMSIS/core_cm23.h **** {
+ 557:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CTRL;                   /*!< Offset: 0x000 (R/W)  SysTick Control and Status Regis
+ 558:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t LOAD;                   /*!< Offset: 0x004 (R/W)  SysTick Reload Value Register */
+ 559:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t VAL;                    /*!< Offset: 0x008 (R/W)  SysTick Current Value Register *
+ 560:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t CALIB;                  /*!< Offset: 0x00C (R/ )  SysTick Calibration Register */
+ 561:Drivers/CMSIS/core_cm23.h **** } SysTick_Type;
+ 562:Drivers/CMSIS/core_cm23.h **** 
+ 563:Drivers/CMSIS/core_cm23.h **** /* SysTick Control / Status Register Definitions */
+ 564:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_COUNTFLAG_Pos         16U                                            /*!< SysT
+ 565:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_COUNTFLAG_Msk         (1UL << SysTick_CTRL_COUNTFLAG_Pos)            /*!< SysT
+ 566:Drivers/CMSIS/core_cm23.h **** 
+ 567:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_CLKSOURCE_Pos          2U                                            /*!< SysT
+ 568:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_CLKSOURCE_Msk         (1UL << SysTick_CTRL_CLKSOURCE_Pos)            /*!< SysT
+ 569:Drivers/CMSIS/core_cm23.h **** 
+ 570:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_TICKINT_Pos            1U                                            /*!< SysT
+ 571:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_TICKINT_Msk           (1UL << SysTick_CTRL_TICKINT_Pos)              /*!< SysT
+ 572:Drivers/CMSIS/core_cm23.h **** 
+ 573:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_ENABLE_Pos             0U                                            /*!< SysT
+ 574:Drivers/CMSIS/core_cm23.h **** #define SysTick_CTRL_ENABLE_Msk            (1UL /*<< SysTick_CTRL_ENABLE_Pos*/)           /*!< SysT
+ 575:Drivers/CMSIS/core_cm23.h **** 
+ 576:Drivers/CMSIS/core_cm23.h **** /* SysTick Reload Register Definitions */
+ 577:Drivers/CMSIS/core_cm23.h **** #define SysTick_LOAD_RELOAD_Pos             0U                                            /*!< SysT
+ 578:Drivers/CMSIS/core_cm23.h **** #define SysTick_LOAD_RELOAD_Msk            (0xFFFFFFUL /*<< SysTick_LOAD_RELOAD_Pos*/)    /*!< SysT
+ 579:Drivers/CMSIS/core_cm23.h **** 
+ 580:Drivers/CMSIS/core_cm23.h **** /* SysTick Current Register Definitions */
+ 581:Drivers/CMSIS/core_cm23.h **** #define SysTick_VAL_CURRENT_Pos             0U                                            /*!< SysT
+ 582:Drivers/CMSIS/core_cm23.h **** #define SysTick_VAL_CURRENT_Msk            (0xFFFFFFUL /*<< SysTick_VAL_CURRENT_Pos*/)    /*!< SysT
+ 583:Drivers/CMSIS/core_cm23.h **** 
+ 584:Drivers/CMSIS/core_cm23.h **** /* SysTick Calibration Register Definitions */
+ 585:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_NOREF_Pos            31U                                            /*!< SysT
+ 586:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_NOREF_Msk            (1UL << SysTick_CALIB_NOREF_Pos)               /*!< SysT
+ 587:Drivers/CMSIS/core_cm23.h **** 
+ 588:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_SKEW_Pos             30U                                            /*!< SysT
+ 589:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_SKEW_Msk             (1UL << SysTick_CALIB_SKEW_Pos)                /*!< SysT
+ 590:Drivers/CMSIS/core_cm23.h **** 
+ 591:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_TENMS_Pos             0U                                            /*!< SysT
+ 592:Drivers/CMSIS/core_cm23.h **** #define SysTick_CALIB_TENMS_Msk            (0xFFFFFFUL /*<< SysTick_CALIB_TENMS_Pos*/)    /*!< SysT
+ 593:Drivers/CMSIS/core_cm23.h **** 
+ 594:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_SysTick */
+ 595:Drivers/CMSIS/core_cm23.h **** 
+ 596:Drivers/CMSIS/core_cm23.h **** 
+ 597:Drivers/CMSIS/core_cm23.h **** /**
+ 598:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 599:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_DWT     Data Watchpoint and Trace (DWT)
+ 600:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the Data Watchpoint and Trace (DWT)
+ 601:Drivers/CMSIS/core_cm23.h ****   @{
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 12
+
+
+ 602:Drivers/CMSIS/core_cm23.h ****  */
+ 603:Drivers/CMSIS/core_cm23.h **** 
+ 604:Drivers/CMSIS/core_cm23.h **** /**
+ 605:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Data Watchpoint and Trace Register (DWT).
+ 606:Drivers/CMSIS/core_cm23.h ****  */
+ 607:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 608:Drivers/CMSIS/core_cm23.h **** {
+ 609:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CTRL;                   /*!< Offset: 0x000 (R/W)  Control Register */
+ 610:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED0[6U];
+ 611:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t PCSR;                   /*!< Offset: 0x01C (R/ )  Program Counter Sample Register 
+ 612:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP0;                  /*!< Offset: 0x020 (R/W)  Comparator Register 0 */
+ 613:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED1[1U];
+ 614:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION0;              /*!< Offset: 0x028 (R/W)  Function Register 0 */
+ 615:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED2[1U];
+ 616:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP1;                  /*!< Offset: 0x030 (R/W)  Comparator Register 1 */
+ 617:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED3[1U];
+ 618:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION1;              /*!< Offset: 0x038 (R/W)  Function Register 1 */
+ 619:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED4[1U];
+ 620:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP2;                  /*!< Offset: 0x040 (R/W)  Comparator Register 2 */
+ 621:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED5[1U];
+ 622:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION2;              /*!< Offset: 0x048 (R/W)  Function Register 2 */
+ 623:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED6[1U];
+ 624:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP3;                  /*!< Offset: 0x050 (R/W)  Comparator Register 3 */
+ 625:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED7[1U];
+ 626:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION3;              /*!< Offset: 0x058 (R/W)  Function Register 3 */
+ 627:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED8[1U];
+ 628:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP4;                  /*!< Offset: 0x060 (R/W)  Comparator Register 4 */
+ 629:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED9[1U];
+ 630:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION4;              /*!< Offset: 0x068 (R/W)  Function Register 4 */
+ 631:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED10[1U];
+ 632:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP5;                  /*!< Offset: 0x070 (R/W)  Comparator Register 5 */
+ 633:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED11[1U];
+ 634:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION5;              /*!< Offset: 0x078 (R/W)  Function Register 5 */
+ 635:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED12[1U];
+ 636:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP6;                  /*!< Offset: 0x080 (R/W)  Comparator Register 6 */
+ 637:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED13[1U];
+ 638:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION6;              /*!< Offset: 0x088 (R/W)  Function Register 6 */
+ 639:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED14[1U];
+ 640:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP7;                  /*!< Offset: 0x090 (R/W)  Comparator Register 7 */
+ 641:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED15[1U];
+ 642:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION7;              /*!< Offset: 0x098 (R/W)  Function Register 7 */
+ 643:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED16[1U];
+ 644:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP8;                  /*!< Offset: 0x0A0 (R/W)  Comparator Register 8 */
+ 645:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED17[1U];
+ 646:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION8;              /*!< Offset: 0x0A8 (R/W)  Function Register 8 */
+ 647:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED18[1U];
+ 648:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP9;                  /*!< Offset: 0x0B0 (R/W)  Comparator Register 9 */
+ 649:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED19[1U];
+ 650:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION9;              /*!< Offset: 0x0B8 (R/W)  Function Register 9 */
+ 651:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED20[1U];
+ 652:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP10;                 /*!< Offset: 0x0C0 (R/W)  Comparator Register 10 */
+ 653:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED21[1U];
+ 654:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION10;             /*!< Offset: 0x0C8 (R/W)  Function Register 10 */
+ 655:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED22[1U];
+ 656:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP11;                 /*!< Offset: 0x0D0 (R/W)  Comparator Register 11 */
+ 657:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED23[1U];
+ 658:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION11;             /*!< Offset: 0x0D8 (R/W)  Function Register 11 */
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 13
+
+
+ 659:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED24[1U];
+ 660:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP12;                 /*!< Offset: 0x0E0 (R/W)  Comparator Register 12 */
+ 661:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED25[1U];
+ 662:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION12;             /*!< Offset: 0x0E8 (R/W)  Function Register 12 */
+ 663:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED26[1U];
+ 664:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP13;                 /*!< Offset: 0x0F0 (R/W)  Comparator Register 13 */
+ 665:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED27[1U];
+ 666:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION13;             /*!< Offset: 0x0F8 (R/W)  Function Register 13 */
+ 667:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED28[1U];
+ 668:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP14;                 /*!< Offset: 0x100 (R/W)  Comparator Register 14 */
+ 669:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED29[1U];
+ 670:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION14;             /*!< Offset: 0x108 (R/W)  Function Register 14 */
+ 671:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED30[1U];
+ 672:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t COMP15;                 /*!< Offset: 0x110 (R/W)  Comparator Register 15 */
+ 673:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED31[1U];
+ 674:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FUNCTION15;             /*!< Offset: 0x118 (R/W)  Function Register 15 */
+ 675:Drivers/CMSIS/core_cm23.h **** } DWT_Type;
+ 676:Drivers/CMSIS/core_cm23.h **** 
+ 677:Drivers/CMSIS/core_cm23.h **** /* DWT Control Register Definitions */
+ 678:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NUMCOMP_Pos               28U                                         /*!< DWT CTR
+ 679:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NUMCOMP_Msk               (0xFUL << DWT_CTRL_NUMCOMP_Pos)             /*!< DWT CTR
+ 680:Drivers/CMSIS/core_cm23.h **** 
+ 681:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOTRCPKT_Pos              27U                                         /*!< DWT CTR
+ 682:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOTRCPKT_Msk              (0x1UL << DWT_CTRL_NOTRCPKT_Pos)            /*!< DWT CTR
+ 683:Drivers/CMSIS/core_cm23.h **** 
+ 684:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOEXTTRIG_Pos             26U                                         /*!< DWT CTR
+ 685:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOEXTTRIG_Msk             (0x1UL << DWT_CTRL_NOEXTTRIG_Pos)           /*!< DWT CTR
+ 686:Drivers/CMSIS/core_cm23.h **** 
+ 687:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOCYCCNT_Pos              25U                                         /*!< DWT CTR
+ 688:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOCYCCNT_Msk              (0x1UL << DWT_CTRL_NOCYCCNT_Pos)            /*!< DWT CTR
+ 689:Drivers/CMSIS/core_cm23.h **** 
+ 690:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOPRFCNT_Pos              24U                                         /*!< DWT CTR
+ 691:Drivers/CMSIS/core_cm23.h **** #define DWT_CTRL_NOPRFCNT_Msk              (0x1UL << DWT_CTRL_NOPRFCNT_Pos)            /*!< DWT CTR
+ 692:Drivers/CMSIS/core_cm23.h **** 
+ 693:Drivers/CMSIS/core_cm23.h **** /* DWT Comparator Function Register Definitions */
+ 694:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_ID_Pos                27U                                         /*!< DWT FUN
+ 695:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_ID_Msk                (0x1FUL << DWT_FUNCTION_ID_Pos)             /*!< DWT FUN
+ 696:Drivers/CMSIS/core_cm23.h **** 
+ 697:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_MATCHED_Pos           24U                                         /*!< DWT FUN
+ 698:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_MATCHED_Msk           (0x1UL << DWT_FUNCTION_MATCHED_Pos)         /*!< DWT FUN
+ 699:Drivers/CMSIS/core_cm23.h **** 
+ 700:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_DATAVSIZE_Pos         10U                                         /*!< DWT FUN
+ 701:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_DATAVSIZE_Msk         (0x3UL << DWT_FUNCTION_DATAVSIZE_Pos)       /*!< DWT FUN
+ 702:Drivers/CMSIS/core_cm23.h **** 
+ 703:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_ACTION_Pos             4U                                         /*!< DWT FUN
+ 704:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_ACTION_Msk            (0x3UL << DWT_FUNCTION_ACTION_Pos)          /*!< DWT FUN
+ 705:Drivers/CMSIS/core_cm23.h **** 
+ 706:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_MATCH_Pos              0U                                         /*!< DWT FUN
+ 707:Drivers/CMSIS/core_cm23.h **** #define DWT_FUNCTION_MATCH_Msk             (0xFUL /*<< DWT_FUNCTION_MATCH_Pos*/)       /*!< DWT FUN
+ 708:Drivers/CMSIS/core_cm23.h **** 
+ 709:Drivers/CMSIS/core_cm23.h **** /*@}*/ /* end of group CMSIS_DWT */
+ 710:Drivers/CMSIS/core_cm23.h **** 
+ 711:Drivers/CMSIS/core_cm23.h **** 
+ 712:Drivers/CMSIS/core_cm23.h **** /**
+ 713:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 714:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_TPI     Trace Port Interface (TPI)
+ 715:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the Trace Port Interface (TPI)
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 14
+
+
+ 716:Drivers/CMSIS/core_cm23.h ****   @{
+ 717:Drivers/CMSIS/core_cm23.h ****  */
+ 718:Drivers/CMSIS/core_cm23.h **** 
+ 719:Drivers/CMSIS/core_cm23.h **** /**
+ 720:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Trace Port Interface Register (TPI).
+ 721:Drivers/CMSIS/core_cm23.h ****  */
+ 722:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 723:Drivers/CMSIS/core_cm23.h **** {
+ 724:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t SSPSR;                  /*!< Offset: 0x000 (R/ )  Supported Parallel Port Size Reg
+ 725:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CSPSR;                  /*!< Offset: 0x004 (R/W)  Current Parallel Port Size Regis
+ 726:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED0[2U];
+ 727:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ACPR;                   /*!< Offset: 0x010 (R/W)  Asynchronous Clock Prescaler Reg
+ 728:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED1[55U];
+ 729:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t SPPR;                   /*!< Offset: 0x0F0 (R/W)  Selected Pin Protocol Register *
+ 730:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED2[131U];
+ 731:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t FFSR;                   /*!< Offset: 0x300 (R/ )  Formatter and Flush Status Regis
+ 732:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t FFCR;                   /*!< Offset: 0x304 (R/W)  Formatter and Flush Control Regi
+ 733:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t FSCR;                   /*!< Offset: 0x308 (R/ )  Formatter Synchronization Counte
+ 734:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED3[759U];
+ 735:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t TRIGGER;                /*!< Offset: 0xEE8 (R/ )  TRIGGER */
+ 736:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t FIFO0;                  /*!< Offset: 0xEEC (R/ )  Integration ETM Data */
+ 737:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t ITATBCTR2;              /*!< Offset: 0xEF0 (R/ )  ITATBCTR2 */
+ 738:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED4[1U];
+ 739:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t ITATBCTR0;              /*!< Offset: 0xEF8 (R/ )  ITATBCTR0 */
+ 740:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t FIFO1;                  /*!< Offset: 0xEFC (R/ )  Integration ITM Data */
+ 741:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t ITCTRL;                 /*!< Offset: 0xF00 (R/W)  Integration Mode Control */
+ 742:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED5[39U];
+ 743:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CLAIMSET;               /*!< Offset: 0xFA0 (R/W)  Claim tag set */
+ 744:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CLAIMCLR;               /*!< Offset: 0xFA4 (R/W)  Claim tag clear */
+ 745:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED7[8U];
+ 746:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t DEVID;                  /*!< Offset: 0xFC8 (R/ )  TPIU_DEVID */
+ 747:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t DEVTYPE;                /*!< Offset: 0xFCC (R/ )  TPIU_DEVTYPE */
+ 748:Drivers/CMSIS/core_cm23.h **** } TPI_Type;
+ 749:Drivers/CMSIS/core_cm23.h **** 
+ 750:Drivers/CMSIS/core_cm23.h **** /* TPI Asynchronous Clock Prescaler Register Definitions */
+ 751:Drivers/CMSIS/core_cm23.h **** #define TPI_ACPR_PRESCALER_Pos              0U                                         /*!< @Deprec
+ 752:Drivers/CMSIS/core_cm23.h **** #define TPI_ACPR_PRESCALER_Msk             (0x1FFFUL /*<< TPI_ACPR_PRESCALER_Pos*/)    /*!< @Deprec
+ 753:Drivers/CMSIS/core_cm23.h **** 
+ 754:Drivers/CMSIS/core_cm23.h **** #define TPI_ACPR_SWOSCALER_Pos              0U                                         /*!< TPI ACP
+ 755:Drivers/CMSIS/core_cm23.h **** #define TPI_ACPR_SWOSCALER_Msk             (0xFFFFUL /*<< TPI_ACPR_SWOSCALER_Pos*/)    /*!< TPI ACP
+ 756:Drivers/CMSIS/core_cm23.h **** 
+ 757:Drivers/CMSIS/core_cm23.h **** /* TPI Selected Pin Protocol Register Definitions */
+ 758:Drivers/CMSIS/core_cm23.h **** #define TPI_SPPR_TXMODE_Pos                 0U                                         /*!< TPI SPP
+ 759:Drivers/CMSIS/core_cm23.h **** #define TPI_SPPR_TXMODE_Msk                (0x3UL /*<< TPI_SPPR_TXMODE_Pos*/)          /*!< TPI SPP
+ 760:Drivers/CMSIS/core_cm23.h **** 
+ 761:Drivers/CMSIS/core_cm23.h **** /* TPI Formatter and Flush Status Register Definitions */
+ 762:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FtNonStop_Pos              3U                                         /*!< TPI FFS
+ 763:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FtNonStop_Msk             (0x1UL << TPI_FFSR_FtNonStop_Pos)           /*!< TPI FFS
+ 764:Drivers/CMSIS/core_cm23.h **** 
+ 765:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_TCPresent_Pos              2U                                         /*!< TPI FFS
+ 766:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_TCPresent_Msk             (0x1UL << TPI_FFSR_TCPresent_Pos)           /*!< TPI FFS
+ 767:Drivers/CMSIS/core_cm23.h **** 
+ 768:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FtStopped_Pos              1U                                         /*!< TPI FFS
+ 769:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FtStopped_Msk             (0x1UL << TPI_FFSR_FtStopped_Pos)           /*!< TPI FFS
+ 770:Drivers/CMSIS/core_cm23.h **** 
+ 771:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FlInProg_Pos               0U                                         /*!< TPI FFS
+ 772:Drivers/CMSIS/core_cm23.h **** #define TPI_FFSR_FlInProg_Msk              (0x1UL /*<< TPI_FFSR_FlInProg_Pos*/)        /*!< TPI FFS
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 15
+
+
+ 773:Drivers/CMSIS/core_cm23.h **** 
+ 774:Drivers/CMSIS/core_cm23.h **** /* TPI Formatter and Flush Control Register Definitions */
+ 775:Drivers/CMSIS/core_cm23.h **** #define TPI_FFCR_TrigIn_Pos                 8U                                         /*!< TPI FFC
+ 776:Drivers/CMSIS/core_cm23.h **** #define TPI_FFCR_TrigIn_Msk                (0x1UL << TPI_FFCR_TrigIn_Pos)              /*!< TPI FFC
+ 777:Drivers/CMSIS/core_cm23.h **** 
+ 778:Drivers/CMSIS/core_cm23.h **** #define TPI_FFCR_EnFCont_Pos                1U                                         /*!< TPI FFC
+ 779:Drivers/CMSIS/core_cm23.h **** #define TPI_FFCR_EnFCont_Msk               (0x1UL << TPI_FFCR_EnFCont_Pos)             /*!< TPI FFC
+ 780:Drivers/CMSIS/core_cm23.h **** 
+ 781:Drivers/CMSIS/core_cm23.h **** /* TPI TRIGGER Register Definitions */
+ 782:Drivers/CMSIS/core_cm23.h **** #define TPI_TRIGGER_TRIGGER_Pos             0U                                         /*!< TPI TRI
+ 783:Drivers/CMSIS/core_cm23.h **** #define TPI_TRIGGER_TRIGGER_Msk            (0x1UL /*<< TPI_TRIGGER_TRIGGER_Pos*/)      /*!< TPI TRI
+ 784:Drivers/CMSIS/core_cm23.h **** 
+ 785:Drivers/CMSIS/core_cm23.h **** /* TPI Integration ETM Data Register Definitions (FIFO0) */
+ 786:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ITM_ATVALID_Pos          29U                                         /*!< TPI FIF
+ 787:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ITM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ITM_ATVALID_Pos)        /*!< TPI FIF
+ 788:Drivers/CMSIS/core_cm23.h **** 
+ 789:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ITM_bytecount_Pos        27U                                         /*!< TPI FIF
+ 790:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ITM_bytecount_Msk        (0x3UL << TPI_FIFO0_ITM_bytecount_Pos)      /*!< TPI FIF
+ 791:Drivers/CMSIS/core_cm23.h **** 
+ 792:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM_ATVALID_Pos          26U                                         /*!< TPI FIF
+ 793:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ETM_ATVALID_Pos)        /*!< TPI FIF
+ 794:Drivers/CMSIS/core_cm23.h **** 
+ 795:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM_bytecount_Pos        24U                                         /*!< TPI FIF
+ 796:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM_bytecount_Msk        (0x3UL << TPI_FIFO0_ETM_bytecount_Pos)      /*!< TPI FIF
+ 797:Drivers/CMSIS/core_cm23.h **** 
+ 798:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM2_Pos                 16U                                         /*!< TPI FIF
+ 799:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM2_Msk                 (0xFFUL << TPI_FIFO0_ETM2_Pos)              /*!< TPI FIF
+ 800:Drivers/CMSIS/core_cm23.h **** 
+ 801:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM1_Pos                  8U                                         /*!< TPI FIF
+ 802:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM1_Msk                 (0xFFUL << TPI_FIFO0_ETM1_Pos)              /*!< TPI FIF
+ 803:Drivers/CMSIS/core_cm23.h **** 
+ 804:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM0_Pos                  0U                                         /*!< TPI FIF
+ 805:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO0_ETM0_Msk                 (0xFFUL /*<< TPI_FIFO0_ETM0_Pos*/)          /*!< TPI FIF
+ 806:Drivers/CMSIS/core_cm23.h **** 
+ 807:Drivers/CMSIS/core_cm23.h **** /* TPI ITATBCTR2 Register Definitions */
+ 808:Drivers/CMSIS/core_cm23.h **** #define TPI_ITATBCTR2_ATREADY_Pos           0U                                         /*!< TPI ITA
+ 809:Drivers/CMSIS/core_cm23.h **** #define TPI_ITATBCTR2_ATREADY_Msk          (0x1UL /*<< TPI_ITATBCTR2_ATREADY_Pos*/)    /*!< TPI ITA
+ 810:Drivers/CMSIS/core_cm23.h **** 
+ 811:Drivers/CMSIS/core_cm23.h **** /* TPI Integration ITM Data Register Definitions (FIFO1) */
+ 812:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM_ATVALID_Pos          29U                                         /*!< TPI FIF
+ 813:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM_ATVALID_Msk          (0x3UL << TPI_FIFO1_ITM_ATVALID_Pos)        /*!< TPI FIF
+ 814:Drivers/CMSIS/core_cm23.h **** 
+ 815:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM_bytecount_Pos        27U                                         /*!< TPI FIF
+ 816:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM_bytecount_Msk        (0x3UL << TPI_FIFO1_ITM_bytecount_Pos)      /*!< TPI FIF
+ 817:Drivers/CMSIS/core_cm23.h **** 
+ 818:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ETM_ATVALID_Pos          26U                                         /*!< TPI FIF
+ 819:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ETM_ATVALID_Msk          (0x3UL << TPI_FIFO1_ETM_ATVALID_Pos)        /*!< TPI FIF
+ 820:Drivers/CMSIS/core_cm23.h **** 
+ 821:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ETM_bytecount_Pos        24U                                         /*!< TPI FIF
+ 822:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ETM_bytecount_Msk        (0x3UL << TPI_FIFO1_ETM_bytecount_Pos)      /*!< TPI FIF
+ 823:Drivers/CMSIS/core_cm23.h **** 
+ 824:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM2_Pos                 16U                                         /*!< TPI FIF
+ 825:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM2_Msk                 (0xFFUL << TPI_FIFO1_ITM2_Pos)              /*!< TPI FIF
+ 826:Drivers/CMSIS/core_cm23.h **** 
+ 827:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM1_Pos                  8U                                         /*!< TPI FIF
+ 828:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM1_Msk                 (0xFFUL << TPI_FIFO1_ITM1_Pos)              /*!< TPI FIF
+ 829:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 16
+
+
+ 830:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM0_Pos                  0U                                         /*!< TPI FIF
+ 831:Drivers/CMSIS/core_cm23.h **** #define TPI_FIFO1_ITM0_Msk                 (0xFFUL /*<< TPI_FIFO1_ITM0_Pos*/)          /*!< TPI FIF
+ 832:Drivers/CMSIS/core_cm23.h **** 
+ 833:Drivers/CMSIS/core_cm23.h **** /* TPI ITATBCTR0 Register Definitions */
+ 834:Drivers/CMSIS/core_cm23.h **** #define TPI_ITATBCTR0_ATREADY_Pos           0U                                         /*!< TPI ITA
+ 835:Drivers/CMSIS/core_cm23.h **** #define TPI_ITATBCTR0_ATREADY_Msk          (0x1UL /*<< TPI_ITATBCTR0_ATREADY_Pos*/)    /*!< TPI ITA
+ 836:Drivers/CMSIS/core_cm23.h **** 
+ 837:Drivers/CMSIS/core_cm23.h **** /* TPI Integration Mode Control Register Definitions */
+ 838:Drivers/CMSIS/core_cm23.h **** #define TPI_ITCTRL_Mode_Pos                 0U                                         /*!< TPI ITC
+ 839:Drivers/CMSIS/core_cm23.h **** #define TPI_ITCTRL_Mode_Msk                (0x1UL /*<< TPI_ITCTRL_Mode_Pos*/)          /*!< TPI ITC
+ 840:Drivers/CMSIS/core_cm23.h **** 
+ 841:Drivers/CMSIS/core_cm23.h **** /* TPI DEVID Register Definitions */
+ 842:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_NRZVALID_Pos             11U                                         /*!< TPI DEV
+ 843:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_NRZVALID_Msk             (0x1UL << TPI_DEVID_NRZVALID_Pos)           /*!< TPI DEV
+ 844:Drivers/CMSIS/core_cm23.h **** 
+ 845:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_MANCVALID_Pos            10U                                         /*!< TPI DEV
+ 846:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_MANCVALID_Msk            (0x1UL << TPI_DEVID_MANCVALID_Pos)          /*!< TPI DEV
+ 847:Drivers/CMSIS/core_cm23.h **** 
+ 848:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_PTINVALID_Pos             9U                                         /*!< TPI DEV
+ 849:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_PTINVALID_Msk            (0x1UL << TPI_DEVID_PTINVALID_Pos)          /*!< TPI DEV
+ 850:Drivers/CMSIS/core_cm23.h **** 
+ 851:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_MinBufSz_Pos              6U                                         /*!< TPI DEV
+ 852:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_MinBufSz_Msk             (0x7UL << TPI_DEVID_MinBufSz_Pos)           /*!< TPI DEV
+ 853:Drivers/CMSIS/core_cm23.h **** 
+ 854:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_AsynClkIn_Pos             5U                                         /*!< TPI DEV
+ 855:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_AsynClkIn_Msk            (0x1UL << TPI_DEVID_AsynClkIn_Pos)          /*!< TPI DEV
+ 856:Drivers/CMSIS/core_cm23.h **** 
+ 857:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_NrTraceInput_Pos          0U                                         /*!< TPI DEV
+ 858:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVID_NrTraceInput_Msk         (0x1FUL /*<< TPI_DEVID_NrTraceInput_Pos*/)  /*!< TPI DEV
+ 859:Drivers/CMSIS/core_cm23.h **** 
+ 860:Drivers/CMSIS/core_cm23.h **** /* TPI DEVTYPE Register Definitions */
+ 861:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVTYPE_MajorType_Pos           4U                                         /*!< TPI DEV
+ 862:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVTYPE_MajorType_Msk          (0xFUL << TPI_DEVTYPE_MajorType_Pos)        /*!< TPI DEV
+ 863:Drivers/CMSIS/core_cm23.h **** 
+ 864:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVTYPE_SubType_Pos             0U                                         /*!< TPI DEV
+ 865:Drivers/CMSIS/core_cm23.h **** #define TPI_DEVTYPE_SubType_Msk            (0xFUL /*<< TPI_DEVTYPE_SubType_Pos*/)      /*!< TPI DEV
+ 866:Drivers/CMSIS/core_cm23.h **** 
+ 867:Drivers/CMSIS/core_cm23.h **** /*@}*/ /* end of group CMSIS_TPI */
+ 868:Drivers/CMSIS/core_cm23.h **** 
+ 869:Drivers/CMSIS/core_cm23.h **** 
+ 870:Drivers/CMSIS/core_cm23.h **** #if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1U)
+ 871:Drivers/CMSIS/core_cm23.h **** /**
+ 872:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 873:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_MPU     Memory Protection Unit (MPU)
+ 874:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the Memory Protection Unit (MPU)
+ 875:Drivers/CMSIS/core_cm23.h ****   @{
+ 876:Drivers/CMSIS/core_cm23.h ****  */
+ 877:Drivers/CMSIS/core_cm23.h **** 
+ 878:Drivers/CMSIS/core_cm23.h **** /**
+ 879:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Memory Protection Unit (MPU).
+ 880:Drivers/CMSIS/core_cm23.h ****  */
+ 881:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 882:Drivers/CMSIS/core_cm23.h **** {
+ 883:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t TYPE;                   /*!< Offset: 0x000 (R/ )  MPU Type Register */
+ 884:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CTRL;                   /*!< Offset: 0x004 (R/W)  MPU Control Register */
+ 885:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RNR;                    /*!< Offset: 0x008 (R/W)  MPU Region Number Register */
+ 886:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  MPU Region Base Address Register
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 17
+
+
+ 887:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  MPU Region Limit Address Registe
+ 888:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED0[7U];
+ 889:Drivers/CMSIS/core_cm23.h ****   union {
+ 890:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t MAIR[2];
+ 891:Drivers/CMSIS/core_cm23.h ****   struct {
+ 892:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t MAIR0;                  /*!< Offset: 0x030 (R/W)  MPU Memory Attribute Indirection
+ 893:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t MAIR1;                  /*!< Offset: 0x034 (R/W)  MPU Memory Attribute Indirection
+ 894:Drivers/CMSIS/core_cm23.h ****   };
+ 895:Drivers/CMSIS/core_cm23.h ****   };
+ 896:Drivers/CMSIS/core_cm23.h **** } MPU_Type;
+ 897:Drivers/CMSIS/core_cm23.h **** 
+ 898:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_RALIASES                  1U
+ 899:Drivers/CMSIS/core_cm23.h **** 
+ 900:Drivers/CMSIS/core_cm23.h **** /* MPU Type Register Definitions */
+ 901:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_IREGION_Pos               16U                                            /*!< MPU 
+ 902:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_IREGION_Msk               (0xFFUL << MPU_TYPE_IREGION_Pos)               /*!< MPU 
+ 903:Drivers/CMSIS/core_cm23.h **** 
+ 904:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_DREGION_Pos                8U                                            /*!< MPU 
+ 905:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_DREGION_Msk               (0xFFUL << MPU_TYPE_DREGION_Pos)               /*!< MPU 
+ 906:Drivers/CMSIS/core_cm23.h **** 
+ 907:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_SEPARATE_Pos               0U                                            /*!< MPU 
+ 908:Drivers/CMSIS/core_cm23.h **** #define MPU_TYPE_SEPARATE_Msk              (1UL /*<< MPU_TYPE_SEPARATE_Pos*/)             /*!< MPU 
+ 909:Drivers/CMSIS/core_cm23.h **** 
+ 910:Drivers/CMSIS/core_cm23.h **** /* MPU Control Register Definitions */
+ 911:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_PRIVDEFENA_Pos             2U                                            /*!< MPU 
+ 912:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_PRIVDEFENA_Msk            (1UL << MPU_CTRL_PRIVDEFENA_Pos)               /*!< MPU 
+ 913:Drivers/CMSIS/core_cm23.h **** 
+ 914:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_HFNMIENA_Pos               1U                                            /*!< MPU 
+ 915:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_HFNMIENA_Msk              (1UL << MPU_CTRL_HFNMIENA_Pos)                 /*!< MPU 
+ 916:Drivers/CMSIS/core_cm23.h **** 
+ 917:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_ENABLE_Pos                 0U                                            /*!< MPU 
+ 918:Drivers/CMSIS/core_cm23.h **** #define MPU_CTRL_ENABLE_Msk                (1UL /*<< MPU_CTRL_ENABLE_Pos*/)               /*!< MPU 
+ 919:Drivers/CMSIS/core_cm23.h **** 
+ 920:Drivers/CMSIS/core_cm23.h **** /* MPU Region Number Register Definitions */
+ 921:Drivers/CMSIS/core_cm23.h **** #define MPU_RNR_REGION_Pos                  0U                                            /*!< MPU 
+ 922:Drivers/CMSIS/core_cm23.h **** #define MPU_RNR_REGION_Msk                 (0xFFUL /*<< MPU_RNR_REGION_Pos*/)             /*!< MPU 
+ 923:Drivers/CMSIS/core_cm23.h **** 
+ 924:Drivers/CMSIS/core_cm23.h **** /* MPU Region Base Address Register Definitions */
+ 925:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_BASE_Pos                   5U                                            /*!< MPU 
+ 926:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_BASE_Msk                  (0x7FFFFFFUL << MPU_RBAR_BASE_Pos)             /*!< MPU 
+ 927:Drivers/CMSIS/core_cm23.h **** 
+ 928:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_SH_Pos                     3U                                            /*!< MPU 
+ 929:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_SH_Msk                    (0x3UL << MPU_RBAR_SH_Pos)                     /*!< MPU 
+ 930:Drivers/CMSIS/core_cm23.h **** 
+ 931:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_AP_Pos                     1U                                            /*!< MPU 
+ 932:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_AP_Msk                    (0x3UL << MPU_RBAR_AP_Pos)                     /*!< MPU 
+ 933:Drivers/CMSIS/core_cm23.h **** 
+ 934:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_XN_Pos                     0U                                            /*!< MPU 
+ 935:Drivers/CMSIS/core_cm23.h **** #define MPU_RBAR_XN_Msk                    (01UL /*<< MPU_RBAR_XN_Pos*/)                  /*!< MPU 
+ 936:Drivers/CMSIS/core_cm23.h **** 
+ 937:Drivers/CMSIS/core_cm23.h **** /* MPU Region Limit Address Register Definitions */
+ 938:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_LIMIT_Pos                  5U                                            /*!< MPU 
+ 939:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_LIMIT_Msk                 (0x7FFFFFFUL << MPU_RLAR_LIMIT_Pos)            /*!< MPU 
+ 940:Drivers/CMSIS/core_cm23.h **** 
+ 941:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_AttrIndx_Pos               1U                                            /*!< MPU 
+ 942:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_AttrIndx_Msk              (0x7UL << MPU_RLAR_AttrIndx_Pos)               /*!< MPU 
+ 943:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 18
+
+
+ 944:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_EN_Pos                     0U                                            /*!< MPU 
+ 945:Drivers/CMSIS/core_cm23.h **** #define MPU_RLAR_EN_Msk                    (1UL /*<< MPU_RLAR_EN_Pos*/)                   /*!< MPU 
+ 946:Drivers/CMSIS/core_cm23.h **** 
+ 947:Drivers/CMSIS/core_cm23.h **** /* MPU Memory Attribute Indirection Register 0 Definitions */
+ 948:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr3_Pos                24U                                            /*!< MPU 
+ 949:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr3_Msk                (0xFFUL << MPU_MAIR0_Attr3_Pos)                /*!< MPU 
+ 950:Drivers/CMSIS/core_cm23.h **** 
+ 951:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr2_Pos                16U                                            /*!< MPU 
+ 952:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr2_Msk                (0xFFUL << MPU_MAIR0_Attr2_Pos)                /*!< MPU 
+ 953:Drivers/CMSIS/core_cm23.h **** 
+ 954:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr1_Pos                 8U                                            /*!< MPU 
+ 955:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr1_Msk                (0xFFUL << MPU_MAIR0_Attr1_Pos)                /*!< MPU 
+ 956:Drivers/CMSIS/core_cm23.h **** 
+ 957:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr0_Pos                 0U                                            /*!< MPU 
+ 958:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR0_Attr0_Msk                (0xFFUL /*<< MPU_MAIR0_Attr0_Pos*/)            /*!< MPU 
+ 959:Drivers/CMSIS/core_cm23.h **** 
+ 960:Drivers/CMSIS/core_cm23.h **** /* MPU Memory Attribute Indirection Register 1 Definitions */
+ 961:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr7_Pos                24U                                            /*!< MPU 
+ 962:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr7_Msk                (0xFFUL << MPU_MAIR1_Attr7_Pos)                /*!< MPU 
+ 963:Drivers/CMSIS/core_cm23.h **** 
+ 964:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr6_Pos                16U                                            /*!< MPU 
+ 965:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr6_Msk                (0xFFUL << MPU_MAIR1_Attr6_Pos)                /*!< MPU 
+ 966:Drivers/CMSIS/core_cm23.h **** 
+ 967:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr5_Pos                 8U                                            /*!< MPU 
+ 968:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr5_Msk                (0xFFUL << MPU_MAIR1_Attr5_Pos)                /*!< MPU 
+ 969:Drivers/CMSIS/core_cm23.h **** 
+ 970:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr4_Pos                 0U                                            /*!< MPU 
+ 971:Drivers/CMSIS/core_cm23.h **** #define MPU_MAIR1_Attr4_Msk                (0xFFUL /*<< MPU_MAIR1_Attr4_Pos*/)            /*!< MPU 
+ 972:Drivers/CMSIS/core_cm23.h **** 
+ 973:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_MPU */
+ 974:Drivers/CMSIS/core_cm23.h **** #endif
+ 975:Drivers/CMSIS/core_cm23.h **** 
+ 976:Drivers/CMSIS/core_cm23.h **** 
+ 977:Drivers/CMSIS/core_cm23.h **** #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+ 978:Drivers/CMSIS/core_cm23.h **** /**
+ 979:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+ 980:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_SAU     Security Attribution Unit (SAU)
+ 981:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the Security Attribution Unit (SAU)
+ 982:Drivers/CMSIS/core_cm23.h ****   @{
+ 983:Drivers/CMSIS/core_cm23.h ****  */
+ 984:Drivers/CMSIS/core_cm23.h **** 
+ 985:Drivers/CMSIS/core_cm23.h **** /**
+ 986:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Security Attribution Unit (SAU).
+ 987:Drivers/CMSIS/core_cm23.h ****  */
+ 988:Drivers/CMSIS/core_cm23.h **** typedef struct
+ 989:Drivers/CMSIS/core_cm23.h **** {
+ 990:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t CTRL;                   /*!< Offset: 0x000 (R/W)  SAU Control Register */
+ 991:Drivers/CMSIS/core_cm23.h ****   __IM  uint32_t TYPE;                   /*!< Offset: 0x004 (R/ )  SAU Type Register */
+ 992:Drivers/CMSIS/core_cm23.h **** #if defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U)
+ 993:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RNR;                    /*!< Offset: 0x008 (R/W)  SAU Region Number Register */
+ 994:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  SAU Region Base Address Register
+ 995:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  SAU Region Limit Address Registe
+ 996:Drivers/CMSIS/core_cm23.h **** #endif
+ 997:Drivers/CMSIS/core_cm23.h **** } SAU_Type;
+ 998:Drivers/CMSIS/core_cm23.h **** 
+ 999:Drivers/CMSIS/core_cm23.h **** /* SAU Control Register Definitions */
+1000:Drivers/CMSIS/core_cm23.h **** #define SAU_CTRL_ALLNS_Pos                  1U                                            /*!< SAU 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 19
+
+
+1001:Drivers/CMSIS/core_cm23.h **** #define SAU_CTRL_ALLNS_Msk                 (1UL << SAU_CTRL_ALLNS_Pos)                    /*!< SAU 
+1002:Drivers/CMSIS/core_cm23.h **** 
+1003:Drivers/CMSIS/core_cm23.h **** #define SAU_CTRL_ENABLE_Pos                 0U                                            /*!< SAU 
+1004:Drivers/CMSIS/core_cm23.h **** #define SAU_CTRL_ENABLE_Msk                (1UL /*<< SAU_CTRL_ENABLE_Pos*/)               /*!< SAU 
+1005:Drivers/CMSIS/core_cm23.h **** 
+1006:Drivers/CMSIS/core_cm23.h **** /* SAU Type Register Definitions */
+1007:Drivers/CMSIS/core_cm23.h **** #define SAU_TYPE_SREGION_Pos                0U                                            /*!< SAU 
+1008:Drivers/CMSIS/core_cm23.h **** #define SAU_TYPE_SREGION_Msk               (0xFFUL /*<< SAU_TYPE_SREGION_Pos*/)           /*!< SAU 
+1009:Drivers/CMSIS/core_cm23.h **** 
+1010:Drivers/CMSIS/core_cm23.h **** #if defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U)
+1011:Drivers/CMSIS/core_cm23.h **** /* SAU Region Number Register Definitions */
+1012:Drivers/CMSIS/core_cm23.h **** #define SAU_RNR_REGION_Pos                  0U                                            /*!< SAU 
+1013:Drivers/CMSIS/core_cm23.h **** #define SAU_RNR_REGION_Msk                 (0xFFUL /*<< SAU_RNR_REGION_Pos*/)             /*!< SAU 
+1014:Drivers/CMSIS/core_cm23.h **** 
+1015:Drivers/CMSIS/core_cm23.h **** /* SAU Region Base Address Register Definitions */
+1016:Drivers/CMSIS/core_cm23.h **** #define SAU_RBAR_BADDR_Pos                  5U                                            /*!< SAU 
+1017:Drivers/CMSIS/core_cm23.h **** #define SAU_RBAR_BADDR_Msk                 (0x7FFFFFFUL << SAU_RBAR_BADDR_Pos)            /*!< SAU 
+1018:Drivers/CMSIS/core_cm23.h **** 
+1019:Drivers/CMSIS/core_cm23.h **** /* SAU Region Limit Address Register Definitions */
+1020:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_LADDR_Pos                  5U                                            /*!< SAU 
+1021:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_LADDR_Msk                 (0x7FFFFFFUL << SAU_RLAR_LADDR_Pos)            /*!< SAU 
+1022:Drivers/CMSIS/core_cm23.h **** 
+1023:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_NSC_Pos                    1U                                            /*!< SAU 
+1024:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_NSC_Msk                   (1UL << SAU_RLAR_NSC_Pos)                      /*!< SAU 
+1025:Drivers/CMSIS/core_cm23.h **** 
+1026:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_ENABLE_Pos                 0U                                            /*!< SAU 
+1027:Drivers/CMSIS/core_cm23.h **** #define SAU_RLAR_ENABLE_Msk                (1UL /*<< SAU_RLAR_ENABLE_Pos*/)               /*!< SAU 
+1028:Drivers/CMSIS/core_cm23.h **** 
+1029:Drivers/CMSIS/core_cm23.h **** #endif /* defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U) */
+1030:Drivers/CMSIS/core_cm23.h **** 
+1031:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_SAU */
+1032:Drivers/CMSIS/core_cm23.h **** #endif /* defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U) */
+1033:Drivers/CMSIS/core_cm23.h **** 
+1034:Drivers/CMSIS/core_cm23.h **** 
+1035:Drivers/CMSIS/core_cm23.h **** /**
+1036:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_core_register
+1037:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_CoreDebug       Core Debug Registers (CoreDebug)
+1038:Drivers/CMSIS/core_cm23.h ****   \brief    Type definitions for the Core Debug Registers
+1039:Drivers/CMSIS/core_cm23.h ****   @{
+1040:Drivers/CMSIS/core_cm23.h ****  */
+1041:Drivers/CMSIS/core_cm23.h **** 
+1042:Drivers/CMSIS/core_cm23.h **** /**
+1043:Drivers/CMSIS/core_cm23.h ****   \brief  Structure type to access the Core Debug Register (CoreDebug).
+1044:Drivers/CMSIS/core_cm23.h ****  */
+1045:Drivers/CMSIS/core_cm23.h **** typedef struct
+1046:Drivers/CMSIS/core_cm23.h **** {
+1047:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t DHCSR;                  /*!< Offset: 0x000 (R/W)  Debug Halting Control and Status
+1048:Drivers/CMSIS/core_cm23.h ****   __OM  uint32_t DCRSR;                  /*!< Offset: 0x004 ( /W)  Debug Core Register Selector Reg
+1049:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t DCRDR;                  /*!< Offset: 0x008 (R/W)  Debug Core Register Data Registe
+1050:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t DEMCR;                  /*!< Offset: 0x00C (R/W)  Debug Exception and Monitor Cont
+1051:Drivers/CMSIS/core_cm23.h ****         uint32_t RESERVED4[1U];
+1052:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t DAUTHCTRL;              /*!< Offset: 0x014 (R/W)  Debug Authentication Control Reg
+1053:Drivers/CMSIS/core_cm23.h ****   __IOM uint32_t DSCSR;                  /*!< Offset: 0x018 (R/W)  Debug Security Control and Statu
+1054:Drivers/CMSIS/core_cm23.h **** } CoreDebug_Type;
+1055:Drivers/CMSIS/core_cm23.h **** 
+1056:Drivers/CMSIS/core_cm23.h **** /* Debug Halting Control and Status Register Definitions */
+1057:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_DBGKEY_Pos         16U                                            /*!< Core
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 20
+
+
+1058:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_DBGKEY_Msk         (0xFFFFUL << CoreDebug_DHCSR_DBGKEY_Pos)       /*!< Core
+1059:Drivers/CMSIS/core_cm23.h **** 
+1060:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RESTART_ST_Pos   26U                                            /*!< Core
+1061:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RESTART_ST_Msk   (1UL << CoreDebug_DHCSR_S_RESTART_ST_Pos)      /*!< Core
+1062:Drivers/CMSIS/core_cm23.h **** 
+1063:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RESET_ST_Pos     25U                                            /*!< Core
+1064:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RESET_ST_Msk     (1UL << CoreDebug_DHCSR_S_RESET_ST_Pos)        /*!< Core
+1065:Drivers/CMSIS/core_cm23.h **** 
+1066:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RETIRE_ST_Pos    24U                                            /*!< Core
+1067:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_RETIRE_ST_Msk    (1UL << CoreDebug_DHCSR_S_RETIRE_ST_Pos)       /*!< Core
+1068:Drivers/CMSIS/core_cm23.h **** 
+1069:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_LOCKUP_Pos       19U                                            /*!< Core
+1070:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_LOCKUP_Msk       (1UL << CoreDebug_DHCSR_S_LOCKUP_Pos)          /*!< Core
+1071:Drivers/CMSIS/core_cm23.h **** 
+1072:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_SLEEP_Pos        18U                                            /*!< Core
+1073:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_SLEEP_Msk        (1UL << CoreDebug_DHCSR_S_SLEEP_Pos)           /*!< Core
+1074:Drivers/CMSIS/core_cm23.h **** 
+1075:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_HALT_Pos         17U                                            /*!< Core
+1076:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_HALT_Msk         (1UL << CoreDebug_DHCSR_S_HALT_Pos)            /*!< Core
+1077:Drivers/CMSIS/core_cm23.h **** 
+1078:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_REGRDY_Pos       16U                                            /*!< Core
+1079:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_S_REGRDY_Msk       (1UL << CoreDebug_DHCSR_S_REGRDY_Pos)          /*!< Core
+1080:Drivers/CMSIS/core_cm23.h **** 
+1081:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_MASKINTS_Pos      3U                                            /*!< Core
+1082:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_MASKINTS_Msk     (1UL << CoreDebug_DHCSR_C_MASKINTS_Pos)        /*!< Core
+1083:Drivers/CMSIS/core_cm23.h **** 
+1084:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_STEP_Pos          2U                                            /*!< Core
+1085:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_STEP_Msk         (1UL << CoreDebug_DHCSR_C_STEP_Pos)            /*!< Core
+1086:Drivers/CMSIS/core_cm23.h **** 
+1087:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_HALT_Pos          1U                                            /*!< Core
+1088:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_HALT_Msk         (1UL << CoreDebug_DHCSR_C_HALT_Pos)            /*!< Core
+1089:Drivers/CMSIS/core_cm23.h **** 
+1090:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Pos       0U                                            /*!< Core
+1091:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Msk      (1UL /*<< CoreDebug_DHCSR_C_DEBUGEN_Pos*/)     /*!< Core
+1092:Drivers/CMSIS/core_cm23.h **** 
+1093:Drivers/CMSIS/core_cm23.h **** /* Debug Core Register Selector Register Definitions */
+1094:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DCRSR_REGWnR_Pos         16U                                            /*!< Core
+1095:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DCRSR_REGWnR_Msk         (1UL << CoreDebug_DCRSR_REGWnR_Pos)            /*!< Core
+1096:Drivers/CMSIS/core_cm23.h **** 
+1097:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DCRSR_REGSEL_Pos          0U                                            /*!< Core
+1098:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DCRSR_REGSEL_Msk         (0x1FUL /*<< CoreDebug_DCRSR_REGSEL_Pos*/)     /*!< Core
+1099:Drivers/CMSIS/core_cm23.h **** 
+1100:Drivers/CMSIS/core_cm23.h **** /* Debug Exception and Monitor Control Register */
+1101:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_DWTENA_Pos         24U                                            /*!< Core
+1102:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_DWTENA_Msk         (1UL << CoreDebug_DEMCR_DWTENA_Pos)            /*!< Core
+1103:Drivers/CMSIS/core_cm23.h **** 
+1104:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_VC_HARDERR_Pos     10U                                            /*!< Core
+1105:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_VC_HARDERR_Msk     (1UL << CoreDebug_DEMCR_VC_HARDERR_Pos)        /*!< Core
+1106:Drivers/CMSIS/core_cm23.h **** 
+1107:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_VC_CORERESET_Pos    0U                                            /*!< Core
+1108:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DEMCR_VC_CORERESET_Msk   (1UL /*<< CoreDebug_DEMCR_VC_CORERESET_Pos*/)  /*!< Core
+1109:Drivers/CMSIS/core_cm23.h **** 
+1110:Drivers/CMSIS/core_cm23.h **** /* Debug Authentication Control Register Definitions */
+1111:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_INTSPNIDEN_Pos  3U                                            /*!< Core
+1112:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_INTSPNIDEN_Msk (1UL << CoreDebug_DAUTHCTRL_INTSPNIDEN_Pos)    /*!< Core
+1113:Drivers/CMSIS/core_cm23.h **** 
+1114:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_SPNIDENSEL_Pos  2U                                            /*!< Core
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 21
+
+
+1115:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_SPNIDENSEL_Msk (1UL << CoreDebug_DAUTHCTRL_SPNIDENSEL_Pos)    /*!< Core
+1116:Drivers/CMSIS/core_cm23.h **** 
+1117:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_INTSPIDEN_Pos   1U                                            /*!< Core
+1118:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_INTSPIDEN_Msk  (1UL << CoreDebug_DAUTHCTRL_INTSPIDEN_Pos)     /*!< Core
+1119:Drivers/CMSIS/core_cm23.h **** 
+1120:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_SPIDENSEL_Pos   0U                                            /*!< Core
+1121:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DAUTHCTRL_SPIDENSEL_Msk  (1UL /*<< CoreDebug_DAUTHCTRL_SPIDENSEL_Pos*/) /*!< Core
+1122:Drivers/CMSIS/core_cm23.h **** 
+1123:Drivers/CMSIS/core_cm23.h **** /* Debug Security Control and Status Register Definitions */
+1124:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_CDS_Pos            16U                                            /*!< Core
+1125:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_CDS_Msk            (1UL << CoreDebug_DSCSR_CDS_Pos)               /*!< Core
+1126:Drivers/CMSIS/core_cm23.h **** 
+1127:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_SBRSEL_Pos          1U                                            /*!< Core
+1128:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_SBRSEL_Msk         (1UL << CoreDebug_DSCSR_SBRSEL_Pos)            /*!< Core
+1129:Drivers/CMSIS/core_cm23.h **** 
+1130:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_SBRSELEN_Pos        0U                                            /*!< Core
+1131:Drivers/CMSIS/core_cm23.h **** #define CoreDebug_DSCSR_SBRSELEN_Msk       (1UL /*<< CoreDebug_DSCSR_SBRSELEN_Pos*/)      /*!< Core
+1132:Drivers/CMSIS/core_cm23.h **** 
+1133:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_CoreDebug */
+1134:Drivers/CMSIS/core_cm23.h **** 
+1135:Drivers/CMSIS/core_cm23.h **** 
+1136:Drivers/CMSIS/core_cm23.h **** /**
+1137:Drivers/CMSIS/core_cm23.h ****   \ingroup    CMSIS_core_register
+1138:Drivers/CMSIS/core_cm23.h ****   \defgroup   CMSIS_core_bitfield     Core register bit field macros
+1139:Drivers/CMSIS/core_cm23.h ****   \brief      Macros for use with bit field definitions (xxx_Pos, xxx_Msk).
+1140:Drivers/CMSIS/core_cm23.h ****   @{
+1141:Drivers/CMSIS/core_cm23.h ****  */
+1142:Drivers/CMSIS/core_cm23.h **** 
+1143:Drivers/CMSIS/core_cm23.h **** /**
+1144:Drivers/CMSIS/core_cm23.h ****   \brief   Mask and shift a bit field value for use in a register bit range.
+1145:Drivers/CMSIS/core_cm23.h ****   \param[in] field  Name of the register bit field.
+1146:Drivers/CMSIS/core_cm23.h ****   \param[in] value  Value of the bit field. This parameter is interpreted as an uint32_t type.
+1147:Drivers/CMSIS/core_cm23.h ****   \return           Masked and shifted value.
+1148:Drivers/CMSIS/core_cm23.h **** */
+1149:Drivers/CMSIS/core_cm23.h **** #define _VAL2FLD(field, value)    (((uint32_t)(value) << field ## _Pos) & field ## _Msk)
+1150:Drivers/CMSIS/core_cm23.h **** 
+1151:Drivers/CMSIS/core_cm23.h **** /**
+1152:Drivers/CMSIS/core_cm23.h ****   \brief     Mask and shift a register value to extract a bit filed value.
+1153:Drivers/CMSIS/core_cm23.h ****   \param[in] field  Name of the register bit field.
+1154:Drivers/CMSIS/core_cm23.h ****   \param[in] value  Value of register. This parameter is interpreted as an uint32_t type.
+1155:Drivers/CMSIS/core_cm23.h ****   \return           Masked and shifted bit field value.
+1156:Drivers/CMSIS/core_cm23.h **** */
+1157:Drivers/CMSIS/core_cm23.h **** #define _FLD2VAL(field, value)    (((uint32_t)(value) & field ## _Msk) >> field ## _Pos)
+1158:Drivers/CMSIS/core_cm23.h **** 
+1159:Drivers/CMSIS/core_cm23.h **** /*@} end of group CMSIS_core_bitfield */
+1160:Drivers/CMSIS/core_cm23.h **** 
+1161:Drivers/CMSIS/core_cm23.h **** 
+1162:Drivers/CMSIS/core_cm23.h **** /**
+1163:Drivers/CMSIS/core_cm23.h ****   \ingroup    CMSIS_core_register
+1164:Drivers/CMSIS/core_cm23.h ****   \defgroup   CMSIS_core_base     Core Definitions
+1165:Drivers/CMSIS/core_cm23.h ****   \brief      Definitions for base addresses, unions, and structures.
+1166:Drivers/CMSIS/core_cm23.h ****   @{
+1167:Drivers/CMSIS/core_cm23.h ****  */
+1168:Drivers/CMSIS/core_cm23.h **** 
+1169:Drivers/CMSIS/core_cm23.h **** /* Memory mapping of Core Hardware */
+1170:Drivers/CMSIS/core_cm23.h ****   #define SCS_BASE            (0xE000E000UL)                             /*!< System Control Space 
+1171:Drivers/CMSIS/core_cm23.h ****   #define DWT_BASE            (0xE0001000UL)                             /*!< DWT Base Address */
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 22
+
+
+1172:Drivers/CMSIS/core_cm23.h ****   #define TPI_BASE            (0xE0040000UL)                             /*!< TPI Base Address */
+1173:Drivers/CMSIS/core_cm23.h ****   #define CoreDebug_BASE      (0xE000EDF0UL)                             /*!< Core Debug Base Addre
+1174:Drivers/CMSIS/core_cm23.h ****   #define SysTick_BASE        (SCS_BASE +  0x0010UL)                     /*!< SysTick Base Address 
+1175:Drivers/CMSIS/core_cm23.h ****   #define NVIC_BASE           (SCS_BASE +  0x0100UL)                     /*!< NVIC Base Address */
+1176:Drivers/CMSIS/core_cm23.h ****   #define SCB_BASE            (SCS_BASE +  0x0D00UL)                     /*!< System Control Block 
+1177:Drivers/CMSIS/core_cm23.h **** 
+1178:Drivers/CMSIS/core_cm23.h **** 
+1179:Drivers/CMSIS/core_cm23.h ****   #define SCB                 ((SCB_Type       *)     SCB_BASE         ) /*!< SCB configuration str
+1180:Drivers/CMSIS/core_cm23.h ****   #define SysTick             ((SysTick_Type   *)     SysTick_BASE     ) /*!< SysTick configuration
+1181:Drivers/CMSIS/core_cm23.h ****   #define NVIC                ((NVIC_Type      *)     NVIC_BASE        ) /*!< NVIC configuration st
+1182:Drivers/CMSIS/core_cm23.h ****   #define DWT                 ((DWT_Type       *)     DWT_BASE         ) /*!< DWT configuration str
+1183:Drivers/CMSIS/core_cm23.h ****   #define TPI                 ((TPI_Type       *)     TPI_BASE         ) /*!< TPI configuration str
+1184:Drivers/CMSIS/core_cm23.h ****   #define CoreDebug           ((CoreDebug_Type *)     CoreDebug_BASE   ) /*!< Core Debug configurat
+1185:Drivers/CMSIS/core_cm23.h **** 
+1186:Drivers/CMSIS/core_cm23.h ****   #if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1U)
+1187:Drivers/CMSIS/core_cm23.h ****     #define MPU_BASE          (SCS_BASE +  0x0D90UL)                     /*!< Memory Protection Uni
+1188:Drivers/CMSIS/core_cm23.h ****     #define MPU               ((MPU_Type       *)     MPU_BASE         ) /*!< Memory Protection Uni
+1189:Drivers/CMSIS/core_cm23.h ****   #endif
+1190:Drivers/CMSIS/core_cm23.h **** 
+1191:Drivers/CMSIS/core_cm23.h ****   #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+1192:Drivers/CMSIS/core_cm23.h ****     #define SAU_BASE          (SCS_BASE +  0x0DD0UL)                     /*!< Security Attribution 
+1193:Drivers/CMSIS/core_cm23.h ****     #define SAU               ((SAU_Type       *)     SAU_BASE         ) /*!< Security Attribution 
+1194:Drivers/CMSIS/core_cm23.h ****   #endif
+1195:Drivers/CMSIS/core_cm23.h **** 
+1196:Drivers/CMSIS/core_cm23.h **** #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+1197:Drivers/CMSIS/core_cm23.h ****   #define SCS_BASE_NS         (0xE002E000UL)                             /*!< System Control Space 
+1198:Drivers/CMSIS/core_cm23.h ****   #define CoreDebug_BASE_NS   (0xE002EDF0UL)                             /*!< Core Debug Base Addre
+1199:Drivers/CMSIS/core_cm23.h ****   #define SysTick_BASE_NS     (SCS_BASE_NS +  0x0010UL)                  /*!< SysTick Base Address 
+1200:Drivers/CMSIS/core_cm23.h ****   #define NVIC_BASE_NS        (SCS_BASE_NS +  0x0100UL)                  /*!< NVIC Base Address    
+1201:Drivers/CMSIS/core_cm23.h ****   #define SCB_BASE_NS         (SCS_BASE_NS +  0x0D00UL)                  /*!< System Control Block 
+1202:Drivers/CMSIS/core_cm23.h **** 
+1203:Drivers/CMSIS/core_cm23.h ****   #define SCB_NS              ((SCB_Type       *)     SCB_BASE_NS      ) /*!< SCB configuration str
+1204:Drivers/CMSIS/core_cm23.h ****   #define SysTick_NS          ((SysTick_Type   *)     SysTick_BASE_NS  ) /*!< SysTick configuration
+1205:Drivers/CMSIS/core_cm23.h ****   #define NVIC_NS             ((NVIC_Type      *)     NVIC_BASE_NS     ) /*!< NVIC configuration st
+1206:Drivers/CMSIS/core_cm23.h ****   #define CoreDebug_NS        ((CoreDebug_Type *)     CoreDebug_BASE_NS) /*!< Core Debug configurat
+1207:Drivers/CMSIS/core_cm23.h **** 
+1208:Drivers/CMSIS/core_cm23.h ****   #if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1U)
+1209:Drivers/CMSIS/core_cm23.h ****     #define MPU_BASE_NS       (SCS_BASE_NS +  0x0D90UL)                  /*!< Memory Protection Uni
+1210:Drivers/CMSIS/core_cm23.h ****     #define MPU_NS            ((MPU_Type       *)     MPU_BASE_NS      ) /*!< Memory Protection Uni
+1211:Drivers/CMSIS/core_cm23.h ****   #endif
+1212:Drivers/CMSIS/core_cm23.h **** 
+1213:Drivers/CMSIS/core_cm23.h **** #endif /* defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U) */
+1214:Drivers/CMSIS/core_cm23.h **** /*@} */
+1215:Drivers/CMSIS/core_cm23.h **** 
+1216:Drivers/CMSIS/core_cm23.h **** 
+1217:Drivers/CMSIS/core_cm23.h **** 
+1218:Drivers/CMSIS/core_cm23.h **** /*******************************************************************************
+1219:Drivers/CMSIS/core_cm23.h ****  *                Hardware Abstraction Layer
+1220:Drivers/CMSIS/core_cm23.h ****   Core Function Interface contains:
+1221:Drivers/CMSIS/core_cm23.h ****   - Core NVIC Functions
+1222:Drivers/CMSIS/core_cm23.h ****   - Core SysTick Functions
+1223:Drivers/CMSIS/core_cm23.h ****   - Core Register Access Functions
+1224:Drivers/CMSIS/core_cm23.h ****  ******************************************************************************/
+1225:Drivers/CMSIS/core_cm23.h **** /**
+1226:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_Core_FunctionInterface Functions and Instructions Reference
+1227:Drivers/CMSIS/core_cm23.h **** */
+1228:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 23
+
+
+1229:Drivers/CMSIS/core_cm23.h **** 
+1230:Drivers/CMSIS/core_cm23.h **** 
+1231:Drivers/CMSIS/core_cm23.h **** /* ##########################   NVIC functions  #################################### */
+1232:Drivers/CMSIS/core_cm23.h **** /**
+1233:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_Core_FunctionInterface
+1234:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_Core_NVICFunctions NVIC Functions
+1235:Drivers/CMSIS/core_cm23.h ****   \brief    Functions that manage interrupts and exceptions via the NVIC.
+1236:Drivers/CMSIS/core_cm23.h ****   @{
+1237:Drivers/CMSIS/core_cm23.h ****  */
+1238:Drivers/CMSIS/core_cm23.h **** 
+1239:Drivers/CMSIS/core_cm23.h **** #ifdef CMSIS_NVIC_VIRTUAL
+1240:Drivers/CMSIS/core_cm23.h ****   #ifndef CMSIS_NVIC_VIRTUAL_HEADER_FILE
+1241:Drivers/CMSIS/core_cm23.h ****     #define CMSIS_NVIC_VIRTUAL_HEADER_FILE "cmsis_nvic_virtual.h"
+1242:Drivers/CMSIS/core_cm23.h ****   #endif
+1243:Drivers/CMSIS/core_cm23.h ****   #include CMSIS_NVIC_VIRTUAL_HEADER_FILE
+1244:Drivers/CMSIS/core_cm23.h **** #else
+1245:Drivers/CMSIS/core_cm23.h **** /*#define NVIC_SetPriorityGrouping    __NVIC_SetPriorityGrouping   not available for Cortex-M23 */
+1246:Drivers/CMSIS/core_cm23.h **** /*#define NVIC_GetPriorityGrouping    __NVIC_GetPriorityGrouping   not available for Cortex-M23 */
+1247:Drivers/CMSIS/core_cm23.h ****   #define NVIC_EnableIRQ              __NVIC_EnableIRQ
+1248:Drivers/CMSIS/core_cm23.h ****   #define NVIC_GetEnableIRQ           __NVIC_GetEnableIRQ
+1249:Drivers/CMSIS/core_cm23.h ****   #define NVIC_DisableIRQ             __NVIC_DisableIRQ
+1250:Drivers/CMSIS/core_cm23.h ****   #define NVIC_GetPendingIRQ          __NVIC_GetPendingIRQ
+1251:Drivers/CMSIS/core_cm23.h ****   #define NVIC_SetPendingIRQ          __NVIC_SetPendingIRQ
+1252:Drivers/CMSIS/core_cm23.h ****   #define NVIC_ClearPendingIRQ        __NVIC_ClearPendingIRQ
+1253:Drivers/CMSIS/core_cm23.h ****   #define NVIC_GetActive              __NVIC_GetActive
+1254:Drivers/CMSIS/core_cm23.h ****   #define NVIC_SetPriority            __NVIC_SetPriority
+1255:Drivers/CMSIS/core_cm23.h ****   #define NVIC_GetPriority            __NVIC_GetPriority
+1256:Drivers/CMSIS/core_cm23.h ****   #define NVIC_SystemReset            __NVIC_SystemReset
+1257:Drivers/CMSIS/core_cm23.h **** #endif /* CMSIS_NVIC_VIRTUAL */
+1258:Drivers/CMSIS/core_cm23.h **** 
+1259:Drivers/CMSIS/core_cm23.h **** #ifdef CMSIS_VECTAB_VIRTUAL
+1260:Drivers/CMSIS/core_cm23.h ****   #ifndef CMSIS_VECTAB_VIRTUAL_HEADER_FILE
+1261:Drivers/CMSIS/core_cm23.h ****     #define CMSIS_VECTAB_VIRTUAL_HEADER_FILE "cmsis_vectab_virtual.h"
+1262:Drivers/CMSIS/core_cm23.h ****   #endif
+1263:Drivers/CMSIS/core_cm23.h ****   #include CMSIS_VECTAB_VIRTUAL_HEADER_FILE
+1264:Drivers/CMSIS/core_cm23.h **** #else
+1265:Drivers/CMSIS/core_cm23.h ****   #define NVIC_SetVector              __NVIC_SetVector
+1266:Drivers/CMSIS/core_cm23.h ****   #define NVIC_GetVector              __NVIC_GetVector
+1267:Drivers/CMSIS/core_cm23.h **** #endif  /* (CMSIS_VECTAB_VIRTUAL) */
+1268:Drivers/CMSIS/core_cm23.h **** 
+1269:Drivers/CMSIS/core_cm23.h **** #define NVIC_USER_IRQ_OFFSET          16
+1270:Drivers/CMSIS/core_cm23.h **** 
+1271:Drivers/CMSIS/core_cm23.h **** 
+1272:Drivers/CMSIS/core_cm23.h **** /* Interrupt Priorities are WORD accessible only under Armv6-M                  */
+1273:Drivers/CMSIS/core_cm23.h **** /* The following MACROS handle generation of the register offset and byte masks */
+1274:Drivers/CMSIS/core_cm23.h **** #define _BIT_SHIFT(IRQn)         (  ((((uint32_t)(int32_t)(IRQn))         )      &  0x03UL) * 8UL)
+1275:Drivers/CMSIS/core_cm23.h **** #define _SHP_IDX(IRQn)           ( (((((uint32_t)(int32_t)(IRQn)) & 0x0FUL)-8UL) >>    2UL)      )
+1276:Drivers/CMSIS/core_cm23.h **** #define _IP_IDX(IRQn)            (   (((uint32_t)(int32_t)(IRQn))                >>    2UL)      )
+1277:Drivers/CMSIS/core_cm23.h **** 
+1278:Drivers/CMSIS/core_cm23.h **** 
+1279:Drivers/CMSIS/core_cm23.h **** /**
+1280:Drivers/CMSIS/core_cm23.h ****   \brief   Enable Interrupt
+1281:Drivers/CMSIS/core_cm23.h ****   \details Enables a device specific interrupt in the NVIC interrupt controller.
+1282:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1283:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1284:Drivers/CMSIS/core_cm23.h ****  */
+1285:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 24
+
+
+1286:Drivers/CMSIS/core_cm23.h **** {
+1287:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1288:Drivers/CMSIS/core_cm23.h ****   {
+1289:Drivers/CMSIS/core_cm23.h ****     NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1290:Drivers/CMSIS/core_cm23.h ****   }
+1291:Drivers/CMSIS/core_cm23.h **** }
+1292:Drivers/CMSIS/core_cm23.h **** 
+1293:Drivers/CMSIS/core_cm23.h **** 
+1294:Drivers/CMSIS/core_cm23.h **** /**
+1295:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Enable status
+1296:Drivers/CMSIS/core_cm23.h ****   \details Returns a device specific interrupt enable status from the NVIC interrupt controller.
+1297:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1298:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt is not enabled.
+1299:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt is enabled.
+1300:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1301:Drivers/CMSIS/core_cm23.h ****  */
+1302:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t __NVIC_GetEnableIRQ(IRQn_Type IRQn)
+1303:Drivers/CMSIS/core_cm23.h **** {
+1304:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1305:Drivers/CMSIS/core_cm23.h ****   {
+1306:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1307:Drivers/CMSIS/core_cm23.h ****   }
+1308:Drivers/CMSIS/core_cm23.h ****   else
+1309:Drivers/CMSIS/core_cm23.h ****   {
+1310:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1311:Drivers/CMSIS/core_cm23.h ****   }
+1312:Drivers/CMSIS/core_cm23.h **** }
+1313:Drivers/CMSIS/core_cm23.h **** 
+1314:Drivers/CMSIS/core_cm23.h **** 
+1315:Drivers/CMSIS/core_cm23.h **** /**
+1316:Drivers/CMSIS/core_cm23.h ****   \brief   Disable Interrupt
+1317:Drivers/CMSIS/core_cm23.h ****   \details Disables a device specific interrupt in the NVIC interrupt controller.
+1318:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1319:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1320:Drivers/CMSIS/core_cm23.h ****  */
+1321:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_DisableIRQ(IRQn_Type IRQn)
+1322:Drivers/CMSIS/core_cm23.h **** {
+1323:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1324:Drivers/CMSIS/core_cm23.h ****   {
+1325:Drivers/CMSIS/core_cm23.h ****     NVIC->ICER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1326:Drivers/CMSIS/core_cm23.h ****     __DSB();
+1327:Drivers/CMSIS/core_cm23.h ****     __ISB();
+1328:Drivers/CMSIS/core_cm23.h ****   }
+1329:Drivers/CMSIS/core_cm23.h **** }
+1330:Drivers/CMSIS/core_cm23.h **** 
+1331:Drivers/CMSIS/core_cm23.h **** 
+1332:Drivers/CMSIS/core_cm23.h **** /**
+1333:Drivers/CMSIS/core_cm23.h ****   \brief   Get Pending Interrupt
+1334:Drivers/CMSIS/core_cm23.h ****   \details Reads the NVIC pending register and returns the pending bit for the specified device spe
+1335:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1336:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt status is not pending.
+1337:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt status is pending.
+1338:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1339:Drivers/CMSIS/core_cm23.h ****  */
+1340:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t __NVIC_GetPendingIRQ(IRQn_Type IRQn)
+1341:Drivers/CMSIS/core_cm23.h **** {
+1342:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 25
+
+
+1343:Drivers/CMSIS/core_cm23.h ****   {
+1344:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->ISPR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1345:Drivers/CMSIS/core_cm23.h ****   }
+1346:Drivers/CMSIS/core_cm23.h ****   else
+1347:Drivers/CMSIS/core_cm23.h ****   {
+1348:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1349:Drivers/CMSIS/core_cm23.h ****   }
+1350:Drivers/CMSIS/core_cm23.h **** }
+1351:Drivers/CMSIS/core_cm23.h **** 
+1352:Drivers/CMSIS/core_cm23.h **** 
+1353:Drivers/CMSIS/core_cm23.h **** /**
+1354:Drivers/CMSIS/core_cm23.h ****   \brief   Set Pending Interrupt
+1355:Drivers/CMSIS/core_cm23.h ****   \details Sets the pending bit of a device specific interrupt in the NVIC pending register.
+1356:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1357:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1358:Drivers/CMSIS/core_cm23.h ****  */
+1359:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_SetPendingIRQ(IRQn_Type IRQn)
+1360:Drivers/CMSIS/core_cm23.h **** {
+1361:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1362:Drivers/CMSIS/core_cm23.h ****   {
+1363:Drivers/CMSIS/core_cm23.h ****     NVIC->ISPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1364:Drivers/CMSIS/core_cm23.h ****   }
+1365:Drivers/CMSIS/core_cm23.h **** }
+1366:Drivers/CMSIS/core_cm23.h **** 
+1367:Drivers/CMSIS/core_cm23.h **** 
+1368:Drivers/CMSIS/core_cm23.h **** /**
+1369:Drivers/CMSIS/core_cm23.h ****   \brief   Clear Pending Interrupt
+1370:Drivers/CMSIS/core_cm23.h ****   \details Clears the pending bit of a device specific interrupt in the NVIC pending register.
+1371:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1372:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1373:Drivers/CMSIS/core_cm23.h ****  */
+1374:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+1375:Drivers/CMSIS/core_cm23.h **** {
+1376:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1377:Drivers/CMSIS/core_cm23.h ****   {
+1378:Drivers/CMSIS/core_cm23.h ****     NVIC->ICPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1379:Drivers/CMSIS/core_cm23.h ****   }
+1380:Drivers/CMSIS/core_cm23.h **** }
+1381:Drivers/CMSIS/core_cm23.h **** 
+1382:Drivers/CMSIS/core_cm23.h **** 
+1383:Drivers/CMSIS/core_cm23.h **** /**
+1384:Drivers/CMSIS/core_cm23.h ****   \brief   Get Active Interrupt
+1385:Drivers/CMSIS/core_cm23.h ****   \details Reads the active register in the NVIC and returns the active bit for the device specific
+1386:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1387:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt status is not active.
+1388:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt status is active.
+1389:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1390:Drivers/CMSIS/core_cm23.h ****  */
+1391:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t __NVIC_GetActive(IRQn_Type IRQn)
+1392:Drivers/CMSIS/core_cm23.h **** {
+1393:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1394:Drivers/CMSIS/core_cm23.h ****   {
+1395:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->IABR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1396:Drivers/CMSIS/core_cm23.h ****   }
+1397:Drivers/CMSIS/core_cm23.h ****   else
+1398:Drivers/CMSIS/core_cm23.h ****   {
+1399:Drivers/CMSIS/core_cm23.h ****     return(0U);
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 26
+
+
+1400:Drivers/CMSIS/core_cm23.h ****   }
+1401:Drivers/CMSIS/core_cm23.h **** }
+1402:Drivers/CMSIS/core_cm23.h **** 
+1403:Drivers/CMSIS/core_cm23.h **** 
+1404:Drivers/CMSIS/core_cm23.h **** #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+1405:Drivers/CMSIS/core_cm23.h **** /**
+1406:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Target State
+1407:Drivers/CMSIS/core_cm23.h ****   \details Reads the interrupt target field in the NVIC and returns the interrupt target bit for th
+1408:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1409:Drivers/CMSIS/core_cm23.h ****   \return             0  if interrupt is assigned to Secure
+1410:Drivers/CMSIS/core_cm23.h ****   \return             1  if interrupt is assigned to Non Secure
+1411:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1412:Drivers/CMSIS/core_cm23.h ****  */
+1413:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t NVIC_GetTargetState(IRQn_Type IRQn)
+1414:Drivers/CMSIS/core_cm23.h **** {
+1415:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1416:Drivers/CMSIS/core_cm23.h ****   {
+1417:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->ITNS[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1418:Drivers/CMSIS/core_cm23.h ****   }
+1419:Drivers/CMSIS/core_cm23.h ****   else
+1420:Drivers/CMSIS/core_cm23.h ****   {
+1421:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1422:Drivers/CMSIS/core_cm23.h ****   }
+1423:Drivers/CMSIS/core_cm23.h **** }
+1424:Drivers/CMSIS/core_cm23.h **** 
+1425:Drivers/CMSIS/core_cm23.h **** 
+1426:Drivers/CMSIS/core_cm23.h **** /**
+1427:Drivers/CMSIS/core_cm23.h ****   \brief   Set Interrupt Target State
+1428:Drivers/CMSIS/core_cm23.h ****   \details Sets the interrupt target field in the NVIC and returns the interrupt target bit for the
+1429:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1430:Drivers/CMSIS/core_cm23.h ****   \return             0  if interrupt is assigned to Secure
+1431:Drivers/CMSIS/core_cm23.h ****                       1  if interrupt is assigned to Non Secure
+1432:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1433:Drivers/CMSIS/core_cm23.h ****  */
+1434:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t NVIC_SetTargetState(IRQn_Type IRQn)
+1435:Drivers/CMSIS/core_cm23.h **** {
+1436:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1437:Drivers/CMSIS/core_cm23.h ****   {
+1438:Drivers/CMSIS/core_cm23.h ****     NVIC->ITNS[(((uint32_t)IRQn) >> 5UL)] |=  ((uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL)));
+1439:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->ITNS[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1440:Drivers/CMSIS/core_cm23.h ****   }
+1441:Drivers/CMSIS/core_cm23.h ****   else
+1442:Drivers/CMSIS/core_cm23.h ****   {
+1443:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1444:Drivers/CMSIS/core_cm23.h ****   }
+1445:Drivers/CMSIS/core_cm23.h **** }
+1446:Drivers/CMSIS/core_cm23.h **** 
+1447:Drivers/CMSIS/core_cm23.h **** 
+1448:Drivers/CMSIS/core_cm23.h **** /**
+1449:Drivers/CMSIS/core_cm23.h ****   \brief   Clear Interrupt Target State
+1450:Drivers/CMSIS/core_cm23.h ****   \details Clears the interrupt target field in the NVIC and returns the interrupt target bit for t
+1451:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1452:Drivers/CMSIS/core_cm23.h ****   \return             0  if interrupt is assigned to Secure
+1453:Drivers/CMSIS/core_cm23.h ****                       1  if interrupt is assigned to Non Secure
+1454:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1455:Drivers/CMSIS/core_cm23.h ****  */
+1456:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t NVIC_ClearTargetState(IRQn_Type IRQn)
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 27
+
+
+1457:Drivers/CMSIS/core_cm23.h **** {
+1458:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1459:Drivers/CMSIS/core_cm23.h ****   {
+1460:Drivers/CMSIS/core_cm23.h ****     NVIC->ITNS[(((uint32_t)IRQn) >> 5UL)] &= ~((uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL)));
+1461:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->ITNS[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+1462:Drivers/CMSIS/core_cm23.h ****   }
+1463:Drivers/CMSIS/core_cm23.h ****   else
+1464:Drivers/CMSIS/core_cm23.h ****   {
+1465:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1466:Drivers/CMSIS/core_cm23.h ****   }
+1467:Drivers/CMSIS/core_cm23.h **** }
+1468:Drivers/CMSIS/core_cm23.h **** #endif /* defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U) */
+1469:Drivers/CMSIS/core_cm23.h **** 
+1470:Drivers/CMSIS/core_cm23.h **** 
+1471:Drivers/CMSIS/core_cm23.h **** /**
+1472:Drivers/CMSIS/core_cm23.h ****   \brief   Set Interrupt Priority
+1473:Drivers/CMSIS/core_cm23.h ****   \details Sets the priority of a device specific interrupt or a processor exception.
+1474:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1475:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1476:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Interrupt number.
+1477:Drivers/CMSIS/core_cm23.h ****   \param [in]  priority  Priority to set.
+1478:Drivers/CMSIS/core_cm23.h ****   \note    The priority cannot be set for every processor exception.
+1479:Drivers/CMSIS/core_cm23.h ****  */
+1480:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+1481:Drivers/CMSIS/core_cm23.h **** {
+1482:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1483:Drivers/CMSIS/core_cm23.h ****   {
+1484:Drivers/CMSIS/core_cm23.h ****     NVIC->IPR[_IP_IDX(IRQn)]  = ((uint32_t)(NVIC->IPR[_IP_IDX(IRQn)]  & ~(0xFFUL << _BIT_SHIFT(IRQn
+1485:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+1486:Drivers/CMSIS/core_cm23.h ****   }
+1487:Drivers/CMSIS/core_cm23.h ****   else
+1488:Drivers/CMSIS/core_cm23.h ****   {
+1489:Drivers/CMSIS/core_cm23.h ****     SCB->SHPR[_SHP_IDX(IRQn)] = ((uint32_t)(SCB->SHPR[_SHP_IDX(IRQn)] & ~(0xFFUL << _BIT_SHIFT(IRQn
+1490:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+1491:Drivers/CMSIS/core_cm23.h ****   }
+1492:Drivers/CMSIS/core_cm23.h **** }
+1493:Drivers/CMSIS/core_cm23.h **** 
+1494:Drivers/CMSIS/core_cm23.h **** 
+1495:Drivers/CMSIS/core_cm23.h **** /**
+1496:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Priority
+1497:Drivers/CMSIS/core_cm23.h ****   \details Reads the priority of a device specific interrupt or a processor exception.
+1498:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1499:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1500:Drivers/CMSIS/core_cm23.h ****   \param [in]   IRQn  Interrupt number.
+1501:Drivers/CMSIS/core_cm23.h ****   \return             Interrupt Priority.
+1502:Drivers/CMSIS/core_cm23.h ****                       Value is aligned automatically to the implemented priority bits of the microc
+1503:Drivers/CMSIS/core_cm23.h ****  */
+1504:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t __NVIC_GetPriority(IRQn_Type IRQn)
+1505:Drivers/CMSIS/core_cm23.h **** {
+1506:Drivers/CMSIS/core_cm23.h **** 
+1507:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1508:Drivers/CMSIS/core_cm23.h ****   {
+1509:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC->IPR[ _IP_IDX(IRQn)] >> _BIT_SHIFT(IRQn) ) & (uint32_t)0xFFUL) >> (8U 
+1510:Drivers/CMSIS/core_cm23.h ****   }
+1511:Drivers/CMSIS/core_cm23.h ****   else
+1512:Drivers/CMSIS/core_cm23.h ****   {
+1513:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((SCB->SHPR[_SHP_IDX(IRQn)] >> _BIT_SHIFT(IRQn) ) & (uint32_t)0xFFUL) >> (8U 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 28
+
+
+1514:Drivers/CMSIS/core_cm23.h ****   }
+1515:Drivers/CMSIS/core_cm23.h **** }
+1516:Drivers/CMSIS/core_cm23.h **** 
+1517:Drivers/CMSIS/core_cm23.h **** 
+1518:Drivers/CMSIS/core_cm23.h **** /**
+1519:Drivers/CMSIS/core_cm23.h ****   \brief   Set Interrupt Vector
+1520:Drivers/CMSIS/core_cm23.h ****   \details Sets an interrupt vector in SRAM based interrupt vector table.
+1521:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1522:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1523:Drivers/CMSIS/core_cm23.h ****            VTOR must been relocated to SRAM before.
+1524:Drivers/CMSIS/core_cm23.h ****            If VTOR is not present address 0 must be mapped to SRAM.
+1525:Drivers/CMSIS/core_cm23.h ****   \param [in]   IRQn      Interrupt number
+1526:Drivers/CMSIS/core_cm23.h ****   \param [in]   vector    Address of interrupt handler function
+1527:Drivers/CMSIS/core_cm23.h ****  */
+1528:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
+1529:Drivers/CMSIS/core_cm23.h **** {
+1530:Drivers/CMSIS/core_cm23.h **** #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
+1531:Drivers/CMSIS/core_cm23.h ****   uint32_t *vectors = (uint32_t *)SCB->VTOR;
+1532:Drivers/CMSIS/core_cm23.h **** #else
+1533:Drivers/CMSIS/core_cm23.h ****   uint32_t *vectors = (uint32_t *)0x0U;
+1534:Drivers/CMSIS/core_cm23.h **** #endif
+1535:Drivers/CMSIS/core_cm23.h ****   vectors[(int32_t)IRQn + NVIC_USER_IRQ_OFFSET] = vector;
+1536:Drivers/CMSIS/core_cm23.h **** }
+1537:Drivers/CMSIS/core_cm23.h **** 
+1538:Drivers/CMSIS/core_cm23.h **** 
+1539:Drivers/CMSIS/core_cm23.h **** /**
+1540:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Vector
+1541:Drivers/CMSIS/core_cm23.h ****   \details Reads an interrupt vector from interrupt vector table.
+1542:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1543:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1544:Drivers/CMSIS/core_cm23.h ****   \param [in]   IRQn      Interrupt number.
+1545:Drivers/CMSIS/core_cm23.h ****   \return                 Address of interrupt handler function
+1546:Drivers/CMSIS/core_cm23.h ****  */
+1547:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t __NVIC_GetVector(IRQn_Type IRQn)
+1548:Drivers/CMSIS/core_cm23.h **** {
+1549:Drivers/CMSIS/core_cm23.h **** #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
+1550:Drivers/CMSIS/core_cm23.h ****   uint32_t *vectors = (uint32_t *)SCB->VTOR;
+1551:Drivers/CMSIS/core_cm23.h **** #else
+1552:Drivers/CMSIS/core_cm23.h ****   uint32_t *vectors = (uint32_t *)0x0U;
+1553:Drivers/CMSIS/core_cm23.h **** #endif
+1554:Drivers/CMSIS/core_cm23.h ****   return vectors[(int32_t)IRQn + NVIC_USER_IRQ_OFFSET];
+1555:Drivers/CMSIS/core_cm23.h **** }
+1556:Drivers/CMSIS/core_cm23.h **** 
+1557:Drivers/CMSIS/core_cm23.h **** 
+1558:Drivers/CMSIS/core_cm23.h **** /**
+1559:Drivers/CMSIS/core_cm23.h ****   \brief   System Reset
+1560:Drivers/CMSIS/core_cm23.h ****   \details Initiates a system reset request to reset the MCU.
+1561:Drivers/CMSIS/core_cm23.h ****  */
+1562:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void __NVIC_SystemReset(void)
+1563:Drivers/CMSIS/core_cm23.h **** {
+1564:Drivers/CMSIS/core_cm23.h ****   __DSB();                                                          /* Ensure all outstanding memor
+1565:Drivers/CMSIS/core_cm23.h ****                                                                        buffered write are completed
+1566:Drivers/CMSIS/core_cm23.h ****   SCB->AIRCR  = ((0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
+1567:Drivers/CMSIS/core_cm23.h ****                  SCB_AIRCR_SYSRESETREQ_Msk);
+1568:Drivers/CMSIS/core_cm23.h ****   __DSB();                                                          /* Ensure completion of memory 
+1569:Drivers/CMSIS/core_cm23.h **** 
+1570:Drivers/CMSIS/core_cm23.h ****   for(;;)                                                           /* wait until reset */
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 29
+
+
+1571:Drivers/CMSIS/core_cm23.h ****   {
+1572:Drivers/CMSIS/core_cm23.h ****     __NOP();
+1573:Drivers/CMSIS/core_cm23.h ****   }
+1574:Drivers/CMSIS/core_cm23.h **** }
+1575:Drivers/CMSIS/core_cm23.h **** 
+1576:Drivers/CMSIS/core_cm23.h **** #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+1577:Drivers/CMSIS/core_cm23.h **** /**
+1578:Drivers/CMSIS/core_cm23.h ****   \brief   Enable Interrupt (non-secure)
+1579:Drivers/CMSIS/core_cm23.h ****   \details Enables a device specific interrupt in the non-secure NVIC interrupt controller when in 
+1580:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1581:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1582:Drivers/CMSIS/core_cm23.h ****  */
+1583:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_NVIC_EnableIRQ_NS(IRQn_Type IRQn)
+1584:Drivers/CMSIS/core_cm23.h **** {
+1585:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1586:Drivers/CMSIS/core_cm23.h ****   {
+1587:Drivers/CMSIS/core_cm23.h ****     NVIC_NS->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1588:Drivers/CMSIS/core_cm23.h ****   }
+1589:Drivers/CMSIS/core_cm23.h **** }
+1590:Drivers/CMSIS/core_cm23.h **** 
+1591:Drivers/CMSIS/core_cm23.h **** 
+1592:Drivers/CMSIS/core_cm23.h **** /**
+1593:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Enable status (non-secure)
+1594:Drivers/CMSIS/core_cm23.h ****   \details Returns a device specific interrupt enable status from the non-secure NVIC interrupt con
+1595:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1596:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt is not enabled.
+1597:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt is enabled.
+1598:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1599:Drivers/CMSIS/core_cm23.h ****  */
+1600:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t TZ_NVIC_GetEnableIRQ_NS(IRQn_Type IRQn)
+1601:Drivers/CMSIS/core_cm23.h **** {
+1602:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1603:Drivers/CMSIS/core_cm23.h ****   {
+1604:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC_NS->ISER[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1F
+1605:Drivers/CMSIS/core_cm23.h ****   }
+1606:Drivers/CMSIS/core_cm23.h ****   else
+1607:Drivers/CMSIS/core_cm23.h ****   {
+1608:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1609:Drivers/CMSIS/core_cm23.h ****   }
+1610:Drivers/CMSIS/core_cm23.h **** }
+1611:Drivers/CMSIS/core_cm23.h **** 
+1612:Drivers/CMSIS/core_cm23.h **** 
+1613:Drivers/CMSIS/core_cm23.h **** /**
+1614:Drivers/CMSIS/core_cm23.h ****   \brief   Disable Interrupt (non-secure)
+1615:Drivers/CMSIS/core_cm23.h ****   \details Disables a device specific interrupt in the non-secure NVIC interrupt controller when in
+1616:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1617:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1618:Drivers/CMSIS/core_cm23.h ****  */
+1619:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_NVIC_DisableIRQ_NS(IRQn_Type IRQn)
+1620:Drivers/CMSIS/core_cm23.h **** {
+1621:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1622:Drivers/CMSIS/core_cm23.h ****   {
+1623:Drivers/CMSIS/core_cm23.h ****     NVIC_NS->ICER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1624:Drivers/CMSIS/core_cm23.h ****   }
+1625:Drivers/CMSIS/core_cm23.h **** }
+1626:Drivers/CMSIS/core_cm23.h **** 
+1627:Drivers/CMSIS/core_cm23.h **** 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 30
+
+
+1628:Drivers/CMSIS/core_cm23.h **** /**
+1629:Drivers/CMSIS/core_cm23.h ****   \brief   Get Pending Interrupt (non-secure)
+1630:Drivers/CMSIS/core_cm23.h ****   \details Reads the NVIC pending register in the non-secure NVIC when in secure state and returns 
+1631:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1632:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt status is not pending.
+1633:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt status is pending.
+1634:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1635:Drivers/CMSIS/core_cm23.h ****  */
+1636:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t TZ_NVIC_GetPendingIRQ_NS(IRQn_Type IRQn)
+1637:Drivers/CMSIS/core_cm23.h **** {
+1638:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1639:Drivers/CMSIS/core_cm23.h ****   {
+1640:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC_NS->ISPR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1F
+1641:Drivers/CMSIS/core_cm23.h ****   }
+1642:Drivers/CMSIS/core_cm23.h ****   else
+1643:Drivers/CMSIS/core_cm23.h ****   {
+1644:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1645:Drivers/CMSIS/core_cm23.h ****   }
+1646:Drivers/CMSIS/core_cm23.h **** }
+1647:Drivers/CMSIS/core_cm23.h **** 
+1648:Drivers/CMSIS/core_cm23.h **** 
+1649:Drivers/CMSIS/core_cm23.h **** /**
+1650:Drivers/CMSIS/core_cm23.h ****   \brief   Set Pending Interrupt (non-secure)
+1651:Drivers/CMSIS/core_cm23.h ****   \details Sets the pending bit of a device specific interrupt in the non-secure NVIC pending regis
+1652:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1653:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1654:Drivers/CMSIS/core_cm23.h ****  */
+1655:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_NVIC_SetPendingIRQ_NS(IRQn_Type IRQn)
+1656:Drivers/CMSIS/core_cm23.h **** {
+1657:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1658:Drivers/CMSIS/core_cm23.h ****   {
+1659:Drivers/CMSIS/core_cm23.h ****     NVIC_NS->ISPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1660:Drivers/CMSIS/core_cm23.h ****   }
+1661:Drivers/CMSIS/core_cm23.h **** }
+1662:Drivers/CMSIS/core_cm23.h **** 
+1663:Drivers/CMSIS/core_cm23.h **** 
+1664:Drivers/CMSIS/core_cm23.h **** /**
+1665:Drivers/CMSIS/core_cm23.h ****   \brief   Clear Pending Interrupt (non-secure)
+1666:Drivers/CMSIS/core_cm23.h ****   \details Clears the pending bit of a device specific interrupt in the non-secure NVIC pending reg
+1667:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1668:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1669:Drivers/CMSIS/core_cm23.h ****  */
+1670:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_NVIC_ClearPendingIRQ_NS(IRQn_Type IRQn)
+1671:Drivers/CMSIS/core_cm23.h **** {
+1672:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1673:Drivers/CMSIS/core_cm23.h ****   {
+1674:Drivers/CMSIS/core_cm23.h ****     NVIC_NS->ICPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+1675:Drivers/CMSIS/core_cm23.h ****   }
+1676:Drivers/CMSIS/core_cm23.h **** }
+1677:Drivers/CMSIS/core_cm23.h **** 
+1678:Drivers/CMSIS/core_cm23.h **** 
+1679:Drivers/CMSIS/core_cm23.h **** /**
+1680:Drivers/CMSIS/core_cm23.h ****   \brief   Get Active Interrupt (non-secure)
+1681:Drivers/CMSIS/core_cm23.h ****   \details Reads the active register in non-secure NVIC when in secure state and returns the active
+1682:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Device specific interrupt number.
+1683:Drivers/CMSIS/core_cm23.h ****   \return             0  Interrupt status is not active.
+1684:Drivers/CMSIS/core_cm23.h ****   \return             1  Interrupt status is active.
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 31
+
+
+1685:Drivers/CMSIS/core_cm23.h ****   \note    IRQn must not be negative.
+1686:Drivers/CMSIS/core_cm23.h ****  */
+1687:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t TZ_NVIC_GetActive_NS(IRQn_Type IRQn)
+1688:Drivers/CMSIS/core_cm23.h **** {
+1689:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1690:Drivers/CMSIS/core_cm23.h ****   {
+1691:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC_NS->IABR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1F
+1692:Drivers/CMSIS/core_cm23.h ****   }
+1693:Drivers/CMSIS/core_cm23.h ****   else
+1694:Drivers/CMSIS/core_cm23.h ****   {
+1695:Drivers/CMSIS/core_cm23.h ****     return(0U);
+1696:Drivers/CMSIS/core_cm23.h ****   }
+1697:Drivers/CMSIS/core_cm23.h **** }
+1698:Drivers/CMSIS/core_cm23.h **** 
+1699:Drivers/CMSIS/core_cm23.h **** 
+1700:Drivers/CMSIS/core_cm23.h **** /**
+1701:Drivers/CMSIS/core_cm23.h ****   \brief   Set Interrupt Priority (non-secure)
+1702:Drivers/CMSIS/core_cm23.h ****   \details Sets the priority of a non-secure device specific interrupt or a non-secure processor ex
+1703:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1704:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1705:Drivers/CMSIS/core_cm23.h ****   \param [in]      IRQn  Interrupt number.
+1706:Drivers/CMSIS/core_cm23.h ****   \param [in]  priority  Priority to set.
+1707:Drivers/CMSIS/core_cm23.h ****   \note    The priority cannot be set for every non-secure processor exception.
+1708:Drivers/CMSIS/core_cm23.h ****  */
+1709:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_NVIC_SetPriority_NS(IRQn_Type IRQn, uint32_t priority)
+1710:Drivers/CMSIS/core_cm23.h **** {
+1711:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1712:Drivers/CMSIS/core_cm23.h ****   {
+1713:Drivers/CMSIS/core_cm23.h ****     NVIC_NS->IPR[_IP_IDX(IRQn)]  = ((uint32_t)(NVIC_NS->IPR[_IP_IDX(IRQn)]  & ~(0xFFUL << _BIT_SHIF
+1714:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+1715:Drivers/CMSIS/core_cm23.h ****   }
+1716:Drivers/CMSIS/core_cm23.h ****   else
+1717:Drivers/CMSIS/core_cm23.h ****   {
+1718:Drivers/CMSIS/core_cm23.h ****     SCB_NS->SHPR[_SHP_IDX(IRQn)] = ((uint32_t)(SCB_NS->SHPR[_SHP_IDX(IRQn)] & ~(0xFFUL << _BIT_SHIF
+1719:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+1720:Drivers/CMSIS/core_cm23.h ****   }
+1721:Drivers/CMSIS/core_cm23.h **** }
+1722:Drivers/CMSIS/core_cm23.h **** 
+1723:Drivers/CMSIS/core_cm23.h **** 
+1724:Drivers/CMSIS/core_cm23.h **** /**
+1725:Drivers/CMSIS/core_cm23.h ****   \brief   Get Interrupt Priority (non-secure)
+1726:Drivers/CMSIS/core_cm23.h ****   \details Reads the priority of a non-secure device specific interrupt or a non-secure processor e
+1727:Drivers/CMSIS/core_cm23.h ****            The interrupt number can be positive to specify a device specific interrupt,
+1728:Drivers/CMSIS/core_cm23.h ****            or negative to specify a processor exception.
+1729:Drivers/CMSIS/core_cm23.h ****   \param [in]   IRQn  Interrupt number.
+1730:Drivers/CMSIS/core_cm23.h ****   \return             Interrupt Priority. Value is aligned automatically to the implemented priorit
+1731:Drivers/CMSIS/core_cm23.h ****  */
+1732:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t TZ_NVIC_GetPriority_NS(IRQn_Type IRQn)
+1733:Drivers/CMSIS/core_cm23.h **** {
+1734:Drivers/CMSIS/core_cm23.h **** 
+1735:Drivers/CMSIS/core_cm23.h ****   if ((int32_t)(IRQn) >= 0)
+1736:Drivers/CMSIS/core_cm23.h ****   {
+1737:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((NVIC_NS->IPR[ _IP_IDX(IRQn)] >> _BIT_SHIFT(IRQn) ) & (uint32_t)0xFFUL) >> (
+1738:Drivers/CMSIS/core_cm23.h ****   }
+1739:Drivers/CMSIS/core_cm23.h ****   else
+1740:Drivers/CMSIS/core_cm23.h ****   {
+1741:Drivers/CMSIS/core_cm23.h ****     return((uint32_t)(((SCB_NS->SHPR[_SHP_IDX(IRQn)] >> _BIT_SHIFT(IRQn) ) & (uint32_t)0xFFUL) >> (
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 32
+
+
+1742:Drivers/CMSIS/core_cm23.h ****   }
+1743:Drivers/CMSIS/core_cm23.h **** }
+1744:Drivers/CMSIS/core_cm23.h **** #endif /*  defined (__ARM_FEATURE_CMSE) &&(__ARM_FEATURE_CMSE == 3U) */
+1745:Drivers/CMSIS/core_cm23.h **** 
+1746:Drivers/CMSIS/core_cm23.h **** /*@} end of CMSIS_Core_NVICFunctions */
+1747:Drivers/CMSIS/core_cm23.h **** 
+1748:Drivers/CMSIS/core_cm23.h **** /* ##########################  MPU functions  #################################### */
+1749:Drivers/CMSIS/core_cm23.h **** 
+1750:Drivers/CMSIS/core_cm23.h **** #if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1U)
+1751:Drivers/CMSIS/core_cm23.h **** 
+1752:Drivers/CMSIS/core_cm23.h **** #include "mpu_armv8.h"
+1753:Drivers/CMSIS/core_cm23.h **** 
+1754:Drivers/CMSIS/core_cm23.h **** #endif
+1755:Drivers/CMSIS/core_cm23.h **** 
+1756:Drivers/CMSIS/core_cm23.h **** /* ##########################  FPU functions  #################################### */
+1757:Drivers/CMSIS/core_cm23.h **** /**
+1758:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_Core_FunctionInterface
+1759:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_Core_FpuFunctions FPU Functions
+1760:Drivers/CMSIS/core_cm23.h ****   \brief    Function that provides FPU type.
+1761:Drivers/CMSIS/core_cm23.h ****   @{
+1762:Drivers/CMSIS/core_cm23.h ****  */
+1763:Drivers/CMSIS/core_cm23.h **** 
+1764:Drivers/CMSIS/core_cm23.h **** /**
+1765:Drivers/CMSIS/core_cm23.h ****   \brief   get FPU type
+1766:Drivers/CMSIS/core_cm23.h ****   \details returns the FPU type
+1767:Drivers/CMSIS/core_cm23.h ****   \returns
+1768:Drivers/CMSIS/core_cm23.h ****    - \b  0: No FPU
+1769:Drivers/CMSIS/core_cm23.h ****    - \b  1: Single precision FPU
+1770:Drivers/CMSIS/core_cm23.h ****    - \b  2: Double + Single precision FPU
+1771:Drivers/CMSIS/core_cm23.h ****  */
+1772:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t SCB_GetFPUType(void)
+1773:Drivers/CMSIS/core_cm23.h **** {
+1774:Drivers/CMSIS/core_cm23.h ****     return 0U;           /* No FPU */
+1775:Drivers/CMSIS/core_cm23.h **** }
+1776:Drivers/CMSIS/core_cm23.h **** 
+1777:Drivers/CMSIS/core_cm23.h **** 
+1778:Drivers/CMSIS/core_cm23.h **** /*@} end of CMSIS_Core_FpuFunctions */
+1779:Drivers/CMSIS/core_cm23.h **** 
+1780:Drivers/CMSIS/core_cm23.h **** 
+1781:Drivers/CMSIS/core_cm23.h **** 
+1782:Drivers/CMSIS/core_cm23.h **** /* ##########################   SAU functions  #################################### */
+1783:Drivers/CMSIS/core_cm23.h **** /**
+1784:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_Core_FunctionInterface
+1785:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_Core_SAUFunctions SAU Functions
+1786:Drivers/CMSIS/core_cm23.h ****   \brief    Functions that configure the SAU.
+1787:Drivers/CMSIS/core_cm23.h ****   @{
+1788:Drivers/CMSIS/core_cm23.h ****  */
+1789:Drivers/CMSIS/core_cm23.h **** 
+1790:Drivers/CMSIS/core_cm23.h **** #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+1791:Drivers/CMSIS/core_cm23.h **** 
+1792:Drivers/CMSIS/core_cm23.h **** /**
+1793:Drivers/CMSIS/core_cm23.h ****   \brief   Enable SAU
+1794:Drivers/CMSIS/core_cm23.h ****   \details Enables the Security Attribution Unit (SAU).
+1795:Drivers/CMSIS/core_cm23.h ****  */
+1796:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_SAU_Enable(void)
+1797:Drivers/CMSIS/core_cm23.h **** {
+1798:Drivers/CMSIS/core_cm23.h ****     SAU->CTRL |=  (SAU_CTRL_ENABLE_Msk);
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 33
+
+
+1799:Drivers/CMSIS/core_cm23.h **** }
+1800:Drivers/CMSIS/core_cm23.h **** 
+1801:Drivers/CMSIS/core_cm23.h **** 
+1802:Drivers/CMSIS/core_cm23.h **** 
+1803:Drivers/CMSIS/core_cm23.h **** /**
+1804:Drivers/CMSIS/core_cm23.h ****   \brief   Disable SAU
+1805:Drivers/CMSIS/core_cm23.h ****   \details Disables the Security Attribution Unit (SAU).
+1806:Drivers/CMSIS/core_cm23.h ****  */
+1807:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE void TZ_SAU_Disable(void)
+1808:Drivers/CMSIS/core_cm23.h **** {
+1809:Drivers/CMSIS/core_cm23.h ****     SAU->CTRL &= ~(SAU_CTRL_ENABLE_Msk);
+1810:Drivers/CMSIS/core_cm23.h **** }
+1811:Drivers/CMSIS/core_cm23.h **** 
+1812:Drivers/CMSIS/core_cm23.h **** #endif /* defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U) */
+1813:Drivers/CMSIS/core_cm23.h **** 
+1814:Drivers/CMSIS/core_cm23.h **** /*@} end of CMSIS_Core_SAUFunctions */
+1815:Drivers/CMSIS/core_cm23.h **** 
+1816:Drivers/CMSIS/core_cm23.h **** 
+1817:Drivers/CMSIS/core_cm23.h **** 
+1818:Drivers/CMSIS/core_cm23.h **** 
+1819:Drivers/CMSIS/core_cm23.h **** /* ##################################    SysTick function  ########################################
+1820:Drivers/CMSIS/core_cm23.h **** /**
+1821:Drivers/CMSIS/core_cm23.h ****   \ingroup  CMSIS_Core_FunctionInterface
+1822:Drivers/CMSIS/core_cm23.h ****   \defgroup CMSIS_Core_SysTickFunctions SysTick Functions
+1823:Drivers/CMSIS/core_cm23.h ****   \brief    Functions that configure the System.
+1824:Drivers/CMSIS/core_cm23.h ****   @{
+1825:Drivers/CMSIS/core_cm23.h ****  */
+1826:Drivers/CMSIS/core_cm23.h **** 
+1827:Drivers/CMSIS/core_cm23.h **** #if defined (__Vendor_SysTickConfig) && (__Vendor_SysTickConfig == 0U)
+1828:Drivers/CMSIS/core_cm23.h **** 
+1829:Drivers/CMSIS/core_cm23.h **** /**
+1830:Drivers/CMSIS/core_cm23.h ****   \brief   System Tick Configuration
+1831:Drivers/CMSIS/core_cm23.h ****   \details Initializes the System Timer and its interrupt, and starts the System Tick Timer.
+1832:Drivers/CMSIS/core_cm23.h ****            Counter is in free running mode to generate periodic interrupts.
+1833:Drivers/CMSIS/core_cm23.h ****   \param [in]  ticks  Number of ticks between two interrupts.
+1834:Drivers/CMSIS/core_cm23.h ****   \return          0  Function succeeded.
+1835:Drivers/CMSIS/core_cm23.h ****   \return          1  Function failed.
+1836:Drivers/CMSIS/core_cm23.h ****   \note    When the variable <b>__Vendor_SysTickConfig</b> is set to 1, then the
+1837:Drivers/CMSIS/core_cm23.h ****            function <b>SysTick_Config</b> is not included. In this case, the file <b><i>device</i>.
+1838:Drivers/CMSIS/core_cm23.h ****            must contain a vendor-specific implementation of this function.
+1839:Drivers/CMSIS/core_cm23.h ****  */
+1840:Drivers/CMSIS/core_cm23.h **** __STATIC_INLINE uint32_t SysTick_Config(uint32_t ticks)
+1841:Drivers/CMSIS/core_cm23.h **** {
+  28              		.loc 2 1841 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+1842:Drivers/CMSIS/core_cm23.h ****   if ((ticks - 1UL) > SysTick_LOAD_RELOAD_Msk)
+  33              		.loc 2 1842 3 view .LVU1
+  34              		.loc 2 1842 14 is_stmt 0 view .LVU2
+  35 0000 0138     		subs	r0, r0, #1
+  36              	.LVL1:
+  37              		.loc 2 1842 6 view .LVU3
+  38 0002 8023     		movs	r3, #128
+  39 0004 5B04     		lsls	r3, r3, #17
+  40 0006 9842     		cmp	r0, r3
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 34
+
+
+  41 0008 15D2     		bcs	.L3
+1843:Drivers/CMSIS/core_cm23.h ****   {
+1844:Drivers/CMSIS/core_cm23.h ****     return (1UL);                                                   /* Reload value impossible */
+1845:Drivers/CMSIS/core_cm23.h ****   }
+1846:Drivers/CMSIS/core_cm23.h **** 
+1847:Drivers/CMSIS/core_cm23.h ****   SysTick->LOAD  = (uint32_t)(ticks - 1UL);                         /* set reload register */
+  42              		.loc 2 1847 3 is_stmt 1 view .LVU4
+  43              		.loc 2 1847 18 is_stmt 0 view .LVU5
+  44 000a 4EF21002 		movw	r2, #57360
+  45 000e CEF20002 		movt	r2, 57344
+  46 0012 5060     		str	r0, [r2, #4]
+1848:Drivers/CMSIS/core_cm23.h ****   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); /* set Priority for Systick Int
+  47              		.loc 2 1848 3 is_stmt 1 view .LVU6
+  48              	.LVL2:
+  49              	.LBB6:
+  50              	.LBI6:
+1480:Drivers/CMSIS/core_cm23.h **** {
+  51              		.loc 2 1480 22 view .LVU7
+  52              	.LBB7:
+1482:Drivers/CMSIS/core_cm23.h ****   {
+  53              		.loc 2 1482 3 view .LVU8
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  54              		.loc 2 1489 5 view .LVU9
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  55              		.loc 2 1489 54 is_stmt 0 view .LVU10
+  56 0014 4EF60051 		movw	r1, #60672
+  57 0018 CEF20001 		movt	r1, 57344
+  58 001c 0B6A     		ldr	r3, [r1, #32]
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  59              		.loc 2 1489 34 view .LVU11
+  60 001e 1B02     		lsls	r3, r3, #8
+  61 0020 1B0A     		lsrs	r3, r3, #8
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  62              		.loc 2 1489 104 view .LVU12
+  63 0022 C020     		movs	r0, #192
+  64              	.LVL3:
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  65              		.loc 2 1489 104 view .LVU13
+  66 0024 0006     		lsls	r0, r0, #24
+  67 0026 0343     		orrs	r3, r0
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  68              		.loc 2 1489 31 view .LVU14
+  69 0028 0B62     		str	r3, [r1, #32]
+  70              	.LVL4:
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+  71              		.loc 2 1489 31 view .LVU15
+  72              	.LBE7:
+  73              	.LBE6:
+1849:Drivers/CMSIS/core_cm23.h ****   SysTick->VAL   = 0UL;                                             /* Load the SysTick Counter Val
+  74              		.loc 2 1849 3 is_stmt 1 view .LVU16
+  75              		.loc 2 1849 18 is_stmt 0 view .LVU17
+  76 002a 0023     		movs	r3, #0
+  77 002c 9360     		str	r3, [r2, #8]
+1850:Drivers/CMSIS/core_cm23.h ****   SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
+  78              		.loc 2 1850 3 is_stmt 1 view .LVU18
+  79              		.loc 2 1850 18 is_stmt 0 view .LVU19
+  80 002e 0733     		adds	r3, r3, #7
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 35
+
+
+  81 0030 1360     		str	r3, [r2]
+1851:Drivers/CMSIS/core_cm23.h ****                    SysTick_CTRL_TICKINT_Msk   |
+1852:Drivers/CMSIS/core_cm23.h ****                    SysTick_CTRL_ENABLE_Msk;                         /* Enable SysTick IRQ and SysTi
+1853:Drivers/CMSIS/core_cm23.h ****   return (0UL);                                                     /* Function successful */
+  82              		.loc 2 1853 3 is_stmt 1 view .LVU20
+  83              		.loc 2 1853 10 is_stmt 0 view .LVU21
+  84 0032 0020     		movs	r0, #0
+  85              	.L1:
+1854:Drivers/CMSIS/core_cm23.h **** }
+  86              		.loc 2 1854 1 view .LVU22
+  87              		@ sp needed
+  88 0034 7047     		bx	lr
+  89              	.L3:
+1844:Drivers/CMSIS/core_cm23.h ****   }
+  90              		.loc 2 1844 12 view .LVU23
+  91 0036 0120     		movs	r0, #1
+  92 0038 FCE7     		b	.L1
+  93              		.cfi_endproc
+  94              	.LFE59:
+  96              		.section	.text.systick_config,"ax",%progbits
+  97              		.align	1
+  98              		.global	systick_config
+  99              		.syntax unified
+ 100              		.code	16
+ 101              		.thumb_func
+ 103              	systick_config:
+ 104              	.LFB60:
+   1:Core/Src/systick.c **** /*!
+   2:Core/Src/systick.c ****     \file    systick.c
+   3:Core/Src/systick.c ****     \brief   the systick configuration file
+   4:Core/Src/systick.c ****     
+   5:Core/Src/systick.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Core/Src/systick.c **** */
+   7:Core/Src/systick.c **** 
+   8:Core/Src/systick.c **** /*
+   9:Core/Src/systick.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Core/Src/systick.c **** 
+  11:Core/Src/systick.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Core/Src/systick.c **** are permitted provided that the following conditions are met:
+  13:Core/Src/systick.c **** 
+  14:Core/Src/systick.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Core/Src/systick.c ****        list of conditions and the following disclaimer.
+  16:Core/Src/systick.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Core/Src/systick.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Core/Src/systick.c ****        and/or other materials provided with the distribution.
+  19:Core/Src/systick.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Core/Src/systick.c ****        may be used to endorse or promote products derived from this software without 
+  21:Core/Src/systick.c ****        specific prior written permission.
+  22:Core/Src/systick.c **** 
+  23:Core/Src/systick.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Core/Src/systick.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Core/Src/systick.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Core/Src/systick.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Core/Src/systick.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Core/Src/systick.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Core/Src/systick.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Core/Src/systick.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 36
+
+
+  31:Core/Src/systick.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Core/Src/systick.c **** OF SUCH DAMAGE.
+  33:Core/Src/systick.c **** */
+  34:Core/Src/systick.c **** 
+  35:Core/Src/systick.c **** #include "gd32e23x.h"
+  36:Core/Src/systick.c **** #include "systick.h"
+  37:Core/Src/systick.c **** 
+  38:Core/Src/systick.c **** volatile static uint32_t delay;
+  39:Core/Src/systick.c **** 
+  40:Core/Src/systick.c **** /*!
+  41:Core/Src/systick.c ****     \brief      configure systick
+  42:Core/Src/systick.c ****     \param[in]  none
+  43:Core/Src/systick.c ****     \param[out] none
+  44:Core/Src/systick.c ****     \retval     none
+  45:Core/Src/systick.c **** */
+  46:Core/Src/systick.c **** void systick_config(void)
+  47:Core/Src/systick.c **** {
+ 105              		.loc 1 47 1 is_stmt 1 view -0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109 0000 10B5     		push	{r4, lr}
+ 110              	.LCFI0:
+ 111              		.cfi_def_cfa_offset 8
+ 112              		.cfi_offset 4, -8
+ 113              		.cfi_offset 14, -4
+  48:Core/Src/systick.c ****     /* setup systick timer for 1000Hz interrupts */
+  49:Core/Src/systick.c ****     if(SysTick_Config(SystemCoreClock / 1000U)){
+ 114              		.loc 1 49 5 view .LVU25
+ 115              		.loc 1 49 8 is_stmt 0 view .LVU26
+ 116 0002 40F20003 		movw	r3, #:lower16:SystemCoreClock
+ 117 0006 C0F20003 		movt	r3, #:upper16:SystemCoreClock
+ 118 000a 1868     		ldr	r0, [r3]
+ 119 000c 40F2E833 		movw	r3, #1000
+ 120 0010 B0FBF3F0 		udiv	r0, r0, r3
+ 121 0014 FFF7FEFF 		bl	SysTick_Config
+ 122              	.LVL5:
+ 123              		.loc 1 49 7 discriminator 1 view .LVU27
+ 124 0018 00B1     		cbz	r0, .L5
+ 125              	.L6:
+  50:Core/Src/systick.c ****         /* capture error */
+  51:Core/Src/systick.c ****         while(1){
+ 126              		.loc 1 51 9 is_stmt 1 view .LVU28
+  52:Core/Src/systick.c ****         }
+ 127              		.loc 1 52 9 view .LVU29
+  51:Core/Src/systick.c ****         }
+ 128              		.loc 1 51 14 view .LVU30
+ 129 001a FEE7     		b	.L6
+ 130              	.L5:
+  53:Core/Src/systick.c ****     }
+  54:Core/Src/systick.c ****     /* configure the systick handler priority */
+  55:Core/Src/systick.c ****     NVIC_SetPriority(SysTick_IRQn, 0x00U);
+ 131              		.loc 1 55 5 view .LVU31
+ 132              	.LVL6:
+ 133              	.LBB8:
+ 134              	.LBI8:
+1480:Drivers/CMSIS/core_cm23.h **** {
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 37
+
+
+ 135              		.loc 2 1480 22 view .LVU32
+ 136              	.LBB9:
+1482:Drivers/CMSIS/core_cm23.h ****   {
+ 137              		.loc 2 1482 3 view .LVU33
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+ 138              		.loc 2 1489 5 view .LVU34
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+ 139              		.loc 2 1489 54 is_stmt 0 view .LVU35
+ 140 001c 4EF60052 		movw	r2, #60672
+ 141 0020 CEF20002 		movt	r2, 57344
+ 142 0024 136A     		ldr	r3, [r2, #32]
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+ 143              		.loc 2 1489 34 view .LVU36
+ 144 0026 1B02     		lsls	r3, r3, #8
+ 145 0028 1B0A     		lsrs	r3, r3, #8
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+ 146              		.loc 2 1489 31 view .LVU37
+ 147 002a 1362     		str	r3, [r2, #32]
+ 148              	.LVL7:
+1489:Drivers/CMSIS/core_cm23.h ****        (((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL) << _BIT_SHIFT(IRQn)));
+ 149              		.loc 2 1489 31 view .LVU38
+ 150              	.LBE9:
+ 151              	.LBE8:
+  56:Core/Src/systick.c **** }
+ 152              		.loc 1 56 1 view .LVU39
+ 153              		@ sp needed
+ 154 002c 10BD     		pop	{r4, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE60:
+ 158              		.section	.text.delay_1ms,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	delay_1ms
+ 161              		.syntax unified
+ 162              		.code	16
+ 163              		.thumb_func
+ 165              	delay_1ms:
+ 166              	.LVL8:
+ 167              	.LFB61:
+  57:Core/Src/systick.c **** 
+  58:Core/Src/systick.c **** /*!
+  59:Core/Src/systick.c ****     \brief      delay a time in milliseconds
+  60:Core/Src/systick.c ****     \param[in]  count: count in milliseconds
+  61:Core/Src/systick.c ****     \param[out] none
+  62:Core/Src/systick.c ****     \retval     none
+  63:Core/Src/systick.c **** */
+  64:Core/Src/systick.c **** void delay_1ms(uint32_t count)
+  65:Core/Src/systick.c **** {
+ 168              		.loc 1 65 1 is_stmt 1 view -0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172              		@ link register save eliminated.
+  66:Core/Src/systick.c ****     delay = count;
+ 173              		.loc 1 66 5 view .LVU41
+ 174              		.loc 1 66 11 is_stmt 0 view .LVU42
+ 175 0000 40F20003 		movw	r3, #:lower16:delay
+ 176 0004 C0F20003 		movt	r3, #:upper16:delay
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 38
+
+
+ 177 0008 1860     		str	r0, [r3]
+  67:Core/Src/systick.c **** 
+  68:Core/Src/systick.c ****     while(0U != delay){
+ 178              		.loc 1 68 5 is_stmt 1 view .LVU43
+ 179              	.L8:
+  69:Core/Src/systick.c ****     }
+ 180              		.loc 1 69 5 view .LVU44
+  68:Core/Src/systick.c ****     }
+ 181              		.loc 1 68 14 discriminator 1 view .LVU45
+ 182 000a 40F20003 		movw	r3, #:lower16:delay
+ 183 000e C0F20003 		movt	r3, #:upper16:delay
+ 184 0012 1B68     		ldr	r3, [r3]
+ 185 0014 002B     		cmp	r3, #0
+ 186 0016 F8D1     		bne	.L8
+  70:Core/Src/systick.c **** }
+ 187              		.loc 1 70 1 is_stmt 0 view .LVU46
+ 188              		@ sp needed
+ 189 0018 7047     		bx	lr
+ 190              		.cfi_endproc
+ 191              	.LFE61:
+ 193              		.section	.text.delay_decrement,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	delay_decrement
+ 196              		.syntax unified
+ 197              		.code	16
+ 198              		.thumb_func
+ 200              	delay_decrement:
+ 201              	.LFB62:
+  71:Core/Src/systick.c **** 
+  72:Core/Src/systick.c **** /*!
+  73:Core/Src/systick.c ****     \brief      delay decrement
+  74:Core/Src/systick.c ****     \param[in]  none
+  75:Core/Src/systick.c ****     \param[out] none
+  76:Core/Src/systick.c ****     \retval     none
+  77:Core/Src/systick.c **** */
+  78:Core/Src/systick.c **** void delay_decrement(void)
+  79:Core/Src/systick.c **** {
+ 202              		.loc 1 79 1 is_stmt 1 view -0
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+  80:Core/Src/systick.c ****     if(0U != delay){
+ 207              		.loc 1 80 5 view .LVU48
+ 208              		.loc 1 80 11 is_stmt 0 view .LVU49
+ 209 0000 40F20003 		movw	r3, #:lower16:delay
+ 210 0004 C0F20003 		movt	r3, #:upper16:delay
+ 211 0008 1B68     		ldr	r3, [r3]
+ 212              		.loc 1 80 7 view .LVU50
+ 213 000a 33B1     		cbz	r3, .L9
+  81:Core/Src/systick.c ****         delay--;
+ 214              		.loc 1 81 9 is_stmt 1 view .LVU51
+ 215              		.loc 1 81 14 is_stmt 0 view .LVU52
+ 216 000c 40F20003 		movw	r3, #:lower16:delay
+ 217 0010 C0F20003 		movt	r3, #:upper16:delay
+ 218 0014 1A68     		ldr	r2, [r3]
+ 219 0016 013A     		subs	r2, r2, #1
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 39
+
+
+ 220 0018 1A60     		str	r2, [r3]
+ 221              	.L9:
+  82:Core/Src/systick.c ****     }
+  83:Core/Src/systick.c **** }
+ 222              		.loc 1 83 1 view .LVU53
+ 223              		@ sp needed
+ 224 001a 7047     		bx	lr
+ 225              		.cfi_endproc
+ 226              	.LFE62:
+ 228              		.section	.bss.delay,"aw",%nobits
+ 229              		.align	2
+ 232              	delay:
+ 233 0000 00000000 		.space	4
+ 234              		.text
+ 235              	.Letext0:
+ 236              		.file 3 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 237              		.file 4 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 238              		.file 5 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 239              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
+ 240              		.file 7 "Drivers/CMSIS/GD/GD32E23x/Include/system_gd32e23x.h"
+ 241              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ARM GAS  D:\noval\Temp\ccs6PIV6.s 			page 40
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 systick.c
+D:\noval\Temp\ccs6PIV6.s:19     .text.SysTick_Config:00000000 $t
+D:\noval\Temp\ccs6PIV6.s:24     .text.SysTick_Config:00000000 SysTick_Config
+D:\noval\Temp\ccs6PIV6.s:97     .text.systick_config:00000000 $t
+D:\noval\Temp\ccs6PIV6.s:103    .text.systick_config:00000000 systick_config
+D:\noval\Temp\ccs6PIV6.s:159    .text.delay_1ms:00000000 $t
+D:\noval\Temp\ccs6PIV6.s:165    .text.delay_1ms:00000000 delay_1ms
+D:\noval\Temp\ccs6PIV6.s:232    .bss.delay:00000000 delay
+D:\noval\Temp\ccs6PIV6.s:194    .text.delay_decrement:00000000 $t
+D:\noval\Temp\ccs6PIV6.s:200    .text.delay_decrement:00000000 delay_decrement
+D:\noval\Temp\ccs6PIV6.s:229    .bss.delay:00000000 $d
+
+UNDEFINED SYMBOLS
+SystemCoreClock

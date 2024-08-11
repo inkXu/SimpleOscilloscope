@@ -1,0 +1,1303 @@
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_gpio.c"
+  18              		.section	.text.gpio_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	gpio_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	gpio_deinit:
+  26              	.LVL0:
+  27              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \file    gd32e23x_gpio.c
+   3:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief   GPIO driver
+   4:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     
+   5:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     All rights reserved.
+  12:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  13:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  14:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** are permitted provided that the following conditions are met:
+  15:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  16:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  17:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****        list of conditions and the following disclaimer.
+  18:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  19:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****        this list of conditions and the following disclaimer in the documentation 
+  20:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****        and/or other materials provided with the distribution.
+  21:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  22:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****        may be used to endorse or promote products derived from this software without 
+  23:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****        specific prior written permission.
+  24:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  25:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  26:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  28:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  29:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  30:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  31:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 2
+
+
+  32:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  34:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** OF SUCH DAMAGE.
+  35:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+  36:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** #include "gd32e23x_gpio.h"
+  38:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  39:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+  40:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      reset GPIO port
+  41:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F)
+  42:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+  43:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+  44:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+  45:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+  46:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+  47:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_deinit(uint32_t gpio_periph)
+  48:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+  28              		.loc 1 48 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 48 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  49:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     switch(gpio_periph){
+  38              		.loc 1 49 5 is_stmt 1 view .LVU2
+  39 0002 40F60003 		movw	r3, #2048
+  40 0006 C4F60003 		movt	r3, 18432
+  41 000a 9842     		cmp	r0, r3
+  42 000c 30D0     		beq	.L2
+  43 000e 40F60003 		movw	r3, #2048
+  44 0012 C4F60003 		movt	r3, 18432
+  45 0016 9842     		cmp	r0, r3
+  46 0018 12D8     		bhi	.L3
+  47 001a 9023     		movs	r3, #144
+  48 001c DB05     		lsls	r3, r3, #23
+  49 001e 9842     		cmp	r0, r3
+  50 0020 1DD0     		beq	.L4
+  51 0022 40F20043 		movw	r3, #1024
+  52 0026 C4F60003 		movt	r3, 18432
+  53 002a 9842     		cmp	r0, r3
+  54 002c 1FD1     		bne	.L1
+  50:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOA:
+  51:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         /* reset GPIOA */
+  52:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOARST);
+  53:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+  54:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  55:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOB:
+  56:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         /* reset GPIOB */
+  57:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOBRST);
+  55              		.loc 1 57 9 view .LVU3
+  56 002e 40F61220 		movw	r0, #2578
+  57              	.LVL1:
+  58              		.loc 1 57 9 is_stmt 0 view .LVU4
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 3
+
+
+  59 0032 FFF7FEFF 		bl	rcu_periph_reset_enable
+  60              	.LVL2:
+  58:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  61              		.loc 1 58 9 is_stmt 1 view .LVU5
+  62 0036 40F61220 		movw	r0, #2578
+  63 003a FFF7FEFF 		bl	rcu_periph_reset_disable
+  64              	.LVL3:
+  59:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  65              		.loc 1 59 9 view .LVU6
+  66 003e 16E0     		b	.L1
+  67              	.LVL4:
+  68              	.L3:
+  49:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOA:
+  69              		.loc 1 49 5 is_stmt 0 view .LVU7
+  70 0040 41F20043 		movw	r3, #5120
+  71 0044 C4F60003 		movt	r3, 18432
+  72 0048 9842     		cmp	r0, r3
+  73 004a 10D1     		bne	.L1
+  60:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOC:
+  61:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         /* reset GPIOC */
+  62:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOCRST);
+  63:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+  64:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  65:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOF:
+  66:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         /* reset GPIOF */
+  67:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOFRST);
+  74              		.loc 1 67 9 is_stmt 1 view .LVU8
+  75 004c 40F61620 		movw	r0, #2582
+  76              	.LVL5:
+  77              		.loc 1 67 9 is_stmt 0 view .LVU9
+  78 0050 FFF7FEFF 		bl	rcu_periph_reset_enable
+  79              	.LVL6:
+  68:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOFRST);
+  80              		.loc 1 68 9 is_stmt 1 view .LVU10
+  81 0054 40F61620 		movw	r0, #2582
+  82 0058 FFF7FEFF 		bl	rcu_periph_reset_disable
+  83              	.LVL7:
+  69:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  84              		.loc 1 69 9 view .LVU11
+  70:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     default:
+  71:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  72:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+  73:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+  85              		.loc 1 73 1 is_stmt 0 view .LVU12
+  86 005c 07E0     		b	.L1
+  87              	.LVL8:
+  88              	.L4:
+  52:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+  89              		.loc 1 52 9 is_stmt 1 view .LVU13
+  90 005e 40F61120 		movw	r0, #2577
+  91              	.LVL9:
+  52:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+  92              		.loc 1 52 9 is_stmt 0 view .LVU14
+  93 0062 FFF7FEFF 		bl	rcu_periph_reset_enable
+  94              	.LVL10:
+  53:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+  95              		.loc 1 53 9 is_stmt 1 view .LVU15
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 4
+
+
+  96 0066 40F61120 		movw	r0, #2577
+  97 006a FFF7FEFF 		bl	rcu_periph_reset_disable
+  98              	.LVL11:
+  54:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOB:
+  99              		.loc 1 54 9 view .LVU16
+ 100              	.L1:
+ 101              		.loc 1 73 1 is_stmt 0 view .LVU17
+ 102              		@ sp needed
+ 103 006e 10BD     		pop	{r4, pc}
+ 104              	.LVL12:
+ 105              	.L2:
+  62:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+ 106              		.loc 1 62 9 is_stmt 1 view .LVU18
+ 107 0070 40F61320 		movw	r0, #2579
+ 108              	.LVL13:
+  62:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+ 109              		.loc 1 62 9 is_stmt 0 view .LVU19
+ 110 0074 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 111              	.LVL14:
+  63:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
+ 112              		.loc 1 63 9 is_stmt 1 view .LVU20
+ 113 0078 40F61320 		movw	r0, #2579
+ 114 007c FFF7FEFF 		bl	rcu_periph_reset_disable
+ 115              	.LVL15:
+  64:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     case GPIOF:
+ 116              		.loc 1 64 9 view .LVU21
+ 117 0080 F5E7     		b	.L1
+ 118              		.cfi_endproc
+ 119              	.LFE60:
+ 121              		.section	.text.gpio_mode_set,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	gpio_mode_set
+ 124              		.syntax unified
+ 125              		.code	16
+ 126              		.thumb_func
+ 128              	gpio_mode_set:
+ 129              	.LVL16:
+ 130              	.LFB61:
+  74:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+  75:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+  76:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      set GPIO mode
+  77:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+  78:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+  79:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+  80:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  mode: gpio pin mode
+  81:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_MODE_INPUT: input mode
+  82:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_MODE_OUTPUT: output mode
+  83:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_MODE_AF: alternate function mode
+  84:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_MODE_ANALOG: analog mode
+  85:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pull_up_down: gpio pin with pull-up or pull-down resistor
+  86:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PUPD_NONE: floating mode, no pull-up and pull-down resistors
+  87:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PUPD_PULLUP: with pull-up resistor
+  88:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PUPD_PULLDOWN:with pull-down resistor
+  89:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+  90:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+  91:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL 
+  92:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 5
+
+
+  93:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+  94:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+  95:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_mode_set(uint32_t gpio_periph, uint32_t mode, uint32_t pull_up_down, uint32_t pin)
+  96:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 131              		.loc 1 96 1 view -0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		.loc 1 96 1 is_stmt 0 view .LVU23
+ 136 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 137              	.LCFI1:
+ 138              		.cfi_def_cfa_offset 20
+ 139              		.cfi_offset 4, -20
+ 140              		.cfi_offset 5, -16
+ 141              		.cfi_offset 6, -12
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 CE46     		mov	lr, r9
+ 145 0004 4746     		mov	r7, r8
+ 146 0006 80B5     		push	{r7, lr}
+ 147              	.LCFI2:
+ 148              		.cfi_def_cfa_offset 28
+ 149              		.cfi_offset 8, -28
+ 150              		.cfi_offset 9, -24
+ 151 0008 8446     		mov	ip, r0
+ 152 000a 9146     		mov	r9, r2
+ 153 000c 1800     		movs	r0, r3
+ 154              	.LVL17:
+  97:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint16_t i;
+ 155              		.loc 1 97 5 is_stmt 1 view .LVU24
+  98:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint32_t ctl, pupd;
+ 156              		.loc 1 98 5 view .LVU25
+  99:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 100:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     ctl = GPIO_CTL(gpio_periph);
+ 157              		.loc 1 100 5 view .LVU26
+ 158              		.loc 1 100 9 is_stmt 0 view .LVU27
+ 159 000e 6346     		mov	r3, ip
+ 160              	.LVL18:
+ 161              		.loc 1 100 9 view .LVU28
+ 162 0010 1F68     		ldr	r7, [r3]
+ 163              	.LVL19:
+ 101:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     pupd = GPIO_PUD(gpio_periph);
+ 164              		.loc 1 101 5 is_stmt 1 view .LVU29
+ 165              		.loc 1 101 10 is_stmt 0 view .LVU30
+ 166 0012 DE68     		ldr	r6, [r3, #12]
+ 167              	.LVL20:
+ 102:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 103:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     for(i = 0U;i < 16U;i++){
+ 168              		.loc 1 103 5 is_stmt 1 view .LVU31
+ 169              		.loc 1 103 11 is_stmt 0 view .LVU32
+ 170 0014 0024     		movs	r4, #0
+ 171              		.loc 1 103 5 view .LVU33
+ 172 0016 01E0     		b	.L9
+ 173              	.LVL21:
+ 174              	.L10:
+ 175              		.loc 1 103 25 is_stmt 1 discriminator 2 view .LVU34
+ 176 0018 0134     		adds	r4, r4, #1
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 6
+
+
+ 177              	.LVL22:
+ 178              		.loc 1 103 25 is_stmt 0 discriminator 2 view .LVU35
+ 179 001a A4B2     		uxth	r4, r4
+ 180              	.LVL23:
+ 181              	.L9:
+ 182              		.loc 1 103 18 is_stmt 1 discriminator 1 view .LVU36
+ 183 001c 0F2C     		cmp	r4, #15
+ 184 001e 0FD8     		bhi	.L12
+ 104:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         if((1U << i) & pin){
+ 185              		.loc 1 104 9 view .LVU37
+ 186              		.loc 1 104 16 is_stmt 0 view .LVU38
+ 187 0020 0125     		movs	r5, #1
+ 188 0022 A540     		lsls	r5, r5, r4
+ 189              		.loc 1 104 11 view .LVU39
+ 190 0024 2842     		tst	r0, r5
+ 191 0026 F7D0     		beq	.L10
+ 105:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* clear the specified pin mode bits */
+ 106:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             ctl &= ~GPIO_MODE_MASK(i);
+ 192              		.loc 1 106 13 is_stmt 1 view .LVU40
+ 193              		.loc 1 106 21 is_stmt 0 view .LVU41
+ 194 0028 6300     		lsls	r3, r4, #1
+ 195 002a 0325     		movs	r5, #3
+ 196 002c 9D40     		lsls	r5, r5, r3
+ 197              		.loc 1 106 17 view .LVU42
+ 198 002e AF43     		bics	r7, r5
+ 199              	.LVL24:
+ 107:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* set the specified pin mode bits */
+ 108:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             ctl |= GPIO_MODE_SET(i, mode);
+ 200              		.loc 1 108 13 is_stmt 1 view .LVU43
+ 201              		.loc 1 108 20 is_stmt 0 view .LVU44
+ 202 0030 0A00     		movs	r2, r1
+ 203 0032 9A40     		lsls	r2, r2, r3
+ 204              		.loc 1 108 17 view .LVU45
+ 205 0034 1743     		orrs	r7, r2
+ 206              	.LVL25:
+ 109:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 110:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* clear the specified pin pupd bits */
+ 111:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             pupd &= ~GPIO_PUPD_MASK(i);
+ 207              		.loc 1 111 13 is_stmt 1 view .LVU46
+ 208              		.loc 1 111 18 is_stmt 0 view .LVU47
+ 209 0036 AE43     		bics	r6, r5
+ 210              	.LVL26:
+ 112:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* set the specified pin pupd bits */
+ 113:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             pupd |= GPIO_PUPD_SET(i, pull_up_down);
+ 211              		.loc 1 113 13 is_stmt 1 view .LVU48
+ 212              		.loc 1 113 21 is_stmt 0 view .LVU49
+ 213 0038 4A46     		mov	r2, r9
+ 214 003a 9A40     		lsls	r2, r2, r3
+ 215              		.loc 1 113 18 view .LVU50
+ 216 003c 1643     		orrs	r6, r2
+ 217              	.LVL27:
+ 218              		.loc 1 113 18 view .LVU51
+ 219 003e EBE7     		b	.L10
+ 220              	.L12:
+ 114:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         }
+ 115:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 116:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 7
+
+
+ 117:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_CTL(gpio_periph) = ctl;
+ 221              		.loc 1 117 5 is_stmt 1 view .LVU52
+ 222              		.loc 1 117 27 is_stmt 0 view .LVU53
+ 223 0040 6346     		mov	r3, ip
+ 224 0042 1F60     		str	r7, [r3]
+ 118:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_PUD(gpio_periph) = pupd;
+ 225              		.loc 1 118 5 is_stmt 1 view .LVU54
+ 226              		.loc 1 118 27 is_stmt 0 view .LVU55
+ 227 0044 DE60     		str	r6, [r3, #12]
+ 119:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 228              		.loc 1 119 1 view .LVU56
+ 229              		@ sp needed
+ 230              	.LVL28:
+ 231              	.LVL29:
+ 232              	.LVL30:
+ 233              	.LVL31:
+ 234              		.loc 1 119 1 view .LVU57
+ 235 0046 C0BC     		pop	{r6, r7}
+ 236 0048 B946     		mov	r9, r7
+ 237 004a B046     		mov	r8, r6
+ 238 004c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 239              		.cfi_endproc
+ 240              	.LFE61:
+ 242              		.section	.text.gpio_output_options_set,"ax",%progbits
+ 243              		.align	1
+ 244              		.global	gpio_output_options_set
+ 245              		.syntax unified
+ 246              		.code	16
+ 247              		.thumb_func
+ 249              	gpio_output_options_set:
+ 250              	.LVL32:
+ 251              	.LFB62:
+ 120:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 121:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 122:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      set GPIO output type and speed
+ 123:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 124:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 125:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 126:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  otype: gpio pin output mode
+ 127:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_OTYPE_PP: push pull mode
+ 128:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_OTYPE_OD: open drain mode
+ 129:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  speed: gpio pin output max speed
+ 130:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_OSPEED_2MHZ: output max speed 2MHz 
+ 131:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_OSPEED_10MHZ: output max speed 10MHz 
+ 132:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_OSPEED_50MHZ: output max speed 50MHz
+ 133:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 134:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 135:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 136:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 137:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 138:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 139:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_output_options_set(uint32_t gpio_periph, uint8_t otype, uint32_t speed, uint32_t pin)
+ 140:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 252              		.loc 1 140 1 is_stmt 1 view -0
+ 253              		.cfi_startproc
+ 254              		@ args = 0, pretend = 0, frame = 0
+ 255              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 8
+
+
+ 256              		.loc 1 140 1 is_stmt 0 view .LVU59
+ 257 0000 70B5     		push	{r4, r5, r6, lr}
+ 258              	.LCFI3:
+ 259              		.cfi_def_cfa_offset 16
+ 260              		.cfi_offset 4, -16
+ 261              		.cfi_offset 5, -12
+ 262              		.cfi_offset 6, -8
+ 263              		.cfi_offset 14, -4
+ 141:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint16_t i;
+ 264              		.loc 1 141 5 is_stmt 1 view .LVU60
+ 142:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint32_t ospeed;
+ 265              		.loc 1 142 5 view .LVU61
+ 143:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 144:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     if(GPIO_OTYPE_OD == otype){
+ 266              		.loc 1 144 5 view .LVU62
+ 267              		.loc 1 144 7 is_stmt 0 view .LVU63
+ 268 0002 0129     		cmp	r1, #1
+ 269 0004 05D0     		beq	.L19
+ 145:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         GPIO_OMODE(gpio_periph) |= (uint32_t)pin;
+ 146:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 147:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         GPIO_OMODE(gpio_periph) &= (uint32_t)(~pin);
+ 270              		.loc 1 147 9 is_stmt 1 view .LVU64
+ 271 0006 4168     		ldr	r1, [r0, #4]
+ 272              	.LVL33:
+ 273              		.loc 1 147 33 is_stmt 0 view .LVU65
+ 274 0008 9943     		bics	r1, r3
+ 275 000a 4160     		str	r1, [r0, #4]
+ 276              	.L15:
+ 148:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 149:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 150:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     /* get the specified pin output speed bits value */
+ 151:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     ospeed = GPIO_OSPD(gpio_periph);
+ 277              		.loc 1 151 5 is_stmt 1 view .LVU66
+ 278              		.loc 1 151 12 is_stmt 0 view .LVU67
+ 279 000c 8568     		ldr	r5, [r0, #8]
+ 280              	.LVL34:
+ 152:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 153:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     for(i = 0U;i < 16U;i++){
+ 281              		.loc 1 153 5 is_stmt 1 view .LVU68
+ 282              		.loc 1 153 11 is_stmt 0 view .LVU69
+ 283 000e 0021     		movs	r1, #0
+ 284              		.loc 1 153 5 view .LVU70
+ 285 0010 05E0     		b	.L16
+ 286              	.LVL35:
+ 287              	.L19:
+ 145:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 288              		.loc 1 145 9 is_stmt 1 view .LVU71
+ 289 0012 4168     		ldr	r1, [r0, #4]
+ 290              	.LVL36:
+ 145:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 291              		.loc 1 145 33 is_stmt 0 view .LVU72
+ 292 0014 1943     		orrs	r1, r3
+ 293 0016 4160     		str	r1, [r0, #4]
+ 294 0018 F8E7     		b	.L15
+ 295              	.LVL37:
+ 296              	.L17:
+ 297              		.loc 1 153 25 is_stmt 1 discriminator 2 view .LVU73
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 9
+
+
+ 298 001a 0131     		adds	r1, r1, #1
+ 299              	.LVL38:
+ 300              		.loc 1 153 25 is_stmt 0 discriminator 2 view .LVU74
+ 301 001c 89B2     		uxth	r1, r1
+ 302              	.LVL39:
+ 303              	.L16:
+ 304              		.loc 1 153 18 is_stmt 1 discriminator 1 view .LVU75
+ 305 001e 0F29     		cmp	r1, #15
+ 306 0020 0BD8     		bhi	.L20
+ 154:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         if((1U << i) & pin){
+ 307              		.loc 1 154 9 view .LVU76
+ 308              		.loc 1 154 16 is_stmt 0 view .LVU77
+ 309 0022 0124     		movs	r4, #1
+ 310 0024 8C40     		lsls	r4, r4, r1
+ 311              		.loc 1 154 11 view .LVU78
+ 312 0026 2342     		tst	r3, r4
+ 313 0028 F7D0     		beq	.L17
+ 155:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* clear the specified pin output speed bits */
+ 156:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             ospeed &= ~GPIO_OSPEED_MASK(i);
+ 314              		.loc 1 156 13 is_stmt 1 view .LVU79
+ 315              		.loc 1 156 24 is_stmt 0 view .LVU80
+ 316 002a 4E00     		lsls	r6, r1, #1
+ 317 002c 0324     		movs	r4, #3
+ 318 002e B440     		lsls	r4, r4, r6
+ 319              		.loc 1 156 20 view .LVU81
+ 320 0030 A543     		bics	r5, r4
+ 321              	.LVL40:
+ 157:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* set the specified pin output speed bits */
+ 158:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             ospeed |= GPIO_OSPEED_SET(i,speed);
+ 322              		.loc 1 158 13 is_stmt 1 view .LVU82
+ 323              		.loc 1 158 23 is_stmt 0 view .LVU83
+ 324 0032 1400     		movs	r4, r2
+ 325 0034 B440     		lsls	r4, r4, r6
+ 326              		.loc 1 158 20 view .LVU84
+ 327 0036 2543     		orrs	r5, r4
+ 328              	.LVL41:
+ 329              		.loc 1 158 20 view .LVU85
+ 330 0038 EFE7     		b	.L17
+ 331              	.L20:
+ 159:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         }
+ 160:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 161:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_OSPD(gpio_periph) = ospeed;
+ 332              		.loc 1 161 5 is_stmt 1 view .LVU86
+ 333              		.loc 1 161 28 is_stmt 0 view .LVU87
+ 334 003a 8560     		str	r5, [r0, #8]
+ 162:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 335              		.loc 1 162 1 view .LVU88
+ 336              		@ sp needed
+ 337              	.LVL42:
+ 338              		.loc 1 162 1 view .LVU89
+ 339 003c 70BD     		pop	{r4, r5, r6, pc}
+ 340              		.cfi_endproc
+ 341              	.LFE62:
+ 343              		.section	.text.gpio_bit_set,"ax",%progbits
+ 344              		.align	1
+ 345              		.global	gpio_bit_set
+ 346              		.syntax unified
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 10
+
+
+ 347              		.code	16
+ 348              		.thumb_func
+ 350              	gpio_bit_set:
+ 351              	.LVL43:
+ 352              	.LFB63:
+ 163:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 164:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 165:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      set GPIO pin bit
+ 166:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 167:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 168:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 169:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 170:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 171:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 172:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 173:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 174:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 175:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_set(uint32_t gpio_periph, uint32_t pin)
+ 176:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 353              		.loc 1 176 1 is_stmt 1 view -0
+ 354              		.cfi_startproc
+ 355              		@ args = 0, pretend = 0, frame = 0
+ 356              		@ frame_needed = 0, uses_anonymous_args = 0
+ 357              		@ link register save eliminated.
+ 177:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_BOP(gpio_periph) = (uint32_t)pin;
+ 358              		.loc 1 177 5 view .LVU91
+ 359              		.loc 1 177 27 is_stmt 0 view .LVU92
+ 360 0000 8161     		str	r1, [r0, #24]
+ 178:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 361              		.loc 1 178 1 view .LVU93
+ 362              		@ sp needed
+ 363 0002 7047     		bx	lr
+ 364              		.cfi_endproc
+ 365              	.LFE63:
+ 367              		.section	.text.gpio_bit_reset,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	gpio_bit_reset
+ 370              		.syntax unified
+ 371              		.code	16
+ 372              		.thumb_func
+ 374              	gpio_bit_reset:
+ 375              	.LVL44:
+ 376              	.LFB64:
+ 179:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 180:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 181:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      reset GPIO pin bit
+ 182:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 183:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 184:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 185:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 186:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 187:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 188:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 189:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 190:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 191:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_reset(uint32_t gpio_periph, uint32_t pin)
+ 192:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 11
+
+
+ 377              		.loc 1 192 1 is_stmt 1 view -0
+ 378              		.cfi_startproc
+ 379              		@ args = 0, pretend = 0, frame = 0
+ 380              		@ frame_needed = 0, uses_anonymous_args = 0
+ 381              		@ link register save eliminated.
+ 193:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_BC(gpio_periph) = (uint32_t)pin;
+ 382              		.loc 1 193 5 view .LVU95
+ 383              		.loc 1 193 26 is_stmt 0 view .LVU96
+ 384 0000 8162     		str	r1, [r0, #40]
+ 194:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 385              		.loc 1 194 1 view .LVU97
+ 386              		@ sp needed
+ 387 0002 7047     		bx	lr
+ 388              		.cfi_endproc
+ 389              	.LFE64:
+ 391              		.section	.text.gpio_bit_write,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	gpio_bit_write
+ 394              		.syntax unified
+ 395              		.code	16
+ 396              		.thumb_func
+ 398              	gpio_bit_write:
+ 399              	.LVL45:
+ 400              	.LFB65:
+ 195:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 196:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 197:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      write data to the specified GPIO pin
+ 198:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 199:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 200:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 201:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 202:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 203:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 204:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  bit_value: SET or RESET
+ 205:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        RESET: clear the port pin
+ 206:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        SET: set the port pin
+ 207:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 208:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 209:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 210:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_write(uint32_t gpio_periph, uint32_t pin, bit_status bit_value)
+ 211:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 401              		.loc 1 211 1 is_stmt 1 view -0
+ 402              		.cfi_startproc
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405              		@ link register save eliminated.
+ 212:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     if(RESET != bit_value){
+ 406              		.loc 1 212 5 view .LVU99
+ 407              		.loc 1 212 7 is_stmt 0 view .LVU100
+ 408 0000 0AB1     		cbz	r2, .L24
+ 213:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         GPIO_BOP(gpio_periph) = (uint32_t)pin;
+ 409              		.loc 1 213 9 is_stmt 1 view .LVU101
+ 410              		.loc 1 213 31 is_stmt 0 view .LVU102
+ 411 0002 8161     		str	r1, [r0, #24]
+ 412              	.L23:
+ 214:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 215:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         GPIO_BC(gpio_periph) = (uint32_t)pin;
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 12
+
+
+ 216:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 217:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 413              		.loc 1 217 1 view .LVU103
+ 414              		@ sp needed
+ 415 0004 7047     		bx	lr
+ 416              	.L24:
+ 215:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 417              		.loc 1 215 9 is_stmt 1 view .LVU104
+ 215:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 418              		.loc 1 215 30 is_stmt 0 view .LVU105
+ 419 0006 8162     		str	r1, [r0, #40]
+ 420              		.loc 1 217 1 view .LVU106
+ 421 0008 FCE7     		b	.L23
+ 422              		.cfi_endproc
+ 423              	.LFE65:
+ 425              		.section	.text.gpio_port_write,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	gpio_port_write
+ 428              		.syntax unified
+ 429              		.code	16
+ 430              		.thumb_func
+ 432              	gpio_port_write:
+ 433              	.LVL46:
+ 434              	.LFB66:
+ 218:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 219:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 220:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      write data to the specified GPIO port
+ 221:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 222:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 223:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 224:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  data: specify the value to be written to the port output control register
+ 225:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 226:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 227:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 228:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_port_write(uint32_t gpio_periph, uint16_t data)
+ 229:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 435              		.loc 1 229 1 is_stmt 1 view -0
+ 436              		.cfi_startproc
+ 437              		@ args = 0, pretend = 0, frame = 0
+ 438              		@ frame_needed = 0, uses_anonymous_args = 0
+ 439              		@ link register save eliminated.
+ 230:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_OCTL(gpio_periph) = (uint32_t)data;
+ 440              		.loc 1 230 5 view .LVU108
+ 441              		.loc 1 230 28 is_stmt 0 view .LVU109
+ 442 0000 4161     		str	r1, [r0, #20]
+ 231:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 443              		.loc 1 231 1 view .LVU110
+ 444              		@ sp needed
+ 445 0002 7047     		bx	lr
+ 446              		.cfi_endproc
+ 447              	.LFE66:
+ 449              		.section	.text.gpio_input_bit_get,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	gpio_input_bit_get
+ 452              		.syntax unified
+ 453              		.code	16
+ 454              		.thumb_func
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 13
+
+
+ 456              	gpio_input_bit_get:
+ 457              	.LVL47:
+ 458              	.LFB67:
+ 232:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 233:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 234:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      get GPIO pin input status
+ 235:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 236:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 237:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 238:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 239:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 240:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 241:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 242:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     SET or RESET
+ 243:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 244:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** FlagStatus gpio_input_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 245:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 459              		.loc 1 245 1 is_stmt 1 view -0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 0
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 246:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     if((uint32_t)RESET != (GPIO_ISTAT(gpio_periph)&(pin))){
+ 464              		.loc 1 246 5 view .LVU112
+ 465              		.loc 1 246 28 is_stmt 0 view .LVU113
+ 466 0000 0369     		ldr	r3, [r0, #16]
+ 467              		.loc 1 246 7 view .LVU114
+ 468 0002 1942     		tst	r1, r3
+ 469 0004 01D0     		beq	.L29
+ 247:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         return SET; 
+ 470              		.loc 1 247 16 view .LVU115
+ 471 0006 0120     		movs	r0, #1
+ 472              	.LVL48:
+ 473              	.L28:
+ 248:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 249:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         return RESET;
+ 250:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 251:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 474              		.loc 1 251 1 view .LVU116
+ 475              		@ sp needed
+ 476 0008 7047     		bx	lr
+ 477              	.LVL49:
+ 478              	.L29:
+ 249:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 479              		.loc 1 249 16 view .LVU117
+ 480 000a 0020     		movs	r0, #0
+ 481              	.LVL50:
+ 249:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 482              		.loc 1 249 16 view .LVU118
+ 483 000c FCE7     		b	.L28
+ 484              		.cfi_endproc
+ 485              	.LFE67:
+ 487              		.section	.text.gpio_input_port_get,"ax",%progbits
+ 488              		.align	1
+ 489              		.global	gpio_input_port_get
+ 490              		.syntax unified
+ 491              		.code	16
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 14
+
+
+ 492              		.thumb_func
+ 494              	gpio_input_port_get:
+ 495              	.LVL51:
+ 496              	.LFB68:
+ 252:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 253:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 254:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      get GPIO all pins input status
+ 255:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 256:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 257:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 258:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 259:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     state of GPIO all pins
+ 260:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 261:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** uint16_t gpio_input_port_get(uint32_t gpio_periph)
+ 262:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 497              		.loc 1 262 1 is_stmt 1 view -0
+ 498              		.cfi_startproc
+ 499              		@ args = 0, pretend = 0, frame = 0
+ 500              		@ frame_needed = 0, uses_anonymous_args = 0
+ 501              		@ link register save eliminated.
+ 263:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     return (uint16_t)GPIO_ISTAT(gpio_periph);
+ 502              		.loc 1 263 5 view .LVU120
+ 503              		.loc 1 263 22 is_stmt 0 view .LVU121
+ 504 0000 0069     		ldr	r0, [r0, #16]
+ 505              	.LVL52:
+ 506              		.loc 1 263 12 discriminator 1 view .LVU122
+ 507 0002 80B2     		uxth	r0, r0
+ 264:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 508              		.loc 1 264 1 view .LVU123
+ 509              		@ sp needed
+ 510 0004 7047     		bx	lr
+ 511              		.cfi_endproc
+ 512              	.LFE68:
+ 514              		.section	.text.gpio_output_bit_get,"ax",%progbits
+ 515              		.align	1
+ 516              		.global	gpio_output_bit_get
+ 517              		.syntax unified
+ 518              		.code	16
+ 519              		.thumb_func
+ 521              	gpio_output_bit_get:
+ 522              	.LVL53:
+ 523              	.LFB69:
+ 265:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 266:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 267:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      get GPIO pin output status
+ 268:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 269:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 270:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 271:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 272:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 273:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 274:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 275:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     SET or RESET
+ 276:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 277:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** FlagStatus gpio_output_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 278:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 524              		.loc 1 278 1 is_stmt 1 view -0
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 15
+
+
+ 525              		.cfi_startproc
+ 526              		@ args = 0, pretend = 0, frame = 0
+ 527              		@ frame_needed = 0, uses_anonymous_args = 0
+ 528              		@ link register save eliminated.
+ 279:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     if((uint32_t)RESET != (GPIO_OCTL(gpio_periph)&(pin))){
+ 529              		.loc 1 279 5 view .LVU125
+ 530              		.loc 1 279 28 is_stmt 0 view .LVU126
+ 531 0000 4369     		ldr	r3, [r0, #20]
+ 532              		.loc 1 279 7 view .LVU127
+ 533 0002 1942     		tst	r1, r3
+ 534 0004 01D0     		beq	.L33
+ 280:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         return SET;
+ 535              		.loc 1 280 16 view .LVU128
+ 536 0006 0120     		movs	r0, #1
+ 537              	.LVL54:
+ 538              	.L32:
+ 281:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
+ 282:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         return RESET;
+ 283:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 284:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 539              		.loc 1 284 1 view .LVU129
+ 540              		@ sp needed
+ 541 0008 7047     		bx	lr
+ 542              	.LVL55:
+ 543              	.L33:
+ 282:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 544              		.loc 1 282 16 view .LVU130
+ 545 000a 0020     		movs	r0, #0
+ 546              	.LVL56:
+ 282:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 547              		.loc 1 282 16 view .LVU131
+ 548 000c FCE7     		b	.L32
+ 549              		.cfi_endproc
+ 550              	.LFE69:
+ 552              		.section	.text.gpio_output_port_get,"ax",%progbits
+ 553              		.align	1
+ 554              		.global	gpio_output_port_get
+ 555              		.syntax unified
+ 556              		.code	16
+ 557              		.thumb_func
+ 559              	gpio_output_port_get:
+ 560              	.LVL57:
+ 561              	.LFB70:
+ 285:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 286:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 287:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      get GPIO all pins output status
+ 288:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 289:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 290:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 291:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 292:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     state of GPIO all pins
+ 293:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 294:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** uint16_t gpio_output_port_get(uint32_t gpio_periph)
+ 295:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 562              		.loc 1 295 1 is_stmt 1 view -0
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 16
+
+
+ 565              		@ frame_needed = 0, uses_anonymous_args = 0
+ 566              		@ link register save eliminated.
+ 296:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     return (uint16_t)GPIO_OCTL(gpio_periph);
+ 567              		.loc 1 296 5 view .LVU133
+ 568              		.loc 1 296 22 is_stmt 0 view .LVU134
+ 569 0000 4069     		ldr	r0, [r0, #20]
+ 570              	.LVL58:
+ 571              		.loc 1 296 12 discriminator 1 view .LVU135
+ 572 0002 80B2     		uxth	r0, r0
+ 297:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 573              		.loc 1 297 1 view .LVU136
+ 574              		@ sp needed
+ 575 0004 7047     		bx	lr
+ 576              		.cfi_endproc
+ 577              	.LFE70:
+ 579              		.section	.text.gpio_af_set,"ax",%progbits
+ 580              		.align	1
+ 581              		.global	gpio_af_set
+ 582              		.syntax unified
+ 583              		.code	16
+ 584              		.thumb_func
+ 586              	gpio_af_set:
+ 587              	.LVL59:
+ 588              	.LFB71:
+ 298:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 299:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 300:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      set GPIO alternate function
+ 301:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C) 
+ 302:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 303:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C) 
+ 304:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  alt_func_num: GPIO pin af function, please refer to specific device datasheet
+ 305:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_0: TIMER13, TIMER14, TIMER16, SPI0, SPI1, I2S0, CK_OUT, USART0,
+ 306:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                               I2C0, I2C1, SWDIO, SWCLK
+ 307:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_1: USART0, USART1, TIMER2, TIMER14, I2C0, I2C1
+ 308:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_2: TIMER0, TIMER1, TIMER15, TIMER16, I2S0
+ 309:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_3: I2C0, TIMER14
+ 310:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_4(port A,B only): USART1, I2C0, I2C1, TIMER13
+ 311:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_5(port A,B only): TIMER15, TIMER16, I2S0
+ 312:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_6(port A,B only): SPI1
+ 313:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_AF_7(port A,B only): CMP
+ 314:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 315:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 316:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 317:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 318:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 319:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 320:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_af_set(uint32_t gpio_periph, uint32_t alt_func_num, uint32_t pin)
+ 321:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 589              		.loc 1 321 1 is_stmt 1 view -0
+ 590              		.cfi_startproc
+ 591              		@ args = 0, pretend = 0, frame = 0
+ 592              		@ frame_needed = 0, uses_anonymous_args = 0
+ 593              		.loc 1 321 1 is_stmt 0 view .LVU138
+ 594 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 595              	.LCFI4:
+ 596              		.cfi_def_cfa_offset 20
+ 597              		.cfi_offset 4, -20
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 17
+
+
+ 598              		.cfi_offset 5, -16
+ 599              		.cfi_offset 6, -12
+ 600              		.cfi_offset 7, -8
+ 601              		.cfi_offset 14, -4
+ 322:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint16_t i;
+ 602              		.loc 1 322 5 is_stmt 1 view .LVU139
+ 323:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint32_t afrl, afrh;
+ 603              		.loc 1 323 5 view .LVU140
+ 324:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 325:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     afrl = GPIO_AFSEL0(gpio_periph);
+ 604              		.loc 1 325 5 view .LVU141
+ 605              		.loc 1 325 10 is_stmt 0 view .LVU142
+ 606 0002 066A     		ldr	r6, [r0, #32]
+ 607              	.LVL60:
+ 326:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     afrh = GPIO_AFSEL1(gpio_periph);
+ 608              		.loc 1 326 5 is_stmt 1 view .LVU143
+ 609              		.loc 1 326 10 is_stmt 0 view .LVU144
+ 610 0004 456A     		ldr	r5, [r0, #36]
+ 611              	.LVL61:
+ 327:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 328:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     for(i = 0U;i < 8U;i++){
+ 612              		.loc 1 328 5 is_stmt 1 view .LVU145
+ 613              		.loc 1 328 11 is_stmt 0 view .LVU146
+ 614 0006 0023     		movs	r3, #0
+ 615              		.loc 1 328 5 view .LVU147
+ 616 0008 01E0     		b	.L36
+ 617              	.LVL62:
+ 618              	.L37:
+ 619              		.loc 1 328 24 is_stmt 1 discriminator 2 view .LVU148
+ 620 000a 0133     		adds	r3, r3, #1
+ 621              	.LVL63:
+ 622              		.loc 1 328 24 is_stmt 0 discriminator 2 view .LVU149
+ 623 000c 9BB2     		uxth	r3, r3
+ 624              	.LVL64:
+ 625              	.L36:
+ 626              		.loc 1 328 18 is_stmt 1 discriminator 1 view .LVU150
+ 627 000e 072B     		cmp	r3, #7
+ 628 0010 0BD8     		bhi	.L42
+ 329:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         if((1U << i) & pin){
+ 629              		.loc 1 329 9 view .LVU151
+ 630              		.loc 1 329 16 is_stmt 0 view .LVU152
+ 631 0012 0124     		movs	r4, #1
+ 632 0014 9C40     		lsls	r4, r4, r3
+ 633              		.loc 1 329 11 view .LVU153
+ 634 0016 2242     		tst	r2, r4
+ 635 0018 F7D0     		beq	.L37
+ 330:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* clear the specified pin alternate function bits */
+ 331:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             afrl &= ~GPIO_AFR_MASK(i);
+ 636              		.loc 1 331 13 is_stmt 1 view .LVU154
+ 637              		.loc 1 331 22 is_stmt 0 view .LVU155
+ 638 001a 9F00     		lsls	r7, r3, #2
+ 639 001c 0F24     		movs	r4, #15
+ 640 001e BC40     		lsls	r4, r4, r7
+ 641              		.loc 1 331 18 view .LVU156
+ 642 0020 A643     		bics	r6, r4
+ 643              	.LVL65:
+ 332:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             afrl |= GPIO_AFR_SET(i,alt_func_num);
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 18
+
+
+ 644              		.loc 1 332 13 is_stmt 1 view .LVU157
+ 645              		.loc 1 332 21 is_stmt 0 view .LVU158
+ 646 0022 0C00     		movs	r4, r1
+ 647 0024 BC40     		lsls	r4, r4, r7
+ 648              		.loc 1 332 18 view .LVU159
+ 649 0026 2643     		orrs	r6, r4
+ 650              	.LVL66:
+ 651              		.loc 1 332 18 view .LVU160
+ 652 0028 EFE7     		b	.L37
+ 653              	.L42:
+ 333:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         }
+ 334:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 335:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 336:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     for(i = 8U;i < 16U;i++){
+ 654              		.loc 1 336 11 view .LVU161
+ 655 002a 0823     		movs	r3, #8
+ 656              	.LVL67:
+ 657              		.loc 1 336 11 view .LVU162
+ 658 002c 01E0     		b	.L39
+ 659              	.LVL68:
+ 660              	.L40:
+ 661              		.loc 1 336 25 is_stmt 1 discriminator 2 view .LVU163
+ 662 002e 0133     		adds	r3, r3, #1
+ 663              	.LVL69:
+ 664              		.loc 1 336 25 is_stmt 0 discriminator 2 view .LVU164
+ 665 0030 9BB2     		uxth	r3, r3
+ 666              	.LVL70:
+ 667              	.L39:
+ 668              		.loc 1 336 18 is_stmt 1 discriminator 1 view .LVU165
+ 669 0032 0F2B     		cmp	r3, #15
+ 670 0034 0DD8     		bhi	.L43
+ 337:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         if((1U << i) & pin){
+ 671              		.loc 1 337 9 view .LVU166
+ 672              		.loc 1 337 16 is_stmt 0 view .LVU167
+ 673 0036 0124     		movs	r4, #1
+ 674 0038 9C40     		lsls	r4, r4, r3
+ 675              		.loc 1 337 11 view .LVU168
+ 676 003a 2242     		tst	r2, r4
+ 677 003c F7D0     		beq	.L40
+ 338:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             /* clear the specified pin alternate function bits */
+ 339:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             afrh &= ~GPIO_AFR_MASK(i - 8U);
+ 678              		.loc 1 339 13 is_stmt 1 view .LVU169
+ 679              		.loc 1 339 22 is_stmt 0 view .LVU170
+ 680 003e 1C00     		movs	r4, r3
+ 681 0040 083C     		subs	r4, r4, #8
+ 682 0042 A400     		lsls	r4, r4, #2
+ 683 0044 0F27     		movs	r7, #15
+ 684 0046 A740     		lsls	r7, r7, r4
+ 685              		.loc 1 339 18 view .LVU171
+ 686 0048 BD43     		bics	r5, r7
+ 687              	.LVL71:
+ 340:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             afrh |= GPIO_AFR_SET(i - 8U,alt_func_num);
+ 688              		.loc 1 340 13 is_stmt 1 view .LVU172
+ 689              		.loc 1 340 21 is_stmt 0 view .LVU173
+ 690 004a 0F00     		movs	r7, r1
+ 691 004c A740     		lsls	r7, r7, r4
+ 692              		.loc 1 340 18 view .LVU174
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 19
+
+
+ 693 004e 3D43     		orrs	r5, r7
+ 694              	.LVL72:
+ 695              		.loc 1 340 18 view .LVU175
+ 696 0050 EDE7     		b	.L40
+ 697              	.L43:
+ 341:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         }
+ 342:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
+ 343:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 344:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_AFSEL0(gpio_periph) = afrl;
+ 698              		.loc 1 344 5 is_stmt 1 view .LVU176
+ 699              		.loc 1 344 30 is_stmt 0 view .LVU177
+ 700 0052 0662     		str	r6, [r0, #32]
+ 345:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_AFSEL1(gpio_periph) = afrh;
+ 701              		.loc 1 345 5 is_stmt 1 view .LVU178
+ 702              		.loc 1 345 30 is_stmt 0 view .LVU179
+ 703 0054 4562     		str	r5, [r0, #36]
+ 346:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 704              		.loc 1 346 1 view .LVU180
+ 705              		@ sp needed
+ 706              	.LVL73:
+ 707              	.LVL74:
+ 708              		.loc 1 346 1 view .LVU181
+ 709 0056 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 710              		.cfi_endproc
+ 711              	.LFE71:
+ 713              		.section	.text.gpio_pin_lock,"ax",%progbits
+ 714              		.align	1
+ 715              		.global	gpio_pin_lock
+ 716              		.syntax unified
+ 717              		.code	16
+ 718              		.thumb_func
+ 720              	gpio_pin_lock:
+ 721              	.LVL75:
+ 722              	.LFB72:
+ 347:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 348:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 349:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      lock GPIO pin bit
+ 350:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B) 
+ 351:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 352:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B) 
+ 353:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 354:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 355:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 356:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 357:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 358:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 359:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_pin_lock(uint32_t gpio_periph, uint32_t pin)
+ 360:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 723              		.loc 1 360 1 is_stmt 1 view -0
+ 724              		.cfi_startproc
+ 725              		@ args = 0, pretend = 0, frame = 0
+ 726              		@ frame_needed = 0, uses_anonymous_args = 0
+ 727              		@ link register save eliminated.
+ 361:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     uint32_t lock = 0x00010000U;
+ 728              		.loc 1 361 5 view .LVU183
+ 362:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     lock |= pin;
+ 729              		.loc 1 362 5 view .LVU184
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 20
+
+
+ 730              		.loc 1 362 10 is_stmt 0 view .LVU185
+ 731 0000 8023     		movs	r3, #128
+ 732 0002 5B02     		lsls	r3, r3, #9
+ 733 0004 0B43     		orrs	r3, r1
+ 734              	.LVL76:
+ 363:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 364:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     /* lock key writing sequence: write 1->write 0->write 1->read 0->read 1 */
+ 365:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)lock;
+ 735              		.loc 1 365 5 is_stmt 1 view .LVU186
+ 736              		.loc 1 365 28 is_stmt 0 view .LVU187
+ 737 0006 C361     		str	r3, [r0, #28]
+ 366:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)pin;
+ 738              		.loc 1 366 5 is_stmt 1 view .LVU188
+ 739              		.loc 1 366 28 is_stmt 0 view .LVU189
+ 740 0008 C161     		str	r1, [r0, #28]
+ 367:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)lock;
+ 741              		.loc 1 367 5 is_stmt 1 view .LVU190
+ 742              		.loc 1 367 28 is_stmt 0 view .LVU191
+ 743 000a C361     		str	r3, [r0, #28]
+ 368:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 744              		.loc 1 368 5 is_stmt 1 view .LVU192
+ 745              		.loc 1 368 10 is_stmt 0 view .LVU193
+ 746 000c C369     		ldr	r3, [r0, #28]
+ 747              	.LVL77:
+ 369:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 748              		.loc 1 369 5 is_stmt 1 view .LVU194
+ 749              		.loc 1 369 10 is_stmt 0 view .LVU195
+ 750 000e C369     		ldr	r3, [r0, #28]
+ 370:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 751              		.loc 1 370 1 view .LVU196
+ 752              		@ sp needed
+ 753 0010 7047     		bx	lr
+ 754              		.cfi_endproc
+ 755              	.LFE72:
+ 757              		.section	.text.gpio_bit_toggle,"ax",%progbits
+ 758              		.align	1
+ 759              		.global	gpio_bit_toggle
+ 760              		.syntax unified
+ 761              		.code	16
+ 762              		.thumb_func
+ 764              	gpio_bit_toggle:
+ 765              	.LVL78:
+ 766              	.LFB73:
+ 371:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 372:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 373:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      toggle GPIO pin status
+ 374:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F) 
+ 375:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 376:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 377:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  pin: GPIO pin
+ 378:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 379:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 380:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 381:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 382:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 383:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_toggle(uint32_t gpio_periph, uint32_t pin)
+ 384:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 21
+
+
+ 767              		.loc 1 384 1 is_stmt 1 view -0
+ 768              		.cfi_startproc
+ 769              		@ args = 0, pretend = 0, frame = 0
+ 770              		@ frame_needed = 0, uses_anonymous_args = 0
+ 771              		@ link register save eliminated.
+ 385:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_TG(gpio_periph) = (uint32_t)pin;
+ 772              		.loc 1 385 5 view .LVU198
+ 773              		.loc 1 385 26 is_stmt 0 view .LVU199
+ 774 0000 C162     		str	r1, [r0, #44]
+ 386:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 775              		.loc 1 386 1 view .LVU200
+ 776              		@ sp needed
+ 777 0002 7047     		bx	lr
+ 778              		.cfi_endproc
+ 779              	.LFE73:
+ 781              		.section	.text.gpio_port_toggle,"ax",%progbits
+ 782              		.align	1
+ 783              		.global	gpio_port_toggle
+ 784              		.syntax unified
+ 785              		.code	16
+ 786              		.thumb_func
+ 788              	gpio_port_toggle:
+ 789              	.LVL79:
+ 790              	.LFB74:
+ 387:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
+ 388:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** /*!
+ 389:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \brief      toggle GPIO port status
+ 390:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[in]  gpio_periph: GPIOx(x = A,B,C,F)
+ 391:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 392:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIOx(x = A,B,C,F) 
+ 393:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
+ 394:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
+ 395:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
+ 396:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_port_toggle(uint32_t gpio_periph)
+ 397:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
+ 791              		.loc 1 397 1 is_stmt 1 view -0
+ 792              		.cfi_startproc
+ 793              		@ args = 0, pretend = 0, frame = 0
+ 794              		@ frame_needed = 0, uses_anonymous_args = 0
+ 795              		@ link register save eliminated.
+ 398:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_TG(gpio_periph) = 0x0000FFFFU;
+ 796              		.loc 1 398 5 view .LVU202
+ 797              		.loc 1 398 26 is_stmt 0 view .LVU203
+ 798 0000 4FF6FF73 		movw	r3, #65535
+ 799 0004 C362     		str	r3, [r0, #44]
+ 399:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** }
+ 800              		.loc 1 399 1 view .LVU204
+ 801              		@ sp needed
+ 802 0006 7047     		bx	lr
+ 803              		.cfi_endproc
+ 804              	.LFE74:
+ 806              		.text
+ 807              	.Letext0:
+ 808              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 809              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 810              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 811              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 22
+
+
+ 812              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
+ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_gpio.c
+D:\noval\Temp\cc4LS2gm.s:19     .text.gpio_deinit:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:25     .text.gpio_deinit:00000000 gpio_deinit
+D:\noval\Temp\cc4LS2gm.s:122    .text.gpio_mode_set:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:128    .text.gpio_mode_set:00000000 gpio_mode_set
+D:\noval\Temp\cc4LS2gm.s:243    .text.gpio_output_options_set:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:249    .text.gpio_output_options_set:00000000 gpio_output_options_set
+D:\noval\Temp\cc4LS2gm.s:344    .text.gpio_bit_set:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:350    .text.gpio_bit_set:00000000 gpio_bit_set
+D:\noval\Temp\cc4LS2gm.s:368    .text.gpio_bit_reset:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:374    .text.gpio_bit_reset:00000000 gpio_bit_reset
+D:\noval\Temp\cc4LS2gm.s:392    .text.gpio_bit_write:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:398    .text.gpio_bit_write:00000000 gpio_bit_write
+D:\noval\Temp\cc4LS2gm.s:426    .text.gpio_port_write:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:432    .text.gpio_port_write:00000000 gpio_port_write
+D:\noval\Temp\cc4LS2gm.s:450    .text.gpio_input_bit_get:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:456    .text.gpio_input_bit_get:00000000 gpio_input_bit_get
+D:\noval\Temp\cc4LS2gm.s:488    .text.gpio_input_port_get:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:494    .text.gpio_input_port_get:00000000 gpio_input_port_get
+D:\noval\Temp\cc4LS2gm.s:515    .text.gpio_output_bit_get:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:521    .text.gpio_output_bit_get:00000000 gpio_output_bit_get
+D:\noval\Temp\cc4LS2gm.s:553    .text.gpio_output_port_get:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:559    .text.gpio_output_port_get:00000000 gpio_output_port_get
+D:\noval\Temp\cc4LS2gm.s:580    .text.gpio_af_set:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:586    .text.gpio_af_set:00000000 gpio_af_set
+D:\noval\Temp\cc4LS2gm.s:714    .text.gpio_pin_lock:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:720    .text.gpio_pin_lock:00000000 gpio_pin_lock
+D:\noval\Temp\cc4LS2gm.s:758    .text.gpio_bit_toggle:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:764    .text.gpio_bit_toggle:00000000 gpio_bit_toggle
+D:\noval\Temp\cc4LS2gm.s:782    .text.gpio_port_toggle:00000000 $t
+D:\noval\Temp\cc4LS2gm.s:788    .text.gpio_port_toggle:00000000 gpio_port_toggle
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

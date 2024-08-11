@@ -1,0 +1,858 @@
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_crc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_crc.c"
+  18              		.section	.text.crc_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	crc_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	crc_deinit:
+  26              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \file    gd32e23x_crc.c
+   3:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief   CRC driver
+   4:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     
+   5:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Drivers/GD32E23x/Source/gd32e23x_crc.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Drivers/GD32E23x/Source/gd32e23x_crc.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Drivers/GD32E23x/Source/gd32e23x_crc.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Drivers/GD32E23x/Source/gd32e23x_crc.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Drivers/GD32E23x/Source/gd32e23x_crc.c ****        may be used to endorse or promote products derived from this software without 
+  21:Drivers/GD32E23x/Source/gd32e23x_crc.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Drivers/GD32E23x/Source/gd32e23x_crc.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Drivers/GD32E23x/Source/gd32e23x_crc.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Drivers/GD32E23x/Source/gd32e23x_crc.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Drivers/GD32E23x/Source/gd32e23x_crc.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Drivers/GD32E23x/Source/gd32e23x_crc.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Drivers/GD32E23x/Source/gd32e23x_crc.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Drivers/GD32E23x/Source/gd32e23x_crc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:Drivers/GD32E23x/Source/gd32e23x_crc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Drivers/GD32E23x/Source/gd32e23x_crc.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_crc.c **** #include "gd32e23x_crc.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+  38:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      deinit CRC calculation unit
+  39:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+  40:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+  41:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+  42:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  43:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_deinit(void)
+  44:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+  27              		.loc 1 44 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  45:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_IDATA = (uint32_t)0xFFFFFFFFU;
+  32              		.loc 1 45 5 view .LVU1
+  33              		.loc 1 45 15 is_stmt 0 view .LVU2
+  34 0000 43F21003 		movw	r3, #12304
+  35 0004 C4F20203 		movt	r3, 16386
+  36 0008 0122     		movs	r2, #1
+  37 000a 5242     		rsbs	r2, r2, #0
+  38 000c 1A60     		str	r2, [r3]
+  46:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_DATA  = (uint32_t)0xFFFFFFFFU;
+  39              		.loc 1 46 5 is_stmt 1 view .LVU3
+  40              		.loc 1 46 15 is_stmt 0 view .LVU4
+  41 000e 43F20003 		movw	r3, #12288
+  42 0012 C4F20203 		movt	r3, 16386
+  43 0016 1A60     		str	r2, [r3]
+  47:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_FDATA = (uint32_t)0x00000000U;
+  44              		.loc 1 47 5 is_stmt 1 view .LVU5
+  45              		.loc 1 47 15 is_stmt 0 view .LVU6
+  46 0018 43F20403 		movw	r3, #12292
+  47 001c C4F20203 		movt	r3, 16386
+  48 0020 0022     		movs	r2, #0
+  49 0022 1A60     		str	r2, [r3]
+  48:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_POLY  = (uint32_t)0x04C11DB7U;
+  50              		.loc 1 48 5 is_stmt 1 view .LVU7
+  51              		.loc 1 48 15 is_stmt 0 view .LVU8
+  52 0024 43F21403 		movw	r3, #12308
+  53 0028 C4F20203 		movt	r3, 16386
+  54 002c 41F6B752 		movw	r2, #7607
+  55 0030 C0F2C142 		movt	r2, 1217
+  56 0034 1A60     		str	r2, [r3]
+  49:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL   = CRC_CTL_RST;
+  57              		.loc 1 49 5 is_stmt 1 view .LVU9
+  58              		.loc 1 49 15 is_stmt 0 view .LVU10
+  59 0036 43F20803 		movw	r3, #12296
+  60 003a C4F20203 		movt	r3, 16386
+  61 003e 0122     		movs	r2, #1
+  62 0040 1A60     		str	r2, [r3]
+  50:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+  63              		.loc 1 50 1 view .LVU11
+  64              		@ sp needed
+  65 0042 7047     		bx	lr
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 3
+
+
+  66              		.cfi_endproc
+  67              	.LFE60:
+  69              		.section	.text.crc_reverse_output_data_enable,"ax",%progbits
+  70              		.align	1
+  71              		.global	crc_reverse_output_data_enable
+  72              		.syntax unified
+  73              		.code	16
+  74              		.thumb_func
+  76              	crc_reverse_output_data_enable:
+  77              	.LFB61:
+  51:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  52:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+  53:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      enable the reverse operation of output data
+  54:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+  55:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+  56:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+  57:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  58:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_reverse_output_data_enable(void)
+  59:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+  78              		.loc 1 59 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  60:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL &= (uint32_t)(~ CRC_CTL_REV_O);
+  83              		.loc 1 60 5 view .LVU13
+  84 0000 43F20803 		movw	r3, #12296
+  85 0004 C4F20203 		movt	r3, 16386
+  86 0008 1A68     		ldr	r2, [r3]
+  87              		.loc 1 60 13 is_stmt 0 view .LVU14
+  88 000a 8021     		movs	r1, #128
+  89 000c 8A43     		bics	r2, r1
+  90 000e 1A60     		str	r2, [r3]
+  61:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL |= (uint32_t)CRC_CTL_REV_O;
+  91              		.loc 1 61 5 is_stmt 1 view .LVU15
+  92 0010 1A68     		ldr	r2, [r3]
+  93              		.loc 1 61 13 is_stmt 0 view .LVU16
+  94 0012 0A43     		orrs	r2, r1
+  95 0014 1A60     		str	r2, [r3]
+  62:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+  96              		.loc 1 62 1 view .LVU17
+  97              		@ sp needed
+  98 0016 7047     		bx	lr
+  99              		.cfi_endproc
+ 100              	.LFE61:
+ 102              		.section	.text.crc_reverse_output_data_disable,"ax",%progbits
+ 103              		.align	1
+ 104              		.global	crc_reverse_output_data_disable
+ 105              		.syntax unified
+ 106              		.code	16
+ 107              		.thumb_func
+ 109              	crc_reverse_output_data_disable:
+ 110              	.LFB62:
+  63:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  64:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+  65:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      disable the reverse operation of output data
+  66:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 4
+
+
+  67:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+  68:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+  69:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  70:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_reverse_output_data_disable(void)
+  71:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 111              		.loc 1 71 1 is_stmt 1 view -0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+  72:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL &= (uint32_t)(~ CRC_CTL_REV_O);
+ 116              		.loc 1 72 5 view .LVU19
+ 117 0000 43F20803 		movw	r3, #12296
+ 118 0004 C4F20203 		movt	r3, 16386
+ 119 0008 1A68     		ldr	r2, [r3]
+ 120              		.loc 1 72 13 is_stmt 0 view .LVU20
+ 121 000a 8021     		movs	r1, #128
+ 122 000c 8A43     		bics	r2, r1
+ 123 000e 1A60     		str	r2, [r3]
+  73:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 124              		.loc 1 73 1 view .LVU21
+ 125              		@ sp needed
+ 126 0010 7047     		bx	lr
+ 127              		.cfi_endproc
+ 128              	.LFE62:
+ 130              		.section	.text.crc_data_register_reset,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	crc_data_register_reset
+ 133              		.syntax unified
+ 134              		.code	16
+ 135              		.thumb_func
+ 137              	crc_data_register_reset:
+ 138              	.LFB63:
+  74:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  75:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+  76:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      reset data register to the value of initializaiton data register
+  77:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+  78:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+  79:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+  80:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  81:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_data_register_reset(void)
+  82:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 139              		.loc 1 82 1 is_stmt 1 view -0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143              		@ link register save eliminated.
+  83:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL |= (uint32_t)CRC_CTL_RST;
+ 144              		.loc 1 83 5 view .LVU23
+ 145 0000 43F20803 		movw	r3, #12296
+ 146 0004 C4F20203 		movt	r3, 16386
+ 147 0008 1A68     		ldr	r2, [r3]
+ 148              		.loc 1 83 13 is_stmt 0 view .LVU24
+ 149 000a 0121     		movs	r1, #1
+ 150 000c 0A43     		orrs	r2, r1
+ 151 000e 1A60     		str	r2, [r3]
+  84:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 5
+
+
+ 152              		.loc 1 84 1 view .LVU25
+ 153              		@ sp needed
+ 154 0010 7047     		bx	lr
+ 155              		.cfi_endproc
+ 156              	.LFE63:
+ 158              		.section	.text.crc_data_register_read,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	crc_data_register_read
+ 161              		.syntax unified
+ 162              		.code	16
+ 163              		.thumb_func
+ 165              	crc_data_register_read:
+ 166              	.LFB64:
+  85:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  86:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+  87:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      read the data register 
+  88:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+  89:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+  90:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     32-bit value of the data register
+  91:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+  92:Drivers/GD32E23x/Source/gd32e23x_crc.c **** uint32_t crc_data_register_read(void)
+  93:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 167              		.loc 1 93 1 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+  94:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint32_t data;
+ 172              		.loc 1 94 5 view .LVU27
+  95:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     data = CRC_DATA;
+ 173              		.loc 1 95 5 view .LVU28
+ 174              		.loc 1 95 10 is_stmt 0 view .LVU29
+ 175 0000 43F20003 		movw	r3, #12288
+ 176 0004 C4F20203 		movt	r3, 16386
+ 177 0008 1868     		ldr	r0, [r3]
+ 178              	.LVL0:
+  96:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     return (data);
+ 179              		.loc 1 96 5 is_stmt 1 view .LVU30
+  97:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 180              		.loc 1 97 1 is_stmt 0 view .LVU31
+ 181              		@ sp needed
+ 182 000a 7047     		bx	lr
+ 183              		.cfi_endproc
+ 184              	.LFE64:
+ 186              		.section	.text.crc_free_data_register_read,"ax",%progbits
+ 187              		.align	1
+ 188              		.global	crc_free_data_register_read
+ 189              		.syntax unified
+ 190              		.code	16
+ 191              		.thumb_func
+ 193              	crc_free_data_register_read:
+ 194              	.LFB65:
+  98:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+  99:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 100:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      read the free data register
+ 101:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  none
+ 102:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 6
+
+
+ 103:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     8-bit value of the free data register
+ 104:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 105:Drivers/GD32E23x/Source/gd32e23x_crc.c **** uint8_t crc_free_data_register_read(void)
+ 106:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 195              		.loc 1 106 1 is_stmt 1 view -0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 107:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint8_t fdata;
+ 200              		.loc 1 107 5 view .LVU33
+ 108:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     fdata = (uint8_t)CRC_FDATA;
+ 201              		.loc 1 108 5 view .LVU34
+ 202              		.loc 1 108 22 is_stmt 0 view .LVU35
+ 203 0000 43F20403 		movw	r3, #12292
+ 204 0004 C4F20203 		movt	r3, 16386
+ 205 0008 1868     		ldr	r0, [r3]
+ 206              		.loc 1 108 11 view .LVU36
+ 207 000a C0B2     		uxtb	r0, r0
+ 208              	.LVL1:
+ 109:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     return (fdata);
+ 209              		.loc 1 109 5 is_stmt 1 view .LVU37
+ 110:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 210              		.loc 1 110 1 is_stmt 0 view .LVU38
+ 211              		@ sp needed
+ 212 000c 7047     		bx	lr
+ 213              		.cfi_endproc
+ 214              	.LFE65:
+ 216              		.section	.text.crc_free_data_register_write,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	crc_free_data_register_write
+ 219              		.syntax unified
+ 220              		.code	16
+ 221              		.thumb_func
+ 223              	crc_free_data_register_write:
+ 224              	.LVL2:
+ 225              	.LFB66:
+ 111:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 112:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 113:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      write the free data register
+ 114:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  free_data: specify 8-bit data
+ 115:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 116:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+ 117:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 118:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_free_data_register_write(uint8_t free_data)
+ 119:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 226              		.loc 1 119 1 is_stmt 1 view -0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 0
+ 229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 230              		@ link register save eliminated.
+ 120:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_FDATA = (uint32_t)free_data;
+ 231              		.loc 1 120 5 view .LVU40
+ 232              		.loc 1 120 15 is_stmt 0 view .LVU41
+ 233 0000 43F20403 		movw	r3, #12292
+ 234 0004 C4F20203 		movt	r3, 16386
+ 235 0008 1860     		str	r0, [r3]
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 7
+
+
+ 121:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 236              		.loc 1 121 1 view .LVU42
+ 237              		@ sp needed
+ 238 000a 7047     		bx	lr
+ 239              		.cfi_endproc
+ 240              	.LFE66:
+ 242              		.section	.text.crc_init_data_register_write,"ax",%progbits
+ 243              		.align	1
+ 244              		.global	crc_init_data_register_write
+ 245              		.syntax unified
+ 246              		.code	16
+ 247              		.thumb_func
+ 249              	crc_init_data_register_write:
+ 250              	.LVL3:
+ 251              	.LFB67:
+ 122:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 123:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 124:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      write the initializaiton data register
+ 125:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  init_data:specify 32-bit data
+ 126:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 127:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+ 128:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 129:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_init_data_register_write(uint32_t init_data)
+ 130:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 252              		.loc 1 130 1 is_stmt 1 view -0
+ 253              		.cfi_startproc
+ 254              		@ args = 0, pretend = 0, frame = 0
+ 255              		@ frame_needed = 0, uses_anonymous_args = 0
+ 256              		@ link register save eliminated.
+ 131:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_IDATA = (uint32_t)init_data;
+ 257              		.loc 1 131 5 view .LVU44
+ 258              		.loc 1 131 15 is_stmt 0 view .LVU45
+ 259 0000 43F21003 		movw	r3, #12304
+ 260 0004 C4F20203 		movt	r3, 16386
+ 261 0008 1860     		str	r0, [r3]
+ 132:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 262              		.loc 1 132 1 view .LVU46
+ 263              		@ sp needed
+ 264 000a 7047     		bx	lr
+ 265              		.cfi_endproc
+ 266              	.LFE67:
+ 268              		.section	.text.crc_input_data_reverse_config,"ax",%progbits
+ 269              		.align	1
+ 270              		.global	crc_input_data_reverse_config
+ 271              		.syntax unified
+ 272              		.code	16
+ 273              		.thumb_func
+ 275              	crc_input_data_reverse_config:
+ 276              	.LVL4:
+ 277              	.LFB68:
+ 133:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 134:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 135:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      configure the CRC input data function
+ 136:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  data_reverse: specify input data reverse function
+ 137:Drivers/GD32E23x/Source/gd32e23x_crc.c ****                 only one parameter can be selected which is shown as below:
+ 138:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_INPUT_DATA_NOT: input data is not reversed
+ 139:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_INPUT_DATA_BYTE: input data is reversed on 8 bits
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 8
+
+
+ 140:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_INPUT_DATA_HALFWORD: input data is reversed on 16 bits
+ 141:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_INPUT_DATA_WORD: input data is reversed on 32 bits
+ 142:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 143:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+ 144:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 145:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_input_data_reverse_config(uint32_t data_reverse)
+ 146:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 278              		.loc 1 146 1 is_stmt 1 view -0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		@ link register save eliminated.
+ 147:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL &= (uint32_t)(~CRC_CTL_REV_I);
+ 283              		.loc 1 147 5 view .LVU48
+ 284 0000 43F20803 		movw	r3, #12296
+ 285 0004 C4F20203 		movt	r3, 16386
+ 286 0008 1A68     		ldr	r2, [r3]
+ 287              		.loc 1 147 13 is_stmt 0 view .LVU49
+ 288 000a 6021     		movs	r1, #96
+ 289 000c 8A43     		bics	r2, r1
+ 290 000e 1A60     		str	r2, [r3]
+ 148:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL |= (uint32_t)data_reverse;
+ 291              		.loc 1 148 5 is_stmt 1 view .LVU50
+ 292 0010 1A68     		ldr	r2, [r3]
+ 293              		.loc 1 148 13 is_stmt 0 view .LVU51
+ 294 0012 0243     		orrs	r2, r0
+ 295 0014 1A60     		str	r2, [r3]
+ 149:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 296              		.loc 1 149 1 view .LVU52
+ 297              		@ sp needed
+ 298 0016 7047     		bx	lr
+ 299              		.cfi_endproc
+ 300              	.LFE68:
+ 302              		.section	.text.crc_polynomial_size_set,"ax",%progbits
+ 303              		.align	1
+ 304              		.global	crc_polynomial_size_set
+ 305              		.syntax unified
+ 306              		.code	16
+ 307              		.thumb_func
+ 309              	crc_polynomial_size_set:
+ 310              	.LVL5:
+ 311              	.LFB69:
+ 150:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 151:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 152:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      configure the CRC size of polynomial function
+ 153:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  poly_size: size of polynomial
+ 154:Drivers/GD32E23x/Source/gd32e23x_crc.c ****                 only one parameter can be selected which is shown as below:
+ 155:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_CTL_PS_32: 32-bit polynomial for CRC calculation
+ 156:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_CTL_PS_16: 16-bit polynomial for CRC calculation
+ 157:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_CTL_PS_8: 8-bit polynomial for CRC calculation
+ 158:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        CRC_CTL_PS_7: 7-bit polynomial for CRC calculation
+ 159:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 160:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+ 161:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 162:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_polynomial_size_set(uint32_t poly_size)
+ 163:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 312              		.loc 1 163 1 is_stmt 1 view -0
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 9
+
+
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 0
+ 315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 316              		@ link register save eliminated.
+ 164:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL &= (uint32_t)(~(CRC_CTL_PS));
+ 317              		.loc 1 164 5 view .LVU54
+ 318 0000 43F20803 		movw	r3, #12296
+ 319 0004 C4F20203 		movt	r3, 16386
+ 320 0008 1A68     		ldr	r2, [r3]
+ 321              		.loc 1 164 13 is_stmt 0 view .LVU55
+ 322 000a 1821     		movs	r1, #24
+ 323 000c 8A43     		bics	r2, r1
+ 324 000e 1A60     		str	r2, [r3]
+ 165:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_CTL |= (uint32_t)poly_size;
+ 325              		.loc 1 165 5 is_stmt 1 view .LVU56
+ 326 0010 1A68     		ldr	r2, [r3]
+ 327              		.loc 1 165 13 is_stmt 0 view .LVU57
+ 328 0012 0243     		orrs	r2, r0
+ 329 0014 1A60     		str	r2, [r3]
+ 166:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 330              		.loc 1 166 1 view .LVU58
+ 331              		@ sp needed
+ 332 0016 7047     		bx	lr
+ 333              		.cfi_endproc
+ 334              	.LFE69:
+ 336              		.section	.text.crc_polynomial_set,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	crc_polynomial_set
+ 339              		.syntax unified
+ 340              		.code	16
+ 341              		.thumb_func
+ 343              	crc_polynomial_set:
+ 344              	.LVL6:
+ 345              	.LFB70:
+ 167:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 168:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 169:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      configure the CRC polynomial value function
+ 170:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  poly: configurable polynomial value
+ 171:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 172:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     none
+ 173:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 174:Drivers/GD32E23x/Source/gd32e23x_crc.c **** void crc_polynomial_set(uint32_t poly)
+ 175:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 346              		.loc 1 175 1 is_stmt 1 view -0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              		@ link register save eliminated.
+ 176:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_POLY &= (uint32_t)(~CRC_POLY_POLY);
+ 351              		.loc 1 176 5 view .LVU60
+ 352 0000 43F21403 		movw	r3, #12308
+ 353 0004 C4F20203 		movt	r3, 16386
+ 354 0008 1A68     		ldr	r2, [r3]
+ 355              		.loc 1 176 14 is_stmt 0 view .LVU61
+ 356 000a 0022     		movs	r2, #0
+ 357 000c 1A60     		str	r2, [r3]
+ 177:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     CRC_POLY = poly;
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 10
+
+
+ 358              		.loc 1 177 5 is_stmt 1 view .LVU62
+ 359              		.loc 1 177 14 is_stmt 0 view .LVU63
+ 360 000e 1860     		str	r0, [r3]
+ 178:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 361              		.loc 1 178 1 view .LVU64
+ 362              		@ sp needed
+ 363 0010 7047     		bx	lr
+ 364              		.cfi_endproc
+ 365              	.LFE70:
+ 367              		.section	.text.crc_single_data_calculate,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	crc_single_data_calculate
+ 370              		.syntax unified
+ 371              		.code	16
+ 372              		.thumb_func
+ 374              	crc_single_data_calculate:
+ 375              	.LVL7:
+ 376              	.LFB71:
+ 179:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 180:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 181:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      CRC calculate single data
+ 182:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  sdata: specify input data
+ 183:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  data_format: input data format
+ 184:Drivers/GD32E23x/Source/gd32e23x_crc.c ****                 only one parameter can be selected which is shown as below:
+ 185:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_WORD: input data in word format
+ 186:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_HALFWORD: input data in half-word format
+ 187:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_BYTE: input data in byte format
+ 188:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 189:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     CRC calculate value
+ 190:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 191:Drivers/GD32E23x/Source/gd32e23x_crc.c **** uint32_t crc_single_data_calculate(uint32_t sdata, uint8_t data_format)
+ 192:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 377              		.loc 1 192 1 is_stmt 1 view -0
+ 378              		.cfi_startproc
+ 379              		@ args = 0, pretend = 0, frame = 0
+ 380              		@ frame_needed = 0, uses_anonymous_args = 0
+ 381              		@ link register save eliminated.
+ 193:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     if(INPUT_FORMAT_WORD == data_format){
+ 382              		.loc 1 193 5 view .LVU66
+ 383              		.loc 1 193 7 is_stmt 0 view .LVU67
+ 384 0000 51B9     		cbnz	r1, .L13
+ 194:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         REG32(CRC) = sdata;
+ 385              		.loc 1 194 9 is_stmt 1 view .LVU68
+ 386              		.loc 1 194 20 is_stmt 0 view .LVU69
+ 387 0002 43F20003 		movw	r3, #12288
+ 388 0006 C4F20203 		movt	r3, 16386
+ 389 000a 1860     		str	r0, [r3]
+ 390              	.LVL8:
+ 391              	.L14:
+ 195:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else if(INPUT_FORMAT_HALFWORD == data_format){
+ 196:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         REG16(CRC) = (uint16_t)sdata;
+ 197:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else{
+ 198:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         REG8(CRC) = (uint8_t)sdata;
+ 199:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }
+ 200:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 201:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     return(CRC_DATA);
+ 392              		.loc 1 201 5 is_stmt 1 view .LVU70
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 11
+
+
+ 393              		.loc 1 201 12 is_stmt 0 view .LVU71
+ 394 000c 43F20003 		movw	r3, #12288
+ 395 0010 C4F20203 		movt	r3, 16386
+ 396 0014 1868     		ldr	r0, [r3]
+ 202:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 397              		.loc 1 202 1 view .LVU72
+ 398              		@ sp needed
+ 399 0016 7047     		bx	lr
+ 400              	.LVL9:
+ 401              	.L13:
+ 195:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else if(INPUT_FORMAT_HALFWORD == data_format){
+ 402              		.loc 1 195 11 is_stmt 1 view .LVU73
+ 195:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else if(INPUT_FORMAT_HALFWORD == data_format){
+ 403              		.loc 1 195 13 is_stmt 0 view .LVU74
+ 404 0018 0129     		cmp	r1, #1
+ 405 001a 06D0     		beq	.L16
+ 198:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }
+ 406              		.loc 1 198 9 is_stmt 1 view .LVU75
+ 198:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }
+ 407              		.loc 1 198 21 is_stmt 0 view .LVU76
+ 408 001c C0B2     		uxtb	r0, r0
+ 409              	.LVL10:
+ 198:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }
+ 410              		.loc 1 198 19 view .LVU77
+ 411 001e 43F20003 		movw	r3, #12288
+ 412 0022 C4F20203 		movt	r3, 16386
+ 413 0026 1870     		strb	r0, [r3]
+ 414 0028 F0E7     		b	.L14
+ 415              	.LVL11:
+ 416              	.L16:
+ 196:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else{
+ 417              		.loc 1 196 9 is_stmt 1 view .LVU78
+ 196:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else{
+ 418              		.loc 1 196 22 is_stmt 0 view .LVU79
+ 419 002a 80B2     		uxth	r0, r0
+ 420              	.LVL12:
+ 196:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else{
+ 421              		.loc 1 196 20 view .LVU80
+ 422 002c 43F20003 		movw	r3, #12288
+ 423 0030 C4F20203 		movt	r3, 16386
+ 424 0034 1880     		strh	r0, [r3]
+ 425 0036 E9E7     		b	.L14
+ 426              		.cfi_endproc
+ 427              	.LFE71:
+ 429              		.section	.text.crc_block_data_calculate,"ax",%progbits
+ 430              		.align	1
+ 431              		.global	crc_block_data_calculate
+ 432              		.syntax unified
+ 433              		.code	16
+ 434              		.thumb_func
+ 436              	crc_block_data_calculate:
+ 437              	.LVL13:
+ 438              	.LFB72:
+ 203:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 204:Drivers/GD32E23x/Source/gd32e23x_crc.c **** /*!
+ 205:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \brief      CRC calculate a data array
+ 206:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  array: pointer to the input data array
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 12
+
+
+ 207:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  size: size of the array
+ 208:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[in]  data_format: input data format
+ 209:Drivers/GD32E23x/Source/gd32e23x_crc.c ****                 only one parameter can be selected which is shown as below:
+ 210:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_WORD: input data in word format
+ 211:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_HALFWORD: input data in half-word format
+ 212:Drivers/GD32E23x/Source/gd32e23x_crc.c ****       \arg        INPUT_FORMAT_BYTE: input data in byte format
+ 213:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \param[out] none
+ 214:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     \retval     CRC calculate value
+ 215:Drivers/GD32E23x/Source/gd32e23x_crc.c **** */
+ 216:Drivers/GD32E23x/Source/gd32e23x_crc.c **** uint32_t crc_block_data_calculate(void *array, uint32_t size, uint8_t data_format)
+ 217:Drivers/GD32E23x/Source/gd32e23x_crc.c **** {
+ 439              		.loc 1 217 1 is_stmt 1 view -0
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 0
+ 442              		@ frame_needed = 0, uses_anonymous_args = 0
+ 443              		.loc 1 217 1 is_stmt 0 view .LVU82
+ 444 0000 10B5     		push	{r4, lr}
+ 445              	.LCFI0:
+ 446              		.cfi_def_cfa_offset 8
+ 447              		.cfi_offset 4, -8
+ 448              		.cfi_offset 14, -4
+ 218:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint8_t *data8;
+ 449              		.loc 1 218 5 is_stmt 1 view .LVU83
+ 219:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint16_t *data16;
+ 450              		.loc 1 219 5 view .LVU84
+ 220:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint32_t *data32;
+ 451              		.loc 1 220 5 view .LVU85
+ 221:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     uint32_t index;
+ 452              		.loc 1 221 5 view .LVU86
+ 222:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 223:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     if(INPUT_FORMAT_WORD == data_format){
+ 453              		.loc 1 223 5 view .LVU87
+ 454              		.loc 1 223 7 is_stmt 0 view .LVU88
+ 455 0002 9AB1     		cbz	r2, .L26
+ 224:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         data32 = (uint32_t *)array;
+ 225:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         for(index = 0U; index < size; index++){
+ 226:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG32(CRC) = data32[index];
+ 227:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 228:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else if(INPUT_FORMAT_HALFWORD == data_format){
+ 456              		.loc 1 228 11 is_stmt 1 view .LVU89
+ 457              		.loc 1 228 13 is_stmt 0 view .LVU90
+ 458 0004 012A     		cmp	r2, #1
+ 459 0006 1ED0     		beq	.L27
+ 229:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         data16 = (uint16_t *)array;
+ 230:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         for(index = 0U; index < size; index++){
+ 231:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG16(CRC) = data16[index];
+ 232:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 233:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }else{
+ 234:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         data8 = (uint8_t *)array;
+ 235:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         for(index = 0U; index < size; index++){
+ 460              		.loc 1 235 19 view .LVU91
+ 461 0008 0023     		movs	r3, #0
+ 462 000a 25E0     		b	.L23
+ 463              	.LVL14:
+ 464              	.L20:
+ 226:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 465              		.loc 1 226 13 is_stmt 1 view .LVU92
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 13
+
+
+ 226:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 466              		.loc 1 226 32 is_stmt 0 view .LVU93
+ 467 000c 9A00     		lsls	r2, r3, #2
+ 468 000e 1458     		ldr	r4, [r2, r0]
+ 226:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 469              		.loc 1 226 24 view .LVU94
+ 470 0010 43F20002 		movw	r2, #12288
+ 471 0014 C4F20202 		movt	r2, 16386
+ 472 0018 1460     		str	r4, [r2]
+ 225:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG32(CRC) = data32[index];
+ 473              		.loc 1 225 44 is_stmt 1 discriminator 3 view .LVU95
+ 474 001a 0133     		adds	r3, r3, #1
+ 475              	.LVL15:
+ 476              	.L18:
+ 225:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG32(CRC) = data32[index];
+ 477              		.loc 1 225 31 discriminator 1 view .LVU96
+ 478 001c 8B42     		cmp	r3, r1
+ 479 001e F5D3     		bcc	.L20
+ 480              	.L21:
+ 236:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG8(CRC) =  data8[index];
+ 237:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 238:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     }
+ 239:Drivers/GD32E23x/Source/gd32e23x_crc.c **** 
+ 240:Drivers/GD32E23x/Source/gd32e23x_crc.c ****     return (CRC_DATA);
+ 481              		.loc 1 240 5 view .LVU97
+ 482              		.loc 1 240 13 is_stmt 0 view .LVU98
+ 483 0020 43F20003 		movw	r3, #12288
+ 484              	.LVL16:
+ 485              		.loc 1 240 13 view .LVU99
+ 486 0024 C4F20203 		movt	r3, 16386
+ 487 0028 1868     		ldr	r0, [r3]
+ 488              	.LVL17:
+ 241:Drivers/GD32E23x/Source/gd32e23x_crc.c **** }
+ 489              		.loc 1 241 1 view .LVU100
+ 490              		@ sp needed
+ 491 002a 10BD     		pop	{r4, pc}
+ 492              	.LVL18:
+ 493              	.L26:
+ 225:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG32(CRC) = data32[index];
+ 494              		.loc 1 225 19 view .LVU101
+ 495 002c 0023     		movs	r3, #0
+ 496 002e F5E7     		b	.L18
+ 497              	.LVL19:
+ 498              	.L24:
+ 231:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 499              		.loc 1 231 13 is_stmt 1 view .LVU102
+ 231:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 500              		.loc 1 231 32 is_stmt 0 view .LVU103
+ 501 0030 5A00     		lsls	r2, r3, #1
+ 502 0032 145A     		ldrh	r4, [r2, r0]
+ 231:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 503              		.loc 1 231 24 view .LVU104
+ 504 0034 43F20002 		movw	r2, #12288
+ 505 0038 C4F20202 		movt	r2, 16386
+ 506 003c 1480     		strh	r4, [r2]
+ 230:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG16(CRC) = data16[index];
+ 507              		.loc 1 230 44 is_stmt 1 discriminator 3 view .LVU105
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 14
+
+
+ 508 003e 0133     		adds	r3, r3, #1
+ 509              	.LVL20:
+ 510              	.L22:
+ 230:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG16(CRC) = data16[index];
+ 511              		.loc 1 230 31 discriminator 1 view .LVU106
+ 512 0040 8B42     		cmp	r3, r1
+ 513 0042 F5D3     		bcc	.L24
+ 514 0044 ECE7     		b	.L21
+ 515              	.LVL21:
+ 516              	.L27:
+ 230:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG16(CRC) = data16[index];
+ 517              		.loc 1 230 19 is_stmt 0 view .LVU107
+ 518 0046 0023     		movs	r3, #0
+ 519 0048 FAE7     		b	.L22
+ 520              	.LVL22:
+ 521              	.L25:
+ 236:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 522              		.loc 1 236 13 is_stmt 1 view .LVU108
+ 236:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 523              		.loc 1 236 31 is_stmt 0 view .LVU109
+ 524 004a C45C     		ldrb	r4, [r0, r3]
+ 236:Drivers/GD32E23x/Source/gd32e23x_crc.c ****         }
+ 525              		.loc 1 236 23 view .LVU110
+ 526 004c 43F20002 		movw	r2, #12288
+ 527 0050 C4F20202 		movt	r2, 16386
+ 528 0054 1470     		strb	r4, [r2]
+ 235:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG8(CRC) =  data8[index];
+ 529              		.loc 1 235 44 is_stmt 1 discriminator 3 view .LVU111
+ 530 0056 0133     		adds	r3, r3, #1
+ 531              	.LVL23:
+ 532              	.L23:
+ 235:Drivers/GD32E23x/Source/gd32e23x_crc.c ****             REG8(CRC) =  data8[index];
+ 533              		.loc 1 235 31 discriminator 1 view .LVU112
+ 534 0058 8B42     		cmp	r3, r1
+ 535 005a F6D3     		bcc	.L25
+ 536 005c E0E7     		b	.L21
+ 537              		.cfi_endproc
+ 538              	.LFE72:
+ 540              		.text
+ 541              	.Letext0:
+ 542              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 543              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ARM GAS  D:\noval\Temp\ccItNBhz.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_crc.c
+D:\noval\Temp\ccItNBhz.s:19     .text.crc_deinit:00000000 $t
+D:\noval\Temp\ccItNBhz.s:25     .text.crc_deinit:00000000 crc_deinit
+D:\noval\Temp\ccItNBhz.s:70     .text.crc_reverse_output_data_enable:00000000 $t
+D:\noval\Temp\ccItNBhz.s:76     .text.crc_reverse_output_data_enable:00000000 crc_reverse_output_data_enable
+D:\noval\Temp\ccItNBhz.s:103    .text.crc_reverse_output_data_disable:00000000 $t
+D:\noval\Temp\ccItNBhz.s:109    .text.crc_reverse_output_data_disable:00000000 crc_reverse_output_data_disable
+D:\noval\Temp\ccItNBhz.s:131    .text.crc_data_register_reset:00000000 $t
+D:\noval\Temp\ccItNBhz.s:137    .text.crc_data_register_reset:00000000 crc_data_register_reset
+D:\noval\Temp\ccItNBhz.s:159    .text.crc_data_register_read:00000000 $t
+D:\noval\Temp\ccItNBhz.s:165    .text.crc_data_register_read:00000000 crc_data_register_read
+D:\noval\Temp\ccItNBhz.s:187    .text.crc_free_data_register_read:00000000 $t
+D:\noval\Temp\ccItNBhz.s:193    .text.crc_free_data_register_read:00000000 crc_free_data_register_read
+D:\noval\Temp\ccItNBhz.s:217    .text.crc_free_data_register_write:00000000 $t
+D:\noval\Temp\ccItNBhz.s:223    .text.crc_free_data_register_write:00000000 crc_free_data_register_write
+D:\noval\Temp\ccItNBhz.s:243    .text.crc_init_data_register_write:00000000 $t
+D:\noval\Temp\ccItNBhz.s:249    .text.crc_init_data_register_write:00000000 crc_init_data_register_write
+D:\noval\Temp\ccItNBhz.s:269    .text.crc_input_data_reverse_config:00000000 $t
+D:\noval\Temp\ccItNBhz.s:275    .text.crc_input_data_reverse_config:00000000 crc_input_data_reverse_config
+D:\noval\Temp\ccItNBhz.s:303    .text.crc_polynomial_size_set:00000000 $t
+D:\noval\Temp\ccItNBhz.s:309    .text.crc_polynomial_size_set:00000000 crc_polynomial_size_set
+D:\noval\Temp\ccItNBhz.s:337    .text.crc_polynomial_set:00000000 $t
+D:\noval\Temp\ccItNBhz.s:343    .text.crc_polynomial_set:00000000 crc_polynomial_set
+D:\noval\Temp\ccItNBhz.s:368    .text.crc_single_data_calculate:00000000 $t
+D:\noval\Temp\ccItNBhz.s:374    .text.crc_single_data_calculate:00000000 crc_single_data_calculate
+D:\noval\Temp\ccItNBhz.s:430    .text.crc_block_data_calculate:00000000 $t
+D:\noval\Temp\ccItNBhz.s:436    .text.crc_block_data_calculate:00000000 crc_block_data_calculate
+
+NO UNDEFINED SYMBOLS

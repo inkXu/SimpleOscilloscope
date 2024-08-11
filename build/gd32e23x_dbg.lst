@@ -1,0 +1,371 @@
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_dbg.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_dbg.c"
+  18              		.section	.text.dbg_deinit,"ax",%progbits
+  19              		.align	1
+  20              		.global	dbg_deinit
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	dbg_deinit:
+  26              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \file    gd32e23x_dbg.c
+   3:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief   DBG driver
+   4:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     
+   5:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  12:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** are permitted provided that the following conditions are met:
+  13:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  14:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  15:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****        list of conditions and the following disclaimer.
+  16:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  17:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****        this list of conditions and the following disclaimer in the documentation 
+  18:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****        and/or other materials provided with the distribution.
+  19:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  20:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****        may be used to endorse or promote products derived from this software without 
+  21:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****        specific prior written permission.
+  22:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  23:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  24:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  25:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  26:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  27:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  29:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  30:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  32:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+  34:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  35:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** #include "gd32e23x_dbg.h"
+  36:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** #define DBG_RESET_VAL       0x00000000U
+  38:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  39:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+  40:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      deinitialize the DBG
+  41:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  none
+  42:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+  43:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     none
+  44:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+  45:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** void dbg_deinit(void)
+  46:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+  27              		.loc 1 46 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  47:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_CTL0 = DBG_RESET_VAL;
+  32              		.loc 1 47 5 view .LVU1
+  33              		.loc 1 47 14 is_stmt 0 view .LVU2
+  34 0000 45F60403 		movw	r3, #22532
+  35 0004 C4F20103 		movt	r3, 16385
+  36 0008 0022     		movs	r2, #0
+  37 000a 1A60     		str	r2, [r3]
+  48:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_CTL1 = DBG_RESET_VAL;
+  38              		.loc 1 48 5 is_stmt 1 view .LVU3
+  39              		.loc 1 48 14 is_stmt 0 view .LVU4
+  40 000c 45F60803 		movw	r3, #22536
+  41 0010 C4F20103 		movt	r3, 16385
+  42 0014 1A60     		str	r2, [r3]
+  49:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+  43              		.loc 1 49 1 view .LVU5
+  44              		@ sp needed
+  45 0016 7047     		bx	lr
+  46              		.cfi_endproc
+  47              	.LFE60:
+  49              		.section	.text.dbg_id_get,"ax",%progbits
+  50              		.align	1
+  51              		.global	dbg_id_get
+  52              		.syntax unified
+  53              		.code	16
+  54              		.thumb_func
+  56              	dbg_id_get:
+  57              	.LFB61:
+  50:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  51:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+  52:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      read DBG_ID code register
+  53:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  none
+  54:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+  55:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     DBG_ID code
+  56:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+  57:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** uint32_t dbg_id_get(void)
+  58:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+  58              		.loc 1 58 1 is_stmt 1 view -0
+  59              		.cfi_startproc
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 3
+
+
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  59:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     return DBG_ID;
+  63              		.loc 1 59 5 view .LVU7
+  64              		.loc 1 59 12 is_stmt 0 view .LVU8
+  65 0000 45F60003 		movw	r3, #22528
+  66 0004 C4F20103 		movt	r3, 16385
+  67 0008 1868     		ldr	r0, [r3]
+  60:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+  68              		.loc 1 60 1 view .LVU9
+  69              		@ sp needed
+  70 000a 7047     		bx	lr
+  71              		.cfi_endproc
+  72              	.LFE61:
+  74              		.section	.text.dbg_low_power_enable,"ax",%progbits
+  75              		.align	1
+  76              		.global	dbg_low_power_enable
+  77              		.syntax unified
+  78              		.code	16
+  79              		.thumb_func
+  81              	dbg_low_power_enable:
+  82              	.LVL0:
+  83              	.LFB62:
+  61:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  62:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+  63:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      enable low power behavior when the mcu is in debug mode
+  64:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  dbg_low_power:
+  65:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****                 this parameter can be any combination of the following values:
+  66:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_SLEEP: keep debugger connection during sleep mode
+  67:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_DEEPSLEEP: keep debugger connection during deepsleep mode
+  68:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_STANDBY: keep debugger connection during standby mode
+  69:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+  70:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     none
+  71:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+  72:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** void dbg_low_power_enable(uint32_t dbg_low_power)
+  73:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+  84              		.loc 1 73 1 is_stmt 1 view -0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+  74:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_CTL0 |= dbg_low_power;
+  89              		.loc 1 74 5 view .LVU11
+  90 0000 45F60403 		movw	r3, #22532
+  91 0004 C4F20103 		movt	r3, 16385
+  92 0008 1A68     		ldr	r2, [r3]
+  93              		.loc 1 74 14 is_stmt 0 view .LVU12
+  94 000a 0243     		orrs	r2, r0
+  95 000c 1A60     		str	r2, [r3]
+  75:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+  96              		.loc 1 75 1 view .LVU13
+  97              		@ sp needed
+  98 000e 7047     		bx	lr
+  99              		.cfi_endproc
+ 100              	.LFE62:
+ 102              		.section	.text.dbg_low_power_disable,"ax",%progbits
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 4
+
+
+ 103              		.align	1
+ 104              		.global	dbg_low_power_disable
+ 105              		.syntax unified
+ 106              		.code	16
+ 107              		.thumb_func
+ 109              	dbg_low_power_disable:
+ 110              	.LVL1:
+ 111              	.LFB63:
+  76:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  77:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+  78:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      disable low power behavior when the mcu is in debug mode
+  79:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  dbg_low_power:
+  80:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****                 this parameter can be any combination of the following values:
+  81:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_SLEEP: donot keep debugger connection during sleep mode
+  82:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_DEEPSLEEP: donot keep debugger connection during deepsleep mode
+  83:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_LOW_POWER_STANDBY: donot keep debugger connection during standby mode
+  84:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+  85:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     none
+  86:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+  87:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** void dbg_low_power_disable(uint32_t dbg_low_power)
+  88:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+ 112              		.loc 1 88 1 is_stmt 1 view -0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              		@ link register save eliminated.
+  89:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_CTL0 &= ~dbg_low_power;
+ 117              		.loc 1 89 5 view .LVU15
+ 118 0000 45F60403 		movw	r3, #22532
+ 119 0004 C4F20103 		movt	r3, 16385
+ 120 0008 1A68     		ldr	r2, [r3]
+ 121              		.loc 1 89 14 is_stmt 0 view .LVU16
+ 122 000a 8243     		bics	r2, r0
+ 123 000c 1A60     		str	r2, [r3]
+  90:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+ 124              		.loc 1 90 1 view .LVU17
+ 125              		@ sp needed
+ 126 000e 7047     		bx	lr
+ 127              		.cfi_endproc
+ 128              	.LFE63:
+ 130              		.section	.text.dbg_periph_enable,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	dbg_periph_enable
+ 133              		.syntax unified
+ 134              		.code	16
+ 135              		.thumb_func
+ 137              	dbg_periph_enable:
+ 138              	.LVL2:
+ 139              	.LFB64:
+  91:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+  92:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+  93:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      enable peripheral behavior when the mcu is in debug mode
+  94:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  dbg_periph: DBG peripheral 
+  95:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****                 only one parameter can be selected which is shown as below:
+  96:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_FWDGT_HOLD: debug FWDGT kept when core is halted
+  97:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_WWDGT_HOLD: debug WWDGT kept when core is halted
+  98:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER0_HOLD: TIMER0 counter kept when core is halted
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 5
+
+
+  99:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER2_HOLD: TIMER2 counter kept when core is halted
+ 100:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER5_HOLD: hold TIMER5 counter when core is halted
+ 101:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER13_HOLD: hold TIMER13 counter when core is halted
+ 102:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER14_HOLD: hold TIMER14 counter when core is halted
+ 103:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER15_HOLD: hold TIMER15 counter when core is halted
+ 104:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER16_HOLD: hold TIMER16 counter when core is halted
+ 105:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_I2C0_HOLD: hold I2C0 SMBUS when core is halted
+ 106:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_I2C1_HOLD: hold I2C1 SMBUS when core is halted
+ 107:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_RTC_HOLD: hold RTC calendar and wakeup counter when core is halted
+ 108:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+ 109:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     none
+ 110:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+ 111:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** void dbg_periph_enable(dbg_periph_enum dbg_periph)
+ 112:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+ 140              		.loc 1 112 1 is_stmt 1 view -0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 113:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_REG_VAL(dbg_periph) |= BIT(DBG_BIT_POS(dbg_periph));
+ 145              		.loc 1 113 5 view .LVU19
+ 146 0000 8309     		lsrs	r3, r0, #6
+ 147 0002 45F6000C 		movw	ip, #22528
+ 148 0006 C4F2010C 		movt	ip, 16385
+ 149 000a 6344     		add	r3, r3, ip
+ 150 000c 1A68     		ldr	r2, [r3]
+ 151              		.loc 1 113 32 is_stmt 0 view .LVU20
+ 152 000e 1F21     		movs	r1, #31
+ 153 0010 0840     		ands	r0, r1
+ 154              	.LVL3:
+ 155              		.loc 1 113 32 view .LVU21
+ 156 0012 1E39     		subs	r1, r1, #30
+ 157 0014 8140     		lsls	r1, r1, r0
+ 158              		.loc 1 113 29 view .LVU22
+ 159 0016 0A43     		orrs	r2, r1
+ 160 0018 1A60     		str	r2, [r3]
+ 114:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+ 161              		.loc 1 114 1 view .LVU23
+ 162              		@ sp needed
+ 163 001a 7047     		bx	lr
+ 164              		.cfi_endproc
+ 165              	.LFE64:
+ 167              		.section	.text.dbg_periph_disable,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	dbg_periph_disable
+ 170              		.syntax unified
+ 171              		.code	16
+ 172              		.thumb_func
+ 174              	dbg_periph_disable:
+ 175              	.LVL4:
+ 176              	.LFB65:
+ 115:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** 
+ 116:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** /*!
+ 117:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \brief      disable peripheral behavior when the mcu is in debug mode
+ 118:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  dbg_periph: DBG peripheral 
+ 119:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****                 only one parameter can be selected which is shown as below:
+ 120:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_FWDGT_HOLD: debug FWDGT kept when core is halted
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 6
+
+
+ 121:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_WWDGT_HOLD: debug WWDGT kept when core is halted
+ 122:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER0_HOLD: TIMER0 counter kept when core is halted
+ 123:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER2_HOLD: TIMER2 counter kept when core is halted
+ 124:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER5_HOLD: hold TIMER5 counter when core is halted
+ 125:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER13_HOLD: hold TIMER13 counter when core is halted
+ 126:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER14_HOLD: hold TIMER14 counter when core is halted
+ 127:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER15_HOLD: hold TIMER15 counter when core is halted
+ 128:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER16_HOLD: hold TIMER16 counter when core is halted
+ 129:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_I2C0_HOLD: hold I2C0 SMBUS when core is halted
+ 130:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_I2C1_HOLD: hold I2C1 SMBUS when core is halted
+ 131:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_RTC_HOLD: hold RTC calendar and wakeup counter when core is halted
+ 132:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[out] none
+ 133:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \retval     none
+ 134:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
+ 135:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** void dbg_periph_disable(dbg_periph_enum dbg_periph)
+ 136:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
+ 177              		.loc 1 136 1 is_stmt 1 view -0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 137:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     DBG_REG_VAL(dbg_periph) &= ~BIT(DBG_BIT_POS(dbg_periph));
+ 182              		.loc 1 137 5 view .LVU25
+ 183 0000 8309     		lsrs	r3, r0, #6
+ 184 0002 45F6000C 		movw	ip, #22528
+ 185 0006 C4F2010C 		movt	ip, 16385
+ 186 000a 6344     		add	r3, r3, ip
+ 187 000c 1A68     		ldr	r2, [r3]
+ 188              		.loc 1 137 33 is_stmt 0 view .LVU26
+ 189 000e 1F21     		movs	r1, #31
+ 190 0010 0840     		ands	r0, r1
+ 191              	.LVL5:
+ 192              		.loc 1 137 33 view .LVU27
+ 193 0012 1E39     		subs	r1, r1, #30
+ 194 0014 8140     		lsls	r1, r1, r0
+ 195              		.loc 1 137 29 view .LVU28
+ 196 0016 8A43     		bics	r2, r1
+ 197 0018 1A60     		str	r2, [r3]
+ 138:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** }
+ 198              		.loc 1 138 1 view .LVU29
+ 199              		@ sp needed
+ 200 001a 7047     		bx	lr
+ 201              		.cfi_endproc
+ 202              	.LFE65:
+ 204              		.text
+ 205              	.Letext0:
+ 206              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 207              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 208              		.file 4 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
+ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_dbg.c
+D:\noval\Temp\cccXwmwQ.s:19     .text.dbg_deinit:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:25     .text.dbg_deinit:00000000 dbg_deinit
+D:\noval\Temp\cccXwmwQ.s:50     .text.dbg_id_get:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:56     .text.dbg_id_get:00000000 dbg_id_get
+D:\noval\Temp\cccXwmwQ.s:75     .text.dbg_low_power_enable:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:81     .text.dbg_low_power_enable:00000000 dbg_low_power_enable
+D:\noval\Temp\cccXwmwQ.s:103    .text.dbg_low_power_disable:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:109    .text.dbg_low_power_disable:00000000 dbg_low_power_disable
+D:\noval\Temp\cccXwmwQ.s:131    .text.dbg_periph_enable:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:137    .text.dbg_periph_enable:00000000 dbg_periph_enable
+D:\noval\Temp\cccXwmwQ.s:168    .text.dbg_periph_disable:00000000 $t
+D:\noval\Temp\cccXwmwQ.s:174    .text.dbg_periph_disable:00000000 dbg_periph_disable
+
+NO UNDEFINED SYMBOLS

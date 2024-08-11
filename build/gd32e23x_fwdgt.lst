@@ -1,0 +1,846 @@
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32e23x_fwdgt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Drivers/GD32E23x/Source/gd32e23x_fwdgt.c"
+  18              		.section	.text.fwdgt_write_enable,"ax",%progbits
+  19              		.align	1
+  20              		.global	fwdgt_write_enable
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	fwdgt_write_enable:
+  26              	.LFB60:
+   1:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+   2:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \file    gd32e23x_fwdgt.c
+   3:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief   FWDGT driver
+   4:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+   5:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \version 2024-02-22, V2.1.0, firmware for GD32E23x
+   6:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+   7:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+   8:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*
+   9:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     Copyright (c) 2024, GigaDevice Semiconductor Inc.
+  10:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  11:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     All rights reserved.
+  12:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  13:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  14:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** are permitted provided that the following conditions are met:
+  15:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  16:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  17:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****        list of conditions and the following disclaimer.
+  18:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  19:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****        this list of conditions and the following disclaimer in the documentation 
+  20:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****        and/or other materials provided with the distribution.
+  21:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  22:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****        may be used to endorse or promote products derived from this software without 
+  23:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****        specific prior written permission.
+  24:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  25:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  26:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  28:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  29:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  30:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  31:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  32:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 2
+
+
+  33:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  34:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** OF SUCH DAMAGE.
+  35:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+  36:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  37:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** #include "gd32e23x_fwdgt.h"
+  38:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  39:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+  40:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      enable write access to FWDGT_PSC and FWDGT_RLD and FWDGT_WND
+  41:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  none
+  42:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+  43:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     none
+  44:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+  45:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** void fwdgt_write_enable(void)
+  46:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+  27              		.loc 1 46 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  47:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+  32              		.loc 1 47 5 view .LVU1
+  33              		.loc 1 47 15 is_stmt 0 view .LVU2
+  34 0000 43F20003 		movw	r3, #12288
+  35 0004 C4F20003 		movt	r3, 16384
+  36 0008 45F25552 		movw	r2, #21845
+  37 000c 1A60     		str	r2, [r3]
+  48:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+  38              		.loc 1 48 1 view .LVU3
+  39              		@ sp needed
+  40 000e 7047     		bx	lr
+  41              		.cfi_endproc
+  42              	.LFE60:
+  44              		.section	.text.fwdgt_write_disable,"ax",%progbits
+  45              		.align	1
+  46              		.global	fwdgt_write_disable
+  47              		.syntax unified
+  48              		.code	16
+  49              		.thumb_func
+  51              	fwdgt_write_disable:
+  52              	.LFB61:
+  49:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  50:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+  51:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      disable write access to FWDGT_PSC,FWDGT_RLD and FWDGT_WND
+  52:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  none
+  53:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+  54:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     none
+  55:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+  56:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** void fwdgt_write_disable(void)
+  57:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+  53              		.loc 1 57 1 is_stmt 1 view -0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+  58:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_DISABLE;
+  58              		.loc 1 58 5 view .LVU5
+  59              		.loc 1 58 15 is_stmt 0 view .LVU6
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 3
+
+
+  60 0000 43F20003 		movw	r3, #12288
+  61 0004 C4F20003 		movt	r3, 16384
+  62 0008 0022     		movs	r2, #0
+  63 000a 1A60     		str	r2, [r3]
+  59:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+  64              		.loc 1 59 1 view .LVU7
+  65              		@ sp needed
+  66 000c 7047     		bx	lr
+  67              		.cfi_endproc
+  68              	.LFE61:
+  70              		.section	.text.fwdgt_enable,"ax",%progbits
+  71              		.align	1
+  72              		.global	fwdgt_enable
+  73              		.syntax unified
+  74              		.code	16
+  75              		.thumb_func
+  77              	fwdgt_enable:
+  78              	.LFB62:
+  60:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  61:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+  62:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      start the free watchdog timer counter
+  63:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  none
+  64:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+  65:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     none
+  66:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+  67:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** void fwdgt_enable(void)
+  68:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+  79              		.loc 1 68 1 is_stmt 1 view -0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  69:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_ENABLE;
+  84              		.loc 1 69 5 view .LVU9
+  85              		.loc 1 69 15 is_stmt 0 view .LVU10
+  86 0000 43F20003 		movw	r3, #12288
+  87 0004 C4F20003 		movt	r3, 16384
+  88 0008 4CF6CC42 		movw	r2, #52428
+  89 000c 1A60     		str	r2, [r3]
+  70:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+  90              		.loc 1 70 1 view .LVU11
+  91              		@ sp needed
+  92 000e 7047     		bx	lr
+  93              		.cfi_endproc
+  94              	.LFE62:
+  96              		.section	.text.fwdgt_prescaler_value_config,"ax",%progbits
+  97              		.align	1
+  98              		.global	fwdgt_prescaler_value_config
+  99              		.syntax unified
+ 100              		.code	16
+ 101              		.thumb_func
+ 103              	fwdgt_prescaler_value_config:
+ 104              	.LVL0:
+ 105              	.LFB63:
+  71:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+  72:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+  73:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure the free watchdog timer counter prescaler value
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 4
+
+
+  74:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  prescaler_value: specify prescaler value
+  75:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****                 only one parameter can be selected which is shown as below:
+  76:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV4: FWDGT prescaler set to 4
+  77:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV8: FWDGT prescaler set to 8
+  78:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV16: FWDGT prescaler set to 16
+  79:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV32: FWDGT prescaler set to 32
+  80:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV64: FWDGT prescaler set to 64
+  81:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV128: FWDGT prescaler set to 128
+  82:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV256: FWDGT prescaler set to 256
+  83:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+  84:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     ErrStatus: ERROR or SUCCESS
+  85:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+  86:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ErrStatus fwdgt_prescaler_value_config(uint16_t prescaler_value)
+  87:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ 106              		.loc 1 87 1 is_stmt 1 view -0
+ 107              		.cfi_startproc
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110              		@ link register save eliminated.
+  88:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t timeout = FWDGT_PSC_TIMEOUT;
+ 111              		.loc 1 88 5 view .LVU13
+  89:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 112              		.loc 1 89 5 view .LVU14
+  90:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+  91:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* enable write access to FWDGT_PSC */
+  92:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+ 113              		.loc 1 92 5 view .LVU15
+ 114              		.loc 1 92 15 is_stmt 0 view .LVU16
+ 115 0000 43F20003 		movw	r3, #12288
+ 116 0004 C4F20003 		movt	r3, 16384
+ 117 0008 45F25552 		movw	r2, #21845
+ 118 000c 1A60     		str	r2, [r3]
+  88:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 119              		.loc 1 88 14 view .LVU17
+ 120 000e 4FF6FF72 		movw	r2, #65535
+ 121 0012 C0F20F02 		movt	r2, 15
+ 122              	.LVL1:
+ 123              	.L6:
+  93:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+  94:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* wait until the PUD flag to be reset */
+  95:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     do{
+ 124              		.loc 1 95 5 is_stmt 1 view .LVU18
+  96:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         flag_status = FWDGT_STAT & FWDGT_STAT_PUD;
+ 125              		.loc 1 96 9 view .LVU19
+ 126              		.loc 1 96 23 is_stmt 0 view .LVU20
+ 127 0016 43F20C03 		movw	r3, #12300
+ 128 001a C4F20003 		movt	r3, 16384
+ 129 001e 1968     		ldr	r1, [r3]
+ 130              		.loc 1 96 21 view .LVU21
+ 131 0020 0123     		movs	r3, #1
+ 132 0022 0B40     		ands	r3, r1
+ 133              	.LVL2:
+  97:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 134              		.loc 1 97 29 is_stmt 1 discriminator 2 view .LVU22
+ 135 0024 013A     		subs	r2, r2, #1
+ 136              	.LVL3:
+ 137              		.loc 1 97 29 is_stmt 0 discriminator 2 view .LVU23
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 5
+
+
+ 138 0026 0AB1     		cbz	r2, .L5
+ 139              		.loc 1 97 29 discriminator 1 view .LVU24
+ 140 0028 002B     		cmp	r3, #0
+ 141 002a F4D1     		bne	.L6
+ 142              	.L5:
+  98:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+  99:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
+ 143              		.loc 1 99 5 is_stmt 1 view .LVU25
+ 144              		.loc 1 99 8 is_stmt 0 view .LVU26
+ 145 002c 33B9     		cbnz	r3, .L8
+ 100:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 101:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 102:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 103:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* configure FWDGT */
+ 104:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_PSC = (uint32_t)prescaler_value; 
+ 146              		.loc 1 104 5 is_stmt 1 view .LVU27
+ 147              		.loc 1 104 15 is_stmt 0 view .LVU28
+ 148 002e 43F20403 		movw	r3, #12292
+ 149              	.LVL4:
+ 150              		.loc 1 104 15 view .LVU29
+ 151 0032 C4F20003 		movt	r3, 16384
+ 152 0036 1860     		str	r0, [r3]
+ 105:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 106:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     return SUCCESS;
+ 153              		.loc 1 106 5 is_stmt 1 view .LVU30
+ 154              		.loc 1 106 12 is_stmt 0 view .LVU31
+ 155 0038 0120     		movs	r0, #1
+ 156              	.LVL5:
+ 157              	.L7:
+ 107:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 158              		.loc 1 107 1 view .LVU32
+ 159              		@ sp needed
+ 160 003a 7047     		bx	lr
+ 161              	.LVL6:
+ 162              	.L8:
+ 100:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 163              		.loc 1 100 16 view .LVU33
+ 164 003c 0020     		movs	r0, #0
+ 165              	.LVL7:
+ 100:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 166              		.loc 1 100 16 view .LVU34
+ 167 003e FCE7     		b	.L7
+ 168              		.cfi_endproc
+ 169              	.LFE63:
+ 171              		.section	.text.fwdgt_reload_value_config,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	fwdgt_reload_value_config
+ 174              		.syntax unified
+ 175              		.code	16
+ 176              		.thumb_func
+ 178              	fwdgt_reload_value_config:
+ 179              	.LVL8:
+ 180              	.LFB64:
+ 108:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 109:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+ 110:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure the free watchdog timer counter reload value
+ 111:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  reload_value: specify reload value(0x0000 - 0x0FFF)
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 6
+
+
+ 112:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+ 113:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 114:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+ 115:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ErrStatus fwdgt_reload_value_config(uint16_t reload_value)
+ 116:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ 181              		.loc 1 116 1 is_stmt 1 view -0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 117:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t timeout = FWDGT_RLD_TIMEOUT;
+ 186              		.loc 1 117 5 view .LVU36
+ 118:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 187              		.loc 1 118 5 view .LVU37
+ 119:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+ 120:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* enable write access to FWDGT_RLD */
+ 121:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+ 188              		.loc 1 121 5 view .LVU38
+ 189              		.loc 1 121 15 is_stmt 0 view .LVU39
+ 190 0000 43F20003 		movw	r3, #12288
+ 191 0004 C4F20003 		movt	r3, 16384
+ 192 0008 45F25552 		movw	r2, #21845
+ 193 000c 1A60     		str	r2, [r3]
+ 117:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 194              		.loc 1 117 14 view .LVU40
+ 195 000e 4FF6FF72 		movw	r2, #65535
+ 196 0012 C0F20F02 		movt	r2, 15
+ 197              	.LVL9:
+ 198              	.L11:
+ 122:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+ 123:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* wait until the RUD flag to be reset */
+ 124:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     do{
+ 199              		.loc 1 124 5 is_stmt 1 view .LVU41
+ 125:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         flag_status = FWDGT_STAT & FWDGT_STAT_RUD;
+ 200              		.loc 1 125 9 view .LVU42
+ 201              		.loc 1 125 23 is_stmt 0 view .LVU43
+ 202 0016 43F20C03 		movw	r3, #12300
+ 203 001a C4F20003 		movt	r3, 16384
+ 204 001e 1968     		ldr	r1, [r3]
+ 205              		.loc 1 125 21 view .LVU44
+ 206 0020 0223     		movs	r3, #2
+ 207 0022 0B40     		ands	r3, r1
+ 208              	.LVL10:
+ 126:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 209              		.loc 1 126 29 is_stmt 1 discriminator 2 view .LVU45
+ 210 0024 013A     		subs	r2, r2, #1
+ 211              	.LVL11:
+ 212              		.loc 1 126 29 is_stmt 0 discriminator 2 view .LVU46
+ 213 0026 0AB1     		cbz	r2, .L10
+ 214              		.loc 1 126 29 discriminator 1 view .LVU47
+ 215 0028 002B     		cmp	r3, #0
+ 216 002a F4D1     		bne	.L11
+ 217              	.L10:
+ 127:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****    
+ 128:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
+ 218              		.loc 1 128 5 is_stmt 1 view .LVU48
+ 219              		.loc 1 128 8 is_stmt 0 view .LVU49
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 7
+
+
+ 220 002c 4BB9     		cbnz	r3, .L13
+ 129:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 130:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 131:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 132:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_RLD = RLD_RLD(reload_value);
+ 221              		.loc 1 132 5 is_stmt 1 view .LVU50
+ 222              		.loc 1 132 17 is_stmt 0 view .LVU51
+ 223 002e 40F6FF73 		movw	r3, #4095
+ 224              	.LVL12:
+ 225              		.loc 1 132 17 view .LVU52
+ 226 0032 0340     		ands	r3, r0
+ 227              		.loc 1 132 15 view .LVU53
+ 228 0034 43F20802 		movw	r2, #12296
+ 229              	.LVL13:
+ 230              		.loc 1 132 15 view .LVU54
+ 231 0038 C4F20002 		movt	r2, 16384
+ 232 003c 1360     		str	r3, [r2]
+ 133:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 134:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     return SUCCESS;
+ 233              		.loc 1 134 5 is_stmt 1 view .LVU55
+ 234              		.loc 1 134 12 is_stmt 0 view .LVU56
+ 235 003e 0120     		movs	r0, #1
+ 236              	.LVL14:
+ 237              	.L12:
+ 135:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 238              		.loc 1 135 1 view .LVU57
+ 239              		@ sp needed
+ 240 0040 7047     		bx	lr
+ 241              	.LVL15:
+ 242              	.L13:
+ 129:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 243              		.loc 1 129 16 view .LVU58
+ 244 0042 0020     		movs	r0, #0
+ 245              	.LVL16:
+ 129:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 246              		.loc 1 129 16 view .LVU59
+ 247 0044 FCE7     		b	.L12
+ 248              		.cfi_endproc
+ 249              	.LFE64:
+ 251              		.section	.text.fwdgt_window_value_config,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	fwdgt_window_value_config
+ 254              		.syntax unified
+ 255              		.code	16
+ 256              		.thumb_func
+ 258              	fwdgt_window_value_config:
+ 259              	.LVL17:
+ 260              	.LFB65:
+ 136:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 137:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+ 138:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure the free watchdog timer counter window value
+ 139:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  window_value: specify window value(0x0000 - 0x0FFF)
+ 140:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+ 141:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 142:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+ 143:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ErrStatus fwdgt_window_value_config(uint16_t window_value)
+ 144:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 8
+
+
+ 261              		.loc 1 144 1 is_stmt 1 view -0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265              		@ link register save eliminated.
+ 145:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t time_index = FWDGT_WND_TIMEOUT;
+ 266              		.loc 1 145 5 view .LVU61
+ 146:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 267              		.loc 1 146 5 view .LVU62
+ 147:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 148:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* enable write access to FWDGT_WND */
+ 149:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+ 268              		.loc 1 149 5 view .LVU63
+ 269              		.loc 1 149 15 is_stmt 0 view .LVU64
+ 270 0000 43F20003 		movw	r3, #12288
+ 271 0004 C4F20003 		movt	r3, 16384
+ 272 0008 45F25552 		movw	r2, #21845
+ 273 000c 1A60     		str	r2, [r3]
+ 145:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 274              		.loc 1 145 14 view .LVU65
+ 275 000e 4FF6FF72 		movw	r2, #65535
+ 276 0012 C0F20F02 		movt	r2, 15
+ 277              	.LVL18:
+ 278              	.L16:
+ 150:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 151:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* wait until the WUD flag to be reset */
+ 152:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     do{
+ 279              		.loc 1 152 5 is_stmt 1 view .LVU66
+ 153:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         flag_status = FWDGT_STAT & FWDGT_STAT_WUD;
+ 280              		.loc 1 153 9 view .LVU67
+ 281              		.loc 1 153 23 is_stmt 0 view .LVU68
+ 282 0016 43F20C03 		movw	r3, #12300
+ 283 001a C4F20003 		movt	r3, 16384
+ 284 001e 1968     		ldr	r1, [r3]
+ 285              		.loc 1 153 21 view .LVU69
+ 286 0020 0423     		movs	r3, #4
+ 287 0022 0B40     		ands	r3, r1
+ 288              	.LVL19:
+ 154:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }while((--time_index > 0U) && ((uint32_t)RESET != flag_status));
+ 289              		.loc 1 154 32 is_stmt 1 discriminator 2 view .LVU70
+ 290 0024 013A     		subs	r2, r2, #1
+ 291              	.LVL20:
+ 292              		.loc 1 154 32 is_stmt 0 discriminator 2 view .LVU71
+ 293 0026 0AB1     		cbz	r2, .L15
+ 294              		.loc 1 154 32 discriminator 1 view .LVU72
+ 295 0028 002B     		cmp	r3, #0
+ 296 002a F4D1     		bne	.L16
+ 297              	.L15:
+ 155:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 156:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
+ 298              		.loc 1 156 5 is_stmt 1 view .LVU73
+ 299              		.loc 1 156 8 is_stmt 0 view .LVU74
+ 300 002c 4BB9     		cbnz	r3, .L18
+ 157:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR; 
+ 158:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 159:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 160:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_WND = WND_WND(window_value);
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 9
+
+
+ 301              		.loc 1 160 5 is_stmt 1 view .LVU75
+ 302              		.loc 1 160 17 is_stmt 0 view .LVU76
+ 303 002e 40F6FF73 		movw	r3, #4095
+ 304              	.LVL21:
+ 305              		.loc 1 160 17 view .LVU77
+ 306 0032 0340     		ands	r3, r0
+ 307              		.loc 1 160 15 view .LVU78
+ 308 0034 43F21002 		movw	r2, #12304
+ 309              	.LVL22:
+ 310              		.loc 1 160 15 view .LVU79
+ 311 0038 C4F20002 		movt	r2, 16384
+ 312 003c 1360     		str	r3, [r2]
+ 161:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 162:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     return SUCCESS;
+ 313              		.loc 1 162 5 is_stmt 1 view .LVU80
+ 314              		.loc 1 162 12 is_stmt 0 view .LVU81
+ 315 003e 0120     		movs	r0, #1
+ 316              	.LVL23:
+ 317              	.L17:
+ 163:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 318              		.loc 1 163 1 view .LVU82
+ 319              		@ sp needed
+ 320 0040 7047     		bx	lr
+ 321              	.LVL24:
+ 322              	.L18:
+ 157:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR; 
+ 323              		.loc 1 157 16 view .LVU83
+ 324 0042 0020     		movs	r0, #0
+ 325              	.LVL25:
+ 157:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR; 
+ 326              		.loc 1 157 16 view .LVU84
+ 327 0044 FCE7     		b	.L17
+ 328              		.cfi_endproc
+ 329              	.LFE65:
+ 331              		.section	.text.fwdgt_counter_reload,"ax",%progbits
+ 332              		.align	1
+ 333              		.global	fwdgt_counter_reload
+ 334              		.syntax unified
+ 335              		.code	16
+ 336              		.thumb_func
+ 338              	fwdgt_counter_reload:
+ 339              	.LFB66:
+ 164:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 165:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+ 166:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      reload the counter of FWDGT
+ 167:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  none
+ 168:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+ 169:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     none
+ 170:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+ 171:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** void fwdgt_counter_reload(void)
+ 172:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ 340              		.loc 1 172 1 is_stmt 1 view -0
+ 341              		.cfi_startproc
+ 342              		@ args = 0, pretend = 0, frame = 0
+ 343              		@ frame_needed = 0, uses_anonymous_args = 0
+ 344              		@ link register save eliminated.
+ 173:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_RELOAD;
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 10
+
+
+ 345              		.loc 1 173 5 view .LVU86
+ 346              		.loc 1 173 15 is_stmt 0 view .LVU87
+ 347 0000 43F20003 		movw	r3, #12288
+ 348 0004 C4F20003 		movt	r3, 16384
+ 349 0008 4AF6AA22 		movw	r2, #43690
+ 350 000c 1A60     		str	r2, [r3]
+ 174:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 351              		.loc 1 174 1 view .LVU88
+ 352              		@ sp needed
+ 353 000e 7047     		bx	lr
+ 354              		.cfi_endproc
+ 355              	.LFE66:
+ 357              		.section	.text.fwdgt_config,"ax",%progbits
+ 358              		.align	1
+ 359              		.global	fwdgt_config
+ 360              		.syntax unified
+ 361              		.code	16
+ 362              		.thumb_func
+ 364              	fwdgt_config:
+ 365              	.LVL26:
+ 366              	.LFB67:
+ 175:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 176:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+ 177:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure counter reload value, and prescaler divider value
+ 178:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  reload_value: specify reload value(0x0000 - 0x0FFF)
+ 179:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  prescaler_div: FWDGT prescaler value
+ 180:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****                 only one parameter can be selected which is shown as below:
+ 181:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV4: FWDGT prescaler set to 4
+ 182:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV8: FWDGT prescaler set to 8
+ 183:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV16: FWDGT prescaler set to 16
+ 184:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV32: FWDGT prescaler set to 32
+ 185:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV64: FWDGT prescaler set to 64
+ 186:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV128: FWDGT prescaler set to 128
+ 187:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_PSC_DIV256: FWDGT prescaler set to 256
+ 188:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+ 189:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     ErrStatus: ERROR or SUCCESS
+ 190:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+ 191:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ErrStatus fwdgt_config(uint16_t reload_value, uint8_t prescaler_div)
+ 192:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ 367              		.loc 1 192 1 is_stmt 1 view -0
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		.loc 1 192 1 is_stmt 0 view .LVU90
+ 372 0000 10B5     		push	{r4, lr}
+ 373              	.LCFI0:
+ 374              		.cfi_def_cfa_offset 8
+ 375              		.cfi_offset 4, -8
+ 376              		.cfi_offset 14, -4
+ 193:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t timeout = FWDGT_PSC_TIMEOUT;
+ 377              		.loc 1 193 5 is_stmt 1 view .LVU91
+ 378              	.LVL27:
+ 194:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 379              		.loc 1 194 5 view .LVU92
+ 195:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+ 196:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* enable write access to FWDGT_PSC,and FWDGT_RLD */
+ 197:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 11
+
+
+ 380              		.loc 1 197 5 view .LVU93
+ 381              		.loc 1 197 15 is_stmt 0 view .LVU94
+ 382 0002 43F20003 		movw	r3, #12288
+ 383 0006 C4F20003 		movt	r3, 16384
+ 384 000a 45F25552 		movw	r2, #21845
+ 385 000e 1A60     		str	r2, [r3]
+ 193:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     uint32_t flag_status = RESET;
+ 386              		.loc 1 193 14 view .LVU95
+ 387 0010 4FF6FF72 		movw	r2, #65535
+ 388 0014 C0F20F02 		movt	r2, 15
+ 389              	.LVL28:
+ 390              	.L22:
+ 198:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
+ 199:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* wait until the PUD flag to be reset */
+ 200:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     do{
+ 391              		.loc 1 200 5 is_stmt 1 view .LVU96
+ 201:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         flag_status = FWDGT_STAT & FWDGT_STAT_PUD;
+ 392              		.loc 1 201 9 view .LVU97
+ 393              		.loc 1 201 23 is_stmt 0 view .LVU98
+ 394 0018 43F20C03 		movw	r3, #12300
+ 395 001c C4F20003 		movt	r3, 16384
+ 396 0020 1C68     		ldr	r4, [r3]
+ 397              		.loc 1 201 21 view .LVU99
+ 398 0022 0123     		movs	r3, #1
+ 399 0024 2340     		ands	r3, r4
+ 400              	.LVL29:
+ 202:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 401              		.loc 1 202 29 is_stmt 1 discriminator 2 view .LVU100
+ 402 0026 013A     		subs	r2, r2, #1
+ 403              	.LVL30:
+ 404              		.loc 1 202 29 is_stmt 0 discriminator 2 view .LVU101
+ 405 0028 0AB1     		cbz	r2, .L21
+ 406              		.loc 1 202 29 discriminator 1 view .LVU102
+ 407 002a 002B     		cmp	r3, #0
+ 408 002c F4D1     		bne	.L22
+ 409              	.L21:
+ 203:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 204:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
+ 410              		.loc 1 204 5 is_stmt 1 view .LVU103
+ 411              		.loc 1 204 8 is_stmt 0 view .LVU104
+ 412 002e 2BBB     		cbnz	r3, .L26
+ 205:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 206:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 207:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 208:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* configure FWDGT */
+ 209:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_PSC = (uint32_t)prescaler_div;       
+ 413              		.loc 1 209 5 is_stmt 1 view .LVU105
+ 414              		.loc 1 209 15 is_stmt 0 view .LVU106
+ 415 0030 43F20403 		movw	r3, #12292
+ 416              	.LVL31:
+ 417              		.loc 1 209 15 view .LVU107
+ 418 0034 C4F20003 		movt	r3, 16384
+ 419 0038 1960     		str	r1, [r3]
+ 210:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 211:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     timeout = FWDGT_RLD_TIMEOUT;    
+ 420              		.loc 1 211 5 is_stmt 1 view .LVU108
+ 421              	.LVL32:
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 12
+
+
+ 422              		.loc 1 211 13 is_stmt 0 view .LVU109
+ 423 003a 4FF6FF72 		movw	r2, #65535
+ 424 003e C0F20F02 		movt	r2, 15
+ 425              	.LVL33:
+ 426              	.L25:
+ 212:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* wait until the RUD flag to be reset */
+ 213:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     do{
+ 427              		.loc 1 213 5 is_stmt 1 view .LVU110
+ 214:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         flag_status = FWDGT_STAT & FWDGT_STAT_RUD;
+ 428              		.loc 1 214 9 view .LVU111
+ 429              		.loc 1 214 23 is_stmt 0 view .LVU112
+ 430 0042 43F20C03 		movw	r3, #12300
+ 431 0046 C4F20003 		movt	r3, 16384
+ 432 004a 1968     		ldr	r1, [r3]
+ 433              		.loc 1 214 21 view .LVU113
+ 434 004c 0223     		movs	r3, #2
+ 435 004e 0B40     		ands	r3, r1
+ 436              	.LVL34:
+ 215:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }while((--timeout > 0U) && ((uint32_t)RESET != flag_status));
+ 437              		.loc 1 215 29 is_stmt 1 discriminator 2 view .LVU114
+ 438 0050 013A     		subs	r2, r2, #1
+ 439              	.LVL35:
+ 440              		.loc 1 215 29 is_stmt 0 discriminator 2 view .LVU115
+ 441 0052 0AB1     		cbz	r2, .L24
+ 442              		.loc 1 215 29 discriminator 1 view .LVU116
+ 443 0054 002B     		cmp	r3, #0
+ 444 0056 F4D1     		bne	.L25
+ 445              	.L24:
+ 216:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****    
+ 217:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
+ 446              		.loc 1 217 5 is_stmt 1 view .LVU117
+ 447              		.loc 1 217 8 is_stmt 0 view .LVU118
+ 448 0058 93B9     		cbnz	r3, .L27
+ 218:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return ERROR;
+ 219:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 220:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 221:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_RLD = RLD_RLD(reload_value);
+ 449              		.loc 1 221 5 is_stmt 1 view .LVU119
+ 450              		.loc 1 221 17 is_stmt 0 view .LVU120
+ 451 005a 40F6FF73 		movw	r3, #4095
+ 452              	.LVL36:
+ 453              		.loc 1 221 17 view .LVU121
+ 454 005e 0340     		ands	r3, r0
+ 455              		.loc 1 221 15 view .LVU122
+ 456 0060 43F20802 		movw	r2, #12296
+ 457              	.LVL37:
+ 458              		.loc 1 221 15 view .LVU123
+ 459 0064 C4F20002 		movt	r2, 16384
+ 460 0068 1360     		str	r3, [r2]
+ 222:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 223:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* reload the counter */
+ 224:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_RELOAD;
+ 461              		.loc 1 224 5 is_stmt 1 view .LVU124
+ 462              		.loc 1 224 15 is_stmt 0 view .LVU125
+ 463 006a 43F20003 		movw	r3, #12288
+ 464 006e C4F20003 		movt	r3, 16384
+ 465 0072 4AF6AA22 		movw	r2, #43690
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 13
+
+
+ 466 0076 1A60     		str	r2, [r3]
+ 225:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
+ 226:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     return SUCCESS;
+ 467              		.loc 1 226 5 is_stmt 1 view .LVU126
+ 468              		.loc 1 226 12 is_stmt 0 view .LVU127
+ 469 0078 0120     		movs	r0, #1
+ 470              	.LVL38:
+ 471              	.L23:
+ 227:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 472              		.loc 1 227 1 view .LVU128
+ 473              		@ sp needed
+ 474 007a 10BD     		pop	{r4, pc}
+ 475              	.LVL39:
+ 476              	.L26:
+ 205:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 477              		.loc 1 205 16 view .LVU129
+ 478 007c 0020     		movs	r0, #0
+ 479              	.LVL40:
+ 205:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 480              		.loc 1 205 16 view .LVU130
+ 481 007e FCE7     		b	.L23
+ 482              	.LVL41:
+ 483              	.L27:
+ 218:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 484              		.loc 1 218 16 view .LVU131
+ 485 0080 0020     		movs	r0, #0
+ 486              	.LVL42:
+ 218:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 487              		.loc 1 218 16 view .LVU132
+ 488 0082 FAE7     		b	.L23
+ 489              		.cfi_endproc
+ 490              	.LFE67:
+ 492              		.section	.text.fwdgt_flag_get,"ax",%progbits
+ 493              		.align	1
+ 494              		.global	fwdgt_flag_get
+ 495              		.syntax unified
+ 496              		.code	16
+ 497              		.thumb_func
+ 499              	fwdgt_flag_get:
+ 500              	.LVL43:
+ 501              	.LFB68:
+ 228:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
+ 229:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
+ 230:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      get flag state of FWDGT
+ 231:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  flag: flag to get 
+ 232:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****                 only one parameter can be selected which is shown as below:
+ 233:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_FLAG_PUD: a write operation to FWDGT_PSC register is on going
+ 234:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_FLAG_RUD: a write operation to FWDGT_RLD register is on going
+ 235:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****       \arg        FWDGT_FLAG_WUD: a write operation to FWDGT_WND register is on going
+ 236:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
+ 237:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \retval     FlagStatus: SET or RESET
+ 238:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
+ 239:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** FlagStatus fwdgt_flag_get(uint16_t flag)
+ 240:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
+ 502              		.loc 1 240 1 is_stmt 1 view -0
+ 503              		.cfi_startproc
+ 504              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 14
+
+
+ 505              		@ frame_needed = 0, uses_anonymous_args = 0
+ 506              		@ link register save eliminated.
+ 241:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if(RESET != (FWDGT_STAT & flag)){
+ 507              		.loc 1 241 5 view .LVU134
+ 508              		.loc 1 241 18 is_stmt 0 view .LVU135
+ 509 0000 43F20C03 		movw	r3, #12300
+ 510 0004 C4F20003 		movt	r3, 16384
+ 511 0008 1B68     		ldr	r3, [r3]
+ 512              		.loc 1 241 7 view .LVU136
+ 513 000a 0342     		tst	r3, r0
+ 514 000c 01D1     		bne	.L30
+ 242:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return SET;
+ 243:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
+ 244:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     return RESET;
+ 515              		.loc 1 244 12 view .LVU137
+ 516 000e 0020     		movs	r0, #0
+ 517              	.LVL44:
+ 518              	.L29:
+ 245:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** }
+ 519              		.loc 1 245 1 view .LVU138
+ 520              		@ sp needed
+ 521 0010 7047     		bx	lr
+ 522              	.LVL45:
+ 523              	.L30:
+ 242:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return SET;
+ 524              		.loc 1 242 16 view .LVU139
+ 525 0012 0120     		movs	r0, #1
+ 526              	.LVL46:
+ 242:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****         return SET;
+ 527              		.loc 1 242 16 view .LVU140
+ 528 0014 FCE7     		b	.L29
+ 529              		.cfi_endproc
+ 530              	.LFE68:
+ 532              		.text
+ 533              	.Letext0:
+ 534              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 535              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 536              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32e23x_fwdgt.c
+D:\noval\Temp\ccpLfdqc.s:19     .text.fwdgt_write_enable:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:25     .text.fwdgt_write_enable:00000000 fwdgt_write_enable
+D:\noval\Temp\ccpLfdqc.s:45     .text.fwdgt_write_disable:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:51     .text.fwdgt_write_disable:00000000 fwdgt_write_disable
+D:\noval\Temp\ccpLfdqc.s:71     .text.fwdgt_enable:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:77     .text.fwdgt_enable:00000000 fwdgt_enable
+D:\noval\Temp\ccpLfdqc.s:97     .text.fwdgt_prescaler_value_config:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:103    .text.fwdgt_prescaler_value_config:00000000 fwdgt_prescaler_value_config
+D:\noval\Temp\ccpLfdqc.s:172    .text.fwdgt_reload_value_config:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:178    .text.fwdgt_reload_value_config:00000000 fwdgt_reload_value_config
+D:\noval\Temp\ccpLfdqc.s:252    .text.fwdgt_window_value_config:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:258    .text.fwdgt_window_value_config:00000000 fwdgt_window_value_config
+D:\noval\Temp\ccpLfdqc.s:332    .text.fwdgt_counter_reload:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:338    .text.fwdgt_counter_reload:00000000 fwdgt_counter_reload
+D:\noval\Temp\ccpLfdqc.s:358    .text.fwdgt_config:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:364    .text.fwdgt_config:00000000 fwdgt_config
+D:\noval\Temp\ccpLfdqc.s:493    .text.fwdgt_flag_get:00000000 $t
+D:\noval\Temp\ccpLfdqc.s:499    .text.fwdgt_flag_get:00000000 fwdgt_flag_get
+
+NO UNDEFINED SYMBOLS
