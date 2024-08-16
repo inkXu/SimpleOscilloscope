@@ -234,6 +234,7 @@ void Timer_Init(void)
     timer_deinit(TIMER15);
     timer_deinit(TIMER14);
     timer_deinit(TIMER2);
+    
     // initialize timer 15
     timer_struct_para_init(&timer_initpara);
     timer_initpara.prescaler         = 7200 - 1;

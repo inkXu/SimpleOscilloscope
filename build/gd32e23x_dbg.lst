@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 2
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
   58:Drivers/GD32E23x/Source/gd32e23x_dbg.c **** {
   58              		.loc 1 58 1 is_stmt 1 view -0
   59              		.cfi_startproc
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 3
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 3
 
 
   60              		@ args = 0, pretend = 0, frame = 0
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
   99              		.cfi_endproc
  100              	.LFE62:
  102              		.section	.text.dbg_low_power_disable,"ax",%progbits
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 4
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 4
 
 
  103              		.align	1
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
   96:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_FWDGT_HOLD: debug FWDGT kept when core is halted
   97:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_WWDGT_HOLD: debug WWDGT kept when core is halted
   98:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER0_HOLD: TIMER0 counter kept when core is halted
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 5
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 5
 
 
   99:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_TIMER2_HOLD: TIMER2 counter kept when core is halted
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
  118:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****     \param[in]  dbg_periph: DBG peripheral 
  119:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****                 only one parameter can be selected which is shown as below:
  120:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_FWDGT_HOLD: debug FWDGT kept when core is halted
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 6
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 6
 
 
  121:Drivers/GD32E23x/Source/gd32e23x_dbg.c ****       \arg        DBG_WWDGT_HOLD: debug WWDGT kept when core is halted
@@ -350,22 +350,22 @@ ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 1
  206              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  207              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  208              		.file 4 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
-ARM GAS  D:\noval\Temp\cccXwmwQ.s 			page 7
+ARM GAS  D:\noval\Temp\ccTpR5lb.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_dbg.c
-D:\noval\Temp\cccXwmwQ.s:19     .text.dbg_deinit:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:25     .text.dbg_deinit:00000000 dbg_deinit
-D:\noval\Temp\cccXwmwQ.s:50     .text.dbg_id_get:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:56     .text.dbg_id_get:00000000 dbg_id_get
-D:\noval\Temp\cccXwmwQ.s:75     .text.dbg_low_power_enable:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:81     .text.dbg_low_power_enable:00000000 dbg_low_power_enable
-D:\noval\Temp\cccXwmwQ.s:103    .text.dbg_low_power_disable:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:109    .text.dbg_low_power_disable:00000000 dbg_low_power_disable
-D:\noval\Temp\cccXwmwQ.s:131    .text.dbg_periph_enable:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:137    .text.dbg_periph_enable:00000000 dbg_periph_enable
-D:\noval\Temp\cccXwmwQ.s:168    .text.dbg_periph_disable:00000000 $t
-D:\noval\Temp\cccXwmwQ.s:174    .text.dbg_periph_disable:00000000 dbg_periph_disable
+D:\noval\Temp\ccTpR5lb.s:19     .text.dbg_deinit:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:25     .text.dbg_deinit:00000000 dbg_deinit
+D:\noval\Temp\ccTpR5lb.s:50     .text.dbg_id_get:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:56     .text.dbg_id_get:00000000 dbg_id_get
+D:\noval\Temp\ccTpR5lb.s:75     .text.dbg_low_power_enable:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:81     .text.dbg_low_power_enable:00000000 dbg_low_power_enable
+D:\noval\Temp\ccTpR5lb.s:103    .text.dbg_low_power_disable:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:109    .text.dbg_low_power_disable:00000000 dbg_low_power_disable
+D:\noval\Temp\ccTpR5lb.s:131    .text.dbg_periph_enable:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:137    .text.dbg_periph_enable:00000000 dbg_periph_enable
+D:\noval\Temp\ccTpR5lb.s:168    .text.dbg_periph_disable:00000000 $t
+D:\noval\Temp\ccTpR5lb.s:174    .text.dbg_periph_disable:00000000 dbg_periph_disable
 
 NO UNDEFINED SYMBOLS

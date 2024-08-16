@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
   29:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   30:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
   31:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 2
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 2
 
 
   32:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
   56 002e 40F61220 		movw	r0, #2578
   57              	.LVL1:
   58              		.loc 1 57 9 is_stmt 0 view .LVU4
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 3
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 3
 
 
   59 0032 FFF7FEFF 		bl	rcu_periph_reset_enable
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
   94              	.LVL10:
   53:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         break;
   95              		.loc 1 53 9 is_stmt 1 view .LVU15
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 4
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 4
 
 
   96 0066 40F61120 		movw	r0, #2577
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
   90:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****                 one or more parameters can be selected which are shown as below:
   91:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL 
   92:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \param[out] none
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 5
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 5
 
 
   93:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     \retval     none
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  174              	.L10:
  175              		.loc 1 103 25 is_stmt 1 discriminator 2 view .LVU34
  176 0018 0134     		adds	r4, r4, #1
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 6
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 6
 
 
  177              	.LVL22:
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  114:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         }
  115:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
  116:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** 
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 7
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 7
 
 
  117:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     GPIO_CTL(gpio_periph) = ctl;
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  253              		.cfi_startproc
  254              		@ args = 0, pretend = 0, frame = 0
  255              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 8
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 8
 
 
  256              		.loc 1 140 1 is_stmt 0 view .LVU59
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  295              	.LVL37:
  296              	.L17:
  297              		.loc 1 153 25 is_stmt 1 discriminator 2 view .LVU73
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 9
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 9
 
 
  298 001a 0131     		adds	r1, r1, #1
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  344              		.align	1
  345              		.global	gpio_bit_set
  346              		.syntax unified
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 10
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 10
 
 
  347              		.code	16
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  190:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
  191:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_reset(uint32_t gpio_periph, uint32_t pin)
  192:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 11
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 11
 
 
  377              		.loc 1 192 1 is_stmt 1 view -0
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  412              	.L23:
  214:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }else{
  215:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****         GPIO_BC(gpio_periph) = (uint32_t)pin;
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 12
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 12
 
 
  216:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     }
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  452              		.syntax unified
  453              		.code	16
  454              		.thumb_func
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 13
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 13
 
 
  456              	gpio_input_bit_get:
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  489              		.global	gpio_input_port_get
  490              		.syntax unified
  491              		.code	16
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 14
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 14
 
 
  492              		.thumb_func
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  277:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** FlagStatus gpio_output_bit_get(uint32_t gpio_periph, uint32_t pin)
  278:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
  524              		.loc 1 278 1 is_stmt 1 view -0
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 15
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 15
 
 
  525              		.cfi_startproc
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  562              		.loc 1 295 1 is_stmt 1 view -0
  563              		.cfi_startproc
  564              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 16
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 16
 
 
  565              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -958,7 +958,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  595              	.LCFI4:
  596              		.cfi_def_cfa_offset 20
  597              		.cfi_offset 4, -20
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 17
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 17
 
 
  598              		.cfi_offset 5, -16
@@ -1018,7 +1018,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  642 0020 A643     		bics	r6, r4
  643              	.LVL65:
  332:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****             afrl |= GPIO_AFR_SET(i,alt_func_num);
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 18
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 18
 
 
  644              		.loc 1 332 13 is_stmt 1 view .LVU157
@@ -1078,7 +1078,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  690 004a 0F00     		movs	r7, r1
  691 004c A740     		lsls	r7, r7, r4
  692              		.loc 1 340 18 view .LVU174
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 19
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 19
 
 
  693 004e 3D43     		orrs	r5, r7
@@ -1138,7 +1138,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  728              		.loc 1 361 5 view .LVU183
  362:Drivers/GD32E23x/Source/gd32e23x_gpio.c ****     lock |= pin;
  729              		.loc 1 362 5 view .LVU184
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 20
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 20
 
 
  730              		.loc 1 362 10 is_stmt 0 view .LVU185
@@ -1198,7 +1198,7 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  382:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** */
  383:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** void gpio_bit_toggle(uint32_t gpio_periph, uint32_t pin)
  384:Drivers/GD32E23x/Source/gd32e23x_gpio.c **** {
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 21
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 21
 
 
  767              		.loc 1 384 1 is_stmt 1 view -0
@@ -1258,45 +1258,45 @@ ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 1
  809              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  810              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  811              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 22
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 22
 
 
  812              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
-ARM GAS  D:\noval\Temp\cc4LS2gm.s 			page 23
+ARM GAS  D:\noval\Temp\cc8mOFiP.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_gpio.c
-D:\noval\Temp\cc4LS2gm.s:19     .text.gpio_deinit:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:25     .text.gpio_deinit:00000000 gpio_deinit
-D:\noval\Temp\cc4LS2gm.s:122    .text.gpio_mode_set:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:128    .text.gpio_mode_set:00000000 gpio_mode_set
-D:\noval\Temp\cc4LS2gm.s:243    .text.gpio_output_options_set:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:249    .text.gpio_output_options_set:00000000 gpio_output_options_set
-D:\noval\Temp\cc4LS2gm.s:344    .text.gpio_bit_set:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:350    .text.gpio_bit_set:00000000 gpio_bit_set
-D:\noval\Temp\cc4LS2gm.s:368    .text.gpio_bit_reset:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:374    .text.gpio_bit_reset:00000000 gpio_bit_reset
-D:\noval\Temp\cc4LS2gm.s:392    .text.gpio_bit_write:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:398    .text.gpio_bit_write:00000000 gpio_bit_write
-D:\noval\Temp\cc4LS2gm.s:426    .text.gpio_port_write:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:432    .text.gpio_port_write:00000000 gpio_port_write
-D:\noval\Temp\cc4LS2gm.s:450    .text.gpio_input_bit_get:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:456    .text.gpio_input_bit_get:00000000 gpio_input_bit_get
-D:\noval\Temp\cc4LS2gm.s:488    .text.gpio_input_port_get:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:494    .text.gpio_input_port_get:00000000 gpio_input_port_get
-D:\noval\Temp\cc4LS2gm.s:515    .text.gpio_output_bit_get:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:521    .text.gpio_output_bit_get:00000000 gpio_output_bit_get
-D:\noval\Temp\cc4LS2gm.s:553    .text.gpio_output_port_get:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:559    .text.gpio_output_port_get:00000000 gpio_output_port_get
-D:\noval\Temp\cc4LS2gm.s:580    .text.gpio_af_set:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:586    .text.gpio_af_set:00000000 gpio_af_set
-D:\noval\Temp\cc4LS2gm.s:714    .text.gpio_pin_lock:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:720    .text.gpio_pin_lock:00000000 gpio_pin_lock
-D:\noval\Temp\cc4LS2gm.s:758    .text.gpio_bit_toggle:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:764    .text.gpio_bit_toggle:00000000 gpio_bit_toggle
-D:\noval\Temp\cc4LS2gm.s:782    .text.gpio_port_toggle:00000000 $t
-D:\noval\Temp\cc4LS2gm.s:788    .text.gpio_port_toggle:00000000 gpio_port_toggle
+D:\noval\Temp\cc8mOFiP.s:19     .text.gpio_deinit:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:25     .text.gpio_deinit:00000000 gpio_deinit
+D:\noval\Temp\cc8mOFiP.s:122    .text.gpio_mode_set:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:128    .text.gpio_mode_set:00000000 gpio_mode_set
+D:\noval\Temp\cc8mOFiP.s:243    .text.gpio_output_options_set:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:249    .text.gpio_output_options_set:00000000 gpio_output_options_set
+D:\noval\Temp\cc8mOFiP.s:344    .text.gpio_bit_set:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:350    .text.gpio_bit_set:00000000 gpio_bit_set
+D:\noval\Temp\cc8mOFiP.s:368    .text.gpio_bit_reset:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:374    .text.gpio_bit_reset:00000000 gpio_bit_reset
+D:\noval\Temp\cc8mOFiP.s:392    .text.gpio_bit_write:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:398    .text.gpio_bit_write:00000000 gpio_bit_write
+D:\noval\Temp\cc8mOFiP.s:426    .text.gpio_port_write:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:432    .text.gpio_port_write:00000000 gpio_port_write
+D:\noval\Temp\cc8mOFiP.s:450    .text.gpio_input_bit_get:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:456    .text.gpio_input_bit_get:00000000 gpio_input_bit_get
+D:\noval\Temp\cc8mOFiP.s:488    .text.gpio_input_port_get:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:494    .text.gpio_input_port_get:00000000 gpio_input_port_get
+D:\noval\Temp\cc8mOFiP.s:515    .text.gpio_output_bit_get:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:521    .text.gpio_output_bit_get:00000000 gpio_output_bit_get
+D:\noval\Temp\cc8mOFiP.s:553    .text.gpio_output_port_get:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:559    .text.gpio_output_port_get:00000000 gpio_output_port_get
+D:\noval\Temp\cc8mOFiP.s:580    .text.gpio_af_set:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:586    .text.gpio_af_set:00000000 gpio_af_set
+D:\noval\Temp\cc8mOFiP.s:714    .text.gpio_pin_lock:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:720    .text.gpio_pin_lock:00000000 gpio_pin_lock
+D:\noval\Temp\cc8mOFiP.s:758    .text.gpio_bit_toggle:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:764    .text.gpio_bit_toggle:00000000 gpio_bit_toggle
+D:\noval\Temp\cc8mOFiP.s:782    .text.gpio_port_toggle:00000000 $t
+D:\noval\Temp\cc8mOFiP.s:788    .text.gpio_port_toggle:00000000 gpio_port_toggle
 
 UNDEFINED SYMBOLS
 rcu_periph_reset_enable

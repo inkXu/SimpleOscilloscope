@@ -1,0 +1,473 @@
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"log.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/log.c"
+  18              		.section	.rodata.EM_LOGLEVELGet.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 44454255 		.ascii	"DEBUG\000"
+  21      4700
+  22 0006 0000     		.align	2
+  23              	.LC1:
+  24 0008 494E464F 		.ascii	"INFO\000"
+  24      00
+  25 000d 000000   		.align	2
+  26              	.LC2:
+  27 0010 5741524E 		.ascii	"WARNING\000"
+  27      494E4700 
+  28              		.align	2
+  29              	.LC3:
+  30 0018 4552524F 		.ascii	"ERROR\000"
+  30      5200
+  31 001e 0000     		.align	2
+  32              	.LC4:
+  33 0020 46415441 		.ascii	"FATAL\000"
+  33      4C00
+  34 0026 0000     		.align	2
+  35              	.LC5:
+  36 0028 554E4B4E 		.ascii	"UNKNOWN\000"
+  36      4F574E00 
+  37              		.section	.text.EM_LOGLEVELGet,"ax",%progbits
+  38              		.align	1
+  39              		.global	EM_LOGLEVELGet
+  40              		.syntax unified
+  41              		.code	16
+  42              		.thumb_func
+  44              	EM_LOGLEVELGet:
+  45              	.LVL0:
+  46              	.LFB3:
+   1:Core/Src/log.c **** #include "log.h"
+   2:Core/Src/log.c **** 
+   3:Core/Src/log.c **** char * EM_LOGLEVELGet(const int level){
+  47              		.loc 1 3 39 view -0
+  48              		.cfi_startproc
+  49              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 2
+
+
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+   4:Core/Src/log.c **** 	switch (level)
+  52              		.loc 1 4 2 view .LVU1
+  53 0000 0428     		cmp	r0, #4
+  54 0002 17D8     		bhi	.L2
+  55 0004 8000     		lsls	r0, r0, #2
+  56              	.LVL1:
+  57              		.loc 1 4 2 is_stmt 0 view .LVU2
+  58 0006 104B     		ldr	r3, .L10
+  59 0008 1B58     		ldr	r3, [r3, r0]
+  60 000a 9F46     		mov	pc, r3
+  61              		.section	.rodata.EM_LOGLEVELGet,"a",%progbits
+  62              		.align	2
+  63              	.L4:
+  64 0000 0C000000 		.word	.L8
+  65 0004 3E000000 		.word	.L9
+  66 0008 16000000 		.word	.L6
+  67 000c 20000000 		.word	.L5
+  68 0010 2A000000 		.word	.L3
+  69              		.section	.text.EM_LOGLEVELGet
+  70              	.L8:
+  71 000c 40F20000 		movw	r0, #:lower16:.LC0
+  72 0010 C0F20000 		movt	r0, #:upper16:.LC0
+  73              	.L1:
+   5:Core/Src/log.c **** 	{
+   6:Core/Src/log.c **** 		case LOG_DEBUG:
+   7:Core/Src/log.c **** 			return "DEBUG";
+   8:Core/Src/log.c **** 		case LOG_INFO:
+   9:Core/Src/log.c **** 			return "INFO";
+  10:Core/Src/log.c **** 		case LOG_WARN:
+  11:Core/Src/log.c **** 			return "WARNING";
+  12:Core/Src/log.c **** 		case LOG_ERROR:
+  13:Core/Src/log.c **** 			return "ERROR";
+  14:Core/Src/log.c **** 		case LOG_FATAL:
+  15:Core/Src/log.c **** 			return "FATAL";
+  16:Core/Src/log.c **** 		default:
+  17:Core/Src/log.c **** 			return "UNKNOWN";
+  18:Core/Src/log.c **** 	}
+  19:Core/Src/log.c **** }
+  74              		.loc 1 19 1 view .LVU3
+  75              		@ sp needed
+  76 0014 7047     		bx	lr
+  77              	.L6:
+  11:Core/Src/log.c **** 		case LOG_ERROR:
+  78              		.loc 1 11 4 is_stmt 1 view .LVU4
+  11:Core/Src/log.c **** 		case LOG_ERROR:
+  79              		.loc 1 11 11 is_stmt 0 view .LVU5
+  80 0016 40F20000 		movw	r0, #:lower16:.LC2
+  81 001a C0F20000 		movt	r0, #:upper16:.LC2
+  82 001e F9E7     		b	.L1
+  83              	.L5:
+  13:Core/Src/log.c **** 		case LOG_FATAL:
+  84              		.loc 1 13 4 is_stmt 1 view .LVU6
+  13:Core/Src/log.c **** 		case LOG_FATAL:
+  85              		.loc 1 13 11 is_stmt 0 view .LVU7
+  86 0020 40F20000 		movw	r0, #:lower16:.LC3
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 3
+
+
+  87 0024 C0F20000 		movt	r0, #:upper16:.LC3
+  88 0028 F4E7     		b	.L1
+  89              	.L3:
+  15:Core/Src/log.c **** 		default:
+  90              		.loc 1 15 4 is_stmt 1 view .LVU8
+  15:Core/Src/log.c **** 		default:
+  91              		.loc 1 15 11 is_stmt 0 view .LVU9
+  92 002a 40F20000 		movw	r0, #:lower16:.LC4
+  93 002e C0F20000 		movt	r0, #:upper16:.LC4
+  94 0032 EFE7     		b	.L1
+  95              	.LVL2:
+  96              	.L2:
+  17:Core/Src/log.c **** 	}
+  97              		.loc 1 17 4 is_stmt 1 view .LVU10
+  17:Core/Src/log.c **** 	}
+  98              		.loc 1 17 11 is_stmt 0 view .LVU11
+  99 0034 40F20000 		movw	r0, #:lower16:.LC5
+ 100              	.LVL3:
+  17:Core/Src/log.c **** 	}
+ 101              		.loc 1 17 11 view .LVU12
+ 102 0038 C0F20000 		movt	r0, #:upper16:.LC5
+ 103 003c EAE7     		b	.L1
+ 104              	.L9:
+   9:Core/Src/log.c **** 		case LOG_WARN:
+ 105              		.loc 1 9 11 view .LVU13
+ 106 003e 40F20000 		movw	r0, #:lower16:.LC1
+ 107 0042 C0F20000 		movt	r0, #:upper16:.LC1
+ 108 0046 E5E7     		b	.L1
+ 109              	.L11:
+ 110              		.align	2
+ 111              	.L10:
+ 112 0048 00000000 		.word	.L4
+ 113              		.cfi_endproc
+ 114              	.LFE3:
+ 116              		.section	.rodata.EM_LOG.str1.4,"aMS",%progbits,1
+ 117              		.align	2
+ 118              	.LC7:
+ 119 0000 5B25735D 		.ascii	"[%s] [%s: %d] %s\000"
+ 119      205B2573 
+ 119      3A202564 
+ 119      5D202573 
+ 119      00
+ 120              		.section	.text.EM_LOG,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	EM_LOG
+ 123              		.syntax unified
+ 124              		.code	16
+ 125              		.thumb_func
+ 127              	EM_LOG:
+ 128              	.LVL4:
+ 129              	.LFB4:
+  20:Core/Src/log.c **** 
+  21:Core/Src/log.c **** void EM_LOG(const int level, const char *func, \
+  22:Core/Src/log.c **** 		const int line, const char *fmt, ...){
+ 130              		.loc 1 22 40 is_stmt 1 view -0
+ 131              		.cfi_startproc
+ 132              		@ args = 4, pretend = 4, frame = 8
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 4
+
+
+ 133              		@ frame_needed = 1, uses_anonymous_args = 1
+ 134              		.loc 1 22 40 is_stmt 0 view .LVU15
+ 135 0000 08B4     		push	{r3}
+ 136              	.LCFI0:
+ 137              		.cfi_def_cfa_offset 4
+ 138 0002 F0B5     		push	{r4, r5, r6, r7, lr}
+ 139              	.LCFI1:
+ 140              		.cfi_def_cfa_offset 24
+ 141              		.cfi_offset 4, -24
+ 142              		.cfi_offset 5, -20
+ 143              		.cfi_offset 6, -16
+ 144              		.cfi_offset 7, -12
+ 145              		.cfi_offset 14, -8
+ 146 0004 D646     		mov	lr, r10
+ 147 0006 4F46     		mov	r7, r9
+ 148 0008 4646     		mov	r6, r8
+ 149 000a C0B5     		push	{r6, r7, lr}
+ 150              	.LCFI2:
+ 151              		.cfi_def_cfa_offset 36
+ 152              		.cfi_offset 8, -36
+ 153              		.cfi_offset 9, -32
+ 154              		.cfi_offset 10, -28
+ 155 000c 87B0     		sub	sp, sp, #28
+ 156              	.LCFI3:
+ 157              		.cfi_def_cfa_offset 64
+ 158 000e 04AF     		add	r7, sp, #16
+ 159              	.LCFI4:
+ 160              		.cfi_def_cfa 7, 48
+ 161 0010 0400     		movs	r4, r0
+ 162 0012 0E00     		movs	r6, r1
+ 163 0014 2C23     		movs	r3, #44
+ 164 0016 FD18     		adds	r5, r7, r3
+ 165 0018 08CD     		ldmia	r5!, {r3}
+ 166 001a 9846     		mov	r8, r3
+  23:Core/Src/log.c **** #if OPEN_ZLOG == 1
+  24:Core/Src/log.c **** 	va_list arg;
+ 167              		.loc 1 24 2 is_stmt 1 view .LVU16
+  25:Core/Src/log.c **** 	va_start(arg, fmt);
+ 168              		.loc 1 25 2 view .LVU17
+ 169 001c 7D60     		str	r5, [r7, #4]
+  26:Core/Src/log.c **** 	char buf[vsnprintf(NULL, 0, fmt, arg) + 1];
+ 170              		.loc 1 26 2 view .LVU18
+ 171              		.loc 1 26 11 is_stmt 0 view .LVU19
+ 172 001e 2B00     		movs	r3, r5
+ 173 0020 4246     		mov	r2, r8
+ 174              	.LVL5:
+ 175              		.loc 1 26 11 view .LVU20
+ 176 0022 0021     		movs	r1, #0
+ 177              	.LVL6:
+ 178              		.loc 1 26 11 view .LVU21
+ 179 0024 0020     		movs	r0, #0
+ 180              	.LVL7:
+ 181              		.loc 1 26 11 view .LVU22
+ 182 0026 FFF7FEFF 		bl	vsnprintf
+ 183              	.LVL8:
+ 184              		.loc 1 26 40 discriminator 1 view .LVU23
+ 185 002a 411C     		adds	r1, r0, #1
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 5
+
+
+ 186              	.LVL9:
+ 187              		.loc 1 26 7 discriminator 1 view .LVU24
+ 188 002c 0830     		adds	r0, r0, #8
+ 189              	.LVL10:
+ 190              		.loc 1 26 7 discriminator 1 view .LVU25
+ 191 002e C208     		lsrs	r2, r0, #3
+ 192 0030 D200     		lsls	r2, r2, #3
+ 193 0032 6B46     		mov	r3, sp
+ 194 0034 9B1A     		subs	r3, r3, r2
+ 195 0036 9D46     		mov	sp, r3
+ 196 0038 04AB     		add	r3, sp, #16
+ 197 003a 9946     		mov	r9, r3
+ 198              	.LVL11:
+  27:Core/Src/log.c **** 	va_end(arg);
+ 199              		.loc 1 27 2 is_stmt 1 view .LVU26
+  28:Core/Src/log.c **** 
+  29:Core/Src/log.c **** 	// I don't know why 'va_start()' needs to be used twice, otherwise %s, %d, %c, etc will error.
+  30:Core/Src/log.c **** 	va_start(arg, fmt);
+ 200              		.loc 1 30 2 view .LVU27
+ 201 003c 7D60     		str	r5, [r7, #4]
+  31:Core/Src/log.c **** 	vsnprintf(buf, sizeof(buf), fmt, arg);
+ 202              		.loc 1 31 2 view .LVU28
+ 203 003e 2B00     		movs	r3, r5
+ 204              	.LVL12:
+ 205              		.loc 1 31 2 is_stmt 0 view .LVU29
+ 206 0040 4246     		mov	r2, r8
+ 207 0042 4846     		mov	r0, r9
+ 208              	.LVL13:
+ 209              		.loc 1 31 2 view .LVU30
+ 210 0044 FFF7FEFF 		bl	vsnprintf
+ 211              	.LVL14:
+  32:Core/Src/log.c **** 	va_end(arg);
+ 212              		.loc 1 32 2 is_stmt 1 view .LVU31
+  33:Core/Src/log.c **** 
+  34:Core/Src/log.c **** 	char result[snprintf(NULL, 0, "[%s] [%s: %d] %s", EM_LOGLEVELGet(level),\
+ 213              		.loc 1 34 2 view .LVU32
+ 214              		.loc 1 34 14 is_stmt 0 view .LVU33
+ 215 0048 2000     		movs	r0, r4
+ 216 004a FFF7FEFF 		bl	EM_LOGLEVELGet
+ 217              	.LVL15:
+ 218 004e 8046     		mov	r8, r0
+ 219              		.loc 1 34 14 discriminator 1 view .LVU34
+ 220 0050 40F20005 		movw	r5, #:lower16:.LC7
+ 221 0054 C0F20005 		movt	r5, #:upper16:.LC7
+ 222 0058 4B46     		mov	r3, r9
+ 223 005a 0293     		str	r3, [sp, #8]
+ 224 005c 0194     		str	r4, [sp, #4]
+ 225 005e 0096     		str	r6, [sp]
+ 226 0060 0300     		movs	r3, r0
+ 227 0062 2A00     		movs	r2, r5
+ 228 0064 0021     		movs	r1, #0
+ 229 0066 0020     		movs	r0, #0
+ 230 0068 FFF7FEFF 		bl	snprintf
+ 231              	.LVL16:
+ 232              		.loc 1 34 7 discriminator 2 view .LVU35
+ 233 006c 0730     		adds	r0, r0, #7
+ 234              	.LVL17:
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 6
+
+
+ 235              		.loc 1 34 7 discriminator 2 view .LVU36
+ 236 006e C108     		lsrs	r1, r0, #3
+ 237 0070 C900     		lsls	r1, r1, #3
+ 238 0072 6B46     		mov	r3, sp
+ 239 0074 5B1A     		subs	r3, r3, r1
+ 240 0076 9D46     		mov	sp, r3
+ 241 0078 04AB     		add	r3, sp, #16
+ 242 007a 9A46     		mov	r10, r3
+ 243              	.LVL18:
+  35:Core/Src/log.c **** 			func, level, buf)];
+  36:Core/Src/log.c **** 	sprintf(result, "[%s] [%s: %d] %s", EM_LOGLEVELGet(level),\
+ 244              		.loc 1 36 2 is_stmt 1 view .LVU37
+ 245              		.loc 1 36 2 is_stmt 0 discriminator 1 view .LVU38
+ 246 007c 4B46     		mov	r3, r9
+ 247              	.LVL19:
+ 248              		.loc 1 36 2 discriminator 1 view .LVU39
+ 249 007e 0193     		str	r3, [sp, #4]
+ 250 0080 0094     		str	r4, [sp]
+ 251 0082 3300     		movs	r3, r6
+ 252 0084 4246     		mov	r2, r8
+ 253 0086 2900     		movs	r1, r5
+ 254 0088 5046     		mov	r0, r10
+ 255              	.LVL20:
+ 256              		.loc 1 36 2 discriminator 1 view .LVU40
+ 257 008a FFF7FEFF 		bl	sprintf
+ 258              	.LVL21:
+  37:Core/Src/log.c **** 			func, level, buf);
+  38:Core/Src/log.c **** 
+  39:Core/Src/log.c **** #if OPEN_ZLOG_DISPLAY == 1
+  40:Core/Src/log.c **** 	if (level >= LOG_LEVEL)
+ 259              		.loc 1 40 2 is_stmt 1 view .LVU41
+ 260              		.loc 1 40 5 is_stmt 0 view .LVU42
+ 261 008e 002C     		cmp	r4, #0
+ 262 0090 09DA     		bge	.L14
+ 263              	.L12:
+  41:Core/Src/log.c **** 		printf("%s\n", result);
+  42:Core/Src/log.c **** #endif
+  43:Core/Src/log.c **** 
+  44:Core/Src/log.c **** // TODO save
+  45:Core/Src/log.c **** #if OPEN_ZLOG_SAVE == 1
+  46:Core/Src/log.c **** 	SAVELOG(result);
+  47:Core/Src/log.c **** #endif
+  48:Core/Src/log.c **** 
+  49:Core/Src/log.c **** #endif
+  50:Core/Src/log.c **** }
+ 264              		.loc 1 50 1 view .LVU43
+ 265 0092 BD46     		mov	sp, r7
+ 266 0094 03B0     		add	sp, sp, #12
+ 267              		@ sp needed
+ 268              	.LVL22:
+ 269              	.LVL23:
+ 270              	.LVL24:
+ 271              	.LVL25:
+ 272              		.loc 1 50 1 view .LVU44
+ 273 0096 E0BC     		pop	{r5, r6, r7}
+ 274 0098 BA46     		mov	r10, r7
+ 275 009a B146     		mov	r9, r6
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 7
+
+
+ 276 009c A846     		mov	r8, r5
+ 277 009e F0BC     		pop	{r4, r5, r6, r7}
+ 278 00a0 08BC     		pop	{r3}
+ 279 00a2 01B0     		add	sp, sp, #4
+ 280 00a4 1847     		bx	r3
+ 281              	.LVL26:
+ 282              	.L14:
+  41:Core/Src/log.c **** 		printf("%s\n", result);
+ 283              		.loc 1 41 3 is_stmt 1 view .LVU45
+ 284 00a6 5046     		mov	r0, r10
+ 285 00a8 FFF7FEFF 		bl	puts
+ 286              	.LVL27:
+ 287              		.loc 1 50 1 is_stmt 0 view .LVU46
+ 288 00ac F1E7     		b	.L12
+ 289              		.cfi_endproc
+ 290              	.LFE4:
+ 292              		.section	.text.savelog,"ax",%progbits
+ 293              		.align	1
+ 294              		.global	savelog
+ 295              		.syntax unified
+ 296              		.code	16
+ 297              		.thumb_func
+ 299              	savelog:
+ 300              	.LVL28:
+ 301              	.LFB5:
+  51:Core/Src/log.c **** 
+  52:Core/Src/log.c **** void savelog(const char *log_message, const char *file_name, const char *mode)
+  53:Core/Src/log.c **** {
+ 302              		.loc 1 53 1 is_stmt 1 view -0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306              		@ link register save eliminated.
+  54:Core/Src/log.c **** #ifdef __linux__
+  55:Core/Src/log.c **** 	FILE *file = NULL;
+  56:Core/Src/log.c **** 
+  57:Core/Src/log.c **** 	if((file = fopen(file_name, mode)) == NULL){
+  58:Core/Src/log.c **** 		perror("ERROR: ");
+  59:Core/Src/log.c **** 		return ;
+  60:Core/Src/log.c **** 	}
+  61:Core/Src/log.c **** 
+  62:Core/Src/log.c **** 	char buf[snprintf(NULL, 0, "%s", log_message) + 1];
+  63:Core/Src/log.c **** 
+  64:Core/Src/log.c **** 	int ssize = 0;
+  65:Core/Src/log.c **** 	if((ssize = sprintf(buf, "%s\n", log_message)) <= 0){
+  66:Core/Src/log.c **** 		fclose(file);
+  67:Core/Src/log.c **** 		return ;
+  68:Core/Src/log.c **** 	}
+  69:Core/Src/log.c **** 
+  70:Core/Src/log.c **** 	while(fwrite(buf, 1, ssize, file) < 0){
+  71:Core/Src/log.c **** 		fclose(file);
+  72:Core/Src/log.c **** 		return ;
+  73:Core/Src/log.c **** 	}
+  74:Core/Src/log.c **** 
+  75:Core/Src/log.c **** 	fclose(file);
+  76:Core/Src/log.c **** 	file = NULL;
+  77:Core/Src/log.c **** #endif
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 8
+
+
+  78:Core/Src/log.c **** #ifdef __arm__
+  79:Core/Src/log.c **** 	// TODO
+  80:Core/Src/log.c **** #endif
+  81:Core/Src/log.c **** #ifdef __x86_64__
+  82:Core/Src/log.c **** 	// TODO
+  83:Core/Src/log.c **** #endif
+  84:Core/Src/log.c **** #ifdef __i386__
+  85:Core/Src/log.c **** 	// TODO
+  86:Core/Src/log.c **** #endif
+  87:Core/Src/log.c **** }       
+ 307              		.loc 1 87 1 view .LVU48
+ 308              		@ sp needed
+ 309 0000 7047     		bx	lr
+ 310              		.cfi_endproc
+ 311              	.LFE5:
+ 313              		.text
+ 314              	.Letext0:
+ 315              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/lib/gcc/arm-none-eabi
+ 316              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/lib/gcc/arm-none-eabi
+ 317              		.file 4 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 318              		.file 5 "<built-in>"
+ 319              		.file 6 "Core/Inc/log.h"
+ARM GAS  D:\noval\Temp\ccPUm1S1.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 log.c
+D:\noval\Temp\ccPUm1S1.s:19     .rodata.EM_LOGLEVELGet.str1.4:00000000 $d
+D:\noval\Temp\ccPUm1S1.s:20     .rodata.EM_LOGLEVELGet.str1.4:00000000 .LC0
+D:\noval\Temp\ccPUm1S1.s:23     .rodata.EM_LOGLEVELGet.str1.4:00000008 .LC1
+D:\noval\Temp\ccPUm1S1.s:26     .rodata.EM_LOGLEVELGet.str1.4:00000010 .LC2
+D:\noval\Temp\ccPUm1S1.s:29     .rodata.EM_LOGLEVELGet.str1.4:00000018 .LC3
+D:\noval\Temp\ccPUm1S1.s:32     .rodata.EM_LOGLEVELGet.str1.4:00000020 .LC4
+D:\noval\Temp\ccPUm1S1.s:35     .rodata.EM_LOGLEVELGet.str1.4:00000028 .LC5
+D:\noval\Temp\ccPUm1S1.s:38     .text.EM_LOGLEVELGet:00000000 $t
+D:\noval\Temp\ccPUm1S1.s:44     .text.EM_LOGLEVELGet:00000000 EM_LOGLEVELGet
+D:\noval\Temp\ccPUm1S1.s:62     .rodata.EM_LOGLEVELGet:00000000 $d
+D:\noval\Temp\ccPUm1S1.s:112    .text.EM_LOGLEVELGet:00000048 $d
+D:\noval\Temp\ccPUm1S1.s:117    .rodata.EM_LOG.str1.4:00000000 $d
+D:\noval\Temp\ccPUm1S1.s:118    .rodata.EM_LOG.str1.4:00000000 .LC7
+D:\noval\Temp\ccPUm1S1.s:121    .text.EM_LOG:00000000 $t
+D:\noval\Temp\ccPUm1S1.s:127    .text.EM_LOG:00000000 EM_LOG
+D:\noval\Temp\ccPUm1S1.s:293    .text.savelog:00000000 $t
+D:\noval\Temp\ccPUm1S1.s:299    .text.savelog:00000000 savelog
+
+UNDEFINED SYMBOLS
+vsnprintf
+snprintf
+sprintf
+puts

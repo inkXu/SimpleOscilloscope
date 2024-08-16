@@ -1,0 +1,1330 @@
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.arch armv8-m.base
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"peripheral.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/peripheral.c"
+  18              		.section	.text.RCUConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	RCUConfig
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	RCUConfig:
+  26              	.LFB63:
+   1:Core/Src/peripheral.c **** #include "peripheral.h"
+   2:Core/Src/peripheral.c **** #include "log.h"
+   3:Core/Src/peripheral.c **** #include "gd32e23x.h"
+   4:Core/Src/peripheral.c **** #include "systick.h"
+   5:Core/Src/peripheral.c **** #include "stdint.h"
+   6:Core/Src/peripheral.c **** 
+   7:Core/Src/peripheral.c **** /*
+   8:Core/Src/peripheral.c ****  * @brief:  Clock configuration
+   9:Core/Src/peripheral.c ****  * @param:  None
+  10:Core/Src/peripheral.c ****  * @retval: None
+  11:Core/Src/peripheral.c ****  */
+  12:Core/Src/peripheral.c **** void RCUConfig(void)
+  13:Core/Src/peripheral.c **** {
+  27              		.loc 1 13 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  14:Core/Src/peripheral.c **** 	/* Enable GPIO clock */
+  15:Core/Src/peripheral.c **** 	// rcu_periph_clock_enable(RCU_GPIOC);     // led
+  16:Core/Src/peripheral.c **** 	rcu_periph_clock_enable(RCU_GPIOB);        // button, lcd control signal(RES, DC, CS, BLK)
+  36              		.loc 1 16 2 view .LVU1
+  37 0002 40F21250 		movw	r0, #1298
+  38 0006 FFF7FEFF 		bl	rcu_periph_clock_enable
+  39              	.LVL0:
+  17:Core/Src/peripheral.c **** 	rcu_periph_clock_enable(RCU_GPIOA);        // lcd data signal(SDA, SCL), TIMER14 clock(PWM), TIMER
+  40              		.loc 1 17 2 view .LVU2
+  41 000a 40F21150 		movw	r0, #1297
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 2
+
+
+  42 000e FFF7FEFF 		bl	rcu_periph_clock_enable
+  43              	.LVL1:
+  18:Core/Src/peripheral.c **** 
+  19:Core/Src/peripheral.c ****     /* enable the peripheral clock */
+  20:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_CFGCMP);
+  44              		.loc 1 20 5 view .LVU3
+  45 0012 40F20060 		movw	r0, #1536
+  46 0016 FFF7FEFF 		bl	rcu_periph_clock_enable
+  47              	.LVL2:
+  21:Core/Src/peripheral.c **** 
+  22:Core/Src/peripheral.c ****     /* enable the ADC clock */
+  23:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_ADC);
+  48              		.loc 1 23 5 view .LVU4
+  49 001a 40F20960 		movw	r0, #1545
+  50 001e FFF7FEFF 		bl	rcu_periph_clock_enable
+  51              	.LVL3:
+  24:Core/Src/peripheral.c ****     rcu_adc_clock_config(RCU_ADCCK_AHB_DIV3);  // configure the ADC frequency
+  52              		.loc 1 24 5 view .LVU5
+  53 0022 0320     		movs	r0, #3
+  54 0024 FFF7FEFF 		bl	rcu_adc_clock_config
+  55              	.LVL4:
+  25:Core/Src/peripheral.c **** 
+  26:Core/Src/peripheral.c ****     /* enable the timer clock */
+  27:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_TIMER15);      // timer
+  56              		.loc 1 27 5 view .LVU6
+  57 0028 40F21160 		movw	r0, #1553
+  58 002c FFF7FEFF 		bl	rcu_periph_clock_enable
+  59              	.LVL5:
+  28:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_TIMER2);       // FREQ
+  60              		.loc 1 28 5 view .LVU7
+  61 0030 40F20170 		movw	r0, #1793
+  62 0034 FFF7FEFF 		bl	rcu_periph_clock_enable
+  63              	.LVL6:
+  29:Core/Src/peripheral.c ****     // rcu_periph_clock_enable(RCU_TIMER14);      // PWM
+  30:Core/Src/peripheral.c **** 
+  31:Core/Src/peripheral.c ****     /* enable the SPI clock */
+  32:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_SPI0);
+  64              		.loc 1 32 5 view .LVU8
+  65 0038 40F20C60 		movw	r0, #1548
+  66 003c FFF7FEFF 		bl	rcu_periph_clock_enable
+  67              	.LVL7:
+  33:Core/Src/peripheral.c **** 
+  34:Core/Src/peripheral.c **** #if OPEN_ZLOG == 1
+  35:Core/Src/peripheral.c ****     /* enable the USART clock */
+  36:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_USART0);
+  68              		.loc 1 36 5 view .LVU9
+  69 0040 40F20E60 		movw	r0, #1550
+  70 0044 FFF7FEFF 		bl	rcu_periph_clock_enable
+  71              	.LVL8:
+  37:Core/Src/peripheral.c **** #endif
+  38:Core/Src/peripheral.c **** }
+  72              		.loc 1 38 1 is_stmt 0 view .LVU10
+  73              		@ sp needed
+  74 0048 10BD     		pop	{r4, pc}
+  75              		.cfi_endproc
+  76              	.LFE63:
+  78              		.section	.text.GPIOConfig,"ax",%progbits
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 3
+
+
+  79              		.align	1
+  80              		.global	GPIOConfig
+  81              		.syntax unified
+  82              		.code	16
+  83              		.thumb_func
+  85              	GPIOConfig:
+  86              	.LFB64:
+  39:Core/Src/peripheral.c **** 
+  40:Core/Src/peripheral.c **** /*
+  41:Core/Src/peripheral.c ****  * @brief:  GPIO configuration
+  42:Core/Src/peripheral.c ****  * @param:  None
+  43:Core/Src/peripheral.c ****  * @retval: None
+  44:Core/Src/peripheral.c ****  */
+  45:Core/Src/peripheral.c **** void GPIOConfig(void)
+  46:Core/Src/peripheral.c **** {
+  87              		.loc 1 46 1 is_stmt 1 view -0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91 0000 70B5     		push	{r4, r5, r6, lr}
+  92              	.LCFI1:
+  93              		.cfi_def_cfa_offset 16
+  94              		.cfi_offset 4, -16
+  95              		.cfi_offset 5, -12
+  96              		.cfi_offset 6, -8
+  97              		.cfi_offset 14, -4
+  47:Core/Src/peripheral.c ****     /* GPIO mode configuration */
+  48:Core/Src/peripheral.c ****     // LED
+  49:Core/Src/peripheral.c ****     gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
+  98              		.loc 1 49 5 view .LVU12
+  99 0002 40F60004 		movw	r4, #2048
+ 100 0006 C4F60004 		movt	r4, 18432
+ 101 000a 4EF20003 		movw	r3, #57344
+ 102 000e 0022     		movs	r2, #0
+ 103 0010 0121     		movs	r1, #1
+ 104 0012 2000     		movs	r0, r4
+ 105 0014 FFF7FEFF 		bl	gpio_mode_set
+ 106              	.LVL9:
+  50:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_13|GPIO_PIN_14|GPIO_P
+ 107              		.loc 1 50 5 view .LVU13
+ 108 0018 4EF20003 		movw	r3, #57344
+ 109 001c 0322     		movs	r2, #3
+ 110 001e 0021     		movs	r1, #0
+ 111 0020 2000     		movs	r0, r4
+ 112 0022 FFF7FEFF 		bl	gpio_output_options_set
+ 113              	.LVL10:
+  51:Core/Src/peripheral.c ****     // button
+  52:Core/Src/peripheral.c ****     gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_9|GPIO_P
+ 114              		.loc 1 52 5 view .LVU14
+ 115 0026 40F20045 		movw	r5, #1024
+ 116 002a C4F60005 		movt	r5, 18432
+ 117 002e 4EF21823 		movw	r3, #57880
+ 118 0032 0122     		movs	r2, #1
+ 119 0034 0021     		movs	r1, #0
+ 120 0036 2800     		movs	r0, r5
+ 121 0038 FFF7FEFF 		bl	gpio_mode_set
+ 122              	.LVL11:
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 4
+
+
+  53:Core/Src/peripheral.c ****     // ADC
+  54:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO_PIN_3);
+ 123              		.loc 1 54 5 view .LVU15
+ 124 003c 9024     		movs	r4, #144
+ 125 003e E405     		lsls	r4, r4, #23
+ 126 0040 0823     		movs	r3, #8
+ 127 0042 0022     		movs	r2, #0
+ 128 0044 0321     		movs	r1, #3
+ 129 0046 2000     		movs	r0, r4
+ 130 0048 FFF7FEFF 		bl	gpio_mode_set
+ 131              	.LVL12:
+  55:Core/Src/peripheral.c ****     // TIMER2 PIN used to get frequency
+  56:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_6);
+ 132              		.loc 1 56 5 view .LVU16
+ 133 004c 4023     		movs	r3, #64
+ 134 004e 0022     		movs	r2, #0
+ 135 0050 0221     		movs	r1, #2
+ 136 0052 2000     		movs	r0, r4
+ 137 0054 FFF7FEFF 		bl	gpio_mode_set
+ 138              	.LVL13:
+  57:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_6);
+ 139              		.loc 1 57 5 view .LVU17
+ 140 0058 4023     		movs	r3, #64
+ 141 005a 0322     		movs	r2, #3
+ 142 005c 0021     		movs	r1, #0
+ 143 005e 2000     		movs	r0, r4
+ 144 0060 FFF7FEFF 		bl	gpio_output_options_set
+ 145              	.LVL14:
+  58:Core/Src/peripheral.c ****     // TIIMER14 PIN used to output PWM
+  59:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_2);
+ 146              		.loc 1 59 5 view .LVU18
+ 147 0064 0423     		movs	r3, #4
+ 148 0066 0022     		movs	r2, #0
+ 149 0068 0221     		movs	r1, #2
+ 150 006a 2000     		movs	r0, r4
+ 151 006c FFF7FEFF 		bl	gpio_mode_set
+ 152              	.LVL15:
+  60:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2);
+ 153              		.loc 1 60 5 view .LVU19
+ 154 0070 0423     		movs	r3, #4
+ 155 0072 0322     		movs	r2, #3
+ 156 0074 0021     		movs	r1, #0
+ 157 0076 2000     		movs	r0, r4
+ 158 0078 FFF7FEFF 		bl	gpio_output_options_set
+ 159              	.LVL16:
+  61:Core/Src/peripheral.c ****     // LCD control signal(RES, DC, CS, BLK)
+  62:Core/Src/peripheral.c ****     gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PI
+ 160              		.loc 1 62 5 view .LVU20
+ 161 007c 40F2E013 		movw	r3, #480
+ 162 0080 0022     		movs	r2, #0
+ 163 0082 0121     		movs	r1, #1
+ 164 0084 2800     		movs	r0, r5
+ 165 0086 FFF7FEFF 		bl	gpio_mode_set
+ 166              	.LVL17:
+  63:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN
+ 167              		.loc 1 63 5 view .LVU21
+ 168 008a 40F2E013 		movw	r3, #480
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 5
+
+
+ 169 008e 0322     		movs	r2, #3
+ 170 0090 0021     		movs	r1, #0
+ 171 0092 2800     		movs	r0, r5
+ 172 0094 FFF7FEFF 		bl	gpio_output_options_set
+ 173              	.LVL18:
+  64:Core/Src/peripheral.c ****     gpio_bit_set(GPIOB, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8);
+ 174              		.loc 1 64 5 view .LVU22
+ 175 0098 40F2E011 		movw	r1, #480
+ 176 009c 2800     		movs	r0, r5
+ 177 009e FFF7FEFF 		bl	gpio_bit_set
+ 178              	.LVL19:
+  65:Core/Src/peripheral.c ****     // LCD data signal(SDA, SCL)
+  66:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_5|GPIO_PIN_7);
+ 179              		.loc 1 66 5 view .LVU23
+ 180 00a2 A023     		movs	r3, #160
+ 181 00a4 0022     		movs	r2, #0
+ 182 00a6 0221     		movs	r1, #2
+ 183 00a8 2000     		movs	r0, r4
+ 184 00aa FFF7FEFF 		bl	gpio_mode_set
+ 185              	.LVL20:
+  67:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_10MHZ, GPIO_PIN_5|GPIO_PIN_7);
+ 186              		.loc 1 67 5 view .LVU24
+ 187 00ae A023     		movs	r3, #160
+ 188 00b0 0122     		movs	r2, #1
+ 189 00b2 0021     		movs	r1, #0
+ 190 00b4 2000     		movs	r0, r4
+ 191 00b6 FFF7FEFF 		bl	gpio_output_options_set
+ 192              	.LVL21:
+  68:Core/Src/peripheral.c ****     // USART
+  69:Core/Src/peripheral.c **** #if OPEN_ZLOG == 1
+  70:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_9|GPIO_PIN_10);
+ 193              		.loc 1 70 5 view .LVU25
+ 194 00ba 40F20063 		movw	r3, #1536
+ 195 00be 0122     		movs	r2, #1
+ 196 00c0 0221     		movs	r1, #2
+ 197 00c2 2000     		movs	r0, r4
+ 198 00c4 FFF7FEFF 		bl	gpio_mode_set
+ 199              	.LVL22:
+  71:Core/Src/peripheral.c ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_10MHZ, GPIO_PIN_9|GPIO_PIN_10);
+ 200              		.loc 1 71 5 view .LVU26
+ 201 00c8 40F20063 		movw	r3, #1536
+ 202 00cc 0122     		movs	r2, #1
+ 203 00ce 0021     		movs	r1, #0
+ 204 00d0 2000     		movs	r0, r4
+ 205 00d2 FFF7FEFF 		bl	gpio_output_options_set
+ 206              	.LVL23:
+  72:Core/Src/peripheral.c **** #endif
+  73:Core/Src/peripheral.c ****     
+  74:Core/Src/peripheral.c ****     /* alternate function configuration */
+  75:Core/Src/peripheral.c ****     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_2);                      // TIMER14
+ 207              		.loc 1 75 5 view .LVU27
+ 208 00d6 0422     		movs	r2, #4
+ 209 00d8 0021     		movs	r1, #0
+ 210 00da 2000     		movs	r0, r4
+ 211 00dc FFF7FEFF 		bl	gpio_af_set
+ 212              	.LVL24:
+  76:Core/Src/peripheral.c ****     gpio_af_set(GPIOA, GPIO_AF_1, GPIO_PIN_6);                      // TIMER2
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 6
+
+
+ 213              		.loc 1 76 5 view .LVU28
+ 214 00e0 4022     		movs	r2, #64
+ 215 00e2 0121     		movs	r1, #1
+ 216 00e4 2000     		movs	r0, r4
+ 217 00e6 FFF7FEFF 		bl	gpio_af_set
+ 218              	.LVL25:
+  77:Core/Src/peripheral.c ****     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_5|GPIO_PIN_7);           // SPI0(SDA, SCL)
+ 219              		.loc 1 77 5 view .LVU29
+ 220 00ea A022     		movs	r2, #160
+ 221 00ec 0021     		movs	r1, #0
+ 222 00ee 2000     		movs	r0, r4
+ 223 00f0 FFF7FEFF 		bl	gpio_af_set
+ 224              	.LVL26:
+  78:Core/Src/peripheral.c ****     gpio_af_set(GPIOA, GPIO_AF_1, GPIO_PIN_9|GPIO_PIN_10);          // USART0
+ 225              		.loc 1 78 5 view .LVU30
+ 226 00f4 40F20062 		movw	r2, #1536
+ 227 00f8 0121     		movs	r1, #1
+ 228 00fa 2000     		movs	r0, r4
+ 229 00fc FFF7FEFF 		bl	gpio_af_set
+ 230              	.LVL27:
+  79:Core/Src/peripheral.c **** 
+  80:Core/Src/peripheral.c ****     /* enable the NVIC and configure the priority */
+  81:Core/Src/peripheral.c ****     nvic_irq_enable(EXTI4_15_IRQn, 1U);                             // enable key interrupt
+ 231              		.loc 1 81 5 view .LVU31
+ 232 0100 0121     		movs	r1, #1
+ 233 0102 0720     		movs	r0, #7
+ 234 0104 FFF7FEFF 		bl	nvic_irq_enable
+ 235              	.LVL28:
+  82:Core/Src/peripheral.c ****     /* connect key EXTI line to key GPIO pin */
+  83:Core/Src/peripheral.c ****     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN4);   // KEYA
+ 236              		.loc 1 83 5 view .LVU32
+ 237 0108 0421     		movs	r1, #4
+ 238 010a 0120     		movs	r0, #1
+ 239 010c FFF7FEFF 		bl	syscfg_exti_line_config
+ 240              	.LVL29:
+  84:Core/Src/peripheral.c ****     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN15);  // KEY03
+ 241              		.loc 1 84 5 view .LVU33
+ 242 0110 0F21     		movs	r1, #15
+ 243 0112 0120     		movs	r0, #1
+ 244 0114 FFF7FEFF 		bl	syscfg_exti_line_config
+ 245              	.LVL30:
+  85:Core/Src/peripheral.c ****     /* configure trigger mode */
+  86:Core/Src/peripheral.c ****     exti_init(EXTI_4, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+ 246              		.loc 1 86 5 view .LVU34
+ 247 0118 0122     		movs	r2, #1
+ 248 011a 0021     		movs	r1, #0
+ 249 011c 1020     		movs	r0, #16
+ 250 011e FFF7FEFF 		bl	exti_init
+ 251              	.LVL31:
+  87:Core/Src/peripheral.c ****     exti_init(EXTI_15, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+ 252              		.loc 1 87 5 view .LVU35
+ 253 0122 0122     		movs	r2, #1
+ 254 0124 0021     		movs	r1, #0
+ 255 0126 48F20000 		movw	r0, #32768
+ 256 012a FFF7FEFF 		bl	exti_init
+ 257              	.LVL32:
+  88:Core/Src/peripheral.c **** 
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 7
+
+
+  89:Core/Src/peripheral.c ****     exti_interrupt_enable(EXTI_4);
+ 258              		.loc 1 89 5 view .LVU36
+ 259 012e 1020     		movs	r0, #16
+ 260 0130 FFF7FEFF 		bl	exti_interrupt_enable
+ 261              	.LVL33:
+  90:Core/Src/peripheral.c ****     exti_interrupt_enable(EXTI_15);
+ 262              		.loc 1 90 5 view .LVU37
+ 263 0134 48F20000 		movw	r0, #32768
+ 264 0138 FFF7FEFF 		bl	exti_interrupt_enable
+ 265              	.LVL34:
+  91:Core/Src/peripheral.c **** 
+  92:Core/Src/peripheral.c ****     exti_interrupt_flag_clear(EXTI_4);
+ 266              		.loc 1 92 5 view .LVU38
+ 267 013c 1020     		movs	r0, #16
+ 268 013e FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 269              	.LVL35:
+  93:Core/Src/peripheral.c ****     exti_interrupt_flag_clear(EXTI_15);
+ 270              		.loc 1 93 5 view .LVU39
+ 271 0142 48F20000 		movw	r0, #32768
+ 272 0146 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 273              	.LVL36:
+  94:Core/Src/peripheral.c **** }
+ 274              		.loc 1 94 1 is_stmt 0 view .LVU40
+ 275              		@ sp needed
+ 276 014a 70BD     		pop	{r4, r5, r6, pc}
+ 277              		.cfi_endproc
+ 278              	.LFE64:
+ 280              		.section	.text.GPIO13_14InterruptEnable,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	GPIO13_14InterruptEnable
+ 283              		.syntax unified
+ 284              		.code	16
+ 285              		.thumb_func
+ 287              	GPIO13_14InterruptEnable:
+ 288              	.LFB65:
+  95:Core/Src/peripheral.c **** 
+  96:Core/Src/peripheral.c **** void GPIO13_14InterruptEnable(void)
+  97:Core/Src/peripheral.c **** {
+ 289              		.loc 1 97 1 is_stmt 1 view -0
+ 290              		.cfi_startproc
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293 0000 10B5     		push	{r4, lr}
+ 294              	.LCFI2:
+ 295              		.cfi_def_cfa_offset 8
+ 296              		.cfi_offset 4, -8
+ 297              		.cfi_offset 14, -4
+  98:Core/Src/peripheral.c ****     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN13);  // KEY01
+ 298              		.loc 1 98 5 view .LVU42
+ 299 0002 0D21     		movs	r1, #13
+ 300 0004 0120     		movs	r0, #1
+ 301 0006 FFF7FEFF 		bl	syscfg_exti_line_config
+ 302              	.LVL37:
+  99:Core/Src/peripheral.c ****     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN14);  // KEY02
+ 303              		.loc 1 99 5 view .LVU43
+ 304 000a 0E21     		movs	r1, #14
+ 305 000c 0120     		movs	r0, #1
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 8
+
+
+ 306 000e FFF7FEFF 		bl	syscfg_exti_line_config
+ 307              	.LVL38:
+ 100:Core/Src/peripheral.c ****     
+ 101:Core/Src/peripheral.c ****     exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+ 308              		.loc 1 101 5 view .LVU44
+ 309 0012 0122     		movs	r2, #1
+ 310 0014 0021     		movs	r1, #0
+ 311 0016 42F20000 		movw	r0, #8192
+ 312 001a FFF7FEFF 		bl	exti_init
+ 313              	.LVL39:
+ 102:Core/Src/peripheral.c ****     exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+ 314              		.loc 1 102 5 view .LVU45
+ 315 001e 0122     		movs	r2, #1
+ 316 0020 0021     		movs	r1, #0
+ 317 0022 44F20000 		movw	r0, #16384
+ 318 0026 FFF7FEFF 		bl	exti_init
+ 319              	.LVL40:
+ 103:Core/Src/peripheral.c **** 
+ 104:Core/Src/peripheral.c ****     exti_interrupt_enable(EXTI_13);
+ 320              		.loc 1 104 5 view .LVU46
+ 321 002a 42F20000 		movw	r0, #8192
+ 322 002e FFF7FEFF 		bl	exti_interrupt_enable
+ 323              	.LVL41:
+ 105:Core/Src/peripheral.c ****     exti_interrupt_enable(EXTI_14);
+ 324              		.loc 1 105 5 view .LVU47
+ 325 0032 44F20000 		movw	r0, #16384
+ 326 0036 FFF7FEFF 		bl	exti_interrupt_enable
+ 327              	.LVL42:
+ 106:Core/Src/peripheral.c **** 
+ 107:Core/Src/peripheral.c ****     exti_interrupt_flag_clear(EXTI_13);
+ 328              		.loc 1 107 5 view .LVU48
+ 329 003a 42F20000 		movw	r0, #8192
+ 330 003e FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 331              	.LVL43:
+ 108:Core/Src/peripheral.c ****     exti_interrupt_flag_clear(EXTI_14);
+ 332              		.loc 1 108 5 view .LVU49
+ 333 0042 44F20000 		movw	r0, #16384
+ 334 0046 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 335              	.LVL44:
+ 109:Core/Src/peripheral.c **** }
+ 336              		.loc 1 109 1 is_stmt 0 view .LVU50
+ 337              		@ sp needed
+ 338 004a 10BD     		pop	{r4, pc}
+ 339              		.cfi_endproc
+ 340              	.LFE65:
+ 342              		.section	.text.Timer14Config,"ax",%progbits
+ 343              		.align	1
+ 344              		.global	Timer14Config
+ 345              		.syntax unified
+ 346              		.code	16
+ 347              		.thumb_func
+ 349              	Timer14Config:
+ 350              	.LVL45:
+ 351              	.LFB66:
+ 110:Core/Src/peripheral.c **** 
+ 111:Core/Src/peripheral.c **** /*
+ 112:Core/Src/peripheral.c ****  * @brief:  TIMER14 configuration
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 9
+
+
+ 113:Core/Src/peripheral.c ****  * @param:  None
+ 114:Core/Src/peripheral.c ****  * @retval: None
+ 115:Core/Src/peripheral.c ****  */
+ 116:Core/Src/peripheral.c **** void Timer14Config(uint32_t freq, uint32_t duty)
+ 117:Core/Src/peripheral.c **** {
+ 352              		.loc 1 117 1 is_stmt 1 view -0
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 32
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356              		.loc 1 117 1 is_stmt 0 view .LVU52
+ 357 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 358              	.LCFI3:
+ 359              		.cfi_def_cfa_offset 20
+ 360              		.cfi_offset 4, -20
+ 361              		.cfi_offset 5, -16
+ 362              		.cfi_offset 6, -12
+ 363              		.cfi_offset 7, -8
+ 364              		.cfi_offset 14, -4
+ 365 0002 89B0     		sub	sp, sp, #36
+ 366              	.LCFI4:
+ 367              		.cfi_def_cfa_offset 56
+ 368 0004 0400     		movs	r4, r0
+ 369 0006 0E00     		movs	r6, r1
+ 118:Core/Src/peripheral.c ****     timer_parameter_struct timer_initpara;
+ 370              		.loc 1 118 5 is_stmt 1 view .LVU53
+ 119:Core/Src/peripheral.c ****     timer_oc_parameter_struct timer_ocinitpara;
+ 371              		.loc 1 119 5 view .LVU54
+ 120:Core/Src/peripheral.c **** 
+ 121:Core/Src/peripheral.c ****     rcu_periph_clock_enable(RCU_TIMER14);
+ 372              		.loc 1 121 5 view .LVU55
+ 373 0008 40F21060 		movw	r0, #1552
+ 374              	.LVL46:
+ 375              		.loc 1 121 5 is_stmt 0 view .LVU56
+ 376 000c FFF7FEFF 		bl	rcu_periph_clock_enable
+ 377              	.LVL47:
+ 122:Core/Src/peripheral.c **** 
+ 123:Core/Src/peripheral.c ****     timer_deinit(TIMER14);
+ 378              		.loc 1 123 5 is_stmt 1 view .LVU57
+ 379 0010 44F20000 		movw	r0, #16384
+ 380 0014 C4F20100 		movt	r0, 16385
+ 381 0018 FFF7FEFF 		bl	timer_deinit
+ 382              	.LVL48:
+ 124:Core/Src/peripheral.c **** 
+ 125:Core/Src/peripheral.c ****     /* initialize timer 14 */
+ 126:Core/Src/peripheral.c ****     timer_struct_para_init(&timer_initpara);
+ 383              		.loc 1 126 5 view .LVU58
+ 384 001c 04AD     		add	r5, sp, #16
+ 385 001e 2800     		movs	r0, r5
+ 386 0020 FFF7FEFF 		bl	timer_struct_para_init
+ 387              	.LVL49:
+ 127:Core/Src/peripheral.c ****     timer_initpara.prescaler = 720 - 1;
+ 388              		.loc 1 127 5 view .LVU59
+ 389              		.loc 1 127 30 is_stmt 0 view .LVU60
+ 390 0024 40F2CF23 		movw	r3, #719
+ 391 0028 2B80     		strh	r3, [r5]
+ 128:Core/Src/peripheral.c ****     timer_initpara.period = (freq > 5 ? (PWM_PERIOD / (uint32_t)freq) : 50000) - 1;
+ 392              		.loc 1 128 5 is_stmt 1 view .LVU61
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 10
+
+
+ 393              		.loc 1 128 80 is_stmt 0 view .LVU62
+ 394 002a 052C     		cmp	r4, #5
+ 395 002c 4ED9     		bls	.L8
+ 396              		.loc 1 128 53 discriminator 1 view .LVU63
+ 397 002e 40F64053 		movw	r3, #3392
+ 398 0032 C0F20303 		movt	r3, 3
+ 399 0036 B3FBF4F0 		udiv	r0, r3, r4
+ 400              		.loc 1 128 80 discriminator 1 view .LVU64
+ 401 003a 0138     		subs	r0, r0, #1
+ 402              	.L5:
+ 403              		.loc 1 128 27 discriminator 4 view .LVU65
+ 404 003c 04A9     		add	r1, sp, #16
+ 405 003e 8860     		str	r0, [r1, #8]
+ 129:Core/Src/peripheral.c ****     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
+ 406              		.loc 1 129 5 is_stmt 1 view .LVU66
+ 407              		.loc 1 129 34 is_stmt 0 view .LVU67
+ 408 0040 0025     		movs	r5, #0
+ 409 0042 CD80     		strh	r5, [r1, #6]
+ 130:Core/Src/peripheral.c ****     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
+ 410              		.loc 1 130 5 is_stmt 1 view .LVU68
+ 411              		.loc 1 130 32 is_stmt 0 view .LVU69
+ 412 0044 4D80     		strh	r5, [r1, #2]
+ 131:Core/Src/peripheral.c ****     timer_initpara.counterdirection = TIMER_COUNTER_UP;
+ 413              		.loc 1 131 5 is_stmt 1 view .LVU70
+ 414              		.loc 1 131 37 is_stmt 0 view .LVU71
+ 415 0046 8D80     		strh	r5, [r1, #4]
+ 132:Core/Src/peripheral.c ****     timer_initpara.repetitioncounter = 0;
+ 416              		.loc 1 132 5 is_stmt 1 view .LVU72
+ 417              		.loc 1 132 38 is_stmt 0 view .LVU73
+ 418 0048 0023     		movs	r3, #0
+ 419 004a 0B73     		strb	r3, [r1, #12]
+ 133:Core/Src/peripheral.c ****     timer_init(TIMER14, &timer_initpara);
+ 420              		.loc 1 133 5 is_stmt 1 view .LVU74
+ 421 004c 44F20007 		movw	r7, #16384
+ 422 0050 C4F20107 		movt	r7, 16385
+ 423 0054 3800     		movs	r0, r7
+ 424 0056 FFF7FEFF 		bl	timer_init
+ 425              	.LVL50:
+ 134:Core/Src/peripheral.c **** 
+ 135:Core/Src/peripheral.c ****     timer_channel_output_struct_para_init(&timer_ocinitpara);
+ 426              		.loc 1 135 5 view .LVU75
+ 427 005a 01AC     		add	r4, sp, #4
+ 428              	.LVL51:
+ 429              		.loc 1 135 5 is_stmt 0 view .LVU76
+ 430 005c 2000     		movs	r0, r4
+ 431 005e FFF7FEFF 		bl	timer_channel_output_struct_para_init
+ 432              	.LVL52:
+ 136:Core/Src/peripheral.c ****     timer_ocinitpara.outputstate  = TIMER_CCX_ENABLE;
+ 433              		.loc 1 136 5 is_stmt 1 view .LVU77
+ 434              		.loc 1 136 35 is_stmt 0 view .LVU78
+ 435 0062 0123     		movs	r3, #1
+ 436 0064 2380     		strh	r3, [r4]
+ 137:Core/Src/peripheral.c ****     timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
+ 437              		.loc 1 137 5 is_stmt 1 view .LVU79
+ 438              		.loc 1 137 35 is_stmt 0 view .LVU80
+ 439 0066 6580     		strh	r5, [r4, #2]
+ 138:Core/Src/peripheral.c ****     timer_ocinitpara.ocpolarity   = TIMER_OC_POLARITY_HIGH;
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 11
+
+
+ 440              		.loc 1 138 5 is_stmt 1 view .LVU81
+ 441              		.loc 1 138 35 is_stmt 0 view .LVU82
+ 442 0068 A580     		strh	r5, [r4, #4]
+ 139:Core/Src/peripheral.c ****     timer_ocinitpara.ocnpolarity  = TIMER_OCN_POLARITY_HIGH;
+ 443              		.loc 1 139 5 is_stmt 1 view .LVU83
+ 444              		.loc 1 139 35 is_stmt 0 view .LVU84
+ 445 006a E580     		strh	r5, [r4, #6]
+ 140:Core/Src/peripheral.c ****     timer_ocinitpara.ocidlestate  = TIMER_OC_IDLE_STATE_LOW;
+ 446              		.loc 1 140 5 is_stmt 1 view .LVU85
+ 447              		.loc 1 140 35 is_stmt 0 view .LVU86
+ 448 006c 2581     		strh	r5, [r4, #8]
+ 141:Core/Src/peripheral.c ****     timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
+ 449              		.loc 1 141 5 is_stmt 1 view .LVU87
+ 450              		.loc 1 141 35 is_stmt 0 view .LVU88
+ 451 006e 6581     		strh	r5, [r4, #10]
+ 142:Core/Src/peripheral.c ****     timer_channel_output_config(TIMER14, TIMER_CH_0, &timer_ocinitpara);
+ 452              		.loc 1 142 5 is_stmt 1 view .LVU89
+ 453 0070 2200     		movs	r2, r4
+ 454 0072 0021     		movs	r1, #0
+ 455 0074 3800     		movs	r0, r7
+ 456 0076 FFF7FEFF 		bl	timer_channel_output_config
+ 457              	.LVL53:
+ 143:Core/Src/peripheral.c **** 
+ 144:Core/Src/peripheral.c ****     timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, duty < 101 ? duty / 100 * timer_in
+ 458              		.loc 1 144 5 view .LVU90
+ 459 007a 642E     		cmp	r6, #100
+ 460 007c 29D8     		bhi	.L6
+ 461              		.loc 1 144 84 is_stmt 0 discriminator 1 view .LVU91
+ 462 007e 6423     		movs	r3, #100
+ 463 0080 B6FBF3F6 		udiv	r6, r6, r3
+ 464              	.LVL54:
+ 465              		.loc 1 144 106 discriminator 1 view .LVU92
+ 466 0084 069A     		ldr	r2, [sp, #24]
+ 467              		.loc 1 144 5 discriminator 1 view .LVU93
+ 468 0086 7243     		muls	r2, r6
+ 469              	.L7:
+ 470              		.loc 1 144 5 discriminator 4 view .LVU94
+ 471 0088 44F20004 		movw	r4, #16384
+ 472 008c C4F20104 		movt	r4, 16385
+ 473 0090 0021     		movs	r1, #0
+ 474 0092 2000     		movs	r0, r4
+ 475 0094 FFF7FEFF 		bl	timer_channel_output_pulse_value_config
+ 476              	.LVL55:
+ 145:Core/Src/peripheral.c ****     /* PWM0: vaild to invaild level, PWM1: invaild to vaild level */
+ 146:Core/Src/peripheral.c ****     timer_channel_output_mode_config(TIMER14, TIMER_CH_0, TIMER_OC_MODE_PWM0);
+ 477              		.loc 1 146 5 is_stmt 1 view .LVU95
+ 478 0098 6022     		movs	r2, #96
+ 479 009a 0021     		movs	r1, #0
+ 480 009c 2000     		movs	r0, r4
+ 481 009e FFF7FEFF 		bl	timer_channel_output_mode_config
+ 482              	.LVL56:
+ 147:Core/Src/peripheral.c ****     timer_channel_output_shadow_config(TIMER14, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
+ 483              		.loc 1 147 5 view .LVU96
+ 484 00a2 0022     		movs	r2, #0
+ 485 00a4 0021     		movs	r1, #0
+ 486 00a6 2000     		movs	r0, r4
+ 487 00a8 FFF7FEFF 		bl	timer_channel_output_shadow_config
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 12
+
+
+ 488              	.LVL57:
+ 148:Core/Src/peripheral.c ****     timer_auto_reload_shadow_enable(TIMER14);
+ 489              		.loc 1 148 5 view .LVU97
+ 490 00ac 2000     		movs	r0, r4
+ 491 00ae FFF7FEFF 		bl	timer_auto_reload_shadow_enable
+ 492              	.LVL58:
+ 149:Core/Src/peripheral.c ****     timer_counter_value_config(TIMER14 , 0);
+ 493              		.loc 1 149 5 view .LVU98
+ 494 00b2 0021     		movs	r1, #0
+ 495 00b4 2000     		movs	r0, r4
+ 496 00b6 FFF7FEFF 		bl	timer_counter_value_config
+ 497              	.LVL59:
+ 150:Core/Src/peripheral.c ****     timer_primary_output_config(TIMER14, ENABLE);
+ 498              		.loc 1 150 5 view .LVU99
+ 499 00ba 0121     		movs	r1, #1
+ 500 00bc 2000     		movs	r0, r4
+ 501 00be FFF7FEFF 		bl	timer_primary_output_config
+ 502              	.LVL60:
+ 151:Core/Src/peripheral.c ****     
+ 152:Core/Src/peripheral.c ****     timer_enable(TIMER14);
+ 503              		.loc 1 152 5 view .LVU100
+ 504 00c2 2000     		movs	r0, r4
+ 505 00c4 FFF7FEFF 		bl	timer_enable
+ 506              	.LVL61:
+ 153:Core/Src/peripheral.c **** }
+ 507              		.loc 1 153 1 is_stmt 0 view .LVU101
+ 508 00c8 09B0     		add	sp, sp, #36
+ 509              		@ sp needed
+ 510 00ca F0BD     		pop	{r4, r5, r6, r7, pc}
+ 511              	.LVL62:
+ 512              	.L8:
+ 128:Core/Src/peripheral.c ****     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
+ 513              		.loc 1 128 80 discriminator 2 view .LVU102
+ 514 00cc 4CF24F30 		movw	r0, #49999
+ 515 00d0 B4E7     		b	.L5
+ 516              	.LVL63:
+ 517              	.L6:
+ 144:Core/Src/peripheral.c ****     /* PWM0: vaild to invaild level, PWM1: invaild to vaild level */
+ 518              		.loc 1 144 5 discriminator 2 view .LVU103
+ 519 00d2 069A     		ldr	r2, [sp, #24]
+ 520 00d4 D8E7     		b	.L7
+ 521              		.cfi_endproc
+ 522              	.LFE66:
+ 524              		.section	.text.TIMConfig,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	TIMConfig
+ 527              		.syntax unified
+ 528              		.code	16
+ 529              		.thumb_func
+ 531              	TIMConfig:
+ 532              	.LFB67:
+ 154:Core/Src/peripheral.c **** 
+ 155:Core/Src/peripheral.c **** /*
+ 156:Core/Src/peripheral.c ****  * @brief:  TIMER15, TIMER2 configuration
+ 157:Core/Src/peripheral.c ****  * @param:  None
+ 158:Core/Src/peripheral.c ****  * @retval: None
+ 159:Core/Src/peripheral.c ****  */
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 13
+
+
+ 160:Core/Src/peripheral.c **** void TIMConfig(void)
+ 161:Core/Src/peripheral.c **** {
+ 533              		.loc 1 161 1 is_stmt 1 view -0
+ 534              		.cfi_startproc
+ 535              		@ args = 0, pretend = 0, frame = 24
+ 536              		@ frame_needed = 0, uses_anonymous_args = 0
+ 537 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 538              	.LCFI5:
+ 539              		.cfi_def_cfa_offset 20
+ 540              		.cfi_offset 4, -20
+ 541              		.cfi_offset 5, -16
+ 542              		.cfi_offset 6, -12
+ 543              		.cfi_offset 7, -8
+ 544              		.cfi_offset 14, -4
+ 545 0002 C646     		mov	lr, r8
+ 546 0004 00B5     		push	{lr}
+ 547              	.LCFI6:
+ 548              		.cfi_def_cfa_offset 24
+ 549              		.cfi_offset 8, -24
+ 550 0006 86B0     		sub	sp, sp, #24
+ 551              	.LCFI7:
+ 552              		.cfi_def_cfa_offset 48
+ 162:Core/Src/peripheral.c ****         // 定时器初始化参数结构体
+ 163:Core/Src/peripheral.c ****     timer_parameter_struct timer_initpara;
+ 553              		.loc 1 163 5 view .LVU105
+ 164:Core/Src/peripheral.c ****     timer_ic_parameter_struct timer_icinitpara;
+ 554              		.loc 1 164 5 view .LVU106
+ 165:Core/Src/peripheral.c **** 
+ 166:Core/Src/peripheral.c ****     // reset timer configuration
+ 167:Core/Src/peripheral.c ****     timer_deinit(TIMER15);
+ 555              		.loc 1 167 5 view .LVU107
+ 556 0008 44F20047 		movw	r7, #17408
+ 557 000c C4F20107 		movt	r7, 16385
+ 558 0010 3800     		movs	r0, r7
+ 559 0012 FFF7FEFF 		bl	timer_deinit
+ 560              	.LVL64:
+ 168:Core/Src/peripheral.c ****     timer_deinit(TIMER2);
+ 561              		.loc 1 168 5 view .LVU108
+ 562 0016 40F20045 		movw	r5, #1024
+ 563 001a C4F20005 		movt	r5, 16384
+ 564 001e 2800     		movs	r0, r5
+ 565 0020 FFF7FEFF 		bl	timer_deinit
+ 566              	.LVL65:
+ 169:Core/Src/peripheral.c ****     
+ 170:Core/Src/peripheral.c ****     // initialize timer 15
+ 171:Core/Src/peripheral.c ****     timer_struct_para_init(&timer_initpara);
+ 567              		.loc 1 171 5 view .LVU109
+ 568 0024 02AC     		add	r4, sp, #8
+ 569 0026 2000     		movs	r0, r4
+ 570 0028 FFF7FEFF 		bl	timer_struct_para_init
+ 571              	.LVL66:
+ 172:Core/Src/peripheral.c ****     timer_initpara.prescaler         = 72 - 1;
+ 572              		.loc 1 172 5 view .LVU110
+ 573              		.loc 1 172 38 is_stmt 0 view .LVU111
+ 574 002c 40F24708 		movw	r8, #71
+ 575 0030 4346     		mov	r3, r8
+ 576 0032 2380     		strh	r3, [r4]
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 14
+
+
+ 173:Core/Src/peripheral.c ****     timer_initpara.period            = 10 - 1;
+ 577              		.loc 1 173 5 is_stmt 1 view .LVU112
+ 578              		.loc 1 173 38 is_stmt 0 view .LVU113
+ 579 0034 3E3B     		subs	r3, r3, #62
+ 580 0036 0493     		str	r3, [sp, #16]
+ 174:Core/Src/peripheral.c ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+ 581              		.loc 1 174 5 is_stmt 1 view .LVU114
+ 582              		.loc 1 174 38 is_stmt 0 view .LVU115
+ 583 0038 0026     		movs	r6, #0
+ 584 003a E680     		strh	r6, [r4, #6]
+ 175:Core/Src/peripheral.c ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+ 585              		.loc 1 175 5 is_stmt 1 view .LVU116
+ 586              		.loc 1 175 38 is_stmt 0 view .LVU117
+ 587 003c 6680     		strh	r6, [r4, #2]
+ 176:Core/Src/peripheral.c ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+ 588              		.loc 1 176 5 is_stmt 1 view .LVU118
+ 589              		.loc 1 176 38 is_stmt 0 view .LVU119
+ 590 003e A680     		strh	r6, [r4, #4]
+ 177:Core/Src/peripheral.c ****     timer_initpara.repetitioncounter = 0;
+ 591              		.loc 1 177 5 is_stmt 1 view .LVU120
+ 592              		.loc 1 177 38 is_stmt 0 view .LVU121
+ 593 0040 0023     		movs	r3, #0
+ 594 0042 2373     		strb	r3, [r4, #12]
+ 178:Core/Src/peripheral.c ****     timer_init(TIMER15, &timer_initpara);
+ 595              		.loc 1 178 5 is_stmt 1 view .LVU122
+ 596 0044 2100     		movs	r1, r4
+ 597 0046 3800     		movs	r0, r7
+ 598 0048 FFF7FEFF 		bl	timer_init
+ 599              	.LVL67:
+ 179:Core/Src/peripheral.c ****     // initialize timer 2
+ 180:Core/Src/peripheral.c ****     timer_struct_para_init(&timer_initpara);
+ 600              		.loc 1 180 5 view .LVU123
+ 601 004c 2000     		movs	r0, r4
+ 602 004e FFF7FEFF 		bl	timer_struct_para_init
+ 603              	.LVL68:
+ 181:Core/Src/peripheral.c ****     timer_initpara.prescaler         = 72-1;
+ 604              		.loc 1 181 5 view .LVU124
+ 605              		.loc 1 181 38 is_stmt 0 view .LVU125
+ 606 0052 4346     		mov	r3, r8
+ 607 0054 2380     		strh	r3, [r4]
+ 182:Core/Src/peripheral.c ****     timer_initpara.period            = 65535;
+ 608              		.loc 1 182 5 is_stmt 1 view .LVU126
+ 609              		.loc 1 182 38 is_stmt 0 view .LVU127
+ 610 0056 4FF6FF73 		movw	r3, #65535
+ 611 005a 0493     		str	r3, [sp, #16]
+ 183:Core/Src/peripheral.c ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+ 612              		.loc 1 183 5 is_stmt 1 view .LVU128
+ 613              		.loc 1 183 38 is_stmt 0 view .LVU129
+ 614 005c E680     		strh	r6, [r4, #6]
+ 184:Core/Src/peripheral.c ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+ 615              		.loc 1 184 5 is_stmt 1 view .LVU130
+ 616              		.loc 1 184 38 is_stmt 0 view .LVU131
+ 617 005e 6680     		strh	r6, [r4, #2]
+ 185:Core/Src/peripheral.c ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+ 618              		.loc 1 185 5 is_stmt 1 view .LVU132
+ 619              		.loc 1 185 38 is_stmt 0 view .LVU133
+ 620 0060 A680     		strh	r6, [r4, #4]
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 15
+
+
+ 186:Core/Src/peripheral.c ****     timer_init(TIMER2, &timer_initpara);
+ 621              		.loc 1 186 5 is_stmt 1 view .LVU134
+ 622 0062 2100     		movs	r1, r4
+ 623 0064 2800     		movs	r0, r5
+ 624 0066 FFF7FEFF 		bl	timer_init
+ 625              	.LVL69:
+ 187:Core/Src/peripheral.c ****     
+ 188:Core/Src/peripheral.c ****     // configuration timer2 input capture channel
+ 189:Core/Src/peripheral.c ****     timer_icinitpara.icpolarity  = TIMER_IC_POLARITY_RISING;
+ 626              		.loc 1 189 5 view .LVU135
+ 627              		.loc 1 189 34 is_stmt 0 view .LVU136
+ 628 006a 6B46     		mov	r3, sp
+ 629 006c 1E80     		strh	r6, [r3]
+ 190:Core/Src/peripheral.c ****     timer_icinitpara.icselection = TIMER_IC_SELECTION_DIRECTTI;
+ 630              		.loc 1 190 5 is_stmt 1 view .LVU137
+ 631              		.loc 1 190 34 is_stmt 0 view .LVU138
+ 632 006e 0123     		movs	r3, #1
+ 633 0070 6A46     		mov	r2, sp
+ 634 0072 5380     		strh	r3, [r2, #2]
+ 191:Core/Src/peripheral.c ****     timer_icinitpara.icprescaler = TIMER_IC_PSC_DIV1;
+ 635              		.loc 1 191 5 is_stmt 1 view .LVU139
+ 636              		.loc 1 191 34 is_stmt 0 view .LVU140
+ 637 0074 9680     		strh	r6, [r2, #4]
+ 192:Core/Src/peripheral.c ****     timer_icinitpara.icfilter    = 0x0;
+ 638              		.loc 1 192 5 is_stmt 1 view .LVU141
+ 639              		.loc 1 192 34 is_stmt 0 view .LVU142
+ 640 0076 D680     		strh	r6, [r2, #6]
+ 193:Core/Src/peripheral.c ****     timer_input_capture_config(TIMER2, TIMER_CH_0, &timer_icinitpara);
+ 641              		.loc 1 193 5 is_stmt 1 view .LVU143
+ 642 0078 0021     		movs	r1, #0
+ 643 007a 2800     		movs	r0, r5
+ 644 007c FFF7FEFF 		bl	timer_input_capture_config
+ 645              	.LVL70:
+ 194:Core/Src/peripheral.c ****     timer_auto_reload_shadow_enable(TIMER2);
+ 646              		.loc 1 194 5 view .LVU144
+ 647 0080 2800     		movs	r0, r5
+ 648 0082 FFF7FEFF 		bl	timer_auto_reload_shadow_enable
+ 649              	.LVL71:
+ 195:Core/Src/peripheral.c **** 
+ 196:Core/Src/peripheral.c ****     /* enable timer interrupt */
+ 197:Core/Src/peripheral.c ****     nvic_irq_enable(TIMER15_IRQn, 2U);
+ 650              		.loc 1 197 5 view .LVU145
+ 651 0086 0221     		movs	r1, #2
+ 652 0088 1520     		movs	r0, #21
+ 653 008a FFF7FEFF 		bl	nvic_irq_enable
+ 654              	.LVL72:
+ 198:Core/Src/peripheral.c ****     nvic_irq_enable(TIMER2_IRQn, 1U);
+ 655              		.loc 1 198 5 view .LVU146
+ 656 008e 0121     		movs	r1, #1
+ 657 0090 1020     		movs	r0, #16
+ 658 0092 FFF7FEFF 		bl	nvic_irq_enable
+ 659              	.LVL73:
+ 199:Core/Src/peripheral.c ****     
+ 200:Core/Src/peripheral.c ****     timer_interrupt_flag_clear(TIMER15, TIMER_INT_FLAG_UP);
+ 660              		.loc 1 200 5 view .LVU147
+ 661 0096 0121     		movs	r1, #1
+ 662 0098 3800     		movs	r0, r7
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 16
+
+
+ 663 009a FFF7FEFF 		bl	timer_interrupt_flag_clear
+ 664              	.LVL74:
+ 201:Core/Src/peripheral.c ****     timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_CH0);
+ 665              		.loc 1 201 5 view .LVU148
+ 666 009e 0221     		movs	r1, #2
+ 667 00a0 2800     		movs	r0, r5
+ 668 00a2 FFF7FEFF 		bl	timer_interrupt_flag_clear
+ 669              	.LVL75:
+ 202:Core/Src/peripheral.c **** 
+ 203:Core/Src/peripheral.c ****     timer_interrupt_enable(TIMER15, TIMER_INT_UP);
+ 670              		.loc 1 203 5 view .LVU149
+ 671 00a6 0121     		movs	r1, #1
+ 672 00a8 3800     		movs	r0, r7
+ 673 00aa FFF7FEFF 		bl	timer_interrupt_enable
+ 674              	.LVL76:
+ 204:Core/Src/peripheral.c ****     timer_interrupt_enable(TIMER2, TIMER_INT_CH0);
+ 675              		.loc 1 204 5 view .LVU150
+ 676 00ae 0221     		movs	r1, #2
+ 677 00b0 2800     		movs	r0, r5
+ 678 00b2 FFF7FEFF 		bl	timer_interrupt_enable
+ 679              	.LVL77:
+ 205:Core/Src/peripheral.c **** 
+ 206:Core/Src/peripheral.c ****     timer_enable(TIMER15);
+ 680              		.loc 1 206 5 view .LVU151
+ 681 00b6 3800     		movs	r0, r7
+ 682 00b8 FFF7FEFF 		bl	timer_enable
+ 683              	.LVL78:
+ 207:Core/Src/peripheral.c ****     timer_enable(TIMER2);
+ 684              		.loc 1 207 5 view .LVU152
+ 685 00bc 2800     		movs	r0, r5
+ 686 00be FFF7FEFF 		bl	timer_enable
+ 687              	.LVL79:
+ 208:Core/Src/peripheral.c **** }
+ 688              		.loc 1 208 1 is_stmt 0 view .LVU153
+ 689 00c2 06B0     		add	sp, sp, #24
+ 690              		@ sp needed
+ 691 00c4 80BC     		pop	{r7}
+ 692 00c6 B846     		mov	r8, r7
+ 693 00c8 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 694              		.cfi_endproc
+ 695              	.LFE67:
+ 697              		.section	.text.ADCConfig,"ax",%progbits
+ 698              		.align	1
+ 699              		.global	ADCConfig
+ 700              		.syntax unified
+ 701              		.code	16
+ 702              		.thumb_func
+ 704              	ADCConfig:
+ 705              	.LFB68:
+ 209:Core/Src/peripheral.c **** 
+ 210:Core/Src/peripheral.c **** /*
+ 211:Core/Src/peripheral.c ****  * @brief:  ADC configuration
+ 212:Core/Src/peripheral.c ****  * @param:  None
+ 213:Core/Src/peripheral.c ****  * @retval: None
+ 214:Core/Src/peripheral.c ****  */
+ 215:Core/Src/peripheral.c **** void ADCConfig(void)
+ 216:Core/Src/peripheral.c **** {
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 17
+
+
+ 706              		.loc 1 216 1 is_stmt 1 view -0
+ 707              		.cfi_startproc
+ 708              		@ args = 0, pretend = 0, frame = 0
+ 709              		@ frame_needed = 0, uses_anonymous_args = 0
+ 710 0000 10B5     		push	{r4, lr}
+ 711              	.LCFI8:
+ 712              		.cfi_def_cfa_offset 8
+ 713              		.cfi_offset 4, -8
+ 714              		.cfi_offset 14, -4
+ 217:Core/Src/peripheral.c ****     /* disable the scan mode and continuous mode, use the single conversion mode */
+ 218:Core/Src/peripheral.c ****     adc_special_function_config(ADC_SCAN_MODE, DISABLE);
+ 715              		.loc 1 218 5 view .LVU155
+ 716 0002 0021     		movs	r1, #0
+ 717 0004 40F20010 		movw	r0, #256
+ 718 0008 FFF7FEFF 		bl	adc_special_function_config
+ 719              	.LVL80:
+ 219:Core/Src/peripheral.c ****     adc_special_function_config(ADC_CONTINUOUS_MODE, DISABLE);
+ 720              		.loc 1 219 5 view .LVU156
+ 721 000c 0021     		movs	r1, #0
+ 722 000e 0220     		movs	r0, #2
+ 723 0010 FFF7FEFF 		bl	adc_special_function_config
+ 724              	.LVL81:
+ 220:Core/Src/peripheral.c ****     adc_external_trigger_source_config(ADC_REGULAR_CHANNEL, ADC_EXTTRIG_REGULAR_NONE);
+ 725              		.loc 1 220 5 view .LVU157
+ 726 0014 E021     		movs	r1, #224
+ 727 0016 0903     		lsls	r1, r1, #12
+ 728 0018 0120     		movs	r0, #1
+ 729 001a FFF7FEFF 		bl	adc_external_trigger_source_config
+ 730              	.LVL82:
+ 221:Core/Src/peripheral.c **** 
+ 222:Core/Src/peripheral.c ****     adc_regular_channel_config(0U, ADC_CHANNEL_3, ADC_SAMPLETIME_55POINT5);
+ 731              		.loc 1 222 5 view .LVU158
+ 732 001e 0522     		movs	r2, #5
+ 733 0020 0321     		movs	r1, #3
+ 734 0022 0020     		movs	r0, #0
+ 735 0024 FFF7FEFF 		bl	adc_regular_channel_config
+ 736              	.LVL83:
+ 223:Core/Src/peripheral.c ****     adc_data_alignment_config(ADC_DATAALIGN_RIGHT);
+ 737              		.loc 1 223 5 view .LVU159
+ 738 0028 0020     		movs	r0, #0
+ 739 002a FFF7FEFF 		bl	adc_data_alignment_config
+ 740              	.LVL84:
+ 224:Core/Src/peripheral.c ****     adc_resolution_config(ADC_RESOLUTION_12B);
+ 741              		.loc 1 224 5 view .LVU160
+ 742 002e 0020     		movs	r0, #0
+ 743 0030 FFF7FEFF 		bl	adc_resolution_config
+ 744              	.LVL85:
+ 225:Core/Src/peripheral.c ****     adc_channel_length_config(ADC_REGULAR_CHANNEL, 1);
+ 745              		.loc 1 225 5 view .LVU161
+ 746 0034 0121     		movs	r1, #1
+ 747 0036 0120     		movs	r0, #1
+ 748 0038 FFF7FEFF 		bl	adc_channel_length_config
+ 749              	.LVL86:
+ 226:Core/Src/peripheral.c **** 
+ 227:Core/Src/peripheral.c ****     adc_external_trigger_config(ADC_REGULAR_CHANNEL, ENABLE);
+ 750              		.loc 1 227 5 view .LVU162
+ 751 003c 0121     		movs	r1, #1
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 18
+
+
+ 752 003e 0120     		movs	r0, #1
+ 753 0040 FFF7FEFF 		bl	adc_external_trigger_config
+ 754              	.LVL87:
+ 228:Core/Src/peripheral.c ****     adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
+ 755              		.loc 1 228 5 view .LVU163
+ 756 0044 0120     		movs	r0, #1
+ 757 0046 FFF7FEFF 		bl	adc_software_trigger_enable
+ 758              	.LVL88:
+ 229:Core/Src/peripheral.c **** 
+ 230:Core/Src/peripheral.c ****     adc_enable();
+ 759              		.loc 1 230 5 view .LVU164
+ 760 004a FFF7FEFF 		bl	adc_enable
+ 761              	.LVL89:
+ 231:Core/Src/peripheral.c ****     delay_1ms(1U);
+ 762              		.loc 1 231 5 view .LVU165
+ 763 004e 0120     		movs	r0, #1
+ 764 0050 FFF7FEFF 		bl	delay_1ms
+ 765              	.LVL90:
+ 232:Core/Src/peripheral.c **** 
+ 233:Core/Src/peripheral.c ****     adc_calibration_enable();
+ 766              		.loc 1 233 5 view .LVU166
+ 767 0054 FFF7FEFF 		bl	adc_calibration_enable
+ 768              	.LVL91:
+ 234:Core/Src/peripheral.c **** }
+ 769              		.loc 1 234 1 is_stmt 0 view .LVU167
+ 770              		@ sp needed
+ 771 0058 10BD     		pop	{r4, pc}
+ 772              		.cfi_endproc
+ 773              	.LFE68:
+ 775              		.section	.text.SPIConfig,"ax",%progbits
+ 776              		.align	1
+ 777              		.global	SPIConfig
+ 778              		.syntax unified
+ 779              		.code	16
+ 780              		.thumb_func
+ 782              	SPIConfig:
+ 783              	.LFB69:
+ 235:Core/Src/peripheral.c **** 
+ 236:Core/Src/peripheral.c **** /*
+ 237:Core/Src/peripheral.c ****  * @brief:  SPI configuration
+ 238:Core/Src/peripheral.c ****  * @param:  None
+ 239:Core/Src/peripheral.c ****  * @retval: None
+ 240:Core/Src/peripheral.c ****  */
+ 241:Core/Src/peripheral.c **** void SPIConfig(void)
+ 242:Core/Src/peripheral.c **** {
+ 784              		.loc 1 242 1 is_stmt 1 view -0
+ 785              		.cfi_startproc
+ 786              		@ args = 0, pretend = 0, frame = 32
+ 787              		@ frame_needed = 0, uses_anonymous_args = 0
+ 788 0000 10B5     		push	{r4, lr}
+ 789              	.LCFI9:
+ 790              		.cfi_def_cfa_offset 8
+ 791              		.cfi_offset 4, -8
+ 792              		.cfi_offset 14, -4
+ 793 0002 88B0     		sub	sp, sp, #32
+ 794              	.LCFI10:
+ 795              		.cfi_def_cfa_offset 40
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 19
+
+
+ 243:Core/Src/peripheral.c ****     spi_parameter_struct spi_init_struct;
+ 796              		.loc 1 243 5 view .LVU169
+ 244:Core/Src/peripheral.c **** 
+ 245:Core/Src/peripheral.c ****     spi_i2s_deinit(SPI0);
+ 797              		.loc 1 245 5 view .LVU170
+ 798 0004 43F20004 		movw	r4, #12288
+ 799 0008 C4F20104 		movt	r4, 16385
+ 800 000c 2000     		movs	r0, r4
+ 801 000e FFF7FEFF 		bl	spi_i2s_deinit
+ 802              	.LVL92:
+ 246:Core/Src/peripheral.c ****     spi_struct_para_init(&spi_init_struct);
+ 803              		.loc 1 246 5 view .LVU171
+ 804 0012 01A8     		add	r0, sp, #4
+ 805 0014 FFF7FEFF 		bl	spi_struct_para_init
+ 806              	.LVL93:
+ 247:Core/Src/peripheral.c ****     spi_init_struct.trans_mode           = SPI_TRANSMODE_FULLDUPLEX;
+ 807              		.loc 1 247 5 view .LVU172
+ 808              		.loc 1 247 42 is_stmt 0 view .LVU173
+ 809 0018 0023     		movs	r3, #0
+ 810 001a 0293     		str	r3, [sp, #8]
+ 248:Core/Src/peripheral.c ****     spi_init_struct.device_mode          = SPI_MASTER;
+ 811              		.loc 1 248 5 is_stmt 1 view .LVU174
+ 812              		.loc 1 248 42 is_stmt 0 view .LVU175
+ 813 001c 40F20412 		movw	r2, #260
+ 814 0020 0192     		str	r2, [sp, #4]
+ 249:Core/Src/peripheral.c ****     spi_init_struct.frame_size           = SPI_FRAMESIZE_8BIT;
+ 815              		.loc 1 249 5 is_stmt 1 view .LVU176
+ 816              		.loc 1 249 42 is_stmt 0 view .LVU177
+ 817 0022 40F20072 		movw	r2, #1792
+ 818 0026 0392     		str	r2, [sp, #12]
+ 250:Core/Src/peripheral.c ****     spi_init_struct.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;
+ 819              		.loc 1 250 5 is_stmt 1 view .LVU178
+ 820              		.loc 1 250 42 is_stmt 0 view .LVU179
+ 821 0028 0322     		movs	r2, #3
+ 822 002a 0692     		str	r2, [sp, #24]
+ 251:Core/Src/peripheral.c ****     spi_init_struct.nss                  = SPI_NSS_SOFT;
+ 823              		.loc 1 251 5 is_stmt 1 view .LVU180
+ 824              		.loc 1 251 42 is_stmt 0 view .LVU181
+ 825 002c FE32     		adds	r2, r2, #254
+ 826 002e FF32     		adds	r2, r2, #255
+ 827 0030 0492     		str	r2, [sp, #16]
+ 252:Core/Src/peripheral.c ****     spi_init_struct.prescale             = SPI_PSC_2;
+ 828              		.loc 1 252 5 is_stmt 1 view .LVU182
+ 829              		.loc 1 252 42 is_stmt 0 view .LVU183
+ 830 0032 0793     		str	r3, [sp, #28]
+ 253:Core/Src/peripheral.c ****     spi_init_struct.endian               = SPI_ENDIAN_MSB;
+ 831              		.loc 1 253 5 is_stmt 1 view .LVU184
+ 832              		.loc 1 253 42 is_stmt 0 view .LVU185
+ 833 0034 0593     		str	r3, [sp, #20]
+ 254:Core/Src/peripheral.c ****     spi_init(SPI0, &spi_init_struct);
+ 834              		.loc 1 254 5 is_stmt 1 view .LVU186
+ 835 0036 01A9     		add	r1, sp, #4
+ 836 0038 2000     		movs	r0, r4
+ 837 003a FFF7FEFF 		bl	spi_init
+ 838              	.LVL94:
+ 255:Core/Src/peripheral.c ****     spi_enable(SPI0);
+ 839              		.loc 1 255 5 view .LVU187
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 20
+
+
+ 840 003e 2000     		movs	r0, r4
+ 841 0040 FFF7FEFF 		bl	spi_enable
+ 842              	.LVL95:
+ 256:Core/Src/peripheral.c **** }
+ 843              		.loc 1 256 1 is_stmt 0 view .LVU188
+ 844 0044 08B0     		add	sp, sp, #32
+ 845              		@ sp needed
+ 846 0046 10BD     		pop	{r4, pc}
+ 847              		.cfi_endproc
+ 848              	.LFE69:
+ 850              		.section	.text.USARTConfig,"ax",%progbits
+ 851              		.align	1
+ 852              		.global	USARTConfig
+ 853              		.syntax unified
+ 854              		.code	16
+ 855              		.thumb_func
+ 857              	USARTConfig:
+ 858              	.LFB70:
+ 257:Core/Src/peripheral.c **** 
+ 258:Core/Src/peripheral.c **** #if OPEN_ZLOG == 1
+ 259:Core/Src/peripheral.c **** /*
+ 260:Core/Src/peripheral.c ****  * @brief    USART configuration
+ 261:Core/Src/peripheral.c ****  * @param    None
+ 262:Core/Src/peripheral.c ****  * @retval   None
+ 263:Core/Src/peripheral.c ****  */
+ 264:Core/Src/peripheral.c **** void USARTConfig(void)
+ 265:Core/Src/peripheral.c **** {
+ 859              		.loc 1 265 1 is_stmt 1 view -0
+ 860              		.cfi_startproc
+ 861              		@ args = 0, pretend = 0, frame = 0
+ 862              		@ frame_needed = 0, uses_anonymous_args = 0
+ 863 0000 10B5     		push	{r4, lr}
+ 864              	.LCFI11:
+ 865              		.cfi_def_cfa_offset 8
+ 866              		.cfi_offset 4, -8
+ 867              		.cfi_offset 14, -4
+ 266:Core/Src/peripheral.c ****     /* deinitilize the USART */
+ 267:Core/Src/peripheral.c ****     usart_deinit(USART0);
+ 868              		.loc 1 267 5 view .LVU190
+ 869 0002 43F60004 		movw	r4, #14336
+ 870 0006 C4F20104 		movt	r4, 16385
+ 871 000a 2000     		movs	r0, r4
+ 872 000c FFF7FEFF 		bl	usart_deinit
+ 873              	.LVL96:
+ 268:Core/Src/peripheral.c **** 
+ 269:Core/Src/peripheral.c ****     /* USART configure */
+ 270:Core/Src/peripheral.c ****     usart_word_length_set(USART0, USART_WL_8BIT);
+ 874              		.loc 1 270 5 view .LVU191
+ 875 0010 0021     		movs	r1, #0
+ 876 0012 2000     		movs	r0, r4
+ 877 0014 FFF7FEFF 		bl	usart_word_length_set
+ 878              	.LVL97:
+ 271:Core/Src/peripheral.c ****     usart_stop_bit_set(USART0, USART_STB_1BIT);
+ 879              		.loc 1 271 5 view .LVU192
+ 880 0018 0021     		movs	r1, #0
+ 881 001a 2000     		movs	r0, r4
+ 882 001c FFF7FEFF 		bl	usart_stop_bit_set
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 21
+
+
+ 883              	.LVL98:
+ 272:Core/Src/peripheral.c ****     usart_parity_config(USART0, USART_PM_NONE);
+ 884              		.loc 1 272 5 view .LVU193
+ 885 0020 0021     		movs	r1, #0
+ 886 0022 2000     		movs	r0, r4
+ 887 0024 FFF7FEFF 		bl	usart_parity_config
+ 888              	.LVL99:
+ 273:Core/Src/peripheral.c ****     usart_baudrate_set(USART0, 115200U);
+ 889              		.loc 1 273 5 view .LVU194
+ 890 0028 E121     		movs	r1, #225
+ 891 002a 4902     		lsls	r1, r1, #9
+ 892 002c 2000     		movs	r0, r4
+ 893 002e FFF7FEFF 		bl	usart_baudrate_set
+ 894              	.LVL100:
+ 274:Core/Src/peripheral.c ****     usart_receive_config(USART0, USART_RECEIVE_ENABLE);
+ 895              		.loc 1 274 5 view .LVU195
+ 896 0032 0421     		movs	r1, #4
+ 897 0034 2000     		movs	r0, r4
+ 898 0036 FFF7FEFF 		bl	usart_receive_config
+ 899              	.LVL101:
+ 275:Core/Src/peripheral.c ****     usart_transmit_config(USART0, USART_TRANSMIT_ENABLE);
+ 900              		.loc 1 275 5 view .LVU196
+ 901 003a 0821     		movs	r1, #8
+ 902 003c 2000     		movs	r0, r4
+ 903 003e FFF7FEFF 		bl	usart_transmit_config
+ 904              	.LVL102:
+ 276:Core/Src/peripheral.c ****     usart_enable(USART0);
+ 905              		.loc 1 276 5 view .LVU197
+ 906 0042 2000     		movs	r0, r4
+ 907 0044 FFF7FEFF 		bl	usart_enable
+ 908              	.LVL103:
+ 277:Core/Src/peripheral.c **** }
+ 909              		.loc 1 277 1 is_stmt 0 view .LVU198
+ 910              		@ sp needed
+ 911 0048 10BD     		pop	{r4, pc}
+ 912              		.cfi_endproc
+ 913              	.LFE70:
+ 915              		.text
+ 916              	.Letext0:
+ 917              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 918              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 919              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 920              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
+ 921              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ 922              		.file 7 "Drivers/GD32E23x/Include/gd32e23x_spi.h"
+ 923              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
+ 924              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_usart.h"
+ 925              		.file 10 "Core/Inc/systick.h"
+ 926              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_adc.h"
+ 927              		.file 12 "Drivers/GD32E23x/Include/gd32e23x_syscfg.h"
+ 928              		.file 13 "Drivers/GD32E23x/Include/gd32e23x_misc.h"
+ 929              		.file 14 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 peripheral.c
+D:\noval\Temp\ccw9PDnC.s:19     .text.RCUConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:25     .text.RCUConfig:00000000 RCUConfig
+D:\noval\Temp\ccw9PDnC.s:79     .text.GPIOConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:85     .text.GPIOConfig:00000000 GPIOConfig
+D:\noval\Temp\ccw9PDnC.s:281    .text.GPIO13_14InterruptEnable:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:287    .text.GPIO13_14InterruptEnable:00000000 GPIO13_14InterruptEnable
+D:\noval\Temp\ccw9PDnC.s:343    .text.Timer14Config:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:349    .text.Timer14Config:00000000 Timer14Config
+D:\noval\Temp\ccw9PDnC.s:525    .text.TIMConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:531    .text.TIMConfig:00000000 TIMConfig
+D:\noval\Temp\ccw9PDnC.s:698    .text.ADCConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:704    .text.ADCConfig:00000000 ADCConfig
+D:\noval\Temp\ccw9PDnC.s:776    .text.SPIConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:782    .text.SPIConfig:00000000 SPIConfig
+D:\noval\Temp\ccw9PDnC.s:851    .text.USARTConfig:00000000 $t
+D:\noval\Temp\ccw9PDnC.s:857    .text.USARTConfig:00000000 USARTConfig
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+rcu_adc_clock_config
+gpio_mode_set
+gpio_output_options_set
+gpio_bit_set
+gpio_af_set
+nvic_irq_enable
+syscfg_exti_line_config
+exti_init
+exti_interrupt_enable
+exti_interrupt_flag_clear
+timer_deinit
+timer_struct_para_init
+timer_init
+timer_channel_output_struct_para_init
+timer_channel_output_config
+timer_channel_output_pulse_value_config
+timer_channel_output_mode_config
+timer_channel_output_shadow_config
+timer_auto_reload_shadow_enable
+timer_counter_value_config
+timer_primary_output_config
+timer_enable
+timer_input_capture_config
+timer_interrupt_flag_clear
+timer_interrupt_enable
+adc_special_function_config
+adc_external_trigger_source_config
+adc_regular_channel_config
+adc_data_alignment_config
+adc_resolution_config
+adc_channel_length_config
+adc_external_trigger_config
+adc_software_trigger_enable
+adc_enable
+delay_1ms
+adc_calibration_enable
+ARM GAS  D:\noval\Temp\ccw9PDnC.s 			page 23
+
+
+spi_i2s_deinit
+spi_struct_para_init
+spi_init
+spi_enable
+usart_deinit
+usart_word_length_set
+usart_stop_bit_set
+usart_parity_config
+usart_baudrate_set
+usart_receive_config
+usart_transmit_config
+usart_enable

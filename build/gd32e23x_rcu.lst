@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 2
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
   52 001e 41F20403 		movw	r3, #4100
   53 0022 C4F20203 		movt	r3, 16386
   54 0026 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 3
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 3
 
 
   55              		.loc 1 58 14 is_stmt 0 view .LVU9
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  101 0080 0B49     		ldr	r1, .L4+4
  102 0082 0A40     		ands	r2, r1
  103 0084 1A60     		str	r2, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 4
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 4
 
 
   67:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
   82:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_SPIx (x=0,1): SPI clock
   83:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_USARTx (x=0,1): USART clock
   84:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_WWDGT: WWDGT clock
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 5
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 5
 
 
   85:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_I2Cx (x=0,1): I2C clock
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  104:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CFGCMP: CFGCMP clock
  105:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_ADC: ADC clock
  106:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_TIMERx (x=0,2,5,13,14,15,16): TIMER clock
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 6
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 6
 
 
  107:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_SPIx (x=0,1): SPI clock
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  126:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_FMC_SLP: FMC clock
  127:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_SRAM_SLP: SRAM clock
  128:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[out] none
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 7
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 7
 
 
  129:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \retval     none
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  257              		.cfi_startproc
  258              		@ args = 0, pretend = 0, frame = 0
  259              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 8
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 8
 
 
  260              		@ link register save eliminated.
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  296              		@ frame_needed = 0, uses_anonymous_args = 0
  297              		@ link register save eliminated.
  167:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     RCU_REG_VAL(periph_reset) |= BIT(RCU_BIT_POS(periph_reset));
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 9
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 9
 
 
  298              		.loc 1 167 5 view .LVU54
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  334              		@ link register save eliminated.
  188:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     RCU_REG_VAL(periph_reset) &= ~BIT(RCU_BIT_POS(periph_reset));
  335              		.loc 1 188 5 view .LVU60
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 10
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 10
 
 
  336 0000 8309     		lsrs	r3, r0, #6
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  380              		.loc 1 200 1 view .LVU68
  381              		@ sp needed
  382 0012 7047     		bx	lr
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 11
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 11
 
 
  383              		.cfi_endproc
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  214:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \brief      configure the system clock source
  215:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[in]  ck_sys: system clock source select
  216:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                 only one parameter can be selected which is shown as below:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 12
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 12
 
 
  217:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CKSYSSRC_IRC8M: select CK_IRC8M as the CK_SYS source
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  235:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[out] none
  236:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \retval     which clock is selected as CK_SYS source
  237:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_SCSS_IRC8M: select CK_IRC8M as the CK_SYS source
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 13
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 13
 
 
  238:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_SCSS_HXTAL: select CK_HXTAL as the CK_SYS source
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  502 0000 41F20402 		movw	r2, #4100
  503 0004 C4F20202 		movt	r2, 16386
  504 0008 1368     		ldr	r3, [r2]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 14
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 14
 
 
  505              	.LVL17:
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  540              		.loc 1 278 13 is_stmt 0 view .LVU100
  541 0000 41F20402 		movw	r2, #4100
  542 0004 C4F20202 		movt	r2, 16386
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 15
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 15
 
 
  543 0008 1368     		ldr	r3, [r2]
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  580              		@ link register save eliminated.
  298:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     uint32_t apb2psc = 0U;
  581              		.loc 1 298 5 view .LVU108
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 16
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 16
 
 
  299:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     apb2psc = RCU_CFG0;
@@ -958,7 +958,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  318:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_ADCCK_AHB_DIV9: select CK_AHB/9 as CK_ADC
  319:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[out] none
  320:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \retval     none
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 17
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 17
 
 
  321:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** */
@@ -1018,7 +1018,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  664              	.L37:
  330:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     case RCU_ADCCK_IRC28M_DIV2:
  331:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 18
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 18
 
 
  665              		.loc 1 331 9 is_stmt 1 view .LVU124
@@ -1078,7 +1078,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  370:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG0 |= RCU_ADC_CKAPB2_DIV8;
  371:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
  372:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCSEL;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 19
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 19
 
 
  373:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         break;
@@ -1138,7 +1138,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  343:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
  720              		.loc 1 343 9 view .LVU140
  343:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 20
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 20
 
 
  721              		.loc 1 343 18 is_stmt 0 view .LVU141
@@ -1198,7 +1198,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  764 00d8 41F20403 		movw	r3, #4100
  765 00dc C4F20203 		movt	r3, 16386
  766 00e0 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 21
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 21
 
 
  352:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
@@ -1258,7 +1258,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  809 012e 41F20403 		movw	r3, #4100
  810 0132 C4F20203 		movt	r3, 16386
  811 0136 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 22
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 22
 
 
  361:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
@@ -1318,7 +1318,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  854 0184 41F20403 		movw	r3, #4100
  855 0188 C4F20203 		movt	r3, 16386
  856 018c 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 23
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 23
 
 
  370:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CFG2 |= RCU_CFG2_ADCPSC2;
@@ -1378,7 +1378,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  386:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CKOUTSRC_LXTAL: LXTAL selected
  387:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CKOUTSRC_CKSYS: CKSYS selected
  388:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CKOUTSRC_IRC8M: IRC8M selected
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 24
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 24
 
 
  389:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_CKOUTSRC_HXTAL: HXTAL selected
@@ -1438,7 +1438,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  937              		.cfi_endproc
  938              	.LFE75:
  940              		.section	.text.rcu_pll_config,"ax",%progbits
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 25
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 25
 
 
  941              		.align	1
@@ -1498,7 +1498,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  978              		@ sp needed
  979 0020 10BD     		pop	{r4, pc}
  980              		.cfi_endproc
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 26
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 26
 
 
  981              	.LFE76:
@@ -1558,7 +1558,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1020              		.syntax unified
  1021              		.code	16
  1022              		.thumb_func
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 27
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 27
 
 
  1024              	rcu_rtc_clock_config:
@@ -1618,7 +1618,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1062              	rcu_hxtal_prediv_config:
  1063              	.LVL39:
  1064              	.LFB79:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 28
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 28
 
 
  459:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** 
@@ -1678,7 +1678,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  476:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** 
  477:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** /*!
  478:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \brief      configure the LXTAL drive capability
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 29
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 29
 
 
  479:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[in]  lxtal_dricap: drive capability of LXTAL
@@ -1738,7 +1738,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  501:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_IRC8M: IRC8M
  502:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_IRC28M: IRC28M
  503:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_IRC40K: IRC40K
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 30
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 30
 
 
  504:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_PLL_CK: PLL
@@ -1798,7 +1798,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  558:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             reval = SUCCESS;
  559:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         }
  560:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         break;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 31
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 31
 
 
  561:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         
@@ -1858,7 +1858,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1144 0000 8309     		lsrs	r3, r0, #6
  1145 0002 41F2000C 		movw	ip, #4096
  1146 0006 C4F2020C 		movt	ip, 16386
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 32
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 32
 
 
  1147 000a 6344     		add	r3, r3, ip
@@ -1918,7 +1918,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1185 000c 1A68     		ldr	r2, [r3]
  1186              		.loc 1 626 27 is_stmt 0 view .LVU240
  1187 000e 1F21     		movs	r1, #31
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 33
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 33
 
 
  1188 0010 0840     		ands	r0, r1
@@ -1978,7 +1978,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  647:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         break;
  648:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     case RCU_LXTAL:
  649:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         /* LXTALEN must be reset before enable the oscillator bypass mode */
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 34
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 34
 
 
  650:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         reg = RCU_BDCTL;
@@ -2038,7 +2038,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  645:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CTL0 = (reg | RCU_CTL0_HXTALBPS);
  1261              		.loc 1 645 18 view .LVU261
  1262 0034 0240     		ands	r2, r0
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 35
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 35
 
 
  1263 0036 1A60     		str	r2, [r3]
@@ -2098,7 +2098,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1301 0000 1028     		cmp	r0, #16
  1302 0002 10D0     		beq	.L59
  1303 0004 40F60003 		movw	r3, #2048
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 36
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 36
 
 
  1304 0008 9842     		cmp	r0, r3
@@ -2158,7 +2158,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1335 002a C4F20203 		movt	r3, 16386
  1336 002e 1A68     		ldr	r2, [r3]
  1337              	.LVL61:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 37
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 37
 
 
  680:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         RCU_CTL0 = (reg & (~RCU_CTL0_HXTALBPS));
@@ -2218,7 +2218,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1378              		@ args = 0, pretend = 0, frame = 0
  1379              		@ frame_needed = 0, uses_anonymous_args = 0
  1380              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 38
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 38
 
 
  707:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     RCU_CTL0 |= RCU_CTL0_CKMEN;
@@ -2278,7 +2278,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1424 0014 FFFFF7FF 		.word	-524289
  1425              		.cfi_endproc
  1426              	.LFE87:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 39
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 39
 
 
  1428              		.section	.text.rcu_irc8m_adjust_value_set,"ax",%progbits
@@ -2338,7 +2338,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1469              		.section	.text.rcu_irc28m_adjust_value_set,"ax",%progbits
  1470              		.align	1
  1471              		.global	rcu_irc28m_adjust_value_set
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 40
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 40
 
 
  1472              		.syntax unified
@@ -2398,7 +2398,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1513              		.syntax unified
  1514              		.code	16
  1515              		.thumb_func
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 41
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 41
 
 
  1517              	rcu_voltage_key_unlock:
@@ -2458,7 +2458,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  769:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_DEEPSLEEP_V_0_9: the core voltage is 0.9V
  770:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_DEEPSLEEP_V_0_8: the core voltage is 0.8V
  771:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****       \arg        RCU_DEEPSLEEP_V_1_2: the core voltage is 1.2V
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 42
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 42
 
 
  772:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     \param[out] none
@@ -2518,7 +2518,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  794:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** */
  795:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** uint32_t rcu_clock_freq_get(rcu_clock_freq_enum clock)
  796:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** {
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 43
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 43
 
 
  1588              		.loc 1 796 1 is_stmt 1 view -0
@@ -2578,7 +2578,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1634 002a 30CB     		ldmia	r3!, {r4, r5}
  1635 002c 30C1     		stmia	r1!, {r4, r5}
  805:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** 
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 44
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 44
 
 
  806:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     sws = GET_BITS(RCU_CFG0, 2, 3);
@@ -2638,7 +2638,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  842:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         break;
  843:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     }
  844:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     /* calculate AHB clock frequency */
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 45
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 45
 
 
  845:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     idx = GET_BITS(RCU_CFG0, 4, 7);
@@ -2698,7 +2698,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1697 0072 2368     		ldr	r3, [r4]
  1698              	.LVL86:
  1699              		.loc 1 855 11 view .LVU368
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 46
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 46
 
 
  1700 0074 DB0A     		lsrs	r3, r3, #11
@@ -2758,7 +2758,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1746              	.LVL95:
  819:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
  1747              		.loc 1 819 17 view .LVU381
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 47
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 47
 
 
  1748 0096 890C     		lsrs	r1, r1, #18
@@ -2818,7 +2818,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  834:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         }else{
  1788              		.loc 1 834 13 is_stmt 1 view .LVU396
  834:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         }else{
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 48
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 48
 
 
  1789              		.loc 1 834 39 is_stmt 0 view .LVU397
@@ -2878,7 +2878,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1830              		.loc 1 836 24 view .LVU410
  1831 00ec ADE7     		b	.L73
  1832              	.LVL110:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 49
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 49
 
 
  1833              	.L77:
@@ -2938,7 +2938,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  900:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             case 2:
  901:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                 if(0U == adcps2){
  902:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                    adc_freq = apb2_freq / 6U;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 50
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 50
 
 
  903:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                 }else{
@@ -2998,7 +2998,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  869:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     case CK_APB2:
  1862              		.loc 1 869 9 view .LVU422
  1863 00fa FBE7     		b	.L72
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 51
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 51
 
 
  1864              	.LVL118:
@@ -3058,7 +3058,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1904 0130 920B     		lsrs	r2, r2, #14
  883:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             adcps2 = GET_BITS(RCU_CFG2, 31, 31);
  1905              		.loc 1 883 19 view .LVU437
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 52
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 52
 
 
  1906 0132 0323     		movs	r3, #3
@@ -3118,7 +3118,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1946              		.loc 1 908 19 is_stmt 0 view .LVU451
  1947 015c BAB9     		cbnz	r2, .L94
  909:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                 }else{
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 53
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 53
 
 
  1948              		.loc 1 909 20 is_stmt 1 view .LVU452
@@ -3178,7 +3178,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  1987 0174 0520     		movs	r0, #5
  1988              	.LVL138:
  897:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****                 }
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 54
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 54
 
 
  1989              		.loc 1 897 29 view .LVU468
@@ -3238,7 +3238,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2028              		.loc 1 911 29 view .LVU483
  2029 0194 AEE7     		b	.L72
  2030              	.LVL149:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 55
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 55
 
 
  2031              	.L78:
@@ -3298,7 +3298,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2069              		.loc 1 928 51 view .LVU499
  2070 01d2 0323     		movs	r3, #3
  928:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             usart_freq = IRC8M_VALUE;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 56
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 56
 
 
  2071              		.loc 1 928 51 view .LVU500
@@ -3358,7 +3358,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2112              		.loc 1 937 12 is_stmt 0 view .LVU513
  2113 01fa 7BE7     		b	.L72
  2114              	.L105:
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 57
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 57
 
 
  2115              		.align	2
@@ -3418,7 +3418,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2146              		.loc 1 963 14 view .LVU518
  2147 0012 D340     		lsrs	r3, r3, r2
  2148              		.loc 1 963 7 view .LVU519
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 58
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 58
 
 
  2149 0014 DB07     		lsls	r3, r3, #31
@@ -3478,7 +3478,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2192              		.loc 1 513 5 view .LVU529
  2193 0002 40F60003 		movw	r3, #2048
  2194 0006 9842     		cmp	r0, r3
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 59
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 59
 
 
  2195 0008 3CD0     		beq	.L130
@@ -3538,7 +3538,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2241              	.L119:
  517:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             stb_cnt++;
  2242              		.loc 1 517 13 is_stmt 1 view .LVU538
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 60
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 60
 
 
  517:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             stb_cnt++;
@@ -3598,7 +3598,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  529:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             stb_cnt++;
  2284              		.loc 1 529 13 is_stmt 1 view .LVU552
  529:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             stb_cnt++;
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 61
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 61
 
 
  2285              		.loc 1 529 25 is_stmt 0 view .LVU553
@@ -3658,7 +3658,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2326              		.loc 1 541 13 is_stmt 1 view .LVU566
  541:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****             stb_cnt++;
  2327              		.loc 1 541 25 is_stmt 0 view .LVU567
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 62
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 62
 
 
  2328 008a 0120     		movs	r0, #1
@@ -3718,7 +3718,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  554:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****         }
  2368              		.loc 1 554 20 is_stmt 0 view .LVU582
  2369 00b2 0134     		adds	r4, r4, #1
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 63
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 63
 
 
  2370              	.LVL198:
@@ -3778,7 +3778,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2410 00de 4FF6FF73 		movw	r3, #65535
  2411 00e2 C0F20F03 		movt	r3, 15
  2412 00e6 9C42     		cmp	r4, r3
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 64
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 64
 
 
  2413 00e8 F3D1     		bne	.L127
@@ -3838,7 +3838,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2453 010a 4FF6FF73 		movw	r3, #65535
  2454 010e C0F20F03 		movt	r3, 15
  2455 0112 9C42     		cmp	r4, r3
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 65
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 65
 
 
  2456 0114 F4D1     		bne	.L129
@@ -3898,7 +3898,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2496              		.loc 1 977 1 is_stmt 1 view -0
  2497              		.cfi_startproc
  2498              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 66
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 66
 
 
  2499              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -3958,7 +3958,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2535 0006 C4F2020C 		movt	ip, 16386
  2536 000a 6344     		add	r3, r3, ip
  2537 000c 1B68     		ldr	r3, [r3]
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 67
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 67
 
 
  2538              		.loc 1 997 42 view .LVU625
@@ -4018,7 +4018,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
 1017:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** */
 1018:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** void rcu_interrupt_flag_clear(rcu_int_flag_clear_enum int_flag_clear)
 1019:Drivers/GD32E23x/Source/gd32e23x_rcu.c **** {
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 68
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 68
 
 
  2573              		.loc 1 1019 1 is_stmt 1 view -0
@@ -4078,7 +4078,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2611              		.cfi_startproc
  2612              		@ args = 0, pretend = 0, frame = 0
  2613              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 69
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 69
 
 
  2614              		@ link register save eliminated.
@@ -4138,7 +4138,7 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2651              		@ link register save eliminated.
 1057:Drivers/GD32E23x/Source/gd32e23x_rcu.c ****     RCU_REG_VAL(stab_int) &= ~BIT(RCU_BIT_POS(stab_int));
  2652              		.loc 1 1057 5 view .LVU645
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 70
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 70
 
 
  2653 0000 8309     		lsrs	r3, r0, #6
@@ -4180,107 +4180,107 @@ ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 1
  2685              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  2686              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  2687              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 71
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 71
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_rcu.c
-D:\noval\Temp\ccJiQZkA.s:19     .text.rcu_deinit:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:25     .text.rcu_deinit:00000000 rcu_deinit
-D:\noval\Temp\ccJiQZkA.s:130    .text.rcu_deinit:000000ac $d
-D:\noval\Temp\ccJiQZkA.s:136    .text.rcu_periph_clock_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:142    .text.rcu_periph_clock_enable:00000000 rcu_periph_clock_enable
-D:\noval\Temp\ccJiQZkA.s:173    .text.rcu_periph_clock_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:179    .text.rcu_periph_clock_disable:00000000 rcu_periph_clock_disable
-D:\noval\Temp\ccJiQZkA.s:210    .text.rcu_periph_clock_sleep_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:216    .text.rcu_periph_clock_sleep_enable:00000000 rcu_periph_clock_sleep_enable
-D:\noval\Temp\ccJiQZkA.s:247    .text.rcu_periph_clock_sleep_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:253    .text.rcu_periph_clock_sleep_disable:00000000 rcu_periph_clock_sleep_disable
-D:\noval\Temp\ccJiQZkA.s:284    .text.rcu_periph_reset_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:290    .text.rcu_periph_reset_enable:00000000 rcu_periph_reset_enable
-D:\noval\Temp\ccJiQZkA.s:321    .text.rcu_periph_reset_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:327    .text.rcu_periph_reset_disable:00000000 rcu_periph_reset_disable
-D:\noval\Temp\ccJiQZkA.s:358    .text.rcu_bkp_reset_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:364    .text.rcu_bkp_reset_enable:00000000 rcu_bkp_reset_enable
-D:\noval\Temp\ccJiQZkA.s:387    .text.rcu_bkp_reset_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:393    .text.rcu_bkp_reset_disable:00000000 rcu_bkp_reset_disable
-D:\noval\Temp\ccJiQZkA.s:414    .text.rcu_bkp_reset_disable:00000014 $d
-D:\noval\Temp\ccJiQZkA.s:419    .text.rcu_system_clock_source_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:425    .text.rcu_system_clock_source_config:00000000 rcu_system_clock_source_config
-D:\noval\Temp\ccJiQZkA.s:458    .text.rcu_system_clock_source_get:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:464    .text.rcu_system_clock_source_get:00000000 rcu_system_clock_source_get
-D:\noval\Temp\ccJiQZkA.s:485    .text.rcu_ahb_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:491    .text.rcu_ahb_clock_config:00000000 rcu_ahb_clock_config
-D:\noval\Temp\ccJiQZkA.s:524    .text.rcu_apb1_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:530    .text.rcu_apb1_clock_config:00000000 rcu_apb1_clock_config
-D:\noval\Temp\ccJiQZkA.s:562    .text.rcu_apb1_clock_config:00000014 $d
-D:\noval\Temp\ccJiQZkA.s:567    .text.rcu_apb2_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:573    .text.rcu_apb2_clock_config:00000000 rcu_apb2_clock_config
-D:\noval\Temp\ccJiQZkA.s:605    .text.rcu_apb2_clock_config:00000014 $d
-D:\noval\Temp\ccJiQZkA.s:610    .text.rcu_adc_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:616    .text.rcu_adc_clock_config:00000000 rcu_adc_clock_config
-D:\noval\Temp\ccJiQZkA.s:651    .rodata.rcu_adc_clock_config:00000000 $d
-D:\noval\Temp\ccJiQZkA.s:882    .text.rcu_adc_clock_config:000001b4 $d
-D:\noval\Temp\ccJiQZkA.s:890    .text.rcu_ckout_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:896    .text.rcu_ckout_config:00000000 rcu_ckout_config
-D:\noval\Temp\ccJiQZkA.s:936    .text.rcu_ckout_config:00000018 $d
-D:\noval\Temp\ccJiQZkA.s:941    .text.rcu_pll_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:947    .text.rcu_pll_config:00000000 rcu_pll_config
-D:\noval\Temp\ccJiQZkA.s:984    .text.rcu_usart_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:990    .text.rcu_usart_clock_config:00000000 rcu_usart_clock_config
-D:\noval\Temp\ccJiQZkA.s:1018   .text.rcu_rtc_clock_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1024   .text.rcu_rtc_clock_config:00000000 rcu_rtc_clock_config
-D:\noval\Temp\ccJiQZkA.s:1051   .text.rcu_rtc_clock_config:00000018 $d
-D:\noval\Temp\ccJiQZkA.s:1056   .text.rcu_hxtal_prediv_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1062   .text.rcu_hxtal_prediv_config:00000000 rcu_hxtal_prediv_config
-D:\noval\Temp\ccJiQZkA.s:1095   .text.rcu_lxtal_drive_capability_config:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1101   .text.rcu_lxtal_drive_capability_config:00000000 rcu_lxtal_drive_capability_config
-D:\noval\Temp\ccJiQZkA.s:1129   .text.rcu_osci_on:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1135   .text.rcu_osci_on:00000000 rcu_osci_on
-D:\noval\Temp\ccJiQZkA.s:1166   .text.rcu_osci_off:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1172   .text.rcu_osci_off:00000000 rcu_osci_off
-D:\noval\Temp\ccJiQZkA.s:1203   .text.rcu_osci_bypass_mode_enable:00000000 $t
-ARM GAS  D:\noval\Temp\ccJiQZkA.s 			page 72
+D:\noval\Temp\ccT6xTt3.s:19     .text.rcu_deinit:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:25     .text.rcu_deinit:00000000 rcu_deinit
+D:\noval\Temp\ccT6xTt3.s:130    .text.rcu_deinit:000000ac $d
+D:\noval\Temp\ccT6xTt3.s:136    .text.rcu_periph_clock_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:142    .text.rcu_periph_clock_enable:00000000 rcu_periph_clock_enable
+D:\noval\Temp\ccT6xTt3.s:173    .text.rcu_periph_clock_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:179    .text.rcu_periph_clock_disable:00000000 rcu_periph_clock_disable
+D:\noval\Temp\ccT6xTt3.s:210    .text.rcu_periph_clock_sleep_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:216    .text.rcu_periph_clock_sleep_enable:00000000 rcu_periph_clock_sleep_enable
+D:\noval\Temp\ccT6xTt3.s:247    .text.rcu_periph_clock_sleep_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:253    .text.rcu_periph_clock_sleep_disable:00000000 rcu_periph_clock_sleep_disable
+D:\noval\Temp\ccT6xTt3.s:284    .text.rcu_periph_reset_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:290    .text.rcu_periph_reset_enable:00000000 rcu_periph_reset_enable
+D:\noval\Temp\ccT6xTt3.s:321    .text.rcu_periph_reset_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:327    .text.rcu_periph_reset_disable:00000000 rcu_periph_reset_disable
+D:\noval\Temp\ccT6xTt3.s:358    .text.rcu_bkp_reset_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:364    .text.rcu_bkp_reset_enable:00000000 rcu_bkp_reset_enable
+D:\noval\Temp\ccT6xTt3.s:387    .text.rcu_bkp_reset_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:393    .text.rcu_bkp_reset_disable:00000000 rcu_bkp_reset_disable
+D:\noval\Temp\ccT6xTt3.s:414    .text.rcu_bkp_reset_disable:00000014 $d
+D:\noval\Temp\ccT6xTt3.s:419    .text.rcu_system_clock_source_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:425    .text.rcu_system_clock_source_config:00000000 rcu_system_clock_source_config
+D:\noval\Temp\ccT6xTt3.s:458    .text.rcu_system_clock_source_get:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:464    .text.rcu_system_clock_source_get:00000000 rcu_system_clock_source_get
+D:\noval\Temp\ccT6xTt3.s:485    .text.rcu_ahb_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:491    .text.rcu_ahb_clock_config:00000000 rcu_ahb_clock_config
+D:\noval\Temp\ccT6xTt3.s:524    .text.rcu_apb1_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:530    .text.rcu_apb1_clock_config:00000000 rcu_apb1_clock_config
+D:\noval\Temp\ccT6xTt3.s:562    .text.rcu_apb1_clock_config:00000014 $d
+D:\noval\Temp\ccT6xTt3.s:567    .text.rcu_apb2_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:573    .text.rcu_apb2_clock_config:00000000 rcu_apb2_clock_config
+D:\noval\Temp\ccT6xTt3.s:605    .text.rcu_apb2_clock_config:00000014 $d
+D:\noval\Temp\ccT6xTt3.s:610    .text.rcu_adc_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:616    .text.rcu_adc_clock_config:00000000 rcu_adc_clock_config
+D:\noval\Temp\ccT6xTt3.s:651    .rodata.rcu_adc_clock_config:00000000 $d
+D:\noval\Temp\ccT6xTt3.s:882    .text.rcu_adc_clock_config:000001b4 $d
+D:\noval\Temp\ccT6xTt3.s:890    .text.rcu_ckout_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:896    .text.rcu_ckout_config:00000000 rcu_ckout_config
+D:\noval\Temp\ccT6xTt3.s:936    .text.rcu_ckout_config:00000018 $d
+D:\noval\Temp\ccT6xTt3.s:941    .text.rcu_pll_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:947    .text.rcu_pll_config:00000000 rcu_pll_config
+D:\noval\Temp\ccT6xTt3.s:984    .text.rcu_usart_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:990    .text.rcu_usart_clock_config:00000000 rcu_usart_clock_config
+D:\noval\Temp\ccT6xTt3.s:1018   .text.rcu_rtc_clock_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1024   .text.rcu_rtc_clock_config:00000000 rcu_rtc_clock_config
+D:\noval\Temp\ccT6xTt3.s:1051   .text.rcu_rtc_clock_config:00000018 $d
+D:\noval\Temp\ccT6xTt3.s:1056   .text.rcu_hxtal_prediv_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1062   .text.rcu_hxtal_prediv_config:00000000 rcu_hxtal_prediv_config
+D:\noval\Temp\ccT6xTt3.s:1095   .text.rcu_lxtal_drive_capability_config:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1101   .text.rcu_lxtal_drive_capability_config:00000000 rcu_lxtal_drive_capability_config
+D:\noval\Temp\ccT6xTt3.s:1129   .text.rcu_osci_on:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1135   .text.rcu_osci_on:00000000 rcu_osci_on
+D:\noval\Temp\ccT6xTt3.s:1166   .text.rcu_osci_off:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1172   .text.rcu_osci_off:00000000 rcu_osci_off
+D:\noval\Temp\ccT6xTt3.s:1203   .text.rcu_osci_bypass_mode_enable:00000000 $t
+ARM GAS  D:\noval\Temp\ccT6xTt3.s 			page 72
 
 
-D:\noval\Temp\ccJiQZkA.s:1209   .text.rcu_osci_bypass_mode_enable:00000000 rcu_osci_bypass_mode_enable
-D:\noval\Temp\ccJiQZkA.s:1280   .text.rcu_osci_bypass_mode_enable:00000044 $d
-D:\noval\Temp\ccJiQZkA.s:1285   .text.rcu_osci_bypass_mode_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1291   .text.rcu_osci_bypass_mode_disable:00000000 rcu_osci_bypass_mode_disable
-D:\noval\Temp\ccJiQZkA.s:1362   .text.rcu_osci_bypass_mode_disable:00000040 $d
-D:\noval\Temp\ccJiQZkA.s:1368   .text.rcu_hxtal_clock_monitor_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1374   .text.rcu_hxtal_clock_monitor_enable:00000000 rcu_hxtal_clock_monitor_enable
-D:\noval\Temp\ccJiQZkA.s:1397   .text.rcu_hxtal_clock_monitor_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1403   .text.rcu_hxtal_clock_monitor_disable:00000000 rcu_hxtal_clock_monitor_disable
-D:\noval\Temp\ccJiQZkA.s:1424   .text.rcu_hxtal_clock_monitor_disable:00000014 $d
-D:\noval\Temp\ccJiQZkA.s:1429   .text.rcu_irc8m_adjust_value_set:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1435   .text.rcu_irc8m_adjust_value_set:00000000 rcu_irc8m_adjust_value_set
-D:\noval\Temp\ccJiQZkA.s:1470   .text.rcu_irc28m_adjust_value_set:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1476   .text.rcu_irc28m_adjust_value_set:00000000 rcu_irc28m_adjust_value_set
-D:\noval\Temp\ccJiQZkA.s:1511   .text.rcu_voltage_key_unlock:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1517   .text.rcu_voltage_key_unlock:00000000 rcu_voltage_key_unlock
-D:\noval\Temp\ccJiQZkA.s:1545   .text.rcu_deepsleep_voltage_set:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1551   .text.rcu_deepsleep_voltage_set:00000000 rcu_deepsleep_voltage_set
-D:\noval\Temp\ccJiQZkA.s:1579   .text.rcu_clock_freq_get:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:1585   .text.rcu_clock_freq_get:00000000 rcu_clock_freq_get
-D:\noval\Temp\ccJiQZkA.s:2676   .rodata:00000000 .LANCHOR0
-D:\noval\Temp\ccJiQZkA.s:1728   .rodata.rcu_clock_freq_get:00000000 $d
-D:\noval\Temp\ccJiQZkA.s:2117   .text.rcu_clock_freq_get:000001fc $d
-D:\noval\Temp\ccJiQZkA.s:2122   .text.rcu_flag_get:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2128   .text.rcu_flag_get:00000000 rcu_flag_get
-D:\noval\Temp\ccJiQZkA.s:2169   .text.rcu_osci_stab_wait:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2175   .text.rcu_osci_stab_wait:00000000 rcu_osci_stab_wait
-D:\noval\Temp\ccJiQZkA.s:2483   .text.rcu_osci_stab_wait:0000012c $d
-D:\noval\Temp\ccJiQZkA.s:2488   .text.rcu_all_reset_flag_clear:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2494   .text.rcu_all_reset_flag_clear:00000000 rcu_all_reset_flag_clear
-D:\noval\Temp\ccJiQZkA.s:2517   .text.rcu_interrupt_flag_get:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2523   .text.rcu_interrupt_flag_get:00000000 rcu_interrupt_flag_get
-D:\noval\Temp\ccJiQZkA.s:2564   .text.rcu_interrupt_flag_clear:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2570   .text.rcu_interrupt_flag_clear:00000000 rcu_interrupt_flag_clear
-D:\noval\Temp\ccJiQZkA.s:2601   .text.rcu_interrupt_enable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2607   .text.rcu_interrupt_enable:00000000 rcu_interrupt_enable
-D:\noval\Temp\ccJiQZkA.s:2638   .text.rcu_interrupt_disable:00000000 $t
-D:\noval\Temp\ccJiQZkA.s:2644   .text.rcu_interrupt_disable:00000000 rcu_interrupt_disable
-D:\noval\Temp\ccJiQZkA.s:2675   .rodata:00000000 $d
+D:\noval\Temp\ccT6xTt3.s:1209   .text.rcu_osci_bypass_mode_enable:00000000 rcu_osci_bypass_mode_enable
+D:\noval\Temp\ccT6xTt3.s:1280   .text.rcu_osci_bypass_mode_enable:00000044 $d
+D:\noval\Temp\ccT6xTt3.s:1285   .text.rcu_osci_bypass_mode_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1291   .text.rcu_osci_bypass_mode_disable:00000000 rcu_osci_bypass_mode_disable
+D:\noval\Temp\ccT6xTt3.s:1362   .text.rcu_osci_bypass_mode_disable:00000040 $d
+D:\noval\Temp\ccT6xTt3.s:1368   .text.rcu_hxtal_clock_monitor_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1374   .text.rcu_hxtal_clock_monitor_enable:00000000 rcu_hxtal_clock_monitor_enable
+D:\noval\Temp\ccT6xTt3.s:1397   .text.rcu_hxtal_clock_monitor_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1403   .text.rcu_hxtal_clock_monitor_disable:00000000 rcu_hxtal_clock_monitor_disable
+D:\noval\Temp\ccT6xTt3.s:1424   .text.rcu_hxtal_clock_monitor_disable:00000014 $d
+D:\noval\Temp\ccT6xTt3.s:1429   .text.rcu_irc8m_adjust_value_set:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1435   .text.rcu_irc8m_adjust_value_set:00000000 rcu_irc8m_adjust_value_set
+D:\noval\Temp\ccT6xTt3.s:1470   .text.rcu_irc28m_adjust_value_set:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1476   .text.rcu_irc28m_adjust_value_set:00000000 rcu_irc28m_adjust_value_set
+D:\noval\Temp\ccT6xTt3.s:1511   .text.rcu_voltage_key_unlock:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1517   .text.rcu_voltage_key_unlock:00000000 rcu_voltage_key_unlock
+D:\noval\Temp\ccT6xTt3.s:1545   .text.rcu_deepsleep_voltage_set:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1551   .text.rcu_deepsleep_voltage_set:00000000 rcu_deepsleep_voltage_set
+D:\noval\Temp\ccT6xTt3.s:1579   .text.rcu_clock_freq_get:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:1585   .text.rcu_clock_freq_get:00000000 rcu_clock_freq_get
+D:\noval\Temp\ccT6xTt3.s:2676   .rodata:00000000 .LANCHOR0
+D:\noval\Temp\ccT6xTt3.s:1728   .rodata.rcu_clock_freq_get:00000000 $d
+D:\noval\Temp\ccT6xTt3.s:2117   .text.rcu_clock_freq_get:000001fc $d
+D:\noval\Temp\ccT6xTt3.s:2122   .text.rcu_flag_get:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2128   .text.rcu_flag_get:00000000 rcu_flag_get
+D:\noval\Temp\ccT6xTt3.s:2169   .text.rcu_osci_stab_wait:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2175   .text.rcu_osci_stab_wait:00000000 rcu_osci_stab_wait
+D:\noval\Temp\ccT6xTt3.s:2483   .text.rcu_osci_stab_wait:0000012c $d
+D:\noval\Temp\ccT6xTt3.s:2488   .text.rcu_all_reset_flag_clear:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2494   .text.rcu_all_reset_flag_clear:00000000 rcu_all_reset_flag_clear
+D:\noval\Temp\ccT6xTt3.s:2517   .text.rcu_interrupt_flag_get:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2523   .text.rcu_interrupt_flag_get:00000000 rcu_interrupt_flag_get
+D:\noval\Temp\ccT6xTt3.s:2564   .text.rcu_interrupt_flag_clear:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2570   .text.rcu_interrupt_flag_clear:00000000 rcu_interrupt_flag_clear
+D:\noval\Temp\ccT6xTt3.s:2601   .text.rcu_interrupt_enable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2607   .text.rcu_interrupt_enable:00000000 rcu_interrupt_enable
+D:\noval\Temp\ccT6xTt3.s:2638   .text.rcu_interrupt_disable:00000000 $t
+D:\noval\Temp\ccT6xTt3.s:2644   .text.rcu_interrupt_disable:00000000 rcu_interrupt_disable
+D:\noval\Temp\ccT6xTt3.s:2675   .rodata:00000000 $d
 
 NO UNDEFINED SYMBOLS

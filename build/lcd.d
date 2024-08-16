@@ -1,4 +1,4 @@
-build/lcd.o: Drivers/LCD/lcd.c Drivers/LCD/lcd.h \
+build/lcd.o: Drivers/UserDrivers/lcd.c Drivers/UserDrivers/lcd.h \
  Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h Drivers/CMSIS/core_cm23.h \
  Drivers/CMSIS/cmsis_version.h Drivers/CMSIS/cmsis_compiler.h \
  Drivers/CMSIS/cmsis_gcc.h \
@@ -22,8 +22,8 @@ build/lcd.o: Drivers/LCD/lcd.c Drivers/LCD/lcd.h \
  Drivers/GD32E23x/Include/gd32e23x_wwdgt.h \
  Drivers/GD32E23x/Include/gd32e23x_misc.h \
  Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h \
- Drivers/LCD/lcdfonts.h
-Drivers/LCD/lcd.h:
+ Drivers/UserDrivers/lcdfonts.h
+Drivers/UserDrivers/lcd.h:
 Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h:
 Drivers/CMSIS/core_cm23.h:
 Drivers/CMSIS/cmsis_version.h:
@@ -51,4 +51,4 @@ Drivers/GD32E23x/Include/gd32e23x_wwdgt.h:
 Drivers/GD32E23x/Include/gd32e23x_misc.h:
 Drivers/GD32E23x/Include/gd32e23x_cmp.h:
 Core/Inc/systick.h:
-Drivers/LCD/lcdfonts.h:
+Drivers/UserDrivers/lcdfonts.h:

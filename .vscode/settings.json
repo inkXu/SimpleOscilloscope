@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "gd32e230c_eval.h": "c"
+        "gd32e230c_eval.h": "c",
+        "lcd.h": "c"
     }
 }

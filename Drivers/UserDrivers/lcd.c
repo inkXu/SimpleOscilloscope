@@ -1,3 +1,8 @@
+/*
+ * file:  lcd.c
+ * brief: LCD driver
+ */
+
 #include "lcd.h"
 #include "gd32e23x.h"
 #include "systick.h"
@@ -11,37 +16,12 @@ static void LCD_Write_Data8(uint8_t data);
 static void LCD_Display_Position(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 
 /*
- * @brief    initialize LCD screen
- * @param    None
- * @retval   None
+ * @brief:  initialize LCD screen
+ * @param:  None
+ * @retval: None
  */
 void LCD_Init(void)
 {
-    spi_parameter_struct spi_init_struct;
-
-    /* RES, DC, CS, BLK */
-    gpio_mode_set(LCD_RES_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LCD_RES_PIN|LCD_DC_PIN|LCD_CS_PIN|LCD_BL_PIN);
-    gpio_output_options_set(LCD_RES_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_RES_PIN|LCD_DC_PIN|LCD_CS_PIN|LCD_BL_PIN);
-    gpio_bit_set(LCD_RES_PORT, LCD_RES_PIN|LCD_DC_PIN|LCD_CS_PIN|LCD_BL_PIN);
-
-    /* SPI */
-    rcu_periph_clock_enable(RCU_SPI0);
-    gpio_mode_set(LCD_SPI_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE, LCD_DATA_PIN|LCD_CLK_PIN);
-    gpio_output_options_set(LCD_SPI_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_DATA_PIN|LCD_CLK_PIN);
-    gpio_af_set(LCD_SPI_PORT, GPIO_AF_0, LCD_DATA_PIN|LCD_CLK_PIN);
-
-    spi_i2s_deinit(SPI0);
-    spi_struct_para_init(&spi_init_struct);
-    spi_init_struct.trans_mode           = SPI_TRANSMODE_FULLDUPLEX;
-    spi_init_struct.device_mode          = SPI_MASTER;
-    spi_init_struct.frame_size           = SPI_FRAMESIZE_8BIT;
-    spi_init_struct.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;
-    spi_init_struct.nss                  = SPI_NSS_SOFT;
-    spi_init_struct.prescale             = SPI_PSC_2;
-    spi_init_struct.endian               = SPI_ENDIAN_MSB;
-    spi_init(SPI0, &spi_init_struct);
-    spi_enable(SPI0);
-
     gpio_bit_reset(LCD_RES_PORT, LCD_RES_PIN);
     delay_1ms(100);
     gpio_bit_set(LCD_RES_PORT, LCD_RES_PIN);
@@ -137,7 +117,7 @@ void LCD_Init(void)
 	LCD_Write_Data8(0x04); 
 	LCD_Write_Data8(0x13); 
 	//------------------------------------End ST7735S Gamma Sequence-----------------------------// 
-	LCD_Write_Cmd(0x3A); //65k mode 
+	LCD_Write_Cmd(0x3A); //65k mode, RGB 5-6-5-bit input
 	LCD_Write_Data8(0x05); 
 	LCD_Write_Cmd(0x29); //Displa
 }
@@ -347,7 +327,7 @@ void LCD_Show_String(uint16_t x,uint16_t y,const uint8_t *p,uint16_t fc,uint16_t
 	}  
 }
 
-void LCD_Draw_Curve(uint8_t yoffset, int16_t rawvalue)
+uint16_t LCD_Draw_Curve(uint8_t xoffset, uint8_t yoffset, int16_t rawvalue)
 {
 	static uint8_t  first_point = 1;
 	static uint16_t lastX, lastY;
@@ -356,8 +336,8 @@ void LCD_Draw_Curve(uint8_t yoffset, int16_t rawvalue)
 	y = (uint16_t)(yoffset - rawvalue);
 	if (first_point) {
 		first_point = 0;
-		LCD_Draw_Point(0, y, GREEN);
-		lastX = 0;
+		LCD_Draw_Point(xoffset, y, GREEN);
+		lastX = xoffset;
 		lastY = y;
 	} else {
 		if (lastX < 159) {
@@ -365,9 +345,56 @@ void LCD_Draw_Curve(uint8_t yoffset, int16_t rawvalue)
 			lastX ++;
 			lastY = y;
 		} else {
-			LCD_Draw_Point(0, y, GREEN);
-			lastX = 0;
+			LCD_Draw_Point(xoffset, y, GREEN);
+			lastX = xoffset;
 			lastY = y;
 		}
+	}
+	return lastX;
+}
+
+uint32_t mypow(uint8_t m, uint8_t n)
+{
+	uint32_t result=1;	 
+	while(n--)result*=m;
+	return result;
+}
+
+void LCD_ShowFloatNum1(uint16_t x, uint16_t y, float num, uint16_t len, uint16_t fc, uint16_t bc,uint8_t sizey)
+{         	
+	uint8_t t,temp,sizex;
+	uint16_t num1;
+	sizex=sizey/2;
+	num1=num*100;
+	for(t=0;t<len;t++)
+	{
+		temp=(num1/mypow(10,len-t-1))%10;
+		if(t==(len-2))
+		{
+			LCD_Show_Char(x+(len-2)*sizex,y,'.',fc,bc,sizey,0);
+			t++;
+			len+=1;
+		}
+	 	LCD_Show_Char(x+t*sizex,y,temp+48,fc,bc,sizey,0);
+	}
+}
+void LCD_ShowIntNum(uint16_t x, uint16_t y, uint16_t num, uint8_t len, uint16_t fc, uint16_t bc, uint8_t sizey)
+{         	
+	uint8_t t,temp;
+	uint8_t enshow=0;
+	uint8_t sizex=sizey/2;
+	for(t=0;t<len;t++)
+	{
+		temp=(num/mypow(10,len-t-1))%10;
+		if(enshow==0&&t<(len-1))
+		{
+			if(temp==0)
+			{
+				LCD_Show_Char(x+t*sizex,y,' ',fc,bc,sizey,0);
+				continue;
+			}else enshow=1; 
+		 	 
+		}
+	 	LCD_Show_Char(x+t*sizex,y,temp+48,fc,bc,sizey,0);
 	}
 }

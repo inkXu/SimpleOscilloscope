@@ -1,7 +1,8 @@
-build/gd32e230c_eval.o: Core/Src/gd32e230c_eval.c \
- Core/Inc/gd32e230c_eval.h Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h \
- Drivers/CMSIS/core_cm23.h Drivers/CMSIS/cmsis_version.h \
- Drivers/CMSIS/cmsis_compiler.h Drivers/CMSIS/cmsis_gcc.h \
+build/peripheral.o: Core/Src/peripheral.c Core/Inc/peripheral.h \
+ Core/Inc/log.h Core/Inc/log.h \
+ Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h Drivers/CMSIS/core_cm23.h \
+ Drivers/CMSIS/cmsis_version.h Drivers/CMSIS/cmsis_compiler.h \
+ Drivers/CMSIS/cmsis_gcc.h \
  Drivers/CMSIS/GD/GD32E23x/Include/system_gd32e23x.h \
  Core/Inc/gd32e23x_libopt.h Drivers/GD32E23x/Include/gd32e23x_adc.h \
  Drivers/GD32E23x/Include/gd32e23x_crc.h \
@@ -22,7 +23,9 @@ build/gd32e230c_eval.o: Core/Src/gd32e230c_eval.c \
  Drivers/GD32E23x/Include/gd32e23x_wwdgt.h \
  Drivers/GD32E23x/Include/gd32e23x_misc.h \
  Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h
-Core/Inc/gd32e230c_eval.h:
+Core/Inc/peripheral.h:
+Core/Inc/log.h:
+Core/Inc/log.h:
 Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h:
 Drivers/CMSIS/core_cm23.h:
 Drivers/CMSIS/cmsis_version.h:

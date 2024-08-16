@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 1
+ARM GAS  D:\noval\Temp\ccY5wGiu.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -18,73 +18,14 @@ ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 1
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
   17              		.file 1 "Core/Src/main.c"
-  18              		.section	.rodata.main.str1.4,"aMS",%progbits,1
-  19              		.align	2
-  20              	.LC0:
-  21 0000 41707020 		.ascii	"App Start!\000"
-  21      53746172 
-  21      742100
-  22 000b 00       		.align	2
-  23              	.LC1:
-  24 000c 57656C63 		.ascii	"Welcome to China!\000"
-  24      6F6D6520 
-  24      746F2043 
-  24      68696E61 
-  24      2100
-  25 001e 0000     		.align	2
-  26              	.LC2:
-  27 0020 41444320 		.ascii	"ADC value: %lu\012\000"
-  27      76616C75 
-  27      653A2025 
-  27      6C750A00 
-  28              		.global	__aeabi_ui2f
-  29              		.global	__aeabi_fdiv
-  30              		.global	__aeabi_fmul
-  31              		.global	__aeabi_f2d
-  32              		.align	2
-  33              	.LC3:
-  34 0030 56616C74 		.ascii	"Valtage: %lf\012\000"
-  34      6167653A 
-  34      20256C66 
-  34      0A00
-  35 003e 0000     		.align	2
-  36              	.LC4:
-  37 0040 45433131 		.ascii	"EC11 was pressed!\000"
-  37      20776173 
-  37      20707265 
-  37      73736564 
-  37      2100
-  38 0052 0000     		.align	2
-  39              	.LC5:
-  40 0054 45433131 		.ascii	"EC11 Turn Right.\000"
-  40      20547572 
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 2
-
-
-  40      6E205269 
-  40      6768742E 
-  40      00
-  41 0065 000000   		.align	2
-  42              	.LC6:
-  43 0068 45433131 		.ascii	"EC11 Turn Left.\000"
-  43      20547572 
-  43      6E204C65 
-  43      66742E00 
-  44              		.align	2
-  45              	.LC7:
-  46 0078 5369676E 		.ascii	"Signal Frequency: %lf\012\000"
-  46      616C2046 
-  46      72657175 
-  46      656E6379 
-  46      3A20256C 
-  47              		.section	.text.main,"ax",%progbits
-  48              		.align	1
-  49              		.global	main
-  50              		.syntax unified
-  51              		.code	16
-  52              		.thumb_func
-  54              	main:
-  55              	.LFB63:
+  18              		.section	.text.main,"ax",%progbits
+  19              		.align	1
+  20              		.global	main
+  21              		.syntax unified
+  22              		.code	16
+  23              		.thumb_func
+  25              	main:
+  26              	.LFB60:
    1:Core/Src/main.c **** /*!
    2:Core/Src/main.c ****     \file    main.c
    3:Core/Src/main.c ****     \brief   led spark with systick, USART print and key example
@@ -117,865 +58,129 @@ ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 1
   30:Core/Src/main.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Core/Src/main.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Core/Src/main.c **** OF SUCH DAMAGE.
+ARM GAS  D:\noval\Temp\ccY5wGiu.s 			page 2
+
+
   33:Core/Src/main.c **** */
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 3
-
-
   34:Core/Src/main.c **** 
   35:Core/Src/main.c **** #include "gd32e23x.h"
   36:Core/Src/main.c **** #include "systick.h"
-  37:Core/Src/main.c **** #include <stdio.h>
-  38:Core/Src/main.c **** #include "main.h"
-  39:Core/Src/main.c **** #include "gd32e230c_eval.h"
-  40:Core/Src/main.c **** #include "gd32e23x_it.h"
-  41:Core/Src/main.c **** #include "lcd.h"
-  42:Core/Src/main.c **** 
-  43:Core/Src/main.c **** static uint32_t adc_value;
-  44:Core/Src/main.c **** uint8_t arr_char[] = "Bark";
-  45:Core/Src/main.c **** int16_t wave_arr[160];
-  46:Core/Src/main.c **** // uint8_t idx;
-  47:Core/Src/main.c **** 
-  48:Core/Src/main.c **** /*!
-  49:Core/Src/main.c ****     \brief      main function
-  50:Core/Src/main.c ****     \retval     none
-  51:Core/Src/main.c **** */
-  52:Core/Src/main.c **** int main(void)
-  53:Core/Src/main.c **** {
-  56              		.loc 1 53 1 view -0
-  57              		.cfi_startproc
-  58              		@ args = 0, pretend = 0, frame = 0
-  59              		@ frame_needed = 0, uses_anonymous_args = 0
-  60 0000 70B5     		push	{r4, r5, r6, lr}
-  61              	.LCFI0:
-  62              		.cfi_def_cfa_offset 16
-  63              		.cfi_offset 4, -16
-  64              		.cfi_offset 5, -12
-  65              		.cfi_offset 6, -8
-  66              		.cfi_offset 14, -4
-  67 0002 84B0     		sub	sp, sp, #16
-  68              	.LCFI1:
-  69              		.cfi_def_cfa_offset 32
-  54:Core/Src/main.c ****     /* configure systick */
-  55:Core/Src/main.c ****     systick_config();
-  70              		.loc 1 55 5 view .LVU1
-  71 0004 FFF7FEFF 		bl	systick_config
-  72              	.LVL0:
-  56:Core/Src/main.c ****     /* initilize the LEDs, USART and key */
-  57:Core/Src/main.c ****     GPIO_Init();
-  73              		.loc 1 57 5 view .LVU2
-  74 0008 FFF7FEFF 		bl	GPIO_Init
-  75              	.LVL1:
-  58:Core/Src/main.c ****     USART_Init();
-  76              		.loc 1 58 5 view .LVU3
-  77 000c FFF7FEFF 		bl	USART_Init
-  78              	.LVL2:
-  59:Core/Src/main.c ****     ADC_Init();
-  79              		.loc 1 59 5 view .LVU4
-  80 0010 FFF7FEFF 		bl	ADC_Init
-  81              	.LVL3:
-  60:Core/Src/main.c ****     Timer_Init();
-  82              		.loc 1 60 5 view .LVU5
-  83 0014 FFF7FEFF 		bl	Timer_Init
-  84              	.LVL4:
-  61:Core/Src/main.c ****     LCD_Init();
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 4
+  37:Core/Src/main.c **** #include "gd32e23x_it.h"
+  38:Core/Src/main.c **** #include "app.h"
+  39:Core/Src/main.c **** // #include <stdio.h>
+  40:Core/Src/main.c **** // #include "main.h"
+  41:Core/Src/main.c **** // #include "gd32e230c_eval.h"
+  42:Core/Src/main.c **** // #include "lcd.h"
+  43:Core/Src/main.c **** 
+  44:Core/Src/main.c **** // static uint32_t adc_value;
+  45:Core/Src/main.c **** // uint8_t arr_char[] = "Bark";
+  46:Core/Src/main.c **** // int16_t wave_arr[160];
+  47:Core/Src/main.c **** // uint8_t idx;
+  48:Core/Src/main.c **** 
+  49:Core/Src/main.c **** /*!
+  50:Core/Src/main.c ****     \brief      main function
+  51:Core/Src/main.c ****     \retval     none
+  52:Core/Src/main.c **** */
+  53:Core/Src/main.c **** int main(void)
+  54:Core/Src/main.c **** {
+  27              		.loc 1 54 1 view -0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  55:Core/Src/main.c ****     /* configure systick */
+  56:Core/Src/main.c ****     systick_config();
+  37              		.loc 1 56 5 view .LVU1
+  38 0002 FFF7FEFF 		bl	systick_config
+  39              	.LVL0:
+  57:Core/Src/main.c ****     AppInit();
+  40              		.loc 1 57 5 view .LVU2
+  41 0006 FFF7FEFF 		bl	AppInit
+  42              	.LVL1:
+  43              	.L2:
+  58:Core/Src/main.c ****     /* initilize the LEDs, USART and key */
+  59:Core/Src/main.c ****     // GPIO_Init();
+  60:Core/Src/main.c ****     // USART_Init();
+  61:Core/Src/main.c ****     // ADC_Init();
+  62:Core/Src/main.c ****     // Timer_Init();
+  63:Core/Src/main.c ****     // LCD_Init();
+  64:Core/Src/main.c ****     // LCD_Fill(0, 0, LCD_WIDTH, LCD_HEIGHT + 1, BLACK);
+  65:Core/Src/main.c ****     // // LCD_Draw_Rectangle(32, 32, 96, 96, BLUE);
+  66:Core/Src/main.c ****     // LCD_Draw_Line(16, 32, 64, 96, BLUE);
+  67:Core/Src/main.c ****     // // LCD_Draw_Line(16, 80, 16, 32, RED);
+  68:Core/Src/main.c ****     // LCD_Show_Char(32, 32, 'R', YELLOW, BLACK, 16, 0);
+  69:Core/Src/main.c ****     // LCD_Show_String(16, 64, arr_char, WHITE, BLUE, 16, 0);
+  70:Core/Src/main.c ****     // for (int i = 0; i < 10; i++) {
+  71:Core/Src/main.c ****     //     wave_arr[i] = 0;
+  72:Core/Src/main.c ****     //     wave_arr[i + 20] = 0;
+ARM GAS  D:\noval\Temp\ccY5wGiu.s 			page 3
 
 
-  85              		.loc 1 61 5 view .LVU6
-  86 0018 FFF7FEFF 		bl	LCD_Init
-  87              	.LVL5:
-  62:Core/Src/main.c ****     LCD_Fill(0, 0, LCD_WIDTH, LCD_HEIGHT + 1, BLACK);
-  88              		.loc 1 62 5 view .LVU7
-  89 001c 0024     		movs	r4, #0
-  90 001e 0094     		str	r4, [sp]
-  91 0020 8223     		movs	r3, #130
-  92 0022 A122     		movs	r2, #161
-  93 0024 0021     		movs	r1, #0
-  94 0026 0020     		movs	r0, #0
-  95 0028 FFF7FEFF 		bl	LCD_Fill
-  96              	.LVL6:
-  63:Core/Src/main.c ****     // LCD_Draw_Rectangle(32, 32, 96, 96, BLUE);
-  64:Core/Src/main.c ****     LCD_Draw_Line(16, 32, 64, 96, BLUE);
-  97              		.loc 1 64 5 view .LVU8
-  98 002c 1F25     		movs	r5, #31
-  99 002e 0095     		str	r5, [sp]
- 100 0030 6023     		movs	r3, #96
- 101 0032 4022     		movs	r2, #64
- 102 0034 2021     		movs	r1, #32
- 103 0036 1020     		movs	r0, #16
- 104 0038 FFF7FEFF 		bl	LCD_Draw_Line
- 105              	.LVL7:
-  65:Core/Src/main.c ****     // LCD_Draw_Line(16, 80, 16, 32, RED);
-  66:Core/Src/main.c ****     LCD_Show_Char(32, 32, 'R', YELLOW, BLACK, 16, 0);
- 106              		.loc 1 66 5 view .LVU9
- 107 003c 0294     		str	r4, [sp, #8]
- 108 003e 1026     		movs	r6, #16
- 109 0040 0196     		str	r6, [sp, #4]
- 110 0042 0094     		str	r4, [sp]
- 111 0044 4FF6E073 		movw	r3, #65504
- 112 0048 5222     		movs	r2, #82
- 113 004a 2021     		movs	r1, #32
- 114 004c 2020     		movs	r0, #32
- 115 004e FFF7FEFF 		bl	LCD_Show_Char
- 116              	.LVL8:
-  67:Core/Src/main.c ****     LCD_Show_String(16, 64, arr_char, WHITE, BLUE, 16, 0);
- 117              		.loc 1 67 5 view .LVU10
- 118 0052 40F20002 		movw	r2, #:lower16:arr_char
- 119 0056 C0F20002 		movt	r2, #:upper16:arr_char
- 120 005a 0294     		str	r4, [sp, #8]
- 121 005c 0196     		str	r6, [sp, #4]
- 122 005e 0095     		str	r5, [sp]
- 123 0060 4FF6FF73 		movw	r3, #65535
- 124 0064 4021     		movs	r1, #64
- 125 0066 1020     		movs	r0, #16
- 126 0068 FFF7FEFF 		bl	LCD_Show_String
- 127              	.LVL9:
-  68:Core/Src/main.c ****     for (int i = 0; i < 10; i++) {
- 128              		.loc 1 68 5 view .LVU11
- 129              	.LBB2:
- 130              		.loc 1 68 10 view .LVU12
- 131              		.loc 1 68 14 is_stmt 0 view .LVU13
- 132 006c 0023     		movs	r3, #0
- 133              		.loc 1 68 5 view .LVU14
- 134 006e 13E0     		b	.L2
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 5
-
-
- 135              	.LVL10:
- 136              	.L3:
-  69:Core/Src/main.c ****         wave_arr[i] = 0;
- 137              		.loc 1 69 9 is_stmt 1 view .LVU15
- 138              		.loc 1 69 21 is_stmt 0 view .LVU16
- 139 0070 40F20002 		movw	r2, #:lower16:wave_arr
- 140 0074 C0F20002 		movt	r2, #:upper16:wave_arr
- 141 0078 5800     		lsls	r0, r3, #1
- 142 007a 0021     		movs	r1, #0
- 143 007c 8152     		strh	r1, [r0, r2]
-  70:Core/Src/main.c ****         wave_arr[i + 20] = 0;
- 144              		.loc 1 70 9 is_stmt 1 view .LVU17
- 145              		.loc 1 70 20 is_stmt 0 view .LVU18
- 146 007e 1800     		movs	r0, r3
- 147 0080 1430     		adds	r0, r0, #20
- 148              		.loc 1 70 26 view .LVU19
- 149 0082 4000     		lsls	r0, r0, #1
- 150 0084 8152     		strh	r1, [r0, r2]
-  71:Core/Src/main.c ****         wave_arr[i + 40] = 0;
- 151              		.loc 1 71 9 is_stmt 1 view .LVU20
- 152              		.loc 1 71 20 is_stmt 0 view .LVU21
- 153 0086 1800     		movs	r0, r3
- 154 0088 2830     		adds	r0, r0, #40
- 155              		.loc 1 71 26 view .LVU22
- 156 008a 4000     		lsls	r0, r0, #1
- 157 008c 8152     		strh	r1, [r0, r2]
-  72:Core/Src/main.c ****         wave_arr[i + 60] = 0;
- 158              		.loc 1 72 9 is_stmt 1 view .LVU23
- 159              		.loc 1 72 20 is_stmt 0 view .LVU24
- 160 008e 1800     		movs	r0, r3
- 161 0090 3C30     		adds	r0, r0, #60
- 162              		.loc 1 72 26 view .LVU25
- 163 0092 4000     		lsls	r0, r0, #1
- 164 0094 8152     		strh	r1, [r0, r2]
-  68:Core/Src/main.c ****         wave_arr[i] = 0;
- 165              		.loc 1 68 30 is_stmt 1 discriminator 3 view .LVU26
- 166 0096 0133     		adds	r3, r3, #1
- 167              	.LVL11:
- 168              	.L2:
-  68:Core/Src/main.c ****         wave_arr[i] = 0;
- 169              		.loc 1 68 23 discriminator 1 view .LVU27
- 170 0098 092B     		cmp	r3, #9
- 171 009a E9DD     		ble	.L3
- 172              	.LBE2:
- 173              	.LBB3:
-  73:Core/Src/main.c ****     }
-  74:Core/Src/main.c ****     for (int i = 10; i < 20; i++) {
- 174              		.loc 1 74 14 is_stmt 0 view .LVU28
- 175 009c 0A23     		movs	r3, #10
- 176              	.LVL12:
- 177              		.loc 1 74 14 view .LVU29
- 178 009e 13E0     		b	.L4
- 179              	.LVL13:
- 180              	.L5:
-  75:Core/Src/main.c ****         wave_arr[i] = 34;
- 181              		.loc 1 75 9 is_stmt 1 view .LVU30
- 182              		.loc 1 75 21 is_stmt 0 view .LVU31
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 6
-
-
- 183 00a0 40F20002 		movw	r2, #:lower16:wave_arr
- 184 00a4 C0F20002 		movt	r2, #:upper16:wave_arr
- 185 00a8 5800     		lsls	r0, r3, #1
- 186 00aa 2221     		movs	r1, #34
- 187 00ac 8152     		strh	r1, [r0, r2]
-  76:Core/Src/main.c ****         wave_arr[i + 20] = 34;
- 188              		.loc 1 76 9 is_stmt 1 view .LVU32
- 189              		.loc 1 76 20 is_stmt 0 view .LVU33
- 190 00ae 1800     		movs	r0, r3
- 191 00b0 1430     		adds	r0, r0, #20
- 192              		.loc 1 76 26 view .LVU34
- 193 00b2 4000     		lsls	r0, r0, #1
- 194 00b4 8152     		strh	r1, [r0, r2]
-  77:Core/Src/main.c ****         wave_arr[i + 40] = 34;
- 195              		.loc 1 77 9 is_stmt 1 view .LVU35
- 196              		.loc 1 77 20 is_stmt 0 view .LVU36
- 197 00b6 1800     		movs	r0, r3
- 198 00b8 2830     		adds	r0, r0, #40
- 199              		.loc 1 77 26 view .LVU37
- 200 00ba 4000     		lsls	r0, r0, #1
- 201 00bc 8152     		strh	r1, [r0, r2]
-  78:Core/Src/main.c ****         wave_arr[i + 60] = 34;
- 202              		.loc 1 78 9 is_stmt 1 view .LVU38
- 203              		.loc 1 78 20 is_stmt 0 view .LVU39
- 204 00be 1800     		movs	r0, r3
- 205 00c0 3C30     		adds	r0, r0, #60
- 206              		.loc 1 78 26 view .LVU40
- 207 00c2 4000     		lsls	r0, r0, #1
- 208 00c4 8152     		strh	r1, [r0, r2]
-  74:Core/Src/main.c ****         wave_arr[i] = 34;
- 209              		.loc 1 74 31 is_stmt 1 discriminator 3 view .LVU41
- 210 00c6 0133     		adds	r3, r3, #1
- 211              	.LVL14:
- 212              	.L4:
-  74:Core/Src/main.c ****         wave_arr[i] = 34;
- 213              		.loc 1 74 24 discriminator 1 view .LVU42
- 214 00c8 132B     		cmp	r3, #19
- 215 00ca E9DD     		ble	.L5
- 216              	.LBE3:
- 217              	.LBB4:
-  79:Core/Src/main.c ****     }
-  80:Core/Src/main.c ****     for (int i = 80; i < 90; i++) {
- 218              		.loc 1 80 14 is_stmt 0 view .LVU43
- 219 00cc 5023     		movs	r3, #80
- 220              	.LVL15:
- 221              		.loc 1 80 14 view .LVU44
- 222 00ce 15E0     		b	.L6
- 223              	.LVL16:
- 224              	.L7:
-  81:Core/Src/main.c ****         wave_arr[i] = i - 80;
- 225              		.loc 1 81 9 is_stmt 1 view .LVU45
- 226              		.loc 1 81 25 is_stmt 0 view .LVU46
- 227 00d0 1900     		movs	r1, r3
- 228 00d2 5039     		subs	r1, r1, #80
- 229 00d4 09B2     		sxth	r1, r1
- 230              		.loc 1 81 21 view .LVU47
- 231 00d6 40F20002 		movw	r2, #:lower16:wave_arr
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 7
-
-
- 232 00da C0F20002 		movt	r2, #:upper16:wave_arr
- 233 00de 5800     		lsls	r0, r3, #1
- 234 00e0 8152     		strh	r1, [r0, r2]
-  82:Core/Src/main.c ****         wave_arr[i + 20] = i - 80;
- 235              		.loc 1 82 9 is_stmt 1 view .LVU48
- 236              		.loc 1 82 20 is_stmt 0 view .LVU49
- 237 00e2 1800     		movs	r0, r3
- 238 00e4 1430     		adds	r0, r0, #20
- 239              		.loc 1 82 26 view .LVU50
- 240 00e6 4000     		lsls	r0, r0, #1
- 241 00e8 8152     		strh	r1, [r0, r2]
-  83:Core/Src/main.c ****         wave_arr[i + 40] = i - 80;
- 242              		.loc 1 83 9 is_stmt 1 view .LVU51
- 243              		.loc 1 83 20 is_stmt 0 view .LVU52
- 244 00ea 1800     		movs	r0, r3
- 245 00ec 2830     		adds	r0, r0, #40
- 246              		.loc 1 83 26 view .LVU53
- 247 00ee 4000     		lsls	r0, r0, #1
- 248 00f0 8152     		strh	r1, [r0, r2]
-  84:Core/Src/main.c ****         wave_arr[i + 60] = i - 80;
- 249              		.loc 1 84 9 is_stmt 1 view .LVU54
- 250              		.loc 1 84 20 is_stmt 0 view .LVU55
- 251 00f2 1800     		movs	r0, r3
- 252 00f4 3C30     		adds	r0, r0, #60
- 253              		.loc 1 84 26 view .LVU56
- 254 00f6 4000     		lsls	r0, r0, #1
- 255 00f8 8152     		strh	r1, [r0, r2]
-  80:Core/Src/main.c ****         wave_arr[i] = i - 80;
- 256              		.loc 1 80 31 is_stmt 1 discriminator 3 view .LVU57
- 257 00fa 0133     		adds	r3, r3, #1
- 258              	.LVL17:
- 259              	.L6:
-  80:Core/Src/main.c ****         wave_arr[i] = i - 80;
- 260              		.loc 1 80 24 discriminator 1 view .LVU58
- 261 00fc 592B     		cmp	r3, #89
- 262 00fe E7DD     		ble	.L7
- 263              	.LBE4:
- 264              	.LBB5:
-  85:Core/Src/main.c ****     }
-  86:Core/Src/main.c ****     for (int i = 90; i < 100; i++) {
- 265              		.loc 1 86 14 is_stmt 0 view .LVU59
- 266 0100 5A23     		movs	r3, #90
- 267              	.LVL18:
- 268              		.loc 1 86 14 view .LVU60
- 269 0102 15E0     		b	.L8
- 270              	.LVL19:
- 271              	.L9:
-  87:Core/Src/main.c ****         wave_arr[i] = i - 100;
- 272              		.loc 1 87 9 is_stmt 1 view .LVU61
- 273              		.loc 1 87 25 is_stmt 0 view .LVU62
- 274 0104 1900     		movs	r1, r3
- 275 0106 6439     		subs	r1, r1, #100
- 276 0108 09B2     		sxth	r1, r1
- 277              		.loc 1 87 21 view .LVU63
- 278 010a 40F20002 		movw	r2, #:lower16:wave_arr
- 279 010e C0F20002 		movt	r2, #:upper16:wave_arr
- 280 0112 5800     		lsls	r0, r3, #1
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 8
-
-
- 281 0114 8152     		strh	r1, [r0, r2]
-  88:Core/Src/main.c ****         wave_arr[i + 20] = i - 100;
- 282              		.loc 1 88 9 is_stmt 1 view .LVU64
- 283              		.loc 1 88 20 is_stmt 0 view .LVU65
- 284 0116 1800     		movs	r0, r3
- 285 0118 1430     		adds	r0, r0, #20
- 286              		.loc 1 88 26 view .LVU66
- 287 011a 4000     		lsls	r0, r0, #1
- 288 011c 8152     		strh	r1, [r0, r2]
-  89:Core/Src/main.c ****         wave_arr[i + 40] = i - 100;
- 289              		.loc 1 89 9 is_stmt 1 view .LVU67
- 290              		.loc 1 89 20 is_stmt 0 view .LVU68
- 291 011e 1800     		movs	r0, r3
- 292 0120 2830     		adds	r0, r0, #40
- 293              		.loc 1 89 26 view .LVU69
- 294 0122 4000     		lsls	r0, r0, #1
- 295 0124 8152     		strh	r1, [r0, r2]
-  90:Core/Src/main.c ****         wave_arr[i + 60] = i - 100;
- 296              		.loc 1 90 9 is_stmt 1 view .LVU70
- 297              		.loc 1 90 20 is_stmt 0 view .LVU71
- 298 0126 1800     		movs	r0, r3
- 299 0128 3C30     		adds	r0, r0, #60
- 300              		.loc 1 90 26 view .LVU72
- 301 012a 4000     		lsls	r0, r0, #1
- 302 012c 8152     		strh	r1, [r0, r2]
-  86:Core/Src/main.c ****         wave_arr[i] = i - 100;
- 303              		.loc 1 86 32 is_stmt 1 discriminator 3 view .LVU73
- 304 012e 0133     		adds	r3, r3, #1
- 305              	.LVL20:
- 306              	.L8:
-  86:Core/Src/main.c ****         wave_arr[i] = i - 100;
- 307              		.loc 1 86 24 discriminator 1 view .LVU74
- 308 0130 632B     		cmp	r3, #99
- 309 0132 E7DD     		ble	.L9
- 310              	.LBE5:
- 311              	.LBB6:
-  91:Core/Src/main.c ****     }
-  92:Core/Src/main.c ****     for (int i = 0; i < 160; i++) {
- 312              		.loc 1 92 14 is_stmt 0 view .LVU75
- 313 0134 0024     		movs	r4, #0
- 314 0136 09E0     		b	.L10
- 315              	.LVL21:
- 316              	.L11:
-  93:Core/Src/main.c ****         LCD_Draw_Curve(64, wave_arr[i]);
- 317              		.loc 1 93 9 is_stmt 1 view .LVU76
- 318 0138 40F20003 		movw	r3, #:lower16:wave_arr
- 319 013c C0F20003 		movt	r3, #:upper16:wave_arr
- 320 0140 6200     		lsls	r2, r4, #1
- 321 0142 D15E     		ldrsh	r1, [r2, r3]
- 322 0144 4020     		movs	r0, #64
- 323 0146 FFF7FEFF 		bl	LCD_Draw_Curve
- 324              	.LVL22:
-  92:Core/Src/main.c ****         LCD_Draw_Curve(64, wave_arr[i]);
- 325              		.loc 1 92 31 discriminator 3 view .LVU77
- 326 014a 0134     		adds	r4, r4, #1
- 327              	.LVL23:
- 328              	.L10:
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 9
-
-
-  92:Core/Src/main.c ****         LCD_Draw_Curve(64, wave_arr[i]);
- 329              		.loc 1 92 23 discriminator 1 view .LVU78
- 330 014c 9F2C     		cmp	r4, #159
- 331 014e F3DD     		ble	.L11
- 332              	.LBE6:
-  94:Core/Src/main.c ****     }
-  95:Core/Src/main.c **** 
-  96:Core/Src/main.c ****     printf("App Start!\n");
- 333              		.loc 1 96 5 view .LVU79
- 334 0150 40F20000 		movw	r0, #:lower16:.LC0
- 335 0154 C0F20000 		movt	r0, #:upper16:.LC0
- 336 0158 FFF7FEFF 		bl	puts
- 337              	.LVL24:
- 338 015c ADE0     		b	.L26
- 339              	.LVL25:
- 340              	.L27:
+  73:Core/Src/main.c ****     //     wave_arr[i + 40] = 0;
+  74:Core/Src/main.c ****     //     wave_arr[i + 60] = 0;
+  75:Core/Src/main.c ****     // }
+  76:Core/Src/main.c ****     // for (int i = 10; i < 20; i++) {
+  77:Core/Src/main.c ****     //     wave_arr[i] = 34;
+  78:Core/Src/main.c ****     //     wave_arr[i + 20] = 34;
+  79:Core/Src/main.c ****     //     wave_arr[i + 40] = 34;
+  80:Core/Src/main.c ****     //     wave_arr[i + 60] = 34;
+  81:Core/Src/main.c ****     // }
+  82:Core/Src/main.c ****     // for (int i = 80; i < 90; i++) {
+  83:Core/Src/main.c ****     //     wave_arr[i] = i - 80;
+  84:Core/Src/main.c ****     //     wave_arr[i + 20] = i - 80;
+  85:Core/Src/main.c ****     //     wave_arr[i + 40] = i - 80;
+  86:Core/Src/main.c ****     //     wave_arr[i + 60] = i - 80;
+  87:Core/Src/main.c ****     // }
+  88:Core/Src/main.c ****     // for (int i = 90; i < 100; i++) {
+  89:Core/Src/main.c ****     //     wave_arr[i] = i - 100;
+  90:Core/Src/main.c ****     //     wave_arr[i + 20] = i - 100;
+  91:Core/Src/main.c ****     //     wave_arr[i + 40] = i - 100;
+  92:Core/Src/main.c ****     //     wave_arr[i + 60] = i - 100;
+  93:Core/Src/main.c ****     // }
+  94:Core/Src/main.c ****     // for (int i = 0; i < 160; i++) {
+  95:Core/Src/main.c ****     //     LCD_Draw_Curve(64, wave_arr[i]);
+  96:Core/Src/main.c ****     // }
   97:Core/Src/main.c **** 
-  98:Core/Src/main.c ****     // LCD_Show_String(32, 32, (const uint8_t *)"Thanks", 0X0000, 0XFFFF, 16, 0);
-  99:Core/Src/main.c ****     // LCD_Show_String(64, 32, (const uint8_t *)"Welcome", 0XFFFF, 0X0000, 16, 0);
- 100:Core/Src/main.c **** 
- 101:Core/Src/main.c ****     // gd_eval_com_init(EVAL_COM);
- 102:Core/Src/main.c ****     // gd_eval_key_init(KEY_WAKEUP, KEY_MODE_GPIO);
- 103:Core/Src/main.c ****     
- 104:Core/Src/main.c ****     /* print out the clock frequency of system, AHB, APB1 and APB2 */
- 105:Core/Src/main.c ****     // printf("\r\nCK_SYS is %lu", rcu_clock_freq_get(CK_SYS));
- 106:Core/Src/main.c ****     // printf("\r\nCK_AHB is %lu", rcu_clock_freq_get(CK_AHB));
- 107:Core/Src/main.c ****     // printf("\r\nCK_APB1 is %lu", rcu_clock_freq_get(CK_APB1));
- 108:Core/Src/main.c ****     // printf("\r\nCK_APB2 is %lu", rcu_clock_freq_get(CK_APB2));
- 109:Core/Src/main.c **** 
- 110:Core/Src/main.c ****     while(1) {
- 111:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13)) {
- 112:Core/Src/main.c ****             printf("Welcome to China!\n");
- 341              		.loc 1 112 13 view .LVU80
- 342 015e 40F20000 		movw	r0, #:lower16:.LC1
- 343 0162 C0F20000 		movt	r0, #:upper16:.LC1
- 344 0166 FFF7FEFF 		bl	puts
- 345              	.LVL26:
- 113:Core/Src/main.c ****             gpio_bit_toggle(GPIOC, GPIO_PIN_13);
- 346              		.loc 1 113 13 view .LVU81
- 347 016a 40F60000 		movw	r0, #2048
- 348 016e C4F60000 		movt	r0, 18432
- 349 0172 42F20001 		movw	r1, #8192
- 350 0176 FFF7FEFF 		bl	gpio_bit_toggle
- 351              	.LVL27:
- 114:Core/Src/main.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13));
- 352              		.loc 1 114 13 view .LVU82
- 353              	.L13:
- 354              		.loc 1 114 26 discriminator 1 view .LVU83
- 355              		.loc 1 114 29 is_stmt 0 discriminator 1 view .LVU84
- 356 017a 40F20040 		movw	r0, #1024
- 357 017e C4F60000 		movt	r0, 18432
- 358 0182 42F20001 		movw	r1, #8192
- 359 0186 FFF7FEFF 		bl	gpio_input_bit_get
- 360              	.LVL28:
- 361              		.loc 1 114 26 discriminator 1 view .LVU85
- 362 018a 0028     		cmp	r0, #0
- 363 018c F5D0     		beq	.L13
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 10
-
-
- 364 018e 9FE0     		b	.L12
- 365              	.L28:
- 115:Core/Src/main.c ****         }
- 116:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14)) {
- 117:Core/Src/main.c ****             adc_value = ADCGetValue(ADC_CHANNEL_3);
- 366              		.loc 1 117 13 is_stmt 1 view .LVU86
- 367              		.loc 1 117 25 is_stmt 0 view .LVU87
- 368 0190 0330     		adds	r0, r0, #3
- 369 0192 FFF7FEFF 		bl	ADCGetValue
- 370              	.LVL29:
- 371 0196 0100     		movs	r1, r0
- 372              		.loc 1 117 23 discriminator 1 view .LVU88
- 373 0198 40F20004 		movw	r4, #:lower16:adc_value
- 374 019c C0F20004 		movt	r4, #:upper16:adc_value
- 375 01a0 2060     		str	r0, [r4]
- 118:Core/Src/main.c ****             printf("ADC value: %lu\n", adc_value);
- 376              		.loc 1 118 13 is_stmt 1 view .LVU89
- 377 01a2 40F20000 		movw	r0, #:lower16:.LC2
- 378 01a6 C0F20000 		movt	r0, #:upper16:.LC2
- 379 01aa FFF7FEFF 		bl	printf
- 380              	.LVL30:
- 119:Core/Src/main.c ****             printf("Valtage: %lf\n", (float)adc_value/4095*3.3f);
- 381              		.loc 1 119 13 view .LVU90
- 382              		.loc 1 119 38 is_stmt 0 view .LVU91
- 383 01ae 2068     		ldr	r0, [r4]
- 384 01b0 FFF7FEFF 		bl	__aeabi_ui2f
- 385              	.LVL31:
- 386              		.loc 1 119 54 view .LVU92
- 387 01b4 4FF20001 		movw	r1, #61440
- 388 01b8 C4F27F51 		movt	r1, 17791
- 389 01bc FFF7FEFF 		bl	__aeabi_fdiv
- 390              	.LVL32:
- 391              		.loc 1 119 59 view .LVU93
- 392 01c0 43F23331 		movw	r1, #13107
- 393 01c4 C4F25301 		movt	r1, 16467
- 394 01c8 FFF7FEFF 		bl	__aeabi_fmul
- 395              	.LVL33:
- 396              		.loc 1 119 13 view .LVU94
- 397 01cc FFF7FEFF 		bl	__aeabi_f2d
- 398              	.LVL34:
- 399 01d0 0200     		movs	r2, r0
- 400 01d2 0B00     		movs	r3, r1
- 401 01d4 40F20000 		movw	r0, #:lower16:.LC3
- 402 01d8 C0F20000 		movt	r0, #:upper16:.LC3
- 403 01dc FFF7FEFF 		bl	printf
- 404              	.LVL35:
- 120:Core/Src/main.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14));
- 405              		.loc 1 120 13 is_stmt 1 view .LVU95
- 406              	.L15:
- 407              		.loc 1 120 26 discriminator 1 view .LVU96
- 408              		.loc 1 120 29 is_stmt 0 discriminator 1 view .LVU97
- 409 01e0 40F20040 		movw	r0, #1024
- 410 01e4 C4F60000 		movt	r0, 18432
- 411 01e8 44F20001 		movw	r1, #16384
- 412 01ec FFF7FEFF 		bl	gpio_input_bit_get
- 413              	.LVL36:
- 414              		.loc 1 120 26 discriminator 1 view .LVU98
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 11
-
-
- 415 01f0 0028     		cmp	r0, #0
- 416 01f2 F5D0     		beq	.L15
- 417 01f4 77E0     		b	.L14
- 418              	.L29:
- 121:Core/Src/main.c ****         }
- 122:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_15)) {
- 123:Core/Src/main.c ****             gpio_bit_toggle(GPIOC, GPIO_PIN_14|GPIO_PIN_15);
- 419              		.loc 1 123 13 is_stmt 1 view .LVU99
- 420 01f6 40F60000 		movw	r0, #2048
- 421 01fa C4F60000 		movt	r0, 18432
- 422 01fe 4CF20001 		movw	r1, #49152
- 423 0202 FFF7FEFF 		bl	gpio_bit_toggle
- 424              	.LVL37:
- 124:Core/Src/main.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_15));
- 425              		.loc 1 124 13 view .LVU100
- 426              	.L17:
- 427              		.loc 1 124 26 discriminator 1 view .LVU101
- 428              		.loc 1 124 29 is_stmt 0 discriminator 1 view .LVU102
- 429 0206 40F20040 		movw	r0, #1024
- 430 020a C4F60000 		movt	r0, 18432
- 431 020e 48F20001 		movw	r1, #32768
- 432 0212 FFF7FEFF 		bl	gpio_input_bit_get
- 433              	.LVL38:
- 434              		.loc 1 124 26 discriminator 1 view .LVU103
- 435 0216 0028     		cmp	r0, #0
- 436 0218 F5D0     		beq	.L17
- 437 021a 6FE0     		b	.L16
- 438              	.L30:
- 439              	.LBB7:
- 125:Core/Src/main.c ****         }
- 126:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9)) {
- 127:Core/Src/main.c ****             static uint32_t pwm_width = 5000;
- 440              		.loc 1 127 13 is_stmt 1 view .LVU104
- 128:Core/Src/main.c ****             printf("EC11 was pressed!\n");
- 441              		.loc 1 128 13 view .LVU105
- 442 021c 40F20000 		movw	r0, #:lower16:.LC4
- 443 0220 C0F20000 		movt	r0, #:upper16:.LC4
- 444 0224 FFF7FEFF 		bl	puts
- 445              	.LVL39:
- 129:Core/Src/main.c ****             if (pwm_width < 10000) {
- 446              		.loc 1 129 13 view .LVU106
- 447              		.loc 1 129 27 is_stmt 0 view .LVU107
- 448 0228 40F20003 		movw	r3, #:lower16:pwm_width.0
- 449 022c C0F20003 		movt	r3, #:upper16:pwm_width.0
- 450 0230 1B68     		ldr	r3, [r3]
- 451              		.loc 1 129 16 view .LVU108
- 452 0232 42F20F72 		movw	r2, #9999
- 453 0236 9342     		cmp	r3, r2
- 454 0238 1DD8     		bhi	.L19
- 130:Core/Src/main.c ****                 pwm_width += 500;
- 455              		.loc 1 130 17 is_stmt 1 view .LVU109
- 456              		.loc 1 130 27 is_stmt 0 view .LVU110
- 457 023a 40F20002 		movw	r2, #:lower16:pwm_width.0
- 458 023e C0F20002 		movt	r2, #:upper16:pwm_width.0
- 459 0242 F533     		adds	r3, r3, #245
- 460 0244 FF33     		adds	r3, r3, #255
- 461 0246 1360     		str	r3, [r2]
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 12
-
-
- 462              	.L20:
- 131:Core/Src/main.c ****             } else {
- 132:Core/Src/main.c ****                 pwm_width = 500;
- 133:Core/Src/main.c ****             }
- 134:Core/Src/main.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, pwm_width);
- 463              		.loc 1 134 13 is_stmt 1 view .LVU111
- 464 0248 40F20003 		movw	r3, #:lower16:pwm_width.0
- 465 024c C0F20003 		movt	r3, #:upper16:pwm_width.0
- 466 0250 1A68     		ldr	r2, [r3]
- 467 0252 44F20000 		movw	r0, #16384
- 468 0256 C4F20100 		movt	r0, 16385
- 469 025a 0021     		movs	r1, #0
- 470 025c FFF7FEFF 		bl	timer_channel_output_pulse_value_config
- 471              	.LVL40:
- 135:Core/Src/main.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9));
- 472              		.loc 1 135 13 view .LVU112
- 473              	.L21:
- 474              		.loc 1 135 26 discriminator 1 view .LVU113
- 475              		.loc 1 135 29 is_stmt 0 discriminator 1 view .LVU114
- 476 0260 40F20040 		movw	r0, #1024
- 477 0264 C4F60000 		movt	r0, 18432
- 478 0268 40F20021 		movw	r1, #512
- 479 026c FFF7FEFF 		bl	gpio_input_bit_get
- 480              	.LVL41:
- 481              		.loc 1 135 26 discriminator 1 view .LVU115
- 482 0270 0028     		cmp	r0, #0
- 483 0272 F5D0     		beq	.L21
- 484 0274 4CE0     		b	.L18
- 485              	.L19:
- 132:Core/Src/main.c ****             }
- 486              		.loc 1 132 17 is_stmt 1 view .LVU116
- 132:Core/Src/main.c ****             }
- 487              		.loc 1 132 27 is_stmt 0 view .LVU117
- 488 0276 40F20003 		movw	r3, #:lower16:pwm_width.0
- 489 027a C0F20003 		movt	r3, #:upper16:pwm_width.0
- 490 027e 40F2F412 		movw	r2, #500
- 491 0282 1A60     		str	r2, [r3]
- 492 0284 E0E7     		b	.L20
- 493              	.L31:
- 494              	.LBE7:
- 136:Core/Src/main.c ****         }
- 137:Core/Src/main.c ****         if (rotate_flag == 1) {
- 138:Core/Src/main.c ****             printf("EC11 Turn Right.\n");
- 495              		.loc 1 138 13 is_stmt 1 view .LVU118
- 496 0286 40F20000 		movw	r0, #:lower16:.LC5
- 497 028a C0F20000 		movt	r0, #:upper16:.LC5
- 498 028e FFF7FEFF 		bl	puts
- 499              	.LVL42:
- 500 0292 46E0     		b	.L23
- 501              	.L32:
- 139:Core/Src/main.c ****         } else if (rotate_flag == 2) {
- 140:Core/Src/main.c ****             printf("EC11 Turn Left.\n");
- 502              		.loc 1 140 13 view .LVU119
- 503 0294 40F20000 		movw	r0, #:lower16:.LC6
- 504 0298 C0F20000 		movt	r0, #:upper16:.LC6
- 505 029c FFF7FEFF 		bl	puts
- 506              	.LVL43:
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 13
-
-
- 507 02a0 3FE0     		b	.L23
- 508              	.L25:
- 141:Core/Src/main.c ****         }
- 142:Core/Src/main.c ****         if (timer_flag) {
- 143:Core/Src/main.c ****             if (time_value) {
- 144:Core/Src/main.c ****                 printf("Signal Frequency: %lf\n", (float)1000000 / time_value);
- 145:Core/Src/main.c ****                 time_value = 0;
- 146:Core/Src/main.c ****             }
- 147:Core/Src/main.c ****             // printf("Timer15 interrupt!\n");
- 148:Core/Src/main.c ****             timer_flag = 0;
- 509              		.loc 1 148 13 view .LVU120
- 510              		.loc 1 148 24 is_stmt 0 view .LVU121
- 511 02a2 40F20003 		movw	r3, #:lower16:timer_flag
- 512 02a6 C0F20003 		movt	r3, #:upper16:timer_flag
- 513 02aa 0022     		movs	r2, #0
- 514 02ac 1A70     		strb	r2, [r3]
- 515              	.L24:
- 149:Core/Src/main.c ****         }
- 150:Core/Src/main.c ****         rotate_flag = 0;
- 516              		.loc 1 150 9 is_stmt 1 view .LVU122
- 517              		.loc 1 150 21 is_stmt 0 view .LVU123
- 518 02ae 40F20003 		movw	r3, #:lower16:rotate_flag
- 519 02b2 C0F20003 		movt	r3, #:upper16:rotate_flag
- 520 02b6 0022     		movs	r2, #0
- 521 02b8 1A70     		strb	r2, [r3]
- 110:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13)) {
- 522              		.loc 1 110 10 is_stmt 1 view .LVU124
- 523              	.L26:
- 110:Core/Src/main.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13)) {
- 524              		.loc 1 110 5 view .LVU125
- 111:Core/Src/main.c ****             printf("Welcome to China!\n");
- 525              		.loc 1 111 9 view .LVU126
- 111:Core/Src/main.c ****             printf("Welcome to China!\n");
- 526              		.loc 1 111 22 is_stmt 0 view .LVU127
- 527 02ba 40F20040 		movw	r0, #1024
- 528 02be C4F60000 		movt	r0, 18432
- 529 02c2 42F20001 		movw	r1, #8192
- 530 02c6 FFF7FEFF 		bl	gpio_input_bit_get
- 531              	.LVL44:
- 111:Core/Src/main.c ****             printf("Welcome to China!\n");
- 532              		.loc 1 111 12 discriminator 1 view .LVU128
- 533 02ca 0028     		cmp	r0, #0
- 534 02cc 00D146E7 		bne	.LCB446;b	.L27	@long jump
- 535              	.LCB446:
- 536              	.L12:
- 116:Core/Src/main.c ****             adc_value = ADCGetValue(ADC_CHANNEL_3);
- 537              		.loc 1 116 9 is_stmt 1 view .LVU129
- 116:Core/Src/main.c ****             adc_value = ADCGetValue(ADC_CHANNEL_3);
- 538              		.loc 1 116 22 is_stmt 0 view .LVU130
- 539 02d0 40F20040 		movw	r0, #1024
- 540 02d4 C4F60000 		movt	r0, 18432
- 541 02d8 44F20001 		movw	r1, #16384
- 542 02dc FFF7FEFF 		bl	gpio_input_bit_get
- 543              	.LVL45:
- 116:Core/Src/main.c ****             adc_value = ADCGetValue(ADC_CHANNEL_3);
- 544              		.loc 1 116 12 discriminator 1 view .LVU131
- 545 02e0 0028     		cmp	r0, #0
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 14
-
-
- 546 02e2 00D154E7 		bne	.LCB455;b	.L28	@long jump
- 547              	.LCB455:
- 548              	.L14:
- 122:Core/Src/main.c ****             gpio_bit_toggle(GPIOC, GPIO_PIN_14|GPIO_PIN_15);
- 549              		.loc 1 122 9 is_stmt 1 view .LVU132
- 122:Core/Src/main.c ****             gpio_bit_toggle(GPIOC, GPIO_PIN_14|GPIO_PIN_15);
- 550              		.loc 1 122 22 is_stmt 0 view .LVU133
- 551 02e6 40F20040 		movw	r0, #1024
- 552 02ea C4F60000 		movt	r0, 18432
- 553 02ee 48F20001 		movw	r1, #32768
- 554 02f2 FFF7FEFF 		bl	gpio_input_bit_get
- 555              	.LVL46:
- 122:Core/Src/main.c ****             gpio_bit_toggle(GPIOC, GPIO_PIN_14|GPIO_PIN_15);
- 556              		.loc 1 122 12 discriminator 1 view .LVU134
- 557 02f6 0028     		cmp	r0, #0
- 558 02f8 00D17CE7 		bne	.LCB464;b	.L29	@long jump
- 559              	.LCB464:
- 560              	.L16:
- 126:Core/Src/main.c ****             static uint32_t pwm_width = 5000;
- 561              		.loc 1 126 9 is_stmt 1 view .LVU135
- 126:Core/Src/main.c ****             static uint32_t pwm_width = 5000;
- 562              		.loc 1 126 22 is_stmt 0 view .LVU136
- 563 02fc 40F20040 		movw	r0, #1024
- 564 0300 C4F60000 		movt	r0, 18432
- 565 0304 40F20021 		movw	r1, #512
- 566 0308 FFF7FEFF 		bl	gpio_input_bit_get
- 567              	.LVL47:
- 126:Core/Src/main.c ****             static uint32_t pwm_width = 5000;
- 568              		.loc 1 126 12 discriminator 1 view .LVU137
- 569 030c 0028     		cmp	r0, #0
- 570 030e 85D0     		beq	.L30
- 571              	.L18:
- 137:Core/Src/main.c ****             printf("EC11 Turn Right.\n");
- 572              		.loc 1 137 9 is_stmt 1 view .LVU138
- 137:Core/Src/main.c ****             printf("EC11 Turn Right.\n");
- 573              		.loc 1 137 25 is_stmt 0 view .LVU139
- 574 0310 40F20003 		movw	r3, #:lower16:rotate_flag
- 575 0314 C0F20003 		movt	r3, #:upper16:rotate_flag
- 576 0318 1B78     		ldrb	r3, [r3]
- 137:Core/Src/main.c ****             printf("EC11 Turn Right.\n");
- 577              		.loc 1 137 12 view .LVU140
- 578 031a 012B     		cmp	r3, #1
- 579 031c B3D0     		beq	.L31
- 139:Core/Src/main.c ****             printf("EC11 Turn Left.\n");
- 580              		.loc 1 139 16 is_stmt 1 view .LVU141
- 139:Core/Src/main.c ****             printf("EC11 Turn Left.\n");
- 581              		.loc 1 139 19 is_stmt 0 view .LVU142
- 582 031e 022B     		cmp	r3, #2
- 583 0320 B8D0     		beq	.L32
- 584              	.L23:
- 142:Core/Src/main.c ****             if (time_value) {
- 585              		.loc 1 142 9 is_stmt 1 view .LVU143
- 142:Core/Src/main.c ****             if (time_value) {
- 586              		.loc 1 142 13 is_stmt 0 view .LVU144
- 587 0322 40F20003 		movw	r3, #:lower16:timer_flag
- 588 0326 C0F20003 		movt	r3, #:upper16:timer_flag
- 589 032a 1B78     		ldrb	r3, [r3]
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 15
-
-
- 142:Core/Src/main.c ****             if (time_value) {
- 590              		.loc 1 142 12 view .LVU145
- 591 032c 002B     		cmp	r3, #0
- 592 032e BED0     		beq	.L24
- 143:Core/Src/main.c ****                 printf("Signal Frequency: %lf\n", (float)1000000 / time_value);
- 593              		.loc 1 143 13 is_stmt 1 view .LVU146
- 143:Core/Src/main.c ****                 printf("Signal Frequency: %lf\n", (float)1000000 / time_value);
- 594              		.loc 1 143 17 is_stmt 0 view .LVU147
- 595 0330 40F20003 		movw	r3, #:lower16:time_value
- 596 0334 C0F20003 		movt	r3, #:upper16:time_value
- 597 0338 1868     		ldr	r0, [r3]
- 143:Core/Src/main.c ****                 printf("Signal Frequency: %lf\n", (float)1000000 / time_value);
- 598              		.loc 1 143 16 view .LVU148
- 599 033a 0028     		cmp	r0, #0
- 600 033c B1D0     		beq	.L25
- 144:Core/Src/main.c ****                 time_value = 0;
- 601              		.loc 1 144 17 is_stmt 1 view .LVU149
- 144:Core/Src/main.c ****                 time_value = 0;
- 602              		.loc 1 144 66 is_stmt 0 view .LVU150
- 603 033e FFF7FEFF 		bl	__aeabi_ui2f
- 604              	.LVL48:
- 605 0342 011C     		adds	r1, r0, #0
- 606 0344 42F20040 		movw	r0, #9216
- 607 0348 C4F67410 		movt	r0, 18804
- 608 034c FFF7FEFF 		bl	__aeabi_fdiv
- 609              	.LVL49:
- 144:Core/Src/main.c ****                 time_value = 0;
- 610              		.loc 1 144 17 view .LVU151
- 611 0350 FFF7FEFF 		bl	__aeabi_f2d
- 612              	.LVL50:
- 613 0354 0200     		movs	r2, r0
- 614 0356 0B00     		movs	r3, r1
- 615 0358 40F20000 		movw	r0, #:lower16:.LC7
- 616 035c C0F20000 		movt	r0, #:upper16:.LC7
- 617 0360 FFF7FEFF 		bl	printf
- 618              	.LVL51:
- 145:Core/Src/main.c ****             }
- 619              		.loc 1 145 17 is_stmt 1 view .LVU152
- 145:Core/Src/main.c ****             }
- 620              		.loc 1 145 28 is_stmt 0 view .LVU153
- 621 0364 40F20003 		movw	r3, #:lower16:time_value
- 622 0368 C0F20003 		movt	r3, #:upper16:time_value
- 623 036c 0022     		movs	r2, #0
- 624 036e 1A60     		str	r2, [r3]
- 625 0370 97E7     		b	.L25
- 626              		.cfi_endproc
- 627              	.LFE63:
- 629              		.section	.data.pwm_width.0,"aw"
- 630              		.align	2
- 633              	pwm_width.0:
- 634 0000 88130000 		.word	5000
- 635              		.global	wave_arr
- 636              		.section	.bss.wave_arr,"aw",%nobits
- 637              		.align	2
- 640              	wave_arr:
- 641 0000 00000000 		.space	320
- 641      00000000 
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 16
-
-
- 641      00000000 
- 641      00000000 
- 641      00000000 
- 642              		.global	arr_char
- 643              		.section	.data.arr_char,"aw"
- 644              		.align	2
- 647              	arr_char:
- 648 0000 4261726B 		.ascii	"Bark\000"
- 648      00
- 649              		.section	.bss.adc_value,"aw",%nobits
- 650              		.align	2
- 653              	adc_value:
- 654 0000 00000000 		.space	4
- 655              		.text
- 656              	.Letext0:
- 657              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 658              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 659              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
- 660              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
- 661              		.file 6 "Core/Inc/gd32e23x_it.h"
- 662              		.file 7 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 663              		.file 8 "Core/Inc/gd32e230c_eval.h"
- 664              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
- 665              		.file 10 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
- 666              		.file 11 "Drivers/LCD/lcd.h"
- 667              		.file 12 "Core/Inc/systick.h"
- 668              		.file 13 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
- 669              		.file 14 "<built-in>"
-ARM GAS  D:\noval\Temp\ccICyXPL.s 			page 17
+  98:Core/Src/main.c ****     // printf("App Start!\n");
+  99:Core/Src/main.c **** 
+ 100:Core/Src/main.c ****     // LCD_Show_String(32, 32, (const uint8_t *)"Thanks", 0X0000, 0XFFFF, 16, 0);
+ 101:Core/Src/main.c ****     // LCD_Show_String(64, 32, (const uint8_t *)"Welcome", 0XFFFF, 0X0000, 16, 0);
+ 102:Core/Src/main.c ****     
+ 103:Core/Src/main.c ****     /* print out the clock frequency of system, AHB, APB1 and APB2 */
+ 104:Core/Src/main.c ****     // printf("\r\nCK_SYS is %lu", rcu_clock_freq_get(CK_SYS));
+ 105:Core/Src/main.c ****     // printf("\r\nCK_AHB is %lu", rcu_clock_freq_get(CK_AHB));
+ 106:Core/Src/main.c ****     // printf("\r\nCK_APB1 is %lu", rcu_clock_freq_get(CK_APB1));
+ 107:Core/Src/main.c ****     // printf("\r\nCK_APB2 is %lu", rcu_clock_freq_get(CK_APB2));
+ 108:Core/Src/main.c **** 
+ 109:Core/Src/main.c ****     while(1) {
+  44              		.loc 1 109 5 view .LVU3
+ 110:Core/Src/main.c ****         AppStart();
+  45              		.loc 1 110 9 discriminator 1 view .LVU4
+  46 000a FFF7FEFF 		bl	AppStart
+  47              	.LVL2:
+ 109:Core/Src/main.c ****         AppStart();
+  48              		.loc 1 109 10 view .LVU5
+  49 000e FCE7     		b	.L2
+  50              		.cfi_endproc
+  51              	.LFE60:
+  53              		.text
+  54              	.Letext0:
+  55              		.file 2 "Core/Inc/app.h"
+  56              		.file 3 "Core/Inc/systick.h"
+ARM GAS  D:\noval\Temp\ccY5wGiu.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-D:\noval\Temp\ccICyXPL.s:19     .rodata.main.str1.4:00000000 $d
-D:\noval\Temp\ccICyXPL.s:20     .rodata.main.str1.4:00000000 .LC0
-D:\noval\Temp\ccICyXPL.s:23     .rodata.main.str1.4:0000000c .LC1
-D:\noval\Temp\ccICyXPL.s:26     .rodata.main.str1.4:00000020 .LC2
-D:\noval\Temp\ccICyXPL.s:33     .rodata.main.str1.4:00000030 .LC3
-D:\noval\Temp\ccICyXPL.s:36     .rodata.main.str1.4:00000040 .LC4
-D:\noval\Temp\ccICyXPL.s:39     .rodata.main.str1.4:00000054 .LC5
-D:\noval\Temp\ccICyXPL.s:42     .rodata.main.str1.4:00000068 .LC6
-D:\noval\Temp\ccICyXPL.s:45     .rodata.main.str1.4:00000078 .LC7
-D:\noval\Temp\ccICyXPL.s:48     .text.main:00000000 $t
-D:\noval\Temp\ccICyXPL.s:54     .text.main:00000000 main
-D:\noval\Temp\ccICyXPL.s:647    .data.arr_char:00000000 arr_char
-D:\noval\Temp\ccICyXPL.s:640    .bss.wave_arr:00000000 wave_arr
-D:\noval\Temp\ccICyXPL.s:653    .bss.adc_value:00000000 adc_value
-D:\noval\Temp\ccICyXPL.s:633    .data.pwm_width.0:00000000 pwm_width.0
-D:\noval\Temp\ccICyXPL.s:630    .data.pwm_width.0:00000000 $d
-D:\noval\Temp\ccICyXPL.s:637    .bss.wave_arr:00000000 $d
-D:\noval\Temp\ccICyXPL.s:644    .data.arr_char:00000000 $d
-D:\noval\Temp\ccICyXPL.s:650    .bss.adc_value:00000000 $d
+D:\noval\Temp\ccY5wGiu.s:19     .text.main:00000000 $t
+D:\noval\Temp\ccY5wGiu.s:25     .text.main:00000000 main
 
 UNDEFINED SYMBOLS
-__aeabi_ui2f
-__aeabi_fdiv
-__aeabi_fmul
-__aeabi_f2d
 systick_config
-GPIO_Init
-USART_Init
-ADC_Init
-Timer_Init
-LCD_Init
-LCD_Fill
-LCD_Draw_Line
-LCD_Show_Char
-LCD_Show_String
-LCD_Draw_Curve
-puts
-gpio_bit_toggle
-gpio_input_bit_get
-ADCGetValue
-printf
-timer_channel_output_pulse_value_config
-timer_flag
-rotate_flag
-time_value
+AppInit
+AppStart

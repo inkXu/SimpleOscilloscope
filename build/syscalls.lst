@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 2
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 2
 
 
   33              		.loc 1 26 1 is_stmt 0 view .LVU1
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
   76              		.cfi_endproc
   77              	.LFE3:
   79              		.section	.text._gettimeofday,"ax",%progbits
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 3
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 3
 
 
   80              		.align	1
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  122              	initialise_monitor_handles:
  123              	.LFB5:
   52:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** void initialise_monitor_handles()
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 4
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 4
 
 
   53:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
   63:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	errno = EINVAL;
  172              		.loc 1 63 2 view .LVU31
  173              		.loc 1 63 8 is_stmt 0 view .LVU32
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 5
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 5
 
 
  174 0000 40F20003 		movw	r3, #:lower16:errno
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  224              		.align	1
  225              		.global	_write
  226              		.syntax unified
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 6
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 6
 
 
  227              		.code	16
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  271              		.loc 1 77 29 is_stmt 1 discriminator 1 view .LVU54
  272 0014 B442     		cmp	r4, r6
  273 0016 F7DB     		blt	.L14
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 7
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 7
 
 
   80:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 		}
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  321              		.loc 1 90 1 is_stmt 1 view -0
  322              		.cfi_startproc
  323              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 8
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 8
 
 
  324              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  374              	.LFB13:
   99:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
  100:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _lseek(int file, int ptr, int dir)
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 9
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 9
 
 
  101:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  422              	.L21:
  110:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	{
  111:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	  *ptr++ = __io_getchar();
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 10
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 10
 
 
  423              		.loc 1 111 4 is_stmt 1 view .LVU82
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  119:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	/* Pretend like we always fail */
  120:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
  470              		.loc 1 120 2 is_stmt 1 view .LVU93
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 11
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 11
 
 
  471              		.loc 1 120 9 is_stmt 0 discriminator 1 view .LVU94
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  522              	.LVL39:
  523              	.LFB17:
  128:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 12
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 12
 
 
  129:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _unlink(char *name)
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  570              	.LFE18:
  572              		.section	.text._stat,"ax",%progbits
  573              		.align	1
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 13
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 13
 
 
  574              		.global	_stat
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  621 000a 1A60     		str	r2, [r3]
  149:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** 	return -1;
  622              		.loc 1 149 2 is_stmt 1 view .LVU121
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 14
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 14
 
 
  623              		.loc 1 149 9 is_stmt 0 discriminator 1 view .LVU122
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  158:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** int _execve(char *name, char **argv, char **env)
  159:Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c **** {
  673              		.loc 1 159 1 is_stmt 1 view -0
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 15
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 15
 
 
  674              		.cfi_startproc
@@ -884,53 +884,53 @@ ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 1
  714              		.file 9 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  715              		.file 10 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/includ
  716              		.file 11 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/includ
-ARM GAS  D:\noval\Temp\ccIMxcwi.s 			page 16
+ARM GAS  D:\noval\Temp\ccqAXqdw.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 syscalls.c
-D:\noval\Temp\ccIMxcwi.s:19     .text._sbrk:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:25     .text._sbrk:00000000 _sbrk
-D:\noval\Temp\ccIMxcwi.s:701    .data.curbrk.0:00000000 curbrk.0
-D:\noval\Temp\ccIMxcwi.s:80     .text._gettimeofday:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:86     .text._gettimeofday:00000000 _gettimeofday
-D:\noval\Temp\ccIMxcwi.s:116    .text.initialise_monitor_handles:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:122    .text.initialise_monitor_handles:00000000 initialise_monitor_handles
-D:\noval\Temp\ccIMxcwi.s:136    .text._getpid:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:142    .text._getpid:00000000 _getpid
-D:\noval\Temp\ccIMxcwi.s:158    .text._kill:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:164    .text._kill:00000000 _kill
-D:\noval\Temp\ccIMxcwi.s:190    .text._exit:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:196    .text._exit:00000000 _exit
-D:\noval\Temp\ccIMxcwi.s:224    .text._write:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:230    .text._write:00000000 _write
-D:\noval\Temp\ccIMxcwi.s:286    .text._close:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:292    .text._close:00000000 _close
-D:\noval\Temp\ccIMxcwi.s:312    .text._fstat:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:318    .text._fstat:00000000 _fstat
-D:\noval\Temp\ccIMxcwi.s:341    .text._isatty:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:347    .text._isatty:00000000 _isatty
-D:\noval\Temp\ccIMxcwi.s:366    .text._lseek:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:372    .text._lseek:00000000 _lseek
-D:\noval\Temp\ccIMxcwi.s:391    .text._read:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:397    .text._read:00000000 _read
-D:\noval\Temp\ccIMxcwi.s:452    .text._open:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:458    .text._open:00000000 _open
-D:\noval\Temp\ccIMxcwi.s:483    .text._wait:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:489    .text._wait:00000000 _wait
-D:\noval\Temp\ccIMxcwi.s:515    .text._unlink:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:521    .text._unlink:00000000 _unlink
-D:\noval\Temp\ccIMxcwi.s:547    .text._times:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:553    .text._times:00000000 _times
-D:\noval\Temp\ccIMxcwi.s:573    .text._stat:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:579    .text._stat:00000000 _stat
-D:\noval\Temp\ccIMxcwi.s:602    .text._link:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:608    .text._link:00000000 _link
-D:\noval\Temp\ccIMxcwi.s:634    .text._fork:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:640    .text._fork:00000000 _fork
-D:\noval\Temp\ccIMxcwi.s:664    .text._execve:00000000 $t
-D:\noval\Temp\ccIMxcwi.s:670    .text._execve:00000000 _execve
-D:\noval\Temp\ccIMxcwi.s:698    .data.curbrk.0:00000000 $d
+D:\noval\Temp\ccqAXqdw.s:19     .text._sbrk:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:25     .text._sbrk:00000000 _sbrk
+D:\noval\Temp\ccqAXqdw.s:701    .data.curbrk.0:00000000 curbrk.0
+D:\noval\Temp\ccqAXqdw.s:80     .text._gettimeofday:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:86     .text._gettimeofday:00000000 _gettimeofday
+D:\noval\Temp\ccqAXqdw.s:116    .text.initialise_monitor_handles:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:122    .text.initialise_monitor_handles:00000000 initialise_monitor_handles
+D:\noval\Temp\ccqAXqdw.s:136    .text._getpid:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:142    .text._getpid:00000000 _getpid
+D:\noval\Temp\ccqAXqdw.s:158    .text._kill:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:164    .text._kill:00000000 _kill
+D:\noval\Temp\ccqAXqdw.s:190    .text._exit:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:196    .text._exit:00000000 _exit
+D:\noval\Temp\ccqAXqdw.s:224    .text._write:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:230    .text._write:00000000 _write
+D:\noval\Temp\ccqAXqdw.s:286    .text._close:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:292    .text._close:00000000 _close
+D:\noval\Temp\ccqAXqdw.s:312    .text._fstat:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:318    .text._fstat:00000000 _fstat
+D:\noval\Temp\ccqAXqdw.s:341    .text._isatty:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:347    .text._isatty:00000000 _isatty
+D:\noval\Temp\ccqAXqdw.s:366    .text._lseek:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:372    .text._lseek:00000000 _lseek
+D:\noval\Temp\ccqAXqdw.s:391    .text._read:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:397    .text._read:00000000 _read
+D:\noval\Temp\ccqAXqdw.s:452    .text._open:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:458    .text._open:00000000 _open
+D:\noval\Temp\ccqAXqdw.s:483    .text._wait:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:489    .text._wait:00000000 _wait
+D:\noval\Temp\ccqAXqdw.s:515    .text._unlink:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:521    .text._unlink:00000000 _unlink
+D:\noval\Temp\ccqAXqdw.s:547    .text._times:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:553    .text._times:00000000 _times
+D:\noval\Temp\ccqAXqdw.s:573    .text._stat:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:579    .text._stat:00000000 _stat
+D:\noval\Temp\ccqAXqdw.s:602    .text._link:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:608    .text._link:00000000 _link
+D:\noval\Temp\ccqAXqdw.s:634    .text._fork:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:640    .text._fork:00000000 _fork
+D:\noval\Temp\ccqAXqdw.s:664    .text._execve:00000000 $t
+D:\noval\Temp\ccqAXqdw.s:670    .text._execve:00000000 _execve
+D:\noval\Temp\ccqAXqdw.s:698    .data.curbrk.0:00000000 $d
 
 UNDEFINED SYMBOLS
 _end

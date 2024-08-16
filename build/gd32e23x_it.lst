@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -25,7 +25,7 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
   22              		.code	16
   23              		.thumb_func
   25              	NMI_Handler:
-  26              	.LFB60:
+  26              	.LFB63:
    1:Core/Src/gd32e23x_it.c **** /*!
    2:Core/Src/gd32e23x_it.c ****     \file    gd32e23x_it.c
    3:Core/Src/gd32e23x_it.c ****     \brief   interrupt service routines
@@ -58,45 +58,46 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
   30:Core/Src/gd32e23x_it.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
   31:Core/Src/gd32e23x_it.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
   32:Core/Src/gd32e23x_it.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 2
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 2
 
 
   33:Core/Src/gd32e23x_it.c **** */
   34:Core/Src/gd32e23x_it.c **** 
   35:Core/Src/gd32e23x_it.c **** #include "gd32e23x_it.h"
-  36:Core/Src/gd32e23x_it.c **** #include "main.h"
-  37:Core/Src/gd32e23x_it.c **** #include "systick.h"
-  38:Core/Src/gd32e23x_it.c **** 
-  39:Core/Src/gd32e23x_it.c **** uint8_t rotate_flag;
-  40:Core/Src/gd32e23x_it.c **** uint8_t timer_flag;
-  41:Core/Src/gd32e23x_it.c **** uint32_t time_value;
-  42:Core/Src/gd32e23x_it.c **** static uint32_t value;
-  43:Core/Src/gd32e23x_it.c **** 
-  44:Core/Src/gd32e23x_it.c **** /*!
-  45:Core/Src/gd32e23x_it.c ****     \brief      this function handles NMI exception
-  46:Core/Src/gd32e23x_it.c ****     \param[in]  none
-  47:Core/Src/gd32e23x_it.c ****     \param[out] none
-  48:Core/Src/gd32e23x_it.c ****     \retval     none
-  49:Core/Src/gd32e23x_it.c **** */
-  50:Core/Src/gd32e23x_it.c **** void NMI_Handler(void)
-  51:Core/Src/gd32e23x_it.c **** {
-  27              		.loc 1 51 1 view -0
+  36:Core/Src/gd32e23x_it.c **** #include "systick.h"
+  37:Core/Src/gd32e23x_it.c **** #include "app.h"
+  38:Core/Src/gd32e23x_it.c **** #include "log.h"
+  39:Core/Src/gd32e23x_it.c **** 
+  40:Core/Src/gd32e23x_it.c **** uint8_t rotate_flag;
+  41:Core/Src/gd32e23x_it.c **** uint8_t timer_flag;
+  42:Core/Src/gd32e23x_it.c **** uint32_t time_value;
+  43:Core/Src/gd32e23x_it.c **** static uint32_t value;
+  44:Core/Src/gd32e23x_it.c **** 
+  45:Core/Src/gd32e23x_it.c **** /*!
+  46:Core/Src/gd32e23x_it.c ****     \brief      this function handles NMI exception
+  47:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  48:Core/Src/gd32e23x_it.c ****     \param[out] none
+  49:Core/Src/gd32e23x_it.c ****     \retval     none
+  50:Core/Src/gd32e23x_it.c **** */
+  51:Core/Src/gd32e23x_it.c **** void NMI_Handler(void)
+  52:Core/Src/gd32e23x_it.c **** {
+  27              		.loc 1 52 1 view -0
   28              		.cfi_startproc
   29              		@ Volatile: function does not return.
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
   33              	.L2:
-  52:Core/Src/gd32e23x_it.c ****     /* if NMI exception occurs, go to infinite loop */
-  53:Core/Src/gd32e23x_it.c ****     while(1) {
-  34              		.loc 1 53 5 view .LVU1
+  53:Core/Src/gd32e23x_it.c ****     /* if NMI exception occurs, go to infinite loop */
+  54:Core/Src/gd32e23x_it.c ****     while(1) {
+  34              		.loc 1 54 5 view .LVU1
+  55:Core/Src/gd32e23x_it.c ****     }
+  35              		.loc 1 55 5 view .LVU2
   54:Core/Src/gd32e23x_it.c ****     }
-  35              		.loc 1 54 5 view .LVU2
-  53:Core/Src/gd32e23x_it.c ****     }
-  36              		.loc 1 53 10 view .LVU3
+  36              		.loc 1 54 10 view .LVU3
   37 0000 FEE7     		b	.L2
   38              		.cfi_endproc
-  39              	.LFE60:
+  39              	.LFE63:
   41              		.section	.text.HardFault_Handler,"ax",%progbits
   42              		.align	1
   43              		.global	HardFault_Handler
@@ -104,37 +105,37 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
   45              		.code	16
   46              		.thumb_func
   48              	HardFault_Handler:
-  49              	.LFB61:
-  55:Core/Src/gd32e23x_it.c **** }
-  56:Core/Src/gd32e23x_it.c **** 
-  57:Core/Src/gd32e23x_it.c **** /*!
-  58:Core/Src/gd32e23x_it.c ****     \brief      this function handles HardFault exception
-  59:Core/Src/gd32e23x_it.c ****     \param[in]  none
-  60:Core/Src/gd32e23x_it.c ****     \param[out] none
-  61:Core/Src/gd32e23x_it.c ****     \retval     none
-  62:Core/Src/gd32e23x_it.c **** */
-  63:Core/Src/gd32e23x_it.c **** void HardFault_Handler(void)
-  64:Core/Src/gd32e23x_it.c **** {
-  50              		.loc 1 64 1 view -0
+  49              	.LFB64:
+  56:Core/Src/gd32e23x_it.c **** }
+  57:Core/Src/gd32e23x_it.c **** 
+  58:Core/Src/gd32e23x_it.c **** /*!
+  59:Core/Src/gd32e23x_it.c ****     \brief      this function handles HardFault exception
+  60:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  61:Core/Src/gd32e23x_it.c ****     \param[out] none
+  62:Core/Src/gd32e23x_it.c ****     \retval     none
+  63:Core/Src/gd32e23x_it.c **** */
+  64:Core/Src/gd32e23x_it.c **** void HardFault_Handler(void)
+  65:Core/Src/gd32e23x_it.c **** {
+  50              		.loc 1 65 1 view -0
   51              		.cfi_startproc
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 3
+
+
   52              		@ Volatile: function does not return.
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 3
-
-
   53              		@ args = 0, pretend = 0, frame = 0
   54              		@ frame_needed = 0, uses_anonymous_args = 0
   55              		@ link register save eliminated.
   56              	.L4:
-  65:Core/Src/gd32e23x_it.c ****     /* if Hard Fault exception occurs, go to infinite loop */
-  66:Core/Src/gd32e23x_it.c ****     while(1) {
-  57              		.loc 1 66 5 view .LVU5
+  66:Core/Src/gd32e23x_it.c ****     /* if Hard Fault exception occurs, go to infinite loop */
+  67:Core/Src/gd32e23x_it.c ****     while(1) {
+  57              		.loc 1 67 5 view .LVU5
+  68:Core/Src/gd32e23x_it.c ****     }
+  58              		.loc 1 68 5 view .LVU6
   67:Core/Src/gd32e23x_it.c ****     }
-  58              		.loc 1 67 5 view .LVU6
-  66:Core/Src/gd32e23x_it.c ****     }
-  59              		.loc 1 66 10 view .LVU7
+  59              		.loc 1 67 10 view .LVU7
   60 0000 FEE7     		b	.L4
   61              		.cfi_endproc
-  62              	.LFE61:
+  62              	.LFE64:
   64              		.section	.text.SVC_Handler,"ax",%progbits
   65              		.align	1
   66              		.global	SVC_Handler
@@ -142,34 +143,34 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
   68              		.code	16
   69              		.thumb_func
   71              	SVC_Handler:
-  72              	.LFB62:
-  68:Core/Src/gd32e23x_it.c **** }
-  69:Core/Src/gd32e23x_it.c **** 
-  70:Core/Src/gd32e23x_it.c **** /*!
-  71:Core/Src/gd32e23x_it.c ****     \brief      this function handles SVC exception
-  72:Core/Src/gd32e23x_it.c ****     \param[in]  none
-  73:Core/Src/gd32e23x_it.c ****     \param[out] none
-  74:Core/Src/gd32e23x_it.c ****     \retval     none
-  75:Core/Src/gd32e23x_it.c **** */
-  76:Core/Src/gd32e23x_it.c **** void SVC_Handler(void)
-  77:Core/Src/gd32e23x_it.c **** {
-  73              		.loc 1 77 1 view -0
+  72              	.LFB65:
+  69:Core/Src/gd32e23x_it.c **** }
+  70:Core/Src/gd32e23x_it.c **** 
+  71:Core/Src/gd32e23x_it.c **** /*!
+  72:Core/Src/gd32e23x_it.c ****     \brief      this function handles SVC exception
+  73:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  74:Core/Src/gd32e23x_it.c ****     \param[out] none
+  75:Core/Src/gd32e23x_it.c ****     \retval     none
+  76:Core/Src/gd32e23x_it.c **** */
+  77:Core/Src/gd32e23x_it.c **** void SVC_Handler(void)
+  78:Core/Src/gd32e23x_it.c **** {
+  73              		.loc 1 78 1 view -0
   74              		.cfi_startproc
   75              		@ Volatile: function does not return.
   76              		@ args = 0, pretend = 0, frame = 0
   77              		@ frame_needed = 0, uses_anonymous_args = 0
   78              		@ link register save eliminated.
   79              	.L6:
-  78:Core/Src/gd32e23x_it.c ****     /* if SVC exception occurs, go to infinite loop */
-  79:Core/Src/gd32e23x_it.c ****     while(1) {
-  80              		.loc 1 79 5 view .LVU9
+  79:Core/Src/gd32e23x_it.c ****     /* if SVC exception occurs, go to infinite loop */
+  80:Core/Src/gd32e23x_it.c ****     while(1) {
+  80              		.loc 1 80 5 view .LVU9
+  81:Core/Src/gd32e23x_it.c ****     }
+  81              		.loc 1 81 5 view .LVU10
   80:Core/Src/gd32e23x_it.c ****     }
-  81              		.loc 1 80 5 view .LVU10
-  79:Core/Src/gd32e23x_it.c ****     }
-  82              		.loc 1 79 10 view .LVU11
+  82              		.loc 1 80 10 view .LVU11
   83 0000 FEE7     		b	.L6
   84              		.cfi_endproc
-  85              	.LFE62:
+  85              	.LFE65:
   87              		.section	.text.PendSV_Handler,"ax",%progbits
   88              		.align	1
   89              		.global	PendSV_Handler
@@ -177,37 +178,37 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
   91              		.code	16
   92              		.thumb_func
   94              	PendSV_Handler:
-  95              	.LFB63:
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 4
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 4
 
 
-  81:Core/Src/gd32e23x_it.c **** }
-  82:Core/Src/gd32e23x_it.c **** 
-  83:Core/Src/gd32e23x_it.c **** /*!
-  84:Core/Src/gd32e23x_it.c ****     \brief      this function handles PendSV exception
-  85:Core/Src/gd32e23x_it.c ****     \param[in]  none
-  86:Core/Src/gd32e23x_it.c ****     \param[out] none
-  87:Core/Src/gd32e23x_it.c ****     \retval     none
-  88:Core/Src/gd32e23x_it.c **** */
-  89:Core/Src/gd32e23x_it.c **** void PendSV_Handler(void)
-  90:Core/Src/gd32e23x_it.c **** {
-  96              		.loc 1 90 1 view -0
+  95              	.LFB66:
+  82:Core/Src/gd32e23x_it.c **** }
+  83:Core/Src/gd32e23x_it.c **** 
+  84:Core/Src/gd32e23x_it.c **** /*!
+  85:Core/Src/gd32e23x_it.c ****     \brief      this function handles PendSV exception
+  86:Core/Src/gd32e23x_it.c ****     \param[in]  none
+  87:Core/Src/gd32e23x_it.c ****     \param[out] none
+  88:Core/Src/gd32e23x_it.c ****     \retval     none
+  89:Core/Src/gd32e23x_it.c **** */
+  90:Core/Src/gd32e23x_it.c **** void PendSV_Handler(void)
+  91:Core/Src/gd32e23x_it.c **** {
+  96              		.loc 1 91 1 view -0
   97              		.cfi_startproc
   98              		@ Volatile: function does not return.
   99              		@ args = 0, pretend = 0, frame = 0
  100              		@ frame_needed = 0, uses_anonymous_args = 0
  101              		@ link register save eliminated.
  102              	.L8:
-  91:Core/Src/gd32e23x_it.c ****     /* if PendSV exception occurs, go to infinite loop */
-  92:Core/Src/gd32e23x_it.c ****     while(1) {
- 103              		.loc 1 92 5 view .LVU13
+  92:Core/Src/gd32e23x_it.c ****     /* if PendSV exception occurs, go to infinite loop */
+  93:Core/Src/gd32e23x_it.c ****     while(1) {
+ 103              		.loc 1 93 5 view .LVU13
+  94:Core/Src/gd32e23x_it.c ****     }
+ 104              		.loc 1 94 5 view .LVU14
   93:Core/Src/gd32e23x_it.c ****     }
- 104              		.loc 1 93 5 view .LVU14
-  92:Core/Src/gd32e23x_it.c ****     }
- 105              		.loc 1 92 10 view .LVU15
+ 105              		.loc 1 93 10 view .LVU15
  106 0000 FEE7     		b	.L8
  107              		.cfi_endproc
- 108              	.LFE63:
+ 108              	.LFE66:
  110              		.section	.text.SysTick_Handler,"ax",%progbits
  111              		.align	1
  112              		.global	SysTick_Handler
@@ -215,18 +216,18 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
  114              		.code	16
  115              		.thumb_func
  117              	SysTick_Handler:
- 118              	.LFB64:
-  94:Core/Src/gd32e23x_it.c **** }
-  95:Core/Src/gd32e23x_it.c **** 
-  96:Core/Src/gd32e23x_it.c **** /*!
-  97:Core/Src/gd32e23x_it.c ****     \brief      this function handles SysTick exception
-  98:Core/Src/gd32e23x_it.c ****     \param[in]  none
-  99:Core/Src/gd32e23x_it.c ****     \param[out] none
- 100:Core/Src/gd32e23x_it.c ****     \retval     none
- 101:Core/Src/gd32e23x_it.c **** */
- 102:Core/Src/gd32e23x_it.c **** void SysTick_Handler(void)
- 103:Core/Src/gd32e23x_it.c **** {
- 119              		.loc 1 103 1 view -0
+ 118              	.LFB67:
+  95:Core/Src/gd32e23x_it.c **** }
+  96:Core/Src/gd32e23x_it.c **** 
+  97:Core/Src/gd32e23x_it.c **** /*!
+  98:Core/Src/gd32e23x_it.c ****     \brief      this function handles SysTick exception
+  99:Core/Src/gd32e23x_it.c ****     \param[in]  none
+ 100:Core/Src/gd32e23x_it.c ****     \param[out] none
+ 101:Core/Src/gd32e23x_it.c ****     \retval     none
+ 102:Core/Src/gd32e23x_it.c **** */
+ 103:Core/Src/gd32e23x_it.c **** void SysTick_Handler(void)
+ 104:Core/Src/gd32e23x_it.c **** {
+ 119              		.loc 1 104 1 view -0
  120              		.cfi_startproc
  121              		@ args = 0, pretend = 0, frame = 0
  122              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -235,20 +236,20 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
  125              		.cfi_def_cfa_offset 8
  126              		.cfi_offset 4, -8
  127              		.cfi_offset 14, -4
- 104:Core/Src/gd32e23x_it.c ****     // led_spark();
- 105:Core/Src/gd32e23x_it.c ****     delay_decrement();
- 128              		.loc 1 105 5 view .LVU17
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 5
+ 105:Core/Src/gd32e23x_it.c ****     // led_spark();
+ 106:Core/Src/gd32e23x_it.c ****     delay_decrement();
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 5
 
 
+ 128              		.loc 1 106 5 view .LVU17
  129 0002 FFF7FEFF 		bl	delay_decrement
  130              	.LVL0:
- 106:Core/Src/gd32e23x_it.c **** }
- 131              		.loc 1 106 1 is_stmt 0 view .LVU18
+ 107:Core/Src/gd32e23x_it.c **** }
+ 131              		.loc 1 107 1 is_stmt 0 view .LVU18
  132              		@ sp needed
  133 0006 10BD     		pop	{r4, pc}
  134              		.cfi_endproc
- 135              	.LFE64:
+ 135              	.LFE67:
  137              		.section	.text.EXTI4_15_IRQHandler,"ax",%progbits
  138              		.align	1
  139              		.global	EXTI4_15_IRQHandler
@@ -256,16 +257,16 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
  141              		.code	16
  142              		.thumb_func
  144              	EXTI4_15_IRQHandler:
- 145              	.LFB65:
- 107:Core/Src/gd32e23x_it.c **** 
- 108:Core/Src/gd32e23x_it.c **** /*
- 109:Core/Src/gd32e23x_it.c ****  * @brief    this function handles EXTI4 exception
- 110:Core/Src/gd32e23x_it.c ****  * @param    None
- 111:Core/Src/gd32e23x_it.c ****  * @retval   None
- 112:Core/Src/gd32e23x_it.c ****  */
- 113:Core/Src/gd32e23x_it.c **** void EXTI4_15_IRQHandler(void)
- 114:Core/Src/gd32e23x_it.c **** {
- 146              		.loc 1 114 1 is_stmt 1 view -0
+ 145              	.LFB68:
+ 108:Core/Src/gd32e23x_it.c **** 
+ 109:Core/Src/gd32e23x_it.c **** /*
+ 110:Core/Src/gd32e23x_it.c ****  * @brief    this function handles EXTI4 exception
+ 111:Core/Src/gd32e23x_it.c ****  * @param    None
+ 112:Core/Src/gd32e23x_it.c ****  * @retval   None
+ 113:Core/Src/gd32e23x_it.c ****  */
+ 114:Core/Src/gd32e23x_it.c **** void EXTI4_15_IRQHandler(void)
+ 115:Core/Src/gd32e23x_it.c **** {
+ 146              		.loc 1 115 1 is_stmt 1 view -0
  147              		.cfi_startproc
  148              		@ args = 0, pretend = 0, frame = 0
  149              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -274,377 +275,966 @@ ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 1
  152              		.cfi_def_cfa_offset 8
  153              		.cfi_offset 4, -8
  154              		.cfi_offset 14, -4
- 115:Core/Src/gd32e23x_it.c ****     if (SET == exti_interrupt_flag_get(EXTI_4)) {
- 155              		.loc 1 115 5 view .LVU20
- 156              		.loc 1 115 16 is_stmt 0 view .LVU21
+ 116:Core/Src/gd32e23x_it.c ****     if (SET == exti_interrupt_flag_get(EXTI_4)) {
+ 155              		.loc 1 116 5 view .LVU20
+ 156              		.loc 1 116 16 is_stmt 0 view .LVU21
  157 0002 1020     		movs	r0, #16
  158 0004 FFF7FEFF 		bl	exti_interrupt_flag_get
  159              	.LVL1:
- 160              		.loc 1 115 8 discriminator 1 view .LVU22
+ 160              		.loc 1 116 8 discriminator 1 view .LVU22
  161 0008 0128     		cmp	r0, #1
- 162 000a 00D0     		beq	.L14
- 163              	.L10:
- 116:Core/Src/gd32e23x_it.c ****         delay_1ms(3); // 延时去抖动
- 117:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
- 118:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
- 119:Core/Src/gd32e23x_it.c ****         } else {
- 120:Core/Src/gd32e23x_it.c ****             rotate_flag = 2;
- 121:Core/Src/gd32e23x_it.c ****         }
- 122:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_4);
- 123:Core/Src/gd32e23x_it.c ****     }
- 124:Core/Src/gd32e23x_it.c **** }
- 164              		.loc 1 124 1 view .LVU23
- 165              		@ sp needed
- 166 000c 10BD     		pop	{r4, pc}
- 167              	.L14:
- 116:Core/Src/gd32e23x_it.c ****         delay_1ms(3); // 延时去抖动
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 6
+ 162 000a 14D0     		beq	.L21
+ 117:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_4);
+ 118:Core/Src/gd32e23x_it.c ****         if (app_state.waveform_update == WAVEFORM_UPDATE_DISABLE) return ;
+ 119:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
+ 120:Core/Src/gd32e23x_it.c ****             // turn right
+ 121:Core/Src/gd32e23x_it.c ****             if (app_data.wave_samp_freq > 50) {
+ 122:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq -= 1;
+ 123:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 124:Core/Src/gd32e23x_it.c ****             }
+ 125:Core/Src/gd32e23x_it.c ****         } else {
+ 126:Core/Src/gd32e23x_it.c ****             // turn left
+ 127:Core/Src/gd32e23x_it.c ****             if (app_data.wave_samp_freq < 500) {
+ 128:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq += 1;
+ 129:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 130:Core/Src/gd32e23x_it.c ****             }
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 6
 
 
- 168              		.loc 1 116 9 is_stmt 1 view .LVU24
- 169 000e 0230     		adds	r0, r0, #2
- 170 0010 FFF7FEFF 		bl	delay_1ms
- 171              	.LVL2:
- 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
- 172              		.loc 1 117 9 view .LVU25
- 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
- 173              		.loc 1 117 22 is_stmt 0 view .LVU26
- 174 0014 40F20040 		movw	r0, #1024
- 175 0018 C4F60000 		movt	r0, 18432
- 176 001c 0821     		movs	r1, #8
- 177 001e FFF7FEFF 		bl	gpio_input_bit_get
- 178              	.LVL3:
- 117:Core/Src/gd32e23x_it.c ****             rotate_flag = 1;
- 179              		.loc 1 117 12 discriminator 1 view .LVU27
- 180 0022 48B9     		cbnz	r0, .L12
- 118:Core/Src/gd32e23x_it.c ****         } else {
- 181              		.loc 1 118 13 is_stmt 1 view .LVU28
- 118:Core/Src/gd32e23x_it.c ****         } else {
- 182              		.loc 1 118 25 is_stmt 0 view .LVU29
- 183 0024 40F20003 		movw	r3, #:lower16:rotate_flag
- 184 0028 C0F20003 		movt	r3, #:upper16:rotate_flag
- 185 002c 0122     		movs	r2, #1
- 186 002e 1A70     		strb	r2, [r3]
- 187              	.L13:
- 122:Core/Src/gd32e23x_it.c ****     }
- 188              		.loc 1 122 9 is_stmt 1 view .LVU30
- 189 0030 1020     		movs	r0, #16
- 190 0032 FFF7FEFF 		bl	exti_interrupt_flag_clear
- 191              	.LVL4:
- 192              		.loc 1 124 1 is_stmt 0 view .LVU31
- 193 0036 E9E7     		b	.L10
- 194              	.L12:
- 120:Core/Src/gd32e23x_it.c ****         }
- 195              		.loc 1 120 13 is_stmt 1 view .LVU32
- 120:Core/Src/gd32e23x_it.c ****         }
- 196              		.loc 1 120 25 is_stmt 0 view .LVU33
- 197 0038 40F20003 		movw	r3, #:lower16:rotate_flag
- 198 003c C0F20003 		movt	r3, #:upper16:rotate_flag
- 199 0040 0222     		movs	r2, #2
- 200 0042 1A70     		strb	r2, [r3]
- 201 0044 F4E7     		b	.L13
- 202              		.cfi_endproc
- 203              	.LFE65:
- 205              		.section	.text.TIMER15_IRQHandler,"ax",%progbits
- 206              		.align	1
- 207              		.global	TIMER15_IRQHandler
- 208              		.syntax unified
- 209              		.code	16
- 210              		.thumb_func
- 212              	TIMER15_IRQHandler:
- 213              	.LFB66:
- 125:Core/Src/gd32e23x_it.c **** 
- 126:Core/Src/gd32e23x_it.c **** /*
- 127:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER15 exception
- 128:Core/Src/gd32e23x_it.c ****  * @param    None
- 129:Core/Src/gd32e23x_it.c ****  * @retval   None
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 7
+ 131:Core/Src/gd32e23x_it.c ****         }
+ 132:Core/Src/gd32e23x_it.c ****     } else if (SET == exti_interrupt_flag_get(EXTI_13)) {
+ 163              		.loc 1 132 12 is_stmt 1 view .LVU23
+ 164              		.loc 1 132 23 is_stmt 0 view .LVU24
+ 165 000c 42F20000 		movw	r0, #8192
+ 166 0010 FFF7FEFF 		bl	exti_interrupt_flag_get
+ 167              	.LVL2:
+ 168              		.loc 1 132 15 discriminator 1 view .LVU25
+ 169 0014 0128     		cmp	r0, #1
+ 170 0016 54D0     		beq	.L22
+ 133:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_13);
+ 134:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13)) {
+ 135:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 136:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_duty >= 100) {
+ 137:Core/Src/gd32e23x_it.c ****                 app_data.pwm_duty = 0;
+ 138:Core/Src/gd32e23x_it.c ****             } else {
+ 139:Core/Src/gd32e23x_it.c ****                 app_data.pwm_duty += 5;
+ 140:Core/Src/gd32e23x_it.c ****             }
+ 141:Core/Src/gd32e23x_it.c ****             app_state.pwm_state = PWM_STATE_UPDATE;
+ 142:Core/Src/gd32e23x_it.c ****         }
+ 143:Core/Src/gd32e23x_it.c ****     } else if (SET == exti_interrupt_flag_get(EXTI_14)) {
+ 171              		.loc 1 143 12 is_stmt 1 view .LVU26
+ 172              		.loc 1 143 23 is_stmt 0 view .LVU27
+ 173 0018 44F20000 		movw	r0, #16384
+ 174 001c FFF7FEFF 		bl	exti_interrupt_flag_get
+ 175              	.LVL3:
+ 176              		.loc 1 143 15 discriminator 1 view .LVU28
+ 177 0020 0128     		cmp	r0, #1
+ 178 0022 00D1     		bne	.LCB86
+ 179 0024 83E0     		b	.L23	@long jump
+ 180              	.LCB86:
+ 144:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_14);
+ 145:Core/Src/gd32e23x_it.c ****         if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 146:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14)) {
+ 147:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_freq >= 10000) {
+ 148:Core/Src/gd32e23x_it.c ****                 app_data.pwm_freq = 50;
+ 149:Core/Src/gd32e23x_it.c ****             } else {
+ 150:Core/Src/gd32e23x_it.c ****                 app_data.pwm_freq += 50;
+ 151:Core/Src/gd32e23x_it.c ****             }
+ 152:Core/Src/gd32e23x_it.c ****             app_state.pwm_state = PWM_STATE_UPDATE;
+ 153:Core/Src/gd32e23x_it.c ****         }
+ 154:Core/Src/gd32e23x_it.c ****     } else if (SET == exti_interrupt_flag_get(EXTI_15)) {
+ 181              		.loc 1 154 12 is_stmt 1 view .LVU29
+ 182              		.loc 1 154 23 is_stmt 0 view .LVU30
+ 183 0026 48F20000 		movw	r0, #32768
+ 184 002a FFF7FEFF 		bl	exti_interrupt_flag_get
+ 185              	.LVL4:
+ 186              		.loc 1 154 15 discriminator 1 view .LVU31
+ 187 002e 0128     		cmp	r0, #1
+ 188 0030 00D1     		bne	.LCB92
+ 189 0032 B6E0     		b	.L24	@long jump
+ 190              	.LCB92:
+ 191              	.L10:
+ 155:Core/Src/gd32e23x_it.c ****         exti_interrupt_flag_clear(EXTI_15);
+ 156:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_15)) {
+ 157:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state != PWM_STATE_DISABLE) {
+ 158:Core/Src/gd32e23x_it.c ****                 app_state.pwm_state = PWM_STATE_CLOSE;
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 7
 
 
- 130:Core/Src/gd32e23x_it.c ****  */
- 131:Core/Src/gd32e23x_it.c **** void TIMER15_IRQHandler(void)
- 132:Core/Src/gd32e23x_it.c **** {
- 214              		.loc 1 132 1 is_stmt 1 view -0
- 215              		.cfi_startproc
- 216              		@ args = 0, pretend = 0, frame = 0
- 217              		@ frame_needed = 0, uses_anonymous_args = 0
- 218 0000 10B5     		push	{r4, lr}
- 219              	.LCFI2:
- 220              		.cfi_def_cfa_offset 8
- 221              		.cfi_offset 4, -8
- 222              		.cfi_offset 14, -4
- 133:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER15, TIMER_INT_UP)) {
- 223              		.loc 1 133 5 view .LVU35
- 224              		.loc 1 133 16 is_stmt 0 view .LVU36
- 225 0002 44F20040 		movw	r0, #17408
- 226 0006 C4F20100 		movt	r0, 16385
- 227 000a 0121     		movs	r1, #1
- 228 000c FFF7FEFF 		bl	timer_interrupt_flag_get
- 229              	.LVL5:
- 230              		.loc 1 133 8 discriminator 1 view .LVU37
- 231 0010 0128     		cmp	r0, #1
- 232 0012 00D0     		beq	.L18
- 233              	.L15:
- 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
- 135:Core/Src/gd32e23x_it.c ****             timer_flag = 1;
- 136:Core/Src/gd32e23x_it.c ****         }
- 137:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER15, TIMER_INT_UP);
- 138:Core/Src/gd32e23x_it.c ****     }
- 139:Core/Src/gd32e23x_it.c **** }
- 234              		.loc 1 139 1 view .LVU38
- 235              		@ sp needed
- 236 0014 10BD     		pop	{r4, pc}
- 237              	.L18:
- 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
- 238              		.loc 1 134 9 is_stmt 1 view .LVU39
- 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
- 239              		.loc 1 134 13 is_stmt 0 view .LVU40
- 240 0016 40F20003 		movw	r3, #:lower16:timer_flag
- 241 001a C0F20003 		movt	r3, #:upper16:timer_flag
- 242 001e 1B78     		ldrb	r3, [r3]
- 134:Core/Src/gd32e23x_it.c ****         if (!timer_flag) { 
- 243              		.loc 1 134 12 view .LVU41
- 244 0020 2BB9     		cbnz	r3, .L17
- 135:Core/Src/gd32e23x_it.c ****         }
- 245              		.loc 1 135 13 is_stmt 1 view .LVU42
- 135:Core/Src/gd32e23x_it.c ****         }
- 246              		.loc 1 135 24 is_stmt 0 view .LVU43
- 247 0022 40F20003 		movw	r3, #:lower16:timer_flag
- 248 0026 C0F20003 		movt	r3, #:upper16:timer_flag
- 249 002a 0122     		movs	r2, #1
- 250 002c 1A70     		strb	r2, [r3]
- 251              	.L17:
- 137:Core/Src/gd32e23x_it.c ****     }
- 252              		.loc 1 137 9 is_stmt 1 view .LVU44
- 253 002e 44F20040 		movw	r0, #17408
- 254 0032 C4F20100 		movt	r0, 16385
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 8
+ 159:Core/Src/gd32e23x_it.c ****             } else {
+ 160:Core/Src/gd32e23x_it.c ****                 app_state.pwm_state = PWM_STATE_OPEN;
+ 161:Core/Src/gd32e23x_it.c ****             }
+ 162:Core/Src/gd32e23x_it.c ****         }
+ 163:Core/Src/gd32e23x_it.c ****     }
+ 164:Core/Src/gd32e23x_it.c **** }
+ 192              		.loc 1 164 1 view .LVU32
+ 193              		@ sp needed
+ 194 0034 10BD     		pop	{r4, pc}
+ 195              	.L21:
+ 117:Core/Src/gd32e23x_it.c ****         if (app_state.waveform_update == WAVEFORM_UPDATE_DISABLE) return ;
+ 196              		.loc 1 117 9 is_stmt 1 view .LVU33
+ 197 0036 0F30     		adds	r0, r0, #15
+ 198 0038 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 199              	.LVL5:
+ 118:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
+ 200              		.loc 1 118 9 view .LVU34
+ 118:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
+ 201              		.loc 1 118 39 is_stmt 0 view .LVU35
+ 202 003c 40F20003 		movw	r3, #:lower16:app_state
+ 203 0040 C0F20003 		movt	r3, #:upper16:app_state
+ 204 0044 1A78     		ldrb	r2, [r3]
+ 205 0046 0C23     		movs	r3, #12
+ 206 0048 1340     		ands	r3, r2
+ 118:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
+ 207              		.loc 1 118 12 view .LVU36
+ 208 004a 082B     		cmp	r3, #8
+ 209 004c F2D0     		beq	.L10
+ 119:Core/Src/gd32e23x_it.c ****             // turn right
+ 210              		.loc 1 119 9 is_stmt 1 view .LVU37
+ 119:Core/Src/gd32e23x_it.c ****             // turn right
+ 211              		.loc 1 119 22 is_stmt 0 view .LVU38
+ 212 004e 40F20040 		movw	r0, #1024
+ 213 0052 C4F60000 		movt	r0, 18432
+ 214 0056 0821     		movs	r1, #8
+ 215 0058 FFF7FEFF 		bl	gpio_input_bit_get
+ 216              	.LVL6:
+ 119:Core/Src/gd32e23x_it.c ****             // turn right
+ 217              		.loc 1 119 12 discriminator 1 view .LVU39
+ 218 005c B8B9     		cbnz	r0, .L13
+ 121:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq -= 1;
+ 219              		.loc 1 121 13 is_stmt 1 view .LVU40
+ 121:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq -= 1;
+ 220              		.loc 1 121 25 is_stmt 0 view .LVU41
+ 221 005e 40F20003 		movw	r3, #:lower16:app_data
+ 222 0062 C0F20003 		movt	r3, #:upper16:app_data
+ 223 0066 9B68     		ldr	r3, [r3, #8]
+ 121:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq -= 1;
+ 224              		.loc 1 121 16 view .LVU42
+ 225 0068 322B     		cmp	r3, #50
+ 226 006a E3D9     		bls	.L10
+ 122:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 227              		.loc 1 122 17 is_stmt 1 view .LVU43
+ 122:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 228              		.loc 1 122 41 is_stmt 0 view .LVU44
+ 229 006c 40F20002 		movw	r2, #:lower16:app_data
+ 230 0070 C0F20002 		movt	r2, #:upper16:app_data
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 8
 
 
- 255 0036 0121     		movs	r1, #1
- 256 0038 FFF7FEFF 		bl	timer_interrupt_flag_clear
- 257              	.LVL6:
- 258              		.loc 1 139 1 is_stmt 0 view .LVU45
- 259 003c EAE7     		b	.L15
- 260              		.cfi_endproc
- 261              	.LFE66:
- 263              		.section	.text.TIMER2_IRQHandler,"ax",%progbits
- 264              		.align	1
- 265              		.global	TIMER2_IRQHandler
- 266              		.syntax unified
- 267              		.code	16
- 268              		.thumb_func
- 270              	TIMER2_IRQHandler:
- 271              	.LFB67:
- 140:Core/Src/gd32e23x_it.c **** 
- 141:Core/Src/gd32e23x_it.c **** /*
- 142:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER2 exception
- 143:Core/Src/gd32e23x_it.c ****  * @param    None
- 144:Core/Src/gd32e23x_it.c ****  * @retval   None
- 145:Core/Src/gd32e23x_it.c ****  */
- 146:Core/Src/gd32e23x_it.c **** void TIMER2_IRQHandler(void)
- 147:Core/Src/gd32e23x_it.c **** {
- 272              		.loc 1 147 1 is_stmt 1 view -0
- 273              		.cfi_startproc
- 274              		@ args = 0, pretend = 0, frame = 0
- 275              		@ frame_needed = 0, uses_anonymous_args = 0
- 276 0000 10B5     		push	{r4, lr}
- 277              	.LCFI3:
- 278              		.cfi_def_cfa_offset 8
- 279              		.cfi_offset 4, -8
- 280              		.cfi_offset 14, -4
- 148:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_CH0)) {
- 281              		.loc 1 148 5 view .LVU47
- 282              		.loc 1 148 16 is_stmt 0 view .LVU48
- 283 0002 40F20040 		movw	r0, #1024
- 284 0006 C4F20000 		movt	r0, 16384
- 285 000a 0221     		movs	r1, #2
- 286 000c FFF7FEFF 		bl	timer_interrupt_flag_get
- 287              	.LVL7:
- 288              		.loc 1 148 8 discriminator 1 view .LVU49
- 289 0010 0128     		cmp	r0, #1
- 290 0012 00D0     		beq	.L23
- 291              	.L19:
- 149:Core/Src/gd32e23x_it.c ****         uint32_t buf;
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 151:Core/Src/gd32e23x_it.c ****         if (!value) {
- 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 153:Core/Src/gd32e23x_it.c ****             return ;
- 154:Core/Src/gd32e23x_it.c ****         }
- 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
- 157:Core/Src/gd32e23x_it.c ****         value = buf;
- 158:Core/Src/gd32e23x_it.c ****     }
- 159:Core/Src/gd32e23x_it.c **** }...
- 292              		.loc 1 159 1 view .LVU50
- 293              		@ sp needed
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 9
+ 231 0074 013B     		subs	r3, r3, #1
+ 232 0076 9360     		str	r3, [r2, #8]
+ 123:Core/Src/gd32e23x_it.c ****             }
+ 233              		.loc 1 123 17 is_stmt 1 view .LVU45
+ 123:Core/Src/gd32e23x_it.c ****             }
+ 234              		.loc 1 123 43 is_stmt 0 view .LVU46
+ 235 0078 40F20002 		movw	r2, #:lower16:app_state
+ 236 007c C0F20002 		movt	r2, #:upper16:app_state
+ 237 0080 1378     		ldrb	r3, [r2]
+ 238 0082 0C21     		movs	r1, #12
+ 239 0084 8B43     		bics	r3, r1
+ 240 0086 0421     		movs	r1, #4
+ 241 0088 0B43     		orrs	r3, r1
+ 242 008a 1370     		strb	r3, [r2]
+ 243 008c D2E7     		b	.L10
+ 244              	.L13:
+ 127:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq += 1;
+ 245              		.loc 1 127 13 is_stmt 1 view .LVU47
+ 127:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq += 1;
+ 246              		.loc 1 127 25 is_stmt 0 view .LVU48
+ 247 008e 40F20003 		movw	r3, #:lower16:app_data
+ 248 0092 C0F20003 		movt	r3, #:upper16:app_data
+ 249 0096 9B68     		ldr	r3, [r3, #8]
+ 127:Core/Src/gd32e23x_it.c ****                 app_data.wave_samp_freq += 1;
+ 250              		.loc 1 127 16 view .LVU49
+ 251 0098 40F2F312 		movw	r2, #499
+ 252 009c 9342     		cmp	r3, r2
+ 253 009e C9D8     		bhi	.L10
+ 128:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 254              		.loc 1 128 17 is_stmt 1 view .LVU50
+ 128:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;
+ 255              		.loc 1 128 41 is_stmt 0 view .LVU51
+ 256 00a0 40F20002 		movw	r2, #:lower16:app_data
+ 257 00a4 C0F20002 		movt	r2, #:upper16:app_data
+ 258 00a8 0133     		adds	r3, r3, #1
+ 259 00aa 9360     		str	r3, [r2, #8]
+ 129:Core/Src/gd32e23x_it.c ****             }
+ 260              		.loc 1 129 17 is_stmt 1 view .LVU52
+ 129:Core/Src/gd32e23x_it.c ****             }
+ 261              		.loc 1 129 43 is_stmt 0 view .LVU53
+ 262 00ac 40F20002 		movw	r2, #:lower16:app_state
+ 263 00b0 C0F20002 		movt	r2, #:upper16:app_state
+ 264 00b4 1378     		ldrb	r3, [r2]
+ 265 00b6 0C21     		movs	r1, #12
+ 266 00b8 8B43     		bics	r3, r1
+ 267 00ba 0421     		movs	r1, #4
+ 268 00bc 0B43     		orrs	r3, r1
+ 269 00be 1370     		strb	r3, [r2]
+ 270 00c0 B8E7     		b	.L10
+ 271              	.L22:
+ 133:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_13)) {
+ 272              		.loc 1 133 9 is_stmt 1 view .LVU54
+ 273 00c2 42F20000 		movw	r0, #8192
+ 274 00c6 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 275              	.LVL7:
+ 134:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 276              		.loc 1 134 9 view .LVU55
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 9
 
 
- 294 0014 10BD     		pop	{r4, pc}
- 295              	.L23:
- 296              	.LBB2:
- 149:Core/Src/gd32e23x_it.c ****         uint32_t buf;
- 297              		.loc 1 149 9 is_stmt 1 view .LVU51
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 298              		.loc 1 150 9 view .LVU52
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 299              		.loc 1 150 13 is_stmt 0 view .LVU53
- 300 0016 40F20003 		movw	r3, #:lower16:time_value
- 301 001a C0F20003 		movt	r3, #:upper16:time_value
- 302 001e 1B68     		ldr	r3, [r3]
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 303              		.loc 1 150 12 view .LVU54
- 304 0020 2BB1     		cbz	r3, .L21
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 305              		.loc 1 150 25 is_stmt 1 discriminator 1 view .LVU55
- 150:Core/Src/gd32e23x_it.c ****         if (time_value) value = 0;
- 306              		.loc 1 150 31 is_stmt 0 discriminator 1 view .LVU56
- 307 0022 40F20003 		movw	r3, #:lower16:value
- 308 0026 C0F20003 		movt	r3, #:upper16:value
- 309 002a 0022     		movs	r2, #0
- 310 002c 1A60     		str	r2, [r3]
- 311              	.L21:
- 151:Core/Src/gd32e23x_it.c ****         if (!value) {
- 312              		.loc 1 151 9 is_stmt 1 view .LVU57
- 151:Core/Src/gd32e23x_it.c ****         if (!value) {
- 313              		.loc 1 151 13 is_stmt 0 view .LVU58
- 314 002e 40F20003 		movw	r3, #:lower16:value
- 315 0032 C0F20003 		movt	r3, #:upper16:value
- 316 0036 1B68     		ldr	r3, [r3]
- 151:Core/Src/gd32e23x_it.c ****         if (!value) {
- 317              		.loc 1 151 12 view .LVU59
- 318 0038 EBB1     		cbz	r3, .L24
- 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 319              		.loc 1 155 9 is_stmt 1 view .LVU60
- 155:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 320              		.loc 1 155 15 is_stmt 0 view .LVU61
- 321 003a 40F20040 		movw	r0, #1024
- 322 003e C4F20000 		movt	r0, 16384
- 323 0042 0021     		movs	r1, #0
- 324 0044 FFF7FEFF 		bl	timer_channel_capture_value_register_read
- 325              	.LVL8:
- 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
- 326              		.loc 1 156 9 is_stmt 1 view .LVU62
- 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
- 327              		.loc 1 156 36 is_stmt 0 view .LVU63
- 328 0048 40F20002 		movw	r2, #:lower16:value
- 329 004c C0F20002 		movt	r2, #:upper16:value
- 330 0050 1368     		ldr	r3, [r2]
- 331 0052 C31A     		subs	r3, r0, r3
- 332 0054 4FF6FF7C 		movw	ip, #65535
- 333 0058 6344     		add	r3, r3, ip
- 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
- 334              		.loc 1 156 45 view .LVU64
- 335 005a 4FF6FF71 		movw	r1, #65535
- 336 005e B3FBF1F1 		udiv	r1, r3, r1
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 10
+ 134:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 277              		.loc 1 134 22 is_stmt 0 view .LVU56
+ 278 00ca 40F20040 		movw	r0, #1024
+ 279 00ce C4F60000 		movt	r0, 18432
+ 280 00d2 42F20001 		movw	r1, #8192
+ 281 00d6 FFF7FEFF 		bl	gpio_input_bit_get
+ 282              	.LVL8:
+ 134:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 283              		.loc 1 134 12 discriminator 1 view .LVU57
+ 284 00da 0028     		cmp	r0, #0
+ 285 00dc AAD1     		bne	.L10
+ 135:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_duty >= 100) {
+ 286              		.loc 1 135 13 is_stmt 1 view .LVU58
+ 135:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_duty >= 100) {
+ 287              		.loc 1 135 37 is_stmt 0 view .LVU59
+ 288 00de 40F20003 		movw	r3, #:lower16:app_state
+ 289 00e2 C0F20003 		movt	r3, #:upper16:app_state
+ 290 00e6 1B78     		ldrb	r3, [r3]
+ 291 00e8 0F22     		movs	r2, #15
+ 292 00ea 9343     		bics	r3, r2
+ 135:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_duty >= 100) {
+ 293              		.loc 1 135 16 view .LVU60
+ 294 00ec 402B     		cmp	r3, #64
+ 295 00ee A1D0     		beq	.L10
+ 136:Core/Src/gd32e23x_it.c ****                 app_data.pwm_duty = 0;
+ 296              		.loc 1 136 13 is_stmt 1 view .LVU61
+ 136:Core/Src/gd32e23x_it.c ****                 app_data.pwm_duty = 0;
+ 297              		.loc 1 136 25 is_stmt 0 view .LVU62
+ 298 00f0 40F20003 		movw	r3, #:lower16:app_data
+ 299 00f4 C0F20003 		movt	r3, #:upper16:app_data
+ 300 00f8 5B68     		ldr	r3, [r3, #4]
+ 136:Core/Src/gd32e23x_it.c ****                 app_data.pwm_duty = 0;
+ 301              		.loc 1 136 16 view .LVU63
+ 302 00fa 632B     		cmp	r3, #99
+ 303 00fc 10D9     		bls	.L15
+ 137:Core/Src/gd32e23x_it.c ****             } else {
+ 304              		.loc 1 137 17 is_stmt 1 view .LVU64
+ 137:Core/Src/gd32e23x_it.c ****             } else {
+ 305              		.loc 1 137 35 is_stmt 0 view .LVU65
+ 306 00fe 40F20003 		movw	r3, #:lower16:app_data
+ 307 0102 C0F20003 		movt	r3, #:upper16:app_data
+ 308 0106 0022     		movs	r2, #0
+ 309 0108 5A60     		str	r2, [r3, #4]
+ 310              	.L16:
+ 141:Core/Src/gd32e23x_it.c ****         }
+ 311              		.loc 1 141 13 is_stmt 1 view .LVU66
+ 141:Core/Src/gd32e23x_it.c ****         }
+ 312              		.loc 1 141 33 is_stmt 0 view .LVU67
+ 313 010a 40F20002 		movw	r2, #:lower16:app_state
+ 314 010e C0F20002 		movt	r2, #:upper16:app_state
+ 315 0112 1178     		ldrb	r1, [r2]
+ 316 0114 0F23     		movs	r3, #15
+ 317 0116 0B40     		ands	r3, r1
+ 318 0118 1021     		movs	r1, #16
+ 319 011a 0B43     		orrs	r3, r1
+ 320 011c 1370     		strb	r3, [r2]
+ 321 011e 89E7     		b	.L10
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 10
 
 
- 337 0062 0C04     		lsls	r4, r1, #16
- 338 0064 611A     		subs	r1, r4, r1
- 339 0066 5B1A     		subs	r3, r3, r1
- 156:Core/Src/gd32e23x_it.c ****         time_value = (0xFFFF + buf - value) % 0xFFFF;
- 340              		.loc 1 156 20 view .LVU65
- 341 0068 40F20001 		movw	r1, #:lower16:time_value
- 342 006c C0F20001 		movt	r1, #:upper16:time_value
- 343 0070 0B60     		str	r3, [r1]
- 157:Core/Src/gd32e23x_it.c ****         value = buf;
- 344              		.loc 1 157 9 is_stmt 1 view .LVU66
- 157:Core/Src/gd32e23x_it.c ****         value = buf;
- 345              		.loc 1 157 15 is_stmt 0 view .LVU67
- 346 0072 1060     		str	r0, [r2]
- 347 0074 CEE7     		b	.L19
- 348              	.LVL9:
- 349              	.L24:
- 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 350              		.loc 1 152 13 is_stmt 1 view .LVU68
- 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 351              		.loc 1 152 21 is_stmt 0 view .LVU69
- 352 0076 40F20040 		movw	r0, #1024
- 353 007a C4F20000 		movt	r0, 16384
- 354 007e 0021     		movs	r1, #0
- 355 0080 FFF7FEFF 		bl	timer_channel_capture_value_register_read
- 356              	.LVL10:
- 152:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
- 357              		.loc 1 152 19 discriminator 1 view .LVU70
- 358 0084 40F20003 		movw	r3, #:lower16:value
- 359 0088 C0F20003 		movt	r3, #:upper16:value
- 360 008c 1860     		str	r0, [r3]
- 153:Core/Src/gd32e23x_it.c ****             return ;
- 361              		.loc 1 153 13 is_stmt 1 view .LVU71
- 362 008e C1E7     		b	.L19
- 363              	.LBE2:
- 364              		.cfi_endproc
- 365              	.LFE67:
- 367              		.section	.bss.value,"aw",%nobits
- 368              		.align	2
- 371              	value:
- 372 0000 00000000 		.space	4
- 373              		.global	time_value
- 374              		.section	.bss.time_value,"aw",%nobits
- 375              		.align	2
- 378              	time_value:
- 379 0000 00000000 		.space	4
- 380              		.global	timer_flag
- 381              		.section	.bss.timer_flag,"aw",%nobits
- 384              	timer_flag:
- 385 0000 00       		.space	1
- 386              		.global	rotate_flag
- 387              		.section	.bss.rotate_flag,"aw",%nobits
- 390              	rotate_flag:
- 391 0000 00       		.space	1
- 392              		.text
- 393              	.Letext0:
- 394              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 395              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 11
+ 322              	.L15:
+ 139:Core/Src/gd32e23x_it.c ****             }
+ 323              		.loc 1 139 17 is_stmt 1 view .LVU68
+ 139:Core/Src/gd32e23x_it.c ****             }
+ 324              		.loc 1 139 35 is_stmt 0 view .LVU69
+ 325 0120 40F20002 		movw	r2, #:lower16:app_data
+ 326 0124 C0F20002 		movt	r2, #:upper16:app_data
+ 327 0128 0533     		adds	r3, r3, #5
+ 328 012a 5360     		str	r3, [r2, #4]
+ 329 012c EDE7     		b	.L16
+ 330              	.L23:
+ 144:Core/Src/gd32e23x_it.c ****         if (app_state.pwm_state == PWM_STATE_DISABLE) return ;
+ 331              		.loc 1 144 9 is_stmt 1 view .LVU70
+ 332 012e 44F20000 		movw	r0, #16384
+ 333 0132 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 334              	.LVL9:
+ 145:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14)) {
+ 335              		.loc 1 145 9 view .LVU71
+ 145:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14)) {
+ 336              		.loc 1 145 33 is_stmt 0 view .LVU72
+ 337 0136 40F20003 		movw	r3, #:lower16:app_state
+ 338 013a C0F20003 		movt	r3, #:upper16:app_state
+ 339 013e 1B78     		ldrb	r3, [r3]
+ 340 0140 0F22     		movs	r2, #15
+ 341 0142 9343     		bics	r3, r2
+ 145:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_14)) {
+ 342              		.loc 1 145 12 view .LVU73
+ 343 0144 402B     		cmp	r3, #64
+ 344 0146 00D1     		bne	.LCB235
+ 345 0148 74E7     		b	.L10	@long jump
+ 346              	.LCB235:
+ 146:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_freq >= 10000) {
+ 347              		.loc 1 146 9 is_stmt 1 view .LVU74
+ 146:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_freq >= 10000) {
+ 348              		.loc 1 146 22 is_stmt 0 view .LVU75
+ 349 014a 40F20040 		movw	r0, #1024
+ 350 014e C4F60000 		movt	r0, 18432
+ 351 0152 44F20001 		movw	r1, #16384
+ 352 0156 FFF7FEFF 		bl	gpio_input_bit_get
+ 353              	.LVL10:
+ 146:Core/Src/gd32e23x_it.c ****             if (app_data.pwm_freq >= 10000) {
+ 354              		.loc 1 146 12 discriminator 1 view .LVU76
+ 355 015a 0028     		cmp	r0, #0
+ 356 015c 00D069E7 		beq	.LCB243;b	.L10	@long jump
+ 357              	.LCB243:
+ 147:Core/Src/gd32e23x_it.c ****                 app_data.pwm_freq = 50;
+ 358              		.loc 1 147 13 is_stmt 1 view .LVU77
+ 147:Core/Src/gd32e23x_it.c ****                 app_data.pwm_freq = 50;
+ 359              		.loc 1 147 25 is_stmt 0 view .LVU78
+ 360 0160 40F20003 		movw	r3, #:lower16:app_data
+ 361 0164 C0F20003 		movt	r3, #:upper16:app_data
+ 362 0168 1B68     		ldr	r3, [r3]
+ 147:Core/Src/gd32e23x_it.c ****                 app_data.pwm_freq = 50;
+ 363              		.loc 1 147 16 view .LVU79
+ 364 016a 42F20F72 		movw	r2, #9999
+ 365 016e 9342     		cmp	r3, r2
+ 366 0170 10D9     		bls	.L18
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 11
 
 
- 396              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
- 397              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
- 398              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
- 399              		.file 7 "Core/Inc/gd32e23x_it.h"
- 400              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
- 401              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
- 402              		.file 10 "Core/Inc/systick.h"
- 403              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
-ARM GAS  D:\noval\Temp\cctu5Gui.s 			page 12
+ 148:Core/Src/gd32e23x_it.c ****             } else {
+ 367              		.loc 1 148 17 is_stmt 1 view .LVU80
+ 148:Core/Src/gd32e23x_it.c ****             } else {
+ 368              		.loc 1 148 35 is_stmt 0 view .LVU81
+ 369 0172 40F20003 		movw	r3, #:lower16:app_data
+ 370 0176 C0F20003 		movt	r3, #:upper16:app_data
+ 371 017a 3222     		movs	r2, #50
+ 372 017c 1A60     		str	r2, [r3]
+ 373              	.L19:
+ 152:Core/Src/gd32e23x_it.c ****         }
+ 374              		.loc 1 152 13 is_stmt 1 view .LVU82
+ 152:Core/Src/gd32e23x_it.c ****         }
+ 375              		.loc 1 152 33 is_stmt 0 view .LVU83
+ 376 017e 40F20002 		movw	r2, #:lower16:app_state
+ 377 0182 C0F20002 		movt	r2, #:upper16:app_state
+ 378 0186 1178     		ldrb	r1, [r2]
+ 379 0188 0F23     		movs	r3, #15
+ 380 018a 0B40     		ands	r3, r1
+ 381 018c 1021     		movs	r1, #16
+ 382 018e 0B43     		orrs	r3, r1
+ 383 0190 1370     		strb	r3, [r2]
+ 384 0192 4FE7     		b	.L10
+ 385              	.L18:
+ 150:Core/Src/gd32e23x_it.c ****             }
+ 386              		.loc 1 150 17 is_stmt 1 view .LVU84
+ 150:Core/Src/gd32e23x_it.c ****             }
+ 387              		.loc 1 150 35 is_stmt 0 view .LVU85
+ 388 0194 40F20002 		movw	r2, #:lower16:app_data
+ 389 0198 C0F20002 		movt	r2, #:upper16:app_data
+ 390 019c 3233     		adds	r3, r3, #50
+ 391 019e 1360     		str	r3, [r2]
+ 392 01a0 EDE7     		b	.L19
+ 393              	.L24:
+ 155:Core/Src/gd32e23x_it.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_15)) {
+ 394              		.loc 1 155 9 is_stmt 1 view .LVU86
+ 395 01a2 48F20000 		movw	r0, #32768
+ 396 01a6 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 397              	.LVL11:
+ 156:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state != PWM_STATE_DISABLE) {
+ 398              		.loc 1 156 9 view .LVU87
+ 156:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state != PWM_STATE_DISABLE) {
+ 399              		.loc 1 156 22 is_stmt 0 view .LVU88
+ 400 01aa 40F20040 		movw	r0, #1024
+ 401 01ae C4F60000 		movt	r0, 18432
+ 402 01b2 48F20001 		movw	r1, #32768
+ 403 01b6 FFF7FEFF 		bl	gpio_input_bit_get
+ 404              	.LVL12:
+ 156:Core/Src/gd32e23x_it.c ****             if (app_state.pwm_state != PWM_STATE_DISABLE) {
+ 405              		.loc 1 156 12 discriminator 1 view .LVU89
+ 406 01ba 0028     		cmp	r0, #0
+ 407 01bc 00D039E7 		beq	.LCB290;b	.L10	@long jump
+ 408              	.LCB290:
+ 157:Core/Src/gd32e23x_it.c ****                 app_state.pwm_state = PWM_STATE_CLOSE;
+ 409              		.loc 1 157 13 is_stmt 1 view .LVU90
+ 157:Core/Src/gd32e23x_it.c ****                 app_state.pwm_state = PWM_STATE_CLOSE;
+ 410              		.loc 1 157 37 is_stmt 0 view .LVU91
+ 411 01c0 40F20003 		movw	r3, #:lower16:app_state
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 12
+
+
+ 412 01c4 C0F20003 		movt	r3, #:upper16:app_state
+ 413 01c8 1B78     		ldrb	r3, [r3]
+ 414 01ca 0F22     		movs	r2, #15
+ 415 01cc 9343     		bics	r3, r2
+ 157:Core/Src/gd32e23x_it.c ****                 app_state.pwm_state = PWM_STATE_CLOSE;
+ 416              		.loc 1 157 16 view .LVU92
+ 417 01ce 402B     		cmp	r3, #64
+ 418 01d0 0AD0     		beq	.L20
+ 158:Core/Src/gd32e23x_it.c ****             } else {
+ 419              		.loc 1 158 17 is_stmt 1 view .LVU93
+ 158:Core/Src/gd32e23x_it.c ****             } else {
+ 420              		.loc 1 158 37 is_stmt 0 view .LVU94
+ 421 01d2 40F20002 		movw	r2, #:lower16:app_state
+ 422 01d6 C0F20002 		movt	r2, #:upper16:app_state
+ 423 01da 1178     		ldrb	r1, [r2]
+ 424 01dc 0F23     		movs	r3, #15
+ 425 01de 0B40     		ands	r3, r1
+ 426 01e0 2021     		movs	r1, #32
+ 427 01e2 0B43     		orrs	r3, r1
+ 428 01e4 1370     		strb	r3, [r2]
+ 429 01e6 25E7     		b	.L10
+ 430              	.L20:
+ 160:Core/Src/gd32e23x_it.c ****             }
+ 431              		.loc 1 160 17 is_stmt 1 view .LVU95
+ 160:Core/Src/gd32e23x_it.c ****             }
+ 432              		.loc 1 160 37 is_stmt 0 view .LVU96
+ 433 01e8 40F20002 		movw	r2, #:lower16:app_state
+ 434 01ec C0F20002 		movt	r2, #:upper16:app_state
+ 435 01f0 1178     		ldrb	r1, [r2]
+ 436 01f2 0F23     		movs	r3, #15
+ 437 01f4 0B40     		ands	r3, r1
+ 438 01f6 3021     		movs	r1, #48
+ 439 01f8 0B43     		orrs	r3, r1
+ 440 01fa 1370     		strb	r3, [r2]
+ 441 01fc 1AE7     		b	.L10
+ 442              		.cfi_endproc
+ 443              	.LFE68:
+ 445              		.section	.text.TIMER15_IRQHandler,"ax",%progbits
+ 446              		.align	1
+ 447              		.global	TIMER15_IRQHandler
+ 448              		.syntax unified
+ 449              		.code	16
+ 450              		.thumb_func
+ 452              	TIMER15_IRQHandler:
+ 453              	.LFB69:
+ 165:Core/Src/gd32e23x_it.c **** 
+ 166:Core/Src/gd32e23x_it.c **** /*
+ 167:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER15 exception
+ 168:Core/Src/gd32e23x_it.c ****  * @param    None
+ 169:Core/Src/gd32e23x_it.c ****  * @retval   None
+ 170:Core/Src/gd32e23x_it.c ****  */
+ 171:Core/Src/gd32e23x_it.c **** void TIMER15_IRQHandler(void)
+ 172:Core/Src/gd32e23x_it.c **** {
+ 454              		.loc 1 172 1 is_stmt 1 view -0
+ 455              		.cfi_startproc
+ 456              		@ args = 0, pretend = 0, frame = 0
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 13
+
+
+ 458 0000 10B5     		push	{r4, lr}
+ 459              	.LCFI2:
+ 460              		.cfi_def_cfa_offset 8
+ 461              		.cfi_offset 4, -8
+ 462              		.cfi_offset 14, -4
+ 173:Core/Src/gd32e23x_it.c ****     static uint32_t counter, wave_update, display_update, vpp_update;
+ 463              		.loc 1 173 5 view .LVU98
+ 174:Core/Src/gd32e23x_it.c **** 
+ 175:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER15, TIMER_INT_FLAG_UP)) {
+ 464              		.loc 1 175 5 view .LVU99
+ 465              		.loc 1 175 16 is_stmt 0 view .LVU100
+ 466 0002 44F20040 		movw	r0, #17408
+ 467 0006 C4F20100 		movt	r0, 16385
+ 468 000a 0121     		movs	r1, #1
+ 469 000c FFF7FEFF 		bl	timer_interrupt_flag_get
+ 470              	.LVL13:
+ 471              		.loc 1 175 8 discriminator 1 view .LVU101
+ 472 0010 0128     		cmp	r0, #1
+ 473 0012 07D0     		beq	.L29
+ 474              	.L26:
+ 176:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER15, TIMER_INT_FLAG_UP);
+ 177:Core/Src/gd32e23x_it.c ****         if (counter == wave_update) {
+ 178:Core/Src/gd32e23x_it.c ****             wave_update = (counter + app_data.wave_samp_freq) % 0xFFFFFFFF;
+ 179:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 180:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;                   // the default 
+ 181:Core/Src/gd32e23x_it.c ****         }
+ 182:Core/Src/gd32e23x_it.c ****         if (counter == display_update) {
+ 183:Core/Src/gd32e23x_it.c ****             display_update = (counter + 10000) % 0xFFFFFFFF;
+ 184:Core/Src/gd32e23x_it.c ****             app_state.display_update = APP_STATE_ENABLE;                            // the display 
+ 185:Core/Src/gd32e23x_it.c ****         }
+ 186:Core/Src/gd32e23x_it.c ****         if (vpp_update == counter) {
+ 187:Core/Src/gd32e23x_it.c ****             app_data.wave_vpp = -100;
+ 188:Core/Src/gd32e23x_it.c ****             vpp_update = (counter + 500000) % 0xFFFFFFFF;
+ 189:Core/Src/gd32e23x_it.c ****         }
+ 190:Core/Src/gd32e23x_it.c ****     }
+ 191:Core/Src/gd32e23x_it.c ****     counter ++;  // 10us
+ 475              		.loc 1 191 5 is_stmt 1 view .LVU102
+ 476              		.loc 1 191 13 is_stmt 0 view .LVU103
+ 477 0014 40F20003 		movw	r3, #:lower16:counter.5
+ 478 0018 C0F20003 		movt	r3, #:upper16:counter.5
+ 479 001c 1A68     		ldr	r2, [r3]
+ 480 001e 0132     		adds	r2, r2, #1
+ 481 0020 1A60     		str	r2, [r3]
+ 192:Core/Src/gd32e23x_it.c **** }
+ 482              		.loc 1 192 1 view .LVU104
+ 483              		@ sp needed
+ 484 0022 10BD     		pop	{r4, pc}
+ 485              	.L29:
+ 176:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER15, TIMER_INT_FLAG_UP);
+ 486              		.loc 1 176 9 is_stmt 1 view .LVU105
+ 487 0024 44F20040 		movw	r0, #17408
+ 488 0028 C4F20100 		movt	r0, 16385
+ 489 002c 0121     		movs	r1, #1
+ 490 002e FFF7FEFF 		bl	timer_interrupt_flag_clear
+ 491              	.LVL14:
+ 177:Core/Src/gd32e23x_it.c ****             wave_update = (counter + app_data.wave_samp_freq) % 0xFFFFFFFF;
+ 492              		.loc 1 177 9 view .LVU106
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 14
+
+
+ 177:Core/Src/gd32e23x_it.c ****             wave_update = (counter + app_data.wave_samp_freq) % 0xFFFFFFFF;
+ 493              		.loc 1 177 21 is_stmt 0 view .LVU107
+ 494 0032 40F20003 		movw	r3, #:lower16:counter.5
+ 495 0036 C0F20003 		movt	r3, #:upper16:counter.5
+ 496 003a 1B68     		ldr	r3, [r3]
+ 497 003c 40F20002 		movw	r2, #:lower16:wave_update.4
+ 498 0040 C0F20002 		movt	r2, #:upper16:wave_update.4
+ 499 0044 1268     		ldr	r2, [r2]
+ 177:Core/Src/gd32e23x_it.c ****             wave_update = (counter + app_data.wave_samp_freq) % 0xFFFFFFFF;
+ 500              		.loc 1 177 12 view .LVU108
+ 501 0046 9342     		cmp	r3, r2
+ 502 0048 24D0     		beq	.L30
+ 503              	.L27:
+ 182:Core/Src/gd32e23x_it.c ****             display_update = (counter + 10000) % 0xFFFFFFFF;
+ 504              		.loc 1 182 9 is_stmt 1 view .LVU109
+ 182:Core/Src/gd32e23x_it.c ****             display_update = (counter + 10000) % 0xFFFFFFFF;
+ 505              		.loc 1 182 21 is_stmt 0 view .LVU110
+ 506 004a 40F20002 		movw	r2, #:lower16:display_update.3
+ 507 004e C0F20002 		movt	r2, #:upper16:display_update.3
+ 508 0052 1268     		ldr	r2, [r2]
+ 182:Core/Src/gd32e23x_it.c ****             display_update = (counter + 10000) % 0xFFFFFFFF;
+ 509              		.loc 1 182 12 view .LVU111
+ 510 0054 9342     		cmp	r3, r2
+ 511 0056 40D0     		beq	.L31
+ 512              	.L28:
+ 186:Core/Src/gd32e23x_it.c ****             app_data.wave_vpp = -100;
+ 513              		.loc 1 186 9 is_stmt 1 view .LVU112
+ 186:Core/Src/gd32e23x_it.c ****             app_data.wave_vpp = -100;
+ 514              		.loc 1 186 24 is_stmt 0 view .LVU113
+ 515 0058 40F20002 		movw	r2, #:lower16:vpp_update.2
+ 516 005c C0F20002 		movt	r2, #:upper16:vpp_update.2
+ 517 0060 1268     		ldr	r2, [r2]
+ 186:Core/Src/gd32e23x_it.c ****             app_data.wave_vpp = -100;
+ 518              		.loc 1 186 12 view .LVU114
+ 519 0062 9342     		cmp	r3, r2
+ 520 0064 D6D1     		bne	.L26
+ 187:Core/Src/gd32e23x_it.c ****             vpp_update = (counter + 500000) % 0xFFFFFFFF;
+ 521              		.loc 1 187 13 is_stmt 1 view .LVU115
+ 187:Core/Src/gd32e23x_it.c ****             vpp_update = (counter + 500000) % 0xFFFFFFFF;
+ 522              		.loc 1 187 31 is_stmt 0 view .LVU116
+ 523 0066 40F20002 		movw	r2, #:lower16:app_data
+ 524 006a C0F20002 		movt	r2, #:upper16:app_data
+ 525 006e 6421     		movs	r1, #100
+ 526 0070 4942     		rsbs	r1, r1, #0
+ 527 0072 1161     		str	r1, [r2, #16]
+ 188:Core/Src/gd32e23x_it.c ****         }
+ 528              		.loc 1 188 13 is_stmt 1 view .LVU117
+ 188:Core/Src/gd32e23x_it.c ****         }
+ 529              		.loc 1 188 35 is_stmt 0 view .LVU118
+ 530 0074 4AF2201C 		movw	ip, #41248
+ 531 0078 C0F2070C 		movt	ip, 7
+ 532 007c 6344     		add	r3, r3, ip
+ 188:Core/Src/gd32e23x_it.c ****         }
+ 533              		.loc 1 188 45 view .LVU119
+ 534 007e 0022     		movs	r2, #0
+ 535 0080 6331     		adds	r1, r1, #99
+ 536 0082 8B42     		cmp	r3, r1
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 15
+
+
+ 537 0084 5241     		adcs	r2, r2, r2
+ 538 0086 9B18     		adds	r3, r3, r2
+ 188:Core/Src/gd32e23x_it.c ****         }
+ 539              		.loc 1 188 24 view .LVU120
+ 540 0088 40F20002 		movw	r2, #:lower16:vpp_update.2
+ 541 008c C0F20002 		movt	r2, #:upper16:vpp_update.2
+ 542 0090 1360     		str	r3, [r2]
+ 543 0092 BFE7     		b	.L26
+ 544              	.L30:
+ 178:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 545              		.loc 1 178 13 is_stmt 1 view .LVU121
+ 178:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 546              		.loc 1 178 46 is_stmt 0 view .LVU122
+ 547 0094 40F20002 		movw	r2, #:lower16:app_data
+ 548 0098 C0F20002 		movt	r2, #:upper16:app_data
+ 549 009c 9268     		ldr	r2, [r2, #8]
+ 178:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 550              		.loc 1 178 36 view .LVU123
+ 551 009e 9A18     		adds	r2, r3, r2
+ 178:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 552              		.loc 1 178 63 view .LVU124
+ 553 00a0 0021     		movs	r1, #0
+ 554 00a2 0120     		movs	r0, #1
+ 555 00a4 4042     		rsbs	r0, r0, #0
+ 556 00a6 8242     		cmp	r2, r0
+ 557 00a8 4941     		adcs	r1, r1, r1
+ 558 00aa 5218     		adds	r2, r2, r1
+ 178:Core/Src/gd32e23x_it.c ****             if (app_state.waveform_update == WAVEFORM_UPDATE_NONE)
+ 559              		.loc 1 178 25 view .LVU125
+ 560 00ac 40F20001 		movw	r1, #:lower16:wave_update.4
+ 561 00b0 C0F20001 		movt	r1, #:upper16:wave_update.4
+ 562 00b4 0A60     		str	r2, [r1]
+ 179:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;                   // the default 
+ 563              		.loc 1 179 13 is_stmt 1 view .LVU126
+ 179:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;                   // the default 
+ 564              		.loc 1 179 43 is_stmt 0 view .LVU127
+ 565 00b6 40F20002 		movw	r2, #:lower16:app_state
+ 566 00ba C0F20002 		movt	r2, #:upper16:app_state
+ 567 00be 1278     		ldrb	r2, [r2]
+ 568 00c0 0C21     		movs	r1, #12
+ 179:Core/Src/gd32e23x_it.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DONE;                   // the default 
+ 569              		.loc 1 179 16 view .LVU128
+ 570 00c2 1142     		tst	r1, r2
+ 571 00c4 C1D1     		bne	.L27
+ 180:Core/Src/gd32e23x_it.c ****         }
+ 572              		.loc 1 180 17 is_stmt 1 view .LVU129
+ 180:Core/Src/gd32e23x_it.c ****         }
+ 573              		.loc 1 180 43 is_stmt 0 view .LVU130
+ 574 00c6 40F20001 		movw	r1, #:lower16:app_state
+ 575 00ca C0F20001 		movt	r1, #:upper16:app_state
+ 576 00ce 0D30     		adds	r0, r0, #13
+ 577 00d0 8243     		bics	r2, r0
+ 578 00d2 0420     		movs	r0, #4
+ 579 00d4 0243     		orrs	r2, r0
+ 580 00d6 0A70     		strb	r2, [r1]
+ 581 00d8 B7E7     		b	.L27
+ 582              	.L31:
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 16
+
+
+ 183:Core/Src/gd32e23x_it.c ****             app_state.display_update = APP_STATE_ENABLE;                            // the display 
+ 583              		.loc 1 183 13 is_stmt 1 view .LVU131
+ 183:Core/Src/gd32e23x_it.c ****             app_state.display_update = APP_STATE_ENABLE;                            // the display 
+ 584              		.loc 1 183 39 is_stmt 0 view .LVU132
+ 585 00da 42F21072 		movw	r2, #10000
+ 586 00de 9A18     		adds	r2, r3, r2
+ 183:Core/Src/gd32e23x_it.c ****             app_state.display_update = APP_STATE_ENABLE;                            // the display 
+ 587              		.loc 1 183 48 view .LVU133
+ 588 00e0 0021     		movs	r1, #0
+ 589 00e2 0120     		movs	r0, #1
+ 590 00e4 4042     		rsbs	r0, r0, #0
+ 591 00e6 8242     		cmp	r2, r0
+ 592 00e8 4941     		adcs	r1, r1, r1
+ 593 00ea 5218     		adds	r2, r2, r1
+ 183:Core/Src/gd32e23x_it.c ****             app_state.display_update = APP_STATE_ENABLE;                            // the display 
+ 594              		.loc 1 183 28 view .LVU134
+ 595 00ec 40F20001 		movw	r1, #:lower16:display_update.3
+ 596 00f0 C0F20001 		movt	r1, #:upper16:display_update.3
+ 597 00f4 0A60     		str	r2, [r1]
+ 184:Core/Src/gd32e23x_it.c ****         }
+ 598              		.loc 1 184 13 is_stmt 1 view .LVU135
+ 184:Core/Src/gd32e23x_it.c ****         }
+ 599              		.loc 1 184 38 is_stmt 0 view .LVU136
+ 600 00f6 40F20001 		movw	r1, #:lower16:app_state
+ 601 00fa C0F20001 		movt	r1, #:upper16:app_state
+ 602 00fe 0A78     		ldrb	r2, [r1]
+ 603 0100 0430     		adds	r0, r0, #4
+ 604 0102 8243     		bics	r2, r0
+ 605 0104 0120     		movs	r0, #1
+ 606 0106 0243     		orrs	r2, r0
+ 607 0108 0A70     		strb	r2, [r1]
+ 608 010a A5E7     		b	.L28
+ 609              		.cfi_endproc
+ 610              	.LFE69:
+ 612              		.section	.rodata.TIMER2_IRQHandler.str1.4,"aMS",%progbits,1
+ 613              		.align	2
+ 614              	.LC0:
+ 615 0000 54494D45 		.ascii	"TIMER2_IRQHandler\000"
+ 615      52325F49 
+ 615      52514861 
+ 615      6E646C65 
+ 615      7200
+ 616              		.section	.text.TIMER2_IRQHandler,"ax",%progbits
+ 617              		.align	1
+ 618              		.global	TIMER2_IRQHandler
+ 619              		.syntax unified
+ 620              		.code	16
+ 621              		.thumb_func
+ 623              	TIMER2_IRQHandler:
+ 624              	.LFB70:
+ 193:Core/Src/gd32e23x_it.c **** 
+ 194:Core/Src/gd32e23x_it.c **** /*
+ 195:Core/Src/gd32e23x_it.c ****  * @brief    This function handles TIMER2 exception
+ 196:Core/Src/gd32e23x_it.c ****  * @param    None
+ 197:Core/Src/gd32e23x_it.c ****  * @retval   None
+ 198:Core/Src/gd32e23x_it.c ****  */
+ 199:Core/Src/gd32e23x_it.c **** void TIMER2_IRQHandler(void)
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 17
+
+
+ 200:Core/Src/gd32e23x_it.c **** {
+ 625              		.loc 1 200 1 is_stmt 1 view -0
+ 626              		.cfi_startproc
+ 627              		@ args = 0, pretend = 0, frame = 0
+ 628              		@ frame_needed = 0, uses_anonymous_args = 0
+ 629 0000 10B5     		push	{r4, lr}
+ 630              	.LCFI3:
+ 631              		.cfi_def_cfa_offset 8
+ 632              		.cfi_offset 4, -8
+ 633              		.cfi_offset 14, -4
+ 201:Core/Src/gd32e23x_it.c ****     static uint32_t buf;
+ 634              		.loc 1 201 5 view .LVU138
+ 202:Core/Src/gd32e23x_it.c ****     EMLOG(LOG_DEBUG, "TIMER2_IRQHandler");
+ 635              		.loc 1 202 5 view .LVU139
+ 636 0002 40F20003 		movw	r3, #:lower16:.LC0
+ 637 0006 C0F20003 		movt	r3, #:upper16:.LC0
+ 638 000a 40F20001 		movw	r1, #:lower16:__FUNCTION__.1
+ 639 000e C0F20001 		movt	r1, #:upper16:__FUNCTION__.1
+ 640 0012 CA22     		movs	r2, #202
+ 641 0014 0020     		movs	r0, #0
+ 642 0016 FFF7FEFF 		bl	EM_LOG
+ 643              	.LVL15:
+ 203:Core/Src/gd32e23x_it.c ****     if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_CH0)) {
+ 644              		.loc 1 203 5 view .LVU140
+ 645              		.loc 1 203 16 is_stmt 0 view .LVU141
+ 646 001a 40F20040 		movw	r0, #1024
+ 647 001e C4F20000 		movt	r0, 16384
+ 648 0022 0221     		movs	r1, #2
+ 649 0024 FFF7FEFF 		bl	timer_interrupt_flag_get
+ 650              	.LVL16:
+ 651              		.loc 1 203 8 discriminator 1 view .LVU142
+ 652 0028 0128     		cmp	r0, #1
+ 653 002a 00D0     		beq	.L36
+ 654              	.L32:
+ 204:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_CH0);
+ 205:Core/Src/gd32e23x_it.c ****         if (app_data.wave_freq) value = 0;
+ 206:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 207:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 208:Core/Src/gd32e23x_it.c ****             return ;
+ 209:Core/Src/gd32e23x_it.c ****         }
+ 210:Core/Src/gd32e23x_it.c ****         buf = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 211:Core/Src/gd32e23x_it.c ****         app_data.wave_freq = (0xFFFF + buf - value) % 0xFFFF;
+ 212:Core/Src/gd32e23x_it.c ****         app_state.display_update = ENABLE;
+ 213:Core/Src/gd32e23x_it.c ****     }
+ 214:Core/Src/gd32e23x_it.c **** }
+ 655              		.loc 1 214 1 view .LVU143
+ 656              		@ sp needed
+ 657 002c 10BD     		pop	{r4, pc}
+ 658              	.L36:
+ 204:Core/Src/gd32e23x_it.c ****         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_CH0);
+ 659              		.loc 1 204 9 is_stmt 1 view .LVU144
+ 660 002e 40F20040 		movw	r0, #1024
+ 661 0032 C4F20000 		movt	r0, 16384
+ 662 0036 0221     		movs	r1, #2
+ 663 0038 FFF7FEFF 		bl	timer_interrupt_flag_clear
+ 664              	.LVL17:
+ 205:Core/Src/gd32e23x_it.c ****         if (!value) {
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 18
+
+
+ 665              		.loc 1 205 9 view .LVU145
+ 205:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 666              		.loc 1 205 21 is_stmt 0 view .LVU146
+ 667 003c 40F20003 		movw	r3, #:lower16:app_data
+ 668 0040 C0F20003 		movt	r3, #:upper16:app_data
+ 669 0044 DB68     		ldr	r3, [r3, #12]
+ 205:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 670              		.loc 1 205 12 view .LVU147
+ 671 0046 2BB1     		cbz	r3, .L34
+ 205:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 672              		.loc 1 205 33 is_stmt 1 discriminator 1 view .LVU148
+ 205:Core/Src/gd32e23x_it.c ****         if (!value) {
+ 673              		.loc 1 205 39 is_stmt 0 discriminator 1 view .LVU149
+ 674 0048 40F20003 		movw	r3, #:lower16:value
+ 675 004c C0F20003 		movt	r3, #:upper16:value
+ 676 0050 0022     		movs	r2, #0
+ 677 0052 1A60     		str	r2, [r3]
+ 678              	.L34:
+ 206:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 679              		.loc 1 206 9 is_stmt 1 view .LVU150
+ 206:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 680              		.loc 1 206 13 is_stmt 0 view .LVU151
+ 681 0054 40F20003 		movw	r3, #:lower16:value
+ 682 0058 C0F20003 		movt	r3, #:upper16:value
+ 683 005c 1B68     		ldr	r3, [r3]
+ 206:Core/Src/gd32e23x_it.c ****             value = timer_channel_capture_value_register_read(TIMER2, TIMER_CH_0);
+ 684              		.loc 1 206 12 view .LVU152
+ 685 005e 5BB3     		cbz	r3, .L37
+ 210:Core/Src/gd32e23x_it.c ****         app_data.wave_freq = (0xFFFF + buf - value) % 0xFFFF;
+ 686              		.loc 1 210 9 is_stmt 1 view .LVU153
+ 210:Core/Src/gd32e23x_it.c ****         app_data.wave_freq = (0xFFFF + buf - value) % 0xFFFF;
+ 687              		.loc 1 210 15 is_stmt 0 view .LVU154
+ 688 0060 40F20040 		movw	r0, #1024
+ 689 0064 C4F20000 		movt	r0, 16384
+ 690 0068 0021     		movs	r1, #0
+ 691 006a FFF7FEFF 		bl	timer_channel_capture_value_register_read
+ 692              	.LVL18:
+ 210:Core/Src/gd32e23x_it.c ****         app_data.wave_freq = (0xFFFF + buf - value) % 0xFFFF;
+ 693              		.loc 1 210 13 discriminator 1 view .LVU155
+ 694 006e 40F20003 		movw	r3, #:lower16:buf.0
+ 695 0072 C0F20003 		movt	r3, #:upper16:buf.0
+ 696 0076 1860     		str	r0, [r3]
+ 211:Core/Src/gd32e23x_it.c ****         app_state.display_update = ENABLE;
+ 697              		.loc 1 211 9 is_stmt 1 view .LVU156
+ 211:Core/Src/gd32e23x_it.c ****         app_state.display_update = ENABLE;
+ 698              		.loc 1 211 44 is_stmt 0 view .LVU157
+ 699 0078 40F20003 		movw	r3, #:lower16:value
+ 700 007c C0F20003 		movt	r3, #:upper16:value
+ 701 0080 1B68     		ldr	r3, [r3]
+ 702 0082 C01A     		subs	r0, r0, r3
+ 703 0084 4FF6FF7C 		movw	ip, #65535
+ 704 0088 6044     		add	r0, r0, ip
+ 211:Core/Src/gd32e23x_it.c ****         app_state.display_update = ENABLE;
+ 705              		.loc 1 211 53 view .LVU158
+ 706 008a 4FF6FF73 		movw	r3, #65535
+ 707 008e B0FBF3F3 		udiv	r3, r0, r3
+ 708 0092 1A04     		lsls	r2, r3, #16
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 19
+
+
+ 709 0094 D31A     		subs	r3, r2, r3
+ 710 0096 C01A     		subs	r0, r0, r3
+ 211:Core/Src/gd32e23x_it.c ****         app_state.display_update = ENABLE;
+ 711              		.loc 1 211 28 view .LVU159
+ 712 0098 40F20003 		movw	r3, #:lower16:app_data
+ 713 009c C0F20003 		movt	r3, #:upper16:app_data
+ 714 00a0 D860     		str	r0, [r3, #12]
+ 212:Core/Src/gd32e23x_it.c ****     }
+ 715              		.loc 1 212 9 is_stmt 1 view .LVU160
+ 212:Core/Src/gd32e23x_it.c ****     }
+ 716              		.loc 1 212 34 is_stmt 0 view .LVU161
+ 717 00a2 40F20002 		movw	r2, #:lower16:app_state
+ 718 00a6 C0F20002 		movt	r2, #:upper16:app_state
+ 719 00aa 1378     		ldrb	r3, [r2]
+ 720 00ac 0321     		movs	r1, #3
+ 721 00ae 8B43     		bics	r3, r1
+ 722 00b0 0121     		movs	r1, #1
+ 723 00b2 0B43     		orrs	r3, r1
+ 724 00b4 1370     		strb	r3, [r2]
+ 725 00b6 B9E7     		b	.L32
+ 726              	.L37:
+ 207:Core/Src/gd32e23x_it.c ****             return ;
+ 727              		.loc 1 207 13 is_stmt 1 view .LVU162
+ 207:Core/Src/gd32e23x_it.c ****             return ;
+ 728              		.loc 1 207 21 is_stmt 0 view .LVU163
+ 729 00b8 40F20040 		movw	r0, #1024
+ 730 00bc C4F20000 		movt	r0, 16384
+ 731 00c0 0021     		movs	r1, #0
+ 732 00c2 FFF7FEFF 		bl	timer_channel_capture_value_register_read
+ 733              	.LVL19:
+ 207:Core/Src/gd32e23x_it.c ****             return ;
+ 734              		.loc 1 207 19 discriminator 1 view .LVU164
+ 735 00c6 40F20003 		movw	r3, #:lower16:value
+ 736 00ca C0F20003 		movt	r3, #:upper16:value
+ 737 00ce 1860     		str	r0, [r3]
+ 208:Core/Src/gd32e23x_it.c ****         }
+ 738              		.loc 1 208 13 is_stmt 1 view .LVU165
+ 739 00d0 ACE7     		b	.L32
+ 740              		.cfi_endproc
+ 741              	.LFE70:
+ 743              		.section	.bss.buf.0,"aw",%nobits
+ 744              		.align	2
+ 747              	buf.0:
+ 748 0000 00000000 		.space	4
+ 749              		.section	.rodata.__FUNCTION__.1,"a"
+ 750              		.align	2
+ 753              	__FUNCTION__.1:
+ 754 0000 54494D45 		.ascii	"TIMER2_IRQHandler\000"
+ 754      52325F49 
+ 754      52514861 
+ 754      6E646C65 
+ 754      7200
+ 755              		.section	.bss.vpp_update.2,"aw",%nobits
+ 756              		.align	2
+ 759              	vpp_update.2:
+ 760 0000 00000000 		.space	4
+ 761              		.section	.bss.display_update.3,"aw",%nobits
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 20
+
+
+ 762              		.align	2
+ 765              	display_update.3:
+ 766 0000 00000000 		.space	4
+ 767              		.section	.bss.wave_update.4,"aw",%nobits
+ 768              		.align	2
+ 771              	wave_update.4:
+ 772 0000 00000000 		.space	4
+ 773              		.section	.bss.counter.5,"aw",%nobits
+ 774              		.align	2
+ 777              	counter.5:
+ 778 0000 00000000 		.space	4
+ 779              		.section	.bss.value,"aw",%nobits
+ 780              		.align	2
+ 783              	value:
+ 784 0000 00000000 		.space	4
+ 785              		.global	time_value
+ 786              		.section	.bss.time_value,"aw",%nobits
+ 787              		.align	2
+ 790              	time_value:
+ 791 0000 00000000 		.space	4
+ 792              		.global	timer_flag
+ 793              		.section	.bss.timer_flag,"aw",%nobits
+ 796              	timer_flag:
+ 797 0000 00       		.space	1
+ 798              		.global	rotate_flag
+ 799              		.section	.bss.rotate_flag,"aw",%nobits
+ 802              	rotate_flag:
+ 803 0000 00       		.space	1
+ 804              		.text
+ 805              	.Letext0:
+ 806              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 807              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 808              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 809              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
+ 810              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ 811              		.file 7 "Core/Inc/gd32e23x_it.h"
+ 812              		.file 8 "Core/Inc/app.h"
+ 813              		.file 9 "Core/Inc/log.h"
+ 814              		.file 10 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
+ 815              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
+ 816              		.file 12 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
+ 817              		.file 13 "Core/Inc/systick.h"
+ARM GAS  D:\noval\Temp\ccNHkzG7.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_it.c
-D:\noval\Temp\cctu5Gui.s:19     .text.NMI_Handler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:25     .text.NMI_Handler:00000000 NMI_Handler
-D:\noval\Temp\cctu5Gui.s:42     .text.HardFault_Handler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:48     .text.HardFault_Handler:00000000 HardFault_Handler
-D:\noval\Temp\cctu5Gui.s:65     .text.SVC_Handler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:71     .text.SVC_Handler:00000000 SVC_Handler
-D:\noval\Temp\cctu5Gui.s:88     .text.PendSV_Handler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:94     .text.PendSV_Handler:00000000 PendSV_Handler
-D:\noval\Temp\cctu5Gui.s:111    .text.SysTick_Handler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:117    .text.SysTick_Handler:00000000 SysTick_Handler
-D:\noval\Temp\cctu5Gui.s:138    .text.EXTI4_15_IRQHandler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:144    .text.EXTI4_15_IRQHandler:00000000 EXTI4_15_IRQHandler
-D:\noval\Temp\cctu5Gui.s:390    .bss.rotate_flag:00000000 rotate_flag
-D:\noval\Temp\cctu5Gui.s:206    .text.TIMER15_IRQHandler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:212    .text.TIMER15_IRQHandler:00000000 TIMER15_IRQHandler
-D:\noval\Temp\cctu5Gui.s:384    .bss.timer_flag:00000000 timer_flag
-D:\noval\Temp\cctu5Gui.s:264    .text.TIMER2_IRQHandler:00000000 $t
-D:\noval\Temp\cctu5Gui.s:270    .text.TIMER2_IRQHandler:00000000 TIMER2_IRQHandler
-D:\noval\Temp\cctu5Gui.s:378    .bss.time_value:00000000 time_value
-D:\noval\Temp\cctu5Gui.s:371    .bss.value:00000000 value
-D:\noval\Temp\cctu5Gui.s:368    .bss.value:00000000 $d
-D:\noval\Temp\cctu5Gui.s:375    .bss.time_value:00000000 $d
-D:\noval\Temp\cctu5Gui.s:385    .bss.timer_flag:00000000 $d
-D:\noval\Temp\cctu5Gui.s:391    .bss.rotate_flag:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:19     .text.NMI_Handler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:25     .text.NMI_Handler:00000000 NMI_Handler
+D:\noval\Temp\ccNHkzG7.s:42     .text.HardFault_Handler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:48     .text.HardFault_Handler:00000000 HardFault_Handler
+D:\noval\Temp\ccNHkzG7.s:65     .text.SVC_Handler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:71     .text.SVC_Handler:00000000 SVC_Handler
+D:\noval\Temp\ccNHkzG7.s:88     .text.PendSV_Handler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:94     .text.PendSV_Handler:00000000 PendSV_Handler
+D:\noval\Temp\ccNHkzG7.s:111    .text.SysTick_Handler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:117    .text.SysTick_Handler:00000000 SysTick_Handler
+D:\noval\Temp\ccNHkzG7.s:138    .text.EXTI4_15_IRQHandler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:144    .text.EXTI4_15_IRQHandler:00000000 EXTI4_15_IRQHandler
+D:\noval\Temp\ccNHkzG7.s:446    .text.TIMER15_IRQHandler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:452    .text.TIMER15_IRQHandler:00000000 TIMER15_IRQHandler
+D:\noval\Temp\ccNHkzG7.s:777    .bss.counter.5:00000000 counter.5
+D:\noval\Temp\ccNHkzG7.s:771    .bss.wave_update.4:00000000 wave_update.4
+D:\noval\Temp\ccNHkzG7.s:765    .bss.display_update.3:00000000 display_update.3
+D:\noval\Temp\ccNHkzG7.s:759    .bss.vpp_update.2:00000000 vpp_update.2
+D:\noval\Temp\ccNHkzG7.s:613    .rodata.TIMER2_IRQHandler.str1.4:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:614    .rodata.TIMER2_IRQHandler.str1.4:00000000 .LC0
+D:\noval\Temp\ccNHkzG7.s:617    .text.TIMER2_IRQHandler:00000000 $t
+D:\noval\Temp\ccNHkzG7.s:623    .text.TIMER2_IRQHandler:00000000 TIMER2_IRQHandler
+D:\noval\Temp\ccNHkzG7.s:753    .rodata.__FUNCTION__.1:00000000 __FUNCTION__.1
+D:\noval\Temp\ccNHkzG7.s:783    .bss.value:00000000 value
+D:\noval\Temp\ccNHkzG7.s:747    .bss.buf.0:00000000 buf.0
+D:\noval\Temp\ccNHkzG7.s:744    .bss.buf.0:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:750    .rodata.__FUNCTION__.1:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:756    .bss.vpp_update.2:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:762    .bss.display_update.3:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:768    .bss.wave_update.4:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:774    .bss.counter.5:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:780    .bss.value:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:790    .bss.time_value:00000000 time_value
+D:\noval\Temp\ccNHkzG7.s:787    .bss.time_value:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:796    .bss.timer_flag:00000000 timer_flag
+D:\noval\Temp\ccNHkzG7.s:797    .bss.timer_flag:00000000 $d
+D:\noval\Temp\ccNHkzG7.s:802    .bss.rotate_flag:00000000 rotate_flag
+D:\noval\Temp\ccNHkzG7.s:803    .bss.rotate_flag:00000000 $d
 
 UNDEFINED SYMBOLS
 delay_decrement
 exti_interrupt_flag_get
-delay_1ms
-gpio_input_bit_get
 exti_interrupt_flag_clear
+app_state
+gpio_input_bit_get
+app_data
 timer_interrupt_flag_get
 timer_interrupt_flag_clear
+EM_LOG
 timer_channel_capture_value_register_read

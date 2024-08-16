@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 2
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
   56:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_2: voltage threshold is 2.4V
   57:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_3: voltage threshold is 2.6V
   58:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_4: voltage threshold is 2.7V
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 3
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 3
 
 
   59:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_5: voltage threshold is 2.9V
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
   97              		.cfi_endproc
   98              	.LFE61:
  100              		.section	.text.pmu_ldo_output_select,"ax",%progbits
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 4
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 4
 
 
  101              		.align	1
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  141              		.syntax unified
  142              		.code	16
  143              		.thumb_func
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 5
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 5
 
 
  145              	pmu_lvd_disable:
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  177              		.cfi_startproc
  178              		@ args = 0, pretend = 0, frame = 0
  179              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 6
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 6
 
 
  180              		@ link register save eliminated.
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  222              		.align	1
  223              		.global	pmu_to_deepsleepmode
  224              		.syntax unified
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 7
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 7
 
 
  225              		.code	16
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  256 0018 4EF60053 		movw	r3, #60672
  257 001c CEF20003 		movt	r3, 57344
  258 0020 1A69     		ldr	r2, [r3, #16]
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 8
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 8
 
 
  259              		.loc 1 150 14 view .LVU44
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  298              	@ 157 "Drivers/GD32E23x/Source/gd32e23x_pmu.c" 1
  299 0040 20BF     		wfe
  300              	@ 0 "" 2
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 9
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 9
 
 
  158:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     }
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  341              		.loc 1 178 5 is_stmt 1 view .LVU62
  342 0020 47F20003 		movw	r3, #28672
  343 0024 C4F20003 		movt	r3, 16384
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 10
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 10
 
 
  344 0028 1A68     		ldr	r2, [r3]
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  387 0076 CEF20003 		movt	r3, 57344
  388 007a 1A60     		str	r2, [r3]
  190:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** 
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 11
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 11
 
 
  191:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     /* select WFI command to enter standby mode */
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  427 000c 1A60     		str	r2, [r3]
  209:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** }
  428              		.loc 1 209 1 view .LVU82
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 12
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 12
 
 
  429              		@ sp needed
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  226:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** 
  227:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** /*!
  228:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     \brief      enable backup domain write
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 13
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 13
 
 
  229:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     \param[in]  none
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  509 000a 0249     		ldr	r1, .L20
  510 000c 0A40     		ands	r2, r1
  511 000e 1A60     		str	r2, [r3]
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 14
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 14
 
 
  247:Drivers/GD32E23x/Source/gd32e23x_pmu.c **** }
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  264:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****         ret_status = SET;
  265:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     }
  266:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 15
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 15
 
 
  267:Drivers/GD32E23x/Source/gd32e23x_pmu.c ****     return ret_status;
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  587              		.loc 1 283 17 is_stmt 0 view .LVU109
  588 000e 0421     		movs	r1, #4
  589 0010 0A43     		orrs	r2, r1
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 16
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 16
 
 
  590 0012 1A60     		str	r2, [r3]
@@ -935,40 +935,40 @@ ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 1
  616              		.file 4 "Drivers/CMSIS/core_cm23.h"
  617              		.file 5 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  618              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
-ARM GAS  D:\noval\Temp\ccfxaQCi.s 			page 17
+ARM GAS  D:\noval\Temp\ccny1asH.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_pmu.c
-D:\noval\Temp\ccfxaQCi.s:19     .text.pmu_deinit:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:25     .text.pmu_deinit:00000000 pmu_deinit
-D:\noval\Temp\ccfxaQCi.s:51     .text.pmu_lvd_select:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:57     .text.pmu_lvd_select:00000000 pmu_lvd_select
-D:\noval\Temp\ccfxaQCi.s:101    .text.pmu_ldo_output_select:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:107    .text.pmu_ldo_output_select:00000000 pmu_ldo_output_select
-D:\noval\Temp\ccfxaQCi.s:134    .text.pmu_ldo_output_select:00000018 $d
-D:\noval\Temp\ccfxaQCi.s:139    .text.pmu_lvd_disable:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:145    .text.pmu_lvd_disable:00000000 pmu_lvd_disable
-D:\noval\Temp\ccfxaQCi.s:167    .text.pmu_to_sleepmode:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:173    .text.pmu_to_sleepmode:00000000 pmu_to_sleepmode
-D:\noval\Temp\ccfxaQCi.s:222    .text.pmu_to_deepsleepmode:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:228    .text.pmu_to_deepsleepmode:00000000 pmu_to_deepsleepmode
-D:\noval\Temp\ccfxaQCi.s:312    .text.pmu_to_standbymode:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:318    .text.pmu_to_standbymode:00000000 pmu_to_standbymode
-D:\noval\Temp\ccfxaQCi.s:402    .text.pmu_to_standbymode:00000080 $d
-D:\noval\Temp\ccfxaQCi.s:407    .text.pmu_wakeup_pin_enable:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:413    .text.pmu_wakeup_pin_enable:00000000 pmu_wakeup_pin_enable
-D:\noval\Temp\ccfxaQCi.s:435    .text.pmu_wakeup_pin_disable:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:441    .text.pmu_wakeup_pin_disable:00000000 pmu_wakeup_pin_disable
-D:\noval\Temp\ccfxaQCi.s:463    .text.pmu_backup_write_enable:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:469    .text.pmu_backup_write_enable:00000000 pmu_backup_write_enable
-D:\noval\Temp\ccfxaQCi.s:491    .text.pmu_backup_write_disable:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:497    .text.pmu_backup_write_disable:00000000 pmu_backup_write_disable
-D:\noval\Temp\ccfxaQCi.s:518    .text.pmu_backup_write_disable:00000014 $d
-D:\noval\Temp\ccfxaQCi.s:523    .text.pmu_flag_get:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:529    .text.pmu_flag_get:00000000 pmu_flag_get
-D:\noval\Temp\ccfxaQCi.s:565    .text.pmu_flag_clear:00000000 $t
-D:\noval\Temp\ccfxaQCi.s:571    .text.pmu_flag_clear:00000000 pmu_flag_clear
+D:\noval\Temp\ccny1asH.s:19     .text.pmu_deinit:00000000 $t
+D:\noval\Temp\ccny1asH.s:25     .text.pmu_deinit:00000000 pmu_deinit
+D:\noval\Temp\ccny1asH.s:51     .text.pmu_lvd_select:00000000 $t
+D:\noval\Temp\ccny1asH.s:57     .text.pmu_lvd_select:00000000 pmu_lvd_select
+D:\noval\Temp\ccny1asH.s:101    .text.pmu_ldo_output_select:00000000 $t
+D:\noval\Temp\ccny1asH.s:107    .text.pmu_ldo_output_select:00000000 pmu_ldo_output_select
+D:\noval\Temp\ccny1asH.s:134    .text.pmu_ldo_output_select:00000018 $d
+D:\noval\Temp\ccny1asH.s:139    .text.pmu_lvd_disable:00000000 $t
+D:\noval\Temp\ccny1asH.s:145    .text.pmu_lvd_disable:00000000 pmu_lvd_disable
+D:\noval\Temp\ccny1asH.s:167    .text.pmu_to_sleepmode:00000000 $t
+D:\noval\Temp\ccny1asH.s:173    .text.pmu_to_sleepmode:00000000 pmu_to_sleepmode
+D:\noval\Temp\ccny1asH.s:222    .text.pmu_to_deepsleepmode:00000000 $t
+D:\noval\Temp\ccny1asH.s:228    .text.pmu_to_deepsleepmode:00000000 pmu_to_deepsleepmode
+D:\noval\Temp\ccny1asH.s:312    .text.pmu_to_standbymode:00000000 $t
+D:\noval\Temp\ccny1asH.s:318    .text.pmu_to_standbymode:00000000 pmu_to_standbymode
+D:\noval\Temp\ccny1asH.s:402    .text.pmu_to_standbymode:00000080 $d
+D:\noval\Temp\ccny1asH.s:407    .text.pmu_wakeup_pin_enable:00000000 $t
+D:\noval\Temp\ccny1asH.s:413    .text.pmu_wakeup_pin_enable:00000000 pmu_wakeup_pin_enable
+D:\noval\Temp\ccny1asH.s:435    .text.pmu_wakeup_pin_disable:00000000 $t
+D:\noval\Temp\ccny1asH.s:441    .text.pmu_wakeup_pin_disable:00000000 pmu_wakeup_pin_disable
+D:\noval\Temp\ccny1asH.s:463    .text.pmu_backup_write_enable:00000000 $t
+D:\noval\Temp\ccny1asH.s:469    .text.pmu_backup_write_enable:00000000 pmu_backup_write_enable
+D:\noval\Temp\ccny1asH.s:491    .text.pmu_backup_write_disable:00000000 $t
+D:\noval\Temp\ccny1asH.s:497    .text.pmu_backup_write_disable:00000000 pmu_backup_write_disable
+D:\noval\Temp\ccny1asH.s:518    .text.pmu_backup_write_disable:00000014 $d
+D:\noval\Temp\ccny1asH.s:523    .text.pmu_flag_get:00000000 $t
+D:\noval\Temp\ccny1asH.s:529    .text.pmu_flag_get:00000000 pmu_flag_get
+D:\noval\Temp\ccny1asH.s:565    .text.pmu_flag_clear:00000000 $t
+D:\noval\Temp\ccny1asH.s:571    .text.pmu_flag_clear:00000000 pmu_flag_clear
 
 UNDEFINED SYMBOLS
 rcu_periph_reset_enable

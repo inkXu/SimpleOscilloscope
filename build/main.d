@@ -22,8 +22,7 @@ build/main.o: Core/Src/main.c \
  Drivers/GD32E23x/Include/gd32e23x_wwdgt.h \
  Drivers/GD32E23x/Include/gd32e23x_misc.h \
  Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h \
- Core/Inc/main.h Core/Inc/gd32e230c_eval.h Core/Inc/gd32e23x_it.h \
- Drivers/LCD/lcd.h
+ Core/Inc/gd32e23x_it.h Core/Inc/app.h
 Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h:
 Drivers/CMSIS/core_cm23.h:
 Drivers/CMSIS/cmsis_version.h:
@@ -51,7 +50,5 @@ Drivers/GD32E23x/Include/gd32e23x_wwdgt.h:
 Drivers/GD32E23x/Include/gd32e23x_misc.h:
 Drivers/GD32E23x/Include/gd32e23x_cmp.h:
 Core/Inc/systick.h:
-Core/Inc/main.h:
-Core/Inc/gd32e230c_eval.h:
 Core/Inc/gd32e23x_it.h:
-Drivers/LCD/lcd.h:
+Core/Inc/app.h:

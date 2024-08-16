@@ -1,3 +1,7 @@
+/*
+ * file:  lcd.h
+ * brief: LCD driver header file
+ */
 #ifndef __LCD_H
 #define __LCD_H
 
@@ -44,17 +48,18 @@
 #define LGRAY 			 0XC618
 #define LGRAYBLUE        0XA651
 #define LBBLUE           0X2B12
+#define PURPLE           0X8010
 
 /* set direction */
-/* 0:  1:  2:   3:*/
+/* 0: positive  1: negative  2: turn right   3: turn left */
 #define USE_HORIZONTAL 2
 
 #if USE_HORIZONTAL==0 | USE_HORIZONTAL==1
-    #define LCD_WIDTH 128
-    #define LCD_HEIGHT 160
+    #define LCD_WIDTH  (128 + 2)
+    #define LCD_HEIGHT (160 + 1)
 #else
-    #define LCD_WIDTH 160 + 1
-    #define LCD_HEIGHT 128 + 1
+    #define LCD_WIDTH  (160 + 1)
+    #define LCD_HEIGHT (128 + 2)
 #endif
 
 void LCD_Init(void);
@@ -65,7 +70,9 @@ void LCD_Draw_Rectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint
 void Draw_Circle(uint16_t x0, uint16_t y0, uint8_t r, uint16_t color);
 void LCD_Show_Char(uint16_t x, uint16_t y, uint8_t num, uint16_t fc, uint16_t bc, uint8_t sizey, uint8_t mode);
 void LCD_Show_String(uint16_t x, uint16_t y, const uint8_t *p, uint16_t fc, uint16_t bc, uint8_t sizey, uint8_t mode);
-void LCD_Draw_Curve(uint8_t yoffset, int16_t rawvalue);
+void LCD_ShowFloatNum1(uint16_t x, uint16_t y, float num, uint16_t len, uint16_t fc, uint16_t bc,uint8_t sizey);
+void LCD_ShowIntNum(uint16_t x, uint16_t y, uint16_t num, uint8_t len, uint16_t fc, uint16_t bc, uint8_t sizey);
+uint16_t LCD_Draw_Curve(uint8_t xoffset, uint8_t yoffset, int16_t rawvalue);
 
 #ifdef __cplusplus
  }

@@ -1,4 +1,5 @@
-build/gd32e23x_it.o: Core/Src/gd32e23x_it.c Core/Inc/gd32e23x_it.h \
+build/app.o: Core/Src/app.c Core/Inc/app.h Core/Inc/log.h \
+ Drivers/UserDrivers/lcd.h Core/Inc/peripheral.h Core/Inc/log.h \
  Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h Drivers/CMSIS/core_cm23.h \
  Drivers/CMSIS/cmsis_version.h Drivers/CMSIS/cmsis_compiler.h \
  Drivers/CMSIS/cmsis_gcc.h \
@@ -21,9 +22,12 @@ build/gd32e23x_it.o: Core/Src/gd32e23x_it.c Core/Inc/gd32e23x_it.h \
  Drivers/GD32E23x/Include/gd32e23x_usart.h \
  Drivers/GD32E23x/Include/gd32e23x_wwdgt.h \
  Drivers/GD32E23x/Include/gd32e23x_misc.h \
- Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h \
- Core/Inc/app.h Core/Inc/log.h
-Core/Inc/gd32e23x_it.h:
+ Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h
+Core/Inc/app.h:
+Core/Inc/log.h:
+Drivers/UserDrivers/lcd.h:
+Core/Inc/peripheral.h:
+Core/Inc/log.h:
 Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h:
 Drivers/CMSIS/core_cm23.h:
 Drivers/CMSIS/cmsis_version.h:
@@ -51,5 +55,3 @@ Drivers/GD32E23x/Include/gd32e23x_wwdgt.h:
 Drivers/GD32E23x/Include/gd32e23x_misc.h:
 Drivers/GD32E23x/Include/gd32e23x_cmp.h:
 Core/Inc/systick.h:
-Core/Inc/app.h:
-Core/Inc/log.h:

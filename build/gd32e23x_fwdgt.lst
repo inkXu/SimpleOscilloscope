@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
   31:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
   32:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 2
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
   58:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_DISABLE;
   58              		.loc 1 58 5 view .LVU5
   59              		.loc 1 58 15 is_stmt 0 view .LVU6
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 3
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 3
 
 
   60 0000 43F20003 		movw	r3, #12288
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
   71:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** 
   72:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
   73:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure the free watchdog timer counter prescaler value
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 4
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 4
 
 
   74:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  prescaler_value: specify prescaler value
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  135 0024 013A     		subs	r2, r2, #1
  136              	.LVL3:
  137              		.loc 1 97 29 is_stmt 0 discriminator 2 view .LVU23
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 5
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 5
 
 
  138 0026 0AB1     		cbz	r2, .L5
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  109:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** /*!
  110:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \brief      configure the free watchdog timer counter reload value
  111:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[in]  reload_value: specify reload value(0x0000 - 0x0FFF)
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 6
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 6
 
 
  112:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     \param[out] none
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  128:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     if ((uint32_t)RESET != flag_status){
  218              		.loc 1 128 5 is_stmt 1 view .LVU48
  219              		.loc 1 128 8 is_stmt 0 view .LVU49
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 7
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 7
 
 
  220 002c 4BB9     		cbnz	r3, .L13
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  142:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** */
  143:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** ErrStatus fwdgt_window_value_config(uint16_t window_value)
  144:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c **** {
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 8
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 8
 
 
  261              		.loc 1 144 1 is_stmt 1 view -0
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  158:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     }
  159:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     
  160:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_WND = WND_WND(window_value);
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 9
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 9
 
 
  301              		.loc 1 160 5 is_stmt 1 view .LVU75
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  343              		@ frame_needed = 0, uses_anonymous_args = 0
  344              		@ link register save eliminated.
  173:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_KEY_RELOAD;
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 10
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 10
 
 
  345              		.loc 1 173 5 view .LVU86
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  195:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****   
  196:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     /* enable write access to FWDGT_PSC,and FWDGT_RLD */
  197:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     FWDGT_CTL = FWDGT_WRITEACCESS_ENABLE;
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 11
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 11
 
 
  380              		.loc 1 197 5 view .LVU93
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  211:Drivers/GD32E23x/Source/gd32e23x_fwdgt.c ****     timeout = FWDGT_RLD_TIMEOUT;    
  420              		.loc 1 211 5 is_stmt 1 view .LVU108
  421              	.LVL32:
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 12
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 12
 
 
  422              		.loc 1 211 13 is_stmt 0 view .LVU109
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  463 006a 43F20003 		movw	r3, #12288
  464 006e C4F20003 		movt	r3, 16384
  465 0072 4AF6AA22 		movw	r2, #43690
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 13
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 13
 
 
  466 0076 1A60     		str	r2, [r3]
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  502              		.loc 1 240 1 is_stmt 1 view -0
  503              		.cfi_startproc
  504              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 14
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 14
 
 
  505              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -819,28 +819,28 @@ ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 1
  534              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  535              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  536              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
-ARM GAS  D:\noval\Temp\ccpLfdqc.s 			page 15
+ARM GAS  D:\noval\Temp\cco1txmx.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_fwdgt.c
-D:\noval\Temp\ccpLfdqc.s:19     .text.fwdgt_write_enable:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:25     .text.fwdgt_write_enable:00000000 fwdgt_write_enable
-D:\noval\Temp\ccpLfdqc.s:45     .text.fwdgt_write_disable:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:51     .text.fwdgt_write_disable:00000000 fwdgt_write_disable
-D:\noval\Temp\ccpLfdqc.s:71     .text.fwdgt_enable:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:77     .text.fwdgt_enable:00000000 fwdgt_enable
-D:\noval\Temp\ccpLfdqc.s:97     .text.fwdgt_prescaler_value_config:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:103    .text.fwdgt_prescaler_value_config:00000000 fwdgt_prescaler_value_config
-D:\noval\Temp\ccpLfdqc.s:172    .text.fwdgt_reload_value_config:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:178    .text.fwdgt_reload_value_config:00000000 fwdgt_reload_value_config
-D:\noval\Temp\ccpLfdqc.s:252    .text.fwdgt_window_value_config:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:258    .text.fwdgt_window_value_config:00000000 fwdgt_window_value_config
-D:\noval\Temp\ccpLfdqc.s:332    .text.fwdgt_counter_reload:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:338    .text.fwdgt_counter_reload:00000000 fwdgt_counter_reload
-D:\noval\Temp\ccpLfdqc.s:358    .text.fwdgt_config:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:364    .text.fwdgt_config:00000000 fwdgt_config
-D:\noval\Temp\ccpLfdqc.s:493    .text.fwdgt_flag_get:00000000 $t
-D:\noval\Temp\ccpLfdqc.s:499    .text.fwdgt_flag_get:00000000 fwdgt_flag_get
+D:\noval\Temp\cco1txmx.s:19     .text.fwdgt_write_enable:00000000 $t
+D:\noval\Temp\cco1txmx.s:25     .text.fwdgt_write_enable:00000000 fwdgt_write_enable
+D:\noval\Temp\cco1txmx.s:45     .text.fwdgt_write_disable:00000000 $t
+D:\noval\Temp\cco1txmx.s:51     .text.fwdgt_write_disable:00000000 fwdgt_write_disable
+D:\noval\Temp\cco1txmx.s:71     .text.fwdgt_enable:00000000 $t
+D:\noval\Temp\cco1txmx.s:77     .text.fwdgt_enable:00000000 fwdgt_enable
+D:\noval\Temp\cco1txmx.s:97     .text.fwdgt_prescaler_value_config:00000000 $t
+D:\noval\Temp\cco1txmx.s:103    .text.fwdgt_prescaler_value_config:00000000 fwdgt_prescaler_value_config
+D:\noval\Temp\cco1txmx.s:172    .text.fwdgt_reload_value_config:00000000 $t
+D:\noval\Temp\cco1txmx.s:178    .text.fwdgt_reload_value_config:00000000 fwdgt_reload_value_config
+D:\noval\Temp\cco1txmx.s:252    .text.fwdgt_window_value_config:00000000 $t
+D:\noval\Temp\cco1txmx.s:258    .text.fwdgt_window_value_config:00000000 fwdgt_window_value_config
+D:\noval\Temp\cco1txmx.s:332    .text.fwdgt_counter_reload:00000000 $t
+D:\noval\Temp\cco1txmx.s:338    .text.fwdgt_counter_reload:00000000 fwdgt_counter_reload
+D:\noval\Temp\cco1txmx.s:358    .text.fwdgt_config:00000000 $t
+D:\noval\Temp\cco1txmx.s:364    .text.fwdgt_config:00000000 fwdgt_config
+D:\noval\Temp\cco1txmx.s:493    .text.fwdgt_flag_get:00000000 $t
+D:\noval\Temp\cco1txmx.s:499    .text.fwdgt_flag_get:00000000 fwdgt_flag_get
 
 NO UNDEFINED SYMBOLS

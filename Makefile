@@ -38,7 +38,9 @@ C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/systick.c \
 Core/Src/gd32e23x_it.c \
-Core/Src/gd32e230c_eval.c \
+Core/Src/log.c \
+Core/Src/app.c \
+Core/Src/peripheral.c \
 Drivers/GD32E23x/Source/gd32e23x_adc.c \
 Drivers/GD32E23x/Source/gd32e23x_cmp.c \
 Drivers/GD32E23x/Source/gd32e23x_crc.c \
@@ -60,7 +62,8 @@ Drivers/GD32E23x/Source/gd32e23x_usart.c \
 Drivers/GD32E23x/Source/gd32e23x_wwdgt.c \
 Drivers/CMSIS/GD/GD32E23x/Source/syscalls.c \
 Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c \
-Drivers/LCD/lcd.c
+Drivers/UserDrivers/lcd.c
+# Core/Src/gd32e230c_eval.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -119,7 +122,7 @@ C_INCLUDES =  \
 -IDrivers/CMSIS \
 -IDrivers/CMSIS/GD32E23x/Include \
 -IDrivers/CMSIS/GD/GD32E23x/Include \
--IDrivers/LCD
+-IDrivers/UserDrivers
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -std=c99 -Wall -fdata-sections -ffunction-sections
