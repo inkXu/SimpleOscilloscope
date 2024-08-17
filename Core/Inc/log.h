@@ -15,10 +15,10 @@ extern "C" {
 #include <stdarg.h>
 #include <stdlib.h>
 
-#define OPEN_ZLOG         1
+#define OPEN_ZLOG         0
 #define OPEN_ZLOG_DISPLAY 1
 #define OPEN_ZLOG_SAVE    0
-#define LOG_LEVEL LOG_DEBUG
+#define LOG_LEVEL         LOG_INFO
 
 typedef enum{
         LOG_DEBUG = 0,

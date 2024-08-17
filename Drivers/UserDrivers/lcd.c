@@ -186,11 +186,11 @@ void LCD_Display_Position(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 
 void LCD_Fill(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, uint16_t color)
 {
-    uint16_t i=0,j=0;
-    LCD_Display_Position(xsta,ysta,xend-1,yend-1);
-    for(i=ysta;i<yend;i++)
+    uint16_t i=0, j=0;
+    LCD_Display_Position(xsta, ysta, xend-1, yend-1);
+    for(i = ysta; i < yend; i ++)
     {
-        for(j=xsta;j<xend;j++)
+        for(j = xsta; j < xend; j ++)
         {
             LCD_Write_Data(color);
         }
@@ -340,11 +340,18 @@ uint16_t LCD_Draw_Curve(uint8_t xoffset, uint8_t yoffset, int16_t rawvalue)
 		lastX = xoffset;
 		lastY = y;
 	} else {
-		if (lastX < 159) {
+		if (lastX < LCD_WIDTH - 2) {
+			LCD_Display_Position(lastX + 1, 26, lastX + 1, 94);
+			for(int i = 26; i <= 94; i ++) {
+				LCD_Write_Data(BLACK);
+			}
 			LCD_Draw_Line(lastX, lastY, lastX + 1, y, YELLOW);
 			lastX ++;
 			lastY = y;
 		} else {
+			for(int i = 26; i <= 94; i ++) {
+				LCD_Draw_Point(xoffset, i, BLACK);
+			}
 			LCD_Draw_Point(xoffset, y, GREEN);
 			lastX = xoffset;
 			lastY = y;

@@ -3,6 +3,7 @@
 #include "gd32e23x.h"
 #include "systick.h"
 #include "stdint.h"
+#include "app.h"
 
 /*
  * @brief:  Clock configuration
@@ -21,7 +22,7 @@ void RCUConfig(void)
 
     /* enable the ADC clock */
     rcu_periph_clock_enable(RCU_ADC);
-    rcu_adc_clock_config(RCU_ADCCK_AHB_DIV3);  // configure the ADC frequency
+    rcu_adc_clock_config(RCU_ADCCK_AHB_DIV9);  // configure the ADC frequency
 
     /* enable the timer clock */
     rcu_periph_clock_enable(RCU_TIMER15);      // timer
@@ -75,7 +76,9 @@ void GPIOConfig(void)
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_2);                      // TIMER14
     gpio_af_set(GPIOA, GPIO_AF_1, GPIO_PIN_6);                      // TIMER2
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_5|GPIO_PIN_7);           // SPI0(SDA, SCL)
+#if OPEN_ZLOG == 1
     gpio_af_set(GPIOA, GPIO_AF_1, GPIO_PIN_9|GPIO_PIN_10);          // USART0
+#endif
 
     /* enable the NVIC and configure the priority */
     nvic_irq_enable(EXTI4_15_IRQn, 1U);                             // enable key interrupt
@@ -113,7 +116,7 @@ void GPIO13_14InterruptEnable(void)
  * @param:  None
  * @retval: None
  */
-void Timer14Config(uint32_t freq, uint32_t duty)
+void Timer14Config()
 {
     timer_parameter_struct timer_initpara;
     timer_oc_parameter_struct timer_ocinitpara;
@@ -125,7 +128,7 @@ void Timer14Config(uint32_t freq, uint32_t duty)
     /* initialize timer 14 */
     timer_struct_para_init(&timer_initpara);
     timer_initpara.prescaler = 720 - 1;
-    timer_initpara.period = (freq > 5 ? (PWM_PERIOD / (uint32_t)freq) : 50000) - 1;
+    timer_initpara.period = (uint32_t)50 - 1;
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
@@ -141,7 +144,7 @@ void Timer14Config(uint32_t freq, uint32_t duty)
     timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
     timer_channel_output_config(TIMER14, TIMER_CH_0, &timer_ocinitpara);
 
-    timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, duty < 101 ? duty / 100 * timer_initpara.period : timer_initpara.period);
+    timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, 0);
     /* PWM0: vaild to invaild level, PWM1: invaild to vaild level */
     timer_channel_output_mode_config(TIMER14, TIMER_CH_0, TIMER_OC_MODE_PWM0);
     timer_channel_output_shadow_config(TIMER14, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
@@ -163,14 +166,18 @@ void TIMConfig(void)
     timer_parameter_struct timer_initpara;
     timer_ic_parameter_struct timer_icinitpara;
 
+    /* enable timer interrupt */
+    nvic_irq_enable(TIMER15_IRQn, 2U);
+    nvic_irq_enable(TIMER2_IRQn, 2U);
+
     // reset timer configuration
     timer_deinit(TIMER15);
     timer_deinit(TIMER2);
     
     // initialize timer 15
     timer_struct_para_init(&timer_initpara);
-    timer_initpara.prescaler         = 72 - 1;
-    timer_initpara.period            = 10 - 1;
+    timer_initpara.prescaler         = 7200 - 1;
+    timer_initpara.period            = 5000 - 1;
     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
@@ -186,16 +193,14 @@ void TIMConfig(void)
     timer_init(TIMER2, &timer_initpara);
     
     // configuration timer2 input capture channel
+    timer_input_capture_config(TIMER2, TIMER_CH_0, &timer_icinitpara);
     timer_icinitpara.icpolarity  = TIMER_IC_POLARITY_RISING;
     timer_icinitpara.icselection = TIMER_IC_SELECTION_DIRECTTI;
     timer_icinitpara.icprescaler = TIMER_IC_PSC_DIV1;
     timer_icinitpara.icfilter    = 0x0;
     timer_input_capture_config(TIMER2, TIMER_CH_0, &timer_icinitpara);
-    timer_auto_reload_shadow_enable(TIMER2);
 
-    /* enable timer interrupt */
-    nvic_irq_enable(TIMER15_IRQn, 2U);
-    nvic_irq_enable(TIMER2_IRQn, 1U);
+    timer_auto_reload_shadow_enable(TIMER2);
     
     timer_interrupt_flag_clear(TIMER15, TIMER_INT_FLAG_UP);
     timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_CH0);
@@ -216,21 +221,61 @@ void ADCConfig(void)
 {
     /* disable the scan mode and continuous mode, use the single conversion mode */
     adc_special_function_config(ADC_SCAN_MODE, DISABLE);
-    adc_special_function_config(ADC_CONTINUOUS_MODE, DISABLE);
-    adc_external_trigger_source_config(ADC_REGULAR_CHANNEL, ADC_EXTTRIG_REGULAR_NONE);
+    adc_special_function_config(ADC_CONTINUOUS_MODE, ENABLE);
+    adc_special_function_config(ADC_INSERTED_CHANNEL_AUTO, DISABLE);
 
-    adc_regular_channel_config(0U, ADC_CHANNEL_3, ADC_SAMPLETIME_55POINT5);
     adc_data_alignment_config(ADC_DATAALIGN_RIGHT);
-    adc_resolution_config(ADC_RESOLUTION_12B);
-    adc_channel_length_config(ADC_REGULAR_CHANNEL, 1);
+    adc_channel_length_config(ADC_REGULAR_CHANNEL, 1U);
+    adc_regular_channel_config(0U, ADC_CHANNEL_3, ADC_SAMPLETIME_239POINT5);
 
+    adc_external_trigger_source_config(ADC_REGULAR_CHANNEL, ADC_EXTTRIG_REGULAR_NONE);
     adc_external_trigger_config(ADC_REGULAR_CHANNEL, ENABLE);
-    adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
+
 
     adc_enable();
     delay_1ms(1U);
 
     adc_calibration_enable();
+
+    adc_dma_mode_enable();
+
+    adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
+}
+
+/*
+ * @brief:  DMA configuration
+ * @param:  None
+ * @retval: None
+ */
+void DMAConfig(void)
+{
+    dma_parameter_struct dma_initpara;
+
+    rcu_periph_clock_enable(RCU_DMA);
+
+    nvic_irq_enable(DMA_Channel0_IRQn, 0U);
+
+    dma_deinit(DMA_CH0);
+    
+    dma_struct_para_init(&dma_initpara);
+    
+    dma_initpara.periph_addr  = (uint32_t)(&ADC_RDATA);
+    dma_initpara.periph_inc   = DMA_PERIPH_INCREASE_DISABLE;
+    dma_initpara.memory_addr  = (uint32_t)(app_data.data);
+    dma_initpara.memory_inc   = DMA_MEMORY_INCREASE_ENABLE;
+    dma_initpara.periph_width = DMA_PERIPHERAL_WIDTH_16BIT;
+    dma_initpara.memory_width = DMA_MEMORY_WIDTH_16BIT;
+    dma_initpara.direction    = DMA_PERIPHERAL_TO_MEMORY;
+    dma_initpara.number       = LENGTH;
+    dma_initpara.priority     = DMA_PRIORITY_HIGH;
+    
+    dma_init(DMA_CH0, &dma_initpara);
+    
+    dma_circulation_enable(DMA_CH0);
+    
+    dma_channel_enable(DMA_CH0);
+    
+    dma_interrupt_enable(DMA_CH0, DMA_CHXCTL_FTFIE);
 }
 
 /*

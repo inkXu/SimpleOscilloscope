@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 2
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
   56:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_DMA_REMAP_ADC: remap ADC DMA requests from channel0 to channel1
   57:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****       \arg        SYSCFG_PA11_REMAP_PA12: remap PA11 PA12
   58:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \param[out] none
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 3
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 3
 
 
   59:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \retval     none
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
   94 0000 0023     		movs	r3, #0
   95 0002 C4F20103 		movt	r3, 16385
   96 0006 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 4
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 4
 
 
   97              		.loc 1 80 17 is_stmt 0 view .LVU10
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  143              	.LFB64:
   93:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** 
   94:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** /*!
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 5
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 5
 
 
   95:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     \brief      disable PB9 high current capability
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  179              		@ args = 0, pretend = 0, frame = 0
  180              		@ frame_needed = 0, uses_anonymous_args = 0
  181              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 6
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 6
 
 
  116:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     uint32_t clear_exti_mask = ~((uint32_t)EXTI_SS_MASK << (EXTI_SS_MSTEP(exti_pin)));
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  221 002c 1A60     		str	r2, [r3]
  131:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
  222              		.loc 1 131 9 is_stmt 1 view .LVU35
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 7
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 7
 
 
  223 002e 14E0     		b	.L8
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  124:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
  257              		.loc 1 124 9 is_stmt 1 view .LVU47
  258 0054 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 8
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 8
 
 
  124:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****         break;
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  157:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** */
  158:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** void syscfg_lock_config(uint32_t syscfg_lock)
  159:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** {
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 9
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 9
 
 
  298              		.loc 1 159 1 view -0
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  340              	.LVL17:
  174:Drivers/GD32E23x/Source/gd32e23x_syscfg.c ****     reg |= (uint32_t)(IRQ_LATENCY(irq_latency));
  341              		.loc 1 174 5 is_stmt 1 view .LVU66
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 10
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 10
 
 
  342              		.loc 1 174 9 is_stmt 0 view .LVU67
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  192:Drivers/GD32E23x/Source/gd32e23x_syscfg.c **** }
  381              		.loc 1 192 1 view .LVU76
  382              		@ sp needed
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 11
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 11
 
 
  383 000e 7047     		bx	lr
@@ -657,32 +657,32 @@ ARM GAS  D:\noval\Temp\ccmPipef.s 			page 1
  425              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  426              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  427              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
-ARM GAS  D:\noval\Temp\ccmPipef.s 			page 12
+ARM GAS  D:\noval\Temp\cc82LDp8.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_syscfg.c
-D:\noval\Temp\ccmPipef.s:19     .text.syscfg_deinit:00000000 $t
-D:\noval\Temp\ccmPipef.s:25     .text.syscfg_deinit:00000000 syscfg_deinit
-D:\noval\Temp\ccmPipef.s:51     .text.syscfg_dma_remap_enable:00000000 $t
-D:\noval\Temp\ccmPipef.s:57     .text.syscfg_dma_remap_enable:00000000 syscfg_dma_remap_enable
-D:\noval\Temp\ccmPipef.s:79     .text.syscfg_dma_remap_disable:00000000 $t
-D:\noval\Temp\ccmPipef.s:85     .text.syscfg_dma_remap_disable:00000000 syscfg_dma_remap_disable
-D:\noval\Temp\ccmPipef.s:107    .text.syscfg_high_current_enable:00000000 $t
-D:\noval\Temp\ccmPipef.s:113    .text.syscfg_high_current_enable:00000000 syscfg_high_current_enable
-D:\noval\Temp\ccmPipef.s:136    .text.syscfg_high_current_disable:00000000 $t
-D:\noval\Temp\ccmPipef.s:142    .text.syscfg_high_current_disable:00000000 syscfg_high_current_disable
-D:\noval\Temp\ccmPipef.s:163    .text.syscfg_high_current_disable:00000010 $d
-D:\noval\Temp\ccmPipef.s:168    .text.syscfg_exti_line_config:00000000 $t
-D:\noval\Temp\ccmPipef.s:174    .text.syscfg_exti_line_config:00000000 syscfg_exti_line_config
-D:\noval\Temp\ccmPipef.s:289    .text.syscfg_lock_config:00000000 $t
-D:\noval\Temp\ccmPipef.s:295    .text.syscfg_lock_config:00000000 syscfg_lock_config
-D:\noval\Temp\ccmPipef.s:317    .text.irq_latency_set:00000000 $t
-D:\noval\Temp\ccmPipef.s:323    .text.irq_latency_set:00000000 irq_latency_set
-D:\noval\Temp\ccmPipef.s:355    .text.syscfg_flag_get:00000000 $t
-D:\noval\Temp\ccmPipef.s:361    .text.syscfg_flag_get:00000000 syscfg_flag_get
-D:\noval\Temp\ccmPipef.s:395    .text.syscfg_flag_clear:00000000 $t
-D:\noval\Temp\ccmPipef.s:401    .text.syscfg_flag_clear:00000000 syscfg_flag_clear
+D:\noval\Temp\cc82LDp8.s:19     .text.syscfg_deinit:00000000 $t
+D:\noval\Temp\cc82LDp8.s:25     .text.syscfg_deinit:00000000 syscfg_deinit
+D:\noval\Temp\cc82LDp8.s:51     .text.syscfg_dma_remap_enable:00000000 $t
+D:\noval\Temp\cc82LDp8.s:57     .text.syscfg_dma_remap_enable:00000000 syscfg_dma_remap_enable
+D:\noval\Temp\cc82LDp8.s:79     .text.syscfg_dma_remap_disable:00000000 $t
+D:\noval\Temp\cc82LDp8.s:85     .text.syscfg_dma_remap_disable:00000000 syscfg_dma_remap_disable
+D:\noval\Temp\cc82LDp8.s:107    .text.syscfg_high_current_enable:00000000 $t
+D:\noval\Temp\cc82LDp8.s:113    .text.syscfg_high_current_enable:00000000 syscfg_high_current_enable
+D:\noval\Temp\cc82LDp8.s:136    .text.syscfg_high_current_disable:00000000 $t
+D:\noval\Temp\cc82LDp8.s:142    .text.syscfg_high_current_disable:00000000 syscfg_high_current_disable
+D:\noval\Temp\cc82LDp8.s:163    .text.syscfg_high_current_disable:00000010 $d
+D:\noval\Temp\cc82LDp8.s:168    .text.syscfg_exti_line_config:00000000 $t
+D:\noval\Temp\cc82LDp8.s:174    .text.syscfg_exti_line_config:00000000 syscfg_exti_line_config
+D:\noval\Temp\cc82LDp8.s:289    .text.syscfg_lock_config:00000000 $t
+D:\noval\Temp\cc82LDp8.s:295    .text.syscfg_lock_config:00000000 syscfg_lock_config
+D:\noval\Temp\cc82LDp8.s:317    .text.irq_latency_set:00000000 $t
+D:\noval\Temp\cc82LDp8.s:323    .text.irq_latency_set:00000000 irq_latency_set
+D:\noval\Temp\cc82LDp8.s:355    .text.syscfg_flag_get:00000000 $t
+D:\noval\Temp\cc82LDp8.s:361    .text.syscfg_flag_get:00000000 syscfg_flag_get
+D:\noval\Temp\cc82LDp8.s:395    .text.syscfg_flag_clear:00000000 $t
+D:\noval\Temp\cc82LDp8.s:401    .text.syscfg_flag_clear:00000000 syscfg_flag_clear
 
 UNDEFINED SYMBOLS
 rcu_periph_reset_enable

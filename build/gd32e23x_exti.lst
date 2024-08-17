@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_exti.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_exti.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_exti.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 2
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_exti.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
   59 0036 1360     		str	r3, [r2]
   55:Drivers/GD32E23x/Source/gd32e23x_exti.c **** }
   60              		.loc 1 55 1 view .LVU11
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 3
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 3
 
 
   61              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
   94 000e 8443     		bics	r4, r0
   95 0010 1C60     		str	r4, [r3]
   79:Drivers/GD32E23x/Source/gd32e23x_exti.c ****     EXTI_EVEN &= ~(uint32_t)linex;
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 4
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 4
 
 
   96              		.loc 1 79 5 is_stmt 1 view .LVU17
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
   86:Drivers/GD32E23x/Source/gd32e23x_exti.c ****         break;
  138              		.loc 1 86 20 is_stmt 0 view .LVU28
  139 005c 0143     		orrs	r1, r0
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 5
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 5
 
 
  140 005e 1960     		str	r1, [r3]
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  170              	.L6:
  102:Drivers/GD32E23x/Source/gd32e23x_exti.c ****         EXTI_FTEN |= (uint32_t)linex;
  171              		.loc 1 102 9 is_stmt 1 view .LVU37
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 6
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 6
 
 
  172 0088 40F20843 		movw	r3, #1032
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  219              	.LVL9:
  220              	.LFB62:
  114:Drivers/GD32E23x/Source/gd32e23x_exti.c **** 
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 7
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 7
 
 
  115:Drivers/GD32E23x/Source/gd32e23x_exti.c **** /*!
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  138:Drivers/GD32E23x/Source/gd32e23x_exti.c ****     EXTI_INTEN &= ~(uint32_t)linex;
  254              		.loc 1 138 5 view .LVU53
  255 0000 40F20043 		movw	r3, #1024
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 8
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 8
 
 
  256 0004 C4F20103 		movt	r3, 16385
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  299              		.code	16
  300              		.thumb_func
  302              	exti_event_disable:
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 9
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 9
 
 
  303              	.LVL12:
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  335              		@ args = 0, pretend = 0, frame = 0
  336              		@ frame_needed = 0, uses_anonymous_args = 0
  337              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 10
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 10
 
 
  177:Drivers/GD32E23x/Source/gd32e23x_exti.c ****     EXTI_SWIEV |= (uint32_t)linex;
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  380              		.align	1
  381              		.global	exti_flag_get
  382              		.syntax unified
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 11
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 11
 
 
  383              		.code	16
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  420              		.align	1
  421              		.global	exti_flag_clear
  422              		.syntax unified
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 12
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 12
 
 
  423              		.code	16
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  456              		.cfi_startproc
  457              		@ args = 0, pretend = 0, frame = 0
  458              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 13
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 13
 
 
  459              		@ link register save eliminated.
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  496              		.cfi_startproc
  497              		@ args = 0, pretend = 0, frame = 0
  498              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 14
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 14
 
 
  499              		@ link register save eliminated.
@@ -800,34 +800,34 @@ ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 1
  514              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  515              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  516              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
-ARM GAS  D:\noval\Temp\cchMUV6R.s 			page 15
+ARM GAS  D:\noval\Temp\ccPyTF1B.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_exti.c
-D:\noval\Temp\cchMUV6R.s:19     .text.exti_deinit:00000000 $t
-D:\noval\Temp\cchMUV6R.s:25     .text.exti_deinit:00000000 exti_deinit
-D:\noval\Temp\cchMUV6R.s:67     .text.exti_init:00000000 $t
-D:\noval\Temp\cchMUV6R.s:73     .text.exti_init:00000000 exti_init
-D:\noval\Temp\cchMUV6R.s:212    .text.exti_interrupt_enable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:218    .text.exti_interrupt_enable:00000000 exti_interrupt_enable
-D:\noval\Temp\cchMUV6R.s:240    .text.exti_interrupt_disable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:246    .text.exti_interrupt_disable:00000000 exti_interrupt_disable
-D:\noval\Temp\cchMUV6R.s:268    .text.exti_event_enable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:274    .text.exti_event_enable:00000000 exti_event_enable
-D:\noval\Temp\cchMUV6R.s:296    .text.exti_event_disable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:302    .text.exti_event_disable:00000000 exti_event_disable
-D:\noval\Temp\cchMUV6R.s:324    .text.exti_software_interrupt_enable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:330    .text.exti_software_interrupt_enable:00000000 exti_software_interrupt_enable
-D:\noval\Temp\cchMUV6R.s:352    .text.exti_software_interrupt_disable:00000000 $t
-D:\noval\Temp\cchMUV6R.s:358    .text.exti_software_interrupt_disable:00000000 exti_software_interrupt_disable
-D:\noval\Temp\cchMUV6R.s:380    .text.exti_flag_get:00000000 $t
-D:\noval\Temp\cchMUV6R.s:386    .text.exti_flag_get:00000000 exti_flag_get
-D:\noval\Temp\cchMUV6R.s:420    .text.exti_flag_clear:00000000 $t
-D:\noval\Temp\cchMUV6R.s:426    .text.exti_flag_clear:00000000 exti_flag_clear
-D:\noval\Temp\cchMUV6R.s:446    .text.exti_interrupt_flag_get:00000000 $t
-D:\noval\Temp\cchMUV6R.s:452    .text.exti_interrupt_flag_get:00000000 exti_interrupt_flag_get
-D:\noval\Temp\cchMUV6R.s:486    .text.exti_interrupt_flag_clear:00000000 $t
-D:\noval\Temp\cchMUV6R.s:492    .text.exti_interrupt_flag_clear:00000000 exti_interrupt_flag_clear
+D:\noval\Temp\ccPyTF1B.s:19     .text.exti_deinit:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:25     .text.exti_deinit:00000000 exti_deinit
+D:\noval\Temp\ccPyTF1B.s:67     .text.exti_init:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:73     .text.exti_init:00000000 exti_init
+D:\noval\Temp\ccPyTF1B.s:212    .text.exti_interrupt_enable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:218    .text.exti_interrupt_enable:00000000 exti_interrupt_enable
+D:\noval\Temp\ccPyTF1B.s:240    .text.exti_interrupt_disable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:246    .text.exti_interrupt_disable:00000000 exti_interrupt_disable
+D:\noval\Temp\ccPyTF1B.s:268    .text.exti_event_enable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:274    .text.exti_event_enable:00000000 exti_event_enable
+D:\noval\Temp\ccPyTF1B.s:296    .text.exti_event_disable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:302    .text.exti_event_disable:00000000 exti_event_disable
+D:\noval\Temp\ccPyTF1B.s:324    .text.exti_software_interrupt_enable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:330    .text.exti_software_interrupt_enable:00000000 exti_software_interrupt_enable
+D:\noval\Temp\ccPyTF1B.s:352    .text.exti_software_interrupt_disable:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:358    .text.exti_software_interrupt_disable:00000000 exti_software_interrupt_disable
+D:\noval\Temp\ccPyTF1B.s:380    .text.exti_flag_get:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:386    .text.exti_flag_get:00000000 exti_flag_get
+D:\noval\Temp\ccPyTF1B.s:420    .text.exti_flag_clear:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:426    .text.exti_flag_clear:00000000 exti_flag_clear
+D:\noval\Temp\ccPyTF1B.s:446    .text.exti_interrupt_flag_get:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:452    .text.exti_interrupt_flag_get:00000000 exti_interrupt_flag_get
+D:\noval\Temp\ccPyTF1B.s:486    .text.exti_interrupt_flag_clear:00000000 $t
+D:\noval\Temp\ccPyTF1B.s:492    .text.exti_interrupt_flag_clear:00000000 exti_interrupt_flag_clear
 
 NO UNDEFINED SYMBOLS

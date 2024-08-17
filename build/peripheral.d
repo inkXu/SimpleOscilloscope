@@ -22,7 +22,8 @@ build/peripheral.o: Core/Src/peripheral.c Core/Inc/peripheral.h \
  Drivers/GD32E23x/Include/gd32e23x_usart.h \
  Drivers/GD32E23x/Include/gd32e23x_wwdgt.h \
  Drivers/GD32E23x/Include/gd32e23x_misc.h \
- Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h
+ Drivers/GD32E23x/Include/gd32e23x_cmp.h Core/Inc/systick.h \
+ Core/Inc/app.h
 Core/Inc/peripheral.h:
 Core/Inc/log.h:
 Core/Inc/log.h:
@@ -53,3 +54,4 @@ Drivers/GD32E23x/Include/gd32e23x_wwdgt.h:
 Drivers/GD32E23x/Include/gd32e23x_misc.h:
 Drivers/GD32E23x/Include/gd32e23x_cmp.h:
 Core/Inc/systick.h:
+Core/Inc/app.h:

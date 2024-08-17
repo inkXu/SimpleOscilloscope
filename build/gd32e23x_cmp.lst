@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
   29:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
   30:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
   31:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 2
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 2
 
 
   32:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** OF SUCH DAMAGE.
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
   54:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  cmp_periph
   55:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP0: comparator 0
   56:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[in]  operating_mode
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 3
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 3
 
 
   57:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_MODE_HIGHSPEED: high speed mode
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
   88              		.loc 1 84 9 is_stmt 1 view .LVU16
   89              		.loc 1 84 14 is_stmt 0 view .LVU17
   90 000c 034D     		ldr	r5, .L5
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 4
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 4
 
 
   91 000e 2C40     		ands	r4, r5
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  104:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****       \arg        CMP_OUTPUT_POLARITY_NONINVERTED: output is not inverted
  105:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \param[out] none
  106:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     \retval     none
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 5
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 5
 
 
  107:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** */
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  167              		.loc 1 121 18 is_stmt 0 view .LVU43
  168 001a 054B     		ldr	r3, .L12+4
  169 001c 1940     		ands	r1, r3
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 6
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 6
 
 
  170              	.LVL18:
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  136:Drivers/GD32E23x/Source/gd32e23x_cmp.c **** {
  209              		.loc 1 136 1 is_stmt 1 view -0
  210              		.cfi_startproc
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 7
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 7
 
 
  211              		@ args = 0, pretend = 0, frame = 0
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  153:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****         CMP_CS &= ~(uint32_t)CMP_CS_CMP0EN;
  251              		.loc 1 153 9 is_stmt 1 view .LVU61
  252 0002 1C23     		movs	r3, #28
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 8
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 8
 
 
  253 0004 C4F20103 		movt	r3, 16385
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  296              		.align	1
  297              		.global	cmp_switch_disable
  298              		.syntax unified
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 9
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 9
 
 
  299              		.code	16
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  335              		@ args = 0, pretend = 0, frame = 0
  336              		@ frame_needed = 0, uses_anonymous_args = 0
  337              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 10
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 10
 
 
  189:Drivers/GD32E23x/Source/gd32e23x_cmp.c ****     if(CMP0 == cmp_periph){
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  376 0006 1B68     		ldr	r3, [r3]
  377              		.loc 1 206 35 view .LVU83
  378 0008 44F20002 		movw	r2, #16384
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 11
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 11
 
 
  379 000c 1000     		movs	r0, r2
@@ -627,30 +627,30 @@ ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 1
  398              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  399              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  400              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_cmp.h"
-ARM GAS  D:\noval\Temp\ccWz9f3H.s 			page 12
+ARM GAS  D:\noval\Temp\ccQFpBts.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_cmp.c
-D:\noval\Temp\ccWz9f3H.s:19     .text.cmp_deinit:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:25     .text.cmp_deinit:00000000 cmp_deinit
-D:\noval\Temp\ccWz9f3H.s:53     .text.cmp_mode_init:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:59     .text.cmp_mode_init:00000000 cmp_mode_init
-D:\noval\Temp\ccWz9f3H.s:114    .text.cmp_mode_init:0000001c $d
-D:\noval\Temp\ccWz9f3H.s:119    .text.cmp_output_init:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:125    .text.cmp_output_init:00000000 cmp_output_init
-D:\noval\Temp\ccWz9f3H.s:194    .text.cmp_output_init:0000002c $d
-D:\noval\Temp\ccWz9f3H.s:200    .text.cmp_enable:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:206    .text.cmp_enable:00000000 cmp_enable
-D:\noval\Temp\ccWz9f3H.s:234    .text.cmp_disable:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:240    .text.cmp_disable:00000000 cmp_disable
-D:\noval\Temp\ccWz9f3H.s:268    .text.cmp_switch_enable:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:274    .text.cmp_switch_enable:00000000 cmp_switch_enable
-D:\noval\Temp\ccWz9f3H.s:296    .text.cmp_switch_disable:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:302    .text.cmp_switch_disable:00000000 cmp_switch_disable
-D:\noval\Temp\ccWz9f3H.s:324    .text.cmp_lock_enable:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:330    .text.cmp_lock_enable:00000000 cmp_lock_enable
-D:\noval\Temp\ccWz9f3H.s:358    .text.cmp_output_level_get:00000000 $t
-D:\noval\Temp\ccWz9f3H.s:364    .text.cmp_output_level_get:00000000 cmp_output_level_get
+D:\noval\Temp\ccQFpBts.s:19     .text.cmp_deinit:00000000 $t
+D:\noval\Temp\ccQFpBts.s:25     .text.cmp_deinit:00000000 cmp_deinit
+D:\noval\Temp\ccQFpBts.s:53     .text.cmp_mode_init:00000000 $t
+D:\noval\Temp\ccQFpBts.s:59     .text.cmp_mode_init:00000000 cmp_mode_init
+D:\noval\Temp\ccQFpBts.s:114    .text.cmp_mode_init:0000001c $d
+D:\noval\Temp\ccQFpBts.s:119    .text.cmp_output_init:00000000 $t
+D:\noval\Temp\ccQFpBts.s:125    .text.cmp_output_init:00000000 cmp_output_init
+D:\noval\Temp\ccQFpBts.s:194    .text.cmp_output_init:0000002c $d
+D:\noval\Temp\ccQFpBts.s:200    .text.cmp_enable:00000000 $t
+D:\noval\Temp\ccQFpBts.s:206    .text.cmp_enable:00000000 cmp_enable
+D:\noval\Temp\ccQFpBts.s:234    .text.cmp_disable:00000000 $t
+D:\noval\Temp\ccQFpBts.s:240    .text.cmp_disable:00000000 cmp_disable
+D:\noval\Temp\ccQFpBts.s:268    .text.cmp_switch_enable:00000000 $t
+D:\noval\Temp\ccQFpBts.s:274    .text.cmp_switch_enable:00000000 cmp_switch_enable
+D:\noval\Temp\ccQFpBts.s:296    .text.cmp_switch_disable:00000000 $t
+D:\noval\Temp\ccQFpBts.s:302    .text.cmp_switch_disable:00000000 cmp_switch_disable
+D:\noval\Temp\ccQFpBts.s:324    .text.cmp_lock_enable:00000000 $t
+D:\noval\Temp\ccQFpBts.s:330    .text.cmp_lock_enable:00000000 cmp_lock_enable
+D:\noval\Temp\ccQFpBts.s:358    .text.cmp_output_level_get:00000000 $t
+D:\noval\Temp\ccQFpBts.s:364    .text.cmp_output_level_get:00000000 cmp_output_level_get
 
 NO UNDEFINED SYMBOLS

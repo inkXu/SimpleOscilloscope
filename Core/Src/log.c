@@ -45,7 +45,9 @@ void EM_LOG(const int level, const char *func, \
 #if OPEN_ZLOG_SAVE == 1
 	SAVELOG(result);
 #endif
-
+#else
+	(void)func;
+	(void)fmt;
 #endif
 }
 

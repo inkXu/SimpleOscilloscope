@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
   30:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
   31:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
   32:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** OF SUCH DAMAGE.
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 2
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 2
 
 
   33:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
   87:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
   88:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
   89:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 3
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 3
 
 
   90:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      initialize RTC registers
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  144:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         
  145:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* 4th: wait the RSYNF flag to set */
  146:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = rtc_register_sync_wait();
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 4
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 4
 
 
  147:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  171:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         /* wait until the INITF flag to be set */
  172:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         do{
   56              		.loc 1 172 9 is_stmt 1 view .LVU10
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 5
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 5
 
 
  173:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****            flag_status = RTC_STAT & RTC_STAT_INITF;
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
   99              		.section	.text.rtc_init_mode_exit,"ax",%progbits
  100              		.align	1
  101              		.global	rtc_init_mode_exit
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 6
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 6
 
 
  102              		.syntax unified
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  138              		@ args = 0, pretend = 0, frame = 8
  139              		@ frame_needed = 0, uses_anonymous_args = 0
  140              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 7
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 7
 
 
  141 0000 82B0     		sub	sp, sp, #8
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  180              		.loc 1 219 13 view .LVU43
  181              		.loc 1 219 27 is_stmt 0 view .LVU44
  182 0036 42F60C03 		movw	r3, #10252
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 8
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 8
 
 
  183 003a C4F20003 		movt	r3, 16384
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  222              	.LVL13:
  223              	.L14:
  223:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****             error_status = SUCCESS;
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 9
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 9
 
 
  224              		.loc 1 223 26 view .LVU58
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
   55:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
  271              		.loc 1 55 5 is_stmt 1 view .LVU68
  272 001e 42F60803 		movw	r3, #10248
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 10
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 10
 
 
  273 0022 C4F20003 		movt	r3, 16384
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  312 005c C4F20002 		movt	r2, 16384
  313 0060 FF21     		movs	r1, #255
  314 0062 C0F27F01 		movt	r1, 127
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 11
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 11
 
 
  315 0066 1160     		str	r1, [r2]
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  358              	rtc_init:
  359              	.LVL19:
  360              	.LFB61:
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 12
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 12
 
 
  111:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     ErrStatus error_status = ERROR;
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
  403              		.loc 1 120 5 is_stmt 1 view .LVU109
  120:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 TIME_HR(rtc_initpara_struct->rtc_hour) | \
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 13
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 13
 
 
  404              		.loc 1 120 36 is_stmt 0 view .LVU110
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  445              	.LVL25:
  132:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = (uint32_t)(PSC_FACTOR_A(rtc_initpara_struct->rtc_factor_asyn)| \
  446              		.loc 1 132 5 is_stmt 1 view .LVU124
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 14
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 14
 
 
  132:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_PSC = (uint32_t)(PSC_FACTOR_A(rtc_initpara_struct->rtc_factor_asyn)| \
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  488 0098 1E60     		str	r6, [r3]
  137:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
  489              		.loc 1 137 9 is_stmt 1 view .LVU138
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 15
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 15
 
 
  137:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  239:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 parameters for initialization of the rtc peripheral
  240:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 members of the structure and the member values are shown as below:
  241:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_year: 0x0 - 0x99(BCD format)
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 16
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 16
 
 
  242:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_month: RTC_JAN, RTC_FEB, RTC_MAR, RTC_APR, RTC_MAY, RTC_JUN,
@@ -958,7 +958,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  563              		.loc 1 263 5 is_stmt 1 view .LVU158
  564              		.loc 1 263 15 is_stmt 0 view .LVU159
  565 0020 42F60801 		movw	r1, #10248
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 17
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 17
 
 
  566 0024 C4F20001 		movt	r1, 16384
@@ -1018,7 +1018,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  612 0052 4171     		strb	r1, [r0, #5]
  272:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_initpara_struct->rtc_second = (uint8_t)GET_TIME_SC(temp_tr);
  613              		.loc 1 272 5 is_stmt 1 view .LVU182
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 18
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 18
 
 
  614              		.loc 1 272 39 is_stmt 0 view .LVU183
@@ -1078,7 +1078,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  279:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** /*!
  280:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \brief      get current subsecond value
  281:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  none
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 19
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 19
 
 
  282:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
@@ -1138,7 +1138,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  304:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_day: 1) 0x1 - 0x31(BCD format) if RTC_ALARM_DATE_SELECTED is set
  305:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                  2) RTC_MONDAY, RTC_TUESDAY, RTC_WEDSDAY, RTC_THURSDAY, RTC_FRIDAY,
  306:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                     RTC_SATURDAY, RTC_SUNDAY if RTC_ALARM_WEEKDAY_SELECTED is set
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 20
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 20
 
 
  307:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the
@@ -1198,7 +1198,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  731              		.loc 1 323 18 view .LVU219
  732 0022 817A     		ldrb	r1, [r0, #10]
  733 0024 0902     		lsls	r1, r1, #8
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 21
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 21
 
 
  734 0026 47F60072 		movw	r2, #32512
@@ -1258,7 +1258,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  776              		.syntax unified
  777              		.code	16
  778              		.thumb_func
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 22
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 22
 
 
  780              	rtc_alarm_subsecond_config:
@@ -1318,7 +1318,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  802              		.loc 1 366 17 view .LVU240
  803 0012 42F64402 		movw	r2, #10308
  804 0016 C4F20002 		movt	r2, 16384
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 23
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 23
 
 
  805 001a 1060     		str	r0, [r2]
@@ -1378,7 +1378,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  843 0018 1168     		ldr	r1, [r2]
  844              		.loc 1 384 13 is_stmt 0 view .LVU250
  845 001a 40F20010 		movw	r0, #256
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 24
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 24
 
 
  846 001e 0143     		orrs	r1, r0
@@ -1438,7 +1438,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  883              		.loc 1 403 13 is_stmt 0 view .LVU260
  884 0008 42F62403 		movw	r3, #10276
  885 000c C4F20003 		movt	r3, 16384
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 25
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 25
 
 
  886 0010 CA22     		movs	r2, #202
@@ -1498,7 +1498,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  928              	.L29:
  929              	.LVL54:
  415:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 26
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 26
 
 
  416:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
@@ -1558,7 +1558,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  436:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_hour: 0x0 - 0x12(BCD format) or 0x0 - 0x23(BCD format) depending on the
  437:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_minute: 0x0 - 0x59(BCD format)
  438:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_alarm_second: 0x0 - 0x59(BCD format)
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 27
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 27
 
 
  439:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_am_pm: RTC_AM, RTC_PM
@@ -1618,7 +1618,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1004              		.loc 1 453 35 view .LVU298
  1005 002c 0172     		strb	r1, [r0, #8]
  454:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     rtc_alarm_time->rtc_alarm_hour = (uint8_t)GET_ALRM0TD_HR(reg_alrm0td);
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 28
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 28
 
 
  1006              		.loc 1 454 5 is_stmt 1 view .LVU299
@@ -1678,7 +1678,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1049 0004 C4F20003 		movt	r3, 16384
  1050 0008 1B68     		ldr	r3, [r3]
  1051 000a 47F6FF70 		movw	r0, #32767
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 29
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 29
 
 
  1052 000e 1840     		ands	r0, r3
@@ -1738,7 +1738,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1088              		.loc 1 487 13 view .LVU322
  1089 0010 40F60002 		movw	r2, #2048
  1090 0014 1343     		orrs	r3, r2
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 30
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 30
 
 
  1091              	.LVL62:
@@ -1798,7 +1798,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  502:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[out] none
  503:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
  504:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 31
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 31
 
 
  505:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_timestamp_disable(void)
@@ -1858,7 +1858,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1177              	rtc_timestamp_get:
  1178              	.LVL66:
  1179              	.LFB75:
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 32
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 32
 
 
  517:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
@@ -1918,7 +1918,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1206 0016 8021     		movs	r1, #128
  1207 0018 C903     		lsls	r1, r1, #15
  1208 001a 1140     		ands	r1, r2
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 33
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 33
 
 
  1209              		.loc 1 544 30 view .LVU353
@@ -1978,7 +1978,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1256              		@ sp needed
  1257 0048 10BD     		pop	{r4, pc}
  1258              		.cfi_endproc
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 34
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 34
 
 
  1259              	.LFE75:
@@ -2038,7 +2038,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  573:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_filter: RTC_FLT_EDGE, RTC_FLT_2S, RTC_FLT_4S, RTC_FLT_8S
  574:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                   rtc_tamper_sample_frequency: RTC_FREQ_DIV32768, RTC_FREQ_DIV16384, RTC_FREQ_DIV81
  575:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                                RTC_FREQ_DIV4096, RTC_FREQ_DIV2048, RTC_FREQ_DIV1024
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 35
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 35
 
 
  576:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                                                RTC_FREQ_DIV512, RTC_FREQ_DIV256
@@ -2098,7 +2098,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1329              		.loc 1 596 9 is_stmt 1 view .LVU392
  1330              		.loc 1 596 33 is_stmt 0 view .LVU393
  1331 002c 037C     		ldrb	r3, [r0, #16]
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 36
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 36
 
 
  1332              		.loc 1 596 11 view .LVU394
@@ -2158,7 +2158,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  609:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         RTC_TAMP |= (uint32_t)RTC_TAMP_TPTS;
  1374              		.loc 1 609 9 is_stmt 1 view .LVU408
  1375 0070 42F64003 		movw	r3, #10304
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 37
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 37
 
 
  1376 0074 C4F20003 		movt	r3, 16384
@@ -2218,7 +2218,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1421 00b6 7047     		bx	lr
  1422              	.L45:
  599:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         }
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 38
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 38
 
 
  1423              		.loc 1 599 13 is_stmt 1 view .LVU425
@@ -2278,7 +2278,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  633:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
  634:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
  1463              		.loc 1 634 1 view .LVU431
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 39
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 39
 
 
  1464              		@ sp needed
@@ -2338,7 +2338,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1501 0012 42F60801 		movw	r1, #10248
  1502 0016 C4F20001 		movt	r1, 16384
  1503 001a 0C68     		ldr	r4, [r1]
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 40
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 40
 
 
  1504              		.loc 1 653 16 is_stmt 0 view .LVU439
@@ -2398,7 +2398,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1541              		.cfi_startproc
  1542              		@ args = 0, pretend = 0, frame = 0
  1543              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 41
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 41
 
 
  1544              		.loc 1 672 1 is_stmt 0 view .LVU448
@@ -2458,7 +2458,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1586              		@ sp needed
  1587 003a 30BD     		pop	{r4, r5, pc}
  1588              		.cfi_endproc
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 42
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 42
 
 
  1589              	.LFE80:
@@ -2518,7 +2518,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  710:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
  711:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     return flag_state;
  1619              		.loc 1 711 5 is_stmt 1 view .LVU468
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 43
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 43
 
 
  712:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** }
@@ -2578,7 +2578,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1655              		.loc 1 730 1 view .LVU475
  1656              		@ sp needed
  1657 000e 7047     		bx	lr
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 44
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 44
 
 
  1658              		.cfi_endproc
@@ -2638,7 +2638,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  754:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** 
  755:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_CTL &= (uint32_t)~(RTC_CTL_COEN | RTC_CTL_OS | RTC_CTL_OPOL | RTC_CTL_COS);
  1691              		.loc 1 755 5 is_stmt 1 view .LVU482
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 45
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 45
 
 
  1692 0012 42F60803 		movw	r3, #10248
@@ -2698,7 +2698,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1734              	.L61:
  1735 0050 FFFF07FF 		.word	-16252929
  1736 0054 FFFFFBFF 		.word	-262145
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 46
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 46
 
 
  1737              		.cfi_endproc
@@ -2758,7 +2758,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1769 000a CA24     		movs	r4, #202
  1770 000c 1C60     		str	r4, [r3]
  792:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY2;    
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 47
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 47
 
 
  1771              		.loc 1 792 5 is_stmt 1 view .LVU502
@@ -2818,7 +2818,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1816 0042 1860     		str	r0, [r3]
  801:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****         error_status = SUCCESS;
  1817              		.loc 1 801 9 is_stmt 1 view .LVU520
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 48
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 48
 
 
  1818              	.LVL89:
@@ -2878,7 +2878,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  817:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \retval     none
  818:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** */
  819:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** void rtc_hour_adjust(uint32_t operation)
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 49
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 49
 
 
  820:Drivers/GD32E23x/Source/gd32e23x_rtc.c **** {
@@ -2938,7 +2938,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  834:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****                 only one parameter can be selected which is shown as below:
  835:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_SHIFT_ADD1S_RESET: no effect
  836:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****       \arg        RTC_SHIFT_ADD1S_SET: add 1s to current time
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 50
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 50
 
 
  837:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     \param[in]  minus: number of subsecond to minus from current time(0x0 - 0x7FFF)
@@ -2998,7 +2998,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1934              		.loc 1 854 21 view .LVU554
  1935 0020 0823     		movs	r3, #8
  1936 0022 2340     		ands	r3, r4
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 51
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 51
 
 
  1937              	.LVL99:
@@ -3058,7 +3058,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  1976              		@ sp needed
  1977              	.LVL105:
  1978              		.loc 1 868 1 view .LVU570
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 52
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 52
 
 
  1979 004c 10BD     		pop	{r4, pc}
@@ -3118,7 +3118,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  879:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
  2017              		.loc 1 879 5 view .LVU580
  2018              		.loc 1 879 13 is_stmt 0 view .LVU581
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 53
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 53
 
 
  2019 0000 42F62403 		movw	r3, #10276
@@ -3178,7 +3178,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  896:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     /* disable the write protection */
  897:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     RTC_WPK = RTC_UNLOCK_KEY1;
  2059              		.loc 1 897 5 view .LVU590
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 54
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 54
 
 
  2060              		.loc 1 897 13 is_stmt 0 view .LVU591
@@ -3238,7 +3238,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  2100 0000 10B5     		push	{r4, lr}
  2101              	.LCFI11:
  2102              		.cfi_def_cfa_offset 8
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 55
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 55
 
 
  2103              		.cfi_offset 4, -8
@@ -3298,7 +3298,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  2137              		@ sp needed
  2138 0028 10BD     		pop	{r4, pc}
  2139              	.LVL113:
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 56
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 56
 
 
  2140              	.L79:
@@ -3358,7 +3358,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  2179 0002 42F62403 		movw	r3, #10276
  2180 0006 C4F20003 		movt	r3, 16384
  2181 000a CA22     		movs	r2, #202
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 57
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 57
 
 
  2182 000c 1A60     		str	r2, [r3]
@@ -3418,7 +3418,7 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  2218 0038 1A60     		str	r2, [r3]
  955:Drivers/GD32E23x/Source/gd32e23x_rtc.c ****     }
  2219              		.loc 1 955 9 is_stmt 1 view .LVU633
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 58
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 58
 
 
  2220 003a FFF7FEFF 		bl	rtc_init_mode_exit
@@ -3434,80 +3434,80 @@ ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 1
  2230              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
  2231              		.file 4 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
  2232              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_rtc.h"
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 59
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 59
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gd32e23x_rtc.c
-D:\noval\Temp\ccenDQGk.s:19     .text.rtc_init_mode_enter:00000000 $t
-D:\noval\Temp\ccenDQGk.s:25     .text.rtc_init_mode_enter:00000000 rtc_init_mode_enter
-D:\noval\Temp\ccenDQGk.s:100    .text.rtc_init_mode_exit:00000000 $t
-D:\noval\Temp\ccenDQGk.s:106    .text.rtc_init_mode_exit:00000000 rtc_init_mode_exit
-D:\noval\Temp\ccenDQGk.s:128    .text.rtc_register_sync_wait:00000000 $t
-D:\noval\Temp\ccenDQGk.s:134    .text.rtc_register_sync_wait:00000000 rtc_register_sync_wait
-D:\noval\Temp\ccenDQGk.s:236    .text.rtc_deinit:00000000 $t
-D:\noval\Temp\ccenDQGk.s:242    .text.rtc_deinit:00000000 rtc_deinit
-D:\noval\Temp\ccenDQGk.s:352    .text.rtc_init:00000000 $t
-D:\noval\Temp\ccenDQGk.s:358    .text.rtc_init:00000000 rtc_init
-D:\noval\Temp\ccenDQGk.s:522    .text.rtc_current_time_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:528    .text.rtc_current_time_get:00000000 rtc_current_time_get
-D:\noval\Temp\ccenDQGk.s:656    .text.rtc_subsecond_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:662    .text.rtc_subsecond_get:00000000 rtc_subsecond_get
-D:\noval\Temp\ccenDQGk.s:689    .text.rtc_alarm_config:00000000 $t
-D:\noval\Temp\ccenDQGk.s:695    .text.rtc_alarm_config:00000000 rtc_alarm_config
-D:\noval\Temp\ccenDQGk.s:774    .text.rtc_alarm_subsecond_config:00000000 $t
-D:\noval\Temp\ccenDQGk.s:780    .text.rtc_alarm_subsecond_config:00000000 rtc_alarm_subsecond_config
-D:\noval\Temp\ccenDQGk.s:817    .text.rtc_alarm_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:823    .text.rtc_alarm_enable:00000000 rtc_alarm_enable
-D:\noval\Temp\ccenDQGk.s:859    .text.rtc_alarm_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:865    .text.rtc_alarm_disable:00000000 rtc_alarm_disable
-D:\noval\Temp\ccenDQGk.s:951    .text.rtc_alarm_disable:0000005c $d
-D:\noval\Temp\ccenDQGk.s:956    .text.rtc_alarm_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:962    .text.rtc_alarm_get:00000000 rtc_alarm_get
-D:\noval\Temp\ccenDQGk.s:1033   .text.rtc_alarm_subsecond_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1039   .text.rtc_alarm_subsecond_get:00000000 rtc_alarm_subsecond_get
-D:\noval\Temp\ccenDQGk.s:1060   .text.rtc_timestamp_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1066   .text.rtc_timestamp_enable:00000000 rtc_timestamp_enable
-D:\noval\Temp\ccenDQGk.s:1120   .text.rtc_timestamp_enable:00000030 $d
-D:\noval\Temp\ccenDQGk.s:1125   .text.rtc_timestamp_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1131   .text.rtc_timestamp_disable:00000000 rtc_timestamp_disable
-D:\noval\Temp\ccenDQGk.s:1166   .text.rtc_timestamp_disable:00000028 $d
-D:\noval\Temp\ccenDQGk.s:1171   .text.rtc_timestamp_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1177   .text.rtc_timestamp_get:00000000 rtc_timestamp_get
-D:\noval\Temp\ccenDQGk.s:1262   .text.rtc_timestamp_subsecond_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1268   .text.rtc_timestamp_subsecond_get:00000000 rtc_timestamp_subsecond_get
-D:\noval\Temp\ccenDQGk.s:1287   .text.rtc_tamper_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1293   .text.rtc_tamper_enable:00000000 rtc_tamper_enable
-D:\noval\Temp\ccenDQGk.s:1436   .text.rtc_tamper_enable:000000cc $d
-D:\noval\Temp\ccenDQGk.s:1442   .text.rtc_tamper_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1448   .text.rtc_tamper_disable:00000000 rtc_tamper_disable
-D:\noval\Temp\ccenDQGk.s:1470   .text.rtc_interrupt_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1476   .text.rtc_interrupt_enable:00000000 rtc_interrupt_enable
-D:\noval\Temp\ccenDQGk.s:1531   .text.rtc_interrupt_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1537   .text.rtc_interrupt_disable:00000000 rtc_interrupt_disable
-D:\noval\Temp\ccenDQGk.s:1592   .text.rtc_flag_get:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1598   .text.rtc_flag_get:00000000 rtc_flag_get
-D:\noval\Temp\ccenDQGk.s:1634   .text.rtc_flag_clear:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1640   .text.rtc_flag_clear:00000000 rtc_flag_clear
-D:\noval\Temp\ccenDQGk.s:1662   .text.rtc_alter_output_config:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1668   .text.rtc_alter_output_config:00000000 rtc_alter_output_config
-D:\noval\Temp\ccenDQGk.s:1735   .text.rtc_alter_output_config:00000050 $d
-D:\noval\Temp\ccenDQGk.s:1741   .text.rtc_calibration_config:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1747   .text.rtc_calibration_config:00000000 rtc_calibration_config
-ARM GAS  D:\noval\Temp\ccenDQGk.s 			page 60
+D:\noval\Temp\cc61HJpc.s:19     .text.rtc_init_mode_enter:00000000 $t
+D:\noval\Temp\cc61HJpc.s:25     .text.rtc_init_mode_enter:00000000 rtc_init_mode_enter
+D:\noval\Temp\cc61HJpc.s:100    .text.rtc_init_mode_exit:00000000 $t
+D:\noval\Temp\cc61HJpc.s:106    .text.rtc_init_mode_exit:00000000 rtc_init_mode_exit
+D:\noval\Temp\cc61HJpc.s:128    .text.rtc_register_sync_wait:00000000 $t
+D:\noval\Temp\cc61HJpc.s:134    .text.rtc_register_sync_wait:00000000 rtc_register_sync_wait
+D:\noval\Temp\cc61HJpc.s:236    .text.rtc_deinit:00000000 $t
+D:\noval\Temp\cc61HJpc.s:242    .text.rtc_deinit:00000000 rtc_deinit
+D:\noval\Temp\cc61HJpc.s:352    .text.rtc_init:00000000 $t
+D:\noval\Temp\cc61HJpc.s:358    .text.rtc_init:00000000 rtc_init
+D:\noval\Temp\cc61HJpc.s:522    .text.rtc_current_time_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:528    .text.rtc_current_time_get:00000000 rtc_current_time_get
+D:\noval\Temp\cc61HJpc.s:656    .text.rtc_subsecond_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:662    .text.rtc_subsecond_get:00000000 rtc_subsecond_get
+D:\noval\Temp\cc61HJpc.s:689    .text.rtc_alarm_config:00000000 $t
+D:\noval\Temp\cc61HJpc.s:695    .text.rtc_alarm_config:00000000 rtc_alarm_config
+D:\noval\Temp\cc61HJpc.s:774    .text.rtc_alarm_subsecond_config:00000000 $t
+D:\noval\Temp\cc61HJpc.s:780    .text.rtc_alarm_subsecond_config:00000000 rtc_alarm_subsecond_config
+D:\noval\Temp\cc61HJpc.s:817    .text.rtc_alarm_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:823    .text.rtc_alarm_enable:00000000 rtc_alarm_enable
+D:\noval\Temp\cc61HJpc.s:859    .text.rtc_alarm_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:865    .text.rtc_alarm_disable:00000000 rtc_alarm_disable
+D:\noval\Temp\cc61HJpc.s:951    .text.rtc_alarm_disable:0000005c $d
+D:\noval\Temp\cc61HJpc.s:956    .text.rtc_alarm_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:962    .text.rtc_alarm_get:00000000 rtc_alarm_get
+D:\noval\Temp\cc61HJpc.s:1033   .text.rtc_alarm_subsecond_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1039   .text.rtc_alarm_subsecond_get:00000000 rtc_alarm_subsecond_get
+D:\noval\Temp\cc61HJpc.s:1060   .text.rtc_timestamp_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1066   .text.rtc_timestamp_enable:00000000 rtc_timestamp_enable
+D:\noval\Temp\cc61HJpc.s:1120   .text.rtc_timestamp_enable:00000030 $d
+D:\noval\Temp\cc61HJpc.s:1125   .text.rtc_timestamp_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1131   .text.rtc_timestamp_disable:00000000 rtc_timestamp_disable
+D:\noval\Temp\cc61HJpc.s:1166   .text.rtc_timestamp_disable:00000028 $d
+D:\noval\Temp\cc61HJpc.s:1171   .text.rtc_timestamp_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1177   .text.rtc_timestamp_get:00000000 rtc_timestamp_get
+D:\noval\Temp\cc61HJpc.s:1262   .text.rtc_timestamp_subsecond_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1268   .text.rtc_timestamp_subsecond_get:00000000 rtc_timestamp_subsecond_get
+D:\noval\Temp\cc61HJpc.s:1287   .text.rtc_tamper_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1293   .text.rtc_tamper_enable:00000000 rtc_tamper_enable
+D:\noval\Temp\cc61HJpc.s:1436   .text.rtc_tamper_enable:000000cc $d
+D:\noval\Temp\cc61HJpc.s:1442   .text.rtc_tamper_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1448   .text.rtc_tamper_disable:00000000 rtc_tamper_disable
+D:\noval\Temp\cc61HJpc.s:1470   .text.rtc_interrupt_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1476   .text.rtc_interrupt_enable:00000000 rtc_interrupt_enable
+D:\noval\Temp\cc61HJpc.s:1531   .text.rtc_interrupt_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1537   .text.rtc_interrupt_disable:00000000 rtc_interrupt_disable
+D:\noval\Temp\cc61HJpc.s:1592   .text.rtc_flag_get:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1598   .text.rtc_flag_get:00000000 rtc_flag_get
+D:\noval\Temp\cc61HJpc.s:1634   .text.rtc_flag_clear:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1640   .text.rtc_flag_clear:00000000 rtc_flag_clear
+D:\noval\Temp\cc61HJpc.s:1662   .text.rtc_alter_output_config:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1668   .text.rtc_alter_output_config:00000000 rtc_alter_output_config
+D:\noval\Temp\cc61HJpc.s:1735   .text.rtc_alter_output_config:00000050 $d
+D:\noval\Temp\cc61HJpc.s:1741   .text.rtc_calibration_config:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1747   .text.rtc_calibration_config:00000000 rtc_calibration_config
+ARM GAS  D:\noval\Temp\cc61HJpc.s 			page 60
 
 
-D:\noval\Temp\ccenDQGk.s:1848   .text.rtc_hour_adjust:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1854   .text.rtc_hour_adjust:00000000 rtc_hour_adjust
-D:\noval\Temp\ccenDQGk.s:1890   .text.rtc_second_adjust:00000000 $t
-D:\noval\Temp\ccenDQGk.s:1896   .text.rtc_second_adjust:00000000 rtc_second_adjust
-D:\noval\Temp\ccenDQGk.s:2004   .text.rtc_bypass_shadow_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:2010   .text.rtc_bypass_shadow_enable:00000000 rtc_bypass_shadow_enable
-D:\noval\Temp\ccenDQGk.s:2046   .text.rtc_bypass_shadow_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:2052   .text.rtc_bypass_shadow_disable:00000000 rtc_bypass_shadow_disable
-D:\noval\Temp\ccenDQGk.s:2088   .text.rtc_refclock_detection_enable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:2094   .text.rtc_refclock_detection_enable:00000000 rtc_refclock_detection_enable
-D:\noval\Temp\ccenDQGk.s:2158   .text.rtc_refclock_detection_disable:00000000 $t
-D:\noval\Temp\ccenDQGk.s:2164   .text.rtc_refclock_detection_disable:00000000 rtc_refclock_detection_disable
+D:\noval\Temp\cc61HJpc.s:1848   .text.rtc_hour_adjust:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1854   .text.rtc_hour_adjust:00000000 rtc_hour_adjust
+D:\noval\Temp\cc61HJpc.s:1890   .text.rtc_second_adjust:00000000 $t
+D:\noval\Temp\cc61HJpc.s:1896   .text.rtc_second_adjust:00000000 rtc_second_adjust
+D:\noval\Temp\cc61HJpc.s:2004   .text.rtc_bypass_shadow_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:2010   .text.rtc_bypass_shadow_enable:00000000 rtc_bypass_shadow_enable
+D:\noval\Temp\cc61HJpc.s:2046   .text.rtc_bypass_shadow_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:2052   .text.rtc_bypass_shadow_disable:00000000 rtc_bypass_shadow_disable
+D:\noval\Temp\cc61HJpc.s:2088   .text.rtc_refclock_detection_enable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:2094   .text.rtc_refclock_detection_enable:00000000 rtc_refclock_detection_enable
+D:\noval\Temp\cc61HJpc.s:2158   .text.rtc_refclock_detection_disable:00000000 $t
+D:\noval\Temp\cc61HJpc.s:2164   .text.rtc_refclock_detection_disable:00000000 rtc_refclock_detection_disable
 
 NO UNDEFINED SYMBOLS
