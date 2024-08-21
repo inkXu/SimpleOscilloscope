@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
   25:Core/Src/app.c **** void AppInterface(void);
   26:Core/Src/app.c **** void WaveformDisplay(void);
   27:Core/Src/app.c **** void AppStateDisplay(void);
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 2
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 2
 
 
   28:Core/Src/app.c **** 
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
   82:Core/Src/app.c **** {
   83:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "/***************State****************/");
   84:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "display_update: %d", app_state.display_update);
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 3
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 3
 
 
   85:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "update_samp_val: %d", app_state.update_samp_val);
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
  139:Core/Src/app.c ****         app_state.display_update = APP_STATE_ENABLE;
  140:Core/Src/app.c ****     }
  141:Core/Src/app.c ****     if (app_state.waveform_update == WAVEFORM_UPDATE_DONE) {
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 4
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 4
 
 
  142:Core/Src/app.c ****         app_state.waveform_update = WAVEFORM_UPDATE_NONE;
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
   63 0024 C0F20004 		movt	r4, #:upper16:UI_MSG
   64 0028 0127     		movs	r7, #1
   65 002a 0297     		str	r7, [sp, #8]
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 5
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 5
 
 
   66 002c 1023     		movs	r3, #16
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
  112 008e 6023     		movs	r3, #96
  113 0090 0222     		movs	r2, #2
  114 0092 1821     		movs	r1, #24
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 6
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 6
 
 
  115 0094 0220     		movs	r0, #2
@@ -341,40 +341,41 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
  145      65446973 
  146              		.global	__aeabi_i2f
  147              		.global	__aeabi_fmul
- 148              		.global	__aeabi_fdiv
- 149 0023 00       		.align	2
- 150              	.LC8:
- 151 0024 4F4E2000 		.ascii	"ON \000"
- 152              		.align	2
- 153              	.LC9:
- 154 0028 4F464600 		.ascii	"OFF\000"
- 155              		.align	2
- 156              	.LC5:
- 157 002c 2D492D2D 		.ascii	"-I---\000"
- 157      2D00
- 158 0032 0000     		.align	2
- 159              	.LC7:
- 160 0034 2D2D2D49 		.ascii	"---I-\000"
- 160      2D00
- 161 003a 0000     		.align	2
- 162              	.LC4:
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 7
+ 148              		.global	__aeabi_fsub
+ 149              		.global	__aeabi_fdiv
+ 150 0023 00       		.align	2
+ 151              	.LC8:
+ 152 0024 4F4E2000 		.ascii	"ON \000"
+ 153              		.align	2
+ 154              	.LC9:
+ 155 0028 4F464600 		.ascii	"OFF\000"
+ 156              		.align	2
+ 157              	.LC4:
+ 158 002c 2D2D2D49 		.ascii	"---I-\000"
+ 158      2D00
+ 159 0032 0000     		.align	2
+ 160              	.LC6:
+ 161 0034 2D492D2D 		.ascii	"-I---\000"
+ 161      2D00
+ 162 003a 0000     		.align	2
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 7
 
 
- 163 003c 492D2D2D 		.ascii	"I----\000"
- 163      2D00
- 164 0042 0000     		.align	2
- 165              	.LC6:
- 166 0044 2D2D492D 		.ascii	"--I--\000"
- 166      2D00
- 167              		.section	.text.AppStateDisplay,"ax",%progbits
- 168              		.align	1
- 169              		.global	AppStateDisplay
- 170              		.syntax unified
- 171              		.code	16
- 172              		.thumb_func
- 174              	AppStateDisplay:
- 175              	.LFB66:
+ 163              	.LC5:
+ 164 003c 2D2D492D 		.ascii	"--I--\000"
+ 164      2D00
+ 165 0042 0000     		.align	2
+ 166              	.LC7:
+ 167 0044 492D2D2D 		.ascii	"I----\000"
+ 167      2D00
+ 168              		.section	.text.AppStateDisplay,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	AppStateDisplay
+ 171              		.syntax unified
+ 172              		.code	16
+ 173              		.thumb_func
+ 175              	AppStateDisplay:
+ 176              	.LFB66:
  176:Core/Src/app.c **** 
  177:Core/Src/app.c **** /*
  178:Core/Src/app.c ****  * @brief  
@@ -383,1586 +384,1596 @@ ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 1
  181:Core/Src/app.c ****  */
  182:Core/Src/app.c **** void AppStateDisplay(void)
  183:Core/Src/app.c **** {
- 176              		.loc 1 183 1 is_stmt 1 view -0
- 177              		.cfi_startproc
- 178              		@ args = 0, pretend = 0, frame = 8
- 179              		@ frame_needed = 0, uses_anonymous_args = 0
- 180 0000 F0B5     		push	{r4, r5, r6, r7, lr}
- 181              	.LCFI2:
- 182              		.cfi_def_cfa_offset 20
- 183              		.cfi_offset 4, -20
- 184              		.cfi_offset 5, -16
- 185              		.cfi_offset 6, -12
- 186              		.cfi_offset 7, -8
- 187              		.cfi_offset 14, -4
- 188 0002 87B0     		sub	sp, sp, #28
- 189              	.LCFI3:
- 190              		.cfi_def_cfa_offset 48
+ 177              		.loc 1 183 1 is_stmt 1 view -0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 8
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 182              	.LCFI2:
+ 183              		.cfi_def_cfa_offset 20
+ 184              		.cfi_offset 4, -20
+ 185              		.cfi_offset 5, -16
+ 186              		.cfi_offset 6, -12
+ 187              		.cfi_offset 7, -8
+ 188              		.cfi_offset 14, -4
+ 189 0002 87B0     		sub	sp, sp, #28
+ 190              	.LCFI3:
+ 191              		.cfi_def_cfa_offset 48
  184:Core/Src/app.c ****     char buf[6] = "";
- 191              		.loc 1 184 5 view .LVU12
- 192              		.loc 1 184 10 is_stmt 0 view .LVU13
- 193 0004 0622     		movs	r2, #6
- 194 0006 0021     		movs	r1, #0
- 195 0008 04A8     		add	r0, sp, #16
- 196 000a FFF7FEFF 		bl	memset
- 197              	.LVL9:
+ 192              		.loc 1 184 5 view .LVU12
+ 193              		.loc 1 184 10 is_stmt 0 view .LVU13
+ 194 0004 0622     		movs	r2, #6
+ 195 0006 0021     		movs	r1, #0
+ 196 0008 04A8     		add	r0, sp, #16
+ 197 000a FFF7FEFF 		bl	memset
+ 198              	.LVL9:
  185:Core/Src/app.c **** 
  186:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "function AppStateDisplay exeute...");
- 198              		.loc 1 186 5 is_stmt 1 view .LVU14
- 199 000e 40F20003 		movw	r3, #:lower16:.LC3
- 200 0012 C0F20003 		movt	r3, #:upper16:.LC3
- 201 0016 40F20001 		movw	r1, #:lower16:__FUNCTION__.1
- 202 001a C0F20001 		movt	r1, #:upper16:__FUNCTION__.1
- 203 001e BA22     		movs	r2, #186
- 204 0020 0020     		movs	r0, #0
- 205 0022 FFF7FEFF 		bl	EM_LOG
- 206              	.LVL10:
+ 199              		.loc 1 186 5 is_stmt 1 view .LVU14
+ 200 000e 40F20003 		movw	r3, #:lower16:.LC3
+ 201 0012 C0F20003 		movt	r3, #:upper16:.LC3
+ 202 0016 40F20001 		movw	r1, #:lower16:__FUNCTION__.1
+ 203 001a C0F20001 		movt	r1, #:upper16:__FUNCTION__.1
+ 204 001e BA22     		movs	r2, #186
+ 205 0020 0020     		movs	r0, #0
+ 206 0022 FFF7FEFF 		bl	EM_LOG
+ 207              	.LVL10:
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 8
+
+
  187:Core/Src/app.c **** 
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 8
-
-
  188:Core/Src/app.c ****     /* sampling level */
  189:Core/Src/app.c ****     switch (app_data.wave_samp_freq)
- 207              		.loc 1 189 5 view .LVU15
- 208              		.loc 1 189 21 is_stmt 0 view .LVU16
- 209 0026 40F20003 		movw	r3, #:lower16:app_data
- 210 002a C0F20003 		movt	r3, #:upper16:app_data
- 211 002e 9B68     		ldr	r3, [r3, #8]
- 212              		.loc 1 189 5 view .LVU17
- 213 0030 052B     		cmp	r3, #5
- 214 0032 00D1     		bne	.LCB139
- 215 0034 A0E0     		b	.L3	@long jump
- 216              	.LCB139:
- 217 0036 0ED8     		bhi	.L4
- 218 0038 032B     		cmp	r3, #3
- 219 003a 19D0     		beq	.L5
- 220 003c 042B     		cmp	r3, #4
- 221 003e 00D0     		beq	.LCB145
- 222 0040 A4E0     		b	.L7	@long jump
- 223              	.LCB145:
+ 208              		.loc 1 189 5 view .LVU15
+ 209              		.loc 1 189 21 is_stmt 0 view .LVU16
+ 210 0026 40F20003 		movw	r3, #:lower16:app_data
+ 211 002a C0F20003 		movt	r3, #:upper16:app_data
+ 212 002e 9B68     		ldr	r3, [r3, #8]
+ 213              		.loc 1 189 5 view .LVU17
+ 214 0030 052B     		cmp	r3, #5
+ 215 0032 00D1     		bne	.LCB139
+ 216 0034 ACE0     		b	.L3	@long jump
+ 217              	.LCB139:
+ 218 0036 0ED8     		bhi	.L4
+ 219 0038 032B     		cmp	r3, #3
+ 220 003a 19D0     		beq	.L5
+ 221 003c 042B     		cmp	r3, #4
+ 222 003e 00D0     		beq	.LCB145
+ 223 0040 B0E0     		b	.L7	@long jump
+ 224              	.LCB145:
  190:Core/Src/app.c ****     {
  191:Core/Src/app.c ****         case ADC_SAMPLETIME_28POINT5:
- 192:Core/Src/app.c ****             strncpy(buf, "I----", 6);
+ 192:Core/Src/app.c ****             strncpy(buf, "----I", 6);
  193:Core/Src/app.c ****             break;
  194:Core/Src/app.c ****         case ADC_SAMPLETIME_41POINT5:
- 195:Core/Src/app.c ****             strncpy(buf, "-I---", 6);
- 224              		.loc 1 195 13 is_stmt 1 view .LVU18
- 225 0042 40F20003 		movw	r3, #:lower16:.LC5
- 226 0046 C0F20003 		movt	r3, #:upper16:.LC5
- 227 004a 1A68     		ldr	r2, [r3]
- 228 004c 0492     		str	r2, [sp, #16]
- 229 004e 9A88     		ldrh	r2, [r3, #4]
- 230 0050 04AB     		add	r3, sp, #16
- 231 0052 9A80     		strh	r2, [r3, #4]
+ 195:Core/Src/app.c ****             strncpy(buf, "---I-", 6);
+ 225              		.loc 1 195 13 is_stmt 1 view .LVU18
+ 226 0042 40F20003 		movw	r3, #:lower16:.LC4
+ 227 0046 C0F20003 		movt	r3, #:upper16:.LC4
+ 228 004a 1A68     		ldr	r2, [r3]
+ 229 004c 0492     		str	r2, [sp, #16]
+ 230 004e 9A88     		ldrh	r2, [r3, #4]
+ 231 0050 04AB     		add	r3, sp, #16
+ 232 0052 9A80     		strh	r2, [r3, #4]
  196:Core/Src/app.c ****             break;
- 232              		.loc 1 196 13 view .LVU19
- 233 0054 15E0     		b	.L9
- 234              	.L4:
+ 233              		.loc 1 196 13 view .LVU19
+ 234 0054 15E0     		b	.L9
+ 235              	.L4:
  189:Core/Src/app.c ****     {
- 235              		.loc 1 189 5 is_stmt 0 view .LVU20
- 236 0056 062B     		cmp	r3, #6
- 237 0058 00D0     		beq	.LCB160
- 238 005a 97E0     		b	.L7	@long jump
- 239              	.LCB160:
+ 236              		.loc 1 189 5 is_stmt 0 view .LVU20
+ 237 0056 062B     		cmp	r3, #6
+ 238 0058 00D0     		beq	.LCB160
+ 239 005a A3E0     		b	.L7	@long jump
+ 240              	.LCB160:
  197:Core/Src/app.c ****         case ADC_SAMPLETIME_55POINT5:
  198:Core/Src/app.c ****             strncpy(buf, "--I--", 6);
  199:Core/Src/app.c ****             break;
  200:Core/Src/app.c ****         case ADC_SAMPLETIME_71POINT5:
- 201:Core/Src/app.c ****             strncpy(buf, "---I-", 6);
- 240              		.loc 1 201 13 is_stmt 1 view .LVU21
- 241 005c 40F20003 		movw	r3, #:lower16:.LC7
- 242 0060 C0F20003 		movt	r3, #:upper16:.LC7
- 243 0064 1A68     		ldr	r2, [r3]
- 244 0066 0492     		str	r2, [sp, #16]
- 245 0068 9A88     		ldrh	r2, [r3, #4]
- 246 006a 04AB     		add	r3, sp, #16
- 247 006c 9A80     		strh	r2, [r3, #4]
+ 201:Core/Src/app.c ****             strncpy(buf, "-I---", 6);
+ 241              		.loc 1 201 13 is_stmt 1 view .LVU21
+ 242 005c 40F20003 		movw	r3, #:lower16:.LC6
+ 243 0060 C0F20003 		movt	r3, #:upper16:.LC6
+ 244 0064 1A68     		ldr	r2, [r3]
+ 245 0066 0492     		str	r2, [sp, #16]
+ 246 0068 9A88     		ldrh	r2, [r3, #4]
+ 247 006a 04AB     		add	r3, sp, #16
+ 248 006c 9A80     		strh	r2, [r3, #4]
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 9
+
+
  202:Core/Src/app.c ****             break;
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 9
-
-
- 248              		.loc 1 202 13 view .LVU22
- 249 006e 08E0     		b	.L9
- 250              	.L5:
+ 249              		.loc 1 202 13 view .LVU22
+ 250 006e 08E0     		b	.L9
+ 251              	.L5:
  192:Core/Src/app.c ****             break;
- 251              		.loc 1 192 13 view .LVU23
- 252 0070 40F20003 		movw	r3, #:lower16:.LC4
- 253 0074 C0F20003 		movt	r3, #:upper16:.LC4
- 254 0078 1A68     		ldr	r2, [r3]
- 255 007a 0492     		str	r2, [sp, #16]
- 256 007c 9A88     		ldrh	r2, [r3, #4]
- 257 007e 04AB     		add	r3, sp, #16
- 258 0080 9A80     		strh	r2, [r3, #4]
+ 252              		.loc 1 192 13 view .LVU23
+ 253 0070 40F20003 		movw	r3, #:lower16:.LC0
+ 254 0074 C0F20003 		movt	r3, #:upper16:.LC0
+ 255 0078 1A68     		ldr	r2, [r3]
+ 256 007a 0492     		str	r2, [sp, #16]
+ 257 007c 9A88     		ldrh	r2, [r3, #4]
+ 258 007e 04AB     		add	r3, sp, #16
+ 259 0080 9A80     		strh	r2, [r3, #4]
  193:Core/Src/app.c ****         case ADC_SAMPLETIME_41POINT5:
- 259              		.loc 1 193 13 view .LVU24
- 260              	.L9:
+ 260              		.loc 1 193 13 view .LVU24
+ 261              	.L9:
  203:Core/Src/app.c ****         default:
- 204:Core/Src/app.c ****             strncpy(buf, "----I", 6);
+ 204:Core/Src/app.c ****             strncpy(buf, "I----", 6);
  205:Core/Src/app.c ****             break;
  206:Core/Src/app.c ****     }
  207:Core/Src/app.c ****     LCD_Show_String(120, 8, (uint8_t *)buf, YELLOW, BLACK, 12, 0);
- 261              		.loc 1 207 5 view .LVU25
- 262 0082 0025     		movs	r5, #0
- 263 0084 0295     		str	r5, [sp, #8]
- 264 0086 0C26     		movs	r6, #12
- 265 0088 0196     		str	r6, [sp, #4]
- 266 008a 0095     		str	r5, [sp]
- 267 008c 4FF6E073 		movw	r3, #65504
- 268 0090 04AA     		add	r2, sp, #16
- 269 0092 0821     		movs	r1, #8
- 270 0094 7820     		movs	r0, #120
- 271 0096 FFF7FEFF 		bl	LCD_Show_String
- 272              	.LVL11:
+ 262              		.loc 1 207 5 view .LVU25
+ 263 0082 0025     		movs	r5, #0
+ 264 0084 0295     		str	r5, [sp, #8]
+ 265 0086 0C26     		movs	r6, #12
+ 266 0088 0196     		str	r6, [sp, #4]
+ 267 008a 0095     		str	r5, [sp]
+ 268 008c 4FF6E073 		movw	r3, #65504
+ 269 0090 04AA     		add	r2, sp, #16
+ 270 0092 0821     		movs	r1, #8
+ 271 0094 7820     		movs	r0, #120
+ 272 0096 FFF7FEFF 		bl	LCD_Show_String
+ 273              	.LVL11:
  208:Core/Src/app.c ****     /* input signal parameter */
- 209:Core/Src/app.c ****     LCD_ShowFloatNum1(27, 102, (float)(app_data.wave_vpp / 4096.0f * 3.3f), 4, YELLOW, BLACK, 12); 
- 273              		.loc 1 209 5 view .LVU26
- 274              		.loc 1 209 48 is_stmt 0 view .LVU27
- 275 009a 40F20004 		movw	r4, #:lower16:app_data
- 276 009e C0F20004 		movt	r4, #:upper16:app_data
- 277 00a2 E088     		ldrh	r0, [r4, #6]
- 278              		.loc 1 209 58 view .LVU28
- 279 00a4 FFF7FEFF 		bl	__aeabi_i2f
- 280              	.LVL12:
- 281 00a8 E621     		movs	r1, #230
- 282 00aa 8905     		lsls	r1, r1, #22
- 283 00ac FFF7FEFF 		bl	__aeabi_fmul
- 284              	.LVL13:
- 285              		.loc 1 209 5 view .LVU29
- 286 00b0 43F23331 		movw	r1, #13107
- 287 00b4 C4F25301 		movt	r1, 16467
- 288 00b8 FFF7FEFF 		bl	__aeabi_fmul
- 289              	.LVL14:
- 290 00bc 021C     		adds	r2, r0, #0
- 291 00be 0296     		str	r6, [sp, #8]
- 292 00c0 0195     		str	r5, [sp, #4]
- 293 00c2 4FF6E077 		movw	r7, #65504
- 294 00c6 0097     		str	r7, [sp]
- 295 00c8 0423     		movs	r3, #4
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 10
+ 209:Core/Src/app.c ****     LCD_ShowFloatNum1(27, 102, (float)(5 - app_data.wave_vpp / 4096.0f * 6.6f - 0.28f), 4, YELLOW, 
+ 274              		.loc 1 209 5 view .LVU26
+ 275              		.loc 1 209 52 is_stmt 0 view .LVU27
+ 276 009a 40F20004 		movw	r4, #:lower16:app_data
+ 277 009e C0F20004 		movt	r4, #:upper16:app_data
+ 278 00a2 E088     		ldrh	r0, [r4, #6]
+ 279              		.loc 1 209 62 view .LVU28
+ 280 00a4 FFF7FEFF 		bl	__aeabi_i2f
+ 281              	.LVL12:
+ 282 00a8 E621     		movs	r1, #230
+ 283 00aa 8905     		lsls	r1, r1, #22
+ 284 00ac FFF7FEFF 		bl	__aeabi_fmul
+ 285              	.LVL13:
+ 286              		.loc 1 209 72 view .LVU29
+ 287 00b0 43F23331 		movw	r1, #13107
+ 288 00b4 C4F2D301 		movt	r1, 16595
+ 289 00b8 FFF7FEFF 		bl	__aeabi_fmul
+ 290              	.LVL14:
+ 291 00bc 011C     		adds	r1, r0, #0
+ 292              		.loc 1 209 42 view .LVU30
+ 293 00be 0020     		movs	r0, #0
+ 294 00c0 C4F2A000 		movt	r0, 16544
+ 295 00c4 FFF7FEFF 		bl	__aeabi_fsub
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 10
 
 
- 296 00ca 6621     		movs	r1, #102
- 297 00cc 1B20     		movs	r0, #27
- 298 00ce FFF7FEFF 		bl	LCD_ShowFloatNum1
- 299              	.LVL15:
+ 296              	.LVL15:
+ 297              		.loc 1 209 5 view .LVU31
+ 298 00c8 45F62941 		movw	r1, #23593
+ 299 00cc C3F68F61 		movt	r1, 16015
+ 300 00d0 FFF7FEFF 		bl	__aeabi_fsub
+ 301              	.LVL16:
+ 302 00d4 021C     		adds	r2, r0, #0
+ 303 00d6 0296     		str	r6, [sp, #8]
+ 304 00d8 0195     		str	r5, [sp, #4]
+ 305 00da 4FF6E077 		movw	r7, #65504
+ 306 00de 0097     		str	r7, [sp]
+ 307 00e0 0423     		movs	r3, #4
+ 308 00e2 6621     		movs	r1, #102
+ 309 00e4 1B20     		movs	r0, #27
+ 310 00e6 FFF7FEFF 		bl	LCD_ShowFloatNum1
+ 311              	.LVL17:
  210:Core/Src/app.c ****     LCD_ShowFloatNum1(87, 102, (float)(app_data.wave_freq * 1.03f / 1000.0f), 4, YELLOW, BLACK, 12)
- 300              		.loc 1 210 5 is_stmt 1 view .LVU30
- 301              		.loc 1 210 48 is_stmt 0 view .LVU31
- 302 00d2 E068     		ldr	r0, [r4, #12]
- 303              		.loc 1 210 59 view .LVU32
- 304 00d4 FFF7FEFF 		bl	__aeabi_i2f
- 305              	.LVL16:
- 306 00d8 4DF20A71 		movw	r1, #55050
- 307 00dc C3F68371 		movt	r1, 16259
- 308 00e0 FFF7FEFF 		bl	__aeabi_fmul
- 309              	.LVL17:
- 310              		.loc 1 210 5 view .LVU33
- 311 00e4 0021     		movs	r1, #0
- 312 00e6 C4F27A41 		movt	r1, 17530
- 313 00ea FFF7FEFF 		bl	__aeabi_fdiv
- 314              	.LVL18:
- 315 00ee 021C     		adds	r2, r0, #0
- 316 00f0 0296     		str	r6, [sp, #8]
- 317 00f2 0195     		str	r5, [sp, #4]
- 318 00f4 0097     		str	r7, [sp]
- 319 00f6 0423     		movs	r3, #4
- 320 00f8 6621     		movs	r1, #102
- 321 00fa 5720     		movs	r0, #87
- 322 00fc FFF7FEFF 		bl	LCD_ShowFloatNum1
- 323              	.LVL19:
+ 312              		.loc 1 210 5 is_stmt 1 view .LVU32
+ 313              		.loc 1 210 48 is_stmt 0 view .LVU33
+ 314 00ea E068     		ldr	r0, [r4, #12]
+ 315              		.loc 1 210 59 view .LVU34
+ 316 00ec FFF7FEFF 		bl	__aeabi_i2f
+ 317              	.LVL18:
+ 318 00f0 4DF20A71 		movw	r1, #55050
+ 319 00f4 C3F68371 		movt	r1, 16259
+ 320 00f8 FFF7FEFF 		bl	__aeabi_fmul
+ 321              	.LVL19:
+ 322              		.loc 1 210 5 view .LVU35
+ 323 00fc 0021     		movs	r1, #0
+ 324 00fe C4F27A41 		movt	r1, 17530
+ 325 0102 FFF7FEFF 		bl	__aeabi_fdiv
+ 326              	.LVL20:
+ 327 0106 021C     		adds	r2, r0, #0
+ 328 0108 0296     		str	r6, [sp, #8]
+ 329 010a 0195     		str	r5, [sp, #4]
+ 330 010c 0097     		str	r7, [sp]
+ 331 010e 0423     		movs	r3, #4
+ 332 0110 6621     		movs	r1, #102
+ 333 0112 5720     		movs	r0, #87
+ 334 0114 FFF7FEFF 		bl	LCD_ShowFloatNum1
+ 335              	.LVL21:
  211:Core/Src/app.c ****     app_data.wave_freq = 0;
- 324              		.loc 1 211 5 is_stmt 1 view .LVU34
- 325              		.loc 1 211 24 is_stmt 0 view .LVU35
- 326 0100 E560     		str	r5, [r4, #12]
+ 336              		.loc 1 211 5 is_stmt 1 view .LVU36
+ 337              		.loc 1 211 24 is_stmt 0 view .LVU37
+ 338 0118 E560     		str	r5, [r4, #12]
  212:Core/Src/app.c ****     /* PWM */
  213:Core/Src/app.c ****     if (app_state.pwm_state != PWM_STATE_DISABLE) {                                            // p
- 327              		.loc 1 213 5 is_stmt 1 view .LVU36
- 328              		.loc 1 213 29 is_stmt 0 view .LVU37
- 329 0102 40F20003 		movw	r3, #:lower16:app_state
- 330 0106 C0F20003 		movt	r3, #:upper16:app_state
- 331 010a 1B78     		ldrb	r3, [r3]
- 332 010c 0F22     		movs	r2, #15
- 333 010e 9343     		bics	r3, r2
- 334              		.loc 1 213 8 view .LVU38
- 335 0110 402B     		cmp	r3, #64
- 336 0112 45D0     		beq	.L10
+ 339              		.loc 1 213 5 is_stmt 1 view .LVU38
+ 340              		.loc 1 213 29 is_stmt 0 view .LVU39
+ 341 011a 40F20003 		movw	r3, #:lower16:app_state
+ 342 011e C0F20003 		movt	r3, #:upper16:app_state
+ 343 0122 1B78     		ldrb	r3, [r3]
+ 344 0124 0F22     		movs	r2, #15
+ 345 0126 9343     		bics	r3, r2
+ 346              		.loc 1 213 8 view .LVU40
+ 347 0128 402B     		cmp	r3, #64
+ 348 012a 45D0     		beq	.L10
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 11
+
+
  214:Core/Src/app.c ****         LCD_Show_String(27, 116, (uint8_t *)"ON ", PURPLE, BLACK, 12, 0);
- 337              		.loc 1 214 9 is_stmt 1 view .LVU39
- 338 0114 40F20002 		movw	r2, #:lower16:.LC8
- 339 0118 C0F20002 		movt	r2, #:upper16:.LC8
- 340 011c 0023     		movs	r3, #0
- 341 011e 0293     		str	r3, [sp, #8]
- 342 0120 0C21     		movs	r1, #12
- 343 0122 0191     		str	r1, [sp, #4]
- 344 0124 0093     		str	r3, [sp]
- 345 0126 48F21003 		movw	r3, #32784
- 346 012a 6831     		adds	r1, r1, #104
- 347 012c 1B20     		movs	r0, #27
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 11
-
-
- 348 012e FFF7FEFF 		bl	LCD_Show_String
- 349              	.LVL20:
- 350              	.L11:
+ 349              		.loc 1 214 9 is_stmt 1 view .LVU41
+ 350 012c 40F20002 		movw	r2, #:lower16:.LC8
+ 351 0130 C0F20002 		movt	r2, #:upper16:.LC8
+ 352 0134 0023     		movs	r3, #0
+ 353 0136 0293     		str	r3, [sp, #8]
+ 354 0138 0C21     		movs	r1, #12
+ 355 013a 0191     		str	r1, [sp, #4]
+ 356 013c 0093     		str	r3, [sp]
+ 357 013e 48F21003 		movw	r3, #32784
+ 358 0142 6831     		adds	r1, r1, #104
+ 359 0144 1B20     		movs	r0, #27
+ 360 0146 FFF7FEFF 		bl	LCD_Show_String
+ 361              	.LVL22:
+ 362              	.L11:
  215:Core/Src/app.c ****     } else {
  216:Core/Src/app.c ****         LCD_Show_String(27, 116, (uint8_t *)"OFF", PURPLE, BLACK, 12, 0);
  217:Core/Src/app.c ****     }
  218:Core/Src/app.c ****     LCD_ShowIntNum(57, 116, (uint16_t)(100000U / app_data.pwm_freq), 5, PURPLE, BLACK, 12);    // p
- 351              		.loc 1 218 5 view .LVU40
- 352              		.loc 1 218 58 is_stmt 0 view .LVU41
- 353 0132 40F20004 		movw	r4, #:lower16:app_data
- 354 0136 C0F20004 		movt	r4, #:upper16:app_data
- 355 013a 2368     		ldr	r3, [r4]
- 356              		.loc 1 218 48 view .LVU42
- 357 013c 48F2A062 		movw	r2, #34464
- 358 0140 C0F20102 		movt	r2, 1
- 359 0144 B2FBF3F2 		udiv	r2, r2, r3
- 360              		.loc 1 218 5 view .LVU43
- 361 0148 92B2     		uxth	r2, r2
- 362 014a 0C27     		movs	r7, #12
- 363 014c 0297     		str	r7, [sp, #8]
- 364 014e 0026     		movs	r6, #0
- 365 0150 0196     		str	r6, [sp, #4]
- 366 0152 48F21005 		movw	r5, #32784
- 367 0156 0095     		str	r5, [sp]
- 368 0158 0523     		movs	r3, #5
- 369 015a 7421     		movs	r1, #116
- 370 015c 3920     		movs	r0, #57
- 371 015e FFF7FEFF 		bl	LCD_ShowIntNum
- 372              	.LVL21:
+ 363              		.loc 1 218 5 view .LVU42
+ 364              		.loc 1 218 58 is_stmt 0 view .LVU43
+ 365 014a 40F20004 		movw	r4, #:lower16:app_data
+ 366 014e C0F20004 		movt	r4, #:upper16:app_data
+ 367 0152 2368     		ldr	r3, [r4]
+ 368              		.loc 1 218 48 view .LVU44
+ 369 0154 48F2A062 		movw	r2, #34464
+ 370 0158 C0F20102 		movt	r2, 1
+ 371 015c B2FBF3F2 		udiv	r2, r2, r3
+ 372              		.loc 1 218 5 view .LVU45
+ 373 0160 92B2     		uxth	r2, r2
+ 374 0162 0C27     		movs	r7, #12
+ 375 0164 0297     		str	r7, [sp, #8]
+ 376 0166 0026     		movs	r6, #0
+ 377 0168 0196     		str	r6, [sp, #4]
+ 378 016a 48F21005 		movw	r5, #32784
+ 379 016e 0095     		str	r5, [sp]
+ 380 0170 0523     		movs	r3, #5
+ 381 0172 7421     		movs	r1, #116
+ 382 0174 3920     		movs	r0, #57
+ 383 0176 FFF7FEFF 		bl	LCD_ShowIntNum
+ 384              	.LVL23:
  219:Core/Src/app.c ****     LCD_ShowIntNum(111, 116, (uint16_t)app_data.pwm_duty, 3, PURPLE, BLACK, 12);               // p
- 373              		.loc 1 219 5 is_stmt 1 view .LVU44
- 374              		.loc 1 219 48 is_stmt 0 view .LVU45
- 375 0162 A288     		ldrh	r2, [r4, #4]
- 376              		.loc 1 219 5 view .LVU46
- 377 0164 0297     		str	r7, [sp, #8]
- 378 0166 0196     		str	r6, [sp, #4]
- 379 0168 0095     		str	r5, [sp]
- 380 016a 0323     		movs	r3, #3
- 381 016c 7421     		movs	r1, #116
- 382 016e 6F20     		movs	r0, #111
- 383 0170 FFF7FEFF 		bl	LCD_ShowIntNum
- 384              	.LVL22:
+ 385              		.loc 1 219 5 is_stmt 1 view .LVU46
+ 386              		.loc 1 219 48 is_stmt 0 view .LVU47
+ 387 017a A288     		ldrh	r2, [r4, #4]
+ 388              		.loc 1 219 5 view .LVU48
+ 389 017c 0297     		str	r7, [sp, #8]
+ 390 017e 0196     		str	r6, [sp, #4]
+ 391 0180 0095     		str	r5, [sp]
+ 392 0182 0323     		movs	r3, #3
+ 393 0184 7421     		movs	r1, #116
+ 394 0186 6F20     		movs	r0, #111
+ 395 0188 FFF7FEFF 		bl	LCD_ShowIntNum
+ 396              	.LVL24:
  220:Core/Src/app.c **** }
- 385              		.loc 1 220 1 view .LVU47
- 386 0174 07B0     		add	sp, sp, #28
- 387              		@ sp needed
- 388 0176 F0BD     		pop	{r4, r5, r6, r7, pc}
- 389              	.L3:
+ 397              		.loc 1 220 1 view .LVU49
+ 398 018c 07B0     		add	sp, sp, #28
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 12
+
+
+ 399              		@ sp needed
+ 400 018e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 401              	.L3:
  198:Core/Src/app.c ****             break;
- 390              		.loc 1 198 13 is_stmt 1 view .LVU48
- 391 0178 40F20003 		movw	r3, #:lower16:.LC6
- 392 017c C0F20003 		movt	r3, #:upper16:.LC6
- 393 0180 1A68     		ldr	r2, [r3]
- 394 0182 0492     		str	r2, [sp, #16]
- 395 0184 9A88     		ldrh	r2, [r3, #4]
- 396 0186 04AB     		add	r3, sp, #16
- 397 0188 9A80     		strh	r2, [r3, #4]
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 12
-
-
+ 402              		.loc 1 198 13 is_stmt 1 view .LVU50
+ 403 0190 40F20003 		movw	r3, #:lower16:.LC5
+ 404 0194 C0F20003 		movt	r3, #:upper16:.LC5
+ 405 0198 1A68     		ldr	r2, [r3]
+ 406 019a 0492     		str	r2, [sp, #16]
+ 407 019c 9A88     		ldrh	r2, [r3, #4]
+ 408 019e 04AB     		add	r3, sp, #16
+ 409 01a0 9A80     		strh	r2, [r3, #4]
  199:Core/Src/app.c ****         case ADC_SAMPLETIME_71POINT5:
- 398              		.loc 1 199 13 view .LVU49
- 399 018a 7AE7     		b	.L9
- 400              	.L7:
+ 410              		.loc 1 199 13 view .LVU51
+ 411 01a2 6EE7     		b	.L9
+ 412              	.L7:
  204:Core/Src/app.c ****             break;
- 401              		.loc 1 204 13 view .LVU50
- 402 018c 40F20003 		movw	r3, #:lower16:.LC0
- 403 0190 C0F20003 		movt	r3, #:upper16:.LC0
- 404 0194 1A68     		ldr	r2, [r3]
- 405 0196 0492     		str	r2, [sp, #16]
- 406 0198 9A88     		ldrh	r2, [r3, #4]
- 407 019a 04AB     		add	r3, sp, #16
- 408 019c 9A80     		strh	r2, [r3, #4]
+ 413              		.loc 1 204 13 view .LVU52
+ 414 01a4 40F20003 		movw	r3, #:lower16:.LC7
+ 415 01a8 C0F20003 		movt	r3, #:upper16:.LC7
+ 416 01ac 1A68     		ldr	r2, [r3]
+ 417 01ae 0492     		str	r2, [sp, #16]
+ 418 01b0 9A88     		ldrh	r2, [r3, #4]
+ 419 01b2 04AB     		add	r3, sp, #16
+ 420 01b4 9A80     		strh	r2, [r3, #4]
  205:Core/Src/app.c ****     }
- 409              		.loc 1 205 13 view .LVU51
- 410 019e 70E7     		b	.L9
- 411              	.L10:
+ 421              		.loc 1 205 13 view .LVU53
+ 422 01b6 64E7     		b	.L9
+ 423              	.L10:
  216:Core/Src/app.c ****     }
- 412              		.loc 1 216 9 view .LVU52
- 413 01a0 40F20002 		movw	r2, #:lower16:.LC9
- 414 01a4 C0F20002 		movt	r2, #:upper16:.LC9
- 415 01a8 0023     		movs	r3, #0
- 416 01aa 0293     		str	r3, [sp, #8]
- 417 01ac 0C21     		movs	r1, #12
- 418 01ae 0191     		str	r1, [sp, #4]
- 419 01b0 0093     		str	r3, [sp]
- 420 01b2 48F21003 		movw	r3, #32784
- 421 01b6 6831     		adds	r1, r1, #104
- 422 01b8 1B20     		movs	r0, #27
- 423 01ba FFF7FEFF 		bl	LCD_Show_String
- 424              	.LVL23:
- 425 01be B8E7     		b	.L11
- 426              		.cfi_endproc
- 427              	.LFE66:
- 429              		.section	.rodata.WaveformDisplay.str1.4,"aMS",%progbits,1
- 430              		.align	2
- 431              	.LC10:
- 432 0000 66756E63 		.ascii	"function WaveformDisplay exeute...\000"
- 432      74696F6E 
- 432      20576176 
- 432      65666F72 
- 432      6D446973 
- 433              		.global	__aeabi_f2iz
- 434              		.section	.text.WaveformDisplay,"ax",%progbits
- 435              		.align	1
- 436              		.global	WaveformDisplay
- 437              		.syntax unified
- 438              		.code	16
- 439              		.thumb_func
- 441              	WaveformDisplay:
- 442              	.LFB67:
+ 424              		.loc 1 216 9 view .LVU54
+ 425 01b8 40F20002 		movw	r2, #:lower16:.LC9
+ 426 01bc C0F20002 		movt	r2, #:upper16:.LC9
+ 427 01c0 0023     		movs	r3, #0
+ 428 01c2 0293     		str	r3, [sp, #8]
+ 429 01c4 0C21     		movs	r1, #12
+ 430 01c6 0191     		str	r1, [sp, #4]
+ 431 01c8 0093     		str	r3, [sp]
+ 432 01ca 48F21003 		movw	r3, #32784
+ 433 01ce 6831     		adds	r1, r1, #104
+ 434 01d0 1B20     		movs	r0, #27
+ 435 01d2 FFF7FEFF 		bl	LCD_Show_String
+ 436              	.LVL25:
+ 437 01d6 B8E7     		b	.L11
+ 438              		.cfi_endproc
+ 439              	.LFE66:
+ 441              		.section	.rodata.WaveformDisplay.str1.4,"aMS",%progbits,1
+ 442              		.align	2
+ 443              	.LC10:
+ 444 0000 66756E63 		.ascii	"function WaveformDisplay exeute...\000"
+ 444      74696F6E 
+ 444      20576176 
+ 444      65666F72 
+ 444      6D446973 
+ 445              		.global	__aeabi_f2iz
+ 446              		.section	.text.WaveformDisplay,"ax",%progbits
+ 447              		.align	1
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 13
+
+
+ 448              		.global	WaveformDisplay
+ 449              		.syntax unified
+ 450              		.code	16
+ 451              		.thumb_func
+ 453              	WaveformDisplay:
+ 454              	.LFB67:
  221:Core/Src/app.c **** 
- 222:Core/Src/app.c **** /*
- 223:Core/Src/app.c ****  * @brief  
- 224:Core/Src/app.c ****  * @param  None
- 225:Core/Src/app.c ****  * @retval None
- 226:Core/Src/app.c ****  */
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 13
-
-
- 227:Core/Src/app.c **** void WaveformDisplay(void)
- 228:Core/Src/app.c **** {    
- 443              		.loc 1 228 1 view -0
- 444              		.cfi_startproc
- 445              		@ args = 0, pretend = 0, frame = 0
- 446              		@ frame_needed = 0, uses_anonymous_args = 0
- 447 0000 70B5     		push	{r4, r5, r6, lr}
- 448              	.LCFI4:
- 449              		.cfi_def_cfa_offset 16
- 450              		.cfi_offset 4, -16
- 451              		.cfi_offset 5, -12
- 452              		.cfi_offset 6, -8
- 453              		.cfi_offset 14, -4
- 229:Core/Src/app.c ****     int16_t i, x, start_point;
- 454              		.loc 1 229 5 view .LVU54
- 230:Core/Src/app.c **** 
- 231:Core/Src/app.c ****     EMLOG(LOG_INFO, "function WaveformDisplay exeute...");
- 455              		.loc 1 231 5 view .LVU55
- 456 0002 40F20003 		movw	r3, #:lower16:.LC10
- 457 0006 C0F20003 		movt	r3, #:upper16:.LC10
- 458 000a 40F20001 		movw	r1, #:lower16:__FUNCTION__.0
- 459 000e C0F20001 		movt	r1, #:upper16:__FUNCTION__.0
- 460 0012 E722     		movs	r2, #231
- 461 0014 0120     		movs	r0, #1
- 462 0016 FFF7FEFF 		bl	EM_LOG
- 463              	.LVL24:
- 232:Core/Src/app.c **** 
- 233:Core/Src/app.c ****     for (start_point = 0; start_point < LENGTH - LCD_WIDTH - AXIS_START_X; start_point ++) {
- 464              		.loc 1 233 5 view .LVU56
- 465              		.loc 1 233 22 is_stmt 0 view .LVU57
- 466 001a 0024     		movs	r4, #0
- 467              	.LVL25:
- 468              	.L13:
- 469              		.loc 1 233 39 is_stmt 1 discriminator 1 view .LVU58
- 470 001c 882C     		cmp	r4, #136
- 471 001e 1FDC     		bgt	.L16
- 234:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
- 472              		.loc 1 234 9 view .LVU59
- 473              		.loc 1 234 26 is_stmt 0 view .LVU60
- 474 0020 40F20003 		movw	r3, #:lower16:app_data
- 475 0024 C0F20003 		movt	r3, #:upper16:app_data
- 476 0028 2200     		movs	r2, r4
- 477 002a 0832     		adds	r2, r2, #8
- 478 002c 5200     		lsls	r2, r2, #1
- 479 002e D25A     		ldrh	r2, [r2, r3]
- 480              		.loc 1 234 12 view .LVU61
- 481 0030 40F62043 		movw	r3, #3104
- 482 0034 9A42     		cmp	r2, r3
- 483 0036 02D8     		bhi	.L14
+ 222:Core/Src/app.c **** /**
+ 223:Core/Src/app.c ****  * @brief be used to display and update waveform
+ 224:Core/Src/app.c ****  * 
+ 225:Core/Src/app.c ****  */
+ 226:Core/Src/app.c **** void WaveformDisplay(void)
+ 227:Core/Src/app.c **** {    
+ 455              		.loc 1 227 1 view -0
+ 456              		.cfi_startproc
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 70B5     		push	{r4, r5, r6, lr}
+ 460              	.LCFI4:
+ 461              		.cfi_def_cfa_offset 16
+ 462              		.cfi_offset 4, -16
+ 463              		.cfi_offset 5, -12
+ 464              		.cfi_offset 6, -8
+ 465              		.cfi_offset 14, -4
+ 228:Core/Src/app.c ****     int16_t i, x, start_point;
+ 466              		.loc 1 228 5 view .LVU56
+ 229:Core/Src/app.c **** 
+ 230:Core/Src/app.c ****     EMLOG(LOG_INFO, "function WaveformDisplay exeute...");
+ 467              		.loc 1 230 5 view .LVU57
+ 468 0002 40F20003 		movw	r3, #:lower16:.LC10
+ 469 0006 C0F20003 		movt	r3, #:upper16:.LC10
+ 470 000a 40F20001 		movw	r1, #:lower16:__FUNCTION__.0
+ 471 000e C0F20001 		movt	r1, #:upper16:__FUNCTION__.0
+ 472 0012 E622     		movs	r2, #230
+ 473 0014 0120     		movs	r0, #1
+ 474 0016 FFF7FEFF 		bl	EM_LOG
+ 475              	.LVL26:
+ 231:Core/Src/app.c **** 
+ 232:Core/Src/app.c ****     for (start_point = 0; start_point < LENGTH - LCD_WIDTH - AXIS_START_X; start_point ++) {
+ 476              		.loc 1 232 5 view .LVU58
+ 477              		.loc 1 232 22 is_stmt 0 view .LVU59
+ 478 001a 0024     		movs	r4, #0
+ 479              	.LVL27:
+ 480              	.L13:
+ 481              		.loc 1 232 39 is_stmt 1 discriminator 1 view .LVU60
+ 482 001c 882C     		cmp	r4, #136
+ 483 001e 1FDC     		bgt	.L16
  233:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
- 484              		.loc 1 233 88 is_stmt 1 discriminator 2 view .LVU62
- 485 0038 0134     		adds	r4, r4, #1
- 486              	.LVL26:
- 233:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
- 487              		.loc 1 233 88 is_stmt 0 discriminator 2 view .LVU63
- 488 003a 24B2     		sxth	r4, r4
- 489              	.LVL27:
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 14
+ 484              		.loc 1 233 9 view .LVU61
+ 485              		.loc 1 233 26 is_stmt 0 view .LVU62
+ 486 0020 40F20003 		movw	r3, #:lower16:app_data
+ 487 0024 C0F20003 		movt	r3, #:upper16:app_data
+ 488 0028 2200     		movs	r2, r4
+ 489 002a 0832     		adds	r2, r2, #8
+ 490 002c 5200     		lsls	r2, r2, #1
+ 491 002e D25A     		ldrh	r2, [r2, r3]
+ 492              		.loc 1 233 12 view .LVU63
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 14
 
 
- 233:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
- 490              		.loc 1 233 88 discriminator 2 view .LVU64
- 491 003c EEE7     		b	.L13
- 492              	.L14:
- 235:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
- 493              		.loc 1 235 32 is_stmt 1 discriminator 1 view .LVU65
- 494 003e 8A2C     		cmp	r4, #138
- 495 0040 0EDC     		bgt	.L16
- 236:Core/Src/app.c ****                 if (app_data.data[start_point] < 3104) {
- 496              		.loc 1 236 17 view .LVU66
- 497              		.loc 1 236 34 is_stmt 0 view .LVU67
- 498 0042 40F20003 		movw	r3, #:lower16:app_data
- 499 0046 C0F20003 		movt	r3, #:upper16:app_data
- 500 004a 2200     		movs	r2, r4
- 501 004c 0832     		adds	r2, r2, #8
- 502 004e 5200     		lsls	r2, r2, #1
- 503 0050 D25A     		ldrh	r2, [r2, r3]
- 504              		.loc 1 236 20 view .LVU68
- 505 0052 40F61F43 		movw	r3, #3103
- 506 0056 9A42     		cmp	r2, r3
- 507 0058 02D9     		bls	.L16
- 235:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
- 508              		.loc 1 235 66 is_stmt 1 view .LVU69
- 509 005a 0134     		adds	r4, r4, #1
- 510              	.LVL28:
- 235:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
- 511              		.loc 1 235 66 is_stmt 0 view .LVU70
- 512 005c 24B2     		sxth	r4, r4
- 513              	.LVL29:
- 235:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
- 514              		.loc 1 235 66 view .LVU71
- 515 005e EEE7     		b	.L14
- 516              	.L16:
- 237:Core/Src/app.c ****                     break;
- 238:Core/Src/app.c ****                 }
- 239:Core/Src/app.c ****             }
- 240:Core/Src/app.c ****             break;
- 241:Core/Src/app.c ****         }
- 242:Core/Src/app.c ****     }
- 243:Core/Src/app.c **** 
- 244:Core/Src/app.c ****     // LCD_Fill(4, 24, LCD_WIDTH, 95, BLACK);
- 245:Core/Src/app.c ****     LCD_Draw_Point(0, HORIZONTAL_AXIS, GREEN);
- 517              		.loc 1 245 5 is_stmt 1 view .LVU72
- 518 0060 40F2E072 		movw	r2, #2016
- 519 0064 4E21     		movs	r1, #78
- 520 0066 0020     		movs	r0, #0
- 521 0068 FFF7FEFF 		bl	LCD_Draw_Point
+ 493 0030 40F62043 		movw	r3, #3104
+ 494 0034 9A42     		cmp	r2, r3
+ 495 0036 02D8     		bhi	.L14
+ 232:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
+ 496              		.loc 1 232 88 is_stmt 1 discriminator 2 view .LVU64
+ 497 0038 0134     		adds	r4, r4, #1
+ 498              	.LVL28:
+ 232:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
+ 499              		.loc 1 232 88 is_stmt 0 discriminator 2 view .LVU65
+ 500 003a 24B2     		sxth	r4, r4
+ 501              	.LVL29:
+ 232:Core/Src/app.c ****         if (app_data.data[start_point] > 3104) {
+ 502              		.loc 1 232 88 discriminator 2 view .LVU66
+ 503 003c EEE7     		b	.L13
+ 504              	.L14:
+ 234:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
+ 505              		.loc 1 234 32 is_stmt 1 discriminator 1 view .LVU67
+ 506 003e 8A2C     		cmp	r4, #138
+ 507 0040 0EDC     		bgt	.L16
+ 235:Core/Src/app.c ****                 if (app_data.data[start_point] < 3104) {
+ 508              		.loc 1 235 17 view .LVU68
+ 509              		.loc 1 235 34 is_stmt 0 view .LVU69
+ 510 0042 40F20003 		movw	r3, #:lower16:app_data
+ 511 0046 C0F20003 		movt	r3, #:upper16:app_data
+ 512 004a 2200     		movs	r2, r4
+ 513 004c 0832     		adds	r2, r2, #8
+ 514 004e 5200     		lsls	r2, r2, #1
+ 515 0050 D25A     		ldrh	r2, [r2, r3]
+ 516              		.loc 1 235 20 view .LVU70
+ 517 0052 40F61F43 		movw	r3, #3103
+ 518 0056 9A42     		cmp	r2, r3
+ 519 0058 02D9     		bls	.L16
+ 234:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
+ 520              		.loc 1 234 66 is_stmt 1 view .LVU71
+ 521 005a 0134     		adds	r4, r4, #1
  522              	.LVL30:
- 246:Core/Src/app.c ****     app_data.wave_vpp = 0;
- 523              		.loc 1 246 5 view .LVU73
- 524              		.loc 1 246 23 is_stmt 0 view .LVU74
- 525 006c 40F20003 		movw	r3, #:lower16:app_data
- 526 0070 C0F20003 		movt	r3, #:upper16:app_data
- 527 0074 0022     		movs	r2, #0
- 528 0076 DA80     		strh	r2, [r3, #6]
- 247:Core/Src/app.c ****     for (i = start_point; i < start_point + 157; i++) {
- 529              		.loc 1 247 5 is_stmt 1 view .LVU75
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 15
+ 234:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
+ 523              		.loc 1 234 66 is_stmt 0 view .LVU72
+ 524 005c 24B2     		sxth	r4, r4
+ 525              	.LVL31:
+ 234:Core/Src/app.c ****             for (; start_point < LENGTH - LCD_WIDTH; start_point ++) {
+ 526              		.loc 1 234 66 view .LVU73
+ 527 005e EEE7     		b	.L14
+ 528              	.L16:
+ 236:Core/Src/app.c ****                     break;
+ 237:Core/Src/app.c ****                 }
+ 238:Core/Src/app.c ****             }
+ 239:Core/Src/app.c ****             break;
+ 240:Core/Src/app.c ****         }
+ 241:Core/Src/app.c ****     }
+ 242:Core/Src/app.c **** 
+ 243:Core/Src/app.c ****     // LCD_Fill(4, 24, LCD_WIDTH, 95, BLACK);
+ 244:Core/Src/app.c ****     // LCD_Draw_Point(0, HORIZONTAL_AXIS, GREEN);
+ 245:Core/Src/app.c ****     app_data.wave_vpp = 2929;
+ 529              		.loc 1 245 5 is_stmt 1 view .LVU74
+ 530              		.loc 1 245 23 is_stmt 0 view .LVU75
+ 531 0060 40F20003 		movw	r3, #:lower16:app_data
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 15
 
 
- 530              	.LVL31:
- 531              		.loc 1 247 12 is_stmt 0 view .LVU76
- 532 0078 2500     		movs	r5, r4
- 533              		.loc 1 247 5 view .LVU77
- 534 007a 23E0     		b	.L19
- 535              	.LVL32:
- 536              	.L21:
- 248:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
- 249:Core/Src/app.c ****             if (app_data.wave_vpp < app_data.data[i])
- 250:Core/Src/app.c ****                 app_data.wave_vpp = app_data.data[i];
- 251:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)(app_data.data[i] / 3104
- 537              		.loc 1 251 13 is_stmt 1 view .LVU78
- 538              		.loc 1 251 94 is_stmt 0 view .LVU79
- 539 007c FFF7FEFF 		bl	__aeabi_i2f
- 540              	.LVL33:
- 541 0080 0021     		movs	r1, #0
- 542 0082 C4F24251 		movt	r1, 17730
- 543 0086 FFF7FEFF 		bl	__aeabi_fdiv
- 544              	.LVL34:
- 545              		.loc 1 251 104 view .LVU80
- 546 008a 0021     		movs	r1, #0
- 547 008c C4F25421 		movt	r1, 16980
- 548 0090 FFF7FEFF 		bl	__aeabi_fmul
- 549              	.LVL35:
- 550              		.loc 1 251 17 view .LVU81
- 551 0094 FFF7FEFF 		bl	__aeabi_f2iz
- 552              	.LVL36:
- 553 0098 02B2     		sxth	r2, r0
- 554 009a 4E21     		movs	r1, #78
- 555 009c 0320     		movs	r0, #3
- 556 009e FFF7FEFF 		bl	LCD_Draw_Curve
- 557              	.LVL37:
- 558              		.loc 1 251 15 discriminator 1 view .LVU82
- 559 00a2 00B2     		sxth	r0, r0
- 560              	.LVL38:
- 561              	.L22:
- 252:Core/Src/app.c ****         } else {
- 253:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((app_data.data[i] - 310
- 254:Core/Src/app.c ****         }
- 255:Core/Src/app.c ****         app_data.data[i] = 0;
- 562              		.loc 1 255 9 is_stmt 1 view .LVU83
- 563              		.loc 1 255 26 is_stmt 0 view .LVU84
- 564 00a4 40F20003 		movw	r3, #:lower16:app_data
- 565 00a8 C0F20003 		movt	r3, #:upper16:app_data
- 566 00ac 0836     		adds	r6, r6, #8
- 567 00ae 7600     		lsls	r6, r6, #1
- 568 00b0 0022     		movs	r2, #0
- 569 00b2 F252     		strh	r2, [r6, r3]
- 256:Core/Src/app.c ****         LCD_Draw_Point(x, HORIZONTAL_AXIS, PURPLE);
- 570              		.loc 1 256 9 is_stmt 1 view .LVU85
- 571 00b4 80B2     		uxth	r0, r0
- 572              		.loc 1 256 9 is_stmt 0 view .LVU86
- 573 00b6 48F21002 		movw	r2, #32784
- 574 00ba 4E21     		movs	r1, #78
- 575 00bc FFF7FEFF 		bl	LCD_Draw_Point
- 576              	.LVL39:
+ 532 0064 C0F20003 		movt	r3, #:upper16:app_data
+ 533 0068 40F67132 		movw	r2, #2929
+ 534 006c DA80     		strh	r2, [r3, #6]
+ 246:Core/Src/app.c ****     for (i = start_point; i < start_point + 157; i++) {
+ 535              		.loc 1 246 5 is_stmt 1 view .LVU76
+ 536              	.LVL32:
+ 537              		.loc 1 246 12 is_stmt 0 view .LVU77
+ 538 006e 2500     		movs	r5, r4
+ 539              		.loc 1 246 5 view .LVU78
+ 540 0070 28E0     		b	.L19
+ 541              	.LVL33:
+ 542              	.L21:
  247:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 16
+ 248:Core/Src/app.c ****             if (app_data.wave_vpp > app_data.data[i]) app_data.wave_vpp = app_data.data[i];
+ 249:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 543              		.loc 1 249 13 is_stmt 1 view .LVU79
+ 544              		.loc 1 249 99 is_stmt 0 view .LVU80
+ 545 0072 FFF7FEFF 		bl	__aeabi_i2f
+ 546              	.LVL34:
+ 547 0076 0021     		movs	r1, #0
+ 548 0078 C4F24251 		movt	r1, 17730
+ 549 007c FFF7FEFF 		bl	__aeabi_fdiv
+ 550              	.LVL35:
+ 551 0080 011C     		adds	r1, r0, #0
+ 552              		.loc 1 249 80 view .LVU81
+ 553 0082 FE20     		movs	r0, #254
+ 554 0084 8005     		lsls	r0, r0, #22
+ 555 0086 FFF7FEFF 		bl	__aeabi_fsub
+ 556              	.LVL36:
+ 557              		.loc 1 249 110 view .LVU82
+ 558 008a 0021     		movs	r1, #0
+ 559 008c C4F25421 		movt	r1, 16980
+ 560 0090 FFF7FEFF 		bl	__aeabi_fmul
+ 561              	.LVL37:
+ 562              		.loc 1 249 17 view .LVU83
+ 563 0094 FFF7FEFF 		bl	__aeabi_f2iz
+ 564              	.LVL38:
+ 565 0098 02B2     		sxth	r2, r0
+ 566 009a 4E21     		movs	r1, #78
+ 567 009c 0320     		movs	r0, #3
+ 568 009e FFF7FEFF 		bl	LCD_Draw_Curve
+ 569              	.LVL39:
+ 570              		.loc 1 249 15 discriminator 1 view .LVU84
+ 571 00a2 00B2     		sxth	r0, r0
+ 572              	.LVL40:
+ 573              	.L22:
+ 250:Core/Src/app.c ****         } else {
+ 251:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((app_data.data[i] - 310
+ 252:Core/Src/app.c ****         }
+ 253:Core/Src/app.c ****         app_data.data[i] = 0;
+ 574              		.loc 1 253 9 is_stmt 1 view .LVU85
+ 575              		.loc 1 253 26 is_stmt 0 view .LVU86
+ 576 00a4 40F20003 		movw	r3, #:lower16:app_data
+ 577 00a8 C0F20003 		movt	r3, #:upper16:app_data
+ 578 00ac 0836     		adds	r6, r6, #8
+ 579 00ae 7600     		lsls	r6, r6, #1
+ 580 00b0 0022     		movs	r2, #0
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 16
 
 
- 577              		.loc 1 247 51 is_stmt 1 discriminator 2 view .LVU87
- 578 00c0 0135     		adds	r5, r5, #1
- 579              	.LVL40:
- 247:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
- 580              		.loc 1 247 51 is_stmt 0 discriminator 2 view .LVU88
- 581 00c2 2DB2     		sxth	r5, r5
- 582              	.LVL41:
- 583              	.L19:
- 247:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
- 584              		.loc 1 247 29 is_stmt 1 discriminator 1 view .LVU89
- 585 00c4 2E00     		movs	r6, r5
- 586 00c6 2300     		movs	r3, r4
- 587 00c8 9C33     		adds	r3, r3, #156
- 588 00ca AB42     		cmp	r3, r5
- 589 00cc 30DB     		blt	.L25
- 248:Core/Src/app.c ****             if (app_data.wave_vpp < app_data.data[i])
- 590              		.loc 1 248 9 view .LVU90
- 248:Core/Src/app.c ****             if (app_data.wave_vpp < app_data.data[i])
- 591              		.loc 1 248 26 is_stmt 0 view .LVU91
- 592 00ce 40F20003 		movw	r3, #:lower16:app_data
- 593 00d2 C0F20003 		movt	r3, #:upper16:app_data
- 594 00d6 2A00     		movs	r2, r5
- 595 00d8 0832     		adds	r2, r2, #8
- 596 00da 5200     		lsls	r2, r2, #1
- 597 00dc D05A     		ldrh	r0, [r2, r3]
- 248:Core/Src/app.c ****             if (app_data.wave_vpp < app_data.data[i])
- 598              		.loc 1 248 12 view .LVU92
- 599 00de 40F61F43 		movw	r3, #3103
- 600 00e2 9842     		cmp	r0, r3
- 601 00e4 0CD8     		bhi	.L20
- 249:Core/Src/app.c ****                 app_data.wave_vpp = app_data.data[i];
- 602              		.loc 1 249 13 is_stmt 1 view .LVU93
- 249:Core/Src/app.c ****                 app_data.wave_vpp = app_data.data[i];
- 603              		.loc 1 249 25 is_stmt 0 view .LVU94
- 604 00e6 40F20003 		movw	r3, #:lower16:app_data
- 605 00ea C0F20003 		movt	r3, #:upper16:app_data
- 606 00ee DB88     		ldrh	r3, [r3, #6]
- 249:Core/Src/app.c ****                 app_data.wave_vpp = app_data.data[i];
- 607              		.loc 1 249 16 view .LVU95
- 608 00f0 9842     		cmp	r0, r3
- 609 00f2 C3D9     		bls	.L21
- 250:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)(app_data.data[i] / 3104
- 610              		.loc 1 250 17 is_stmt 1 view .LVU96
- 250:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)(app_data.data[i] / 3104
- 611              		.loc 1 250 35 is_stmt 0 view .LVU97
- 612 00f4 40F20003 		movw	r3, #:lower16:app_data
- 613 00f8 C0F20003 		movt	r3, #:upper16:app_data
- 614 00fc D880     		strh	r0, [r3, #6]
- 615 00fe BDE7     		b	.L21
- 616              	.L20:
- 253:Core/Src/app.c ****         }
- 617              		.loc 1 253 13 is_stmt 1 view .LVU98
- 253:Core/Src/app.c ****         }
- 618              		.loc 1 253 95 is_stmt 0 view .LVU99
- 619 0100 104B     		ldr	r3, .L26
- 620 0102 9C46     		mov	ip, r3
- 621 0104 6044     		add	r0, r0, ip
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 17
+ 581 00b2 F252     		strh	r2, [r6, r3]
+ 254:Core/Src/app.c ****         LCD_Draw_Point(x, HORIZONTAL_AXIS, PURPLE);
+ 582              		.loc 1 254 9 is_stmt 1 view .LVU87
+ 583 00b4 80B2     		uxth	r0, r0
+ 584              		.loc 1 254 9 is_stmt 0 view .LVU88
+ 585 00b6 48F21002 		movw	r2, #32784
+ 586 00ba 4E21     		movs	r1, #78
+ 587 00bc FFF7FEFF 		bl	LCD_Draw_Point
+ 588              	.LVL41:
+ 246:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
+ 589              		.loc 1 246 51 is_stmt 1 discriminator 2 view .LVU89
+ 590 00c0 0135     		adds	r5, r5, #1
+ 591              	.LVL42:
+ 246:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
+ 592              		.loc 1 246 51 is_stmt 0 discriminator 2 view .LVU90
+ 593 00c2 2DB2     		sxth	r5, r5
+ 594              	.LVL43:
+ 595              	.L19:
+ 246:Core/Src/app.c ****         if (app_data.data[i] < 3104) {
+ 596              		.loc 1 246 29 is_stmt 1 discriminator 1 view .LVU91
+ 597 00c4 2E00     		movs	r6, r5
+ 598 00c6 2300     		movs	r3, r4
+ 599 00c8 9C33     		adds	r3, r3, #156
+ 600 00ca AB42     		cmp	r3, r5
+ 601 00cc 30DB     		blt	.L25
+ 247:Core/Src/app.c ****             if (app_data.wave_vpp > app_data.data[i]) app_data.wave_vpp = app_data.data[i];
+ 602              		.loc 1 247 9 view .LVU92
+ 247:Core/Src/app.c ****             if (app_data.wave_vpp > app_data.data[i]) app_data.wave_vpp = app_data.data[i];
+ 603              		.loc 1 247 26 is_stmt 0 view .LVU93
+ 604 00ce 40F20003 		movw	r3, #:lower16:app_data
+ 605 00d2 C0F20003 		movt	r3, #:upper16:app_data
+ 606 00d6 2A00     		movs	r2, r5
+ 607 00d8 0832     		adds	r2, r2, #8
+ 608 00da 5200     		lsls	r2, r2, #1
+ 609 00dc D05A     		ldrh	r0, [r2, r3]
+ 247:Core/Src/app.c ****             if (app_data.wave_vpp > app_data.data[i]) app_data.wave_vpp = app_data.data[i];
+ 610              		.loc 1 247 12 view .LVU94
+ 611 00de 40F61F43 		movw	r3, #3103
+ 612 00e2 9842     		cmp	r0, r3
+ 613 00e4 0CD8     		bhi	.L20
+ 248:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 614              		.loc 1 248 13 is_stmt 1 view .LVU95
+ 248:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 615              		.loc 1 248 25 is_stmt 0 view .LVU96
+ 616 00e6 40F20003 		movw	r3, #:lower16:app_data
+ 617 00ea C0F20003 		movt	r3, #:upper16:app_data
+ 618 00ee DB88     		ldrh	r3, [r3, #6]
+ 248:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 619              		.loc 1 248 16 view .LVU97
+ 620 00f0 9842     		cmp	r0, r3
+ 621 00f2 BED2     		bcs	.L21
+ 248:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 622              		.loc 1 248 55 is_stmt 1 discriminator 1 view .LVU98
+ 248:Core/Src/app.c ****             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] /
+ 623              		.loc 1 248 73 is_stmt 0 discriminator 1 view .LVU99
+ 624 00f4 40F20003 		movw	r3, #:lower16:app_data
+ 625 00f8 C0F20003 		movt	r3, #:upper16:app_data
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 17
 
 
- 253:Core/Src/app.c ****         }
- 622              		.loc 1 253 103 view .LVU100
- 623 0106 FFF7FEFF 		bl	__aeabi_i2f
- 624              	.LVL42:
- 625 010a 0021     		movs	r1, #0
- 626 010c C4F27841 		movt	r1, 17528
- 627 0110 FFF7FEFF 		bl	__aeabi_fdiv
- 628              	.LVL43:
- 253:Core/Src/app.c ****         }
- 629              		.loc 1 253 112 view .LVU101
- 630 0114 0021     		movs	r1, #0
- 631 0116 CCF28811 		movt	r1, 49544
- 632 011a FFF7FEFF 		bl	__aeabi_fmul
- 633              	.LVL44:
- 253:Core/Src/app.c ****         }
- 634              		.loc 1 253 17 view .LVU102
- 635 011e FFF7FEFF 		bl	__aeabi_f2iz
- 636              	.LVL45:
- 637 0122 02B2     		sxth	r2, r0
- 638 0124 4E21     		movs	r1, #78
- 639 0126 0320     		movs	r0, #3
- 640 0128 FFF7FEFF 		bl	LCD_Draw_Curve
- 641              	.LVL46:
- 253:Core/Src/app.c ****         }
- 642              		.loc 1 253 15 discriminator 1 view .LVU103
- 643 012c 00B2     		sxth	r0, r0
- 644              	.LVL47:
- 253:Core/Src/app.c ****         }
- 645              		.loc 1 253 15 discriminator 1 view .LVU104
- 646 012e B9E7     		b	.L22
- 647              	.LVL48:
- 648              	.L25:
- 257:Core/Src/app.c ****         // delay_1ms(2);
- 258:Core/Src/app.c ****     }
- 259:Core/Src/app.c ****     dma_transfer_number_config(DMA_CH0, LENGTH);
- 649              		.loc 1 259 5 is_stmt 1 view .LVU105
- 650 0130 40F22C11 		movw	r1, #300
- 651 0134 0020     		movs	r0, #0
- 652 0136 FFF7FEFF 		bl	dma_transfer_number_config
- 653              	.LVL49:
- 260:Core/Src/app.c ****     dma_channel_enable(DMA_CH0);
- 654              		.loc 1 260 5 view .LVU106
- 655 013a 0020     		movs	r0, #0
- 656 013c FFF7FEFF 		bl	dma_channel_enable
- 657              	.LVL50:
- 261:Core/Src/app.c **** }
- 658              		.loc 1 261 1 is_stmt 0 view .LVU107
- 659              		@ sp needed
- 660              	.LVL51:
- 661              	.LVL52:
- 662              	.LVL53:
- 663              		.loc 1 261 1 view .LVU108
- 664 0140 70BD     		pop	{r4, r5, r6, pc}
- 665              	.L27:
- 666 0142 C046     		.align	2
- 667              	.L26:
- 668 0144 E0F3FFFF 		.word	-3104
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 18
+ 626 00fc D880     		strh	r0, [r3, #6]
+ 627 00fe B8E7     		b	.L21
+ 628              	.L20:
+ 251:Core/Src/app.c ****         }
+ 629              		.loc 1 251 13 is_stmt 1 view .LVU100
+ 251:Core/Src/app.c ****         }
+ 630              		.loc 1 251 95 is_stmt 0 view .LVU101
+ 631 0100 104B     		ldr	r3, .L26
+ 632 0102 9C46     		mov	ip, r3
+ 633 0104 6044     		add	r0, r0, ip
+ 251:Core/Src/app.c ****         }
+ 634              		.loc 1 251 103 view .LVU102
+ 635 0106 FFF7FEFF 		bl	__aeabi_i2f
+ 636              	.LVL44:
+ 637 010a 0021     		movs	r1, #0
+ 638 010c C4F27841 		movt	r1, 17528
+ 639 0110 FFF7FEFF 		bl	__aeabi_fdiv
+ 640              	.LVL45:
+ 251:Core/Src/app.c ****         }
+ 641              		.loc 1 251 112 view .LVU103
+ 642 0114 0021     		movs	r1, #0
+ 643 0116 CCF28811 		movt	r1, 49544
+ 644 011a FFF7FEFF 		bl	__aeabi_fmul
+ 645              	.LVL46:
+ 251:Core/Src/app.c ****         }
+ 646              		.loc 1 251 17 view .LVU104
+ 647 011e FFF7FEFF 		bl	__aeabi_f2iz
+ 648              	.LVL47:
+ 649 0122 02B2     		sxth	r2, r0
+ 650 0124 4E21     		movs	r1, #78
+ 651 0126 0320     		movs	r0, #3
+ 652 0128 FFF7FEFF 		bl	LCD_Draw_Curve
+ 653              	.LVL48:
+ 251:Core/Src/app.c ****         }
+ 654              		.loc 1 251 15 discriminator 1 view .LVU105
+ 655 012c 00B2     		sxth	r0, r0
+ 656              	.LVL49:
+ 251:Core/Src/app.c ****         }
+ 657              		.loc 1 251 15 discriminator 1 view .LVU106
+ 658 012e B9E7     		b	.L22
+ 659              	.LVL50:
+ 660              	.L25:
+ 255:Core/Src/app.c ****         // delay_1ms(2);
+ 256:Core/Src/app.c ****     }
+ 257:Core/Src/app.c ****     dma_transfer_number_config(DMA_CH0, LENGTH);
+ 661              		.loc 1 257 5 is_stmt 1 view .LVU107
+ 662 0130 40F22C11 		movw	r1, #300
+ 663 0134 0020     		movs	r0, #0
+ 664 0136 FFF7FEFF 		bl	dma_transfer_number_config
+ 665              	.LVL51:
+ 258:Core/Src/app.c ****     dma_channel_enable(DMA_CH0);
+ 666              		.loc 1 258 5 view .LVU108
+ 667 013a 0020     		movs	r0, #0
+ 668 013c FFF7FEFF 		bl	dma_channel_enable
+ 669              	.LVL52:
+ 259:Core/Src/app.c **** }
+ 670              		.loc 1 259 1 is_stmt 0 view .LVU109
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 18
 
 
- 669              		.cfi_endproc
- 670              	.LFE67:
- 672              		.section	.rodata.AppInit.str1.4,"aMS",%progbits,1
- 673              		.align	2
- 674              	.LC11:
- 675 0000 41707020 		.ascii	"App Start!\000"
- 675      53746172 
- 675      742100
- 676              		.section	.text.AppInit,"ax",%progbits
- 677              		.align	1
- 678              		.global	AppInit
- 679              		.syntax unified
- 680              		.code	16
- 681              		.thumb_func
- 683              	AppInit:
- 684              	.LFB63:
+ 671              		@ sp needed
+ 672              	.LVL53:
+ 673              	.LVL54:
+ 674              	.LVL55:
+ 675              		.loc 1 259 1 view .LVU110
+ 676 0140 70BD     		pop	{r4, r5, r6, pc}
+ 677              	.L27:
+ 678 0142 C046     		.align	2
+ 679              	.L26:
+ 680 0144 E0F3FFFF 		.word	-3104
+ 681              		.cfi_endproc
+ 682              	.LFE67:
+ 684              		.section	.rodata.AppInit.str1.4,"aMS",%progbits,1
+ 685              		.align	2
+ 686              	.LC11:
+ 687 0000 41707020 		.ascii	"App Start!\000"
+ 687      53746172 
+ 687      742100
+ 688              		.section	.text.AppInit,"ax",%progbits
+ 689              		.align	1
+ 690              		.global	AppInit
+ 691              		.syntax unified
+ 692              		.code	16
+ 693              		.thumb_func
+ 695              	AppInit:
+ 696              	.LFB63:
   39:Core/Src/app.c ****     /* program data initialization */
- 685              		.loc 1 39 1 is_stmt 1 view -0
- 686              		.cfi_startproc
- 687              		@ args = 0, pretend = 0, frame = 0
- 688              		@ frame_needed = 0, uses_anonymous_args = 0
- 689 0000 10B5     		push	{r4, lr}
- 690              	.LCFI5:
- 691              		.cfi_def_cfa_offset 8
- 692              		.cfi_offset 4, -8
- 693              		.cfi_offset 14, -4
+ 697              		.loc 1 39 1 is_stmt 1 view -0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701 0000 10B5     		push	{r4, lr}
+ 702              	.LCFI5:
+ 703              		.cfi_def_cfa_offset 8
+ 704              		.cfi_offset 4, -8
+ 705              		.cfi_offset 14, -4
   41:Core/Src/app.c ****     app_data.pwm_duty = 50;
- 694              		.loc 1 41 5 view .LVU110
+ 706              		.loc 1 41 5 view .LVU112
   41:Core/Src/app.c ****     app_data.pwm_duty = 50;
- 695              		.loc 1 41 23 is_stmt 0 view .LVU111
- 696 0002 40F20003 		movw	r3, #:lower16:app_data
- 697 0006 C0F20003 		movt	r3, #:upper16:app_data
- 698 000a 3222     		movs	r2, #50
- 699 000c 1A60     		str	r2, [r3]
+ 707              		.loc 1 41 23 is_stmt 0 view .LVU113
+ 708 0002 40F20003 		movw	r3, #:lower16:app_data
+ 709 0006 C0F20003 		movt	r3, #:upper16:app_data
+ 710 000a 3222     		movs	r2, #50
+ 711 000c 1A60     		str	r2, [r3]
   42:Core/Src/app.c ****     app_data.wave_freq = 0;
- 700              		.loc 1 42 5 is_stmt 1 view .LVU112
+ 712              		.loc 1 42 5 is_stmt 1 view .LVU114
   42:Core/Src/app.c ****     app_data.wave_freq = 0;
- 701              		.loc 1 42 23 is_stmt 0 view .LVU113
- 702 000e 9A80     		strh	r2, [r3, #4]
+ 713              		.loc 1 42 23 is_stmt 0 view .LVU115
+ 714 000e 9A80     		strh	r2, [r3, #4]
   43:Core/Src/app.c ****     app_data.wave_vpp = 0;
- 703              		.loc 1 43 5 is_stmt 1 view .LVU114
+ 715              		.loc 1 43 5 is_stmt 1 view .LVU116
   43:Core/Src/app.c ****     app_data.wave_vpp = 0;
- 704              		.loc 1 43 24 is_stmt 0 view .LVU115
- 705 0010 0022     		movs	r2, #0
- 706 0012 DA60     		str	r2, [r3, #12]
+ 716              		.loc 1 43 24 is_stmt 0 view .LVU117
+ 717 0010 0022     		movs	r2, #0
+ 718 0012 DA60     		str	r2, [r3, #12]
   44:Core/Src/app.c ****     app_data.wave_samp_freq = ADC_SAMPLETIME_239POINT5;
- 707              		.loc 1 44 5 is_stmt 1 view .LVU116
-  44:Core/Src/app.c ****     app_data.wave_samp_freq = ADC_SAMPLETIME_239POINT5;
- 708              		.loc 1 44 23 is_stmt 0 view .LVU117
- 709 0014 DA80     		strh	r2, [r3, #6]
-  45:Core/Src/app.c **** 
- 710              		.loc 1 45 5 is_stmt 1 view .LVU118
-  45:Core/Src/app.c **** 
- 711              		.loc 1 45 29 is_stmt 0 view .LVU119
- 712 0016 0732     		adds	r2, r2, #7
- 713 0018 9A60     		str	r2, [r3, #8]
-  47:Core/Src/app.c ****     app_state.display_update = APP_STATE_DISABLE;
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 19
+ 719              		.loc 1 44 5 is_stmt 1 view .LVU118
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 19
 
 
- 714              		.loc 1 47 5 is_stmt 1 view .LVU120
+  44:Core/Src/app.c ****     app_data.wave_samp_freq = ADC_SAMPLETIME_239POINT5;
+ 720              		.loc 1 44 23 is_stmt 0 view .LVU119
+ 721 0014 DA80     		strh	r2, [r3, #6]
+  45:Core/Src/app.c **** 
+ 722              		.loc 1 45 5 is_stmt 1 view .LVU120
+  45:Core/Src/app.c **** 
+ 723              		.loc 1 45 29 is_stmt 0 view .LVU121
+ 724 0016 0732     		adds	r2, r2, #7
+ 725 0018 9A60     		str	r2, [r3, #8]
   47:Core/Src/app.c ****     app_state.display_update = APP_STATE_DISABLE;
- 715              		.loc 1 47 25 is_stmt 0 view .LVU121
- 716 001a 40F20003 		movw	r3, #:lower16:app_state
- 717 001e C0F20003 		movt	r3, #:upper16:app_state
- 718 0022 1978     		ldrb	r1, [r3]
- 719 0024 0832     		adds	r2, r2, #8
- 720 0026 0A40     		ands	r2, r1
- 721 0028 4021     		movs	r1, #64
- 722 002a 0A43     		orrs	r2, r1
- 723 002c 1A70     		strb	r2, [r3]
+ 726              		.loc 1 47 5 is_stmt 1 view .LVU122
+  47:Core/Src/app.c ****     app_state.display_update = APP_STATE_DISABLE;
+ 727              		.loc 1 47 25 is_stmt 0 view .LVU123
+ 728 001a 40F20003 		movw	r3, #:lower16:app_state
+ 729 001e C0F20003 		movt	r3, #:upper16:app_state
+ 730 0022 1978     		ldrb	r1, [r3]
+ 731 0024 0832     		adds	r2, r2, #8
+ 732 0026 0A40     		ands	r2, r1
+ 733 0028 4021     		movs	r1, #64
+ 734 002a 0A43     		orrs	r2, r1
+ 735 002c 1A70     		strb	r2, [r3]
   48:Core/Src/app.c ****     app_state.update_samp_val = APP_STATE_DISABLE;
- 724              		.loc 1 48 5 is_stmt 1 view .LVU122
+ 736              		.loc 1 48 5 is_stmt 1 view .LVU124
   48:Core/Src/app.c ****     app_state.update_samp_val = APP_STATE_DISABLE;
- 725              		.loc 1 48 30 is_stmt 0 view .LVU123
- 726 002e D2B2     		uxtb	r2, r2
- 727 0030 0121     		movs	r1, #1
- 728 0032 8A43     		bics	r2, r1
- 729 0034 1A70     		strb	r2, [r3]
+ 737              		.loc 1 48 30 is_stmt 0 view .LVU125
+ 738 002e D2B2     		uxtb	r2, r2
+ 739 0030 0121     		movs	r1, #1
+ 740 0032 8A43     		bics	r2, r1
+ 741 0034 1A70     		strb	r2, [r3]
   49:Core/Src/app.c ****     app_state.waveform_update = WAVEFORM_UPDATE_NONE;
- 730              		.loc 1 49 5 is_stmt 1 view .LVU124
+ 742              		.loc 1 49 5 is_stmt 1 view .LVU126
   49:Core/Src/app.c ****     app_state.waveform_update = WAVEFORM_UPDATE_NONE;
- 731              		.loc 1 49 31 is_stmt 0 view .LVU125
- 732 0036 D2B2     		uxtb	r2, r2
- 733 0038 0131     		adds	r1, r1, #1
- 734 003a 8A43     		bics	r2, r1
- 735 003c 1A70     		strb	r2, [r3]
+ 743              		.loc 1 49 31 is_stmt 0 view .LVU127
+ 744 0036 D2B2     		uxtb	r2, r2
+ 745 0038 0131     		adds	r1, r1, #1
+ 746 003a 8A43     		bics	r2, r1
+ 747 003c 1A70     		strb	r2, [r3]
   50:Core/Src/app.c ****     
- 736              		.loc 1 50 5 is_stmt 1 view .LVU126
+ 748              		.loc 1 50 5 is_stmt 1 view .LVU128
   50:Core/Src/app.c ****     
- 737              		.loc 1 50 31 is_stmt 0 view .LVU127
- 738 003e D2B2     		uxtb	r2, r2
- 739 0040 0A31     		adds	r1, r1, #10
- 740 0042 8A43     		bics	r2, r1
- 741 0044 1A70     		strb	r2, [r3]
+ 749              		.loc 1 50 31 is_stmt 0 view .LVU129
+ 750 003e D2B2     		uxtb	r2, r2
+ 751 0040 0A31     		adds	r1, r1, #10
+ 752 0042 8A43     		bics	r2, r1
+ 753 0044 1A70     		strb	r2, [r3]
   53:Core/Src/app.c ****     GPIOConfig();
- 742              		.loc 1 53 5 is_stmt 1 view .LVU128
- 743 0046 FFF7FEFF 		bl	RCUConfig
- 744              	.LVL54:
+ 754              		.loc 1 53 5 is_stmt 1 view .LVU130
+ 755 0046 FFF7FEFF 		bl	RCUConfig
+ 756              	.LVL56:
   54:Core/Src/app.c **** #if OPEN_ZLOG == 1
- 745              		.loc 1 54 5 view .LVU129
- 746 004a FFF7FEFF 		bl	GPIOConfig
- 747              	.LVL55:
+ 757              		.loc 1 54 5 view .LVU131
+ 758 004a FFF7FEFF 		bl	GPIOConfig
+ 759              	.LVL57:
   58:Core/Src/app.c ****     DMAConfig();
- 748              		.loc 1 58 5 view .LVU130
- 749 004e FFF7FEFF 		bl	ADCConfig
- 750              	.LVL56:
+ 760              		.loc 1 58 5 view .LVU132
+ 761 004e FFF7FEFF 		bl	ADCConfig
+ 762              	.LVL58:
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 20
+
+
   59:Core/Src/app.c ****     SPIConfig();
- 751              		.loc 1 59 5 view .LVU131
- 752 0052 FFF7FEFF 		bl	DMAConfig
- 753              	.LVL57:
+ 763              		.loc 1 59 5 view .LVU133
+ 764 0052 FFF7FEFF 		bl	DMAConfig
+ 765              	.LVL59:
   60:Core/Src/app.c **** 
- 754              		.loc 1 60 5 view .LVU132
- 755 0056 FFF7FEFF 		bl	SPIConfig
- 756              	.LVL58:
+ 766              		.loc 1 60 5 view .LVU134
+ 767 0056 FFF7FEFF 		bl	SPIConfig
+ 768              	.LVL60:
   63:Core/Src/app.c ****     delay_1ms(10);
- 757              		.loc 1 63 5 view .LVU133
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 20
-
-
- 758 005a FFF7FEFF 		bl	LCD_Init
- 759              	.LVL59:
+ 769              		.loc 1 63 5 view .LVU135
+ 770 005a FFF7FEFF 		bl	LCD_Init
+ 771              	.LVL61:
   64:Core/Src/app.c ****     
- 760              		.loc 1 64 5 view .LVU134
- 761 005e 0A20     		movs	r0, #10
- 762 0060 FFF7FEFF 		bl	delay_1ms
- 763              	.LVL60:
+ 772              		.loc 1 64 5 view .LVU136
+ 773 005e 0A20     		movs	r0, #10
+ 774 0060 FFF7FEFF 		bl	delay_1ms
+ 775              	.LVL62:
   66:Core/Src/app.c ****     WaveformDisplay();
- 764              		.loc 1 66 5 view .LVU135
- 765 0064 FFF7FEFF 		bl	AppInterface
- 766              	.LVL61:
+ 776              		.loc 1 66 5 view .LVU137
+ 777 0064 FFF7FEFF 		bl	AppInterface
+ 778              	.LVL63:
   67:Core/Src/app.c ****     AppStateDisplay();
- 767              		.loc 1 67 5 view .LVU136
- 768 0068 FFF7FEFF 		bl	WaveformDisplay
- 769              	.LVL62:
+ 779              		.loc 1 67 5 view .LVU138
+ 780 0068 FFF7FEFF 		bl	WaveformDisplay
+ 781              	.LVL64:
   68:Core/Src/app.c ****     
- 770              		.loc 1 68 5 view .LVU137
- 771 006c FFF7FEFF 		bl	AppStateDisplay
- 772              	.LVL63:
-  70:Core/Src/app.c **** 
- 773              		.loc 1 70 5 view .LVU138
- 774 0070 FFF7FEFF 		bl	TIMConfig
- 775              	.LVL64:
-  73:Core/Src/app.c **** }
- 776              		.loc 1 73 5 view .LVU139
- 777 0074 40F20003 		movw	r3, #:lower16:.LC11
- 778 0078 C0F20003 		movt	r3, #:upper16:.LC11
- 779 007c 40F20001 		movw	r1, #:lower16:__FUNCTION__.3
- 780 0080 C0F20001 		movt	r1, #:upper16:__FUNCTION__.3
- 781 0084 4922     		movs	r2, #73
- 782 0086 0020     		movs	r0, #0
- 783 0088 FFF7FEFF 		bl	EM_LOG
+ 782              		.loc 1 68 5 view .LVU139
+ 783 006c FFF7FEFF 		bl	AppStateDisplay
  784              	.LVL65:
+  70:Core/Src/app.c **** 
+ 785              		.loc 1 70 5 view .LVU140
+ 786 0070 FFF7FEFF 		bl	TIMConfig
+ 787              	.LVL66:
+  73:Core/Src/app.c **** }
+ 788              		.loc 1 73 5 view .LVU141
+ 789 0074 40F20003 		movw	r3, #:lower16:.LC11
+ 790 0078 C0F20003 		movt	r3, #:upper16:.LC11
+ 791 007c 40F20001 		movw	r1, #:lower16:__FUNCTION__.3
+ 792 0080 C0F20001 		movt	r1, #:upper16:__FUNCTION__.3
+ 793 0084 4922     		movs	r2, #73
+ 794 0086 0020     		movs	r0, #0
+ 795 0088 FFF7FEFF 		bl	EM_LOG
+ 796              	.LVL67:
   74:Core/Src/app.c **** 
- 785              		.loc 1 74 1 is_stmt 0 view .LVU140
- 786              		@ sp needed
- 787 008c 10BD     		pop	{r4, pc}
- 788              		.cfi_endproc
- 789              	.LFE63:
- 791              		.section	.rodata.AppStart.str1.4,"aMS",%progbits,1
- 792              		.align	2
- 793              	.LC12:
- 794 0000 2F2A2A2A 		.ascii	"/***************State****************/\000"
- 794      2A2A2A2A 
- 794      2A2A2A2A 
- 794      2A2A2A2A 
- 794      53746174 
- 795 0027 00       		.align	2
- 796              	.LC13:
- 797 0028 64697370 		.ascii	"display_update: %d\000"
- 797      6C61795F 
- 797      75706461 
- 797      74653A20 
- 797      256400
- 798 003b 00       		.align	2
- 799              	.LC14:
- 800 003c 75706461 		.ascii	"update_samp_val: %d\000"
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 21
-
-
- 800      74655F73 
- 800      616D705F 
- 800      76616C3A 
- 800      20256400 
- 801              		.align	2
- 802              	.LC15:
- 803 0050 77617665 		.ascii	"waveform_update: %d\000"
- 803      666F726D 
- 803      5F757064 
- 803      6174653A 
- 803      20256400 
+ 797              		.loc 1 74 1 is_stmt 0 view .LVU142
+ 798              		@ sp needed
+ 799 008c 10BD     		pop	{r4, pc}
+ 800              		.cfi_endproc
+ 801              	.LFE63:
+ 803              		.section	.rodata.AppStart.str1.4,"aMS",%progbits,1
  804              		.align	2
- 805              	.LC16:
- 806 0064 70776D5F 		.ascii	"pwm_state: %d\000"
- 806      73746174 
- 806      653A2025 
- 806      6400
- 807 0072 0000     		.align	2
- 808              	.LC17:
- 809 0074 2F2A2A2A 		.ascii	"/***************Data*****************/\000"
- 809      2A2A2A2A 
- 809      2A2A2A2A 
- 809      2A2A2A2A 
- 809      44617461 
- 810 009b 00       		.align	2
- 811              	.LC18:
- 812 009c 70776D5F 		.ascii	"pwm_freq: %d\000"
- 812      66726571 
- 812      3A202564 
- 812      00
- 813 00a9 000000   		.align	2
- 814              	.LC19:
- 815 00ac 70776D5F 		.ascii	"pwm_duty: %d\000"
- 815      64757479 
- 815      3A202564 
- 815      00
- 816 00b9 000000   		.align	2
- 817              	.LC20:
- 818 00bc 77617665 		.ascii	"wave_freq: %d\000"
- 818      5F667265 
- 818      713A2025 
+ 805              	.LC12:
+ 806 0000 2F2A2A2A 		.ascii	"/***************State****************/\000"
+ 806      2A2A2A2A 
+ 806      2A2A2A2A 
+ 806      2A2A2A2A 
+ 806      53746174 
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 21
+
+
+ 807 0027 00       		.align	2
+ 808              	.LC13:
+ 809 0028 64697370 		.ascii	"display_update: %d\000"
+ 809      6C61795F 
+ 809      75706461 
+ 809      74653A20 
+ 809      256400
+ 810 003b 00       		.align	2
+ 811              	.LC14:
+ 812 003c 75706461 		.ascii	"update_samp_val: %d\000"
+ 812      74655F73 
+ 812      616D705F 
+ 812      76616C3A 
+ 812      20256400 
+ 813              		.align	2
+ 814              	.LC15:
+ 815 0050 77617665 		.ascii	"waveform_update: %d\000"
+ 815      666F726D 
+ 815      5F757064 
+ 815      6174653A 
+ 815      20256400 
+ 816              		.align	2
+ 817              	.LC16:
+ 818 0064 70776D5F 		.ascii	"pwm_state: %d\000"
+ 818      73746174 
+ 818      653A2025 
  818      6400
- 819 00ca 0000     		.align	2
- 820              	.LC21:
- 821 00cc 77617665 		.ascii	"wave_vpp: %d\000"
- 821      5F767070 
- 821      3A202564 
- 821      00
- 822 00d9 000000   		.align	2
- 823              	.LC22:
- 824 00dc 77617665 		.ascii	"wave_samp_freq: %d\000"
- 824      5F73616D 
- 824      705F6672 
- 824      65713A20 
- 824      256400
- 825              		.section	.text.AppStart,"ax",%progbits
- 826              		.align	1
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 22
+ 819 0072 0000     		.align	2
+ 820              	.LC17:
+ 821 0074 2F2A2A2A 		.ascii	"/***************Data*****************/\000"
+ 821      2A2A2A2A 
+ 821      2A2A2A2A 
+ 821      2A2A2A2A 
+ 821      44617461 
+ 822 009b 00       		.align	2
+ 823              	.LC18:
+ 824 009c 70776D5F 		.ascii	"pwm_freq: %d\000"
+ 824      66726571 
+ 824      3A202564 
+ 824      00
+ 825 00a9 000000   		.align	2
+ 826              	.LC19:
+ 827 00ac 70776D5F 		.ascii	"pwm_duty: %d\000"
+ 827      64757479 
+ 827      3A202564 
+ 827      00
+ 828 00b9 000000   		.align	2
+ 829              	.LC20:
+ 830 00bc 77617665 		.ascii	"wave_freq: %d\000"
+ 830      5F667265 
+ 830      713A2025 
+ 830      6400
+ 831 00ca 0000     		.align	2
+ 832              	.LC21:
+ 833 00cc 77617665 		.ascii	"wave_vpp: %d\000"
+ 833      5F767070 
+ 833      3A202564 
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 22
 
 
- 827              		.global	AppStart
- 828              		.syntax unified
- 829              		.code	16
- 830              		.thumb_func
- 832              	AppStart:
- 833              	.LFB64:
+ 833      00
+ 834 00d9 000000   		.align	2
+ 835              	.LC22:
+ 836 00dc 77617665 		.ascii	"wave_samp_freq: %d\000"
+ 836      5F73616D 
+ 836      705F6672 
+ 836      65713A20 
+ 836      256400
+ 837              		.section	.text.AppStart,"ax",%progbits
+ 838              		.align	1
+ 839              		.global	AppStart
+ 840              		.syntax unified
+ 841              		.code	16
+ 842              		.thumb_func
+ 844              	AppStart:
+ 845              	.LFB64:
   82:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "/***************State****************/");
- 834              		.loc 1 82 1 is_stmt 1 view -0
- 835              		.cfi_startproc
- 836              		@ args = 0, pretend = 0, frame = 0
- 837              		@ frame_needed = 0, uses_anonymous_args = 0
- 838 0000 F0B5     		push	{r4, r5, r6, r7, lr}
- 839              	.LCFI6:
- 840              		.cfi_def_cfa_offset 20
- 841              		.cfi_offset 4, -20
- 842              		.cfi_offset 5, -16
- 843              		.cfi_offset 6, -12
- 844              		.cfi_offset 7, -8
- 845              		.cfi_offset 14, -4
- 846 0002 83B0     		sub	sp, sp, #12
- 847              	.LCFI7:
- 848              		.cfi_def_cfa_offset 32
+ 846              		.loc 1 82 1 is_stmt 1 view -0
+ 847              		.cfi_startproc
+ 848              		@ args = 0, pretend = 0, frame = 0
+ 849              		@ frame_needed = 0, uses_anonymous_args = 0
+ 850 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 851              	.LCFI6:
+ 852              		.cfi_def_cfa_offset 20
+ 853              		.cfi_offset 4, -20
+ 854              		.cfi_offset 5, -16
+ 855              		.cfi_offset 6, -12
+ 856              		.cfi_offset 7, -8
+ 857              		.cfi_offset 14, -4
+ 858 0002 83B0     		sub	sp, sp, #12
+ 859              	.LCFI7:
+ 860              		.cfi_def_cfa_offset 32
   83:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "display_update: %d", app_state.display_update);
- 849              		.loc 1 83 5 view .LVU142
- 850 0004 40F20003 		movw	r3, #:lower16:.LC12
- 851 0008 C0F20003 		movt	r3, #:upper16:.LC12
- 852 000c 40F20004 		movw	r4, #:lower16:__FUNCTION__.2
- 853 0010 C0F20004 		movt	r4, #:upper16:__FUNCTION__.2
- 854 0014 5322     		movs	r2, #83
- 855 0016 2100     		movs	r1, r4
- 856 0018 0020     		movs	r0, #0
- 857 001a FFF7FEFF 		bl	EM_LOG
- 858              	.LVL66:
+ 861              		.loc 1 83 5 view .LVU144
+ 862 0004 40F20003 		movw	r3, #:lower16:.LC12
+ 863 0008 C0F20003 		movt	r3, #:upper16:.LC12
+ 864 000c 40F20004 		movw	r4, #:lower16:__FUNCTION__.2
+ 865 0010 C0F20004 		movt	r4, #:upper16:__FUNCTION__.2
+ 866 0014 5322     		movs	r2, #83
+ 867 0016 2100     		movs	r1, r4
+ 868 0018 0020     		movs	r0, #0
+ 869 001a FFF7FEFF 		bl	EM_LOG
+ 870              	.LVL68:
   84:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "update_samp_val: %d", app_state.update_samp_val);
- 859              		.loc 1 84 5 view .LVU143
- 860 001e 40F20005 		movw	r5, #:lower16:app_state
- 861 0022 C0F20005 		movt	r5, #:upper16:app_state
- 862 0026 2A78     		ldrb	r2, [r5]
- 863 0028 D207     		lsls	r2, r2, #31
- 864 002a D20F     		lsrs	r2, r2, #31
- 865 002c 40F20003 		movw	r3, #:lower16:.LC13
- 866 0030 C0F20003 		movt	r3, #:upper16:.LC13
- 867 0034 0092     		str	r2, [sp]
- 868 0036 5422     		movs	r2, #84
- 869 0038 2100     		movs	r1, r4
- 870 003a 0020     		movs	r0, #0
- 871 003c FFF7FEFF 		bl	EM_LOG
- 872              	.LVL67:
+ 871              		.loc 1 84 5 view .LVU145
+ 872 001e 40F20005 		movw	r5, #:lower16:app_state
+ 873 0022 C0F20005 		movt	r5, #:upper16:app_state
+ 874 0026 2A78     		ldrb	r2, [r5]
+ 875 0028 D207     		lsls	r2, r2, #31
+ 876 002a D20F     		lsrs	r2, r2, #31
+ 877 002c 40F20003 		movw	r3, #:lower16:.LC13
+ 878 0030 C0F20003 		movt	r3, #:upper16:.LC13
+ 879 0034 0092     		str	r2, [sp]
+ 880 0036 5422     		movs	r2, #84
+ 881 0038 2100     		movs	r1, r4
+ 882 003a 0020     		movs	r0, #0
+ 883 003c FFF7FEFF 		bl	EM_LOG
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 23
+
+
+ 884              	.LVL69:
   85:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "waveform_update: %d", app_state.waveform_update);
- 873              		.loc 1 85 5 view .LVU144
- 874 0040 2A78     		ldrb	r2, [r5]
- 875 0042 9207     		lsls	r2, r2, #30
- 876 0044 D20F     		lsrs	r2, r2, #31
- 877 0046 40F20003 		movw	r3, #:lower16:.LC14
- 878 004a C0F20003 		movt	r3, #:upper16:.LC14
- 879 004e 0092     		str	r2, [sp]
- 880 0050 5522     		movs	r2, #85
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 23
-
-
- 881 0052 2100     		movs	r1, r4
- 882 0054 0020     		movs	r0, #0
- 883 0056 FFF7FEFF 		bl	EM_LOG
- 884              	.LVL68:
+ 885              		.loc 1 85 5 view .LVU146
+ 886 0040 2A78     		ldrb	r2, [r5]
+ 887 0042 9207     		lsls	r2, r2, #30
+ 888 0044 D20F     		lsrs	r2, r2, #31
+ 889 0046 40F20003 		movw	r3, #:lower16:.LC14
+ 890 004a C0F20003 		movt	r3, #:upper16:.LC14
+ 891 004e 0092     		str	r2, [sp]
+ 892 0050 5522     		movs	r2, #85
+ 893 0052 2100     		movs	r1, r4
+ 894 0054 0020     		movs	r0, #0
+ 895 0056 FFF7FEFF 		bl	EM_LOG
+ 896              	.LVL70:
   86:Core/Src/app.c ****     EMLOG(LOG_INFO, "pwm_state: %d", app_state.pwm_state);
- 885              		.loc 1 86 5 view .LVU145
- 886 005a 2A78     		ldrb	r2, [r5]
- 887 005c 1207     		lsls	r2, r2, #28
- 888 005e 920F     		lsrs	r2, r2, #30
- 889 0060 40F20003 		movw	r3, #:lower16:.LC15
- 890 0064 C0F20003 		movt	r3, #:upper16:.LC15
- 891 0068 0092     		str	r2, [sp]
- 892 006a 5622     		movs	r2, #86
- 893 006c 2100     		movs	r1, r4
- 894 006e 0020     		movs	r0, #0
- 895 0070 FFF7FEFF 		bl	EM_LOG
- 896              	.LVL69:
+ 897              		.loc 1 86 5 view .LVU147
+ 898 005a 2A78     		ldrb	r2, [r5]
+ 899 005c 1207     		lsls	r2, r2, #28
+ 900 005e 920F     		lsrs	r2, r2, #30
+ 901 0060 40F20003 		movw	r3, #:lower16:.LC15
+ 902 0064 C0F20003 		movt	r3, #:upper16:.LC15
+ 903 0068 0092     		str	r2, [sp]
+ 904 006a 5622     		movs	r2, #86
+ 905 006c 2100     		movs	r1, r4
+ 906 006e 0020     		movs	r0, #0
+ 907 0070 FFF7FEFF 		bl	EM_LOG
+ 908              	.LVL71:
   87:Core/Src/app.c **** 
- 897              		.loc 1 87 5 view .LVU146
- 898 0074 2A78     		ldrb	r2, [r5]
- 899 0076 1209     		lsrs	r2, r2, #4
- 900 0078 40F20003 		movw	r3, #:lower16:.LC16
- 901 007c C0F20003 		movt	r3, #:upper16:.LC16
- 902 0080 0092     		str	r2, [sp]
- 903 0082 5722     		movs	r2, #87
- 904 0084 2100     		movs	r1, r4
- 905 0086 0120     		movs	r0, #1
- 906 0088 FFF7FEFF 		bl	EM_LOG
- 907              	.LVL70:
+ 909              		.loc 1 87 5 view .LVU148
+ 910 0074 2A78     		ldrb	r2, [r5]
+ 911 0076 1209     		lsrs	r2, r2, #4
+ 912 0078 40F20003 		movw	r3, #:lower16:.LC16
+ 913 007c C0F20003 		movt	r3, #:upper16:.LC16
+ 914 0080 0092     		str	r2, [sp]
+ 915 0082 5722     		movs	r2, #87
+ 916 0084 2100     		movs	r1, r4
+ 917 0086 0120     		movs	r0, #1
+ 918 0088 FFF7FEFF 		bl	EM_LOG
+ 919              	.LVL72:
   89:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "pwm_freq: %d", app_data.pwm_freq);
- 908              		.loc 1 89 5 view .LVU147
- 909 008c 40F20003 		movw	r3, #:lower16:.LC17
- 910 0090 C0F20003 		movt	r3, #:upper16:.LC17
- 911 0094 5922     		movs	r2, #89
- 912 0096 2100     		movs	r1, r4
- 913 0098 0020     		movs	r0, #0
- 914 009a FFF7FEFF 		bl	EM_LOG
- 915              	.LVL71:
+ 920              		.loc 1 89 5 view .LVU149
+ 921 008c 40F20003 		movw	r3, #:lower16:.LC17
+ 922 0090 C0F20003 		movt	r3, #:upper16:.LC17
+ 923 0094 5922     		movs	r2, #89
+ 924 0096 2100     		movs	r1, r4
+ 925 0098 0020     		movs	r0, #0
+ 926 009a FFF7FEFF 		bl	EM_LOG
+ 927              	.LVL73:
   90:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "pwm_duty: %d", app_data.pwm_duty);
- 916              		.loc 1 90 5 view .LVU148
- 917 009e 40F20006 		movw	r6, #:lower16:.LC18
- 918 00a2 C0F20006 		movt	r6, #:upper16:.LC18
- 919 00a6 40F20005 		movw	r5, #:lower16:app_data
- 920 00aa C0F20005 		movt	r5, #:upper16:app_data
- 921 00ae 2B68     		ldr	r3, [r5]
- 922 00b0 0093     		str	r3, [sp]
- 923 00b2 3300     		movs	r3, r6
- 924 00b4 5A22     		movs	r2, #90
- 925 00b6 2100     		movs	r1, r4
- 926 00b8 0020     		movs	r0, #0
- 927 00ba FFF7FEFF 		bl	EM_LOG
- 928              	.LVL72:
+ 928              		.loc 1 90 5 view .LVU150
+ 929 009e 40F20006 		movw	r6, #:lower16:.LC18
+ 930 00a2 C0F20006 		movt	r6, #:upper16:.LC18
+ 931 00a6 40F20005 		movw	r5, #:lower16:app_data
+ 932 00aa C0F20005 		movt	r5, #:upper16:app_data
+ 933 00ae 2B68     		ldr	r3, [r5]
+ 934 00b0 0093     		str	r3, [sp]
+ 935 00b2 3300     		movs	r3, r6
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 24
+
+
+ 936 00b4 5A22     		movs	r2, #90
+ 937 00b6 2100     		movs	r1, r4
+ 938 00b8 0020     		movs	r0, #0
+ 939 00ba FFF7FEFF 		bl	EM_LOG
+ 940              	.LVL74:
   91:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "wave_freq: %d", app_data.wave_freq);
- 929              		.loc 1 91 5 view .LVU149
- 930 00be AA88     		ldrh	r2, [r5, #4]
- 931 00c0 40F20003 		movw	r3, #:lower16:.LC19
- 932 00c4 C0F20003 		movt	r3, #:upper16:.LC19
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 24
-
-
- 933 00c8 0092     		str	r2, [sp]
- 934 00ca 5B22     		movs	r2, #91
- 935 00cc 2100     		movs	r1, r4
- 936 00ce 0020     		movs	r0, #0
- 937 00d0 FFF7FEFF 		bl	EM_LOG
- 938              	.LVL73:
+ 941              		.loc 1 91 5 view .LVU151
+ 942 00be AA88     		ldrh	r2, [r5, #4]
+ 943 00c0 40F20003 		movw	r3, #:lower16:.LC19
+ 944 00c4 C0F20003 		movt	r3, #:upper16:.LC19
+ 945 00c8 0092     		str	r2, [sp]
+ 946 00ca 5B22     		movs	r2, #91
+ 947 00cc 2100     		movs	r1, r4
+ 948 00ce 0020     		movs	r0, #0
+ 949 00d0 FFF7FEFF 		bl	EM_LOG
+ 950              	.LVL75:
   92:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "wave_vpp: %d", app_data.wave_vpp);
- 939              		.loc 1 92 5 view .LVU150
- 940 00d4 40F20007 		movw	r7, #:lower16:.LC20
- 941 00d8 C0F20007 		movt	r7, #:upper16:.LC20
- 942 00dc EB68     		ldr	r3, [r5, #12]
- 943 00de 0093     		str	r3, [sp]
- 944 00e0 3B00     		movs	r3, r7
- 945 00e2 5C22     		movs	r2, #92
- 946 00e4 2100     		movs	r1, r4
- 947 00e6 0020     		movs	r0, #0
- 948 00e8 FFF7FEFF 		bl	EM_LOG
- 949              	.LVL74:
+ 951              		.loc 1 92 5 view .LVU152
+ 952 00d4 40F20007 		movw	r7, #:lower16:.LC20
+ 953 00d8 C0F20007 		movt	r7, #:upper16:.LC20
+ 954 00dc EB68     		ldr	r3, [r5, #12]
+ 955 00de 0093     		str	r3, [sp]
+ 956 00e0 3B00     		movs	r3, r7
+ 957 00e2 5C22     		movs	r2, #92
+ 958 00e4 2100     		movs	r1, r4
+ 959 00e6 0020     		movs	r0, #0
+ 960 00e8 FFF7FEFF 		bl	EM_LOG
+ 961              	.LVL76:
   93:Core/Src/app.c ****     EMLOG(LOG_DEBUG, "wave_samp_freq: %d", app_data.wave_samp_freq);
- 950              		.loc 1 93 5 view .LVU151
- 951 00ec EA88     		ldrh	r2, [r5, #6]
- 952 00ee 40F20003 		movw	r3, #:lower16:.LC21
- 953 00f2 C0F20003 		movt	r3, #:upper16:.LC21
- 954 00f6 0092     		str	r2, [sp]
- 955 00f8 5D22     		movs	r2, #93
- 956 00fa 2100     		movs	r1, r4
- 957 00fc 0020     		movs	r0, #0
- 958 00fe FFF7FEFF 		bl	EM_LOG
- 959              	.LVL75:
+ 962              		.loc 1 93 5 view .LVU153
+ 963 00ec EA88     		ldrh	r2, [r5, #6]
+ 964 00ee 40F20003 		movw	r3, #:lower16:.LC21
+ 965 00f2 C0F20003 		movt	r3, #:upper16:.LC21
+ 966 00f6 0092     		str	r2, [sp]
+ 967 00f8 5D22     		movs	r2, #93
+ 968 00fa 2100     		movs	r1, r4
+ 969 00fc 0020     		movs	r0, #0
+ 970 00fe FFF7FEFF 		bl	EM_LOG
+ 971              	.LVL77:
   94:Core/Src/app.c **** 
- 960              		.loc 1 94 5 view .LVU152
- 961 0102 40F20003 		movw	r3, #:lower16:.LC22
- 962 0106 C0F20003 		movt	r3, #:upper16:.LC22
- 963 010a AA68     		ldr	r2, [r5, #8]
- 964 010c 0092     		str	r2, [sp]
- 965 010e 5E22     		movs	r2, #94
- 966 0110 2100     		movs	r1, r4
- 967 0112 0020     		movs	r0, #0
- 968 0114 FFF7FEFF 		bl	EM_LOG
- 969              	.LVL76:
+ 972              		.loc 1 94 5 view .LVU154
+ 973 0102 40F20003 		movw	r3, #:lower16:.LC22
+ 974 0106 C0F20003 		movt	r3, #:upper16:.LC22
+ 975 010a AA68     		ldr	r2, [r5, #8]
+ 976 010c 0092     		str	r2, [sp]
+ 977 010e 5E22     		movs	r2, #94
+ 978 0110 2100     		movs	r1, r4
+ 979 0112 0020     		movs	r0, #0
+ 980 0114 FFF7FEFF 		bl	EM_LOG
+ 981              	.LVL78:
   96:Core/Src/app.c ****     EMLOG(LOG_INFO, "pwm_freq: %d", app_data.pwm_duty);
- 970              		.loc 1 96 5 view .LVU153
- 971 0118 2B68     		ldr	r3, [r5]
- 972 011a 0093     		str	r3, [sp]
- 973 011c 3300     		movs	r3, r6
- 974 011e 6022     		movs	r2, #96
- 975 0120 2100     		movs	r1, r4
- 976 0122 0120     		movs	r0, #1
- 977 0124 FFF7FEFF 		bl	EM_LOG
- 978              	.LVL77:
+ 982              		.loc 1 96 5 view .LVU155
+ 983 0118 2B68     		ldr	r3, [r5]
+ 984 011a 0093     		str	r3, [sp]
+ 985 011c 3300     		movs	r3, r6
+ 986 011e 6022     		movs	r2, #96
+ 987 0120 2100     		movs	r1, r4
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 25
+
+
+ 988 0122 0120     		movs	r0, #1
+ 989 0124 FFF7FEFF 		bl	EM_LOG
+ 990              	.LVL79:
   97:Core/Src/app.c ****     EMLOG(LOG_INFO, "wave_freq: %d", app_data.wave_freq);
- 979              		.loc 1 97 5 view .LVU154
- 980 0128 AB88     		ldrh	r3, [r5, #4]
- 981 012a 0093     		str	r3, [sp]
- 982 012c 3300     		movs	r3, r6
- 983 012e 6122     		movs	r2, #97
- 984 0130 2100     		movs	r1, r4
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 25
-
-
- 985 0132 0120     		movs	r0, #1
- 986 0134 FFF7FEFF 		bl	EM_LOG
- 987              	.LVL78:
+ 991              		.loc 1 97 5 view .LVU156
+ 992 0128 AB88     		ldrh	r3, [r5, #4]
+ 993 012a 0093     		str	r3, [sp]
+ 994 012c 3300     		movs	r3, r6
+ 995 012e 6122     		movs	r2, #97
+ 996 0130 2100     		movs	r1, r4
+ 997 0132 0120     		movs	r0, #1
+ 998 0134 FFF7FEFF 		bl	EM_LOG
+ 999              	.LVL80:
   98:Core/Src/app.c **** 
- 988              		.loc 1 98 5 view .LVU155
- 989 0138 EB68     		ldr	r3, [r5, #12]
- 990 013a 0093     		str	r3, [sp]
- 991 013c 3B00     		movs	r3, r7
- 992 013e 6222     		movs	r2, #98
- 993 0140 2100     		movs	r1, r4
- 994 0142 0120     		movs	r0, #1
- 995 0144 FFF7FEFF 		bl	EM_LOG
- 996              	.LVL79:
+ 1000              		.loc 1 98 5 view .LVU157
+ 1001 0138 EB68     		ldr	r3, [r5, #12]
+ 1002 013a 0093     		str	r3, [sp]
+ 1003 013c 3B00     		movs	r3, r7
+ 1004 013e 6222     		movs	r2, #98
+ 1005 0140 2100     		movs	r1, r4
+ 1006 0142 0120     		movs	r0, #1
+ 1007 0144 FFF7FEFF 		bl	EM_LOG
+ 1008              	.LVL81:
  100:Core/Src/app.c ****         delay_1ms(10);
- 997              		.loc 1 100 5 view .LVU156
+ 1009              		.loc 1 100 5 view .LVU158
  100:Core/Src/app.c ****         delay_1ms(10);
- 998              		.loc 1 100 18 is_stmt 0 view .LVU157
- 999 0148 40F20040 		movw	r0, #1024
- 1000 014c C4F60000 		movt	r0, 18432
- 1001 0150 40F20021 		movw	r1, #512
- 1002 0154 FFF7FEFF 		bl	gpio_input_bit_get
- 1003              	.LVL80:
+ 1010              		.loc 1 100 18 is_stmt 0 view .LVU159
+ 1011 0148 40F20040 		movw	r0, #1024
+ 1012 014c C4F60000 		movt	r0, 18432
+ 1013 0150 40F20021 		movw	r1, #512
+ 1014 0154 FFF7FEFF 		bl	gpio_input_bit_get
+ 1015              	.LVL82:
  100:Core/Src/app.c ****         delay_1ms(10);
- 1004              		.loc 1 100 8 discriminator 1 view .LVU158
- 1005 0158 0028     		cmp	r0, #0
- 1006 015a 4BD0     		beq	.L42
- 1007              	.L30:
+ 1016              		.loc 1 100 8 discriminator 1 view .LVU160
+ 1017 0158 0028     		cmp	r0, #0
+ 1018 015a 4BD0     		beq	.L42
+ 1019              	.L30:
  111:Core/Src/app.c ****         case PWM_STATE_OPEN:
- 1008              		.loc 1 111 5 is_stmt 1 view .LVU159
+ 1020              		.loc 1 111 5 is_stmt 1 view .LVU161
  111:Core/Src/app.c ****         case PWM_STATE_OPEN:
- 1009              		.loc 1 111 22 is_stmt 0 view .LVU160
- 1010 015c 40F20003 		movw	r3, #:lower16:app_state
- 1011 0160 C0F20003 		movt	r3, #:upper16:app_state
- 1012 0164 1B78     		ldrb	r3, [r3]
- 1013 0166 1B09     		lsrs	r3, r3, #4
+ 1021              		.loc 1 111 22 is_stmt 0 view .LVU162
+ 1022 015c 40F20003 		movw	r3, #:lower16:app_state
+ 1023 0160 C0F20003 		movt	r3, #:upper16:app_state
+ 1024 0164 1B78     		ldrb	r3, [r3]
+ 1025 0166 1B09     		lsrs	r3, r3, #4
  111:Core/Src/app.c ****         case PWM_STATE_OPEN:
- 1014              		.loc 1 111 5 view .LVU161
- 1015 0168 022B     		cmp	r3, #2
- 1016 016a 00D1     		bne	.LCB818
- 1017 016c 7BE0     		b	.L33	@long jump
- 1018              	.LCB818:
- 1019 016e 032B     		cmp	r3, #3
- 1020 0170 00D1     		bne	.LCB820
- 1021 0172 73E0     		b	.L34	@long jump
- 1022              	.LCB820:
- 1023 0174 012B     		cmp	r3, #1
- 1024 0176 21D1     		bne	.L36
- 1025              	.L35:
- 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
- 1026              		.loc 1 119 13 is_stmt 1 view .LVU162
- 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
- 1027              		.loc 1 119 60 is_stmt 0 view .LVU163
- 1028 0178 40F20004 		movw	r4, #:lower16:app_data
- 1029 017c C0F20004 		movt	r4, #:upper16:app_data
- 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
- 1030              		.loc 1 119 13 view .LVU164
- 1031 0180 2188     		ldrh	r1, [r4]
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 26
+ 1026              		.loc 1 111 5 view .LVU163
+ 1027 0168 022B     		cmp	r3, #2
+ 1028 016a 00D1     		bne	.LCB824
+ 1029 016c 7BE0     		b	.L33	@long jump
+ 1030              	.LCB824:
+ 1031 016e 032B     		cmp	r3, #3
+ 1032 0170 00D1     		bne	.LCB826
+ 1033 0172 73E0     		b	.L34	@long jump
+ 1034              	.LCB826:
+ 1035 0174 012B     		cmp	r3, #1
+ 1036 0176 21D1     		bne	.L36
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 26
 
 
- 1032 0182 44F20005 		movw	r5, #16384
- 1033 0186 C4F20105 		movt	r5, 16385
- 1034 018a 2800     		movs	r0, r5
- 1035 018c FFF7FEFF 		bl	timer_autoreload_value_config
- 1036              	.LVL81:
+ 1037              	.L35:
+ 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
+ 1038              		.loc 1 119 13 is_stmt 1 view .LVU164
+ 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
+ 1039              		.loc 1 119 60 is_stmt 0 view .LVU165
+ 1040 0178 40F20004 		movw	r4, #:lower16:app_data
+ 1041 017c C0F20004 		movt	r4, #:upper16:app_data
+ 119:Core/Src/app.c ****             timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_0, app_data.pwm_freq * app_da
+ 1042              		.loc 1 119 13 view .LVU166
+ 1043 0180 2188     		ldrh	r1, [r4]
+ 1044 0182 44F20005 		movw	r5, #16384
+ 1045 0186 C4F20105 		movt	r5, 16385
+ 1046 018a 2800     		movs	r0, r5
+ 1047 018c FFF7FEFF 		bl	timer_autoreload_value_config
+ 1048              	.LVL83:
  120:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_NONE;
- 1037              		.loc 1 120 13 is_stmt 1 view .LVU165
+ 1049              		.loc 1 120 13 is_stmt 1 view .LVU167
  120:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_NONE;
- 1038              		.loc 1 120 82 is_stmt 0 view .LVU166
- 1039 0190 2368     		ldr	r3, [r4]
+ 1050              		.loc 1 120 82 is_stmt 0 view .LVU168
+ 1051 0190 2368     		ldr	r3, [r4]
  120:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_NONE;
- 1040              		.loc 1 120 102 view .LVU167
- 1041 0192 A288     		ldrh	r2, [r4, #4]
+ 1052              		.loc 1 120 102 view .LVU169
+ 1053 0192 A288     		ldrh	r2, [r4, #4]
  120:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_NONE;
- 1042              		.loc 1 120 92 view .LVU168
- 1043 0194 5A43     		muls	r2, r3
+ 1054              		.loc 1 120 92 view .LVU170
+ 1055 0194 5A43     		muls	r2, r3
  120:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_NONE;
- 1044              		.loc 1 120 13 view .LVU169
- 1045 0196 6423     		movs	r3, #100
- 1046 0198 B2FBF3F2 		udiv	r2, r2, r3
- 1047 019c 0021     		movs	r1, #0
- 1048 019e 2800     		movs	r0, r5
- 1049 01a0 FFF7FEFF 		bl	timer_channel_output_pulse_value_config
- 1050              	.LVL82:
+ 1056              		.loc 1 120 13 view .LVU171
+ 1057 0196 6423     		movs	r3, #100
+ 1058 0198 B2FBF3F2 		udiv	r2, r2, r3
+ 1059 019c 0021     		movs	r1, #0
+ 1060 019e 2800     		movs	r0, r5
+ 1061 01a0 FFF7FEFF 		bl	timer_channel_output_pulse_value_config
+ 1062              	.LVL84:
  121:Core/Src/app.c ****             app_state.display_update = APP_STATE_ENABLE;
- 1051              		.loc 1 121 13 is_stmt 1 view .LVU170
+ 1063              		.loc 1 121 13 is_stmt 1 view .LVU172
  121:Core/Src/app.c ****             app_state.display_update = APP_STATE_ENABLE;
- 1052              		.loc 1 121 33 is_stmt 0 view .LVU171
- 1053 01a4 40F20003 		movw	r3, #:lower16:app_state
- 1054 01a8 C0F20003 		movt	r3, #:upper16:app_state
- 1055 01ac 1978     		ldrb	r1, [r3]
- 1056 01ae 0F22     		movs	r2, #15
- 1057 01b0 0A40     		ands	r2, r1
- 1058 01b2 1A70     		strb	r2, [r3]
+ 1064              		.loc 1 121 33 is_stmt 0 view .LVU173
+ 1065 01a4 40F20003 		movw	r3, #:lower16:app_state
+ 1066 01a8 C0F20003 		movt	r3, #:upper16:app_state
+ 1067 01ac 1978     		ldrb	r1, [r3]
+ 1068 01ae 0F22     		movs	r2, #15
+ 1069 01b0 0A40     		ands	r2, r1
+ 1070 01b2 1A70     		strb	r2, [r3]
  122:Core/Src/app.c ****             break;
- 1059              		.loc 1 122 13 is_stmt 1 view .LVU172
+ 1071              		.loc 1 122 13 is_stmt 1 view .LVU174
  122:Core/Src/app.c ****             break;
- 1060              		.loc 1 122 38 is_stmt 0 view .LVU173
- 1061 01b4 D2B2     		uxtb	r2, r2
- 1062 01b6 0121     		movs	r1, #1
- 1063 01b8 0A43     		orrs	r2, r1
- 1064 01ba 1A70     		strb	r2, [r3]
+ 1072              		.loc 1 122 38 is_stmt 0 view .LVU175
+ 1073 01b4 D2B2     		uxtb	r2, r2
+ 1074 01b6 0121     		movs	r1, #1
+ 1075 01b8 0A43     		orrs	r2, r1
+ 1076 01ba 1A70     		strb	r2, [r3]
  123:Core/Src/app.c ****         case PWM_STATE_CLOSE:
- 1065              		.loc 1 123 13 is_stmt 1 view .LVU174
- 1066              	.L36:
+ 1077              		.loc 1 123 13 is_stmt 1 view .LVU176
+ 1078              	.L36:
  136:Core/Src/app.c ****         adc_regular_channel_config(0, ADC_CHANNEL_3, app_data.wave_samp_freq);
- 1067              		.loc 1 136 5 view .LVU175
- 136:Core/Src/app.c ****         adc_regular_channel_config(0, ADC_CHANNEL_3, app_data.wave_samp_freq);
- 1068              		.loc 1 136 35 is_stmt 0 view .LVU176
- 1069 01bc 40F20003 		movw	r3, #:lower16:app_state
- 1070 01c0 C0F20003 		movt	r3, #:upper16:app_state
- 1071 01c4 1B78     		ldrb	r3, [r3]
- 136:Core/Src/app.c ****         adc_regular_channel_config(0, ADC_CHANNEL_3, app_data.wave_samp_freq);
- 1072              		.loc 1 136 8 view .LVU177
- 1073 01c6 9B07     		lsls	r3, r3, #30
- 1074 01c8 00D5     		bpl	.LCB864
- 1075 01ca 72E0     		b	.L43	@long jump
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 27
+ 1079              		.loc 1 136 5 view .LVU177
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 27
 
 
- 1076              	.LCB864:
- 1077              	.L37:
+ 136:Core/Src/app.c ****         adc_regular_channel_config(0, ADC_CHANNEL_3, app_data.wave_samp_freq);
+ 1080              		.loc 1 136 35 is_stmt 0 view .LVU178
+ 1081 01bc 40F20003 		movw	r3, #:lower16:app_state
+ 1082 01c0 C0F20003 		movt	r3, #:upper16:app_state
+ 1083 01c4 1B78     		ldrb	r3, [r3]
+ 136:Core/Src/app.c ****         adc_regular_channel_config(0, ADC_CHANNEL_3, app_data.wave_samp_freq);
+ 1084              		.loc 1 136 8 view .LVU179
+ 1085 01c6 9B07     		lsls	r3, r3, #30
+ 1086 01c8 00D5     		bpl	.LCB870
+ 1087 01ca 72E0     		b	.L43	@long jump
+ 1088              	.LCB870:
+ 1089              	.L37:
  141:Core/Src/app.c ****         app_state.waveform_update = WAVEFORM_UPDATE_NONE;
- 1078              		.loc 1 141 5 is_stmt 1 view .LVU178
+ 1090              		.loc 1 141 5 is_stmt 1 view .LVU180
  141:Core/Src/app.c ****         app_state.waveform_update = WAVEFORM_UPDATE_NONE;
- 1079              		.loc 1 141 35 is_stmt 0 view .LVU179
- 1080 01cc 40F20003 		movw	r3, #:lower16:app_state
- 1081 01d0 C0F20003 		movt	r3, #:upper16:app_state
- 1082 01d4 1A78     		ldrb	r2, [r3]
- 1083 01d6 0C23     		movs	r3, #12
- 1084 01d8 1340     		ands	r3, r2
+ 1091              		.loc 1 141 35 is_stmt 0 view .LVU181
+ 1092 01cc 40F20003 		movw	r3, #:lower16:app_state
+ 1093 01d0 C0F20003 		movt	r3, #:upper16:app_state
+ 1094 01d4 1A78     		ldrb	r2, [r3]
+ 1095 01d6 0C23     		movs	r3, #12
+ 1096 01d8 1340     		ands	r3, r2
  141:Core/Src/app.c ****         app_state.waveform_update = WAVEFORM_UPDATE_NONE;
- 1085              		.loc 1 141 8 view .LVU180
- 1086 01da 042B     		cmp	r3, #4
- 1087 01dc 00D1     		bne	.LCB874
- 1088 01de 7EE0     		b	.L44	@long jump
- 1089              	.LCB874:
- 1090              	.L38:
+ 1097              		.loc 1 141 8 view .LVU182
+ 1098 01da 042B     		cmp	r3, #4
+ 1099 01dc 00D1     		bne	.LCB880
+ 1100 01de 7EE0     		b	.L44	@long jump
+ 1101              	.LCB880:
+ 1102              	.L38:
  145:Core/Src/app.c ****         app_state.display_update = APP_STATE_DISABLE;
- 1091              		.loc 1 145 5 is_stmt 1 view .LVU181
+ 1103              		.loc 1 145 5 is_stmt 1 view .LVU183
  145:Core/Src/app.c ****         app_state.display_update = APP_STATE_DISABLE;
- 1092              		.loc 1 145 9 is_stmt 0 view .LVU182
- 1093 01e0 40F20003 		movw	r3, #:lower16:app_state
- 1094 01e4 C0F20003 		movt	r3, #:upper16:app_state
- 1095 01e8 1B78     		ldrb	r3, [r3]
+ 1104              		.loc 1 145 9 is_stmt 0 view .LVU184
+ 1105 01e0 40F20003 		movw	r3, #:lower16:app_state
+ 1106 01e4 C0F20003 		movt	r3, #:upper16:app_state
+ 1107 01e8 1B78     		ldrb	r3, [r3]
  145:Core/Src/app.c ****         app_state.display_update = APP_STATE_DISABLE;
- 1096              		.loc 1 145 8 view .LVU183
- 1097 01ea DB07     		lsls	r3, r3, #31
- 1098 01ec 00D5     		bpl	.LCB884
- 1099 01ee 80E0     		b	.L45	@long jump
- 1100              	.LCB884:
- 1101              	.L29:
+ 1108              		.loc 1 145 8 view .LVU185
+ 1109 01ea DB07     		lsls	r3, r3, #31
+ 1110 01ec 00D5     		bpl	.LCB890
+ 1111 01ee 80E0     		b	.L45	@long jump
+ 1112              	.LCB890:
+ 1113              	.L29:
  149:Core/Src/app.c **** 
- 1102              		.loc 1 149 1 view .LVU184
- 1103 01f0 03B0     		add	sp, sp, #12
- 1104              		@ sp needed
- 1105 01f2 F0BD     		pop	{r4, r5, r6, r7, pc}
- 1106              	.L42:
+ 1114              		.loc 1 149 1 view .LVU186
+ 1115 01f0 03B0     		add	sp, sp, #12
+ 1116              		@ sp needed
+ 1117 01f2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1118              	.L42:
  101:Core/Src/app.c ****         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9)) {
- 1107              		.loc 1 101 9 is_stmt 1 view .LVU185
- 1108 01f4 0A30     		adds	r0, r0, #10
- 1109 01f6 FFF7FEFF 		bl	delay_1ms
- 1110              	.LVL83:
+ 1119              		.loc 1 101 9 is_stmt 1 view .LVU187
+ 1120 01f4 0A30     		adds	r0, r0, #10
+ 1121 01f6 FFF7FEFF 		bl	delay_1ms
+ 1122              	.LVL85:
  102:Core/Src/app.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9));
- 1111              		.loc 1 102 9 view .LVU186
+ 1123              		.loc 1 102 9 view .LVU188
  102:Core/Src/app.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9));
- 1112              		.loc 1 102 22 is_stmt 0 view .LVU187
- 1113 01fa 40F20040 		movw	r0, #1024
- 1114 01fe C4F60000 		movt	r0, 18432
- 1115 0202 40F20021 		movw	r1, #512
- 1116 0206 FFF7FEFF 		bl	gpio_input_bit_get
- 1117              	.LVL84:
- 102:Core/Src/app.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9));
- 1118              		.loc 1 102 12 discriminator 1 view .LVU188
- 1119 020a 0028     		cmp	r0, #0
- 1120 020c A6D1     		bne	.L30
- 1121              	.L31:
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 28
+ 1124              		.loc 1 102 22 is_stmt 0 view .LVU189
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 28
 
 
+ 1125 01fa 40F20040 		movw	r0, #1024
+ 1126 01fe C4F60000 		movt	r0, 18432
+ 1127 0202 40F20021 		movw	r1, #512
+ 1128 0206 FFF7FEFF 		bl	gpio_input_bit_get
+ 1129              	.LVL86:
+ 102:Core/Src/app.c ****             while (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_9));
+ 1130              		.loc 1 102 12 discriminator 1 view .LVU190
+ 1131 020a 0028     		cmp	r0, #0
+ 1132 020c A6D1     		bne	.L30
+ 1133              	.L31:
  103:Core/Src/app.c ****             if (app_state.waveform_update != WAVEFORM_UPDATE_DISABLE) {
- 1122              		.loc 1 103 26 is_stmt 1 discriminator 1 view .LVU189
+ 1134              		.loc 1 103 26 is_stmt 1 discriminator 1 view .LVU191
  103:Core/Src/app.c ****             if (app_state.waveform_update != WAVEFORM_UPDATE_DISABLE) {
- 1123              		.loc 1 103 29 is_stmt 0 discriminator 1 view .LVU190
- 1124 020e 40F20040 		movw	r0, #1024
- 1125 0212 C4F60000 		movt	r0, 18432
- 1126 0216 40F20021 		movw	r1, #512
- 1127 021a FFF7FEFF 		bl	gpio_input_bit_get
- 1128              	.LVL85:
+ 1135              		.loc 1 103 29 is_stmt 0 discriminator 1 view .LVU192
+ 1136 020e 40F20040 		movw	r0, #1024
+ 1137 0212 C4F60000 		movt	r0, 18432
+ 1138 0216 40F20021 		movw	r1, #512
+ 1139 021a FFF7FEFF 		bl	gpio_input_bit_get
+ 1140              	.LVL87:
  103:Core/Src/app.c ****             if (app_state.waveform_update != WAVEFORM_UPDATE_DISABLE) {
- 1129              		.loc 1 103 26 discriminator 1 view .LVU191
- 1130 021e 0028     		cmp	r0, #0
- 1131 0220 F5D0     		beq	.L31
+ 1141              		.loc 1 103 26 discriminator 1 view .LVU193
+ 1142 021e 0028     		cmp	r0, #0
+ 1143 0220 F5D0     		beq	.L31
  104:Core/Src/app.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DISABLE;
- 1132              		.loc 1 104 13 is_stmt 1 view .LVU192
+ 1144              		.loc 1 104 13 is_stmt 1 view .LVU194
  104:Core/Src/app.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DISABLE;
- 1133              		.loc 1 104 43 is_stmt 0 view .LVU193
- 1134 0222 40F20003 		movw	r3, #:lower16:app_state
- 1135 0226 C0F20003 		movt	r3, #:upper16:app_state
- 1136 022a 1A78     		ldrb	r2, [r3]
- 1137 022c 0C23     		movs	r3, #12
- 1138 022e 1340     		ands	r3, r2
+ 1145              		.loc 1 104 43 is_stmt 0 view .LVU195
+ 1146 0222 40F20003 		movw	r3, #:lower16:app_state
+ 1147 0226 C0F20003 		movt	r3, #:upper16:app_state
+ 1148 022a 1A78     		ldrb	r2, [r3]
+ 1149 022c 0C23     		movs	r3, #12
+ 1150 022e 1340     		ands	r3, r2
  104:Core/Src/app.c ****                 app_state.waveform_update = WAVEFORM_UPDATE_DISABLE;
- 1139              		.loc 1 104 16 view .LVU194
- 1140 0230 082B     		cmp	r3, #8
- 1141 0232 0AD0     		beq	.L32
+ 1151              		.loc 1 104 16 view .LVU196
+ 1152 0230 082B     		cmp	r3, #8
+ 1153 0232 0AD0     		beq	.L32
  105:Core/Src/app.c ****             } else {
- 1142              		.loc 1 105 17 is_stmt 1 view .LVU195
+ 1154              		.loc 1 105 17 is_stmt 1 view .LVU197
  105:Core/Src/app.c ****             } else {
- 1143              		.loc 1 105 43 is_stmt 0 view .LVU196
- 1144 0234 40F20002 		movw	r2, #:lower16:app_state
- 1145 0238 C0F20002 		movt	r2, #:upper16:app_state
- 1146 023c 1378     		ldrb	r3, [r2]
- 1147 023e 0C21     		movs	r1, #12
- 1148 0240 8B43     		bics	r3, r1
- 1149 0242 0821     		movs	r1, #8
- 1150 0244 0B43     		orrs	r3, r1
- 1151 0246 1370     		strb	r3, [r2]
- 1152 0248 88E7     		b	.L30
- 1153              	.L32:
+ 1155              		.loc 1 105 43 is_stmt 0 view .LVU198
+ 1156 0234 40F20002 		movw	r2, #:lower16:app_state
+ 1157 0238 C0F20002 		movt	r2, #:upper16:app_state
+ 1158 023c 1378     		ldrb	r3, [r2]
+ 1159 023e 0C21     		movs	r1, #12
+ 1160 0240 8B43     		bics	r3, r1
+ 1161 0242 0821     		movs	r1, #8
+ 1162 0244 0B43     		orrs	r3, r1
+ 1163 0246 1370     		strb	r3, [r2]
+ 1164 0248 88E7     		b	.L30
+ 1165              	.L32:
  107:Core/Src/app.c ****             }
- 1154              		.loc 1 107 17 is_stmt 1 view .LVU197
+ 1166              		.loc 1 107 17 is_stmt 1 view .LVU199
  107:Core/Src/app.c ****             }
- 1155              		.loc 1 107 43 is_stmt 0 view .LVU198
- 1156 024a 40F20003 		movw	r3, #:lower16:app_state
- 1157 024e C0F20003 		movt	r3, #:upper16:app_state
- 1158 0252 1A78     		ldrb	r2, [r3]
- 1159 0254 0C21     		movs	r1, #12
- 1160 0256 8A43     		bics	r2, r1
- 1161 0258 1A70     		strb	r2, [r3]
- 1162 025a 7FE7     		b	.L30
- 1163              	.L34:
+ 1167              		.loc 1 107 43 is_stmt 0 view .LVU200
+ 1168 024a 40F20003 		movw	r3, #:lower16:app_state
+ 1169 024e C0F20003 		movt	r3, #:upper16:app_state
+ 1170 0252 1A78     		ldrb	r2, [r3]
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 29
+
+
+ 1171 0254 0C21     		movs	r1, #12
+ 1172 0256 8A43     		bics	r2, r1
+ 1173 0258 1A70     		strb	r2, [r3]
+ 1174 025a 7FE7     		b	.L30
+ 1175              	.L34:
  113:Core/Src/app.c ****             KEY02_01_INTERRUPT_ENABLE();
- 1164              		.loc 1 113 13 is_stmt 1 view .LVU199
- 1165 025c FFF7FEFF 		bl	Timer14Config
- 1166              	.LVL86:
+ 1176              		.loc 1 113 13 is_stmt 1 view .LVU201
+ 1177 025c FFF7FEFF 		bl	Timer14Config
+ 1178              	.LVL88:
  114:Core/Src/app.c ****             // app_state.pwm_state = PWM_STATE_NONE;
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 29
-
-
- 1167              		.loc 1 114 13 view .LVU200
- 1168 0260 FFF7FEFF 		bl	GPIO13_14InterruptEnable
- 1169              	.LVL87:
- 1170 0264 88E7     		b	.L35
- 1171              	.L33:
+ 1179              		.loc 1 114 13 view .LVU202
+ 1180 0260 FFF7FEFF 		bl	GPIO13_14InterruptEnable
+ 1181              	.LVL89:
+ 1182 0264 88E7     		b	.L35
+ 1183              	.L33:
  125:Core/Src/app.c ****             exti_interrupt_disable(EXTI_14);
- 1172              		.loc 1 125 13 view .LVU201
- 1173 0266 42F20000 		movw	r0, #8192
- 1174 026a FFF7FEFF 		bl	exti_interrupt_disable
- 1175              	.LVL88:
+ 1184              		.loc 1 125 13 view .LVU203
+ 1185 0266 42F20000 		movw	r0, #8192
+ 1186 026a FFF7FEFF 		bl	exti_interrupt_disable
+ 1187              	.LVL90:
  126:Core/Src/app.c ****             timer_disable(TIMER14);
- 1176              		.loc 1 126 13 view .LVU202
- 1177 026e 44F20000 		movw	r0, #16384
- 1178 0272 FFF7FEFF 		bl	exti_interrupt_disable
- 1179              	.LVL89:
+ 1188              		.loc 1 126 13 view .LVU204
+ 1189 026e 44F20000 		movw	r0, #16384
+ 1190 0272 FFF7FEFF 		bl	exti_interrupt_disable
+ 1191              	.LVL91:
  127:Core/Src/app.c ****             rcu_periph_clock_disable(RCU_TIMER14);
- 1180              		.loc 1 127 13 view .LVU203
- 1181 0276 44F20000 		movw	r0, #16384
- 1182 027a C4F20100 		movt	r0, 16385
- 1183 027e FFF7FEFF 		bl	timer_disable
- 1184              	.LVL90:
+ 1192              		.loc 1 127 13 view .LVU205
+ 1193 0276 44F20000 		movw	r0, #16384
+ 1194 027a C4F20100 		movt	r0, 16385
+ 1195 027e FFF7FEFF 		bl	timer_disable
+ 1196              	.LVL92:
  128:Core/Src/app.c ****             gpio_bit_reset(GPIOA, GPIO_PIN_2);
- 1185              		.loc 1 128 13 view .LVU204
- 1186 0282 40F21060 		movw	r0, #1552
- 1187 0286 FFF7FEFF 		bl	rcu_periph_clock_disable
- 1188              	.LVL91:
+ 1197              		.loc 1 128 13 view .LVU206
+ 1198 0282 40F21060 		movw	r0, #1552
+ 1199 0286 FFF7FEFF 		bl	rcu_periph_clock_disable
+ 1200              	.LVL93:
  129:Core/Src/app.c ****             app_state.pwm_state = PWM_STATE_DISABLE;
- 1189              		.loc 1 129 13 view .LVU205
- 1190 028a 9020     		movs	r0, #144
- 1191 028c 0421     		movs	r1, #4
- 1192 028e C005     		lsls	r0, r0, #23
- 1193 0290 FFF7FEFF 		bl	gpio_bit_reset
- 1194              	.LVL92:
+ 1201              		.loc 1 129 13 view .LVU207
+ 1202 028a 9020     		movs	r0, #144
+ 1203 028c 0421     		movs	r1, #4
+ 1204 028e C005     		lsls	r0, r0, #23
+ 1205 0290 FFF7FEFF 		bl	gpio_bit_reset
+ 1206              	.LVL94:
  130:Core/Src/app.c ****             app_state.display_update = APP_STATE_ENABLE;
- 1195              		.loc 1 130 13 view .LVU206
+ 1207              		.loc 1 130 13 view .LVU208
  130:Core/Src/app.c ****             app_state.display_update = APP_STATE_ENABLE;
- 1196              		.loc 1 130 33 is_stmt 0 view .LVU207
- 1197 0294 40F20003 		movw	r3, #:lower16:app_state
- 1198 0298 C0F20003 		movt	r3, #:upper16:app_state
- 1199 029c 1978     		ldrb	r1, [r3]
- 1200 029e 0F22     		movs	r2, #15
- 1201 02a0 0A40     		ands	r2, r1
- 1202 02a2 4021     		movs	r1, #64
- 1203 02a4 0A43     		orrs	r2, r1
- 1204 02a6 1A70     		strb	r2, [r3]
+ 1208              		.loc 1 130 33 is_stmt 0 view .LVU209
+ 1209 0294 40F20003 		movw	r3, #:lower16:app_state
+ 1210 0298 C0F20003 		movt	r3, #:upper16:app_state
+ 1211 029c 1978     		ldrb	r1, [r3]
+ 1212 029e 0F22     		movs	r2, #15
+ 1213 02a0 0A40     		ands	r2, r1
+ 1214 02a2 4021     		movs	r1, #64
+ 1215 02a4 0A43     		orrs	r2, r1
+ 1216 02a6 1A70     		strb	r2, [r3]
  131:Core/Src/app.c ****             break;
- 1205              		.loc 1 131 13 is_stmt 1 view .LVU208
+ 1217              		.loc 1 131 13 is_stmt 1 view .LVU210
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 30
+
+
  131:Core/Src/app.c ****             break;
- 1206              		.loc 1 131 38 is_stmt 0 view .LVU209
- 1207 02a8 D2B2     		uxtb	r2, r2
- 1208 02aa 0121     		movs	r1, #1
- 1209 02ac 0A43     		orrs	r2, r1
- 1210 02ae 1A70     		strb	r2, [r3]
+ 1218              		.loc 1 131 38 is_stmt 0 view .LVU211
+ 1219 02a8 D2B2     		uxtb	r2, r2
+ 1220 02aa 0121     		movs	r1, #1
+ 1221 02ac 0A43     		orrs	r2, r1
+ 1222 02ae 1A70     		strb	r2, [r3]
  132:Core/Src/app.c ****         default:
- 1211              		.loc 1 132 13 is_stmt 1 view .LVU210
- 1212 02b0 84E7     		b	.L36
- 1213              	.L43:
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 30
-
-
+ 1223              		.loc 1 132 13 is_stmt 1 view .LVU212
+ 1224 02b0 84E7     		b	.L36
+ 1225              	.L43:
  137:Core/Src/app.c ****         app_state.update_samp_val = APP_STATE_DISABLE;
- 1214              		.loc 1 137 9 view .LVU211
- 1215 02b2 40F20003 		movw	r3, #:lower16:app_data
- 1216 02b6 C0F20003 		movt	r3, #:upper16:app_data
- 1217 02ba 9A68     		ldr	r2, [r3, #8]
- 1218 02bc 0321     		movs	r1, #3
- 1219 02be 0020     		movs	r0, #0
- 1220 02c0 FFF7FEFF 		bl	adc_regular_channel_config
- 1221              	.LVL93:
+ 1226              		.loc 1 137 9 view .LVU213
+ 1227 02b2 40F20003 		movw	r3, #:lower16:app_data
+ 1228 02b6 C0F20003 		movt	r3, #:upper16:app_data
+ 1229 02ba 9A68     		ldr	r2, [r3, #8]
+ 1230 02bc 0321     		movs	r1, #3
+ 1231 02be 0020     		movs	r0, #0
+ 1232 02c0 FFF7FEFF 		bl	adc_regular_channel_config
+ 1233              	.LVL95:
  138:Core/Src/app.c ****         app_state.display_update = APP_STATE_ENABLE;
- 1222              		.loc 1 138 9 view .LVU212
+ 1234              		.loc 1 138 9 view .LVU214
  138:Core/Src/app.c ****         app_state.display_update = APP_STATE_ENABLE;
- 1223              		.loc 1 138 35 is_stmt 0 view .LVU213
- 1224 02c4 40F20003 		movw	r3, #:lower16:app_state
- 1225 02c8 C0F20003 		movt	r3, #:upper16:app_state
- 1226 02cc 1A78     		ldrb	r2, [r3]
- 1227 02ce 0221     		movs	r1, #2
- 1228 02d0 8A43     		bics	r2, r1
- 1229 02d2 1A70     		strb	r2, [r3]
+ 1235              		.loc 1 138 35 is_stmt 0 view .LVU215
+ 1236 02c4 40F20003 		movw	r3, #:lower16:app_state
+ 1237 02c8 C0F20003 		movt	r3, #:upper16:app_state
+ 1238 02cc 1A78     		ldrb	r2, [r3]
+ 1239 02ce 0221     		movs	r1, #2
+ 1240 02d0 8A43     		bics	r2, r1
+ 1241 02d2 1A70     		strb	r2, [r3]
  139:Core/Src/app.c ****     }
- 1230              		.loc 1 139 9 is_stmt 1 view .LVU214
+ 1242              		.loc 1 139 9 is_stmt 1 view .LVU216
  139:Core/Src/app.c ****     }
- 1231              		.loc 1 139 34 is_stmt 0 view .LVU215
- 1232 02d4 D2B2     		uxtb	r2, r2
- 1233 02d6 0121     		movs	r1, #1
- 1234 02d8 0A43     		orrs	r2, r1
- 1235 02da 1A70     		strb	r2, [r3]
- 1236 02dc 76E7     		b	.L37
- 1237              	.L44:
+ 1243              		.loc 1 139 34 is_stmt 0 view .LVU217
+ 1244 02d4 D2B2     		uxtb	r2, r2
+ 1245 02d6 0121     		movs	r1, #1
+ 1246 02d8 0A43     		orrs	r2, r1
+ 1247 02da 1A70     		strb	r2, [r3]
+ 1248 02dc 76E7     		b	.L37
+ 1249              	.L44:
  142:Core/Src/app.c ****         WaveformDisplay();
- 1238              		.loc 1 142 9 is_stmt 1 view .LVU216
+ 1250              		.loc 1 142 9 is_stmt 1 view .LVU218
  142:Core/Src/app.c ****         WaveformDisplay();
- 1239              		.loc 1 142 35 is_stmt 0 view .LVU217
- 1240 02de 40F20003 		movw	r3, #:lower16:app_state
- 1241 02e2 C0F20003 		movt	r3, #:upper16:app_state
- 1242 02e6 0C21     		movs	r1, #12
- 1243 02e8 8A43     		bics	r2, r1
- 1244 02ea 1A70     		strb	r2, [r3]
+ 1251              		.loc 1 142 35 is_stmt 0 view .LVU219
+ 1252 02de 40F20003 		movw	r3, #:lower16:app_state
+ 1253 02e2 C0F20003 		movt	r3, #:upper16:app_state
+ 1254 02e6 0C21     		movs	r1, #12
+ 1255 02e8 8A43     		bics	r2, r1
+ 1256 02ea 1A70     		strb	r2, [r3]
  143:Core/Src/app.c ****     }
- 1245              		.loc 1 143 9 is_stmt 1 view .LVU218
- 1246 02ec FFF7FEFF 		bl	WaveformDisplay
- 1247              	.LVL94:
- 1248 02f0 76E7     		b	.L38
- 1249              	.L45:
+ 1257              		.loc 1 143 9 is_stmt 1 view .LVU220
+ 1258 02ec FFF7FEFF 		bl	WaveformDisplay
+ 1259              	.LVL96:
+ 1260 02f0 76E7     		b	.L38
+ 1261              	.L45:
  146:Core/Src/app.c ****         AppStateDisplay();
- 1250              		.loc 1 146 9 view .LVU219
+ 1262              		.loc 1 146 9 view .LVU221
  146:Core/Src/app.c ****         AppStateDisplay();
- 1251              		.loc 1 146 34 is_stmt 0 view .LVU220
- 1252 02f2 40F20003 		movw	r3, #:lower16:app_state
- 1253 02f6 C0F20003 		movt	r3, #:upper16:app_state
- 1254 02fa 1A78     		ldrb	r2, [r3]
- 1255 02fc 0121     		movs	r1, #1
- 1256 02fe 8A43     		bics	r2, r1
- 1257 0300 1A70     		strb	r2, [r3]
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 31
+
+
+ 1263              		.loc 1 146 34 is_stmt 0 view .LVU222
+ 1264 02f2 40F20003 		movw	r3, #:lower16:app_state
+ 1265 02f6 C0F20003 		movt	r3, #:upper16:app_state
+ 1266 02fa 1A78     		ldrb	r2, [r3]
+ 1267 02fc 0121     		movs	r1, #1
+ 1268 02fe 8A43     		bics	r2, r1
+ 1269 0300 1A70     		strb	r2, [r3]
  147:Core/Src/app.c ****     }
- 1258              		.loc 1 147 9 is_stmt 1 view .LVU221
- 1259 0302 FFF7FEFF 		bl	AppStateDisplay
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 31
-
-
- 1260              	.LVL95:
+ 1270              		.loc 1 147 9 is_stmt 1 view .LVU223
+ 1271 0302 FFF7FEFF 		bl	AppStateDisplay
+ 1272              	.LVL97:
  149:Core/Src/app.c **** 
- 1261              		.loc 1 149 1 is_stmt 0 view .LVU222
- 1262 0306 73E7     		b	.L29
- 1263              		.cfi_endproc
- 1264              	.LFE64:
- 1266              		.section	.rodata.__FUNCTION__.0,"a"
- 1267              		.align	2
- 1270              	__FUNCTION__.0:
- 1271 0000 57617665 		.ascii	"WaveformDisplay\000"
- 1271      666F726D 
- 1271      44697370 
- 1271      6C617900 
- 1272              		.section	.rodata.__FUNCTION__.1,"a"
- 1273              		.align	2
- 1276              	__FUNCTION__.1:
- 1277 0000 41707053 		.ascii	"AppStateDisplay\000"
- 1277      74617465 
- 1277      44697370 
- 1277      6C617900 
- 1278              		.section	.rodata.__FUNCTION__.2,"a"
+ 1273              		.loc 1 149 1 is_stmt 0 view .LVU224
+ 1274 0306 73E7     		b	.L29
+ 1275              		.cfi_endproc
+ 1276              	.LFE64:
+ 1278              		.section	.rodata.__FUNCTION__.0,"a"
  1279              		.align	2
- 1282              	__FUNCTION__.2:
- 1283 0000 41707053 		.ascii	"AppStart\000"
- 1283      74617274 
- 1283      00
- 1284              		.section	.rodata.__FUNCTION__.3,"a"
+ 1282              	__FUNCTION__.0:
+ 1283 0000 57617665 		.ascii	"WaveformDisplay\000"
+ 1283      666F726D 
+ 1283      44697370 
+ 1283      6C617900 
+ 1284              		.section	.rodata.__FUNCTION__.1,"a"
  1285              		.align	2
- 1288              	__FUNCTION__.3:
- 1289 0000 41707049 		.ascii	"AppInit\000"
- 1289      6E697400 
- 1290              		.global	app_state
- 1291              		.section	.bss.app_state,"aw",%nobits
- 1292              		.align	2
- 1295              	app_state:
- 1296 0000 00       		.space	1
- 1297              		.global	app_data
- 1298              		.section	.bss.app_data,"aw",%nobits
- 1299              		.align	2
- 1302              	app_data:
- 1303 0000 00000000 		.space	616
- 1303      00000000 
- 1303      00000000 
- 1303      00000000 
- 1303      00000000 
- 1304              		.global	UI_MSG
- 1305              		.section	.rodata.UI_MSG,"a"
- 1306              		.align	2
- 1309              	UI_MSG:
- 1310 0000 4F736369 		.ascii	"Oscilloscope\000"
- 1310      6C6C6F73 
- 1310      636F7065 
- 1310      00
- 1311 000d 00000000 		.space	19
- 1311      00000000 
- 1311      00000000 
- 1311      00000000 
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 32
-
-
- 1311      000000
- 1312 0020 5670703A 		.ascii	"Vpp: 0.00V  F: 0.00kHz\000"
- 1312      20302E30 
- 1312      30562020 
- 1312      463A2030 
- 1312      2E30306B 
- 1313 0037 00000000 		.space	9
- 1313      00000000 
- 1313      00
- 1314 0040 50574D3A 		.ascii	"PWM:OFF   0.00Hz    0%\000"
- 1314      4F464620 
- 1314      2020302E 
- 1314      3030487A 
- 1314      20202020 
- 1315 0057 00000000 		.space	9
+ 1288              	__FUNCTION__.1:
+ 1289 0000 41707053 		.ascii	"AppStateDisplay\000"
+ 1289      74617465 
+ 1289      44697370 
+ 1289      6C617900 
+ 1290              		.section	.rodata.__FUNCTION__.2,"a"
+ 1291              		.align	2
+ 1294              	__FUNCTION__.2:
+ 1295 0000 41707053 		.ascii	"AppStart\000"
+ 1295      74617274 
+ 1295      00
+ 1296              		.section	.rodata.__FUNCTION__.3,"a"
+ 1297              		.align	2
+ 1300              	__FUNCTION__.3:
+ 1301 0000 41707049 		.ascii	"AppInit\000"
+ 1301      6E697400 
+ 1302              		.global	app_state
+ 1303              		.section	.bss.app_state,"aw",%nobits
+ 1304              		.align	2
+ 1307              	app_state:
+ 1308 0000 00       		.space	1
+ 1309              		.global	app_data
+ 1310              		.section	.bss.app_data,"aw",%nobits
+ 1311              		.align	2
+ 1314              	app_data:
+ 1315 0000 00000000 		.space	616
  1315      00000000 
- 1315      00
- 1316              		.text
- 1317              	.Letext0:
- 1318              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 1319              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
- 1320              		.file 4 "Core/Inc/app.h"
- 1321              		.file 5 "Core/Inc/log.h"
- 1322              		.file 6 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
- 1323              		.file 7 "Drivers/GD32E23x/Include/gd32e23x_dma.h"
- 1324              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
- 1325              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
- 1326              		.file 10 "Drivers/UserDrivers/lcd.h"
- 1327              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_adc.h"
- 1328              		.file 12 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
- 1329              		.file 13 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
- 1330              		.file 14 "Core/Inc/peripheral.h"
- 1331              		.file 15 "Core/Inc/systick.h"
- 1332              		.file 16 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
- 1333              		.file 17 "<built-in>"
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 33
+ 1315      00000000 
+ 1315      00000000 
+ 1315      00000000 
+ 1316              		.global	UI_MSG
+ 1317              		.section	.rodata.UI_MSG,"a"
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 32
+
+
+ 1318              		.align	2
+ 1321              	UI_MSG:
+ 1322 0000 4F736369 		.ascii	"Oscilloscope\000"
+ 1322      6C6C6F73 
+ 1322      636F7065 
+ 1322      00
+ 1323 000d 00000000 		.space	19
+ 1323      00000000 
+ 1323      00000000 
+ 1323      00000000 
+ 1323      000000
+ 1324 0020 5670703A 		.ascii	"Vpp: 0.00V  F: 0.00kHz\000"
+ 1324      20302E30 
+ 1324      30562020 
+ 1324      463A2030 
+ 1324      2E30306B 
+ 1325 0037 00000000 		.space	9
+ 1325      00000000 
+ 1325      00
+ 1326 0040 50574D3A 		.ascii	"PWM:OFF   0.00Hz    0%\000"
+ 1326      4F464620 
+ 1326      2020302E 
+ 1326      3030487A 
+ 1326      20202020 
+ 1327 0057 00000000 		.space	9
+ 1327      00000000 
+ 1327      00
+ 1328              		.text
+ 1329              	.Letext0:
+ 1330              		.file 2 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 1331              		.file 3 "D:/AppData/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include
+ 1332              		.file 4 "Core/Inc/app.h"
+ 1333              		.file 5 "Core/Inc/log.h"
+ 1334              		.file 6 "Drivers/CMSIS/GD/GD32E23x/Include/gd32e23x.h"
+ 1335              		.file 7 "Drivers/GD32E23x/Include/gd32e23x_dma.h"
+ 1336              		.file 8 "Drivers/GD32E23x/Include/gd32e23x_exti.h"
+ 1337              		.file 9 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
+ 1338              		.file 10 "Drivers/UserDrivers/lcd.h"
+ 1339              		.file 11 "Drivers/GD32E23x/Include/gd32e23x_adc.h"
+ 1340              		.file 12 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
+ 1341              		.file 13 "Drivers/GD32E23x/Include/gd32e23x_timer.h"
+ 1342              		.file 14 "Core/Inc/peripheral.h"
+ 1343              		.file 15 "Core/Inc/systick.h"
+ 1344              		.file 16 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
+ 1345              		.file 17 "<built-in>"
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 app.c
-D:\noval\Temp\ccFxjvZT.s:19     .rodata.AppInterface.str1.4:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:20     .rodata.AppInterface.str1.4:00000000 .LC0
-D:\noval\Temp\ccFxjvZT.s:23     .text.AppInterface:00000000 $t
-D:\noval\Temp\ccFxjvZT.s:29     .text.AppInterface:00000000 AppInterface
-D:\noval\Temp\ccFxjvZT.s:1309   .rodata.UI_MSG:00000000 UI_MSG
-D:\noval\Temp\ccFxjvZT.s:143    .rodata.AppStateDisplay.str1.4:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:144    .rodata.AppStateDisplay.str1.4:00000000 .LC3
-D:\noval\Temp\ccFxjvZT.s:150    .rodata.AppStateDisplay.str1.4:00000024 .LC8
-D:\noval\Temp\ccFxjvZT.s:153    .rodata.AppStateDisplay.str1.4:00000028 .LC9
-D:\noval\Temp\ccFxjvZT.s:156    .rodata.AppStateDisplay.str1.4:0000002c .LC5
-D:\noval\Temp\ccFxjvZT.s:159    .rodata.AppStateDisplay.str1.4:00000034 .LC7
-D:\noval\Temp\ccFxjvZT.s:162    .rodata.AppStateDisplay.str1.4:0000003c .LC4
-D:\noval\Temp\ccFxjvZT.s:165    .rodata.AppStateDisplay.str1.4:00000044 .LC6
-D:\noval\Temp\ccFxjvZT.s:168    .text.AppStateDisplay:00000000 $t
-D:\noval\Temp\ccFxjvZT.s:174    .text.AppStateDisplay:00000000 AppStateDisplay
-D:\noval\Temp\ccFxjvZT.s:1276   .rodata.__FUNCTION__.1:00000000 __FUNCTION__.1
-D:\noval\Temp\ccFxjvZT.s:1302   .bss.app_data:00000000 app_data
-D:\noval\Temp\ccFxjvZT.s:1295   .bss.app_state:00000000 app_state
-D:\noval\Temp\ccFxjvZT.s:430    .rodata.WaveformDisplay.str1.4:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:431    .rodata.WaveformDisplay.str1.4:00000000 .LC10
-D:\noval\Temp\ccFxjvZT.s:435    .text.WaveformDisplay:00000000 $t
-D:\noval\Temp\ccFxjvZT.s:441    .text.WaveformDisplay:00000000 WaveformDisplay
-D:\noval\Temp\ccFxjvZT.s:1270   .rodata.__FUNCTION__.0:00000000 __FUNCTION__.0
-D:\noval\Temp\ccFxjvZT.s:668    .text.WaveformDisplay:00000144 $d
-D:\noval\Temp\ccFxjvZT.s:673    .rodata.AppInit.str1.4:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:674    .rodata.AppInit.str1.4:00000000 .LC11
-D:\noval\Temp\ccFxjvZT.s:677    .text.AppInit:00000000 $t
-D:\noval\Temp\ccFxjvZT.s:683    .text.AppInit:00000000 AppInit
-D:\noval\Temp\ccFxjvZT.s:1288   .rodata.__FUNCTION__.3:00000000 __FUNCTION__.3
-D:\noval\Temp\ccFxjvZT.s:792    .rodata.AppStart.str1.4:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:793    .rodata.AppStart.str1.4:00000000 .LC12
-D:\noval\Temp\ccFxjvZT.s:796    .rodata.AppStart.str1.4:00000028 .LC13
-D:\noval\Temp\ccFxjvZT.s:799    .rodata.AppStart.str1.4:0000003c .LC14
-D:\noval\Temp\ccFxjvZT.s:802    .rodata.AppStart.str1.4:00000050 .LC15
-D:\noval\Temp\ccFxjvZT.s:805    .rodata.AppStart.str1.4:00000064 .LC16
-D:\noval\Temp\ccFxjvZT.s:808    .rodata.AppStart.str1.4:00000074 .LC17
-D:\noval\Temp\ccFxjvZT.s:811    .rodata.AppStart.str1.4:0000009c .LC18
-D:\noval\Temp\ccFxjvZT.s:814    .rodata.AppStart.str1.4:000000ac .LC19
-D:\noval\Temp\ccFxjvZT.s:817    .rodata.AppStart.str1.4:000000bc .LC20
-D:\noval\Temp\ccFxjvZT.s:820    .rodata.AppStart.str1.4:000000cc .LC21
-D:\noval\Temp\ccFxjvZT.s:823    .rodata.AppStart.str1.4:000000dc .LC22
-D:\noval\Temp\ccFxjvZT.s:826    .text.AppStart:00000000 $t
-D:\noval\Temp\ccFxjvZT.s:832    .text.AppStart:00000000 AppStart
-D:\noval\Temp\ccFxjvZT.s:1282   .rodata.__FUNCTION__.2:00000000 __FUNCTION__.2
-D:\noval\Temp\ccFxjvZT.s:1267   .rodata.__FUNCTION__.0:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1273   .rodata.__FUNCTION__.1:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1279   .rodata.__FUNCTION__.2:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1285   .rodata.__FUNCTION__.3:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1292   .bss.app_state:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1299   .bss.app_data:00000000 $d
-D:\noval\Temp\ccFxjvZT.s:1306   .rodata.UI_MSG:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:19     .rodata.AppInterface.str1.4:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:20     .rodata.AppInterface.str1.4:00000000 .LC0
+D:\noval\Temp\ccMrHsGD.s:23     .text.AppInterface:00000000 $t
+D:\noval\Temp\ccMrHsGD.s:29     .text.AppInterface:00000000 AppInterface
+D:\noval\Temp\ccMrHsGD.s:1321   .rodata.UI_MSG:00000000 UI_MSG
+D:\noval\Temp\ccMrHsGD.s:143    .rodata.AppStateDisplay.str1.4:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:144    .rodata.AppStateDisplay.str1.4:00000000 .LC3
+D:\noval\Temp\ccMrHsGD.s:151    .rodata.AppStateDisplay.str1.4:00000024 .LC8
+D:\noval\Temp\ccMrHsGD.s:154    .rodata.AppStateDisplay.str1.4:00000028 .LC9
+D:\noval\Temp\ccMrHsGD.s:157    .rodata.AppStateDisplay.str1.4:0000002c .LC4
+D:\noval\Temp\ccMrHsGD.s:160    .rodata.AppStateDisplay.str1.4:00000034 .LC6
+D:\noval\Temp\ccMrHsGD.s:163    .rodata.AppStateDisplay.str1.4:0000003c .LC5
+D:\noval\Temp\ccMrHsGD.s:166    .rodata.AppStateDisplay.str1.4:00000044 .LC7
+D:\noval\Temp\ccMrHsGD.s:169    .text.AppStateDisplay:00000000 $t
+D:\noval\Temp\ccMrHsGD.s:175    .text.AppStateDisplay:00000000 AppStateDisplay
+D:\noval\Temp\ccMrHsGD.s:1288   .rodata.__FUNCTION__.1:00000000 __FUNCTION__.1
+D:\noval\Temp\ccMrHsGD.s:1314   .bss.app_data:00000000 app_data
+D:\noval\Temp\ccMrHsGD.s:1307   .bss.app_state:00000000 app_state
+D:\noval\Temp\ccMrHsGD.s:442    .rodata.WaveformDisplay.str1.4:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:443    .rodata.WaveformDisplay.str1.4:00000000 .LC10
+D:\noval\Temp\ccMrHsGD.s:447    .text.WaveformDisplay:00000000 $t
+D:\noval\Temp\ccMrHsGD.s:453    .text.WaveformDisplay:00000000 WaveformDisplay
+D:\noval\Temp\ccMrHsGD.s:1282   .rodata.__FUNCTION__.0:00000000 __FUNCTION__.0
+D:\noval\Temp\ccMrHsGD.s:680    .text.WaveformDisplay:00000144 $d
+D:\noval\Temp\ccMrHsGD.s:685    .rodata.AppInit.str1.4:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:686    .rodata.AppInit.str1.4:00000000 .LC11
+D:\noval\Temp\ccMrHsGD.s:689    .text.AppInit:00000000 $t
+D:\noval\Temp\ccMrHsGD.s:695    .text.AppInit:00000000 AppInit
+D:\noval\Temp\ccMrHsGD.s:1300   .rodata.__FUNCTION__.3:00000000 __FUNCTION__.3
+D:\noval\Temp\ccMrHsGD.s:804    .rodata.AppStart.str1.4:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:805    .rodata.AppStart.str1.4:00000000 .LC12
+D:\noval\Temp\ccMrHsGD.s:808    .rodata.AppStart.str1.4:00000028 .LC13
+D:\noval\Temp\ccMrHsGD.s:811    .rodata.AppStart.str1.4:0000003c .LC14
+D:\noval\Temp\ccMrHsGD.s:814    .rodata.AppStart.str1.4:00000050 .LC15
+D:\noval\Temp\ccMrHsGD.s:817    .rodata.AppStart.str1.4:00000064 .LC16
+D:\noval\Temp\ccMrHsGD.s:820    .rodata.AppStart.str1.4:00000074 .LC17
+D:\noval\Temp\ccMrHsGD.s:823    .rodata.AppStart.str1.4:0000009c .LC18
+D:\noval\Temp\ccMrHsGD.s:826    .rodata.AppStart.str1.4:000000ac .LC19
+D:\noval\Temp\ccMrHsGD.s:829    .rodata.AppStart.str1.4:000000bc .LC20
+D:\noval\Temp\ccMrHsGD.s:832    .rodata.AppStart.str1.4:000000cc .LC21
+D:\noval\Temp\ccMrHsGD.s:835    .rodata.AppStart.str1.4:000000dc .LC22
+D:\noval\Temp\ccMrHsGD.s:838    .text.AppStart:00000000 $t
+D:\noval\Temp\ccMrHsGD.s:844    .text.AppStart:00000000 AppStart
+D:\noval\Temp\ccMrHsGD.s:1294   .rodata.__FUNCTION__.2:00000000 __FUNCTION__.2
+D:\noval\Temp\ccMrHsGD.s:1279   .rodata.__FUNCTION__.0:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1285   .rodata.__FUNCTION__.1:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1291   .rodata.__FUNCTION__.2:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1297   .rodata.__FUNCTION__.3:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1304   .bss.app_state:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1311   .bss.app_data:00000000 $d
+D:\noval\Temp\ccMrHsGD.s:1318   .rodata.UI_MSG:00000000 $d
 
 UNDEFINED SYMBOLS
 LCD_Draw_Point
 LCD_Fill
-ARM GAS  D:\noval\Temp\ccFxjvZT.s 			page 34
+ARM GAS  D:\noval\Temp\ccMrHsGD.s 			page 34
 
 
 LCD_Show_String
 LCD_Draw_Line
 __aeabi_i2f
 __aeabi_fmul
+__aeabi_fsub
 __aeabi_fdiv
 memset
 EM_LOG

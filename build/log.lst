@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
   47              		.loc 1 3 39 view -0
   48              		.cfi_startproc
   49              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 2
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 2
 
 
   50              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
   13:Core/Src/log.c **** 		case LOG_FATAL:
   85              		.loc 1 13 11 is_stmt 0 view .LVU7
   86 0020 40F20000 		movw	r0, #:lower16:.LC3
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 3
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 3
 
 
   87 0024 C0F20000 		movt	r0, #:upper16:.LC3
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
  134              		.cfi_def_cfa_offset 4
   23:Core/Src/log.c **** #if OPEN_ZLOG == 1
   24:Core/Src/log.c **** 	va_list arg;
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 4
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 4
 
 
   25:Core/Src/log.c **** 	va_start(arg, fmt);
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
   57:Core/Src/log.c **** 	FILE *file = NULL;
   58:Core/Src/log.c **** 
   59:Core/Src/log.c **** 	if((file = fopen(file_name, mode)) == NULL){
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 5
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 5
 
 
   60:Core/Src/log.c **** 		perror("ERROR: ");
@@ -279,25 +279,25 @@ ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 1
  165              		.text
  166              	.Letext0:
  167              		.file 2 "Core/Inc/log.h"
-ARM GAS  D:\noval\Temp\ccit6kbe.s 			page 6
+ARM GAS  D:\noval\Temp\ccWuIDJj.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 log.c
-D:\noval\Temp\ccit6kbe.s:19     .rodata.EM_LOGLEVELGet.str1.4:00000000 $d
-D:\noval\Temp\ccit6kbe.s:20     .rodata.EM_LOGLEVELGet.str1.4:00000000 .LC0
-D:\noval\Temp\ccit6kbe.s:23     .rodata.EM_LOGLEVELGet.str1.4:00000008 .LC1
-D:\noval\Temp\ccit6kbe.s:26     .rodata.EM_LOGLEVELGet.str1.4:00000010 .LC2
-D:\noval\Temp\ccit6kbe.s:29     .rodata.EM_LOGLEVELGet.str1.4:00000018 .LC3
-D:\noval\Temp\ccit6kbe.s:32     .rodata.EM_LOGLEVELGet.str1.4:00000020 .LC4
-D:\noval\Temp\ccit6kbe.s:35     .rodata.EM_LOGLEVELGet.str1.4:00000028 .LC5
-D:\noval\Temp\ccit6kbe.s:38     .text.EM_LOGLEVELGet:00000000 $t
-D:\noval\Temp\ccit6kbe.s:44     .text.EM_LOGLEVELGet:00000000 EM_LOGLEVELGet
-D:\noval\Temp\ccit6kbe.s:62     .rodata.EM_LOGLEVELGet:00000000 $d
-D:\noval\Temp\ccit6kbe.s:112    .text.EM_LOGLEVELGet:00000048 $d
-D:\noval\Temp\ccit6kbe.s:117    .text.EM_LOG:00000000 $t
-D:\noval\Temp\ccit6kbe.s:123    .text.EM_LOG:00000000 EM_LOG
-D:\noval\Temp\ccit6kbe.s:145    .text.savelog:00000000 $t
-D:\noval\Temp\ccit6kbe.s:151    .text.savelog:00000000 savelog
+D:\noval\Temp\ccWuIDJj.s:19     .rodata.EM_LOGLEVELGet.str1.4:00000000 $d
+D:\noval\Temp\ccWuIDJj.s:20     .rodata.EM_LOGLEVELGet.str1.4:00000000 .LC0
+D:\noval\Temp\ccWuIDJj.s:23     .rodata.EM_LOGLEVELGet.str1.4:00000008 .LC1
+D:\noval\Temp\ccWuIDJj.s:26     .rodata.EM_LOGLEVELGet.str1.4:00000010 .LC2
+D:\noval\Temp\ccWuIDJj.s:29     .rodata.EM_LOGLEVELGet.str1.4:00000018 .LC3
+D:\noval\Temp\ccWuIDJj.s:32     .rodata.EM_LOGLEVELGet.str1.4:00000020 .LC4
+D:\noval\Temp\ccWuIDJj.s:35     .rodata.EM_LOGLEVELGet.str1.4:00000028 .LC5
+D:\noval\Temp\ccWuIDJj.s:38     .text.EM_LOGLEVELGet:00000000 $t
+D:\noval\Temp\ccWuIDJj.s:44     .text.EM_LOGLEVELGet:00000000 EM_LOGLEVELGet
+D:\noval\Temp\ccWuIDJj.s:62     .rodata.EM_LOGLEVELGet:00000000 $d
+D:\noval\Temp\ccWuIDJj.s:112    .text.EM_LOGLEVELGet:00000048 $d
+D:\noval\Temp\ccWuIDJj.s:117    .text.EM_LOG:00000000 $t
+D:\noval\Temp\ccWuIDJj.s:123    .text.EM_LOG:00000000 EM_LOG
+D:\noval\Temp\ccWuIDJj.s:145    .text.savelog:00000000 $t
+D:\noval\Temp\ccWuIDJj.s:151    .text.savelog:00000000 savelog
 
 NO UNDEFINED SYMBOLS

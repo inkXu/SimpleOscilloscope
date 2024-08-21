@@ -115,24 +115,25 @@ void EXTI4_15_IRQHandler(void)
     if (SET == exti_interrupt_flag_get(EXTI_4)) {
         exti_interrupt_flag_clear(EXTI_4);
         if (app_state.waveform_update == WAVEFORM_UPDATE_DISABLE) return ;
+        delay_1ms(10);
         if (RESET == gpio_input_bit_get(GPIOB, GPIO_PIN_3)) {
             // turn right
             switch(app_data.wave_samp_freq)
             {
                 case ADC_SAMPLETIME_239POINT5:
-                    app_data.wave_samp_freq=ADC_SAMPLETIME_28POINT5;
-                    break;
-                case ADC_SAMPLETIME_71POINT5:
-                    app_data.wave_samp_freq=ADC_SAMPLETIME_239POINT5;
-                    break;
-                case ADC_SAMPLETIME_55POINT5:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_71POINT5;
                     break;
-                case ADC_SAMPLETIME_41POINT5:
+                case ADC_SAMPLETIME_71POINT5:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_55POINT5;
                     break;
-                case ADC_SAMPLETIME_28POINT5:
+                case ADC_SAMPLETIME_55POINT5:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_41POINT5;
+                    break;
+                case ADC_SAMPLETIME_41POINT5:
+                    app_data.wave_samp_freq=ADC_SAMPLETIME_28POINT5;
+                    break;
+                case ADC_SAMPLETIME_28POINT5:
+                    app_data.wave_samp_freq=ADC_SAMPLETIME_239POINT5;
                     break;
                 default:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_239POINT5;
@@ -142,20 +143,20 @@ void EXTI4_15_IRQHandler(void)
             // turn left
             switch(app_data.wave_samp_freq)
             {
-                case ADC_SAMPLETIME_239POINT5:
-                    app_data.wave_samp_freq=ADC_SAMPLETIME_71POINT5;
-                    break;
-                case ADC_SAMPLETIME_71POINT5:
-                    app_data.wave_samp_freq=ADC_SAMPLETIME_55POINT5;
-                    break;
-                case ADC_SAMPLETIME_55POINT5:
+                case ADC_SAMPLETIME_28POINT5:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_41POINT5;
                     break;
                 case ADC_SAMPLETIME_41POINT5:
-                    app_data.wave_samp_freq=ADC_SAMPLETIME_28POINT5;
+                    app_data.wave_samp_freq=ADC_SAMPLETIME_55POINT5;
                     break;
-                case ADC_SAMPLETIME_28POINT5:
+                case ADC_SAMPLETIME_55POINT5:
+                    app_data.wave_samp_freq=ADC_SAMPLETIME_71POINT5;
+                    break;
+                case ADC_SAMPLETIME_71POINT5:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_239POINT5;
+                    break;
+                case ADC_SAMPLETIME_239POINT5:
+                    app_data.wave_samp_freq=ADC_SAMPLETIME_28POINT5;
                     break;
                 default:
                     app_data.wave_samp_freq=ADC_SAMPLETIME_239POINT5;

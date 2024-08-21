@@ -189,25 +189,25 @@ void AppStateDisplay(void)
     switch (app_data.wave_samp_freq)
     {
         case ADC_SAMPLETIME_28POINT5:
-            strncpy(buf, "I----", 6);
+            strncpy(buf, "----I", 6);
             break;
         case ADC_SAMPLETIME_41POINT5:
-            strncpy(buf, "-I---", 6);
+            strncpy(buf, "---I-", 6);
             break;
         case ADC_SAMPLETIME_55POINT5:
             strncpy(buf, "--I--", 6);
             break;
         case ADC_SAMPLETIME_71POINT5:
-            strncpy(buf, "---I-", 6);
+            strncpy(buf, "-I---", 6);
             break;
         default:
-            strncpy(buf, "----I", 6);
+            strncpy(buf, "I----", 6);
             break;
     }
     LCD_Show_String(120, 8, (uint8_t *)buf, YELLOW, BLACK, 12, 0);
     /* input signal parameter */
-    LCD_ShowFloatNum1(27, 102, (float)(app_data.wave_vpp / 4096.0f * 3.3f), 4, YELLOW, BLACK, 12);     // vpp
-    LCD_ShowFloatNum1(87, 102, (float)(app_data.wave_freq * 1.03f / 1000.0f), 4, YELLOW, BLACK, 12);   // frequecny
+    LCD_ShowFloatNum1(27, 102, (float)(5 - app_data.wave_vpp / 4096.0f * 6.6f - 0.28f), 4, YELLOW, BLACK, 12);     // vpp
+    LCD_ShowFloatNum1(87, 102, (float)(app_data.wave_freq * 1.03f / 1000.0f), 4, YELLOW, BLACK, 12);               // frequecny
     app_data.wave_freq = 0;
     /* PWM */
     if (app_state.pwm_state != PWM_STATE_DISABLE) {                                            // pwm switch state
@@ -219,10 +219,9 @@ void AppStateDisplay(void)
     LCD_ShowIntNum(111, 116, (uint16_t)app_data.pwm_duty, 3, PURPLE, BLACK, 12);               // pwm duty
 }
 
-/*
- * @brief  
- * @param  None
- * @retval None
+/**
+ * @brief be used to display and update waveform
+ * 
  */
 void WaveformDisplay(void)
 {    
@@ -242,13 +241,12 @@ void WaveformDisplay(void)
     }
 
     // LCD_Fill(4, 24, LCD_WIDTH, 95, BLACK);
-    LCD_Draw_Point(0, HORIZONTAL_AXIS, GREEN);
-    app_data.wave_vpp = 0;
+    // LCD_Draw_Point(0, HORIZONTAL_AXIS, GREEN);
+    app_data.wave_vpp = 2929;
     for (i = start_point; i < start_point + 157; i++) {
         if (app_data.data[i] < 3104) {
-            if (app_data.wave_vpp < app_data.data[i])
-                app_data.wave_vpp = app_data.data[i];
-            x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)(app_data.data[i] / 3104.0f * 53.0f));
+            if (app_data.wave_vpp > app_data.data[i]) app_data.wave_vpp = app_data.data[i];
+            x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((1 - app_data.data[i] / 3104.0f) * 53.0f));
         } else {
             x = LCD_Draw_Curve(AXIS_START_X + 1, HORIZONTAL_AXIS, (int16_t)((app_data.data[i] - 3104) / 992.0f * -17.0f));
         }

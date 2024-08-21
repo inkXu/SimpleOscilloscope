@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
   31:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   32:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****    POSSIBILITY OF SUCH DAMAGE.
   33:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****    ---------------------------------------------------------------------------*/
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 2
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 2
 
 
   34:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** 
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
   88:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** 
   89:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
   90:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      setup the microcontroller system, initialize the system
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 3
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 3
 
 
   91:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  145:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** }
  146:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** 
  147:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef __SYSTEM_CLOCK_8M_HXTAL
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 4
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 4
 
 
  148:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
   28              		@ args = 0, pretend = 0, frame = 0
   29              		@ frame_needed = 0, uses_anonymous_args = 0
   30              		@ link register save eliminated.
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 5
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 5
 
 
  200:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t timeout = 0U;
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
   70 0030 C4F20203 		movt	r3, 16386
   71 0034 1B68     		ldr	r3, [r3]
   72              		.loc 1 213 7 view .LVU15
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 6
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 6
 
 
   73 0036 9B03     		lsls	r3, r3, #14
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  110              		.loc 1 229 5 is_stmt 1 view .LVU31
  111 0064 1A68     		ldr	r2, [r3]
  112              		.loc 1 229 14 is_stmt 0 view .LVU32
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 7
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 7
 
 
  113 0066 4FF6FF71 		movw	r1, #65535
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  152              		.loc 1 241 5 is_stmt 1 view .LVU44
  153 00ac 1A68     		ldr	r2, [r3]
  154              		.loc 1 241 14 is_stmt 0 view .LVU45
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 8
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 8
 
 
  155 00ae 0139     		subs	r1, r1, #1
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  199              		@ sp needed
  200 0006 10BD     		pop	{r4, pc}
  201              		.cfi_endproc
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 9
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 9
 
 
  202              	.LFE61:
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  102:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
  247              		.loc 1 102 5 discriminator 1 view .LVU67
  248 0022 41F20403 		movw	r3, #4100
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 10
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 10
 
 
  249 0026 C4F20203 		movt	r3, 16386
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  292 0064 F9D9     		bls	.L16
  293              	.LBE2:
  102:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 11
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 11
 
 
  294              		.loc 1 102 5 discriminator 10 view .LVU79
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  337 00be 1A68     		ldr	r2, [r3]
  110:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
  338              		.loc 1 110 14 is_stmt 0 view .LVU91
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 12
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 12
 
 
  339 00c0 1049     		ldr	r1, .L18
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  382              		.align	2
  383              	.L18:
  384 0104 FCFEFFFF 		.word	-260
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 13
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 13
 
 
  385 0108 FFFFFEFF 		.word	-65537
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  290:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c **** 
  291:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until PLL is stable */
  292:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)){
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 14
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 14
 
 
  293:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     }
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  407              		.cfi_offset 14, -4
  408 0002 85B0     		sub	sp, sp, #20
  409              	.LCFI4:
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 15
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 15
 
 
  410              		.cfi_def_cfa_offset 32
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  453              	.LVL13:
  454              	.L24:
  349:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     /* HXTAL is selected as CK_SYS */
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 16
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 16
 
 
  350:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****     case SEL_HXTAL:
@@ -958,7 +958,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  474              		.loc 1 384 21 view .LVU124
  475 005e C0F20003 		movt	r3, #:upper16:SystemCoreClock
  476 0062 1A68     		ldr	r2, [r3]
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 17
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 17
 
 
  477 0064 CA40     		lsrs	r2, r2, r1
@@ -1018,7 +1018,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  517              		.loc 1 359 11 is_stmt 0 view .LVU138
  518 0092 1201     		lsls	r2, r2, #4
  519 0094 1CD5     		bpl	.L25
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 18
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 18
 
 
  520              	.LVL24:
@@ -1078,7 +1078,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  560 00ce BAE7     		b	.L24
  561              	.LVL30:
  562              	.L25:
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 19
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 19
 
 
  361:Drivers/CMSIS/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf = 16U;
@@ -1138,7 +1138,7 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  603              		.loc 1 378 25 view .LVU166
  604 00fa C0F20003 		movt	r3, #:upper16:SystemCoreClock
  605 00fe 41F20022 		movw	r2, #4608
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 20
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 20
 
 
  606              	.LVL37:
@@ -1173,24 +1173,24 @@ ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 1
  633              		.file 5 "Drivers/GD32E23x/Include/gd32e23x_dbg.h"
  634              		.file 6 "Drivers/GD32E23x/Include/gd32e23x_rcu.h"
  635              		.file 7 "Drivers/GD32E23x/Include/gd32e23x_misc.h"
-ARM GAS  D:\noval\Temp\ccwyAM5M.s 			page 21
+ARM GAS  D:\noval\Temp\cc30qahF.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system_gd32e23x.c
-D:\noval\Temp\ccwyAM5M.s:19     .text.system_clock_72m_hxtal:00000000 $t
-D:\noval\Temp\ccwyAM5M.s:24     .text.system_clock_72m_hxtal:00000000 system_clock_72m_hxtal
-D:\noval\Temp\ccwyAM5M.s:179    .text.system_clock_config:00000000 $t
-D:\noval\Temp\ccwyAM5M.s:184    .text.system_clock_config:00000000 system_clock_config
-D:\noval\Temp\ccwyAM5M.s:205    .text.SystemInit:00000000 $t
-D:\noval\Temp\ccwyAM5M.s:211    .text.SystemInit:00000000 SystemInit
-D:\noval\Temp\ccwyAM5M.s:384    .text.SystemInit:00000104 $d
-D:\noval\Temp\ccwyAM5M.s:390    .text.SystemCoreClockUpdate:00000000 $t
-D:\noval\Temp\ccwyAM5M.s:396    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
-D:\noval\Temp\ccwyAM5M.s:624    .rodata:00000000 .LANCHOR0
-D:\noval\Temp\ccwyAM5M.s:620    .data.SystemCoreClock:00000000 SystemCoreClock
-D:\noval\Temp\ccwyAM5M.s:617    .data.SystemCoreClock:00000000 $d
-D:\noval\Temp\ccwyAM5M.s:623    .rodata:00000000 $d
+D:\noval\Temp\cc30qahF.s:19     .text.system_clock_72m_hxtal:00000000 $t
+D:\noval\Temp\cc30qahF.s:24     .text.system_clock_72m_hxtal:00000000 system_clock_72m_hxtal
+D:\noval\Temp\cc30qahF.s:179    .text.system_clock_config:00000000 $t
+D:\noval\Temp\cc30qahF.s:184    .text.system_clock_config:00000000 system_clock_config
+D:\noval\Temp\cc30qahF.s:205    .text.SystemInit:00000000 $t
+D:\noval\Temp\cc30qahF.s:211    .text.SystemInit:00000000 SystemInit
+D:\noval\Temp\cc30qahF.s:384    .text.SystemInit:00000104 $d
+D:\noval\Temp\cc30qahF.s:390    .text.SystemCoreClockUpdate:00000000 $t
+D:\noval\Temp\cc30qahF.s:396    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+D:\noval\Temp\cc30qahF.s:624    .rodata:00000000 .LANCHOR0
+D:\noval\Temp\cc30qahF.s:620    .data.SystemCoreClock:00000000 SystemCoreClock
+D:\noval\Temp\cc30qahF.s:617    .data.SystemCoreClock:00000000 $d
+D:\noval\Temp\cc30qahF.s:623    .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 nvic_vector_table_set

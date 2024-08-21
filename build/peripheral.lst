@@ -1,4 +1,4 @@
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 1
 
 
    1              		.cpu cortex-m23
@@ -58,7 +58,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
   39              	.LVL0:
   18:Core/Src/peripheral.c **** 	rcu_periph_clock_enable(RCU_GPIOA);        // lcd data signal(SDA, SCL), TIMER14 clock(PWM), TIMER
   40              		.loc 1 18 2 view .LVU2
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 2
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 2
 
 
   41 000a 40F21150 		movw	r0, #1297
@@ -118,7 +118,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
   75              		.align	1
   76              		.global	GPIOConfig
   77              		.syntax unified
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 3
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 3
 
 
   78              		.code	16
@@ -178,7 +178,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
   54:Core/Src/peripheral.c ****     // ADC
   55:Core/Src/peripheral.c ****     gpio_mode_set(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO_PIN_3);
  119              		.loc 1 55 5 view .LVU14
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 4
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 4
 
 
  120 003c 9024     		movs	r4, #144
@@ -238,7 +238,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  165 008e 0322     		movs	r2, #3
  166 0090 0021     		movs	r1, #0
  167 0092 2800     		movs	r0, r5
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 5
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 5
 
 
  168 0094 FFF7FEFF 		bl	gpio_output_options_set
@@ -298,7 +298,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
   80:Core/Src/peripheral.c ****     gpio_af_set(GPIOA, GPIO_AF_1, GPIO_PIN_9|GPIO_PIN_10);          // USART0
   81:Core/Src/peripheral.c **** #endif
   82:Core/Src/peripheral.c **** 
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 6
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 6
 
 
   83:Core/Src/peripheral.c ****     /* enable the NVIC and configure the priority */
@@ -358,7 +358,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  247 011a 48F20000 		movw	r0, #32768
  248 011e FFF7FEFF 		bl	exti_interrupt_flag_clear
  249              	.LVL32:
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 7
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 7
 
 
   97:Core/Src/peripheral.c **** }
@@ -418,7 +418,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  107:Core/Src/peripheral.c ****     exti_interrupt_enable(EXTI_13);
  296              		.loc 1 107 5 view .LVU42
  297 002a 42F20000 		movw	r0, #8192
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 8
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 8
 
 
  298 002e FFF7FEFF 		bl	exti_interrupt_enable
@@ -478,7 +478,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  121:Core/Src/peripheral.c ****     timer_parameter_struct timer_initpara;
  341              		.loc 1 121 5 view .LVU48
  122:Core/Src/peripheral.c ****     timer_oc_parameter_struct timer_ocinitpara;
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 9
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 9
 
 
  342              		.loc 1 122 5 view .LVU49
@@ -538,7 +538,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  382 003a 2000     		movs	r0, r4
  383 003c FFF7FEFF 		bl	timer_init
  384              	.LVL44:
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 10
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 10
 
 
  137:Core/Src/peripheral.c **** 
@@ -598,7 +598,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  426              	.LVL48:
  150:Core/Src/peripheral.c ****     timer_channel_output_shadow_config(TIMER14, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
  427              		.loc 1 150 5 view .LVU82
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 11
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 11
 
 
  428 0074 0022     		movs	r2, #0
@@ -658,7 +658,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  470              		@ frame_needed = 0, uses_anonymous_args = 0
  471 0000 F0B5     		push	{r4, r5, r6, r7, lr}
  472              	.LCFI5:
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 12
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 12
 
 
  473              		.cfi_def_cfa_offset 20
@@ -718,7 +718,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  512              		.loc 1 179 38 is_stmt 0 view .LVU97
  513 0038 41F61F43 		movw	r3, #7199
  514 003c 2380     		strh	r3, [r4]
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 13
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 13
 
 
  180:Core/Src/peripheral.c ****     timer_initpara.period            = 5000 - 1;
@@ -778,7 +778,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  556              		.loc 1 192 5 is_stmt 1 view .LVU118
  557              		.loc 1 192 38 is_stmt 0 view .LVU119
  558 006c A680     		strh	r6, [r4, #4]
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 14
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 14
 
 
  193:Core/Src/peripheral.c ****     timer_init(TIMER2, &timer_initpara);
@@ -838,7 +838,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  599              		.loc 1 206 5 view .LVU133
  600 00a4 0221     		movs	r1, #2
  601 00a6 2800     		movs	r0, r5
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 15
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 15
 
 
  602 00a8 FFF7FEFF 		bl	timer_interrupt_flag_clear
@@ -898,7 +898,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  643              	.LCFI7:
  644              		.cfi_def_cfa_offset 8
  645              		.cfi_offset 4, -8
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 16
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 16
 
 
  646              		.cfi_offset 14, -4
@@ -958,7 +958,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  234:Core/Src/peripheral.c **** 
  235:Core/Src/peripheral.c ****     adc_enable();
  688              		.loc 1 235 5 view .LVU148
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 17
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 17
 
 
  689 0048 FFF7FEFF 		bl	adc_enable
@@ -1018,7 +1018,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  729 0002 88B0     		sub	sp, sp, #32
  730              	.LCFI9:
  731              		.cfi_def_cfa_offset 40
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 18
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 18
 
 
  252:Core/Src/peripheral.c ****     dma_parameter_struct dma_initpara;
@@ -1078,7 +1078,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  771 0038 FF32     		adds	r2, r2, #255
  772 003a 0292     		str	r2, [sp, #8]
  267:Core/Src/peripheral.c ****     dma_initpara.memory_width = DMA_MEMORY_WIDTH_16BIT;
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 19
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 19
 
 
  773              		.loc 1 267 5 is_stmt 1 view .LVU171
@@ -1138,7 +1138,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  815              		.cfi_endproc
  816              	.LFE69:
  818              		.section	.text.SPIConfig,"ax",%progbits
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 20
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 20
 
 
  819              		.align	1
@@ -1198,7 +1198,7 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  859              		.loc 1 294 42 is_stmt 0 view .LVU193
  860 0022 40F20072 		movw	r2, #1792
  861 0026 0392     		str	r2, [sp, #12]
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 21
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 21
 
 
  295:Core/Src/peripheral.c ****     spi_init_struct.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;
@@ -1254,28 +1254,28 @@ ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 1
  906              		.file 13 "Drivers/GD32E23x/Include/gd32e23x_syscfg.h"
  907              		.file 14 "Drivers/GD32E23x/Include/gd32e23x_misc.h"
  908              		.file 15 "Drivers/GD32E23x/Include/gd32e23x_gpio.h"
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 22
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 peripheral.c
-D:\noval\Temp\ccLfFzfs.s:19     .text.RCUConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:25     .text.RCUConfig:00000000 RCUConfig
-D:\noval\Temp\ccLfFzfs.s:75     .text.GPIOConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:81     .text.GPIOConfig:00000000 GPIOConfig
-D:\noval\Temp\ccLfFzfs.s:257    .text.GPIO13_14InterruptEnable:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:263    .text.GPIO13_14InterruptEnable:00000000 GPIO13_14InterruptEnable
-D:\noval\Temp\ccLfFzfs.s:319    .text.Timer14Config:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:325    .text.Timer14Config:00000000 Timer14Config
-D:\noval\Temp\ccLfFzfs.s:459    .text.TIMConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:465    .text.TIMConfig:00000000 TIMConfig
-D:\noval\Temp\ccLfFzfs.s:630    .text.ADCConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:636    .text.ADCConfig:00000000 ADCConfig
-D:\noval\Temp\ccLfFzfs.s:712    .text.DMAConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:718    .text.DMAConfig:00000000 DMAConfig
-D:\noval\Temp\ccLfFzfs.s:814    .text.DMAConfig:00000070 $d
-D:\noval\Temp\ccLfFzfs.s:819    .text.SPIConfig:00000000 $t
-D:\noval\Temp\ccLfFzfs.s:825    .text.SPIConfig:00000000 SPIConfig
+D:\noval\Temp\ccKUwV21.s:19     .text.RCUConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:25     .text.RCUConfig:00000000 RCUConfig
+D:\noval\Temp\ccKUwV21.s:75     .text.GPIOConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:81     .text.GPIOConfig:00000000 GPIOConfig
+D:\noval\Temp\ccKUwV21.s:257    .text.GPIO13_14InterruptEnable:00000000 $t
+D:\noval\Temp\ccKUwV21.s:263    .text.GPIO13_14InterruptEnable:00000000 GPIO13_14InterruptEnable
+D:\noval\Temp\ccKUwV21.s:319    .text.Timer14Config:00000000 $t
+D:\noval\Temp\ccKUwV21.s:325    .text.Timer14Config:00000000 Timer14Config
+D:\noval\Temp\ccKUwV21.s:459    .text.TIMConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:465    .text.TIMConfig:00000000 TIMConfig
+D:\noval\Temp\ccKUwV21.s:630    .text.ADCConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:636    .text.ADCConfig:00000000 ADCConfig
+D:\noval\Temp\ccKUwV21.s:712    .text.DMAConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:718    .text.DMAConfig:00000000 DMAConfig
+D:\noval\Temp\ccKUwV21.s:814    .text.DMAConfig:00000070 $d
+D:\noval\Temp\ccKUwV21.s:819    .text.SPIConfig:00000000 $t
+D:\noval\Temp\ccKUwV21.s:825    .text.SPIConfig:00000000 SPIConfig
 
 UNDEFINED SYMBOLS
 rcu_periph_clock_enable
@@ -1314,7 +1314,7 @@ adc_enable
 delay_1ms
 adc_calibration_enable
 adc_dma_mode_enable
-ARM GAS  D:\noval\Temp\ccLfFzfs.s 			page 23
+ARM GAS  D:\noval\Temp\ccKUwV21.s 			page 23
 
 
 adc_software_trigger_enable
