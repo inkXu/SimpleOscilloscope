@@ -126,7 +126,6 @@ void AppStart(void)
             exti_interrupt_disable(EXTI_14);
             timer_disable(TIMER14);
             rcu_periph_clock_disable(RCU_TIMER14);
-            gpio_bit_reset(GPIOA, GPIO_PIN_2);
             app_state.pwm_state = PWM_STATE_DISABLE;
             app_state.display_update = APP_STATE_ENABLE;
             break;
